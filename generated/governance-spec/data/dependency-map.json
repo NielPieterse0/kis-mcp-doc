@@ -1,0 +1,87 @@
+{
+  "_mrd_projection": {
+    "class": "META",
+    "record_mode": "meta",
+    "type": "DEP"
+  },
+  "edges": [
+    {
+      "from": "KIS-KNOW-CON-CTR-001",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "KIS-KNOW-SEM-ENUM-001"
+    },
+    {
+      "from": "KIS-KNOW-CON-CTR-001",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "KIS-KNOW-SEM-REG-001"
+    },
+    {
+      "from": "KIS-KNOW-CON-POL-001",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "KIS-KNOW-SEM-REG-001"
+    },
+    {
+      "from": "KIS-KNOW-EVL-TST-001",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "KIS-KNOW-CON-CTR-001"
+    },
+    {
+      "from": "KIS-KNOW-EVL-TST-001",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "KIS-KNOW-CON-POL-001"
+    },
+    {
+      "from": "KIS-KNOW-EVL-TST-001",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "KIS-KNOW-SEM-ENUM-001"
+    },
+    {
+      "from": "KIS-KNOW-EVL-TST-001",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "KIS-KNOW-SEM-REG-001"
+    },
+    {
+      "from": "KIS-KNOW-EVL-TST-001",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "KIS-KNOW-WRK-STM-001"
+    },
+    {
+      "from": "KIS-KNOW-EVL-TST-001",
+      "relationship": "validated_by",
+      "target_kind": "source",
+      "to": "repo:contracts/governance/v1/content.schema.json"
+    },
+    {
+      "from": "KIS-KNOW-EVL-TST-001",
+      "relationship": "validated_by",
+      "target_kind": "source",
+      "to": "repo:contracts/governance/v1/governance-mrd.schema.json"
+    },
+    {
+      "from": "KIS-KNOW-EVL-TST-001",
+      "relationship": "validated_by",
+      "target_kind": "source",
+      "to": "repo:contracts/mrd/v1/mrd.schema.json"
+    },
+    {
+      "from": "KIS-KNOW-SEM-ENUM-001",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "KIS-KNOW-SEM-REG-001"
+    },
+    {
+      "from": "KIS-KNOW-WRK-STM-001",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "KIS-KNOW-CON-POL-001"
+    }
+  ]
+}

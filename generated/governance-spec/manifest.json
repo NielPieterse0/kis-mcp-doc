@@ -1,0 +1,126 @@
+{
+  "bundle_sha256": "71230deef4aa08c34055999fe8c4c7f4e77f6c4dab00876904d6794bca48a047",
+  "contract": {
+    "name": "kis-governance-spec-build",
+    "version": 1
+  },
+  "files": [
+    {
+      "bytes": 2162,
+      "path": "data/dependency-map.json",
+      "sha256": "15fd5d17b452e0c218b6c1a77b5efc7f0e4595d29e0ccaf423b9e565bd7f0e01"
+    },
+    {
+      "bytes": 2161,
+      "path": "data/mrd-index.json",
+      "sha256": "3bb51d17b4b8dfc85665a03710b33f6e2a7e8130f243100e5b7f4628074557db"
+    },
+    {
+      "bytes": 14441,
+      "path": "specification.md",
+      "sha256": "a7a00f29b289b9bf8b7a1aaf04af0b22172a6dc565d3eb7223c1509e9c9519fe"
+    }
+  ],
+  "generator": {
+    "algorithm": "governance-spec-v1",
+    "name": "kis-mcp-doc",
+    "sources": [
+      {
+        "path": "src/kis_mcp_doc/governance.py",
+        "sha256": "fe7e02514e2463ef7073bdf045c3c40dc332d2ce020934f76a7d9745c7023fa7"
+      },
+      {
+        "path": "src/kis_mcp_doc/render.py",
+        "sha256": "0b92ff61e63297f7e6047ff9305c5533ec95c38212e93dbd4ff1a1c6bf4ae752"
+      },
+      {
+        "path": "contracts/publication/v1/governance-spec.schema.json",
+        "sha256": "3e30ee9141d616c43ed479ded503dc3eb1360a01224b05370cd5fc87fa704378"
+      },
+      {
+        "path": "contracts/publication/v1/manifest.schema.json",
+        "sha256": "fb4f11b5133b5bb9c2c6a37a36c2006b5407e20ee55ed58546353531f8fbfd02"
+      }
+    ],
+    "version": "0.1.0"
+  },
+  "inputs": {
+    "mrds": [
+      {
+        "id": "KIS-KNOW-CON-CTR-001",
+        "path": "mrd/governance/03-dependencies.mrd.json",
+        "sha256": "c4cfa82f1b34a75c0efc5d3807b26f1e7d5b2afbaaed9eed7827b78e264266ea",
+        "version": "1.0.0"
+      },
+      {
+        "id": "KIS-KNOW-CON-POL-001",
+        "path": "mrd/governance/04-provenance.mrd.json",
+        "sha256": "299fdb3abc33da0b962a37c4e50bc6bb9d284773145e2af03d9cfbac1f6c6b38",
+        "version": "1.0.0"
+      },
+      {
+        "id": "KIS-KNOW-EVL-TST-001",
+        "path": "mrd/governance/06-validation.mrd.json",
+        "sha256": "29a3970c4bf6f4888ef0769e7a9140f491ee9425ca43f54876097dd2d880d049",
+        "version": "1.1.0"
+      },
+      {
+        "id": "KIS-KNOW-SEM-ENUM-001",
+        "path": "mrd/governance/02-layering.mrd.json",
+        "sha256": "9c78aa58d96804081f852269fcb06cb648f6dd3fe0d5dbfe660cd038110d1cdb",
+        "version": "1.0.0"
+      },
+      {
+        "id": "KIS-KNOW-SEM-REG-001",
+        "path": "mrd/governance/01-classification.mrd.json",
+        "sha256": "9ca9460ebde8bd137753e22e40a8e35e474c6a64bf20db0e5bff47ded846742c",
+        "version": "1.0.0"
+      },
+      {
+        "id": "KIS-KNOW-WRK-STM-001",
+        "path": "mrd/governance/05-lifecycle.mrd.json",
+        "sha256": "faf8d5f76abd330933fa4ccd2adecd96f9ccc3d9367b5f4487de9e1804352ea1",
+        "version": "1.0.0"
+      }
+    ],
+    "publication": {
+      "path": "publication/governance-spec.json",
+      "sha256": "9e27d994a7221169531b4ca230bf6934f6134dd9985c5b62d7b13cee0917b562"
+    },
+    "source_files": [
+      {
+        "bytes": 8665,
+        "path": "contracts/governance/v1/content.schema.json",
+        "sha256": "7d3b50812c531fa11395c88a76d73f8dcd099084055ddab47aed1d9aeb114e9d"
+      },
+      {
+        "bytes": 685,
+        "path": "contracts/governance/v1/governance-mrd.schema.json",
+        "sha256": "d3b90e2c559b1c684f1a66b517928a35e992f3df28180793196dfa0780cbf808"
+      },
+      {
+        "bytes": 5511,
+        "path": "contracts/mrd/v1/mrd.schema.json",
+        "sha256": "fb9f3210b022d8def12a92bfccc1cb45e5ccf1146fa9d59168baf3f630ded153"
+      }
+    ],
+    "source_set_sha256": "74959f5e02aed180bf2fee792111ec2e8efbe550174eecd25634c19eb12224d1"
+  },
+  "specification": {
+    "status": "stabilized",
+    "title": "KIS MRD Governance Specification",
+    "version": "1.1.0"
+  },
+  "validation": {
+    "checks": {
+      "classification": "pass",
+      "dependencies": "pass",
+      "layering": "pass",
+      "lifecycle": "pass",
+      "provenance": "pass",
+      "schema": "pass"
+    },
+    "diagnostics": [],
+    "status": "valid"
+  }
+}

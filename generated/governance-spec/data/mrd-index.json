@@ -1,0 +1,75 @@
+{
+  "_mrd_projection": {
+    "class": "META",
+    "record_mode": "meta",
+    "type": "IDX"
+  },
+  "records": [
+    {
+      "class": "CON",
+      "id": "KIS-KNOW-CON-CTR-001",
+      "layer": "L1",
+      "path": "mrd/governance/03-dependencies.mrd.json",
+      "record_mode": "prescriptive",
+      "sha256": "c4cfa82f1b34a75c0efc5d3807b26f1e7d5b2afbaaed9eed7827b78e264266ea",
+      "status": "active",
+      "type": "CTR",
+      "version": "1.0.0"
+    },
+    {
+      "class": "CON",
+      "id": "KIS-KNOW-CON-POL-001",
+      "layer": "L1",
+      "path": "mrd/governance/04-provenance.mrd.json",
+      "record_mode": "prescriptive",
+      "sha256": "299fdb3abc33da0b962a37c4e50bc6bb9d284773145e2af03d9cfbac1f6c6b38",
+      "status": "active",
+      "type": "POL",
+      "version": "1.0.0"
+    },
+    {
+      "class": "EVL",
+      "id": "KIS-KNOW-EVL-TST-001",
+      "layer": "L4",
+      "path": "mrd/governance/06-validation.mrd.json",
+      "record_mode": "prescriptive",
+      "sha256": "29a3970c4bf6f4888ef0769e7a9140f491ee9425ca43f54876097dd2d880d049",
+      "status": "active",
+      "type": "TST",
+      "version": "1.1.0"
+    },
+    {
+      "class": "SEM",
+      "id": "KIS-KNOW-SEM-ENUM-001",
+      "layer": "L0",
+      "path": "mrd/governance/02-layering.mrd.json",
+      "record_mode": "prescriptive",
+      "sha256": "9c78aa58d96804081f852269fcb06cb648f6dd3fe0d5dbfe660cd038110d1cdb",
+      "status": "active",
+      "type": "ENUM",
+      "version": "1.0.0"
+    },
+    {
+      "class": "SEM",
+      "id": "KIS-KNOW-SEM-REG-001",
+      "layer": "L0",
+      "path": "mrd/governance/01-classification.mrd.json",
+      "record_mode": "prescriptive",
+      "sha256": "9ca9460ebde8bd137753e22e40a8e35e474c6a64bf20db0e5bff47ded846742c",
+      "status": "active",
+      "type": "REG",
+      "version": "1.0.0"
+    },
+    {
+      "class": "WRK",
+      "id": "KIS-KNOW-WRK-STM-001",
+      "layer": "L2",
+      "path": "mrd/governance/05-lifecycle.mrd.json",
+      "record_mode": "prescriptive",
+      "sha256": "faf8d5f76abd330933fa4ccd2adecd96f9ccc3d9367b5f4487de9e1804352ea1",
+      "status": "active",
+      "type": "STM",
+      "version": "1.0.0"
+    }
+  ]
+}

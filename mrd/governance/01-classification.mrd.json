@@ -1,0 +1,465 @@
+{
+  "_mrd": {
+    "schema_version": 1,
+    "id": "KIS-KNOW-SEM-REG-001",
+    "title": "MRD Classification",
+    "module": "governance",
+    "class": "SEM",
+    "type": "REG",
+    "layer": "L0",
+    "record_mode": "prescriptive",
+    "status": "active",
+    "version": "1.0.0",
+    "dependencies": [],
+    "provenance": {
+      "sources": [
+        {
+          "source_id": "KIS-OPERATOR-DIRECTION-2026-08-21",
+          "kind": "operator_direction",
+          "role": "normative_adoption_basis",
+          "locator": "conversation:2026-08-21",
+          "revision": "final-refinement",
+          "sha256": null
+        },
+        {
+          "source_id": "SVX-LIB-STD-003-v3.3.15",
+          "kind": "external_reference",
+          "role": "taxonomy_reference",
+          "locator": "reference:SVX-LIB-STD-003-v3.3.15",
+          "revision": "3.3.15",
+          "sha256": "b3a7836f40e14fc068513248d1cecdb0b9a7f961667f3dc66450585efedfec67"
+        }
+      ],
+      "source_fingerprint": "sha256:691983c03b7b6b15daf385728cc2f7dc4a1788ad8fd2b9e5b97431cd4556a2fc",
+      "fact_quality": "direct"
+    },
+    "supersedes": [],
+    "superseded_by": null
+  },
+  "content": {
+    "concern": "classification",
+    "section_order": 1,
+    "heading": "Classification",
+    "purpose": "Define the stable functional vocabulary used to classify KIS MRDs without coupling classification to repository layout.",
+    "classes": [
+      {
+        "code": "SEM",
+        "name": "Semantics",
+        "definition": "Defines canonical meaning, vocabulary, entities, enumerations, ontologies, registries, domains, and assertions."
+      },
+      {
+        "code": "CON",
+        "name": "Constraints",
+        "definition": "Restricts permitted meaning or behavior through validation, boundaries, policy, and constraint contracts."
+      },
+      {
+        "code": "DEC",
+        "name": "Decisions",
+        "definition": "Determines outcomes through decision tables, trees, and scoring models."
+      },
+      {
+        "code": "WRK",
+        "name": "Workflows",
+        "definition": "Defines permitted state transitions, processes, approvals, phases, workflows, and actions."
+      },
+      {
+        "code": "CFG",
+        "name": "Configuration",
+        "definition": "Selects or parameterizes allowed behavior through environments, flags, and runtime parameters."
+      },
+      {
+        "code": "MAP",
+        "name": "Mappings",
+        "definition": "Defines deterministic translation between fields, formats, or versions."
+      },
+      {
+        "code": "CTR",
+        "name": "Contracts",
+        "definition": "Defines externally or internally consumable API, event, and service interfaces."
+      },
+      {
+        "code": "MAN",
+        "name": "Manifests",
+        "definition": "Declares package, bill-of-materials, release, skill, and action inventories."
+      },
+      {
+        "code": "PRM",
+        "name": "Prompts",
+        "definition": "Defines system, role, context, and tool prompt behavior."
+      },
+      {
+        "code": "EVL",
+        "name": "Evaluations",
+        "definition": "Defines tests, rubrics, and benchmarks used to measure conformance or quality."
+      },
+      {
+        "code": "EVD",
+        "name": "Evidence",
+        "definition": "Records logs, approvals, lineage, and test-result observations."
+      },
+      {
+        "code": "META",
+        "name": "Derived metadata",
+        "definition": "Contains generated indexes, dependency maps, and metadata maps; never primary authority."
+      }
+    ],
+    "type_catalog": [
+      {
+        "class": "SEM",
+        "type": "ENT",
+        "code": "SEM-ENT",
+        "name": "Entity definition schema",
+        "canonical_format": "JSON Schema"
+      },
+      {
+        "class": "SEM",
+        "type": "ENUM",
+        "code": "SEM-ENUM",
+        "name": "Enumeration schema",
+        "canonical_format": "JSON Schema"
+      },
+      {
+        "class": "SEM",
+        "type": "ONT",
+        "code": "SEM-ONT",
+        "name": "Ontology",
+        "canonical_format": "JSON Schema"
+      },
+      {
+        "class": "SEM",
+        "type": "REG",
+        "code": "SEM-REG",
+        "name": "Registry",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "SEM",
+        "type": "DOM",
+        "code": "SEM-DOM",
+        "name": "Domain definition register",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "SEM",
+        "type": "ASR",
+        "code": "SEM-ASR",
+        "name": "Assertion rules",
+        "canonical_format": "JSON Schema"
+      },
+      {
+        "class": "CON",
+        "type": "VRS",
+        "code": "CON-VRS",
+        "name": "Version constraint",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "CON",
+        "type": "BND",
+        "code": "CON-BND",
+        "name": "Boundary rule",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "CON",
+        "type": "POL",
+        "code": "CON-POL",
+        "name": "Policy implementation",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "CON",
+        "type": "CTR",
+        "code": "CON-CTR",
+        "name": "Constraint contract",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "DEC",
+        "type": "TAB",
+        "code": "DEC-TAB",
+        "name": "Decision table",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "DEC",
+        "type": "TRE",
+        "code": "DEC-TRE",
+        "name": "Decision tree",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "DEC",
+        "type": "SCR",
+        "code": "DEC-SCR",
+        "name": "Scoring model",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "WRK",
+        "type": "STM",
+        "code": "WRK-STM",
+        "name": "State machine",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "WRK",
+        "type": "PRC",
+        "code": "WRK-PRC",
+        "name": "Process definition",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "WRK",
+        "type": "APR",
+        "code": "WRK-APR",
+        "name": "Approval workflow",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "WRK",
+        "type": "CTR",
+        "code": "WRK-CTR",
+        "name": "Phase contract",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "WRK",
+        "type": "WFL",
+        "code": "WRK-WFL",
+        "name": "Workflow definition",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "WRK",
+        "type": "ACT",
+        "code": "WRK-ACT",
+        "name": "Action or automation workflow",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "CFG",
+        "type": "ENV",
+        "code": "CFG-ENV",
+        "name": "Environment config",
+        "canonical_format": "JSON or YAML"
+      },
+      {
+        "class": "CFG",
+        "type": "FLG",
+        "code": "CFG-FLG",
+        "name": "Feature flag",
+        "canonical_format": "JSON or YAML"
+      },
+      {
+        "class": "CFG",
+        "type": "PRM",
+        "code": "CFG-PRM",
+        "name": "Runtime parameter",
+        "canonical_format": "JSON or YAML"
+      },
+      {
+        "class": "MAP",
+        "type": "FLD",
+        "code": "MAP-FLD",
+        "name": "Field mapping",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "MAP",
+        "type": "FMT",
+        "code": "MAP-FMT",
+        "name": "Format translation",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "MAP",
+        "type": "MIG",
+        "code": "MAP-MIG",
+        "name": "Migration map",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "CTR",
+        "type": "API",
+        "code": "CTR-API",
+        "name": "API contract",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "CTR",
+        "type": "EVT",
+        "code": "CTR-EVT",
+        "name": "Event contract",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "CTR",
+        "type": "SVC",
+        "code": "CTR-SVC",
+        "name": "Service contract",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "MAN",
+        "type": "PKG",
+        "code": "MAN-PKG",
+        "name": "Package manifest",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "MAN",
+        "type": "BOM",
+        "code": "MAN-BOM",
+        "name": "Bill of materials",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "MAN",
+        "type": "REL",
+        "code": "MAN-REL",
+        "name": "Release manifest",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "MAN",
+        "type": "SKL",
+        "code": "MAN-SKL",
+        "name": "Skill manifest",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "MAN",
+        "type": "ACT",
+        "code": "MAN-ACT",
+        "name": "Action manifest",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "PRM",
+        "type": "SYS",
+        "code": "PRM-SYS",
+        "name": "System prompt",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "PRM",
+        "type": "ROL",
+        "code": "PRM-ROL",
+        "name": "Role prompt",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "PRM",
+        "type": "CTX",
+        "code": "PRM-CTX",
+        "name": "Context prompt",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "PRM",
+        "type": "TOL",
+        "code": "PRM-TOL",
+        "name": "Tool prompt",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "EVL",
+        "type": "TST",
+        "code": "EVL-TST",
+        "name": "Test suite",
+        "canonical_format": "JSON Schema"
+      },
+      {
+        "class": "EVL",
+        "type": "RUB",
+        "code": "EVL-RUB",
+        "name": "Rubric",
+        "canonical_format": "JSON Schema"
+      },
+      {
+        "class": "EVL",
+        "type": "BEN",
+        "code": "EVL-BEN",
+        "name": "Benchmark",
+        "canonical_format": "JSON Schema"
+      },
+      {
+        "class": "EVD",
+        "type": "LOG",
+        "code": "EVD-LOG",
+        "name": "Log",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "EVD",
+        "type": "APR",
+        "code": "EVD-APR",
+        "name": "Approval record",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "EVD",
+        "type": "LIN",
+        "code": "EVD-LIN",
+        "name": "Lineage record",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "EVD",
+        "type": "TSR",
+        "code": "EVD-TSR",
+        "name": "Test result snapshot",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "META",
+        "type": "IDX",
+        "code": "META-IDX",
+        "name": "Index",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "META",
+        "type": "DEP",
+        "code": "META-DEP",
+        "name": "Dependency map",
+        "canonical_format": "JSON"
+      },
+      {
+        "class": "META",
+        "type": "MAP",
+        "code": "META-MAP",
+        "name": "Metadata map",
+        "canonical_format": "JSON"
+      }
+    ],
+    "catalog_policy": {
+      "expected_type_count": 47,
+      "extension_posture": "versioned_amendment",
+      "expected_class_count": 12
+    },
+    "rules": [
+      {
+        "rule_id": "KIS-MRD-CLASS-001",
+        "statement": "Every MRD MUST declare exactly one class and one type from this catalog."
+      },
+      {
+        "rule_id": "KIS-MRD-CLASS-002",
+        "statement": "Classification MUST describe what an artifact does, not where the artifact is stored."
+      },
+      {
+        "rule_id": "KIS-MRD-CLASS-003",
+        "statement": "A new MRD type MUST NOT be introduced when an existing catalog type adequately represents the artifact."
+      },
+      {
+        "rule_id": "KIS-MRD-CLASS-004",
+        "statement": "Artifacts MUST NOT be created merely to populate unused catalog types; absence of an unused type has no compliance implication."
+      },
+      {
+        "rule_id": "KIS-MRD-CLASS-005",
+        "statement": "The catalog MAY be extended by a versioned governance amendment when a genuine artifact need cannot be represented by an existing type."
+      }
+    ]
+  }
+}

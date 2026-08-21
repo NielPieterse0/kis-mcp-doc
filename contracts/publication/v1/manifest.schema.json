@@ -1,0 +1,470 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kis.local/contracts/publication/v1/manifest.schema.json",
+  "title": "KIS Governance Specification Build Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract",
+    "specification",
+    "generator",
+    "inputs",
+    "validation",
+    "files",
+    "bundle_sha256"
+  ],
+  "properties": {
+    "contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "version"
+      ],
+      "properties": {
+        "name": {
+          "const": "kis-governance-spec-build"
+        },
+        "version": {
+          "const": 1
+        }
+      }
+    },
+    "specification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "version",
+        "status"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "status": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "generator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "version",
+        "algorithm",
+        "sources"
+      ],
+      "properties": {
+        "name": {
+          "const": "kis-mcp-doc"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "algorithm": {
+          "const": "governance-spec-v1"
+        },
+        "sources": {
+          "type": "array",
+          "minItems": 4,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            }
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mrds",
+        "source_set_sha256",
+        "source_files",
+        "publication"
+      ],
+      "properties": {
+        "mrds": {
+          "type": "array",
+          "minItems": 6,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "path",
+              "sha256",
+              "version"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "version": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "uniqueItems": true
+        },
+        "source_set_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "source_files": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "path",
+              "sha256",
+              "bytes"
+            ],
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "bytes": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          },
+          "uniqueItems": true
+        },
+        "publication": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "properties": {
+            "path": {
+              "const": "publication/governance-spec.json"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          }
+        }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "required": [
+        "status",
+        "checks",
+        "diagnostics"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "valid",
+            "invalid"
+          ]
+        },
+        "checks": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "classification",
+            "layering",
+            "dependencies",
+            "provenance",
+            "lifecycle",
+            "schema"
+          ],
+          "properties": {
+            "classification": {
+              "enum": [
+                "pass",
+                "fail"
+              ]
+            },
+            "layering": {
+              "enum": [
+                "pass",
+                "fail"
+              ]
+            },
+            "dependencies": {
+              "enum": [
+                "pass",
+                "fail"
+              ]
+            },
+            "provenance": {
+              "enum": [
+                "pass",
+                "fail"
+              ]
+            },
+            "lifecycle": {
+              "enum": [
+                "pass",
+                "fail"
+              ]
+            },
+            "schema": {
+              "enum": [
+                "pass",
+                "fail"
+              ]
+            }
+          }
+        },
+        "diagnostics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "check",
+              "code",
+              "message",
+              "location",
+              "mrd_id"
+            ],
+            "properties": {
+              "check": {
+                "enum": [
+                  "classification",
+                  "layering",
+                  "dependencies",
+                  "provenance",
+                  "lifecycle",
+                  "schema"
+                ]
+              },
+              "code": {
+                "type": "string",
+                "pattern": "^[A-Z][A-Z0-9_]+$",
+                "description": "Allowed reason-code vocabulary is owned by KIS-KNOW-EVL-TST-001 and enforced by deterministic validation-result equality."
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1
+              },
+              "location": {
+                "type": "string",
+                "minLength": 1
+              },
+              "mrd_id": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "invalid"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "diagnostics": {
+                "minItems": 1
+              },
+              "checks": {
+                "anyOf": [
+                  {
+                    "properties": {
+                      "classification": {
+                        "const": "fail"
+                      }
+                    },
+                    "required": [
+                      "classification"
+                    ]
+                  },
+                  {
+                    "properties": {
+                      "layering": {
+                        "const": "fail"
+                      }
+                    },
+                    "required": [
+                      "layering"
+                    ]
+                  },
+                  {
+                    "properties": {
+                      "dependencies": {
+                        "const": "fail"
+                      }
+                    },
+                    "required": [
+                      "dependencies"
+                    ]
+                  },
+                  {
+                    "properties": {
+                      "provenance": {
+                        "const": "fail"
+                      }
+                    },
+                    "required": [
+                      "provenance"
+                    ]
+                  },
+                  {
+                    "properties": {
+                      "lifecycle": {
+                        "const": "fail"
+                      }
+                    },
+                    "required": [
+                      "lifecycle"
+                    ]
+                  },
+                  {
+                    "properties": {
+                      "schema": {
+                        "const": "fail"
+                      }
+                    },
+                    "required": [
+                      "schema"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "valid"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "diagnostics": {
+                "maxItems": 0
+              },
+              "checks": {
+                "properties": {
+                  "classification": {
+                    "const": "pass"
+                  },
+                  "layering": {
+                    "const": "pass"
+                  },
+                  "dependencies": {
+                    "const": "pass"
+                  },
+                  "provenance": {
+                    "const": "pass"
+                  },
+                  "lifecycle": {
+                    "const": "pass"
+                  },
+                  "schema": {
+                    "const": "pass"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "files": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256",
+          "bytes"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      },
+      "uniqueItems": true
+    },
+    "bundle_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
+}

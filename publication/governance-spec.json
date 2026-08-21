@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "title": "KIS MRD Governance Specification",
+  "subtitle": "Core governance standard for KIS machine-readable documents",
+  "version": "1.1.0",
+  "status": "stabilized",
+  "source_glob": "mrd/governance/*.mrd.json",
+  "output_file": "specification.md",
+  "generator": {
+    "name": "kis-mcp-doc",
+    "version": "0.1.0",
+    "algorithm": "governance-spec-v1"
+  }
+}

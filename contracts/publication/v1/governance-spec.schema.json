@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kis.local/contracts/publication/v1/governance-spec.schema.json",
+  "title": "KIS Governance Specification Publication Configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "title",
+    "subtitle",
+    "version",
+    "status",
+    "source_glob",
+    "output_file",
+    "generator"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subtitle": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "stabilized",
+        "superseded"
+      ]
+    },
+    "source_glob": {
+      "const": "mrd/governance/*.mrd.json"
+    },
+    "output_file": {
+      "const": "specification.md"
+    },
+    "generator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "version",
+        "algorithm"
+      ],
+      "properties": {
+        "name": {
+          "const": "kis-mcp-doc"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "algorithm": {
+          "const": "governance-spec-v1"
+        }
+      }
+    }
+  }
+}
