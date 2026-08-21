@@ -1,0 +1,390 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kis.local/contracts/governance/v1/content.schema.json",
+  "title": "KIS Core Governance MRD Content",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": [
+        "concern",
+        "section_order",
+        "heading",
+        "purpose",
+        "classes",
+        "type_catalog",
+        "catalog_policy",
+        "rules"
+      ],
+      "properties": {
+        "concern": {
+          "const": "classification"
+        },
+        "section_order": {
+          "const": 1
+        },
+        "heading": {
+          "type": "string",
+          "minLength": 1
+        },
+        "purpose": {
+          "type": "string",
+          "minLength": 1
+        },
+        "classes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "code",
+              "name",
+              "definition"
+            ]
+          }
+        },
+        "type_catalog": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "class",
+              "type",
+              "code",
+              "name",
+              "canonical_format"
+            ]
+          }
+        },
+        "catalog_policy": {
+          "type": "object",
+          "required": [
+            "expected_type_count",
+            "extension_posture"
+          ]
+        },
+        "rules": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "rule_id",
+              "statement"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": [
+        "concern",
+        "section_order",
+        "heading",
+        "purpose",
+        "layers",
+        "rules",
+        "examples"
+      ],
+      "properties": {
+        "concern": {
+          "const": "layering"
+        },
+        "section_order": {
+          "const": 2
+        },
+        "heading": {
+          "type": "string",
+          "minLength": 1
+        },
+        "purpose": {
+          "type": "string",
+          "minLength": 1
+        },
+        "layers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "code",
+              "name",
+              "interpretation"
+            ]
+          }
+        },
+        "rules": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "rule_id",
+              "statement"
+            ]
+          }
+        },
+        "examples": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "source",
+              "target",
+              "valid"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": [
+        "concern",
+        "section_order",
+        "heading",
+        "purpose",
+        "target_forms",
+        "rules"
+      ],
+      "properties": {
+        "concern": {
+          "const": "dependencies"
+        },
+        "section_order": {
+          "const": 3
+        },
+        "heading": {
+          "type": "string",
+          "minLength": 1
+        },
+        "purpose": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_forms": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "kind",
+              "field",
+              "example"
+            ]
+          }
+        },
+        "rules": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "rule_id",
+              "statement"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": [
+        "concern",
+        "section_order",
+        "heading",
+        "purpose",
+        "record_modes",
+        "fact_qualities",
+        "source_kinds",
+        "rules"
+      ],
+      "properties": {
+        "concern": {
+          "const": "provenance"
+        },
+        "section_order": {
+          "const": 4
+        },
+        "heading": {
+          "type": "string",
+          "minLength": 1
+        },
+        "purpose": {
+          "type": "string",
+          "minLength": 1
+        },
+        "record_modes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "mode",
+              "meaning",
+              "mutability"
+            ]
+          }
+        },
+        "fact_qualities": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "quality",
+              "meaning"
+            ]
+          }
+        },
+        "source_kinds": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "kind",
+              "resolution"
+            ]
+          }
+        },
+        "rules": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "rule_id",
+              "statement"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": [
+        "concern",
+        "section_order",
+        "heading",
+        "purpose",
+        "lifecycles",
+        "rules"
+      ],
+      "properties": {
+        "concern": {
+          "const": "lifecycle"
+        },
+        "section_order": {
+          "const": 5
+        },
+        "heading": {
+          "type": "string",
+          "minLength": 1
+        },
+        "purpose": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lifecycles": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "record_mode",
+              "states",
+              "transitions"
+            ]
+          }
+        },
+        "rules": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "rule_id",
+              "statement"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": [
+        "concern",
+        "section_order",
+        "heading",
+        "purpose",
+        "dimensions",
+        "result_contract",
+        "reason_codes",
+        "rules"
+      ],
+      "properties": {
+        "concern": {
+          "const": "validation"
+        },
+        "section_order": {
+          "const": 6
+        },
+        "heading": {
+          "type": "string",
+          "minLength": 1
+        },
+        "purpose": {
+          "type": "string",
+          "minLength": 1
+        },
+        "dimensions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "checks"
+            ]
+          }
+        },
+        "result_contract": {
+          "type": "object",
+          "required": [
+            "status_values",
+            "checks",
+            "diagnostics_required_on_failure"
+          ]
+        },
+        "reason_codes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "rules": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "rule_id",
+              "statement"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  ]
+}

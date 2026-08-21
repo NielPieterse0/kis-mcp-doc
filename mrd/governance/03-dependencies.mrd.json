@@ -1,0 +1,84 @@
+{
+  "_mrd": {
+    "schema_version": 1,
+    "id": "KIS-KNOW-CON-CTR-001",
+    "title": "MRD Dependency Contract",
+    "module": "governance",
+    "class": "CON",
+    "type": "CTR",
+    "layer": "L1",
+    "record_mode": "prescriptive",
+    "status": "active",
+    "version": "1.0.0",
+    "dependencies": [
+      {
+        "mrd_id": "KIS-KNOW-SEM-REG-001",
+        "relationship": "depends_on"
+      },
+      {
+        "mrd_id": "KIS-KNOW-SEM-ENUM-001",
+        "relationship": "depends_on"
+      }
+    ],
+    "provenance": {
+      "sources": [
+        {
+          "source_id": "KIS-OPERATOR-DIRECTION-2026-08-21",
+          "kind": "operator_direction",
+          "role": "normative_adoption_basis",
+          "locator": "conversation:2026-08-21",
+          "revision": "final-refinement",
+          "sha256": null
+        }
+      ],
+      "source_fingerprint": "sha256:b248f91fed0826406bd86e06b64af7c136cfe50e5928620ab8d6417867ec4972",
+      "fact_quality": "direct"
+    },
+    "supersedes": [],
+    "superseded_by": null
+  },
+  "content": {
+    "concern": "dependencies",
+    "section_order": 3,
+    "heading": "Dependency Rules",
+    "purpose": "Make all authority dependencies explicit, stable, resolvable, and acyclic.",
+    "target_forms": [
+      {
+        "kind": "mrd",
+        "field": "mrd_id",
+        "example": "KIS-KNOW-SEM-REG-001"
+      },
+      {
+        "kind": "canonical_source",
+        "field": "source",
+        "example": "repo:contracts/mrd/v1/mrd.schema.json"
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "KIS-MRD-DEP-001",
+        "statement": "Every dependency target MUST resolve."
+      },
+      {
+        "rule_id": "KIS-MRD-DEP-002",
+        "statement": "MRD-to-MRD dependency direction MUST satisfy the L0-L5 authority ordering."
+      },
+      {
+        "rule_id": "KIS-MRD-DEP-003",
+        "statement": "The MRD dependency graph MUST be acyclic."
+      },
+      {
+        "rule_id": "KIS-MRD-DEP-004",
+        "statement": "Duplicate dependency edges MUST be rejected."
+      },
+      {
+        "rule_id": "KIS-MRD-DEP-005",
+        "statement": "Dependency identities MUST be stable; canonical non-MRD dependencies MUST use repo: paths."
+      },
+      {
+        "rule_id": "KIS-MRD-DEP-006",
+        "statement": "A META-DEP projection MAY be generated from the validated dependency graph and MUST NOT become primary authority."
+      }
+    ]
+  }
+}

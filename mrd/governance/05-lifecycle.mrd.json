@@ -1,0 +1,114 @@
+{
+  "_mrd": {
+    "schema_version": 1,
+    "id": "KIS-KNOW-WRK-STM-001",
+    "title": "MRD Lifecycle",
+    "module": "governance",
+    "class": "WRK",
+    "type": "STM",
+    "layer": "L2",
+    "record_mode": "prescriptive",
+    "status": "active",
+    "version": "1.0.0",
+    "dependencies": [
+      {
+        "mrd_id": "KIS-KNOW-CON-POL-001",
+        "relationship": "depends_on"
+      }
+    ],
+    "provenance": {
+      "sources": [
+        {
+          "source_id": "KIS-OPERATOR-DIRECTION-2026-08-21",
+          "kind": "operator_direction",
+          "role": "normative_adoption_basis",
+          "locator": "conversation:2026-08-21",
+          "revision": "final-refinement",
+          "sha256": null
+        }
+      ],
+      "source_fingerprint": "sha256:b248f91fed0826406bd86e06b64af7c136cfe50e5928620ab8d6417867ec4972",
+      "fact_quality": "direct"
+    },
+    "supersedes": [],
+    "superseded_by": null
+  },
+  "content": {
+    "concern": "lifecycle",
+    "section_order": 5,
+    "heading": "Lifecycle",
+    "purpose": "Define minimal lifecycle and mutability rules for each record mode.",
+    "lifecycles": [
+      {
+        "record_mode": "prescriptive",
+        "states": [
+          "draft",
+          "active",
+          "superseded"
+        ],
+        "transitions": [
+          {
+            "from": "draft",
+            "to": "active"
+          },
+          {
+            "from": "active",
+            "to": "superseded"
+          }
+        ]
+      },
+      {
+        "record_mode": "descriptive",
+        "states": [
+          "created",
+          "retained"
+        ],
+        "transitions": [
+          {
+            "from": "created",
+            "to": "retained"
+          }
+        ]
+      },
+      {
+        "record_mode": "meta",
+        "states": [
+          "generated",
+          "replaced"
+        ],
+        "transitions": [
+          {
+            "from": "generated",
+            "to": "replaced"
+          }
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "KIS-MRD-LIFE-001",
+        "statement": "Active prescriptive MRDs MUST have resolved dependencies and valid provenance."
+      },
+      {
+        "rule_id": "KIS-MRD-LIFE-002",
+        "statement": "Descriptive EVD records MUST be immutable after creation."
+      },
+      {
+        "rule_id": "KIS-MRD-LIFE-003",
+        "statement": "META records MUST be regenerated from their sources rather than manually maintained."
+      },
+      {
+        "rule_id": "KIS-MRD-LIFE-004",
+        "statement": "A derived or generated artifact MUST be treated as stale when its declared source fingerprint no longer matches its admitted sources."
+      },
+      {
+        "rule_id": "KIS-MRD-LIFE-005",
+        "statement": "Superseded MRDs MUST remain addressable for lineage and MUST identify their replacement when one exists."
+      },
+      {
+        "rule_id": "KIS-MRD-LIFE-006",
+        "statement": "Git history is the change history; a duplicate body changelog is not required by the core MRD standard."
+      }
+    ]
+  }
+}
