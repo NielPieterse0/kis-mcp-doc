@@ -4,6 +4,7 @@ import hashlib
 import json
 from pathlib import Path
 
+import kis_mcp_doc.render as render_module
 from kis_mcp_doc.governance import GovernanceRepository
 from kis_mcp_doc.render import build_governance_spec, verify_governance_spec
 
@@ -182,3 +183,20 @@ def test_recomputed_manifest_cannot_hide_generated_content_tampering(tmp_path: P
     codes = {item["code"] for item in result["diagnostics"]}
     assert "GENERATED_DECLARATION_MISMATCH" in codes
     assert "GENERATED_FILE_CONTENT_MISMATCH" in codes
+
+
+def test_verifier_reports_unavailable_generator_source(tmp_path: Path, monkeypatch) -> None:
+    repo = GovernanceRepository(ROOT, MRD_ROOT)
+    output = tmp_path / "build"
+    build_governance_spec(repo, PUBLICATION, output)
+
+    def unavailable(_repository: GovernanceRepository):
+        raise OSError("generator source missing")
+
+    monkeypatch.setattr(render_module, "_generator_source_declarations", unavailable)
+    result = verify_governance_spec(repo, PUBLICATION, output)
+
+    assert result["status"] == "invalid"
+    assert "GENERATOR_SOURCE_UNAVAILABLE" in {
+        item["code"] for item in result["diagnostics"]
+    }

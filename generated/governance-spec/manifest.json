@@ -31,7 +31,7 @@
       },
       {
         "path": "src/kis_mcp_doc/render.py",
-        "sha256": "55f51a21e17b7ae9cc7c56f43ffdc047d6ff2fe8ec118a63ddc86de3c131450e"
+        "sha256": "0b92ff61e63297f7e6047ff9305c5533ec95c38212e93dbd4ff1a1c6bf4ae752"
       },
       {
         "path": "contracts/publication/v1/governance-spec.schema.json",

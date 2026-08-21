@@ -88,8 +88,12 @@ def verify_governance_spec(
     if manifest.get("specification") != expected_specification:
         diagnostics.append(_verification_diag("MANIFEST_SPECIFICATION_MISMATCH", "manifest specification metadata differs from publication configuration"))
 
-    expected_generator = {**config["generator"], "sources": _generator_source_declarations(repository)}
-    if manifest.get("generator") != expected_generator:
+    try:
+        expected_generator = {**config["generator"], "sources": _generator_source_declarations(repository)}
+    except OSError as error:
+        diagnostics.append(_verification_diag("GENERATOR_SOURCE_UNAVAILABLE", str(error)))
+        expected_generator = None
+    if expected_generator is not None and manifest.get("generator") != expected_generator:
         diagnostics.append(_verification_diag("GENERATOR_DECLARATION_MISMATCH", "manifest generator declaration differs from current generator contract"))
 
     documents = repository.load()
