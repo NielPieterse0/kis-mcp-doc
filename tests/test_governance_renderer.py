@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import shutil
 from pathlib import Path
 
 import kis_mcp_doc.render as render_module
@@ -12,6 +13,13 @@ from kis_mcp_doc.render import build_governance_spec, verify_governance_spec
 ROOT = Path(__file__).resolve().parents[1]
 MRD_ROOT = ROOT / "mrd" / "governance"
 PUBLICATION = ROOT / "publication" / "governance-spec.json"
+
+
+def copied_repository(tmp_path: Path) -> tuple[Path, GovernanceRepository, Path]:
+    root = tmp_path / "repo"
+    for name in ("contracts", "mrd", "publication", "src"):
+        shutil.copytree(ROOT / name, root / name)
+    return root, GovernanceRepository(root, root / "mrd" / "governance"), root / "publication" / "governance-spec.json"
 
 
 def test_render_is_byte_deterministic(tmp_path: Path) -> None:
@@ -261,3 +269,59 @@ def test_invalid_manifest_requires_at_least_one_failed_check(tmp_path: Path) -> 
     result = verify_governance_spec(repo, PUBLICATION, output)
     assert result["status"] == "invalid"
     assert "GENERATED_MANIFEST_INVALID" in {item["code"] for item in result["diagnostics"]}
+
+
+def test_verifier_detects_valid_publication_config_drift(tmp_path: Path) -> None:
+    root, repo, publication = copied_repository(tmp_path)
+    output = tmp_path / "build"
+    build_governance_spec(repo, publication, output)
+
+    config = json.loads(publication.read_text(encoding="utf-8"))
+    config["version"] = "1.1.1"
+    publication.write_text(json.dumps(config, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+    result = verify_governance_spec(repo, publication, output)
+    assert result["status"] == "invalid"
+    assert "PUBLICATION_CONFIG_HASH_MISMATCH" in {item["code"] for item in result["diagnostics"]}
+
+
+def test_verifier_detects_generator_source_drift(tmp_path: Path) -> None:
+    root, repo, publication = copied_repository(tmp_path)
+    output = tmp_path / "build"
+    build_governance_spec(repo, publication, output)
+
+    source = root / "src" / "kis_mcp_doc" / "governance.py"
+    source.write_text(source.read_text(encoding="utf-8") + "\n# drift\n", encoding="utf-8")
+
+    result = verify_governance_spec(repo, publication, output)
+    assert result["status"] == "invalid"
+    assert "GENERATOR_DECLARATION_MISMATCH" in {item["code"] for item in result["diagnostics"]}
+
+def test_verifier_detects_mrd_drift_without_rebuild(tmp_path: Path) -> None:
+    root, repo, publication = copied_repository(tmp_path)
+    output = tmp_path / "build"
+    build_governance_spec(repo, publication, output)
+
+    path = root / "mrd" / "governance" / "01-classification.mrd.json"
+    document = json.loads(path.read_text(encoding="utf-8"))
+    document["content"]["purpose"] += " Changed after build."
+    path.write_text(json.dumps(document, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+    result = verify_governance_spec(repo, publication, output)
+    codes = {item["code"] for item in result["diagnostics"]}
+    assert result["status"] == "invalid"
+    assert "SOURCE_MRD_SET_MISMATCH" in codes
+    assert "SOURCE_SET_HASH_MISMATCH" in codes
+
+
+def test_verifier_detects_generated_data_file_tampering(tmp_path: Path) -> None:
+    repo = GovernanceRepository(ROOT, MRD_ROOT)
+    output = tmp_path / "build"
+    build_governance_spec(repo, PUBLICATION, output)
+
+    index = output / "data" / "mrd-index.json"
+    index.write_text(index.read_text(encoding="utf-8") + "tampered\n", encoding="utf-8")
+
+    result = verify_governance_spec(repo, PUBLICATION, output)
+    assert result["status"] == "invalid"
+    assert "GENERATED_FILE_HASH_MISMATCH" in {item["code"] for item in result["diagnostics"]}
