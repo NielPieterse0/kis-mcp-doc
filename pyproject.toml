@@ -9,6 +9,9 @@ description = "KIS governed knowledge and deterministic documentation generation
 requires-python = ">=3.11"
 dependencies = ["jsonschema>=4.23"]
 
+[dependency-groups]
+dev = ["pytest>=8.3"]
+
 [project.scripts]
 kis-doc = "kis_mcp_doc.cli:main"
 
