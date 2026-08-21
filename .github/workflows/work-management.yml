@@ -19,7 +19,7 @@ concurrency:
 
 jobs:
   verify:
-    name: Verify exact head
+    name: verify
     runs-on: windows-latest
     timeout-minutes: 20
     env:
