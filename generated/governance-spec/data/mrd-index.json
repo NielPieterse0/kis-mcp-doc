@@ -22,7 +22,7 @@
       "layer": "L1",
       "path": "mrd/governance/04-provenance.mrd.json",
       "record_mode": "prescriptive",
-      "sha256": "bedab2e979866b1e20a408f38359b60f70a2eceeac648ba759a2f229e48e5257",
+      "sha256": "299fdb3abc33da0b962a37c4e50bc6bb9d284773145e2af03d9cfbac1f6c6b38",
       "status": "active",
       "type": "POL",
       "version": "1.0.0"
@@ -33,7 +33,7 @@
       "layer": "L4",
       "path": "mrd/governance/06-validation.mrd.json",
       "record_mode": "prescriptive",
-      "sha256": "73908da74ecdcc27296e02b4d431ee74c46700525299b8fc4c53ecf0c8a27c73",
+      "sha256": "7adf617bcac05329ac465664c938b16fc07a1a449ef931d6dc2f1c29dcd8f1e3",
       "status": "active",
       "type": "TST",
       "version": "1.0.0"
@@ -55,7 +55,7 @@
       "layer": "L0",
       "path": "mrd/governance/01-classification.mrd.json",
       "record_mode": "prescriptive",
-      "sha256": "5446892806d0e39c6c2f4331a995763d0da2b34175dbe65a8577297cb81e3ec7",
+      "sha256": "9ca9460ebde8bd137753e22e40a8e35e474c6a64bf20db0e5bff47ded846742c",
       "status": "active",
       "type": "REG",
       "version": "1.0.0"

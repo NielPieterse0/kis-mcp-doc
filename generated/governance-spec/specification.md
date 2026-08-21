@@ -156,6 +156,7 @@ Preserve authority direction and distinguish authored prescription from derived 
 - **KIS-MRD-PROV-005** — Generated human-readable documents and META projections MUST NOT write back authority into their sources.
 - **KIS-MRD-PROV-006** — The provenance source fingerprint MUST deterministically identify the declared provenance source set.
 - **KIS-MRD-PROV-007** — Author intent, invariants, choices, and contracts; derive implementation observations; capture runtime evidence; evaluate conformance between them.
+- **KIS-MRD-PROV-008** — A repo_path provenance source MUST carry the SHA-256 of the resolved repository file; a mismatch MUST invalidate provenance.
 
 ### Record modes
 
@@ -178,7 +179,7 @@ Preserve authority direction and distinguish authored prescription from derived 
 | Kind | Resolution requirement |
 |---|---|
 | `operator_direction` | stable opaque identity |
-| `repo_path` | must resolve inside repository |
+| `repo_path` | must resolve inside repository and carry the current file SHA-256 |
 | `external_reference` | must carry an immutable SHA-256 fingerprint |
 
 ## 5. Lifecycle
@@ -269,12 +270,18 @@ Fail closed when structural, dependency, provenance, or lifecycle invariants do 
 - `MRD_DEPENDENCY_DUPLICATE`
 - `MRD_SOURCE_UNRESOLVED`
 - `MRD_SOURCE_FINGERPRINT_MISMATCH`
+- `MRD_SOURCE_HASH_MISMATCH`
 - `MRD_NORMATIVE_INFERENCE_PROHIBITED`
 - `MRD_RECORD_MODE_INVALID`
 - `MRD_STATUS_INVALID`
 - `MRD_EVD_RECORD_MODE_INVALID`
 - `MRD_META_RECORD_MODE_INVALID`
 - `MRD_SUPERSESSION_UNRESOLVED`
+- `MRD_CLASS_CATALOG_MISMATCH`
+- `MRD_LAYER_CATALOG_MISMATCH`
+- `MRD_RECORD_MODE_CATALOG_MISMATCH`
+- `MRD_META_FACT_QUALITY_INVALID`
+- `MRD_VALIDATION_CONTRACT_MISMATCH`
 
 ## Traceability
 

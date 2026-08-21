@@ -9,6 +9,19 @@ from jsonschema import Draft202012Validator
 
 
 CONCERNS = ("classification", "layering", "dependencies", "provenance", "lifecycle", "validation")
+CHECK_NAMES = ("classification", "layering", "dependencies", "provenance", "lifecycle", "schema")
+CORE_REASON_CODES = frozenset({
+    "MRD_SCHEMA_INVALID", "MRD_RULE_ID_DUPLICATE", "MRD_GOVERNANCE_CONCERN_MISSING",
+    "MRD_GOVERNANCE_CONCERN_DUPLICATE", "MRD_ID_CLASS_TYPE_MISMATCH", "MRD_CLASS_UNKNOWN",
+    "MRD_TYPE_INVALID", "MRD_CATALOG_COUNT_MISMATCH", "MRD_LAYER_INVALID",
+    "MRD_DEPENDENCY_UNRESOLVED", "MRD_DEPENDENCY_LAYER_VIOLATION", "MRD_DEPENDENCY_CYCLE",
+    "MRD_DEPENDENCY_DUPLICATE", "MRD_SOURCE_UNRESOLVED", "MRD_SOURCE_FINGERPRINT_MISMATCH",
+    "MRD_SOURCE_HASH_MISMATCH", "MRD_NORMATIVE_INFERENCE_PROHIBITED", "MRD_RECORD_MODE_INVALID",
+    "MRD_STATUS_INVALID", "MRD_EVD_RECORD_MODE_INVALID", "MRD_META_RECORD_MODE_INVALID",
+    "MRD_SUPERSESSION_UNRESOLVED", "MRD_CLASS_CATALOG_MISMATCH", "MRD_LAYER_CATALOG_MISMATCH",
+    "MRD_RECORD_MODE_CATALOG_MISMATCH", "MRD_META_FACT_QUALITY_INVALID",
+    "MRD_VALIDATION_CONTRACT_MISMATCH",
+})
 
 
 def canonical_hash(value: object) -> str:
@@ -47,6 +60,7 @@ class GovernanceRepository:
         concerns = self._concern_owners(documents, diagnostics)
         self._validate_schema(documents, diagnostics)
         self._validate_rule_ids(documents, diagnostics)
+        self._validate_validation_contract(concerns, diagnostics)
         self._validate_classification(documents, concerns, diagnostics)
         self._validate_layering(documents, concerns, diagnostics)
         self._validate_dependencies(documents, concerns, diagnostics)
@@ -117,18 +131,52 @@ class GovernanceRepository:
                 else:
                     owners[rule_id] = doc_id
 
+    def _validate_validation_contract(self, concerns: dict[str, dict[str, Any]], diagnostics: list[dict[str, Any]]) -> None:
+        owner = concerns.get("validation")
+        if owner is None:
+            return
+        content = owner.get("content", {})
+        result = content.get("result_contract", {})
+        declared_checks = tuple(result.get("checks", []))
+        declared_statuses = set(result.get("status_values", []))
+        declared_codes = set(content.get("reason_codes", []))
+        if (
+            declared_checks != CHECK_NAMES
+            or declared_statuses != {"valid", "invalid"}
+            or result.get("diagnostics_required_on_failure") is not True
+            or declared_codes != CORE_REASON_CODES
+        ):
+            diagnostics.append(self._diagnostic(
+                "schema",
+                "MRD_VALIDATION_CONTRACT_MISMATCH",
+                "validation MRD result/check/reason-code contract differs from validator implementation",
+                f"{owner['_mrd']['id']}.content",
+                owner["_mrd"]["id"],
+            ))
+
     def _validate_classification(self, documents: dict[str, dict[str, Any]], concerns: dict[str, dict[str, Any]], diagnostics: list[dict[str, Any]]) -> None:
         owner = concerns.get("classification")
         if owner is None:
             return
         content = owner.get("content", {})
-        classes = {entry.get("code") for entry in content.get("classes", [])}
+        class_entries = content.get("classes", [])
+        class_codes = [entry.get("code") for entry in class_entries]
+        classes = set(class_codes)
         catalog = content.get("type_catalog", [])
         pairs = {(entry.get("class"), entry.get("type")) for entry in catalog}
         codes = [entry.get("code") for entry in catalog]
-        expected = content.get("catalog_policy", {}).get("expected_type_count")
-        if expected != len(catalog) or len(set(codes)) != len(codes):
-            diagnostics.append(self._diagnostic("classification", "MRD_CATALOG_COUNT_MISMATCH", f"catalog declares {expected} types but resolves to {len(catalog)} entries and {len(set(codes))} unique codes", "classification.content.type_catalog", owner["_mrd"]["id"]))
+        policy = content.get("catalog_policy", {})
+        expected_classes = policy.get("expected_class_count")
+        expected_types = policy.get("expected_type_count")
+        catalog_classes = {entry.get("class") for entry in catalog}
+        if (
+            expected_classes != len(class_entries)
+            or len(classes) != len(class_entries)
+            or catalog_classes != classes
+        ):
+            diagnostics.append(self._diagnostic("classification", "MRD_CLASS_CATALOG_MISMATCH", f"class catalog must contain {expected_classes} unique classes and every class must own at least one type", "classification.content.classes", owner["_mrd"]["id"]))
+        if expected_types != len(catalog) or len(set(codes)) != len(codes):
+            diagnostics.append(self._diagnostic("classification", "MRD_CATALOG_COUNT_MISMATCH", f"catalog declares {expected_types} types but resolves to {len(catalog)} entries and {len(set(codes))} unique codes", "classification.content.type_catalog", owner["_mrd"]["id"]))
         for doc_id, document in documents.items():
             envelope = document.get("_mrd", {})
             cls, typ = envelope.get("class"), envelope.get("type")
@@ -144,7 +192,12 @@ class GovernanceRepository:
         owner = concerns.get("layering")
         if owner is None:
             return
-        layers = {entry.get("code") for entry in owner.get("content", {}).get("layers", [])}
+        layer_entries = owner.get("content", {}).get("layers", [])
+        layer_codes = [entry.get("code") for entry in layer_entries]
+        layers = set(layer_codes)
+        layer_numbers = {self._layer_number(code) for code in layer_codes}
+        if len(layer_entries) != 6 or len(layers) != 6 or layer_numbers != set(range(6)):
+            diagnostics.append(self._diagnostic("layering", "MRD_LAYER_CATALOG_MISMATCH", "layer catalog must contain exactly L0 through L5 once each", f"{owner['_mrd']['id']}.content.layers", owner["_mrd"]["id"]))
         for doc_id, document in documents.items():
             if document.get("_mrd", {}).get("layer") not in layers:
                 diagnostics.append(self._diagnostic("layering", "MRD_LAYER_INVALID", f"unknown layer {document.get('_mrd', {}).get('layer')!r}", f"{doc_id}._mrd.layer", doc_id))
@@ -192,6 +245,8 @@ class GovernanceRepository:
                 diagnostics.append(self._diagnostic("provenance", "MRD_SOURCE_UNRESOLVED", f"unknown fact quality {quality!r}", f"{doc_id}._mrd.provenance.fact_quality", doc_id))
             if envelope.get("record_mode") == "prescriptive" and quality == "inferred":
                 diagnostics.append(self._diagnostic("provenance", "MRD_NORMATIVE_INFERENCE_PROHIBITED", "inferred facts cannot be active prescriptive authority", f"{doc_id}._mrd.provenance.fact_quality", doc_id))
+            if envelope.get("class") == "META" and quality != "derived":
+                diagnostics.append(self._diagnostic("provenance", "MRD_META_FACT_QUALITY_INVALID", "META records must use derived fact quality", f"{doc_id}._mrd.provenance.fact_quality", doc_id))
             sources = provenance.get("sources", [])
             if provenance.get("source_fingerprint") != "sha256:" + canonical_hash(sources):
                 diagnostics.append(self._diagnostic("provenance", "MRD_SOURCE_FINGERPRINT_MISMATCH", "provenance source fingerprint does not match canonical source set", f"{doc_id}._mrd.provenance.source_fingerprint", doc_id))
@@ -203,8 +258,13 @@ class GovernanceRepository:
                 source_ids.add(str(source_id))
                 if kind == "repo_path":
                     locator = source.get("locator", "")
-                    if self._resolve_repo_file(locator) is None:
+                    resolved = self._resolve_repo_file(locator)
+                    if resolved is None:
                         diagnostics.append(self._diagnostic("provenance", "MRD_SOURCE_UNRESOLVED", f"repo provenance source does not resolve inside repository: {locator}", f"{doc_id}._mrd.provenance.sources[{index}]", doc_id))
+                    else:
+                        actual_sha = hashlib.sha256(resolved.read_bytes()).hexdigest()
+                        if source.get("sha256") != actual_sha:
+                            diagnostics.append(self._diagnostic("provenance", "MRD_SOURCE_HASH_MISMATCH", f"repo provenance source hash does not match current file: {locator}", f"{doc_id}._mrd.provenance.sources[{index}].sha256", doc_id))
                 if kind == "external_reference" and not source.get("sha256"):
                     diagnostics.append(self._diagnostic("provenance", "MRD_SOURCE_UNRESOLVED", "external provenance source must carry a SHA-256 fingerprint", f"{doc_id}._mrd.provenance.sources[{index}]", doc_id))
 
@@ -212,7 +272,14 @@ class GovernanceRepository:
         owner = concerns.get("lifecycle")
         if owner is None:
             return
-        states_by_mode = {entry.get("record_mode"): set(entry.get("states", [])) for entry in owner.get("content", {}).get("lifecycles", [])}
+        lifecycle_entries = owner.get("content", {}).get("lifecycles", [])
+        states_by_mode = {entry.get("record_mode"): set(entry.get("states", [])) for entry in lifecycle_entries}
+        provenance_owner = concerns.get("provenance")
+        provenance_modes = {
+            entry.get("mode") for entry in (provenance_owner or {}).get("content", {}).get("record_modes", [])
+        }
+        if len(states_by_mode) != len(lifecycle_entries) or set(states_by_mode) != provenance_modes:
+            diagnostics.append(self._diagnostic("lifecycle", "MRD_RECORD_MODE_CATALOG_MISMATCH", "lifecycle record modes must match the provenance record-mode vocabulary exactly", f"{owner['_mrd']['id']}.content.lifecycles", owner["_mrd"]["id"]))
         for doc_id, document in documents.items():
             envelope = document.get("_mrd", {})
             mode, status = envelope.get("record_mode"), envelope.get("status")
@@ -281,5 +348,5 @@ class GovernanceRepository:
     @staticmethod
     def _result(diagnostics: list[dict[str, Any]]) -> dict[str, Any]:
         failed = {item["check"] for item in diagnostics}
-        checks = {name: ("fail" if name in failed else "pass") for name in ("classification", "layering", "dependencies", "provenance", "lifecycle", "schema")}
+        checks = {name: ("fail" if name in failed else "pass") for name in CHECK_NAMES}
         return {"status": "invalid" if diagnostics else "valid", "checks": checks, "diagnostics": diagnostics}

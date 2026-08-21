@@ -148,3 +148,98 @@ def test_duplicate_rule_ids_fail_validation() -> None:
     assert "MRD_RULE_ID_DUPLICATE" in {
         item["code"] for item in result["diagnostics"]
     }
+
+
+def test_repo_provenance_hash_mismatch_is_rejected() -> None:
+    repo = repository()
+    documents = repo.load()
+    mutated = copy.deepcopy(documents)
+    target = mutated["KIS-KNOW-EVL-TST-001"]
+    sources = target["_mrd"]["provenance"]["sources"]
+    sources.append(
+        {
+            "source_id": "LOCAL-SCHEMA",
+            "kind": "repo_path",
+            "role": "validation_contract",
+            "locator": "repo:contracts/mrd/v1/mrd.schema.json",
+            "revision": None,
+            "sha256": "0" * 64,
+        }
+    )
+    from kis_mcp_doc.governance import canonical_hash
+
+    target["_mrd"]["provenance"]["source_fingerprint"] = "sha256:" + canonical_hash(sources)
+    result = repo.validate_documents(mutated)
+
+    assert "MRD_SOURCE_HASH_MISMATCH" in {
+        item["code"] for item in result["diagnostics"]
+    }
+
+
+def test_class_catalog_must_cover_12_unique_classes() -> None:
+    repo = repository()
+    mutated = copy.deepcopy(repo.load())
+    classification = mutated["KIS-KNOW-SEM-REG-001"]
+    classification["content"]["classes"][-1]["code"] = "EVD"
+
+    result = repo.validate_documents(mutated)
+
+    assert "MRD_CLASS_CATALOG_MISMATCH" in {
+        item["code"] for item in result["diagnostics"]
+    }
+
+
+def test_layer_catalog_must_be_exactly_l0_through_l5() -> None:
+    repo = repository()
+    mutated = copy.deepcopy(repo.load())
+    layering = mutated["KIS-KNOW-SEM-ENUM-001"]
+    layering["content"]["layers"][-1]["code"] = "L4"
+
+    result = repo.validate_documents(mutated)
+
+    assert "MRD_LAYER_CATALOG_MISMATCH" in {
+        item["code"] for item in result["diagnostics"]
+    }
+
+
+def test_lifecycle_record_modes_must_match_provenance_vocabulary() -> None:
+    repo = repository()
+    mutated = copy.deepcopy(repo.load())
+    lifecycle = mutated["KIS-KNOW-WRK-STM-001"]
+    lifecycle["content"]["lifecycles"][-1]["record_mode"] = "synthetic"
+
+    result = repo.validate_documents(mutated)
+
+    assert "MRD_RECORD_MODE_CATALOG_MISMATCH" in {
+        item["code"] for item in result["diagnostics"]
+    }
+
+
+def test_validation_reason_code_contract_cannot_drift() -> None:
+    repo = repository()
+    mutated = copy.deepcopy(repo.load())
+    validation = mutated["KIS-KNOW-EVL-TST-001"]
+    validation["content"]["reason_codes"].append("MRD_FAKE_REASON")
+
+    result = repo.validate_documents(mutated)
+
+    assert "MRD_VALIDATION_CONTRACT_MISMATCH" in {
+        item["code"] for item in result["diagnostics"]
+    }
+
+
+def test_meta_records_require_derived_fact_quality() -> None:
+    repo = repository()
+    mutated = copy.deepcopy(repo.load())
+    target = mutated["KIS-KNOW-SEM-REG-001"]
+    target["_mrd"]["class"] = "META"
+    target["_mrd"]["type"] = "IDX"
+    target["_mrd"]["record_mode"] = "meta"
+    target["_mrd"]["status"] = "generated"
+    target["_mrd"]["provenance"]["fact_quality"] = "direct"
+
+    result = repo.validate_documents(mutated)
+
+    assert "MRD_META_FACT_QUALITY_INVALID" in {
+        item["code"] for item in result["diagnostics"]
+    }

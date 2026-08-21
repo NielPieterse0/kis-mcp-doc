@@ -32,7 +32,7 @@
         },
         "classes": {
           "type": "array",
-          "minItems": 1,
+          "minItems": 12,
           "items": {
             "type": "object",
             "required": [
@@ -40,11 +40,12 @@
               "name",
               "definition"
             ]
-          }
+          },
+          "maxItems": 12
         },
         "type_catalog": {
           "type": "array",
-          "minItems": 1,
+          "minItems": 47,
           "items": {
             "type": "object",
             "required": [
@@ -54,14 +55,28 @@
               "name",
               "canonical_format"
             ]
-          }
+          },
+          "maxItems": 47
         },
         "catalog_policy": {
           "type": "object",
           "required": [
+            "expected_class_count",
             "expected_type_count",
             "extension_posture"
-          ]
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "expected_class_count": {
+              "const": 12
+            },
+            "expected_type_count": {
+              "const": 47
+            },
+            "extension_posture": {
+              "const": "versioned_amendment"
+            }
+          }
         },
         "rules": {
           "type": "array",
@@ -105,7 +120,7 @@
         },
         "layers": {
           "type": "array",
-          "minItems": 1,
+          "minItems": 6,
           "items": {
             "type": "object",
             "required": [
@@ -113,7 +128,8 @@
               "name",
               "interpretation"
             ]
-          }
+          },
+          "maxItems": 6
         },
         "rules": {
           "type": "array",

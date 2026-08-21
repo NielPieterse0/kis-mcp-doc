@@ -76,7 +76,7 @@
       },
       {
         "kind": "repo_path",
-        "resolution": "must resolve inside repository"
+        "resolution": "must resolve inside repository and carry the current file SHA-256"
       },
       {
         "kind": "external_reference",
@@ -111,6 +111,10 @@
       {
         "rule_id": "KIS-MRD-PROV-007",
         "statement": "Author intent, invariants, choices, and contracts; derive implementation observations; capture runtime evidence; evaluate conformance between them."
+      },
+      {
+        "rule_id": "KIS-MRD-PROV-008",
+        "statement": "A repo_path provenance source MUST carry the SHA-256 of the resolved repository file; a mismatch MUST invalidate provenance."
       }
     ]
   }

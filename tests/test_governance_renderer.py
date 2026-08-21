@@ -126,3 +126,59 @@ def test_verifier_rejects_unexpected_generated_file(tmp_path: Path) -> None:
     assert "GENERATED_FILE_SET_MISMATCH" in {
         item["code"] for item in result["diagnostics"]
     }
+
+
+def test_publication_config_is_schema_validated(tmp_path: Path) -> None:
+    repo = GovernanceRepository(ROOT, MRD_ROOT)
+    invalid = tmp_path / "publication.json"
+    config = json.loads(PUBLICATION.read_text(encoding="utf-8"))
+    config["status"] = "maybe"
+    invalid.write_text(json.dumps(config), encoding="utf-8")
+
+    try:
+        build_governance_spec(repo, invalid, tmp_path / "build")
+    except ValueError as error:
+        assert "publication configuration invalid" in str(error)
+    else:
+        raise AssertionError("invalid publication configuration was accepted")
+
+
+def test_manifest_schema_rejects_unknown_fields(tmp_path: Path) -> None:
+    repo = GovernanceRepository(ROOT, MRD_ROOT)
+    output = tmp_path / "build"
+    build_governance_spec(repo, PUBLICATION, output)
+    path = output / "manifest.json"
+    manifest = json.loads(path.read_text(encoding="utf-8"))
+    manifest["unexpected"] = True
+    path.write_text(json.dumps(manifest), encoding="utf-8")
+
+    result = verify_governance_spec(repo, PUBLICATION, output)
+
+    assert result["status"] == "invalid"
+    assert "GENERATED_MANIFEST_INVALID" in {
+        item["code"] for item in result["diagnostics"]
+    }
+
+
+def test_recomputed_manifest_cannot_hide_generated_content_tampering(tmp_path: Path) -> None:
+    repo = GovernanceRepository(ROOT, MRD_ROOT)
+    output = tmp_path / "build"
+    build_governance_spec(repo, PUBLICATION, output)
+
+    spec = output / "specification.md"
+    spec.write_text(spec.read_text(encoding="utf-8") + "tampered\n", encoding="utf-8")
+    manifest_path = output / "manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    payload = spec.read_bytes()
+    declaration = next(item for item in manifest["files"] if item["path"] == "specification.md")
+    declaration["sha256"] = hashlib.sha256(payload).hexdigest()
+    declaration["bytes"] = len(payload)
+    index = json.dumps(manifest["files"], ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    manifest["bundle_sha256"] = hashlib.sha256(index).hexdigest()
+    manifest_path.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+    result = verify_governance_spec(repo, PUBLICATION, output)
+
+    codes = {item["code"] for item in result["diagnostics"]}
+    assert "GENERATED_DECLARATION_MISMATCH" in codes
+    assert "GENERATED_FILE_CONTENT_MISMATCH" in codes

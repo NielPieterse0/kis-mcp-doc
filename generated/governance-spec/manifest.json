@@ -1,5 +1,5 @@
 {
-  "bundle_sha256": "a59d8be9297eac613a7591341053c30125690ba4d29a8b3049631a43f2f119d1",
+  "bundle_sha256": "d809afd948c88b568f454608472d928020b05107ff73529d787981566a2094b5",
   "contract": {
     "name": "kis-governance-spec-build",
     "version": 1
@@ -13,12 +13,12 @@
     {
       "bytes": 2161,
       "path": "data/mrd-index.json",
-      "sha256": "2d54ac3cfc62fa787cf6171dfc121aad7f7acaccdc66ba7516610e09970310d0"
+      "sha256": "0b132630db26d69565475e0b23c7d9c77e587058131e95d2ce5f48f911181ba0"
     },
     {
-      "bytes": 13615,
+      "bytes": 14001,
       "path": "specification.md",
-      "sha256": "77794088d4f22122ef21afdb6db5354162ff6de2bf657ee6644b5dac8c045be5"
+      "sha256": "8788d41885af609f532f8f1ef03e97776373d6bc1d640077e14c4cbbb22cbbf3"
     }
   ],
   "generator": {
@@ -27,11 +27,19 @@
     "sources": [
       {
         "path": "src/kis_mcp_doc/governance.py",
-        "sha256": "3cb13d3672287eb3c352a3d814e2ef340da376a51386d6f6405328c0bdc19065"
+        "sha256": "ed5cd2edd47c7b69c31c946aa214bf7809e6e3e60c1086bdd23a72f401dc5d3e"
       },
       {
         "path": "src/kis_mcp_doc/render.py",
-        "sha256": "ac7348e6f43dc832c00dbed902c9159dd17d22037e9d6285efd0e52865df721b"
+        "sha256": "55f51a21e17b7ae9cc7c56f43ffdc047d6ff2fe8ec118a63ddc86de3c131450e"
+      },
+      {
+        "path": "contracts/publication/v1/governance-spec.schema.json",
+        "sha256": "3e30ee9141d616c43ed479ded503dc3eb1360a01224b05370cd5fc87fa704378"
+      },
+      {
+        "path": "contracts/publication/v1/manifest.schema.json",
+        "sha256": "61a4984489f7166323bfdb3ed565b7e784a6a3d2aeb3816b2643cd4042cc07a5"
       }
     ],
     "version": "0.1.0"
@@ -47,13 +55,13 @@
       {
         "id": "KIS-KNOW-CON-POL-001",
         "path": "mrd/governance/04-provenance.mrd.json",
-        "sha256": "bedab2e979866b1e20a408f38359b60f70a2eceeac648ba759a2f229e48e5257",
+        "sha256": "299fdb3abc33da0b962a37c4e50bc6bb9d284773145e2af03d9cfbac1f6c6b38",
         "version": "1.0.0"
       },
       {
         "id": "KIS-KNOW-EVL-TST-001",
         "path": "mrd/governance/06-validation.mrd.json",
-        "sha256": "73908da74ecdcc27296e02b4d431ee74c46700525299b8fc4c53ecf0c8a27c73",
+        "sha256": "7adf617bcac05329ac465664c938b16fc07a1a449ef931d6dc2f1c29dcd8f1e3",
         "version": "1.0.0"
       },
       {
@@ -65,7 +73,7 @@
       {
         "id": "KIS-KNOW-SEM-REG-001",
         "path": "mrd/governance/01-classification.mrd.json",
-        "sha256": "5446892806d0e39c6c2f4331a995763d0da2b34175dbe65a8577297cb81e3ec7",
+        "sha256": "9ca9460ebde8bd137753e22e40a8e35e474c6a64bf20db0e5bff47ded846742c",
         "version": "1.0.0"
       },
       {
@@ -81,17 +89,17 @@
     },
     "source_files": [
       {
-        "bytes": 8219,
+        "bytes": 8665,
         "path": "contracts/governance/v1/content.schema.json",
-        "sha256": "939694edfb440a4701e2a918e8f993fcc7d813ee029bdd32ccb11f5e81f262d1"
+        "sha256": "7d3b50812c531fa11395c88a76d73f8dcd099084055ddab47aed1d9aeb114e9d"
       },
       {
-        "bytes": 3195,
+        "bytes": 5511,
         "path": "contracts/mrd/v1/mrd.schema.json",
-        "sha256": "c080b00103a2dc69188afff61b5a752edf36ad4cb5c2843388f2c522a970deae"
+        "sha256": "fb9f3210b022d8def12a92bfccc1cb45e5ccf1146fa9d59168baf3f630ded153"
       }
     ],
-    "source_set_sha256": "38e611964f47ad413d7103398ef09605de9548029cda7213797437a975725111"
+    "source_set_sha256": "46c7b1abfee1eda8bf31c0ab78edad09c4af1ed31b8289d5ff211f5fe12d6f6a"
   },
   "specification": {
     "status": "stabilized",

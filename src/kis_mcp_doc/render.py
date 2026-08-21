@@ -8,7 +8,13 @@ import tempfile
 from pathlib import Path
 from typing import Any
 
+from jsonschema import Draft202012Validator
+
 from .governance import GovernanceRepository, canonical_hash
+
+
+_PUBLICATION_SCHEMA = "contracts/publication/v1/governance-spec.schema.json"
+_MANIFEST_SCHEMA = "contracts/publication/v1/manifest.schema.json"
 
 
 def build_governance_spec(
@@ -24,30 +30,20 @@ def build_governance_spec(
 
     publication_path = Path(publication_path)
     output = Path(output)
-    config = json.loads(publication_path.read_text(encoding="utf-8"))
+    config = _load_publication_config(repository, publication_path)
     documents = repository.load()
-    ordered = sorted(
-        documents.values(),
-        key=lambda item: (item["content"]["section_order"], item["_mrd"]["id"]),
-    )
-    markdown = _render_markdown(config, ordered)
-    index = _build_index(repository, documents)
-    dependency_map = _build_dependency_map(documents)
+    files = _build_output_files(repository, config, documents)
 
     parent = output.parent
     parent.mkdir(parents=True, exist_ok=True)
     staging = Path(tempfile.mkdtemp(prefix=f".{output.name}.", suffix=".tmp", dir=parent))
     try:
-        files: dict[str, bytes] = {
-            config["output_file"]: markdown.encode("utf-8"),
-            "data/mrd-index.json": _json_bytes(index),
-            "data/dependency-map.json": _json_bytes(dependency_map),
-        }
         for relative, payload in files.items():
             path = staging / Path(*relative.split("/"))
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_bytes(payload)
         manifest = _build_manifest(repository, publication_path, config, documents, files, validation)
+        _validate_contract(repository.root, _MANIFEST_SCHEMA, manifest, "build manifest")
         (staging / "manifest.json").write_bytes(_json_bytes(manifest))
         if output.exists():
             if not replace:
@@ -73,90 +69,146 @@ def verify_governance_spec(
         return _verification_result([_verification_diag("GENERATED_MANIFEST_MISSING", "manifest.json is missing")])
     try:
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    except (OSError, UnicodeError, json.JSONDecodeError) as error:
+        _validate_contract(repository.root, _MANIFEST_SCHEMA, manifest, "build manifest")
+    except (OSError, UnicodeError, json.JSONDecodeError, ValueError) as error:
         return _verification_result([_verification_diag("GENERATED_MANIFEST_INVALID", str(error))])
+
+    try:
+        config = _load_publication_config(repository, Path(publication_path))
+    except (OSError, UnicodeError, json.JSONDecodeError, ValueError) as error:
+        return _verification_result([_verification_diag("PUBLICATION_CONFIG_INVALID", str(error))])
 
     current_validation = repository.validate()
     if current_validation["status"] != "valid":
         diagnostics.append(_verification_diag("SOURCE_MRD_INVALID", "current governance MRDs do not validate"))
+    if manifest.get("validation") != current_validation:
+        diagnostics.append(_verification_diag("VALIDATION_RESULT_MISMATCH", "manifest validation result differs from current validation"))
 
-    source_by_id = repository.load()
-    input_by_id = {item["id"]: item for item in manifest.get("inputs", {}).get("mrds", [])}
-    for doc_id, document in source_by_id.items():
-        declaration = input_by_id.get(doc_id)
-        if declaration is None:
-            diagnostics.append(_verification_diag("SOURCE_MRD_SET_MISMATCH", f"source MRD not declared: {doc_id}"))
-            continue
-        current = _document_bytes(repository, doc_id, document)
-        if hashlib.sha256(current).hexdigest() != declaration.get("sha256"):
-            diagnostics.append(_verification_diag("SOURCE_MRD_HASH_MISMATCH", f"source MRD changed: {doc_id}"))
-    if set(input_by_id) != set(source_by_id):
-        diagnostics.append(_verification_diag("SOURCE_MRD_SET_MISMATCH", "manifest MRD set differs from current source set"))
+    expected_specification = {"title": config["title"], "version": config["version"], "status": config["status"]}
+    if manifest.get("specification") != expected_specification:
+        diagnostics.append(_verification_diag("MANIFEST_SPECIFICATION_MISMATCH", "manifest specification metadata differs from publication configuration"))
 
-    current_source_files = {
-        item["path"]: item for item in _source_file_declarations(repository, source_by_id)
-    }
-    declared_source_files = {
-        item["path"]: item
-        for item in manifest.get("inputs", {}).get("source_files", [])
-    }
-    if set(current_source_files) != set(declared_source_files):
-        diagnostics.append(
-            _verification_diag(
-                "SOURCE_FILE_SET_MISMATCH",
-                "manifest canonical source-file set differs from current MRD dependencies",
-            )
-        )
-    for relative, current in current_source_files.items():
-        declared = declared_source_files.get(relative)
-        if declared is not None and current["sha256"] != declared.get("sha256"):
-            diagnostics.append(
-                _verification_diag(
-                    "SOURCE_FILE_HASH_MISMATCH",
-                    f"canonical source file changed: {relative}",
-                )
-            )
+    expected_generator = {**config["generator"], "sources": _generator_source_declarations(repository)}
+    if manifest.get("generator") != expected_generator:
+        diagnostics.append(_verification_diag("GENERATOR_DECLARATION_MISMATCH", "manifest generator declaration differs from current generator contract"))
+
+    documents = repository.load()
+    expected_mrds = _mrd_input_declarations(repository, documents)
+    declared_mrds = manifest.get("inputs", {}).get("mrds", [])
+    if declared_mrds != expected_mrds:
+        diagnostics.append(_verification_diag("SOURCE_MRD_SET_MISMATCH", "manifest MRD declarations differ from current source MRDs"))
+    if manifest.get("inputs", {}).get("source_set_sha256") != canonical_hash(expected_mrds):
+        diagnostics.append(_verification_diag("SOURCE_SET_HASH_MISMATCH", "manifest source-set digest does not match current MRD declarations"))
+
+    expected_source_files = _source_file_declarations(repository, documents)
+    declared_source_files = manifest.get("inputs", {}).get("source_files", [])
+    expected_by_path = {item["path"]: item for item in expected_source_files}
+    declared_by_path = {item.get("path"): item for item in declared_source_files}
+    if set(expected_by_path) != set(declared_by_path):
+        diagnostics.append(_verification_diag("SOURCE_FILE_SET_MISMATCH", "manifest canonical source-file set differs from current dependencies"))
+    for relative, expected in expected_by_path.items():
+        declared = declared_by_path.get(relative)
+        if declared is not None and declared != expected:
+            diagnostics.append(_verification_diag("SOURCE_FILE_HASH_MISMATCH", f"canonical source-file declaration changed: {relative}"))
 
     publication_bytes = Path(publication_path).read_bytes()
     if hashlib.sha256(publication_bytes).hexdigest() != manifest.get("inputs", {}).get("publication", {}).get("sha256"):
         diagnostics.append(_verification_diag("PUBLICATION_CONFIG_HASH_MISMATCH", "publication configuration changed"))
 
-    for declaration in manifest.get("generator", {}).get("sources", []):
-        path = repository.root / declaration.get("path", "")
-        if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != declaration.get("sha256"):
-            diagnostics.append(_verification_diag("GENERATOR_HASH_MISMATCH", f"generator source changed: {declaration.get('path')}"))
-
     manifest_files = manifest.get("files", [])
     if canonical_hash(manifest_files) != manifest.get("bundle_sha256"):
-        diagnostics.append(
-            _verification_diag(
-                "GENERATED_BUNDLE_HASH_MISMATCH",
-                "manifest bundle digest does not match its file declarations",
-            )
-        )
+        diagnostics.append(_verification_diag("GENERATED_BUNDLE_HASH_MISMATCH", "manifest bundle digest does not match its file declarations"))
+
+    expected_payloads = _build_output_files(repository, config, documents)
+    expected_declarations = _file_declarations(expected_payloads)
+    if manifest_files != expected_declarations:
+        diagnostics.append(_verification_diag("GENERATED_DECLARATION_MISMATCH", "manifest generated-file declarations differ from deterministic current output"))
+
     declared_files = {item["path"]: item for item in manifest_files}
-    expected_files = set(declared_files) | {"manifest.json"}
-    actual_files = {
-        path.relative_to(output).as_posix()
-        for path in output.rglob("*")
-        if path.is_file()
-    }
+    expected_files = set(expected_payloads) | {"manifest.json"}
+    actual_files = {path.relative_to(output).as_posix() for path in output.rglob("*") if path.is_file()}
     if actual_files != expected_files:
-        diagnostics.append(
-            _verification_diag(
-                "GENERATED_FILE_SET_MISMATCH",
-                "generated bundle file inventory differs from the manifest",
-            )
-        )
-    for relative, declaration in declared_files.items():
+        diagnostics.append(_verification_diag("GENERATED_FILE_SET_MISMATCH", "generated bundle file inventory differs from deterministic expected output"))
+
+    for relative, expected_payload in expected_payloads.items():
         path = output / Path(*relative.split("/"))
         if not path.is_file():
             diagnostics.append(_verification_diag("GENERATED_FILE_MISSING", f"generated file missing: {relative}"))
             continue
-        payload = path.read_bytes()
-        if hashlib.sha256(payload).hexdigest() != declaration.get("sha256") or len(payload) != declaration.get("bytes"):
-            diagnostics.append(_verification_diag("GENERATED_FILE_HASH_MISMATCH", f"generated file changed: {relative}"))
+        actual_payload = path.read_bytes()
+        if actual_payload != expected_payload:
+            diagnostics.append(_verification_diag("GENERATED_FILE_CONTENT_MISMATCH", f"generated file does not match deterministic current output: {relative}"))
+        declaration = declared_files.get(relative)
+        if declaration is not None and (
+            hashlib.sha256(actual_payload).hexdigest() != declaration.get("sha256")
+            or len(actual_payload) != declaration.get("bytes")
+        ):
+            diagnostics.append(_verification_diag("GENERATED_FILE_HASH_MISMATCH", f"generated file changed relative to manifest: {relative}"))
     return _verification_result(diagnostics)
+
+def _validate_contract(root: Path, schema_relative: str, instance: object, label: str) -> None:
+    schema_path = root / schema_relative
+    try:
+        schema = json.loads(schema_path.read_text(encoding="utf-8"))
+        Draft202012Validator.check_schema(schema)
+        errors = sorted(
+            Draft202012Validator(schema).iter_errors(instance),
+            key=lambda error: tuple(str(part) for part in error.absolute_path),
+        )
+    except (OSError, UnicodeError, json.JSONDecodeError) as error:
+        raise ValueError(f"unable to load {label} schema: {error}") from error
+    if errors:
+        error = errors[0]
+        location = "/".join(str(part) for part in error.absolute_path) or "$"
+        raise ValueError(f"{label} invalid at {location}: {error.message}")
+
+
+def _load_publication_config(repository: GovernanceRepository, publication_path: Path) -> dict[str, Any]:
+    config = json.loads(Path(publication_path).read_text(encoding="utf-8"))
+    _validate_contract(repository.root, _PUBLICATION_SCHEMA, config, "publication configuration")
+    return config
+
+
+def _generator_source_declarations(repository: GovernanceRepository) -> list[dict[str, Any]]:
+    declarations = []
+    for relative in (
+        "src/kis_mcp_doc/governance.py",
+        "src/kis_mcp_doc/render.py",
+        _PUBLICATION_SCHEMA,
+        _MANIFEST_SCHEMA,
+    ):
+        payload = (repository.root / relative).read_bytes()
+        declarations.append({"path": relative, "sha256": hashlib.sha256(payload).hexdigest()})
+    return declarations
+
+
+def _mrd_input_declarations(repository: GovernanceRepository, documents: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
+    declarations = []
+    for doc_id, document in sorted(documents.items()):
+        payload = _document_bytes(repository, doc_id, document)
+        declarations.append({
+            "id": doc_id,
+            "path": _document_relative_path(repository, doc_id),
+            "sha256": hashlib.sha256(payload).hexdigest(),
+            "version": document["_mrd"]["version"],
+        })
+    return declarations
+
+
+def _file_declarations(files: dict[str, bytes]) -> list[dict[str, Any]]:
+    return [
+        {"path": path, "sha256": hashlib.sha256(payload).hexdigest(), "bytes": len(payload)}
+        for path, payload in sorted(files.items())
+    ]
+
+
+def _build_output_files(repository: GovernanceRepository, config: dict[str, Any], documents: dict[str, dict[str, Any]]) -> dict[str, bytes]:
+    ordered = sorted(documents.values(), key=lambda item: (item["content"]["section_order"], item["_mrd"]["id"]))
+    return {
+        config["output_file"]: _render_markdown(config, ordered).encode("utf-8"),
+        "data/mrd-index.json": _json_bytes(_build_index(repository, documents)),
+        "data/dependency-map.json": _json_bytes(_build_dependency_map(documents)),
+    }
 
 
 def _build_manifest(
@@ -167,23 +219,9 @@ def _build_manifest(
     files: dict[str, bytes],
     validation: dict[str, Any],
 ) -> dict[str, Any]:
-    inputs = []
-    for doc_id, document in sorted(documents.items()):
-        payload = _document_bytes(repository, doc_id, document)
-        inputs.append({
-            "id": doc_id,
-            "path": _document_relative_path(repository, doc_id),
-            "sha256": hashlib.sha256(payload).hexdigest(),
-            "version": document["_mrd"]["version"],
-        })
-    generator_sources = []
-    for relative in ("src/kis_mcp_doc/governance.py", "src/kis_mcp_doc/render.py"):
-        payload = (repository.root / relative).read_bytes()
-        generator_sources.append({"path": relative, "sha256": hashlib.sha256(payload).hexdigest()})
-    file_declarations = [
-        {"path": path, "sha256": hashlib.sha256(payload).hexdigest(), "bytes": len(payload)}
-        for path, payload in sorted(files.items())
-    ]
+    inputs = _mrd_input_declarations(repository, documents)
+    generator_sources = _generator_source_declarations(repository)
+    file_declarations = _file_declarations(files)
     return {
         "contract": {"name": "kis-governance-spec-build", "version": 1},
         "specification": {"title": config["title"], "version": config["version"], "status": config["status"]},

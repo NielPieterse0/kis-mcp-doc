@@ -436,7 +436,8 @@
     ],
     "catalog_policy": {
       "expected_type_count": 47,
-      "extension_posture": "versioned_amendment"
+      "extension_posture": "versioned_amendment",
+      "expected_class_count": 12
     },
     "rules": [
       {
