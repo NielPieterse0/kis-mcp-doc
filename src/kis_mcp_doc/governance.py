@@ -106,7 +106,7 @@ class GovernanceRepository:
             )
             validator = Draft202012Validator(profile_schema, registry=registry)
         except (OSError, UnicodeError, json.JSONDecodeError, KeyError, SchemaError, ValueError) as error:
-            diagnostics.append(self._diagnostic("schema", "MRD_SCHEMA_INVALID", f"unable to load governance MRD profile: {error}", str(self.profile_schema_path), None))
+            diagnostics.append(self._diagnostic("schema", "MRD_SCHEMA_INVALID", f"unable to load or validate governance schema set: {error}", "contracts", None))
             return
         for doc_id, document in documents.items():
             try:

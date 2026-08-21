@@ -27,7 +27,7 @@
     "sources": [
       {
         "path": "src/kis_mcp_doc/governance.py",
-        "sha256": "b8625f3cd83999dfca2f20a0886c52d17e2024ca1fa2980274853479166f174c"
+        "sha256": "fe7e02514e2463ef7073bdf045c3c40dc332d2ce020934f76a7d9745c7023fa7"
       },
       {
         "path": "src/kis_mcp_doc/render.py",
