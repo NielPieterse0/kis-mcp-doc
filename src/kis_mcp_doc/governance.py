@@ -6,6 +6,9 @@ from pathlib import Path
 from typing import Any
 
 from jsonschema import Draft202012Validator
+from jsonschema.exceptions import SchemaError
+from referencing import Registry, Resource
+from referencing.exceptions import Unresolvable
 
 
 CONCERNS = ("classification", "layering", "dependencies", "provenance", "lifecycle", "validation")
@@ -35,6 +38,7 @@ class GovernanceRepository:
         self.mrd_root = Path(mrd_root).resolve()
         self.schema_path = self.root / "contracts" / "mrd" / "v1" / "mrd.schema.json"
         self.content_schema_path = self.root / "contracts" / "governance" / "v1" / "content.schema.json"
+        self.profile_schema_path = self.root / "contracts" / "governance" / "v1" / "governance-mrd.schema.json"
 
     def load(self) -> dict[str, dict[str, Any]]:
         documents: dict[str, dict[str, Any]] = {}
@@ -57,8 +61,10 @@ class GovernanceRepository:
 
     def validate_documents(self, documents: dict[str, dict[str, Any]]) -> dict[str, Any]:
         diagnostics: list[dict[str, Any]] = []
-        concerns = self._concern_owners(documents, diagnostics)
         self._validate_schema(documents, diagnostics)
+        if diagnostics:
+            return self._result(diagnostics)
+        concerns = self._concern_owners(documents, diagnostics)
         self._validate_rule_ids(documents, diagnostics)
         self._validate_validation_contract(concerns, diagnostics)
         self._validate_classification(documents, concerns, diagnostics)
@@ -88,22 +94,28 @@ class GovernanceRepository:
         try:
             schema = json.loads(self.schema_path.read_text(encoding="utf-8"))
             content_schema = json.loads(self.content_schema_path.read_text(encoding="utf-8"))
-            Draft202012Validator.check_schema(schema)
-            Draft202012Validator.check_schema(content_schema)
-            validator = Draft202012Validator(schema)
-            content_validator = Draft202012Validator(content_schema)
-        except (OSError, UnicodeError, json.JSONDecodeError) as error:
-            diagnostics.append(self._diagnostic("schema", "MRD_SCHEMA_INVALID", f"unable to load MRD schema: {error}", str(self.schema_path), None))
+            profile_schema = json.loads(self.profile_schema_path.read_text(encoding="utf-8"))
+            for candidate in (schema, content_schema, profile_schema):
+                Draft202012Validator.check_schema(candidate)
+            registry = Registry().with_resources(
+                (
+                    (schema["$id"], Resource.from_contents(schema)),
+                    (content_schema["$id"], Resource.from_contents(content_schema)),
+                    (profile_schema["$id"], Resource.from_contents(profile_schema)),
+                )
+            )
+            validator = Draft202012Validator(profile_schema, registry=registry)
+        except (OSError, UnicodeError, json.JSONDecodeError, KeyError, SchemaError, ValueError) as error:
+            diagnostics.append(self._diagnostic("schema", "MRD_SCHEMA_INVALID", f"unable to load governance MRD profile: {error}", str(self.profile_schema_path), None))
             return
         for doc_id, document in documents.items():
-            errors = sorted(validator.iter_errors(document), key=lambda item: tuple(str(p) for p in item.absolute_path))
-            content_errors = sorted(content_validator.iter_errors(document.get("content", {})), key=lambda item: tuple(str(p) for p in item.absolute_path))
+            try:
+                errors = sorted(validator.iter_errors(document), key=lambda item: tuple(str(p) for p in item.absolute_path))
+            except Unresolvable as error:
+                diagnostics.append(self._diagnostic("schema", "MRD_SCHEMA_INVALID", f"unable to resolve governance MRD profile reference: {error}", str(self.profile_schema_path), doc_id))
+                continue
             for error in errors:
                 location = "/".join(str(p) for p in error.absolute_path) or "$"
-                diagnostics.append(self._diagnostic("schema", "MRD_SCHEMA_INVALID", error.message, location, doc_id))
-            for error in content_errors:
-                suffix = "/".join(str(p) for p in error.absolute_path)
-                location = "content" if not suffix else f"content/{suffix}"
                 diagnostics.append(self._diagnostic("schema", "MRD_SCHEMA_INVALID", error.message, location, doc_id))
 
     def _validate_rule_ids(

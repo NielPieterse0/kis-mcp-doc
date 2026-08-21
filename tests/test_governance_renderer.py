@@ -84,6 +84,7 @@ def test_manifest_binds_canonical_repo_dependencies(tmp_path: Path) -> None:
     assert source_paths == {
         "contracts/mrd/v1/mrd.schema.json",
         "contracts/governance/v1/content.schema.json",
+        "contracts/governance/v1/governance-mrd.schema.json",
     }
 
 
@@ -200,3 +201,63 @@ def test_verifier_reports_unavailable_generator_source(tmp_path: Path, monkeypat
     assert "GENERATOR_SOURCE_UNAVAILABLE" in {
         item["code"] for item in result["diagnostics"]
     }
+
+
+def test_manifest_validation_checks_are_schema_locked(tmp_path: Path) -> None:
+    repo = GovernanceRepository(ROOT, MRD_ROOT)
+    output = tmp_path / "build"
+    build_governance_spec(repo, PUBLICATION, output)
+    path = output / "manifest.json"
+    manifest = json.loads(path.read_text(encoding="utf-8"))
+    manifest["validation"]["checks"]["unexpected"] = "pass"
+    path.write_text(json.dumps(manifest), encoding="utf-8")
+
+    result = verify_governance_spec(repo, PUBLICATION, output)
+
+    assert result["status"] == "invalid"
+    assert "GENERATED_MANIFEST_INVALID" in {item["code"] for item in result["diagnostics"]}
+
+
+def test_invalid_manifest_validation_requires_diagnostics(tmp_path: Path) -> None:
+    repo = GovernanceRepository(ROOT, MRD_ROOT)
+    output = tmp_path / "build"
+    build_governance_spec(repo, PUBLICATION, output)
+    path = output / "manifest.json"
+    manifest = json.loads(path.read_text(encoding="utf-8"))
+    manifest["validation"]["status"] = "invalid"
+    path.write_text(json.dumps(manifest), encoding="utf-8")
+
+    result = verify_governance_spec(repo, PUBLICATION, output)
+
+    assert result["status"] == "invalid"
+    assert "GENERATED_MANIFEST_INVALID" in {item["code"] for item in result["diagnostics"]}
+
+
+def test_valid_manifest_cannot_report_failed_check(tmp_path: Path) -> None:
+    repo = GovernanceRepository(ROOT, MRD_ROOT)
+    output = tmp_path / "build"
+    build_governance_spec(repo, PUBLICATION, output)
+    path = output / "manifest.json"
+    manifest = json.loads(path.read_text(encoding="utf-8"))
+    manifest["validation"]["checks"]["schema"] = "fail"
+    path.write_text(json.dumps(manifest), encoding="utf-8")
+
+    result = verify_governance_spec(repo, PUBLICATION, output)
+
+    assert result["status"] == "invalid"
+    assert "GENERATED_MANIFEST_INVALID" in {item["code"] for item in result["diagnostics"]}
+
+
+def test_invalid_manifest_requires_at_least_one_failed_check(tmp_path: Path) -> None:
+    repo = GovernanceRepository(ROOT, MRD_ROOT)
+    output = tmp_path / "build"
+    build_governance_spec(repo, PUBLICATION, output)
+    path = output / "manifest.json"
+    manifest = json.loads(path.read_text(encoding="utf-8"))
+    manifest["validation"]["status"] = "invalid"
+    manifest["validation"]["diagnostics"] = [{"check":"schema","code":"MRD_SCHEMA_INVALID","message":"x","location":"$","mrd_id":None}]
+    path.write_text(json.dumps(manifest), encoding="utf-8")
+
+    result = verify_governance_spec(repo, PUBLICATION, output)
+    assert result["status"] == "invalid"
+    assert "GENERATED_MANIFEST_INVALID" in {item["code"] for item in result["diagnostics"]}

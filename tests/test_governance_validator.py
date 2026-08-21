@@ -1,7 +1,11 @@
 from __future__ import annotations
 
 import copy
+import json
 from pathlib import Path
+
+from jsonschema import Draft202012Validator
+from referencing import Registry, Resource
 
 from kis_mcp_doc.governance import GovernanceRepository
 
@@ -243,3 +247,30 @@ def test_meta_records_require_derived_fact_quality() -> None:
     assert "MRD_META_FACT_QUALITY_INVALID" in {
         item["code"] for item in result["diagnostics"]
     }
+
+
+def test_public_governance_profile_composes_envelope_and_content() -> None:
+    schemas = [
+        json.loads((ROOT / "contracts/mrd/v1/mrd.schema.json").read_text(encoding="utf-8")),
+        json.loads((ROOT / "contracts/governance/v1/content.schema.json").read_text(encoding="utf-8")),
+        json.loads((ROOT / "contracts/governance/v1/governance-mrd.schema.json").read_text(encoding="utf-8")),
+    ]
+    registry = Registry().with_resources(
+        (schema["$id"], Resource.from_contents(schema)) for schema in schemas
+    )
+    validator = Draft202012Validator(schemas[-1], registry=registry)
+    document = copy.deepcopy(repository().load()["KIS-KNOW-CON-POL-001"])
+    document["content"]["unexpected_governance_surface"] = True
+
+    assert list(validator.iter_errors(document))
+
+
+def test_structural_failure_short_circuits_semantic_validation() -> None:
+    repo = repository()
+    documents = copy.deepcopy(repo.load())
+    documents["KIS-KNOW-CON-POL-001"]["content"] = []
+
+    result = repo.validate_documents(documents)
+
+    assert result["status"] == "invalid"
+    assert {item["code"] for item in result["diagnostics"]} == {"MRD_SCHEMA_INVALID"}

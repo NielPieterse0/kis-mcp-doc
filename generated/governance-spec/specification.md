@@ -2,7 +2,7 @@
 # KIS MRD Governance Specification
 
 > **Status:** stabilized
-> **Version:** 1.0.0
+> **Version:** 1.1.0
 > **Authority:** Generated human-readable projection; the source MRDs are authoritative.
 > **Generator:** kis-mcp-doc 0.1.0 / governance-spec-v1
 
@@ -212,6 +212,8 @@ Fail closed when structural, dependency, provenance, or lifecycle invariants do 
 - **KIS-MRD-VAL-001** — Every MRD MUST pass structural, dependency, provenance, and lifecycle validation before it is accepted as valid.
 - **KIS-MRD-VAL-002** — Validation failures MUST emit stable reason codes and machine-readable diagnostics.
 - **KIS-MRD-VAL-003** — A validation result MUST report classification, layering, dependencies, provenance, lifecycle, and schema check status.
+- **KIS-MRD-VAL-004** — Governance MRDs MUST validate through the public composed governance MRD profile, which binds the reusable core envelope to governance content.
+- **KIS-MRD-VAL-005** — Any structural schema failure in the governance MRD set MUST short-circuit semantic validation for the entire set, because cross-record semantics are valid only over a structurally valid governance set.
 
 ### Validation dimensions
 
@@ -221,6 +223,7 @@ Fail closed when structural, dependency, provenance, or lifecycle invariants do 
 - identifier shape
 - schema-compatible envelope and payload
 - exactly one owner for each governance concern
+- public composed governance MRD profile
 
 #### Dependency
 
@@ -294,6 +297,6 @@ Each normative section above is projected from exactly one prescriptive MRD:
 | 3. Dependency Rules | `KIS-KNOW-CON-CTR-001` | 1.0.0 | KIS-OPERATOR-DIRECTION-2026-08-21 |
 | 4. Provenance | `KIS-KNOW-CON-POL-001` | 1.0.0 | KIS-OPERATOR-DIRECTION-2026-08-21 |
 | 5. Lifecycle | `KIS-KNOW-WRK-STM-001` | 1.0.0 | KIS-OPERATOR-DIRECTION-2026-08-21 |
-| 6. Machine Validation | `KIS-KNOW-EVL-TST-001` | 1.0.0 | KIS-OPERATOR-DIRECTION-2026-08-21 |
+| 6. Machine Validation | `KIS-KNOW-EVL-TST-001` | 1.1.0 | KIS-OPERATOR-DIRECTION-2026-08-21 |
 
 Build hashes and the derived META-IDX / META-DEP projections are recorded in the adjacent `manifest.json` and `data/` files.

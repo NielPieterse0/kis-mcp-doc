@@ -63,6 +63,12 @@
       "from": "KIS-KNOW-EVL-TST-001",
       "relationship": "validated_by",
       "target_kind": "source",
+      "to": "repo:contracts/governance/v1/governance-mrd.schema.json"
+    },
+    {
+      "from": "KIS-KNOW-EVL-TST-001",
+      "relationship": "validated_by",
+      "target_kind": "source",
       "to": "repo:contracts/mrd/v1/mrd.schema.json"
     },
     {

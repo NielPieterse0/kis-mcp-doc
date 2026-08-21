@@ -33,10 +33,10 @@
       "layer": "L4",
       "path": "mrd/governance/06-validation.mrd.json",
       "record_mode": "prescriptive",
-      "sha256": "7adf617bcac05329ac465664c938b16fc07a1a449ef931d6dc2f1c29dcd8f1e3",
+      "sha256": "29a3970c4bf6f4888ef0769e7a9140f491ee9425ca43f54876097dd2d880d049",
       "status": "active",
       "type": "TST",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     {
       "class": "SEM",

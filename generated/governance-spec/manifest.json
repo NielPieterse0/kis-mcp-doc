@@ -1,24 +1,24 @@
 {
-  "bundle_sha256": "d809afd948c88b568f454608472d928020b05107ff73529d787981566a2094b5",
+  "bundle_sha256": "71230deef4aa08c34055999fe8c4c7f4e77f6c4dab00876904d6794bca48a047",
   "contract": {
     "name": "kis-governance-spec-build",
     "version": 1
   },
   "files": [
     {
-      "bytes": 1972,
+      "bytes": 2162,
       "path": "data/dependency-map.json",
-      "sha256": "55378b667f4ddd456dc970a147ac04ae7149be7395700f4d00f4dba4f0519e40"
+      "sha256": "15fd5d17b452e0c218b6c1a77b5efc7f0e4595d29e0ccaf423b9e565bd7f0e01"
     },
     {
       "bytes": 2161,
       "path": "data/mrd-index.json",
-      "sha256": "0b132630db26d69565475e0b23c7d9c77e587058131e95d2ce5f48f911181ba0"
+      "sha256": "3bb51d17b4b8dfc85665a03710b33f6e2a7e8130f243100e5b7f4628074557db"
     },
     {
-      "bytes": 14001,
+      "bytes": 14441,
       "path": "specification.md",
-      "sha256": "8788d41885af609f532f8f1ef03e97776373d6bc1d640077e14c4cbbb22cbbf3"
+      "sha256": "a7a00f29b289b9bf8b7a1aaf04af0b22172a6dc565d3eb7223c1509e9c9519fe"
     }
   ],
   "generator": {
@@ -27,7 +27,7 @@
     "sources": [
       {
         "path": "src/kis_mcp_doc/governance.py",
-        "sha256": "ed5cd2edd47c7b69c31c946aa214bf7809e6e3e60c1086bdd23a72f401dc5d3e"
+        "sha256": "b8625f3cd83999dfca2f20a0886c52d17e2024ca1fa2980274853479166f174c"
       },
       {
         "path": "src/kis_mcp_doc/render.py",
@@ -39,7 +39,7 @@
       },
       {
         "path": "contracts/publication/v1/manifest.schema.json",
-        "sha256": "61a4984489f7166323bfdb3ed565b7e784a6a3d2aeb3816b2643cd4042cc07a5"
+        "sha256": "fb4f11b5133b5bb9c2c6a37a36c2006b5407e20ee55ed58546353531f8fbfd02"
       }
     ],
     "version": "0.1.0"
@@ -61,8 +61,8 @@
       {
         "id": "KIS-KNOW-EVL-TST-001",
         "path": "mrd/governance/06-validation.mrd.json",
-        "sha256": "7adf617bcac05329ac465664c938b16fc07a1a449ef931d6dc2f1c29dcd8f1e3",
-        "version": "1.0.0"
+        "sha256": "29a3970c4bf6f4888ef0769e7a9140f491ee9425ca43f54876097dd2d880d049",
+        "version": "1.1.0"
       },
       {
         "id": "KIS-KNOW-SEM-ENUM-001",
@@ -85,7 +85,7 @@
     ],
     "publication": {
       "path": "publication/governance-spec.json",
-      "sha256": "bb79ba6167c38a6ffda1836a7e92b1147fd235878c8d4d20d06c91794da6fa7d"
+      "sha256": "9e27d994a7221169531b4ca230bf6934f6134dd9985c5b62d7b13cee0917b562"
     },
     "source_files": [
       {
@@ -94,17 +94,22 @@
         "sha256": "7d3b50812c531fa11395c88a76d73f8dcd099084055ddab47aed1d9aeb114e9d"
       },
       {
+        "bytes": 685,
+        "path": "contracts/governance/v1/governance-mrd.schema.json",
+        "sha256": "d3b90e2c559b1c684f1a66b517928a35e992f3df28180793196dfa0780cbf808"
+      },
+      {
         "bytes": 5511,
         "path": "contracts/mrd/v1/mrd.schema.json",
         "sha256": "fb9f3210b022d8def12a92bfccc1cb45e5ccf1146fa9d59168baf3f630ded153"
       }
     ],
-    "source_set_sha256": "46c7b1abfee1eda8bf31c0ab78edad09c4af1ed31b8289d5ff211f5fe12d6f6a"
+    "source_set_sha256": "74959f5e02aed180bf2fee792111ec2e8efbe550174eecd25634c19eb12224d1"
   },
   "specification": {
     "status": "stabilized",
     "title": "KIS MRD Governance Specification",
-    "version": "1.0.0"
+    "version": "1.1.0"
   },
   "validation": {
     "checks": {
