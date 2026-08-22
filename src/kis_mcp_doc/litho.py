@@ -8,6 +8,8 @@ from typing import Any
 
 from jsonschema import Draft202012Validator
 
+from .governance import canonical_source_bytes
+
 
 _SCHEMA = "contracts/documentation/litho/v1/package.schema.json"
 
@@ -105,7 +107,7 @@ def _evaluate_assertions(
             canonical_document,
             assertion["json_pointer"],
         )
-        payload = canonical_path.read_bytes()
+        payload = canonical_source_bytes(canonical_path)
         canonical_by_path[relative] = {
             "path": relative,
             "sha256": hashlib.sha256(payload).hexdigest(),

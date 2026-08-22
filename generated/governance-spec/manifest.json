@@ -82,7 +82,7 @@
     "sources": [
       {
         "path": "src/kis_mcp_doc/governance.py",
-        "sha256": "d8cd5c15340b8cbe70ef77ee0479f19d12b559bac70cd5676bcad5608c6b1465"
+        "sha256": "4157674cc1f92bb4d69e5a0883f26745d6d6f751e47e5504257da338fe8c8602"
       },
       {
         "path": "src/kis_mcp_doc/harvest.py",
@@ -90,19 +90,19 @@
       },
       {
         "path": "src/kis_mcp_doc/litho.py",
-        "sha256": "df4d36a69ba1a57bcb5808c5551efe161cb151070ff5459733b483007294c199"
+        "sha256": "0ed515ceb43183e19b6eb6e40ba20a09aa782635e0aabd69c51fd21fc99cc05b"
       },
       {
         "path": "src/kis_mcp_doc/render.py",
-        "sha256": "9fa5f093a1cff91d797ebff1878bfe98d6c3b6e2cfba4d9970d5f3bed07799b1"
+        "sha256": "f7b24d3d6b35c876540b1bd619b234d9878b3454ff9b4b2574e3fc758fe8cfc8"
       },
       {
         "path": "contracts/publication/v2/governance-spec.schema.json",
-        "sha256": "270c78a0dbfcde9d1df6bf1798baa4660e66fc322c203a11705ffbe8bf2bf0e7"
+        "sha256": "93984b913e43a999b394aaecf78a7fb2a5279be6822140fd1d3b076b9b0e8ae3"
       },
       {
         "path": "contracts/publication/v2/manifest.schema.json",
-        "sha256": "0382b07bd427549a142b7ed83f40d043529f4daf56ec10aee10bdb568ed154bc"
+        "sha256": "60c9ea6039c5e25b56e423ec3b7be40de700b8c8028e35aeabba35aadc7954b4"
       },
       {
         "path": "contracts/documentation/harvest/v1/registry.schema.json",
@@ -110,7 +110,7 @@
       },
       {
         "path": "contracts/documentation/litho/v1/package.schema.json",
-        "sha256": "c7b56d05e109b587bf30bb6ce06ba25635ca6200400a34a7a9f637cd8f77921c"
+        "sha256": "7e3fdd24162b4163753f5d9f44391977c764005affad2717f79bfa9be55e944d"
       }
     ],
     "version": "0.1.0"

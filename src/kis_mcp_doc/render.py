@@ -10,7 +10,7 @@ from typing import Any
 
 from jsonschema import Draft202012Validator
 
-from .governance import GovernanceRepository, canonical_hash
+from .governance import GovernanceRepository, canonical_hash, canonical_source_bytes
 from .harvest import load_harvest_registry
 from .litho import load_litho_evidence
 
@@ -158,7 +158,7 @@ def verify_governance_spec(
             )
         )
 
-    publication_bytes = Path(publication_path).read_bytes()
+    publication_bytes = canonical_source_bytes(Path(publication_path))
     if hashlib.sha256(publication_bytes).hexdigest() != manifest.get("inputs", {}).get("publication", {}).get("sha256"):
         diagnostics.append(_verification_diag("PUBLICATION_CONFIG_HASH_MISMATCH", "publication configuration changed"))
 
@@ -247,7 +247,7 @@ def _generator_source_declarations(repository: GovernanceRepository) -> list[dic
         _HARVEST_SCHEMA,
         _LITHO_SCHEMA,
     ):
-        payload = (repository.root / relative).read_bytes()
+        payload = canonical_source_bytes(repository.root / relative)
         declarations.append({"path": relative, "sha256": hashlib.sha256(payload).hexdigest()})
     return declarations
 
@@ -328,7 +328,7 @@ def _build_manifest(
             "external_evidence": _external_evidence_declarations(litho_evidence),
             "publication": {
                 "path": publication_path.relative_to(repository.root).as_posix(),
-                "sha256": hashlib.sha256(publication_path.read_bytes()).hexdigest(),
+                "sha256": hashlib.sha256(canonical_source_bytes(publication_path)).hexdigest(),
             },
         },
         "validation": validation,
@@ -351,7 +351,7 @@ def _source_file_declarations(
     )
     declarations = []
     for relative in paths:
-        payload = (repository.root / Path(*relative.split("/"))).read_bytes()
+        payload = canonical_source_bytes(repository.root / Path(*relative.split("/")))
         declarations.append(
             {
                 "path": relative,
@@ -408,7 +408,7 @@ def _document_relative_path(repository: GovernanceRepository, doc_id: str) -> st
 
 def _document_bytes(repository: GovernanceRepository, doc_id: str, document: dict[str, Any]) -> bytes:
     relative = _document_relative_path(repository, doc_id)
-    return (repository.root / relative).read_bytes()
+    return canonical_source_bytes(repository.root / relative)
 
 
 def _json_bytes(value: object) -> bytes:
@@ -430,7 +430,7 @@ def _harvest_registry_declaration(
     return {
         "path": _HARVEST_REGISTRY,
         "version": registry["registry_version"],
-        "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+        "sha256": hashlib.sha256(canonical_source_bytes(path)).hexdigest(),
     }
 
 

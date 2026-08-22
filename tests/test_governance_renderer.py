@@ -6,7 +6,7 @@ import shutil
 from pathlib import Path
 
 import kis_mcp_doc.render as render_module
-from kis_mcp_doc.governance import GovernanceRepository
+from kis_mcp_doc.governance import GovernanceRepository, canonical_source_bytes
 from kis_mcp_doc.render import build_governance_spec, verify_governance_spec
 
 
@@ -32,6 +32,51 @@ def test_render_is_byte_deterministic(tmp_path: Path) -> None:
 
     assert (first / "specification.md").read_bytes() == (second / "specification.md").read_bytes()
     assert (first / "manifest.json").read_bytes() == (second / "manifest.json").read_bytes()
+
+
+def test_repository_text_line_endings_do_not_change_bundle(tmp_path: Path) -> None:
+    root, repo, publication = copied_repository(tmp_path)
+    first = tmp_path / "first"
+    second = tmp_path / "second"
+    paths = (
+        root / "src" / "kis_mcp_doc" / "render.py",
+        root / "contracts" / "mrd" / "v1" / "mrd.schema.json",
+        root / "mrd" / "governance" / "01-classification.mrd.json",
+        publication,
+        root / "publication" / "harvest-sources.json",
+    )
+    for path in paths:
+        payload = path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+        path.write_bytes(payload)
+    build_governance_spec(repo, publication, first)
+
+    for path in paths:
+        lf_payload = path.read_bytes()
+        crlf_payload = lf_payload.replace(b"\n", b"\r\n")
+        assert crlf_payload != lf_payload
+        assert b"\r\n" in crlf_payload
+        path.write_bytes(crlf_payload)
+    build_governance_spec(repo, publication, second)
+
+    first_files = {
+        path.relative_to(first).as_posix(): path.read_bytes()
+        for path in first.rglob("*")
+        if path.is_file()
+    }
+    second_files = {
+        path.relative_to(second).as_posix(): path.read_bytes()
+        for path in second.rglob("*")
+        if path.is_file()
+    }
+    assert second_files == first_files
+
+
+def test_unknown_utf8_source_remains_byte_exact(tmp_path: Path) -> None:
+    source = tmp_path / "payload.bin"
+    payload = b"header\r\nbody\r\n"
+    source.write_bytes(payload)
+
+    assert canonical_source_bytes(source) == payload
 
 
 def test_rendered_spec_decomposes_normative_sections_into_mcp_style_pages(tmp_path: Path) -> None:

@@ -40,6 +40,28 @@ def canonical_hash(value: object) -> str:
     return hashlib.sha256(payload).hexdigest()
 
 
+_CANONICAL_TEXT_SUFFIXES = frozenset({
+    ".bat", ".cfg", ".cmd", ".css", ".html", ".ini", ".js", ".json", ".jsonc",
+    ".jsx", ".md", ".ps1", ".py", ".sh", ".toml", ".ts", ".tsx", ".txt", ".xml",
+    ".yaml", ".yml",
+})
+_CANONICAL_TEXT_NAMES = frozenset({
+    ".gitattributes", ".gitignore", ".nvmrc", "Dockerfile", "Makefile",
+})
+
+
+def canonical_source_bytes(path: Path) -> bytes:
+    path = Path(path)
+    payload = path.read_bytes()
+    if path.suffix.casefold() not in _CANONICAL_TEXT_SUFFIXES and path.name not in _CANONICAL_TEXT_NAMES:
+        return payload
+    try:
+        text = payload.decode("utf-8")
+    except UnicodeDecodeError:
+        return payload
+    return text.replace("\r\n", "\n").replace("\r", "\n").encode("utf-8")
+
+
 class GovernanceRepository:
     def __init__(self, root: Path, mrd_root: Path) -> None:
         self.root = Path(root).resolve()
@@ -354,7 +376,7 @@ class GovernanceRepository:
                     if resolved is None:
                         diagnostics.append(self._diagnostic("provenance", "MRD_SOURCE_UNRESOLVED", f"repo provenance source does not resolve inside repository: {locator}", f"{doc_id}._mrd.provenance.sources[{index}]", doc_id))
                     else:
-                        actual_sha = hashlib.sha256(resolved.read_bytes()).hexdigest()
+                        actual_sha = hashlib.sha256(canonical_source_bytes(resolved)).hexdigest()
                         if source.get("sha256") != actual_sha:
                             diagnostics.append(self._diagnostic("provenance", "MRD_SOURCE_HASH_MISMATCH", f"repo provenance source hash does not match current file: {locator}", f"{doc_id}._mrd.provenance.sources[{index}].sha256", doc_id))
                 if kind == "external_reference" and not source.get("sha256"):
