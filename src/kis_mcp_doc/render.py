@@ -10,11 +10,16 @@ from typing import Any
 
 from jsonschema import Draft202012Validator
 
-from .governance import GovernanceRepository, canonical_hash
+from .governance import GovernanceRepository, canonical_hash, canonical_source_bytes
+from .harvest import load_harvest_registry
+from .litho import load_litho_evidence
 
 
-_PUBLICATION_SCHEMA = "contracts/publication/v1/governance-spec.schema.json"
-_MANIFEST_SCHEMA = "contracts/publication/v1/manifest.schema.json"
+_PUBLICATION_SCHEMA = "contracts/publication/v2/governance-spec.schema.json"
+_MANIFEST_SCHEMA = "contracts/publication/v2/manifest.schema.json"
+_LITHO_SCHEMA = "contracts/documentation/litho/v1/package.schema.json"
+_HARVEST_SCHEMA = "contracts/documentation/harvest/v1/registry.schema.json"
+_HARVEST_REGISTRY = "publication/harvest-sources.json"
 
 
 def build_governance_spec(
@@ -23,6 +28,7 @@ def build_governance_spec(
     output: Path,
     *,
     replace: bool = False,
+    litho_package: Path | None = None,
 ) -> dict[str, Any]:
     validation = repository.validate()
     if validation["status"] != "valid":
@@ -32,7 +38,13 @@ def build_governance_spec(
     output = Path(output)
     config = _load_publication_config(repository, publication_path)
     documents = repository.load()
-    files = _build_output_files(repository, config, documents)
+    harvest_registry = load_harvest_registry(repository.root)
+    litho_evidence = (
+        load_litho_evidence(repository.root, litho_package)
+        if litho_package is not None
+        else None
+    )
+    files = _build_output_files(repository, config, documents, litho_evidence)
 
     parent = output.parent
     parent.mkdir(parents=True, exist_ok=True)
@@ -42,7 +54,16 @@ def build_governance_spec(
             path = staging / Path(*relative.split("/"))
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_bytes(payload)
-        manifest = _build_manifest(repository, publication_path, config, documents, files, validation)
+        manifest = _build_manifest(
+            repository,
+            publication_path,
+            config,
+            documents,
+            files,
+            validation,
+            harvest_registry,
+            litho_evidence,
+        )
         _validate_contract(repository.root, _MANIFEST_SCHEMA, manifest, "build manifest")
         (staging / "manifest.json").write_bytes(_json_bytes(manifest))
         if output.exists():
@@ -61,6 +82,8 @@ def verify_governance_spec(
     repository: GovernanceRepository,
     publication_path: Path,
     output: Path,
+    *,
+    litho_package: Path | None = None,
 ) -> dict[str, Any]:
     diagnostics: list[dict[str, str]] = []
     output = Path(output)
@@ -84,7 +107,12 @@ def verify_governance_spec(
     if manifest.get("validation") != current_validation:
         diagnostics.append(_verification_diag("VALIDATION_RESULT_MISMATCH", "manifest validation result differs from current validation"))
 
-    expected_specification = {"title": config["title"], "version": config["version"], "status": config["status"]}
+    expected_specification = {
+        "title": config["title"],
+        "version": config["version"],
+        "status": config["status"],
+        "layout_profile": config["layout_profile"],
+    }
     if manifest.get("specification") != expected_specification:
         diagnostics.append(_verification_diag("MANIFEST_SPECIFICATION_MISMATCH", "manifest specification metadata differs from publication configuration"))
 
@@ -115,15 +143,49 @@ def verify_governance_spec(
         if declared is not None and declared != expected:
             diagnostics.append(_verification_diag("SOURCE_FILE_HASH_MISMATCH", f"canonical source-file declaration changed: {relative}"))
 
-    publication_bytes = Path(publication_path).read_bytes()
+    declared_harvest = manifest.get("inputs", {}).get("harvest_registry")
+    try:
+        current_harvest = load_harvest_registry(repository.root)
+        expected_harvest = _harvest_registry_declaration(repository, current_harvest)
+    except ValueError as error:
+        diagnostics.append(_verification_diag("HARVEST_REGISTRY_INVALID", str(error)))
+        expected_harvest = None
+    if declared_harvest != expected_harvest:
+        diagnostics.append(
+            _verification_diag(
+                "HARVEST_REGISTRY_MISMATCH",
+                "manifest harvest-registry declaration differs from current registry",
+            )
+        )
+
+    publication_bytes = canonical_source_bytes(Path(publication_path))
     if hashlib.sha256(publication_bytes).hexdigest() != manifest.get("inputs", {}).get("publication", {}).get("sha256"):
         diagnostics.append(_verification_diag("PUBLICATION_CONFIG_HASH_MISMATCH", "publication configuration changed"))
+
+    declared_external = manifest.get("inputs", {}).get("external_evidence", [])
+    try:
+        current_litho = (
+            load_litho_evidence(repository.root, litho_package)
+            if litho_package is not None
+            else None
+        )
+    except ValueError as error:
+        diagnostics.append(_verification_diag("EXTERNAL_EVIDENCE_INVALID", str(error)))
+        current_litho = None
+    expected_external = _external_evidence_declarations(current_litho)
+    if declared_external != expected_external:
+        diagnostics.append(
+            _verification_diag(
+                "EXTERNAL_EVIDENCE_MISMATCH",
+                "manifest external-evidence declarations differ from current input",
+            )
+        )
 
     manifest_files = manifest.get("files", [])
     if canonical_hash(manifest_files) != manifest.get("bundle_sha256"):
         diagnostics.append(_verification_diag("GENERATED_BUNDLE_HASH_MISMATCH", "manifest bundle digest does not match its file declarations"))
 
-    expected_payloads = _build_output_files(repository, config, documents)
+    expected_payloads = _build_output_files(repository, config, documents, current_litho)
     expected_declarations = _file_declarations(expected_payloads)
     if manifest_files != expected_declarations:
         diagnostics.append(_verification_diag("GENERATED_DECLARATION_MISMATCH", "manifest generated-file declarations differ from deterministic current output"))
@@ -177,11 +239,15 @@ def _generator_source_declarations(repository: GovernanceRepository) -> list[dic
     declarations = []
     for relative in (
         "src/kis_mcp_doc/governance.py",
+        "src/kis_mcp_doc/harvest.py",
+        "src/kis_mcp_doc/litho.py",
         "src/kis_mcp_doc/render.py",
         _PUBLICATION_SCHEMA,
         _MANIFEST_SCHEMA,
+        _HARVEST_SCHEMA,
+        _LITHO_SCHEMA,
     ):
-        payload = (repository.root / relative).read_bytes()
+        payload = canonical_source_bytes(repository.root / relative)
         declarations.append({"path": relative, "sha256": hashlib.sha256(payload).hexdigest()})
     return declarations
 
@@ -206,13 +272,30 @@ def _file_declarations(files: dict[str, bytes]) -> list[dict[str, Any]]:
     ]
 
 
-def _build_output_files(repository: GovernanceRepository, config: dict[str, Any], documents: dict[str, dict[str, Any]]) -> dict[str, bytes]:
-    ordered = sorted(documents.values(), key=lambda item: (item["content"]["section_order"], item["_mrd"]["id"]))
-    return {
-        config["output_file"]: _render_markdown(config, ordered).encode("utf-8"),
+def _build_output_files(
+    repository: GovernanceRepository,
+    config: dict[str, Any],
+    documents: dict[str, dict[str, Any]],
+    litho_evidence: dict[str, Any] | None,
+) -> dict[str, bytes]:
+    ordered = sorted(
+        documents.values(),
+        key=lambda item: (item["content"]["section_order"], item["_mrd"]["id"]),
+    )
+    root_page = _render_specification_root(config, ordered).encode("utf-8")
+    files: dict[str, bytes] = {
+        "000-index.md": _render_corpus_index(config, ordered, litho_evidence).encode("utf-8"),
+        "001-specification.md": root_page,
+        config["output_file"]: root_page,
         "data/mrd-index.json": _json_bytes(_build_index(repository, documents)),
         "data/dependency-map.json": _json_bytes(_build_dependency_map(documents)),
     }
+    for document in ordered:
+        files[_document_page_name(document)] = _render_document_page(config, document).encode("utf-8")
+    if litho_evidence is not None:
+        files["090-code-derived-analysis.md"] = _render_litho_page(config, litho_evidence).encode("utf-8")
+        files["data/litho-evidence.json"] = _json_bytes(_normalized_litho_evidence(litho_evidence))
+    return files
 
 
 def _build_manifest(
@@ -222,21 +305,30 @@ def _build_manifest(
     documents: dict[str, dict[str, Any]],
     files: dict[str, bytes],
     validation: dict[str, Any],
+    harvest_registry: dict[str, Any],
+    litho_evidence: dict[str, Any] | None,
 ) -> dict[str, Any]:
     inputs = _mrd_input_declarations(repository, documents)
     generator_sources = _generator_source_declarations(repository)
     file_declarations = _file_declarations(files)
     return {
-        "contract": {"name": "kis-governance-spec-build", "version": 1},
-        "specification": {"title": config["title"], "version": config["version"], "status": config["status"]},
+        "contract": {"name": "kis-governance-spec-build", "version": 2},
+        "specification": {
+            "title": config["title"],
+            "version": config["version"],
+            "status": config["status"],
+            "layout_profile": config["layout_profile"],
+        },
         "generator": {**config["generator"], "sources": generator_sources},
         "inputs": {
             "mrds": inputs,
             "source_set_sha256": canonical_hash(inputs),
             "source_files": _source_file_declarations(repository, documents),
+            "harvest_registry": _harvest_registry_declaration(repository, harvest_registry),
+            "external_evidence": _external_evidence_declarations(litho_evidence),
             "publication": {
                 "path": publication_path.relative_to(repository.root).as_posix(),
-                "sha256": hashlib.sha256(publication_path.read_bytes()).hexdigest(),
+                "sha256": hashlib.sha256(canonical_source_bytes(publication_path)).hexdigest(),
             },
         },
         "validation": validation,
@@ -259,7 +351,7 @@ def _source_file_declarations(
     )
     declarations = []
     for relative in paths:
-        payload = (repository.root / Path(*relative.split("/"))).read_bytes()
+        payload = canonical_source_bytes(repository.root / Path(*relative.split("/")))
         declarations.append(
             {
                 "path": relative,
@@ -316,7 +408,7 @@ def _document_relative_path(repository: GovernanceRepository, doc_id: str) -> st
 
 def _document_bytes(repository: GovernanceRepository, doc_id: str, document: dict[str, Any]) -> bytes:
     relative = _document_relative_path(repository, doc_id)
-    return (repository.root / relative).read_bytes()
+    return canonical_source_bytes(repository.root / relative)
 
 
 def _json_bytes(value: object) -> bytes:
@@ -331,69 +423,237 @@ def _verification_result(diagnostics: list[dict[str, str]]) -> dict[str, Any]:
     return {"status": "invalid" if diagnostics else "valid", "diagnostics": diagnostics}
 
 
-def _render_markdown(config: dict[str, Any], documents: list[dict[str, Any]]) -> str:
+def _harvest_registry_declaration(
+    repository: GovernanceRepository, registry: dict[str, Any]
+) -> dict[str, Any]:
+    path = repository.root / _HARVEST_REGISTRY
+    return {
+        "path": _HARVEST_REGISTRY,
+        "version": registry["registry_version"],
+        "sha256": hashlib.sha256(canonical_source_bytes(path)).hexdigest(),
+    }
+
+
+def _external_evidence_declarations(evidence: dict[str, Any] | None) -> list[dict[str, Any]]:
+    if evidence is None:
+        return []
+    return [{
+        "provider": evidence["provider"]["name"],
+        "version": evidence["provider"]["version"],
+        "repository": evidence["target"]["repository"],
+        "revision": evidence["target"]["revision"],
+        "evidence_class": evidence["evidence_class"],
+        "manifest_sha256": evidence["manifest_sha256"],
+        "files": [
+            {key: page[key] for key in ("path", "sha256", "bytes")}
+            for page in evidence["pages"]
+        ],
+        "canonical_sources": evidence["canonical_sources"],
+    }]
+
+
+def _normalized_litho_evidence(evidence: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "contract": evidence["contract"],
+        "provider": evidence["provider"],
+        "target": evidence["target"],
+        "evidence_class": evidence["evidence_class"],
+        "manifest_sha256": evidence["manifest_sha256"],
+        "pages": [
+            {key: page[key] for key in ("path", "title", "sha256", "bytes")}
+            for page in evidence["pages"]
+        ],
+        "assertions": evidence["assertions"],
+        "diagnostics": evidence["diagnostics"],
+        "canonical_sources": evidence["canonical_sources"],
+    }
+
+
+def _document_page_name(document: dict[str, Any]) -> str:
+    content = document["content"]
+    page_number = int(content["section_order"]) + 1
+    return f"{page_number:03d}-{_heading_anchor(content['heading'])}.md"
+
+
+def _render_corpus_index(
+    config: dict[str, Any],
+    documents: list[dict[str, Any]],
+    litho_evidence: dict[str, Any] | None,
+) -> str:
+    lines = [
+        "<!-- GENERATED — DO NOT EDIT -->",
+        f"# {config['title']} — documentation index",
+        "",
+        "This generated collection follows the `mcp-spec-2025` publication profile. Source MRDs remain authoritative; these pages are review projections.",
+        "",
+        "## Specification pages",
+        "",
+        "- [Specification](001-specification.md)",
+    ]
+    for document in documents:
+        lines.append(f"- [{document['content']['heading']}]({_document_page_name(document)})")
+    if litho_evidence is not None:
+        lines.append("- [Code-derived analysis](090-code-derived-analysis.md) — inferred evidence, not authority")
+    lines.extend([
+        "",
+        "## Machine-readable traceability",
+        "",
+        "- [MRD index](data/mrd-index.json)",
+        "- [Dependency map](data/dependency-map.json)",
+    ])
+    if litho_evidence is not None:
+        lines.append("- [Litho evidence index](data/litho-evidence.json)")
+    lines.extend(["- [Build manifest](manifest.json)", ""])
+    return "\n".join(lines)
+
+
+def _render_specification_root(config: dict[str, Any], documents: list[dict[str, Any]]) -> str:
     lines = [
         "<!-- GENERATED — DO NOT EDIT -->",
         f"# {config['title']}",
         "",
         '<div id="enable-section-numbers" />',
         "",
-        f"> **Status:** {config['status']}",
-        f"> **Version:** {config['version']}",
-        "> **Authority:** Generated human-readable projection; the source MRDs are authoritative.",
-        f"> **Generator:** {config['generator']['name']} {config['generator']['version']} / {config['generator']['algorithm']}",
-        "",
         config["subtitle"],
+        "",
+        "This specification defines the generated human-review contract for KIS governance. The validated MRDs and canonical repository sources are authoritative; this corpus is a deterministic projection for review and navigation.",
+        "",
+        'The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals.',
         "",
         "## Overview",
         "",
-        f"This specification is a deterministic human-readable projection of {len(documents)} validated governance MRDs. It prescribes how `kis-op` selects and applies the KIS MRD governance model while preserving repository authority, provenance, lifecycle, and enforcement boundaries.",
+        f"The governance model is defined by {len(documents)} validated prescriptive MRDs. It uses the 47 MRD types as a minimum-sufficient selection vocabulary and keeps generated documentation downstream of canonical authority.",
         "",
-        "The 47 MRD types form a governed selection vocabulary. A repository or change uses only the minimum sufficient applicable types; the catalog is not a requirement to instantiate all 47 types.",
+        "Substantive changes are made in the owning MRD, contract, schema, code, configuration, or test and then regenerated. Missing or inferred facts are never promoted into normative authority by the renderer.",
         "",
-        "Substantive changes belong in the owning MRD or canonical repository source and are then regenerated into this review surface. The generated document is a downstream review projection, not an independent write-back authority.",
+        "## Key details",
         "",
-        "The capitalized terms **MUST**, **MUST NOT**, **REQUIRED**, **SHOULD**, **SHOULD NOT**, **MAY**, and **OPTIONAL** express normative requirements when they appear in all capitals.",
+        "- 47 governed MRD types with explicit applicability rules",
+        "- one canonical owner for each governed fact",
+        "- typed dependencies, provenance, lifecycle, and enforcement",
+        "- deterministic generated review surfaces with stale/tamper detection",
         "",
-        "## Specification Contents",
+        "## Detailed specification",
         "",
     ]
     for document in documents:
-        content = document["content"]
-        heading = f"{content['section_order']}. {content['heading']}"
-        lines.append(f"- [{heading}](#{_heading_anchor(heading)})")
-    lines.extend(["- [Traceability](#traceability)", ""])
+        lines.append(f"- [{document['content']['heading']}]({_document_page_name(document)})")
+    lines.extend([
+        "",
+        "## Traceability",
+        "",
+        "See the [documentation index](000-index.md), [MRD index](data/mrd-index.json), [dependency map](data/dependency-map.json), and [build manifest](manifest.json) for exact source identities, hashes, and generated-file declarations.",
+        "",
+    ])
+    return "\n".join(lines)
 
-    for document in documents:
-        content = document["content"]
-        lines.extend([f"## {content['section_order']}. {content['heading']}", "", content["purpose"], ""])
-        _render_rules(lines, content.get("rules", []))
-        concern = content["concern"]
-        if concern == "classification":
-            _render_classification(lines, content)
-        elif concern == "applicability":
-            _render_applicability(lines, content)
-        elif concern == "ownership":
-            _render_ownership(lines, content)
-        elif concern == "layering":
-            _render_layering(lines, content)
-        elif concern == "dependencies":
-            _render_dependencies(lines, content)
-        elif concern == "provenance":
-            _render_provenance(lines, content)
-        elif concern == "lifecycle":
-            _render_lifecycle(lines, content)
-        elif concern == "operator_behavior":
-            _render_operator_behavior(lines, content)
-        elif concern == "validation":
-            _render_validation(lines, content)
 
-    lines.extend(["## Traceability", "", "Each normative section above is projected from exactly one prescriptive MRD:", ""])
-    lines.extend(["| Section | MRD | Version | Provenance sources |", "|---|---|---:|---|"])
-    for document in documents:
-        sources = ", ".join(source["source_id"] for source in document["_mrd"]["provenance"]["sources"])
-        lines.append(f"| {document['content']['section_order']}. {document['content']['heading']} | `{document['_mrd']['id']}` | {document['_mrd']['version']} | {sources} |")
-    lines.extend(["", "Build hashes and the derived META-IDX / META-DEP projections are recorded in the adjacent `manifest.json` and `data/` files.", ""])
+def _render_document_page(config: dict[str, Any], document: dict[str, Any]) -> str:
+    content = document["content"]
+    lines = [
+        "<!-- GENERATED — DO NOT EDIT -->",
+        f"# {content['heading']}",
+        "",
+        '<div id="enable-section-numbers" />',
+        "",
+        "[Specification](001-specification.md) | [Documentation index](000-index.md)",
+        "",
+        "## Overview",
+        "",
+        content["purpose"],
+        "",
+    ]
+    body: list[str] = []
+    _render_rules(body, content.get("rules", []))
+    concern = content["concern"]
+    if concern == "classification":
+        _render_classification(body, content)
+    elif concern == "applicability":
+        _render_applicability(body, content)
+    elif concern == "ownership":
+        _render_ownership(body, content)
+    elif concern == "layering":
+        _render_layering(body, content)
+    elif concern == "dependencies":
+        _render_dependencies(body, content)
+    elif concern == "provenance":
+        _render_provenance(body, content)
+    elif concern == "lifecycle":
+        _render_lifecycle(body, content)
+    elif concern == "operator_behavior":
+        _render_operator_behavior(body, content)
+    elif concern == "validation":
+        _render_validation(body, content)
+    lines.extend(_promote_headings(body))
+    lines.extend([
+        "## Source and authority",
+        "",
+        f"This page projects `{document['_mrd']['id']}` version `{document['_mrd']['version']}`. The MRD remains authoritative; this page has no write-back authority.",
+        "",
+    ])
+    return "\n".join(lines)
+
+
+def _promote_headings(lines: list[str]) -> list[str]:
+    promoted = []
+    for line in lines:
+        if line.startswith("#### "):
+            promoted.append("### " + line[5:])
+        elif line.startswith("### "):
+            promoted.append("## " + line[4:])
+        else:
+            promoted.append(line)
+    return promoted
+
+
+def _render_litho_page(config: dict[str, Any], evidence: dict[str, Any]) -> str:
+    provider = evidence["provider"]
+    target = evidence["target"]
+    lines = [
+        "<!-- GENERATED — DO NOT EDIT -->",
+        "# Code-derived analysis",
+        "",
+        '<div id="enable-section-numbers" />',
+        "",
+        "[Specification](001-specification.md) | [Documentation index](000-index.md)",
+        "",
+        "## Evidence status",
+        "",
+        "> **Inferred evidence.** This material was produced by Litho code analysis. It MUST NOT be treated as canonical authority and cannot override MRDs, contracts, schemas, code-owned facts, configuration, or tests.",
+        "",
+        f"- **Provider:** `{provider['name']}` `{provider['version']}`",
+        f"- **Target:** `{target['repository']}` at `{target['revision']}`",
+        f"- **Evidence class:** `{evidence['evidence_class']}`",
+        "",
+    ]
+    for page in evidence["pages"]:
+        lines.extend([f"## {page['title']}", "", f"Source artifact: `{page['path']}` (`{page['sha256']}`)", ""])
+        content_lines = page["content"].splitlines()
+        if content_lines and content_lines[0].startswith("# "):
+            content_lines = content_lines[1:]
+        lines.extend(content_lines)
+        lines.append("")
+    lines.extend(["## Canonical comparison", ""])
+    if not evidence["assertions"]:
+        lines.extend(["No structured assertions were supplied for canonical comparison.", ""])
+    elif not evidence["diagnostics"]:
+        lines.extend(["All supplied structured assertions matched their bound canonical JSON facts.", ""])
+    else:
+        lines.extend([
+            "The following inferred assertions contradict their bound canonical facts. Canonical values remain authoritative:",
+            "",
+        ])
+        for diagnostic in evidence["diagnostics"]:
+            lines.extend([
+                f"- `{diagnostic['code']}` — assertion `{diagnostic['assertion_id']}` at `{diagnostic['canonical_source']}#{diagnostic['json_pointer']}` observed `{json.dumps(diagnostic['observed_value'], ensure_ascii=False, sort_keys=True)}` while the canonical value is `{json.dumps(diagnostic['canonical_value'], ensure_ascii=False, sort_keys=True)}`.",
+            ])
+        lines.append("")
+    lines.extend([
+        "## Traceability",
+        "",
+        "Exact imported file hashes and the Litho package manifest binding are recorded in `data/litho-evidence.json` and `manifest.json`.",
+        "",
+    ])
     return "\n".join(lines)
 
 
@@ -545,7 +805,8 @@ def _render_validation(lines: list[str], content: dict[str, Any]) -> None:
         lines.append(f"| `{mode['mode']}` | {mode['meaning']} | {'Yes' if mode['blocking'] else 'No'} |")
     lines.extend(["", "### Validation dimensions", ""])
     for dimension in content["dimensions"]:
-        lines.append(f"#### {dimension['name'].title()}")
+        heading = dimension["name"].replace("_", " ").title()
+        lines.append(f"#### {heading}")
         lines.append("")
         for check in dimension["checks"]:
             lines.append(f"- {check}")

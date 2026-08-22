@@ -20,8 +20,10 @@ def main(argv: list[str] | None = None) -> int:
     build = sub.add_parser("build")
     build.add_argument("--output", type=Path)
     build.add_argument("--replace", action="store_true")
+    build.add_argument("--litho-package", type=Path)
     check = sub.add_parser("check-generated")
     check.add_argument("--output", type=Path)
+    check.add_argument("--litho-package", type=Path)
     args = parser.parse_args(argv)
 
     root = args.root.resolve()
@@ -39,12 +41,15 @@ def main(argv: list[str] | None = None) -> int:
             publication,
             output,
             replace=args.replace,
+            litho_package=args.litho_package,
         )
         print(json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True))
         return 0
 
     if args.command == "check-generated":
-        result = verify_governance_spec(repo, publication, output)
+        result = verify_governance_spec(
+            repo, publication, output, litho_package=args.litho_package
+        )
         print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
         return 0 if result["status"] == "valid" else 1
 

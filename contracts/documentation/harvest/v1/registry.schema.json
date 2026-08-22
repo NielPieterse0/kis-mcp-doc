@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kis.local/contracts/documentation/harvest/v1/registry.schema.json",
+  "title": "KIS Documentation Harvest Source Registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract", "registry_version", "sources"],
+  "properties": {
+    "contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version"],
+      "properties": {
+        "name": {"const": "harvest-source-registry"},
+        "version": {"const": 1}
+      }
+    },
+    "registry_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 7,
+      "items": {"$ref": "#/$defs/source"}
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id", "source_role", "identity", "revision_strategy",
+        "pinned_revision", "content_sha256", "trust_classification",
+        "acquisition_method", "applicable_contracts", "status"
+      ],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+        "source_role": {"type": "string", "minLength": 1},
+        "identity": {"type": "string", "minLength": 1},
+        "revision_strategy": {"type": "string", "minLength": 1},
+        "pinned_revision": {
+          "oneOf": [
+            {"type": "null"},
+            {"type": "string", "minLength": 1}
+          ]
+        },
+        "content_sha256": {
+          "oneOf": [
+            {"type": "null"},
+            {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+          ]
+        },
+        "trust_classification": {"type": "string", "minLength": 1},
+        "acquisition_method": {"type": "string", "minLength": 1},
+        "applicable_contracts": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true
+        },
+        "status": {
+          "enum": ["active_reference", "candidate", "unresolved"]
+        }
+      }
+    }
+  }
+}

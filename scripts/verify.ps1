@@ -20,12 +20,13 @@ if ($env:KIS_EXACT_SHA) {
     }
 }
 
-$AllowedMarkdown = @(
-    'AGENTS.md',
-    'generated/governance-spec/specification.md'
-)
+$AllowedGeneratedMarkdownPrefix = 'generated/governance-spec/'
 $TrackedMarkdown = @(& git -C $RepositoryRoot ls-files '*.md')
-$UnexpectedMarkdown = @($TrackedMarkdown | Where-Object { $_ -notin $AllowedMarkdown })
+$UnexpectedMarkdown = @(
+    $TrackedMarkdown | Where-Object {
+        $_ -ne 'AGENTS.md' -and -not $_.StartsWith($AllowedGeneratedMarkdownPrefix)
+    }
+)
 if ($UnexpectedMarkdown.Count -gt 0) {
     throw "HAND_AUTHORED_MARKDOWN_FORBIDDEN: $($UnexpectedMarkdown -join ', ')"
 }
