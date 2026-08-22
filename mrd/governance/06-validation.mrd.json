@@ -2,14 +2,14 @@
   "_mrd": {
     "schema_version": 1,
     "id": "KIS-KNOW-EVL-TST-001",
-    "title": "MRD Machine Validation",
+    "title": "MRD Validation and Enforcement",
     "module": "governance",
     "class": "EVL",
     "type": "TST",
     "layer": "L4",
     "record_mode": "prescriptive",
     "status": "active",
-    "version": "1.1.0",
+    "version": "2.0.0",
     "dependencies": [
       {
         "mrd_id": "KIS-KNOW-SEM-REG-001",
@@ -42,6 +42,18 @@
       {
         "source": "repo:contracts/governance/v1/governance-mrd.schema.json",
         "relationship": "validated_by"
+      },
+      {
+        "mrd_id": "KIS-KNOW-DEC-TAB-001",
+        "relationship": "depends_on"
+      },
+      {
+        "mrd_id": "KIS-KNOW-CON-POL-002",
+        "relationship": "depends_on"
+      },
+      {
+        "mrd_id": "KIS-KNOW-WRK-WFL-001",
+        "relationship": "depends_on"
       }
     ],
     "provenance": {
@@ -63,9 +75,9 @@
   },
   "content": {
     "concern": "validation",
-    "section_order": 6,
-    "heading": "Machine Validation",
-    "purpose": "Fail closed when structural, dependency, provenance, or lifecycle invariants do not hold.",
+    "section_order": 9,
+    "heading": "Validation and Enforcement",
+    "purpose": "Define how structural and semantic governance requirements are checked, which enforcement mode applies, and which blocking failures must fail closed.",
     "dimensions": [
       {
         "name": "structural",
@@ -75,6 +87,23 @@
           "schema-compatible envelope and payload",
           "exactly one owner for each governance concern",
           "public composed governance MRD profile"
+        ]
+      },
+      {
+        "name": "applicability",
+        "checks": [
+          "all 47 catalog types have one selection trigger",
+          "applicability catalog matches classification catalog exactly",
+          "minimum-sufficient selection is prescribed",
+          "extension path remains versioned"
+        ]
+      },
+      {
+        "name": "ownership",
+        "checks": [
+          "one canonical owner is prescribed for each governed fact",
+          "dependency relationship labels use the governed relationship vocabulary",
+          "generated projections remain non-authoritative"
         ]
       },
       {
@@ -107,6 +136,14 @@
           "META meta posture",
           "supersession targets resolve"
         ]
+      },
+      {
+        "name": "operator_behavior",
+        "checks": [
+          "kis-op phases are complete and ordered",
+          "blocking stop conditions are explicit",
+          "generated review surface is downstream of validated authority"
+        ]
       }
     ],
     "result_contract": {
@@ -116,10 +153,13 @@
       ],
       "checks": [
         "classification",
+        "applicability",
+        "ownership",
         "layering",
         "dependencies",
         "provenance",
         "lifecycle",
+        "operator_behavior",
         "schema"
       ],
       "diagnostics_required_on_failure": true
@@ -151,28 +191,64 @@
       "MRD_LAYER_CATALOG_MISMATCH",
       "MRD_RECORD_MODE_CATALOG_MISMATCH",
       "MRD_META_FACT_QUALITY_INVALID",
-      "MRD_VALIDATION_CONTRACT_MISMATCH"
+      "MRD_VALIDATION_CONTRACT_MISMATCH",
+      "MRD_APPLICABILITY_CATALOG_MISMATCH",
+      "MRD_RELATIONSHIP_UNKNOWN",
+      "MRD_OPERATOR_BEHAVIOR_INVALID",
+      "MRD_ENFORCEMENT_BINDING_INVALID"
     ],
     "rules": [
       {
         "rule_id": "KIS-MRD-VAL-001",
-        "statement": "Every MRD MUST pass structural, dependency, provenance, and lifecycle validation before it is accepted as valid."
+        "statement": "Every MRD MUST pass structural, dependency, provenance, and lifecycle validation before it is accepted as valid.",
+        "enforcement": "validator"
       },
       {
         "rule_id": "KIS-MRD-VAL-002",
-        "statement": "Validation failures MUST emit stable reason codes and machine-readable diagnostics."
+        "statement": "Validation failures MUST emit stable reason codes and machine-readable diagnostics.",
+        "enforcement": "validator"
       },
       {
         "rule_id": "KIS-MRD-VAL-003",
-        "statement": "A validation result MUST report classification, layering, dependencies, provenance, lifecycle, and schema check status."
+        "statement": "A validation result MUST report classification, layering, dependencies, provenance, lifecycle, and schema check status.",
+        "enforcement": "validator"
       },
       {
         "rule_id": "KIS-MRD-VAL-004",
-        "statement": "Governance MRDs MUST validate through the public composed governance MRD profile, which binds the reusable core envelope to governance content."
+        "statement": "Governance MRDs MUST validate through the public composed governance MRD profile, which binds the reusable core envelope to governance content.",
+        "enforcement": "schema"
       },
       {
         "rule_id": "KIS-MRD-VAL-005",
-        "statement": "Any structural schema failure in the governance MRD set MUST short-circuit semantic validation for the entire set, because cross-record semantics are valid only over a structurally valid governance set."
+        "statement": "Any structural schema failure in the governance MRD set MUST short-circuit semantic validation for the entire set, because cross-record semantics are valid only over a structurally valid governance set.",
+        "enforcement": "validator"
+      }
+    ],
+    "enforcement_modes": [
+      {
+        "mode": "schema",
+        "meaning": "JSON Schema rejects structurally invalid authority before semantic checks.",
+        "blocking": true
+      },
+      {
+        "mode": "validator",
+        "meaning": "Deterministic semantic validation emits stable machine-readable reason codes.",
+        "blocking": true
+      },
+      {
+        "mode": "workflow",
+        "meaning": "KIS/kis-op governed workflow prevents prohibited state transitions or unadmitted mutation.",
+        "blocking": true
+      },
+      {
+        "mode": "generator",
+        "meaning": "Deterministic generation and stale-output verification enforce one-way source-to-view behavior.",
+        "blocking": true
+      },
+      {
+        "mode": "review",
+        "meaning": "Human or agent review is required where semantic adequacy cannot be proven deterministically.",
+        "blocking": true
       }
     ]
   }

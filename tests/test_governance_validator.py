@@ -24,10 +24,13 @@ def test_stabilized_governance_mrds_validate() -> None:
     assert result["status"] == "valid", result["diagnostics"]
     assert set(result["checks"]) == {
         "classification",
+        "applicability",
+        "ownership",
         "layering",
         "dependencies",
         "provenance",
         "lifecycle",
+        "operator_behavior",
         "schema",
     }
     assert all(value == "pass" for value in result["checks"].values())
@@ -93,7 +96,10 @@ def test_repo_dependency_cannot_escape_repository_root() -> None:
     documents = repo.load()
     mutated = copy.deepcopy(documents)
     validation = mutated["KIS-KNOW-EVL-TST-001"]
-    validation["_mrd"]["dependencies"][-1]["source"] = "repo:../../../AGENTS.md"
+    repo_dependency = next(
+        dependency for dependency in validation["_mrd"]["dependencies"] if "source" in dependency
+    )
+    repo_dependency["source"] = "repo:../../../AGENTS.md"
 
     result = repo.validate_documents(mutated)
 
@@ -274,3 +280,62 @@ def test_structural_failure_short_circuits_semantic_validation() -> None:
 
     assert result["status"] == "invalid"
     assert {item["code"] for item in result["diagnostics"]} == {"MRD_SCHEMA_INVALID"}
+
+
+def test_applicability_covers_catalog_exactly_once() -> None:
+    documents = repository().load()
+    catalog = documents["KIS-KNOW-SEM-REG-001"]["content"]["type_catalog"]
+    applicability = documents["KIS-KNOW-DEC-TAB-001"]["content"]["type_applicability"]
+
+    expected = {(item["class"], item["type"], item["code"]) for item in catalog}
+    actual = {(item["class"], item["type"], item["code"]) for item in applicability}
+    assert len(applicability) == 47
+    assert len(actual) == 47
+    assert actual == expected
+
+
+def test_applicability_catalog_drift_is_rejected() -> None:
+    repo = repository()
+    mutated = copy.deepcopy(repo.load())
+    applicability = mutated["KIS-KNOW-DEC-TAB-001"]["content"]["type_applicability"]
+    applicability[-1] = copy.deepcopy(applicability[-2])
+
+    result = repo.validate_documents(mutated)
+    assert "MRD_APPLICABILITY_CATALOG_MISMATCH" in {
+        item["code"] for item in result["diagnostics"]
+    }
+
+
+def test_unknown_dependency_relationship_is_rejected() -> None:
+    repo = repository()
+    mutated = copy.deepcopy(repo.load())
+    mutated["KIS-KNOW-WRK-WFL-001"]["_mrd"]["dependencies"][0]["relationship"] = "invented_relation"
+
+    result = repo.validate_documents(mutated)
+    assert "MRD_RELATIONSHIP_UNKNOWN" in {
+        item["code"] for item in result["diagnostics"]
+    }
+
+
+def test_kis_op_phase_order_drift_is_rejected() -> None:
+    repo = repository()
+    mutated = copy.deepcopy(repo.load())
+    phases = mutated["KIS-KNOW-WRK-WFL-001"]["content"]["phases"]
+    phases[0]["name"], phases[1]["name"] = phases[1]["name"], phases[0]["name"]
+
+    result = repo.validate_documents(mutated)
+    assert "MRD_OPERATOR_BEHAVIOR_INVALID" in {
+        item["code"] for item in result["diagnostics"]
+    }
+
+
+def test_enforcement_mode_contract_drift_is_rejected() -> None:
+    repo = repository()
+    mutated = copy.deepcopy(repo.load())
+    modes = mutated["KIS-KNOW-EVL-TST-001"]["content"]["enforcement_modes"]
+    modes[-1]["mode"] = modes[-2]["mode"]
+
+    result = repo.validate_documents(mutated)
+    assert "MRD_ENFORCEMENT_BINDING_INVALID" in {
+        item["code"] for item in result["diagnostics"]
+    }

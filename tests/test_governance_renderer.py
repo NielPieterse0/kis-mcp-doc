@@ -34,7 +34,7 @@ def test_render_is_byte_deterministic(tmp_path: Path) -> None:
     assert (first / "manifest.json").read_bytes() == (second / "manifest.json").read_bytes()
 
 
-def test_rendered_spec_contains_six_normative_sections_and_catalog(tmp_path: Path) -> None:
+def test_rendered_spec_contains_nine_normative_sections_and_catalog(tmp_path: Path) -> None:
     repo = GovernanceRepository(ROOT, MRD_ROOT)
     output = tmp_path / "build"
     build_governance_spec(repo, PUBLICATION, output)
@@ -42,13 +42,22 @@ def test_rendered_spec_contains_six_normative_sections_and_catalog(tmp_path: Pat
 
     for heading in (
         "## 1. Classification",
-        "## 2. Layering",
-        "## 3. Dependency Rules",
-        "## 4. Provenance",
-        "## 5. Lifecycle",
-        "## 6. Machine Validation",
+        "## 2. Applicability and Selection",
+        "## 3. Authority, Ownership, and Relationships",
+        "## 4. Layering",
+        "## 5. Dependency Rules",
+        "## 6. Provenance",
+        "## 7. Lifecycle",
+        "## 8. kis-op Governance Behavior",
+        "## 9. Validation and Enforcement",
     ):
         assert heading in markdown
+    assert "# kis-op Governance Specification" in markdown
+    assert "## Overview" in markdown
+    assert "## Specification Contents" in markdown
+    assert "### Type applicability catalog" in markdown
+    assert "### Enforcement modes" in markdown
+    assert "| Rule | Requirement | Enforcement |" in markdown
     assert "SEM-DOM" in markdown
     assert "47" in markdown
     assert "GENERATED — DO NOT EDIT" in markdown

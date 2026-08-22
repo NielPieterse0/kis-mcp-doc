@@ -1,45 +1,45 @@
 {
-  "bundle_sha256": "71230deef4aa08c34055999fe8c4c7f4e77f6c4dab00876904d6794bca48a047",
+  "bundle_sha256": "f60c02b8ab850bd8caccc589d3ecfeb32426b6f330f72150d3a2a9e68cbc07ee",
   "contract": {
     "name": "kis-governance-spec-build",
     "version": 1
   },
   "files": [
     {
-      "bytes": 2162,
+      "bytes": 3963,
       "path": "data/dependency-map.json",
-      "sha256": "15fd5d17b452e0c218b6c1a77b5efc7f0e4595d29e0ccaf423b9e565bd7f0e01"
+      "sha256": "a77894b53ad748e33cfeebf03b8ad458acc214dd3ba596ea03e53171fc982531"
     },
     {
-      "bytes": 2161,
+      "bytes": 3188,
       "path": "data/mrd-index.json",
-      "sha256": "3bb51d17b4b8dfc85665a03710b33f6e2a7e8130f243100e5b7f4628074557db"
+      "sha256": "591543630492d656a7f5b8906d060e4f19dd055ba2149044d4657b0af9731534"
     },
     {
-      "bytes": 14441,
+      "bytes": 32870,
       "path": "specification.md",
-      "sha256": "a7a00f29b289b9bf8b7a1aaf04af0b22172a6dc565d3eb7223c1509e9c9519fe"
+      "sha256": "b4c3e9f360f99b5ac17bbc7e221f459a54ca7f68b7c07a0377f4434094173672"
     }
   ],
   "generator": {
-    "algorithm": "governance-spec-v1",
+    "algorithm": "governance-spec-v2",
     "name": "kis-mcp-doc",
     "sources": [
       {
         "path": "src/kis_mcp_doc/governance.py",
-        "sha256": "fe7e02514e2463ef7073bdf045c3c40dc332d2ce020934f76a7d9745c7023fa7"
+        "sha256": "d8cd5c15340b8cbe70ef77ee0479f19d12b559bac70cd5676bcad5608c6b1465"
       },
       {
         "path": "src/kis_mcp_doc/render.py",
-        "sha256": "0b92ff61e63297f7e6047ff9305c5533ec95c38212e93dbd4ff1a1c6bf4ae752"
+        "sha256": "9a92c9e671f7a64974a379bd474a0ea2c563cb66876e9df4ee95025d174f471d"
       },
       {
         "path": "contracts/publication/v1/governance-spec.schema.json",
-        "sha256": "3e30ee9141d616c43ed479ded503dc3eb1360a01224b05370cd5fc87fa704378"
+        "sha256": "23252e0369b398c6c7660d5c282479d29b81139795d9504bdba3699992f9827e"
       },
       {
         "path": "contracts/publication/v1/manifest.schema.json",
-        "sha256": "fb4f11b5133b5bb9c2c6a37a36c2006b5407e20ee55ed58546353531f8fbfd02"
+        "sha256": "3819b4ac96f2c29bd04c3fa34c7c8176d1c0f98d7f1b8d7717e60c5df4defca0"
       }
     ],
     "version": "0.1.0"
@@ -49,49 +49,67 @@
       {
         "id": "KIS-KNOW-CON-CTR-001",
         "path": "mrd/governance/03-dependencies.mrd.json",
-        "sha256": "c4cfa82f1b34a75c0efc5d3807b26f1e7d5b2afbaaed9eed7827b78e264266ea",
+        "sha256": "dd0176b040a40e55fdf68d35cab88908dd4bed20151a1cee0ea3eb3a329f7a8c",
         "version": "1.0.0"
       },
       {
         "id": "KIS-KNOW-CON-POL-001",
         "path": "mrd/governance/04-provenance.mrd.json",
-        "sha256": "299fdb3abc33da0b962a37c4e50bc6bb9d284773145e2af03d9cfbac1f6c6b38",
+        "sha256": "0ef650015753adb96d7fdc850d5dd2d0c55dba54fedebb5f6b6d34d0edbe2093",
+        "version": "1.0.0"
+      },
+      {
+        "id": "KIS-KNOW-CON-POL-002",
+        "path": "mrd/governance/08-ownership.mrd.json",
+        "sha256": "59344ac7e280bf7ea51307a03972a7b93b4d4cd64e3d0378fe4f6ba1fe32de76",
+        "version": "1.0.0"
+      },
+      {
+        "id": "KIS-KNOW-DEC-TAB-001",
+        "path": "mrd/governance/07-applicability.mrd.json",
+        "sha256": "921432f1e483dbb1cee5860d5570cf75f8a1faa2ce097e8c10008e51e135645f",
         "version": "1.0.0"
       },
       {
         "id": "KIS-KNOW-EVL-TST-001",
         "path": "mrd/governance/06-validation.mrd.json",
-        "sha256": "29a3970c4bf6f4888ef0769e7a9140f491ee9425ca43f54876097dd2d880d049",
-        "version": "1.1.0"
+        "sha256": "7760bc372bd223d31a9019f2133f99e81aa73bc50101383e18ef6ce1057bf3e4",
+        "version": "2.0.0"
       },
       {
         "id": "KIS-KNOW-SEM-ENUM-001",
         "path": "mrd/governance/02-layering.mrd.json",
-        "sha256": "9c78aa58d96804081f852269fcb06cb648f6dd3fe0d5dbfe660cd038110d1cdb",
+        "sha256": "866fa74d0c5b4101a48924e0f244a77ce1c7e595dc9e1210fe364036bfb2036e",
         "version": "1.0.0"
       },
       {
         "id": "KIS-KNOW-SEM-REG-001",
         "path": "mrd/governance/01-classification.mrd.json",
-        "sha256": "9ca9460ebde8bd137753e22e40a8e35e474c6a64bf20db0e5bff47ded846742c",
+        "sha256": "848951c422a256b44f1b85a82c4ab39d3d05c4c877b77e2608bc5bee373587ec",
         "version": "1.0.0"
       },
       {
         "id": "KIS-KNOW-WRK-STM-001",
         "path": "mrd/governance/05-lifecycle.mrd.json",
-        "sha256": "faf8d5f76abd330933fa4ccd2adecd96f9ccc3d9367b5f4487de9e1804352ea1",
+        "sha256": "6f3a17f123a882d3c112f1de2f03d6f3e3e13b7dfed7112684d0142a11c9ae7e",
+        "version": "1.0.0"
+      },
+      {
+        "id": "KIS-KNOW-WRK-WFL-001",
+        "path": "mrd/governance/09-kis-op-behavior.mrd.json",
+        "sha256": "5e9ba131e1c5f37f7e2e934ab0f2b3e8e03a61617cda5ef054ec7c81015f564d",
         "version": "1.0.0"
       }
     ],
     "publication": {
       "path": "publication/governance-spec.json",
-      "sha256": "9e27d994a7221169531b4ca230bf6934f6134dd9985c5b62d7b13cee0917b562"
+      "sha256": "f661a29e2525a3f331c38da6eb57c81e0c087435ff090b4556312abeaa0f6658"
     },
     "source_files": [
       {
-        "bytes": 8665,
+        "bytes": 22284,
         "path": "contracts/governance/v1/content.schema.json",
-        "sha256": "7d3b50812c531fa11395c88a76d73f8dcd099084055ddab47aed1d9aeb114e9d"
+        "sha256": "45902a2eeffa6c33c5de2445d3f5c774907b2af6fbd5cacf14daaa8d646548d8"
       },
       {
         "bytes": 685,
@@ -104,19 +122,22 @@
         "sha256": "fb9f3210b022d8def12a92bfccc1cb45e5ccf1146fa9d59168baf3f630ded153"
       }
     ],
-    "source_set_sha256": "74959f5e02aed180bf2fee792111ec2e8efbe550174eecd25634c19eb12224d1"
+    "source_set_sha256": "c169f1ed844a2a7da0029656f1371a2e8e787cf48d369bfa304380c4ed990fe7"
   },
   "specification": {
-    "status": "stabilized",
-    "title": "KIS MRD Governance Specification",
-    "version": "1.1.0"
+    "status": "draft",
+    "title": "kis-op Governance Specification",
+    "version": "2.0.0"
   },
   "validation": {
     "checks": {
+      "applicability": "pass",
       "classification": "pass",
       "dependencies": "pass",
       "layering": "pass",
       "lifecycle": "pass",
+      "operator_behavior": "pass",
+      "ownership": "pass",
       "provenance": "pass",
       "schema": "pass"
     },

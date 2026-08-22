@@ -336,6 +336,8 @@ def _render_markdown(config: dict[str, Any], documents: list[dict[str, Any]]) ->
         "<!-- GENERATED — DO NOT EDIT -->",
         f"# {config['title']}",
         "",
+        '<div id="enable-section-numbers" />',
+        "",
         f"> **Status:** {config['status']}",
         f"> **Version:** {config['version']}",
         "> **Authority:** Generated human-readable projection; the source MRDs are authoritative.",
@@ -343,11 +345,25 @@ def _render_markdown(config: dict[str, Any], documents: list[dict[str, Any]]) ->
         "",
         config["subtitle"],
         "",
-        "This document is a deterministic human-readable projection of the six validated governance MRDs listed in Traceability.",
+        "## Overview",
         "",
-        "The capitalized terms **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, **MAY**, and **REQUIRED** express normative requirements as authored in the source MRDs.",
+        f"This specification is a deterministic human-readable projection of {len(documents)} validated governance MRDs. It prescribes how `kis-op` selects and applies the KIS MRD governance model while preserving repository authority, provenance, lifecycle, and enforcement boundaries.",
+        "",
+        "The 47 MRD types form a governed selection vocabulary. A repository or change uses only the minimum sufficient applicable types; the catalog is not a requirement to instantiate all 47 types.",
+        "",
+        "Substantive changes belong in the owning MRD or canonical repository source and are then regenerated into this review surface. The generated document is a downstream review projection, not an independent write-back authority.",
+        "",
+        "The capitalized terms **MUST**, **MUST NOT**, **REQUIRED**, **SHOULD**, **SHOULD NOT**, **MAY**, and **OPTIONAL** express normative requirements when they appear in all capitals.",
+        "",
+        "## Specification Contents",
         "",
     ]
+    for document in documents:
+        content = document["content"]
+        heading = f"{content['section_order']}. {content['heading']}"
+        lines.append(f"- [{heading}](#{_heading_anchor(heading)})")
+    lines.extend(["- [Traceability](#traceability)", ""])
+
     for document in documents:
         content = document["content"]
         lines.extend([f"## {content['section_order']}. {content['heading']}", "", content["purpose"], ""])
@@ -355,6 +371,10 @@ def _render_markdown(config: dict[str, Any], documents: list[dict[str, Any]]) ->
         concern = content["concern"]
         if concern == "classification":
             _render_classification(lines, content)
+        elif concern == "applicability":
+            _render_applicability(lines, content)
+        elif concern == "ownership":
+            _render_ownership(lines, content)
         elif concern == "layering":
             _render_layering(lines, content)
         elif concern == "dependencies":
@@ -363,8 +383,11 @@ def _render_markdown(config: dict[str, Any], documents: list[dict[str, Any]]) ->
             _render_provenance(lines, content)
         elif concern == "lifecycle":
             _render_lifecycle(lines, content)
+        elif concern == "operator_behavior":
+            _render_operator_behavior(lines, content)
         elif concern == "validation":
             _render_validation(lines, content)
+
     lines.extend(["## Traceability", "", "Each normative section above is projected from exactly one prescriptive MRD:", ""])
     lines.extend(["| Section | MRD | Version | Provenance sources |", "|---|---|---:|---|"])
     for document in documents:
@@ -374,10 +397,20 @@ def _render_markdown(config: dict[str, Any], documents: list[dict[str, Any]]) ->
     return "\n".join(lines)
 
 
+def _heading_anchor(value: str) -> str:
+    raw = "".join(character.lower() if character.isalnum() else "-" for character in value)
+    return "-".join(part for part in raw.split("-") if part)
+
+
 def _render_rules(lines: list[str], rules: list[dict[str, Any]]) -> None:
-    lines.extend(["### Normative rules", ""])
+    lines.extend([
+        "### Normative rules",
+        "",
+        "| Rule | Requirement | Enforcement |",
+        "|---|---|---|",
+    ])
     for rule in rules:
-        lines.append(f"- **{rule['rule_id']}** — {rule['statement']}")
+        lines.append(f"| `{rule['rule_id']}` | {rule['statement']} | `{rule['enforcement']}` |")
     lines.append("")
 
 
@@ -388,6 +421,61 @@ def _render_classification(lines: list[str], content: dict[str, Any]) -> None:
     lines.extend(["", f"### Type catalog ({content['catalog_policy']['expected_type_count']} allowed types)", "", "| Class | Type | Code | Meaning | Canonical format |", "|---|---|---|---|---|"])
     for item in content["type_catalog"]:
         lines.append(f"| `{item['class']}` | `{item['type']}` | `{item['code']}` | {item['name']} | {item['canonical_format']} |")
+    lines.append("")
+
+
+def _render_applicability(lines: list[str], content: dict[str, Any]) -> None:
+    contract = content["selection_contract"]
+    lines.extend([
+        "### Selection contract",
+        "",
+        f"- Baseline catalog: `{contract['baseline_type_count']}` MRD types",
+        f"- Default disposition: `{contract['default_disposition']}`",
+        f"- Allowed dispositions: {', '.join(f'`{value}`' for value in contract['allowed_dispositions'])}",
+        "",
+        "#### Selection order",
+        "",
+    ])
+    for index, step in enumerate(contract["selection_order"], start=1):
+        lines.append(f"{index}. {step}")
+    lines.extend([
+        "",
+        "### Type applicability catalog",
+        "",
+        "| Code | Name | Use when |",
+        "|---|---|---|",
+    ])
+    for item in content["type_applicability"]:
+        lines.append(f"| `{item['code']}` | {item['name']} | {item['use_when']} |")
+    lines.append("")
+
+
+def _render_ownership(lines: list[str], content: dict[str, Any]) -> None:
+    contract = content["ownership_contract"]
+    lines.extend([
+        "### Ownership contract",
+        "",
+        f"- Canonical owners per governed fact: `{contract['canonical_owner_count']}`",
+        f"- Non-owner posture: `{contract['non_owner_posture']}`",
+        f"- Derived posture: `{contract['derived_posture']}`",
+        f"- Conflict posture: `{contract['conflict_posture']}`",
+        "",
+        "### Canonical owner kinds",
+        "",
+        "| Kind | Meaning |",
+        "|---|---|",
+    ])
+    for item in content["owner_kinds"]:
+        lines.append(f"| `{item['kind']}` | {item['meaning']} |")
+    lines.extend([
+        "",
+        "### Governed relationship vocabulary",
+        "",
+        "| Relationship | Meaning |",
+        "|---|---|",
+    ])
+    for item in content["relationship_catalog"]:
+        lines.append(f"| `{item['code']}` | {item['meaning']} |")
     lines.append("")
 
 
@@ -429,8 +517,33 @@ def _render_lifecycle(lines: list[str], content: dict[str, Any]) -> None:
     lines.append("")
 
 
+def _render_operator_behavior(lines: list[str], content: dict[str, Any]) -> None:
+    lines.extend([
+        "### Governance application lifecycle",
+        "",
+        "| # | Phase | Required actions | Stop when |",
+        "|---:|---|---|---|",
+    ])
+    for phase in content["phases"]:
+        actions = "; ".join(phase["required_actions"])
+        stop_when = "; ".join(phase["stop_when"]) or "phase completes"
+        lines.append(f"| {phase['order']} | `{phase['name']}` | {actions} | {stop_when} |")
+    lines.extend(["", "### Required outputs", ""])
+    for output in content["outputs"]:
+        lines.append(f"- {output}")
+    lines.append("")
+
+
 def _render_validation(lines: list[str], content: dict[str, Any]) -> None:
-    lines.extend(["### Validation dimensions", ""])
+    lines.extend([
+        "### Enforcement modes",
+        "",
+        "| Mode | Meaning | Blocking |",
+        "|---|---|---|",
+    ])
+    for mode in content["enforcement_modes"]:
+        lines.append(f"| `{mode['mode']}` | {mode['meaning']} | {'Yes' if mode['blocking'] else 'No'} |")
+    lines.extend(["", "### Validation dimensions", ""])
     for dimension in content["dimensions"]:
         lines.append(f"#### {dimension['name'].title()}")
         lines.append("")

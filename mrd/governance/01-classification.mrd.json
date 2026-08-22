@@ -442,23 +442,28 @@
     "rules": [
       {
         "rule_id": "KIS-MRD-CLASS-001",
-        "statement": "Every MRD MUST declare exactly one class and one type from this catalog."
+        "statement": "Every MRD MUST declare exactly one class and one type from this catalog.",
+        "enforcement": "validator"
       },
       {
         "rule_id": "KIS-MRD-CLASS-002",
-        "statement": "Classification MUST describe what an artifact does, not where the artifact is stored."
+        "statement": "Classification MUST describe what an artifact does, not where the artifact is stored.",
+        "enforcement": "review"
       },
       {
         "rule_id": "KIS-MRD-CLASS-003",
-        "statement": "A new MRD type MUST NOT be introduced when an existing catalog type adequately represents the artifact."
+        "statement": "A new MRD type MUST NOT be introduced when an existing catalog type adequately represents the artifact.",
+        "enforcement": "review"
       },
       {
         "rule_id": "KIS-MRD-CLASS-004",
-        "statement": "Artifacts MUST NOT be created merely to populate unused catalog types; absence of an unused type has no compliance implication."
+        "statement": "Artifacts MUST NOT be created merely to populate unused catalog types; absence of an unused type has no compliance implication.",
+        "enforcement": "workflow"
       },
       {
         "rule_id": "KIS-MRD-CLASS-005",
-        "statement": "The catalog MAY be extended by a versioned governance amendment when a genuine artifact need cannot be represented by an existing type."
+        "statement": "The catalog MAY be extended by a versioned governance amendment when a genuine artifact need cannot be represented by an existing type.",
+        "enforcement": "workflow"
       }
     ]
   }

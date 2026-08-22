@@ -60,7 +60,7 @@
           "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
         },
         "algorithm": {
-          "const": "governance-spec-v1"
+          "const": "governance-spec-v2"
         }
       }
     }

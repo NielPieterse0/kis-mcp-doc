@@ -35,7 +35,7 @@
   },
   "content": {
     "concern": "lifecycle",
-    "section_order": 5,
+    "section_order": 7,
     "heading": "Lifecycle",
     "purpose": "Define minimal lifecycle and mutability rules for each record mode.",
     "lifecycles": [
@@ -87,27 +87,33 @@
     "rules": [
       {
         "rule_id": "KIS-MRD-LIFE-001",
-        "statement": "Active prescriptive MRDs MUST have resolved dependencies and valid provenance."
+        "statement": "Active prescriptive MRDs MUST have resolved dependencies and valid provenance.",
+        "enforcement": "validator"
       },
       {
         "rule_id": "KIS-MRD-LIFE-002",
-        "statement": "Descriptive EVD records MUST be immutable after creation."
+        "statement": "Descriptive EVD records MUST be immutable after creation.",
+        "enforcement": "workflow"
       },
       {
         "rule_id": "KIS-MRD-LIFE-003",
-        "statement": "META records MUST be regenerated from their sources rather than manually maintained."
+        "statement": "META records MUST be regenerated from their sources rather than manually maintained.",
+        "enforcement": "generator"
       },
       {
         "rule_id": "KIS-MRD-LIFE-004",
-        "statement": "A derived or generated artifact MUST be treated as stale when its declared source fingerprint no longer matches its admitted sources."
+        "statement": "A derived or generated artifact MUST be treated as stale when its declared source fingerprint no longer matches its admitted sources.",
+        "enforcement": "generator"
       },
       {
         "rule_id": "KIS-MRD-LIFE-005",
-        "statement": "Superseded MRDs MUST remain addressable for lineage and MUST identify their replacement when one exists."
+        "statement": "Superseded MRDs MUST remain addressable for lineage and MUST identify their replacement when one exists.",
+        "enforcement": "validator"
       },
       {
         "rule_id": "KIS-MRD-LIFE-006",
-        "statement": "Git history is the change history; a duplicate body changelog is not required by the core MRD standard."
+        "statement": "Git history is the change history; a duplicate body changelog is not required by the core MRD standard.",
+        "enforcement": "review"
       }
     ]
   }
