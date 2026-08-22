@@ -39,7 +39,7 @@
   },
   "content": {
     "concern": "dependencies",
-    "section_order": 3,
+    "section_order": 5,
     "heading": "Dependency Rules",
     "purpose": "Make all authority dependencies explicit, stable, resolvable, and acyclic.",
     "target_forms": [
@@ -57,27 +57,33 @@
     "rules": [
       {
         "rule_id": "KIS-MRD-DEP-001",
-        "statement": "Every dependency target MUST resolve."
+        "statement": "Every dependency target MUST resolve.",
+        "enforcement": "validator"
       },
       {
         "rule_id": "KIS-MRD-DEP-002",
-        "statement": "MRD-to-MRD dependency direction MUST satisfy the L0-L5 authority ordering."
+        "statement": "MRD-to-MRD dependency direction MUST satisfy the L0-L5 authority ordering.",
+        "enforcement": "validator"
       },
       {
         "rule_id": "KIS-MRD-DEP-003",
-        "statement": "The MRD dependency graph MUST be acyclic."
+        "statement": "The MRD dependency graph MUST be acyclic.",
+        "enforcement": "validator"
       },
       {
         "rule_id": "KIS-MRD-DEP-004",
-        "statement": "Duplicate dependency edges MUST be rejected."
+        "statement": "Duplicate dependency edges MUST be rejected.",
+        "enforcement": "validator"
       },
       {
         "rule_id": "KIS-MRD-DEP-005",
-        "statement": "Dependency identities MUST be stable; canonical non-MRD dependencies MUST use repo: paths."
+        "statement": "Dependency identities MUST be stable; canonical non-MRD dependencies MUST use repo: paths.",
+        "enforcement": "validator"
       },
       {
         "rule_id": "KIS-MRD-DEP-006",
-        "statement": "A META-DEP projection MAY be generated from the validated dependency graph and MUST NOT become primary authority."
+        "statement": "A META-DEP projection MAY be generated from the validated dependency graph and MUST NOT become primary authority.",
+        "enforcement": "generator"
       }
     ]
   }

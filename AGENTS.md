@@ -1,34 +1,34 @@
-# kis-mcp-doc — Knowledge
+# kis-mcp-doc — Governance + Knowledge/Docs
 
-Workspace: `C:\Projects\kis-mcp\.kis-mcp-doc`
+Workspace: `C:\Projects\kis-mcp-doc`
 
 ## Mandate
 
-`kis-mcp-doc` owns the KIS knowledge capability. Documentation is one generated projection of that capability, not the product boundary.
+`kis-mcp-doc` is the engineering and proving ground for KIS governance and Knowledge/Docs capabilities that are intended for later governed adoption into `kis-mcp`.
 
-The capability owns the bridge from governed project reality to durable, queryable, traceable knowledge and generated human documentation. Its scope includes repository knowledge, provenance, retrieval, relationships, impact analysis, memory, publication-ready document models, and integration of approved research/semantic providers.
+Governance engineering covers machine-readable authority, applicability and selection, ownership, relationships, lifecycle, enforcement, and generated human review surfaces. Knowledge/Docs engineering covers the bridge from governed project reality to durable, queryable, traceable knowledge and generated human documentation.
 
-The long-term objective is code-derived documentation: authoritative facts live in code, contracts, schemas, configuration, tests, governed MDRs, and verified upstream sources; human-readable documents are generated views of those facts.
+The long-term objective is governed, source-derived knowledge and documentation: authoritative facts live in code, contracts, schemas, configuration, tests, governed MRDs, and verified upstream sources; human-readable documents are generated views of those facts.
 
-This repository is the reference implementation and proving ground for the Knowledge/Docs capability that will later land into `kis-mcp` through normal KIS governed slices.
+The immediate product mandate is the generated `kis-op` Governance Specification defined below. Broader Knowledge/Docs capability work remains future scope until that mandate is complete.
 
 ## Authority
 
-1. Read `C:\Projects\AGENTS.md`.
-2. Read and follow parent `C:\Projects\kis-mcp\AGENTS.md` as the KIS governance, harness, trust, and change-workflow authority.
-3. This file specializes only Knowledge/Docs scope and repository posture. It never overrides parent KIS hard rules, provider policy, project binding, Work Management, Discover, Skills, Git, verification, or publication authority.
-4. `C:\Projects\kis-mcp\.kis-mcp-gov\AGENTS.md` defines the Gov/Doc boundary: Gov owns repository identity, authority, ownership, scope, governed relationships, and provenance requirements; Doc consumes those facts and must not redefine them.
+1. Read and follow parent `C:\Projects\kis-mcp\AGENTS.md` as the KIS platform governance, harness, trust, and change-workflow authority.
+2. This repository owns the engineering and proving-ground work for both KIS governance and Knowledge/Docs capabilities intended for later governed adoption into `kis-mcp`.
+3. This file specializes that engineering scope and repository posture. It never overrides parent KIS hard rules, provider policy, project binding, Work Management, Discover, Skills, Git, verification, or publication authority.
+4. Governance models developed here may prescribe repository identity, authority, ownership, scope, governed relationships, provenance requirements, lifecycle, and enforcement, but they become parent KIS authority only after governed adoption into `kis-mcp`.
 5. Harvest repositories and external references are evidence and design sources, never automatic KIS authority.
 
 ## Repository posture
 
-This repository is code-first and MDR-first.
+This repository is code-first and MRD-first.
 
 `AGENTS.md` is the only hand-authored Markdown file permitted in this repository. The current bootstrap edit is the explicit grace-period exception that establishes this rule.
 
 Do not create or maintain hand-authored `README.md`, `SPEC.md`, `docs/**/*.md`, runbooks, architecture prose, decision records, plans, or other durable Markdown truth. If a human-readable Markdown view is needed, define the source model and generator, then generate the view.
 
-All other durable knowledge must be represented as governed machine-readable records and executable artefacts: MDRs, JSON/YAML data where approved, JSON Schemas, contracts, source/configuration, tests, generators, manifests, hashes, indexes, and generated build output.
+All other durable knowledge must be represented as governed machine-readable records and executable artefacts: MRDs, JSON/YAML data where approved, JSON Schemas, contracts, source/configuration, tests, generators, manifests, hashes, indexes, and generated build output.
 
 Generated Markdown is allowed only as an explicitly derived output. It must be reproducible, provenance-bearing, stale-detectable, and never edited as authority.
 
@@ -45,11 +45,11 @@ Knowledge owns the normalized project knowledge model and the services built on 
 - semantic and structural retrieval, filtering, trace, compare, impact, and health operations;
 - durable project memory and retrieval policy, with explicit scope, source, confidence, freshness, and supersession semantics;
 - context assembly for agents without silently converting inference into authority;
-- transformation of governed facts and MDRs into specifications, procedures, decisions, architecture, operations, governance, and other human views;
+- transformation of governed facts and MRDs into specifications, procedures, decisions, architecture, operations, governance, and other human views;
 - deterministic generation, validation, packaging, publication manifests, and stale-view detection;
 - adapters to approved KIS providers and research/semantic tools.
 
-Knowledge does not own repository governance, trust policy, change admission, Git authority, provider security policy, or execution authority. Consume those through KIS/Gov contracts.
+This repository may design and prescribe repository-governance contracts, but it does not independently exercise parent KIS trust policy, change admission, Git authority, provider security policy, or execution authority. Those remain governed by the parent `kis-mcp` authority until any new governance contract is formally adopted there.
 
 Memory is knowledge, not hidden authority. A remembered statement must remain distinguishable from verified repository truth, generated inference, external evidence, and operator direction. Conflicts are resolved against the current canonical owner, not by memory recency alone.
 
@@ -74,38 +74,39 @@ Prefer composition: deterministic repository evidence + governed metadata + sema
 The first implementation slices must convert this bootstrap list into a machine-readable, versioned harvest-source registry with source role, path/identity, revision strategy, trust classification, acquisition method, and applicable contracts.
 
 - `C:\Projects\kis-mcp` — primary KIS governance/harness source; harvest Discover, providers, capabilities, contracts, settings, tests, change slices, Work Management, and current implementation facts without duplicating parent authority.
-- `C:\Projects\kis-mcp\.kis-mcp-gov` — upstream governance semantics for identity, authority, ownership, scope, relationships, and provenance requirements.
 - `C:\Projects\doc-solution` — harvest deterministic documentation/knowledge patterns, normalized governance models, provenance, lookup/filter/trace/impact/health/compare contracts, architecture/governance views, project-documentation build/publication, and human-doc generation lessons.
 - `C:\Projects\GPT-OS` — harvest machine-readable governance sources, generated governance/documentation views, authority routing, module-boundary contracts, publication packages, integrity checks, and source-to-view verification patterns.
-- `C:\Projects\supervox` — harvest MDR taxonomy, metadata envelopes, stable IDs, binding semantics, template inheritance, modular contracts, validation gates, cross-reference discipline, and MDR-to-document-type patterns such as specifications, procedures, and decision records.
-- `C:\Projects\References\mcp-specification\mcp-docs-2026-07-28-direct-md-clean` — transitional target/reference corpus for the first specification-generation mandate; use its layout, navigation feel, section decomposition, and MCP specification corpus as parity evidence, not as KIS authority.
+- `C:\Projects\supervox` — harvest MRD taxonomy, metadata envelopes, stable IDs, binding semantics, template inheritance, modular contracts, validation gates, cross-reference discipline, and MRD-to-document-type patterns such as specifications, procedures, and decision records.
+- `C:\Projects\References\mcp-specification\mcp-spec-2025-11-25-direct-md-clean` — target/reference corpus for the first specification-generation mandate while FastMCP 4.x remains a transitional implementation target; use its layout, navigation feel, section decomposition, normative presentation, and MCP specification corpus as parity evidence, not as KIS authority.
 - DeepWiki/Litho and Graphify — keep as paired external reference candidates during Knowledge architecture development. Continuously compare their repository-understanding, graph, wiki/document generation, retrieval, MCP/tool exposure, and agent-processing patterns against the native KIS Knowledge design. Prefer selective adoption or composition over wholesale replacement unless later evidence justifies a different decision.
 
 Pin harvest evidence to concrete revisions/hashes whenever the source supports them. Never silently harvest a moving source and present the result as reproducible.
 
-## First product mandate — generated specification
+## First product mandate — generated `kis-op` Governance Specification
 
-The first delivery target is a generated specification experience comparable to the captured MCP documentation set.
+The first delivery target is the generated human-reviewable `kis-op` Governance Specification, derived from governed machine-readable authority and presented with conventions comparable to the captured MCP 2025 specification set.
 
-Build the bridge in slices from source reality to normalized knowledge to rendered documents. Do not manually reproduce the target Markdown.
+Until that governance specification is complete, keep implementation scope on prescribing the `kis-op` governance model: the 47-MRD baseline, applicability and selection, lifecycle, ownership, relationships and bindings, validation and enforcement, extensibility, and the behavior expected from `kis-op`. Broader Knowledge/Docs platform work remains future scope unless it is strictly required to generate or validate this governance specification.
 
-The required progression is:
+Build the bridge in slices from governed governance authority to normalized model to rendered specification. Do not manually reproduce the target Markdown.
 
-1. Inventory the target MCP documentation structure and the corresponding KIS code/contracts/configuration/evidence needed to express equivalent KIS facts.
-2. Define MDRs and schemas that can represent those facts without embedding presentation-specific prose as authority.
-3. Build deterministic harvest/adaptation from KIS sources into the normalized knowledge/MDR layer.
-4. Build renderers that generate the human documentation and specification views from that layer.
-5. Compare generated output against the target corpus for information coverage, structure, navigation, metadata, references, readability, and provenance.
-6. Iterate the bridge until generated output is sufficient to replace transitional hand-authored documentation.
-7. Retire replaced Markdown only through KIS-safe recoverable change handling; never preserve two current canonical owners for the same fact.
+The required progression for this first mandate is:
 
-The intended product surface starts with human Documents, then Specification, and may add governed views such as Repository Governance, Harness, Operations, architecture, decisions, procedures, and other knowledge projections. View taxonomy must come from MDR/document-type contracts, not ad hoc page creation.
+1. Use the MCP 2025 corpus as presentation and specification-structure evidence, not as KIS authority.
+2. Preserve the existing 47-MRD classification baseline and prescribe explicit applicability and minimum-sufficient selection rules for every type.
+3. Prescribe canonical fact ownership, governed relationships and bindings, authority layering, provenance, lifecycle, extensibility, and `kis-op` operating behavior as machine-readable MRDs.
+4. Make deterministic portions machine-enforceable through schemas, validators, workflow contracts, generated-view checks, and stable diagnostics; label review-based enforcement distinctly.
+5. Generate the human-reviewable `kis-op` Governance Specification from the validated MRDs with MCP-spec-style overview, navigation, normative requirements, references, and traceability.
+6. Verify exact source coverage, deterministic generation, provenance, stale/tamper detection, and requirements-to-implementation completeness.
+7. Treat operator review and acceptance of the generated governance specification as the gate before broadening into the wider Knowledge/Docs product surface.
+
+The broader Knowledge/Docs surface remains future scope. It may later add Documents, Repository Governance, Harness, Operations, architecture, decisions, procedures, and other governed projections, but their taxonomy must come from MRD/document-type contracts rather than ad hoc page creation.
 
 ## Slice and development workflow
 
 Use the same KIS slice lifecycle, governance semantics, complexity/risk handling, Work Management integration, change claims, verification discipline, revision/version posture, and landing model as `kis-mcp`.
 
-The lifecycle semantics must match KIS even when Doc uses different storage representation. Because this repository forbids hand-authored Markdown beyond `AGENTS.md`, change specifications, plans, tasks, decisions, evidence, and closeout state must be machine-readable MDRs or generated views of MDRs rather than independently maintained Markdown.
+The lifecycle semantics must match KIS even when Doc uses different storage representation. Because this repository forbids hand-authored Markdown beyond `AGENTS.md`, change specifications, plans, tasks, decisions, evidence, and closeout state must be machine-readable MRDs or generated views of MRDs rather than independently maintained Markdown.
 
 Do not weaken the parent workflow to avoid this constraint. Extend the Knowledge model/generator so the normal KIS workflow can be expressed without creating a second documentation system.
 
@@ -128,15 +129,15 @@ One governed fact has one canonical owner. Derived knowledge may summarize, inde
 
 Inference must be labeled as inference. Unknowns must remain unknown. Contradictions must surface as diagnostics. Fresh evidence may supersede stale evidence only through the owning authority's rules.
 
-## MDR and generation requirements
+## MRD and generation requirements
 
-MDRs must be schema-valid, versioned, stable-ID-bearing where identity matters, and explicit about ownership, source/provenance, status, revision, relationships/bindings, and supersession where applicable.
+MRDs must be schema-valid, versioned, stable-ID-bearing where identity matters, and explicit about ownership, source/provenance, status, revision, relationships/bindings, and supersession where applicable.
 
 Adopt useful SuperVOX concepts selectively: metadata envelopes, stable IDs, document classes/types, bindings, template inheritance, validation contracts, machine-readability checks, and resolvable cross-references. Do not import SuperVOX domain authority or naming blindly.
 
 Generated documentation must be reproducible from pinned inputs and generator version. Every publication package must make source revisions, hashes, generator identity/version, diagnostics, and staleness detectable.
 
-Generated views must never become a write-back authority. Changes are made to the owning source/MDR/code/contract and regenerated.
+Generated views must never become a write-back authority. Changes are made to the owning source/MRD/code/contract and regenerated.
 
 Prefer deterministic transforms for identity, structure, references, metadata, indexes, manifests, and factual tables. LLM assistance may draft candidate narrative or relationships only behind explicit provenance and validation boundaries.
 

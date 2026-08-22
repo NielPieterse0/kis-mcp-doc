@@ -11,8 +11,14 @@ from referencing import Registry, Resource
 from referencing.exceptions import Unresolvable
 
 
-CONCERNS = ("classification", "layering", "dependencies", "provenance", "lifecycle", "validation")
-CHECK_NAMES = ("classification", "layering", "dependencies", "provenance", "lifecycle", "schema")
+CONCERNS = (
+    "classification", "applicability", "ownership", "layering", "dependencies",
+    "provenance", "lifecycle", "operator_behavior", "validation",
+)
+CHECK_NAMES = (
+    "classification", "applicability", "ownership", "layering", "dependencies",
+    "provenance", "lifecycle", "operator_behavior", "schema",
+)
 CORE_REASON_CODES = frozenset({
     "MRD_SCHEMA_INVALID", "MRD_RULE_ID_DUPLICATE", "MRD_GOVERNANCE_CONCERN_MISSING",
     "MRD_GOVERNANCE_CONCERN_DUPLICATE", "MRD_ID_CLASS_TYPE_MISMATCH", "MRD_CLASS_UNKNOWN",
@@ -23,7 +29,9 @@ CORE_REASON_CODES = frozenset({
     "MRD_STATUS_INVALID", "MRD_EVD_RECORD_MODE_INVALID", "MRD_META_RECORD_MODE_INVALID",
     "MRD_SUPERSESSION_UNRESOLVED", "MRD_CLASS_CATALOG_MISMATCH", "MRD_LAYER_CATALOG_MISMATCH",
     "MRD_RECORD_MODE_CATALOG_MISMATCH", "MRD_META_FACT_QUALITY_INVALID",
-    "MRD_VALIDATION_CONTRACT_MISMATCH",
+    "MRD_VALIDATION_CONTRACT_MISMATCH", "MRD_APPLICABILITY_CATALOG_MISMATCH",
+    "MRD_RELATIONSHIP_UNKNOWN", "MRD_OPERATOR_BEHAVIOR_INVALID",
+    "MRD_ENFORCEMENT_BINDING_INVALID",
 })
 
 
@@ -67,11 +75,15 @@ class GovernanceRepository:
         concerns = self._concern_owners(documents, diagnostics)
         self._validate_rule_ids(documents, diagnostics)
         self._validate_validation_contract(concerns, diagnostics)
+        self._validate_enforcement_bindings(documents, concerns, diagnostics)
         self._validate_classification(documents, concerns, diagnostics)
+        self._validate_applicability(concerns, diagnostics)
+        self._validate_ownership(documents, concerns, diagnostics)
         self._validate_layering(documents, concerns, diagnostics)
         self._validate_dependencies(documents, concerns, diagnostics)
         self._validate_provenance(documents, concerns, diagnostics)
         self._validate_lifecycle(documents, concerns, diagnostics)
+        self._validate_operator_behavior(concerns, diagnostics)
         return self._result(diagnostics)
 
     def _concern_owners(self, documents: dict[str, dict[str, Any]], diagnostics: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
@@ -79,7 +91,7 @@ class GovernanceRepository:
         for doc_id, document in documents.items():
             concern = document.get("content", {}).get("concern")
             if concern not in CONCERNS:
-                diagnostics.append(self._diagnostic("classification", "MRD_GOVERNANCE_CONCERN_MISSING", f"{doc_id} does not declare one of the six governance concerns", f"{doc_id}.content.concern", doc_id))
+                diagnostics.append(self._diagnostic("classification", "MRD_GOVERNANCE_CONCERN_MISSING", f"{doc_id} does not declare one of the required governance concerns", f"{doc_id}.content.concern", doc_id))
                 continue
             if concern in owners:
                 diagnostics.append(self._diagnostic("classification", "MRD_GOVERNANCE_CONCERN_DUPLICATE", f"multiple MRDs own concern {concern}", f"{doc_id}.content.concern", doc_id))
@@ -200,6 +212,74 @@ class GovernanceRepository:
             if len(parts) < 5 or parts[-3] != cls or parts[-2] != typ:
                 diagnostics.append(self._diagnostic("classification", "MRD_ID_CLASS_TYPE_MISMATCH", f"id {doc_id} does not encode class/type {cls}-{typ}", f"{doc_id}._mrd.id", doc_id))
 
+    def _validate_applicability(self, concerns: dict[str, dict[str, Any]], diagnostics: list[dict[str, Any]]) -> None:
+        classification = concerns.get("classification")
+        owner = concerns.get("applicability")
+        if classification is None or owner is None:
+            return
+        expected = {
+            (item.get("class"), item.get("type"), item.get("code"))
+            for item in classification.get("content", {}).get("type_catalog", [])
+        }
+        actual_items = owner.get("content", {}).get("type_applicability", [])
+        actual = {
+            (item.get("class"), item.get("type"), item.get("code"))
+            for item in actual_items
+        }
+        if len(actual_items) != 47 or len(actual) != 47 or actual != expected:
+            diagnostics.append(self._diagnostic(
+                "applicability",
+                "MRD_APPLICABILITY_CATALOG_MISMATCH",
+                "applicability must define exactly one selection trigger for every classified MRD type",
+                f"{owner['_mrd']['id']}.content.type_applicability",
+                owner["_mrd"]["id"],
+            ))
+
+    def _validate_ownership(self, documents: dict[str, dict[str, Any]], concerns: dict[str, dict[str, Any]], diagnostics: list[dict[str, Any]]) -> None:
+        owner = concerns.get("ownership")
+        if owner is None:
+            return
+        entries = owner.get("content", {}).get("relationship_catalog", [])
+        relationship_codes = [item.get("code") for item in entries]
+        allowed = set(relationship_codes)
+        if len(allowed) != len(relationship_codes):
+            diagnostics.append(self._diagnostic(
+                "ownership", "MRD_RELATIONSHIP_UNKNOWN",
+                "relationship catalog contains duplicate semantic labels",
+                f"{owner['_mrd']['id']}.content.relationship_catalog", owner["_mrd"]["id"],
+            ))
+        for doc_id, document in documents.items():
+            for index, dependency in enumerate(document.get("_mrd", {}).get("dependencies", [])):
+                relationship = dependency.get("relationship")
+                if relationship not in allowed:
+                    diagnostics.append(self._diagnostic(
+                        "ownership", "MRD_RELATIONSHIP_UNKNOWN",
+                        f"dependency relationship is not governed: {relationship!r}",
+                        f"{doc_id}._mrd.dependencies[{index}].relationship", doc_id,
+                    ))
+
+    def _validate_enforcement_bindings(self, documents: dict[str, dict[str, Any]], concerns: dict[str, dict[str, Any]], diagnostics: list[dict[str, Any]]) -> None:
+        owner = concerns.get("validation")
+        if owner is None:
+            return
+        entries = owner.get("content", {}).get("enforcement_modes", [])
+        declared = [item.get("mode") for item in entries]
+        required = {"schema", "validator", "workflow", "generator", "review"}
+        if set(declared) != required or len(declared) != len(required) or not all(item.get("blocking") is True for item in entries):
+            diagnostics.append(self._diagnostic(
+                "schema", "MRD_ENFORCEMENT_BINDING_INVALID",
+                "validation authority must declare the five blocking enforcement modes exactly once",
+                f"{owner['_mrd']['id']}.content.enforcement_modes", owner["_mrd"]["id"],
+            ))
+        for doc_id, document in documents.items():
+            for index, rule in enumerate(document.get("content", {}).get("rules", [])):
+                if rule.get("enforcement") not in required:
+                    diagnostics.append(self._diagnostic(
+                        "schema", "MRD_ENFORCEMENT_BINDING_INVALID",
+                        f"rule enforcement is not governed: {rule.get('enforcement')!r}",
+                        f"{doc_id}.content.rules[{index}].enforcement", doc_id,
+                    ))
+
     def _validate_layering(self, documents: dict[str, dict[str, Any]], concerns: dict[str, dict[str, Any]], diagnostics: list[dict[str, Any]]) -> None:
         owner = concerns.get("layering")
         if owner is None:
@@ -309,6 +389,29 @@ class GovernanceRepository:
             replacement = envelope.get("superseded_by")
             if replacement is not None and replacement not in documents:
                 diagnostics.append(self._diagnostic("lifecycle", "MRD_SUPERSESSION_UNRESOLVED", f"superseded_by target does not resolve: {replacement}", f"{doc_id}._mrd.superseded_by", doc_id))
+
+    def _validate_operator_behavior(self, concerns: dict[str, dict[str, Any]], diagnostics: list[dict[str, Any]]) -> None:
+        owner = concerns.get("operator_behavior")
+        if owner is None:
+            return
+        phases = owner.get("content", {}).get("phases", [])
+        expected_names = (
+            "resolve_authority",
+            "select_applicable_mrds",
+            "resolve_relationships",
+            "validate_governance",
+            "execute_bounded_change",
+            "generate_review_surface",
+            "verify_and_report",
+        )
+        orders = tuple(item.get("order") for item in phases)
+        names = tuple(item.get("name") for item in phases)
+        if orders != tuple(range(1, len(expected_names) + 1)) or names != expected_names:
+            diagnostics.append(self._diagnostic(
+                "operator_behavior", "MRD_OPERATOR_BEHAVIOR_INVALID",
+                "kis-op governance phases must match the prescribed seven-phase application workflow",
+                f"{owner['_mrd']['id']}.content.phases", owner["_mrd"]["id"],
+            ))
 
     def _resolve_repo_file(self, locator: object) -> Path | None:
         if not isinstance(locator, str) or not locator.startswith("repo:"):

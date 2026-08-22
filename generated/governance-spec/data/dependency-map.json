@@ -24,6 +24,18 @@
       "to": "KIS-KNOW-SEM-REG-001"
     },
     {
+      "from": "KIS-KNOW-CON-POL-002",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "KIS-KNOW-SEM-REG-001"
+    },
+    {
+      "from": "KIS-KNOW-DEC-TAB-001",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "KIS-KNOW-SEM-REG-001"
+    },
+    {
       "from": "KIS-KNOW-EVL-TST-001",
       "relationship": "depends_on",
       "target_kind": "mrd",
@@ -34,6 +46,18 @@
       "relationship": "depends_on",
       "target_kind": "mrd",
       "to": "KIS-KNOW-CON-POL-001"
+    },
+    {
+      "from": "KIS-KNOW-EVL-TST-001",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "KIS-KNOW-CON-POL-002"
+    },
+    {
+      "from": "KIS-KNOW-EVL-TST-001",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "KIS-KNOW-DEC-TAB-001"
     },
     {
       "from": "KIS-KNOW-EVL-TST-001",
@@ -52,6 +76,12 @@
       "relationship": "depends_on",
       "target_kind": "mrd",
       "to": "KIS-KNOW-WRK-STM-001"
+    },
+    {
+      "from": "KIS-KNOW-EVL-TST-001",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "KIS-KNOW-WRK-WFL-001"
     },
     {
       "from": "KIS-KNOW-EVL-TST-001",
@@ -82,6 +112,48 @@
       "relationship": "depends_on",
       "target_kind": "mrd",
       "to": "KIS-KNOW-CON-POL-001"
+    },
+    {
+      "from": "KIS-KNOW-WRK-WFL-001",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "KIS-KNOW-CON-CTR-001"
+    },
+    {
+      "from": "KIS-KNOW-WRK-WFL-001",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "KIS-KNOW-CON-POL-001"
+    },
+    {
+      "from": "KIS-KNOW-WRK-WFL-001",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "KIS-KNOW-CON-POL-002"
+    },
+    {
+      "from": "KIS-KNOW-WRK-WFL-001",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "from": "KIS-KNOW-WRK-WFL-001",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "KIS-KNOW-SEM-ENUM-001"
+    },
+    {
+      "from": "KIS-KNOW-WRK-WFL-001",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "KIS-KNOW-SEM-REG-001"
+    },
+    {
+      "from": "KIS-KNOW-WRK-WFL-001",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "KIS-KNOW-WRK-STM-001"
     }
   ]
 }
