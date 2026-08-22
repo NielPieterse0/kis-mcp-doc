@@ -34,33 +34,39 @@ def test_render_is_byte_deterministic(tmp_path: Path) -> None:
     assert (first / "manifest.json").read_bytes() == (second / "manifest.json").read_bytes()
 
 
-def test_rendered_spec_contains_nine_normative_sections_and_catalog(tmp_path: Path) -> None:
+def test_rendered_spec_decomposes_normative_sections_into_mcp_style_pages(tmp_path: Path) -> None:
     repo = GovernanceRepository(ROOT, MRD_ROOT)
     output = tmp_path / "build"
     build_governance_spec(repo, PUBLICATION, output)
-    markdown = (output / "specification.md").read_text(encoding="utf-8")
+    root = (output / "specification.md").read_text(encoding="utf-8")
 
-    for heading in (
-        "## 1. Classification",
-        "## 2. Applicability and Selection",
-        "## 3. Authority, Ownership, and Relationships",
-        "## 4. Layering",
-        "## 5. Dependency Rules",
-        "## 6. Provenance",
-        "## 7. Lifecycle",
-        "## 8. kis-op Governance Behavior",
-        "## 9. Validation and Enforcement",
-    ):
-        assert heading in markdown
-    assert "# kis-op Governance Specification" in markdown
-    assert "## Overview" in markdown
-    assert "## Specification Contents" in markdown
-    assert "### Type applicability catalog" in markdown
-    assert "### Enforcement modes" in markdown
-    assert "| Rule | Requirement | Enforcement |" in markdown
-    assert "SEM-DOM" in markdown
-    assert "47" in markdown
-    assert "GENERATED — DO NOT EDIT" in markdown
+    expected = {
+        "002-classification.md": "# Classification",
+        "003-applicability-and-selection.md": "# Applicability and Selection",
+        "004-authority-ownership-and-relationships.md": "# Authority, Ownership, and Relationships",
+        "005-layering.md": "# Layering",
+        "006-dependency-rules.md": "# Dependency Rules",
+        "007-provenance.md": "# Provenance",
+        "008-lifecycle.md": "# Lifecycle",
+        "009-kis-op-governance-behavior.md": "# kis-op Governance Behavior",
+        "010-validation-and-enforcement.md": "# Validation and Enforcement",
+    }
+    for page, heading in expected.items():
+        assert heading in (output / page).read_text(encoding="utf-8")
+        assert page in root
+
+    classification = (output / "002-classification.md").read_text(encoding="utf-8")
+    validation = (output / "010-validation-and-enforcement.md").read_text(encoding="utf-8")
+    assert "## Type catalog (47 allowed types)" in classification
+    assert "SEM-DOM" in classification
+    assert "## Enforcement modes" in validation
+    assert "### Operator Behavior" in validation
+    assert "Operator_Behavior" not in validation
+    assert "| Rule | Requirement | Enforcement |" in validation
+    assert "# kis-op Governance Specification" in root
+    assert "## Overview" in root
+    assert "## Detailed specification" in root
+    assert "GENERATED — DO NOT EDIT" in root
 
 
 def test_manifest_hashes_and_verifier_detect_tampering(tmp_path: Path) -> None:
@@ -250,19 +256,33 @@ def test_invalid_manifest_validation_requires_diagnostics(tmp_path: Path) -> Non
     assert "GENERATED_MANIFEST_INVALID" in {item["code"] for item in result["diagnostics"]}
 
 
-def test_valid_manifest_cannot_report_failed_check(tmp_path: Path) -> None:
+def test_valid_manifest_cannot_report_any_failed_check(tmp_path: Path) -> None:
     repo = GovernanceRepository(ROOT, MRD_ROOT)
-    output = tmp_path / "build"
-    build_governance_spec(repo, PUBLICATION, output)
-    path = output / "manifest.json"
-    manifest = json.loads(path.read_text(encoding="utf-8"))
-    manifest["validation"]["checks"]["schema"] = "fail"
-    path.write_text(json.dumps(manifest), encoding="utf-8")
+    checks = (
+        "classification",
+        "applicability",
+        "ownership",
+        "layering",
+        "dependencies",
+        "provenance",
+        "lifecycle",
+        "operator_behavior",
+        "schema",
+    )
+    for check in checks:
+        output = tmp_path / check
+        build_governance_spec(repo, PUBLICATION, output)
+        path = output / "manifest.json"
+        manifest = json.loads(path.read_text(encoding="utf-8"))
+        manifest["validation"]["checks"][check] = "fail"
+        path.write_text(json.dumps(manifest), encoding="utf-8")
 
-    result = verify_governance_spec(repo, PUBLICATION, output)
+        result = verify_governance_spec(repo, PUBLICATION, output)
 
-    assert result["status"] == "invalid"
-    assert "GENERATED_MANIFEST_INVALID" in {item["code"] for item in result["diagnostics"]}
+        assert result["status"] == "invalid"
+        assert "GENERATED_MANIFEST_INVALID" in {
+            item["code"] for item in result["diagnostics"]
+        }
 
 
 def test_invalid_manifest_requires_at_least_one_failed_check(tmp_path: Path) -> None:
