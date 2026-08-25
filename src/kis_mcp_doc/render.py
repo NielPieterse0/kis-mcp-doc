@@ -558,13 +558,10 @@ def _render_document_page(config: dict[str, Any], document: dict[str, Any]) -> s
         "",
         "[Specification](001-specification.md) | [Documentation index](000-index.md)",
         "",
-        "## Overview",
-        "",
-        content["purpose"],
+        _page_intro(content),
         "",
     ]
     body: list[str] = []
-    _render_rules(body, content.get("rules", []))
     concern = content["concern"]
     if concern == "classification":
         _render_classification(body, content)
@@ -584,6 +581,7 @@ def _render_document_page(config: dict[str, Any], document: dict[str, Any]) -> s
         _render_operator_behavior(body, content)
     elif concern == "validation":
         _render_validation(body, content)
+    _render_rule_traceability(body, content.get("rules", []))
     lines.extend(_promote_headings(body))
     lines.extend([
         "## Source and authority",
@@ -662,23 +660,74 @@ def _heading_anchor(value: str) -> str:
     return "-".join(part for part in raw.split("-") if part)
 
 
-def _render_rules(lines: list[str], rules: list[dict[str, Any]]) -> None:
+def _format_count(value: int) -> str:
+    words = ("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine")
+    return words[value] if 0 <= value < len(words) else str(value)
+
+
+def _page_intro(content: dict[str, Any]) -> str:
+    concern = content["concern"]
+    intros = {
+        "classification": "KIS MRDs use a functional classification model. Classification describes what an artifact does, independent of where a repository stores or implements it.",
+        "applicability": "Governance artifacts are selected according to the need being governed. The 47-type MRD catalog is a vocabulary for choosing the minimum sufficient set, not a checklist that every repository or change must populate.",
+        "ownership": "Every governed fact has one current canonical owner. Other artifacts can reference or project that fact, but they do not become independent authority by repeating it.",
+        "layering": "Authority layers constrain the direction of MRD dependencies. They express which governed facts can depend on which other facts, not repository layout or implementation order.",
+        "dependencies": "Dependencies make authority relationships explicit and verifiable. Each dependency identifies either another MRD or a canonical repository source that the MRD requires.",
+        "provenance": "Provenance identifies the authority, origin, and quality of governed facts. It keeps authored prescription, captured observations, and generated projections distinct.",
+        "lifecycle": "MRD lifecycle depends on record mode. Prescriptive authority, descriptive evidence, and generated metadata follow different states and mutability rules.",
+        "operator_behavior": "kis-op applies governance as an ordered workflow from authority resolution through verification and reporting. Blocking failures stop the workflow rather than becoming inferred authority.",
+        "validation": "Governance validation combines structural checks, deterministic semantic checks, workflow controls, generation checks, and explicit review gates. Blocking failures fail closed and produce diagnosable results.",
+    }
+    return intros[concern]
+
+
+def _render_rule_statements(lines: list[str], rules: list[dict[str, Any]]) -> None:
+    for rule in rules:
+        lines.extend([rule["statement"], ""])
+
+
+def _render_rule_traceability(lines: list[str], rules: list[dict[str, Any]]) -> None:
     lines.extend([
-        "### Normative rules",
+        "### Requirement traceability",
         "",
-        "| Rule | Requirement | Enforcement |",
-        "|---|---|---|",
+        "The following table preserves the stable rule identifier and enforcement binding for each requirement stated in this chapter:",
+        "",
+        "| Rule | Enforcement |",
+        "|---|---|",
     ])
     for rule in rules:
-        lines.append(f"| `{rule['rule_id']}` | {rule['statement']} | `{rule['enforcement']}` |")
+        lines.append(f"| `{rule['rule_id']}` | `{rule['enforcement']}` |")
     lines.append("")
 
 
 def _render_classification(lines: list[str], content: dict[str, Any]) -> None:
-    lines.extend(["### Classes", "", "| Class | Name | Definition |", "|---|---|---|"])
+    policy = content["catalog_policy"]
+    lines.extend([
+        "### Classification requirements",
+        "",
+        f"The catalog contains {policy['expected_class_count']} functional classes and {policy['expected_type_count']} allowed MRD types. Classification is based on function so that the same governed need keeps the same meaning across repository layouts and technology choices.",
+        "",
+    ])
+    _render_rule_statements(lines, content["rules"])
+    lines.extend([
+        "### Classes",
+        "",
+        "The following table defines the functional classes used to group MRD types:",
+        "",
+        "| Class | Name | Definition |",
+        "|---|---|---|",
+    ])
     for item in content["classes"]:
         lines.append(f"| `{item['code']}` | {item['name']} | {item['definition']} |")
-    lines.extend(["", f"### Type catalog ({content['catalog_policy']['expected_type_count']} allowed types)", "", "| Class | Type | Code | Meaning | Canonical format |", "|---|---|---|---|---|"])
+    lines.extend([
+        "",
+        f"### Type catalog ({policy['expected_type_count']} allowed types)",
+        "",
+        "The following table lists each governed type and its canonical representation format:",
+        "",
+        "| Class | Type | Code | Meaning | Canonical format |",
+        "|---|---|---|---|---|",
+    ])
     for item in content["type_catalog"]:
         lines.append(f"| `{item['class']}` | `{item['type']}` | `{item['code']}` | {item['name']} | {item['canonical_format']} |")
     lines.append("")
@@ -686,41 +735,56 @@ def _render_classification(lines: list[str], content: dict[str, Any]) -> None:
 
 def _render_applicability(lines: list[str], content: dict[str, Any]) -> None:
     contract = content["selection_contract"]
+    rules = content["rules"]
+    dispositions = ", ".join(f"`{value}`" for value in contract["allowed_dispositions"])
     lines.extend([
-        "### Selection contract",
+        "### Selecting governance artifacts",
         "",
-        f"- Baseline catalog: `{contract['baseline_type_count']}` MRD types",
-        f"- Default disposition: `{contract['default_disposition']}`",
-        f"- Allowed dispositions: {', '.join(f'`{value}`' for value in contract['allowed_dispositions'])}",
+        f"Selection starts from the {contract['baseline_type_count']}-type catalog with `{contract['default_disposition']}` as the default disposition. A selected type can be classified as {dispositions}. The goal is to represent the governed need without creating duplicate authority.",
         "",
-        "#### Selection order",
+    ])
+    _render_rule_statements(lines, rules[:3])
+    lines.extend([
+        "### Selection process",
+        "",
+        "Apply the following process in order. It starts with the governed need and only considers a catalog extension after existing types have been tested for fit:",
         "",
     ])
     for index, step in enumerate(contract["selection_order"], start=1):
-        lines.append(f"{index}. {step}")
+        lines.append(f"{index}. {step[0].upper() + step[1:]}.")
+    lines.extend(["", rules[3]["statement"], "", "### MRD type applicability", ""])
     lines.extend([
-        "",
-        "### Type applicability catalog",
+        "Use the following catalog to determine when each MRD type applies. The table is a selection reference; it does not require an artifact for every row:",
         "",
         "| Code | Name | Use when |",
         "|---|---|---|",
     ])
     for item in content["type_applicability"]:
         lines.append(f"| `{item['code']}` | {item['name']} | {item['use_when']} |")
-    lines.append("")
+    lines.extend([
+        "",
+        "### Extending the catalog",
+        "",
+        "Technology and stack choices do not create new MRD types by themselves. First represent the need with the existing functional vocabulary when that vocabulary is sufficient.",
+        "",
+    ])
+    _render_rule_statements(lines, rules[4:])
 
 
 def _render_ownership(lines: list[str], content: dict[str, Any]) -> None:
     contract = content["ownership_contract"]
+    rules = content["rules"]
     lines.extend([
-        "### Ownership contract",
+        "### Canonical ownership",
         "",
-        f"- Canonical owners per governed fact: `{contract['canonical_owner_count']}`",
-        f"- Non-owner posture: `{contract['non_owner_posture']}`",
-        f"- Derived posture: `{contract['derived_posture']}`",
-        f"- Conflict posture: `{contract['conflict_posture']}`",
+        f"The ownership contract assigns {_format_count(contract['canonical_owner_count'])} current canonical owner to each governed fact. Non-owners reference rather than restate authority, derived artifacts remain projections, and ownership conflicts are surfaced and resolved against the current owner.",
         "",
+    ])
+    _render_rule_statements(lines, rules[:3])
+    lines.extend([
         "### Canonical owner kinds",
+        "",
+        "The following table identifies the kinds of sources that can own governed facts:",
         "",
         "| Kind | Meaning |",
         "|---|---|",
@@ -729,7 +793,9 @@ def _render_ownership(lines: list[str], content: dict[str, Any]) -> None:
         lines.append(f"| `{item['kind']}` | {item['meaning']} |")
     lines.extend([
         "",
-        "### Governed relationship vocabulary",
+        "### Governed relationships",
+        "",
+        "Non-owning artifacts preserve authority by declaring typed relationships to the sources they depend on, implement, evidence, project, or reference. The following table defines that vocabulary:",
         "",
         "| Relationship | Meaning |",
         "|---|---|",
@@ -737,49 +803,136 @@ def _render_ownership(lines: list[str], content: dict[str, Any]) -> None:
     for item in content["relationship_catalog"]:
         lines.append(f"| `{item['code']}` | {item['meaning']} |")
     lines.append("")
+    _render_rule_statements(lines, rules[3:])
 
 
 def _render_layering(lines: list[str], content: dict[str, Any]) -> None:
-    lines.extend(["### Authority layers", "", "| Layer | Name | Interpretation |", "|---|---|---|"])
+    lines.extend([
+        "### Authority model",
+        "",
+        f"The governance model uses {_format_count(len(content['layers']))} authority layers from `L0` through `L5`. Lower layer numbers have higher authority for dependency direction; the layer does not describe storage location or implementation order.",
+        "",
+    ])
+    _render_rule_statements(lines, content["rules"])
+    lines.extend([
+        "### Authority layers",
+        "",
+        "The following table defines what each authority layer represents:",
+        "",
+        "| Layer | Name | Interpretation |",
+        "|---|---|---|",
+    ])
     for item in content["layers"]:
         lines.append(f"| `{item['code']}` | {item['name']} | {item['interpretation']} |")
-    lines.extend(["", "### Direction examples", "", "| Source | Target | Valid |", "|---|---|---|"])
+    lines.extend([
+        "",
+        "### Direction examples",
+        "",
+        "The following examples show valid and invalid dependency directions under the authority ordering:",
+        "",
+        "| Source | Target | Valid |",
+        "|---|---|---|",
+    ])
     for item in content["examples"]:
         lines.append(f"| `{item['source']}` | `{item['target']}` | {'Yes' if item['valid'] else 'No'} |")
     lines.append("")
 
 
 def _render_dependencies(lines: list[str], content: dict[str, Any]) -> None:
-    lines.extend(["### Dependency target forms", "", "| Kind | Field | Example |", "|---|---|---|"])
+    lines.extend([
+        "### Dependency model",
+        "",
+        "A governed dependency must identify a stable target, resolve successfully, follow the authority-layer direction, and remain part of an acyclic graph. Generated dependency maps are projections of that validated graph, not a second source of truth.",
+        "",
+    ])
+    _render_rule_statements(lines, content["rules"])
+    lines.extend([
+        "### Dependency targets",
+        "",
+        "Dependencies use one of the following target forms. MRD dependencies use stable MRD IDs; canonical repository dependencies use `repo:` paths:",
+        "",
+        "| Kind | Field | Example |",
+        "|---|---|---|",
+    ])
     for item in content["target_forms"]:
         lines.append(f"| {item['kind']} | `{item['field']}` | `{item['example']}` |")
     lines.append("")
 
 
 def _render_provenance(lines: list[str], content: dict[str, Any]) -> None:
-    lines.extend(["### Record modes", "", "| Record mode | Meaning | Mutability |", "|---|---|---|"])
+    lines.extend([
+        "### Provenance model",
+        "",
+        "Record mode expresses both authority and mutability, while fact quality describes how directly a fact is supported by admitted evidence. This separation prevents harvested, inferred, or generated material from silently becoming prescriptive authority.",
+        "",
+    ])
+    _render_rule_statements(lines, content["rules"])
+    lines.extend([
+        "### Record modes",
+        "",
+        "The following table defines the authority and mutability posture of each record mode:",
+        "",
+        "| Record mode | Meaning | Mutability |",
+        "|---|---|---|",
+    ])
     for item in content["record_modes"]:
         lines.append(f"| `{item['mode']}` | {item['meaning']} | `{item['mutability']}` |")
-    lines.extend(["", "### Fact quality", "", "| Quality | Meaning |", "|---|---|"])
+    lines.extend([
+        "",
+        "### Fact quality",
+        "",
+        "Fact quality records whether a fact is direct, deterministically derived, or inferred:",
+        "",
+        "| Quality | Meaning |",
+        "|---|---|",
+    ])
     for item in content["fact_qualities"]:
         lines.append(f"| `{item['quality']}` | {item['meaning']} |")
-    lines.extend(["", "### Provenance source kinds", "", "| Kind | Resolution requirement |", "|---|---|"])
+    lines.extend([
+        "",
+        "### Provenance source kinds",
+        "",
+        "Each provenance source kind has a resolution or fingerprint requirement, as shown in the following table:",
+        "",
+        "| Kind | Resolution requirement |",
+        "|---|---|",
+    ])
     for item in content["source_kinds"]:
         lines.append(f"| `{item['kind']}` | {item['resolution']} |")
     lines.append("")
 
 
 def _render_lifecycle(lines: list[str], content: dict[str, Any]) -> None:
-    lines.extend(["### State machines", "", "| Record mode | States | Allowed transitions |", "|---|---|---|"])
+    lines.extend([
+        "### State machines",
+        "",
+        "Each record mode has its own state machine. Prescriptive MRDs move from draft authority to active authority and then supersession; descriptive evidence and generated metadata use lifecycles that match their different mutability rules.",
+        "",
+        "The following table shows the allowed states and transitions for each record mode:",
+        "",
+        "| Record mode | States | Allowed transitions |",
+        "|---|---|---|",
+    ])
     for item in content["lifecycles"]:
         transitions = "; ".join(f"{edge['from']} → {edge['to']}" for edge in item["transitions"])
         lines.append(f"| `{item['record_mode']}` | {' → '.join(item['states'])} | {transitions} |")
-    lines.append("")
+    lines.extend(["", "### Lifecycle requirements", ""])
+    _render_rule_statements(lines, content["rules"])
 
 
 def _render_operator_behavior(lines: list[str], content: dict[str, Any]) -> None:
+    rules = content["rules"]
+    lines.extend([
+        "### Applying governance",
+        "",
+        f"kis-op applies governance through {_format_count(len(content['phases']))} ordered phases. It resolves authority and applicable MRDs before mutation, validates blocking conditions before execution, and keeps generated review surfaces downstream of validated sources.",
+        "",
+    ])
+    _render_rule_statements(lines, rules[:4])
     lines.extend([
         "### Governance application lifecycle",
+        "",
+        "The following table shows each phase, the actions kis-op performs, and the condition that stops progress when the phase cannot complete safely:",
         "",
         "| # | Phase | Required actions | Stop when |",
         "|---:|---|---|---|",
@@ -788,31 +941,65 @@ def _render_operator_behavior(lines: list[str], content: dict[str, Any]) -> None
         actions = "; ".join(phase["required_actions"])
         stop_when = "; ".join(phase["stop_when"]) or "phase completes"
         lines.append(f"| {phase['order']} | `{phase['name']}` | {actions} | {stop_when} |")
-    lines.extend(["", "### Required outputs", ""])
+    lines.extend([
+        "",
+        "### Required outputs",
+        "",
+        "A completed governance application produces the following review and machine-readable outputs:",
+        "",
+    ])
     for output in content["outputs"]:
         lines.append(f"- {output}")
-    lines.append("")
+    lines.extend(["", "### Scope and review boundaries", ""])
+    _render_rule_statements(lines, rules[4:])
 
 
 def _render_validation(lines: list[str], content: dict[str, Any]) -> None:
     lines.extend([
+        "### Validation model",
+        "",
+        "Validation first establishes that the governance set is structurally valid, then evaluates the cross-record semantics that depend on that structure. A blocking failure prevents the affected governance state from being accepted as valid and produces machine-readable diagnostics.",
+        "",
+    ])
+    _render_rule_statements(lines, content["rules"])
+    lines.extend([
         "### Enforcement modes",
+        "",
+        "The following table identifies where each kind of governance requirement is enforced and whether failure blocks progress:",
         "",
         "| Mode | Meaning | Blocking |",
         "|---|---|---|",
     ])
     for mode in content["enforcement_modes"]:
         lines.append(f"| `{mode['mode']}` | {mode['meaning']} | {'Yes' if mode['blocking'] else 'No'} |")
-    lines.extend(["", "### Validation dimensions", ""])
+    lines.extend([
+        "",
+        "### Validation dimensions",
+        "",
+        "Validation covers the following dimensions. Each dimension groups checks that evaluate one governance concern:",
+        "",
+    ])
     for dimension in content["dimensions"]:
-        heading = dimension["name"].replace("_", " ").title()
+        heading = dimension["name"].replace("_", " ").capitalize()
         lines.append(f"#### {heading}")
         lines.append("")
         for check in dimension["checks"]:
             lines.append(f"- {check}")
         lines.append("")
     result = content["result_contract"]
-    lines.extend(["### Result contract", "", f"- Status: {', '.join(f'`{value}`' for value in result['status_values'])}", f"- Check keys: {', '.join(f'`{value}`' for value in result['checks'])}", f"- Diagnostics on failure: {'required' if result['diagnostics_required_on_failure'] else 'optional'}", "", "### Stable reason codes", ""])
+    statuses = ", ".join(f"`{value}`" for value in result["status_values"])
+    checks = ", ".join(f"`{value}`" for value in result["checks"])
+    diagnostics = "required" if result["diagnostics_required_on_failure"] else "optional"
+    lines.extend([
+        "### Validation result",
+        "",
+        f"A validation result has one of these statuses: {statuses}. It reports these check keys: {checks}. Machine-readable diagnostics on failure are {diagnostics}.",
+        "",
+        "### Stable reason codes",
+        "",
+        "Validation failures use the following stable reason codes so callers can diagnose failure without parsing prose:",
+        "",
+    ])
     for code in content["reason_codes"]:
         lines.append(f"- `{code}`")
     lines.append("")

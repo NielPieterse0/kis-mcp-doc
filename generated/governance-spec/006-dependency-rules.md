@@ -5,27 +5,45 @@
 
 [Specification](001-specification.md) | [Documentation index](000-index.md)
 
-## Overview
+Dependencies make authority relationships explicit and verifiable. Each dependency identifies either another MRD or a canonical repository source that the MRD requires.
 
-Make all authority dependencies explicit, stable, resolvable, and acyclic.
+## Dependency model
 
-## Normative rules
+A governed dependency must identify a stable target, resolve successfully, follow the authority-layer direction, and remain part of an acyclic graph. Generated dependency maps are projections of that validated graph, not a second source of truth.
 
-| Rule | Requirement | Enforcement |
-|---|---|---|
-| `KIS-MRD-DEP-001` | Every dependency target MUST resolve. | `validator` |
-| `KIS-MRD-DEP-002` | MRD-to-MRD dependency direction MUST satisfy the L0-L5 authority ordering. | `validator` |
-| `KIS-MRD-DEP-003` | The MRD dependency graph MUST be acyclic. | `validator` |
-| `KIS-MRD-DEP-004` | Duplicate dependency edges MUST be rejected. | `validator` |
-| `KIS-MRD-DEP-005` | Dependency identities MUST be stable; canonical non-MRD dependencies MUST use repo: paths. | `validator` |
-| `KIS-MRD-DEP-006` | A META-DEP projection MAY be generated from the validated dependency graph and MUST NOT become primary authority. | `generator` |
+Every dependency target MUST resolve.
 
-## Dependency target forms
+MRD-to-MRD dependency direction MUST satisfy the L0-L5 authority ordering.
+
+The MRD dependency graph MUST be acyclic.
+
+Duplicate dependency edges MUST be rejected.
+
+Dependency identities MUST be stable; canonical non-MRD dependencies MUST use repo: paths.
+
+A META-DEP projection MAY be generated from the validated dependency graph and MUST NOT become primary authority.
+
+## Dependency targets
+
+Dependencies use one of the following target forms. MRD dependencies use stable MRD IDs; canonical repository dependencies use `repo:` paths:
 
 | Kind | Field | Example |
 |---|---|---|
 | mrd | `mrd_id` | `KIS-KNOW-SEM-REG-001` |
 | canonical_source | `source` | `repo:contracts/mrd/v1/mrd.schema.json` |
+
+## Requirement traceability
+
+The following table preserves the stable rule identifier and enforcement binding for each requirement stated in this chapter:
+
+| Rule | Enforcement |
+|---|---|
+| `KIS-MRD-DEP-001` | `validator` |
+| `KIS-MRD-DEP-002` | `validator` |
+| `KIS-MRD-DEP-003` | `validator` |
+| `KIS-MRD-DEP-004` | `validator` |
+| `KIS-MRD-DEP-005` | `validator` |
+| `KIS-MRD-DEP-006` | `generator` |
 
 ## Source and authority
 
