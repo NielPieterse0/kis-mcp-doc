@@ -5,21 +5,25 @@
 
 [Specification](001-specification.md) | [Documentation index](000-index.md)
 
-## Overview
+KIS MRDs use a functional classification model. Classification describes what an artifact does, independent of where a repository stores or implements it.
 
-Define the stable functional vocabulary used to classify KIS MRDs without coupling classification to repository layout.
+## Classification requirements
 
-## Normative rules
+The catalog contains 12 functional classes and 47 allowed MRD types. Classification is based on function so that the same governed need keeps the same meaning across repository layouts and technology choices.
 
-| Rule | Requirement | Enforcement |
-|---|---|---|
-| `KIS-MRD-CLASS-001` | Every MRD MUST declare exactly one class and one type from this catalog. | `validator` |
-| `KIS-MRD-CLASS-002` | Classification MUST describe what an artifact does, not where the artifact is stored. | `review` |
-| `KIS-MRD-CLASS-003` | A new MRD type MUST NOT be introduced when an existing catalog type adequately represents the artifact. | `review` |
-| `KIS-MRD-CLASS-004` | Artifacts MUST NOT be created merely to populate unused catalog types; absence of an unused type has no compliance implication. | `workflow` |
-| `KIS-MRD-CLASS-005` | The catalog MAY be extended by a versioned governance amendment when a genuine artifact need cannot be represented by an existing type. | `workflow` |
+Every MRD MUST declare exactly one class and one type from this catalog.
+
+Classification MUST describe what an artifact does, not where the artifact is stored.
+
+A new MRD type MUST NOT be introduced when an existing catalog type adequately represents the artifact.
+
+Artifacts MUST NOT be created merely to populate unused catalog types; absence of an unused type has no compliance implication.
+
+The catalog MAY be extended by a versioned governance amendment when a genuine artifact need cannot be represented by an existing type.
 
 ## Classes
+
+The following table defines the functional classes used to group MRD types:
 
 | Class | Name | Definition |
 |---|---|---|
@@ -37,6 +41,8 @@ Define the stable functional vocabulary used to classify KIS MRDs without coupli
 | `META` | Derived metadata | Contains generated indexes, dependency maps, and metadata maps; never primary authority. |
 
 ## Type catalog (47 allowed types)
+
+The following table lists each governed type and its canonical representation format:
 
 | Class | Type | Code | Meaning | Canonical format |
 |---|---|---|---|---|
@@ -87,6 +93,18 @@ Define the stable functional vocabulary used to classify KIS MRDs without coupli
 | `META` | `IDX` | `META-IDX` | Index | JSON |
 | `META` | `DEP` | `META-DEP` | Dependency map | JSON |
 | `META` | `MAP` | `META-MAP` | Metadata map | JSON |
+
+## Requirement traceability
+
+The following table preserves the stable rule identifier and enforcement binding for each requirement stated in this chapter:
+
+| Rule | Enforcement |
+|---|---|
+| `KIS-MRD-CLASS-001` | `validator` |
+| `KIS-MRD-CLASS-002` | `review` |
+| `KIS-MRD-CLASS-003` | `review` |
+| `KIS-MRD-CLASS-004` | `workflow` |
+| `KIS-MRD-CLASS-005` | `workflow` |
 
 ## Source and authority
 

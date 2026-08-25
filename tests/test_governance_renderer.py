@@ -101,17 +101,44 @@ def test_rendered_spec_decomposes_normative_sections_into_mcp_style_pages(tmp_pa
         assert page in root
 
     classification = (output / "002-classification.md").read_text(encoding="utf-8")
+    applicability = (output / "003-applicability-and-selection.md").read_text(encoding="utf-8")
+    behavior = (output / "009-kis-op-governance-behavior.md").read_text(encoding="utf-8")
     validation = (output / "010-validation-and-enforcement.md").read_text(encoding="utf-8")
     assert "## Type catalog (47 allowed types)" in classification
     assert "SEM-DOM" in classification
-    assert "## Enforcement modes" in validation
-    assert "### Operator Behavior" in validation
+    assert "## Selecting governance artifacts" in applicability
+    assert applicability.index("## Selecting governance artifacts") < applicability.index("## MRD type applicability")
+    assert "A repository or change MUST NOT instantiate all 47 MRD types by default" in applicability
+    assert "## Governance application lifecycle" in behavior
+    assert "kis-op applies governance through seven ordered phases" in behavior
+    assert "## Validation model" in validation
+    assert validation.index("## Validation model") < validation.index("## Enforcement modes")
+    assert "### Operator behavior" in validation
     assert "Operator_Behavior" not in validation
-    assert "| Rule | Requirement | Enforcement |" in validation
+    assert "## Requirement traceability" in validation
+    assert "| Rule | Enforcement |" in validation
+    assert "| Rule | Requirement | Enforcement |" not in validation
+    assert "## Normative rules" not in validation
     assert "# kis-op Governance Specification" in root
     assert "## Overview" in root
     assert "## Detailed specification" in root
     assert "GENERATED — DO NOT EDIT" in root
+
+
+def test_human_composition_preserves_normative_authority_and_traceability(tmp_path: Path) -> None:
+    repo = GovernanceRepository(ROOT, MRD_ROOT)
+    output = tmp_path / "build"
+    build_governance_spec(repo, PUBLICATION, output)
+
+    documents = repo.load()
+    for document in documents.values():
+        page = (output / render_module._document_page_name(document)).read_text(encoding="utf-8")
+        assert "## Normative rules" not in page
+        assert "| Rule | Requirement | Enforcement |" not in page
+        assert "## Requirement traceability" in page
+        for rule in document["content"].get("rules", []):
+            assert rule["statement"] in page
+            assert f"| `{rule['rule_id']}` | `{rule['enforcement']}` |" in page
 
 
 def test_manifest_hashes_and_verifier_detect_tampering(tmp_path: Path) -> None:

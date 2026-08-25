@@ -5,21 +5,25 @@
 
 [Specification](001-specification.md) | [Documentation index](000-index.md)
 
-## Overview
+Governance validation combines structural checks, deterministic semantic checks, workflow controls, generation checks, and explicit review gates. Blocking failures fail closed and produce diagnosable results.
 
-Define how structural and semantic governance requirements are checked, which enforcement mode applies, and which blocking failures must fail closed.
+## Validation model
 
-## Normative rules
+Validation first establishes that the governance set is structurally valid, then evaluates the cross-record semantics that depend on that structure. A blocking failure prevents the affected governance state from being accepted as valid and produces machine-readable diagnostics.
 
-| Rule | Requirement | Enforcement |
-|---|---|---|
-| `KIS-MRD-VAL-001` | Every MRD MUST pass structural, dependency, provenance, and lifecycle validation before it is accepted as valid. | `validator` |
-| `KIS-MRD-VAL-002` | Validation failures MUST emit stable reason codes and machine-readable diagnostics. | `validator` |
-| `KIS-MRD-VAL-003` | A validation result MUST report classification, layering, dependencies, provenance, lifecycle, and schema check status. | `validator` |
-| `KIS-MRD-VAL-004` | Governance MRDs MUST validate through the public composed governance MRD profile, which binds the reusable core envelope to governance content. | `schema` |
-| `KIS-MRD-VAL-005` | Any structural schema failure in the governance MRD set MUST short-circuit semantic validation for the entire set, because cross-record semantics are valid only over a structurally valid governance set. | `validator` |
+Every MRD MUST pass structural, dependency, provenance, and lifecycle validation before it is accepted as valid.
+
+Validation failures MUST emit stable reason codes and machine-readable diagnostics.
+
+A validation result MUST report classification, layering, dependencies, provenance, lifecycle, and schema check status.
+
+Governance MRDs MUST validate through the public composed governance MRD profile, which binds the reusable core envelope to governance content.
+
+Any structural schema failure in the governance MRD set MUST short-circuit semantic validation for the entire set, because cross-record semantics are valid only over a structurally valid governance set.
 
 ## Enforcement modes
+
+The following table identifies where each kind of governance requirement is enforced and whether failure blocks progress:
 
 | Mode | Meaning | Blocking |
 |---|---|---|
@@ -30,6 +34,8 @@ Define how structural and semantic governance requirements are checked, which en
 | `review` | Human or agent review is required where semantic adequacy cannot be proven deterministically. | Yes |
 
 ## Validation dimensions
+
+Validation covers the following dimensions. Each dimension groups checks that evaluate one governance concern:
 
 ### Structural
 
@@ -77,19 +83,19 @@ Define how structural and semantic governance requirements are checked, which en
 - META meta posture
 - supersession targets resolve
 
-### Operator Behavior
+### Operator behavior
 
 - kis-op phases are complete and ordered
 - blocking stop conditions are explicit
 - generated review surface is downstream of validated authority
 
-## Result contract
+## Validation result
 
-- Status: `valid`, `invalid`
-- Check keys: `classification`, `applicability`, `ownership`, `layering`, `dependencies`, `provenance`, `lifecycle`, `operator_behavior`, `schema`
-- Diagnostics on failure: required
+A validation result has one of these statuses: `valid`, `invalid`. It reports these check keys: `classification`, `applicability`, `ownership`, `layering`, `dependencies`, `provenance`, `lifecycle`, `operator_behavior`, `schema`. Machine-readable diagnostics on failure are required.
 
 ## Stable reason codes
+
+Validation failures use the following stable reason codes so callers can diagnose failure without parsing prose:
 
 - `MRD_SCHEMA_INVALID`
 - `MRD_RULE_ID_DUPLICATE`
@@ -122,6 +128,18 @@ Define how structural and semantic governance requirements are checked, which en
 - `MRD_RELATIONSHIP_UNKNOWN`
 - `MRD_OPERATOR_BEHAVIOR_INVALID`
 - `MRD_ENFORCEMENT_BINDING_INVALID`
+
+## Requirement traceability
+
+The following table preserves the stable rule identifier and enforcement binding for each requirement stated in this chapter:
+
+| Rule | Enforcement |
+|---|---|
+| `KIS-MRD-VAL-001` | `validator` |
+| `KIS-MRD-VAL-002` | `validator` |
+| `KIS-MRD-VAL-003` | `validator` |
+| `KIS-MRD-VAL-004` | `schema` |
+| `KIS-MRD-VAL-005` | `validator` |
 
 ## Source and authority
 
