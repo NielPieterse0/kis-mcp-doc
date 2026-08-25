@@ -77,14 +77,14 @@ The first implementation slices must convert this bootstrap list into a machine-
 - `C:\Projects\doc-solution` — harvest deterministic documentation/knowledge patterns, normalized governance models, provenance, lookup/filter/trace/impact/health/compare contracts, architecture/governance views, project-documentation build/publication, and human-doc generation lessons.
 - `C:\Projects\GPT-OS` — harvest machine-readable governance sources, generated governance/documentation views, authority routing, module-boundary contracts, publication packages, integrity checks, and source-to-view verification patterns.
 - `C:\Projects\supervox` — harvest MRD taxonomy, metadata envelopes, stable IDs, binding semantics, template inheritance, modular contracts, validation gates, cross-reference discipline, and MRD-to-document-type patterns such as specifications, procedures, and decision records.
-- `C:\Projects\References\mcp-specification\mcp-spec-2025-11-25-direct-md-clean` — target/reference corpus for the first specification-generation mandate while FastMCP 4.x remains a transitional implementation target; use its layout, navigation feel, section decomposition, normative presentation, and MCP specification corpus as parity evidence, not as KIS authority.
+- `C:\Projects\References\mcp-specification\mcp-docs-2026-07-28-direct-md-clean` — captured MCP `2026-07-28` reference corpus for the specification-generation mandate; use its `/specification/2026-07-28/` subset, including the schema reference, for layout, navigation feel, section decomposition, normative presentation, and specification parity evidence, not as KIS authority.
 - DeepWiki/Litho and Graphify — keep as paired external reference candidates during Knowledge architecture development. Continuously compare their repository-understanding, graph, wiki/document generation, retrieval, MCP/tool exposure, and agent-processing patterns against the native KIS Knowledge design. Prefer selective adoption or composition over wholesale replacement unless later evidence justifies a different decision.
 
 Pin harvest evidence to concrete revisions/hashes whenever the source supports them. Never silently harvest a moving source and present the result as reproducible.
 
 ## First product mandate — generated `kis-op` Governance Specification
 
-The first delivery target is the generated human-reviewable `kis-op` Governance Specification, derived from governed machine-readable authority and presented with conventions comparable to the captured MCP 2025 specification set.
+The first delivery target is the generated human-reviewable `kis-op` Governance Specification, derived from governed machine-readable authority and presented with conventions comparable to the captured MCP 2026-07-28 specification set.
 
 Until that governance specification is complete, keep implementation scope on prescribing the `kis-op` governance model: the 47-MRD baseline, applicability and selection, lifecycle, ownership, relationships and bindings, validation and enforcement, extensibility, and the behavior expected from `kis-op`. Broader Knowledge/Docs platform work remains future scope unless it is strictly required to generate or validate this governance specification.
 
@@ -92,7 +92,7 @@ Build the bridge in slices from governed governance authority to normalized mode
 
 The required progression for this first mandate is:
 
-1. Use the MCP 2025 corpus as presentation and specification-structure evidence, not as KIS authority.
+1. Use the MCP 2026-07-28 specification corpus as presentation and specification-structure evidence, not as KIS authority.
 2. Preserve the existing 47-MRD classification baseline and prescribe explicit applicability and minimum-sufficient selection rules for every type.
 3. Prescribe canonical fact ownership, governed relationships and bindings, authority layering, provenance, lifecycle, extensibility, and `kis-op` operating behavior as machine-readable MRDs.
 4. Make deterministic portions machine-enforceable through schemas, validators, workflow contracts, generated-view checks, and stable diagnostics; label review-based enforcement distinctly.

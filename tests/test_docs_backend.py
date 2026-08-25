@@ -73,7 +73,7 @@ def test_litho_package_hash_tampering_fails_closed(tmp_path: Path) -> None:
         load_litho_evidence(ROOT, package)
 
 
-def test_governance_build_uses_mcp_spec_2025_multi_page_profile(tmp_path: Path) -> None:
+def test_governance_build_uses_mcp_spec_multi_page_profile(tmp_path: Path) -> None:
     output = tmp_path / "build"
 
     manifest = build_governance_spec(_repo(), PUBLICATION, output)
@@ -95,7 +95,7 @@ def test_governance_build_uses_mcp_spec_2025_multi_page_profile(tmp_path: Path) 
     actual_pages = {path.name for path in output.glob("*.md")}
     assert expected_pages == actual_pages
     assert manifest["contract"]["version"] == 2
-    assert manifest["specification"]["layout_profile"] == "mcp-spec-2025"
+    assert manifest["specification"]["layout_profile"] == "mcp-spec"
     root = (output / "001-specification.md").read_text(encoding="utf-8")
     assert '<div id="enable-section-numbers" />' in root
     assert "BCP 14" in root and "RFC2119" in root and "RFC8174" in root
@@ -156,7 +156,7 @@ def test_harvest_registry_pins_adopted_sources_without_machine_paths() -> None:
 
     assert sources["doc-solution"]["identity"] == "NielPieterse0/doc-solution"
     assert sources["doc-solution"]["pinned_revision"] == "acf9ffd139ee009d3b921d5cd7c24691bb1c4737"
-    assert sources["mcp-spec-2025-11-25"]["content_sha256"] == "2fe1f78c929deba4597c69d2c8adef57280666c6bba7b9587bcc4b53c89f0944"
+    assert sources["mcp-spec-2026-07-28"]["content_sha256"] == "8d5af577abff93b6c3a62419f146345f3387550e22255cf81004080e87a761e2"
     assert sources["litho"]["identity"] == "sopaco/deepwiki-rs"
     assert sources["litho"]["trust_classification"] == "advisory_external_evidence"
     serialized = json.dumps(registry, sort_keys=True)

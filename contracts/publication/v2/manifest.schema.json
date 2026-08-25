@@ -53,7 +53,7 @@
           "minLength": 1
         },
         "layout_profile": {
-          "const": "mcp-spec-2025"
+          "const": "mcp-spec"
         }
       }
     },

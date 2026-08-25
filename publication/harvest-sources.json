@@ -1,5 +1,8 @@
 {
-  "contract": {"name": "harvest-source-registry", "version": 1},
+  "contract": {
+    "name": "harvest-source-registry",
+    "version": 1
+  },
   "registry_version": "1.0.0",
   "sources": [
     {
@@ -11,7 +14,9 @@
       "content_sha256": null,
       "trust_classification": "parent_governing_reference",
       "acquisition_method": "registered_local_checkout",
-      "applicable_contracts": ["harvest-source-registry/v1"],
+      "applicable_contracts": [
+        "harvest-source-registry/v1"
+      ],
       "status": "active_reference"
     },
     {
@@ -23,7 +28,9 @@
       "content_sha256": null,
       "trust_classification": "harvest_reference",
       "acquisition_method": "registered_local_checkout",
-      "applicable_contracts": ["harvest-source-registry/v1"],
+      "applicable_contracts": [
+        "harvest-source-registry/v1"
+      ],
       "status": "active_reference"
     },
     {
@@ -35,7 +42,9 @@
       "content_sha256": null,
       "trust_classification": "harvest_reference",
       "acquisition_method": "registered_local_checkout",
-      "applicable_contracts": ["harvest-source-registry/v1"],
+      "applicable_contracts": [
+        "harvest-source-registry/v1"
+      ],
       "status": "active_reference"
     },
     {
@@ -47,19 +56,24 @@
       "content_sha256": null,
       "trust_classification": "harvest_reference",
       "acquisition_method": "registered_local_checkout",
-      "applicable_contracts": ["harvest-source-registry/v1"],
+      "applicable_contracts": [
+        "harvest-source-registry/v1"
+      ],
       "status": "active_reference"
     },
     {
-      "id": "mcp-spec-2025-11-25",
-      "source_role": "MCP specification presentation and corpus-structure parity reference",
-      "identity": "modelcontextprotocol/specification@2025-11-25",
-      "revision_strategy": "captured_corpus_content_hash",
-      "pinned_revision": "2025-11-25",
-      "content_sha256": "2fe1f78c929deba4597c69d2c8adef57280666c6bba7b9587bcc4b53c89f0944",
+      "id": "mcp-spec-2026-07-28",
+      "source_role": "MCP 2026-07-28 specification presentation and corpus-structure parity reference",
+      "identity": "modelcontextprotocol/specification@2026-07-28",
+      "revision_strategy": "captured_specification_content_set_hash",
+      "pinned_revision": "2026-07-28",
+      "content_sha256": "8d5af577abff93b6c3a62419f146345f3387550e22255cf81004080e87a761e2",
       "trust_classification": "presentation_reference",
       "acquisition_method": "pinned_markdown_corpus",
-      "applicable_contracts": ["mcp-spec-2025", "harvest-source-registry/v1"],
+      "applicable_contracts": [
+        "mcp-spec",
+        "harvest-source-registry/v1"
+      ],
       "status": "active_reference"
     },
     {
@@ -71,7 +85,10 @@
       "content_sha256": null,
       "trust_classification": "advisory_external_evidence",
       "acquisition_method": "validated_litho_evidence_package",
-      "applicable_contracts": ["litho-evidence-package/v1", "harvest-source-registry/v1"],
+      "applicable_contracts": [
+        "litho-evidence-package/v1",
+        "harvest-source-registry/v1"
+      ],
       "status": "candidate"
     },
     {
@@ -83,7 +100,9 @@
       "content_sha256": null,
       "trust_classification": "advisory_external_candidate",
       "acquisition_method": "resolve_before_use",
-      "applicable_contracts": ["harvest-source-registry/v1"],
+      "applicable_contracts": [
+        "harvest-source-registry/v1"
+      ],
       "status": "unresolved"
     }
   ]

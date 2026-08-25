@@ -484,7 +484,7 @@ def _render_corpus_index(
         "<!-- GENERATED — DO NOT EDIT -->",
         f"# {config['title']} — documentation index",
         "",
-        "This generated collection follows the `mcp-spec-2025` publication profile. Source MRDs remain authoritative; these pages are review projections.",
+        "This generated collection follows the `mcp-spec` publication profile. Source MRDs remain authoritative; these pages are review projections.",
         "",
         "## Specification pages",
         "",

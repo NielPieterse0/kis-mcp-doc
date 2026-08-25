@@ -1,14 +1,14 @@
 {
-  "bundle_sha256": "96294952c41cd2b1da4989dd6fd747d67ca6a5d9075fa0c82a1f28e58c1b9e50",
+  "bundle_sha256": "49350d5e19d90806245a02d0ee57ab2d1ced3c8693d87ccb6d2ebad9e0d62eed",
   "contract": {
     "name": "kis-governance-spec-build",
     "version": 2
   },
   "files": [
     {
-      "bytes": 927,
+      "bytes": 922,
       "path": "000-index.md",
-      "sha256": "94037cde8645131ee05d39dd3ac4c2d51d5708354710247319e16091be72941e"
+      "sha256": "3b3f604e9be788a136387387531e77e14ac48492a5bae80595429f47f0d87b22"
     },
     {
       "bytes": 2130,
@@ -94,15 +94,15 @@
       },
       {
         "path": "src/kis_mcp_doc/render.py",
-        "sha256": "43be87d12c4e44987f748303a86b2a8ab8eb8d77ccd898a49794816c3f52d911"
+        "sha256": "ef384525c9df22274287f5ea6613cc410824ca3e54c5bcaa88101cac8e1a6744"
       },
       {
         "path": "contracts/publication/v2/governance-spec.schema.json",
-        "sha256": "93984b913e43a999b394aaecf78a7fb2a5279be6822140fd1d3b076b9b0e8ae3"
+        "sha256": "fcdb9e7ee3343939cff0b16fff93d9ddd08e51c30e0dee2ffd2bc7c944e7e92b"
       },
       {
         "path": "contracts/publication/v2/manifest.schema.json",
-        "sha256": "60c9ea6039c5e25b56e423ec3b7be40de700b8c8028e35aeabba35aadc7954b4"
+        "sha256": "8994c0cd43063d3c9d44056bdd9339ffed431c251768eaa8697fe2c3fbfa34a0"
       },
       {
         "path": "contracts/documentation/harvest/v1/registry.schema.json",
@@ -119,7 +119,7 @@
     "external_evidence": [],
     "harvest_registry": {
       "path": "publication/harvest-sources.json",
-      "sha256": "e16c07d1c8c9bff849432623accf87a5caf3405866187da03f13efc88b2c77b0",
+      "sha256": "c95235389e40f4761f345225db13a4465d16d4024f029858206571b6bd6ab4a7",
       "version": "1.0.0"
     },
     "mrds": [
@@ -180,7 +180,7 @@
     ],
     "publication": {
       "path": "publication/governance-spec.json",
-      "sha256": "3b01c61afe2e78d939c96a9fea4e3a1ff3b478db42990b71c8bb64ccdfc41651"
+      "sha256": "cf20f156b64dcb50440cedb71033a9829f5e363e90ccc8d1076d1554052771ad"
     },
     "source_files": [
       {
@@ -202,7 +202,7 @@
     "source_set_sha256": "c169f1ed844a2a7da0029656f1371a2e8e787cf48d369bfa304380c4ed990fe7"
   },
   "specification": {
-    "layout_profile": "mcp-spec-2025",
+    "layout_profile": "mcp-spec",
     "status": "draft",
     "title": "kis-op Governance Specification",
     "version": "2.0.0"
