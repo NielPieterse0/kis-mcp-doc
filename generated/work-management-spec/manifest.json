@@ -1,14 +1,14 @@
 {
-  "bundle_sha256": "7e3785eea0ae5c4d56fcd18b0cebe6ca0e5d4054b300f23a7c93ca0616763122",
+  "bundle_sha256": "8b8a399ab61249dc29ed05dd60b396895873d3cd0dacf9ff4bd18f2301eeef24",
   "contract": {
     "name": "kis-work-management-spec-build",
     "version": 1
   },
   "files": [
     {
-      "bytes": 1026,
+      "bytes": 1221,
       "path": "000-index.md",
-      "sha256": "715ede1d06940ac72b1aac740ddbb87b42cd3c89598b81b6bd4215a3159bf32a"
+      "sha256": "db76a73fa77ae29c96b7b0069cb7e4fed087ae424319f00ed346675801ff3ae7"
     },
     {
       "bytes": 3398,
@@ -16,39 +16,49 @@
       "sha256": "4babc2503e9a01835ee7cfa930e16310c87a0cf0e9ceb13285010510cf0aae52"
     },
     {
-      "bytes": 18265,
+      "bytes": 1615,
       "path": "002-work-management-domain-model.md",
-      "sha256": "ec0794a8e1a05dd92be60e29a55ade26a480e4e079e08818802d4d43114a953b"
+      "sha256": "50e0fc957c21bea509410923b27be3714f539bc8632f9b38a83dadfd62da86bf"
     },
     {
-      "bytes": 6173,
+      "bytes": 6249,
       "path": "003-work-lifecycle.md",
-      "sha256": "eea754cdeb97a65a381bf0d729d2a6af36118f8a89fe5dbe70c2ad5a8865310e"
+      "sha256": "547c013e6452ce731f20f01bc37add53615efab64ea9f2807e487d5d4eb1632e"
     },
     {
-      "bytes": 4030,
+      "bytes": 4086,
       "path": "004-work-operations.md",
-      "sha256": "76879408f7854a6013716c009b05e03187b06a8c354b05d393587f5c220aa8df"
+      "sha256": "7d369b2e7ecae92a77a944f4d784030f6744cee297a1b97c8646d359ecd03616"
     },
     {
-      "bytes": 3801,
+      "bytes": 3891,
       "path": "005-next-work-selection.md",
-      "sha256": "0a637e7e35d19351446ea4778c57887972073a6649d165e4e00fdf7968e44449"
+      "sha256": "41bf5adcc8155b44b26da5a04549e45ae82c37bd50b040c4514354531d196bfe"
     },
     {
-      "bytes": 10586,
+      "bytes": 2271,
       "path": "006-authority-and-reconciliation-policy.md",
-      "sha256": "6d130ff7f5d29e6db183ca80efea3bf5c6ca91c91c7640470b51f10bec79f7a5"
+      "sha256": "9e5a7afa6a9fc414adbeb23ac4f108bdd1cf5de6c7079460a49f66174b0cfff4"
     },
     {
-      "bytes": 5390,
+      "bytes": 3110,
       "path": "007-provider-and-command-plane-boundary.md",
-      "sha256": "3148b8f88653382ff2ee0bac905afc0bb7f3ed0eb7cb8625793edd070d7e0c7b"
+      "sha256": "9afb42d237f15f4e5c248f7c21009867acbce528a2422f779ac89eb495421da5"
     },
     {
-      "bytes": 1116,
+      "bytes": 1156,
       "path": "008-work-management-conformance.md",
-      "sha256": "cbf54e3322022dc32ffde08aebd5864bbfb72b602f3639a24ae63101758f8356"
+      "sha256": "af773553fe3916bcac3957c85a3afaeac6987fc326083cb2a7afecf9b8aaf94a"
+    },
+    {
+      "bytes": 18488,
+      "path": "020-work-field-and-vocabulary-reference.md",
+      "sha256": "71261fc3475d1c33c9123ce5a128f80358407c0c1df690de619cae9249d8a122"
+    },
+    {
+      "bytes": 10832,
+      "path": "021-work-project-configuration-reference.md",
+      "sha256": "ed3501718521c0a56c06a88cf50e4bd38f40634da43f7ad3d69b110f94e343fe"
     },
     {
       "bytes": 3398,

@@ -3,7 +3,7 @@
 
 <div id="enable-section-numbers" />
 
-[Specification](001-specification.md) | [Documentation index](000-index.md)
+[Previous: Provenance](007-provenance.md) | [Next: kis-op Governance Behavior](009-kis-op-governance-behavior.md) | [Index](000-index.md)
 
 MRD lifecycle depends on record mode. Prescriptive authority, descriptive evidence, and generated metadata follow different states and mutability rules.
 

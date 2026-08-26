@@ -3,7 +3,7 @@
 
 <div id="enable-section-numbers" />
 
-[Specification](001-specification.md) | [Documentation index](000-index.md)
+[Previous: Specification](001-specification.md) | [Next: Applicability and Selection](003-applicability-and-selection.md) | [Index](000-index.md)
 
 KIS MRDs use a functional classification model. Classification describes what an artifact does, independent of where a repository stores or implements it.
 

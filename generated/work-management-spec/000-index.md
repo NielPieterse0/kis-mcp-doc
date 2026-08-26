@@ -16,6 +16,11 @@ The validated Work Management MRDs remain authoritative. These pages are determi
 - [Provider and command-plane boundary](007-provider-and-command-plane-boundary.md)
 - [Work Management conformance](008-work-management-conformance.md)
 
+## Generated reference
+
+- [Work field and vocabulary reference](020-work-field-and-vocabulary-reference.md)
+- [Work Project configuration reference](021-work-project-configuration-reference.md)
+
 ## Traceability
 
 - [Build manifest](manifest.json) — exact MRD and generated-file hashes

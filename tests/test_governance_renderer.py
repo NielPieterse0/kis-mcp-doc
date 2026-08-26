@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 import shutil
 from pathlib import Path
 
@@ -107,8 +108,9 @@ def test_rendered_spec_decomposes_normative_sections_into_mcp_style_pages(tmp_pa
     assert "## Type catalog (47 allowed types)" in classification
     assert "SEM-DOM" in classification
     assert "## Selecting governance artifacts" in applicability
-    assert applicability.index("## Selecting governance artifacts") < applicability.index("## MRD type applicability")
+    assert applicability.index("## Selecting governance artifacts") < applicability.index("## Applicability reference")
     assert "A repository or change MUST NOT instantiate all 47 MRD types by default" in applicability
+    assert "020-applicability-catalog.md" in applicability
     assert "## Governance application lifecycle" in behavior
     assert "kis-op applies governance through seven ordered phases" in behavior
     assert "## Validation model" in validation
@@ -139,6 +141,54 @@ def test_human_composition_preserves_normative_authority_and_traceability(tmp_pa
         for rule in document["content"].get("rules", []):
             assert rule["statement"] in page
             assert f"| `{rule['rule_id']}` | `{rule['enforcement']}` |" in page
+
+
+def test_governance_generated_reference_separates_lookup_catalogs_and_preserves_navigation(tmp_path: Path) -> None:
+    repo = GovernanceRepository(ROOT, MRD_ROOT)
+    output = tmp_path / "build"
+    build_governance_spec(repo, PUBLICATION, output)
+    docs = repo.load()
+
+    applicability_doc = next(doc for doc in docs.values() if doc["content"]["concern"] == "applicability")
+    ownership_doc = next(doc for doc in docs.values() if doc["content"]["concern"] == "ownership")
+    validation_doc = next(doc for doc in docs.values() if doc["content"]["concern"] == "validation")
+
+    applicability = (output / "003-applicability-and-selection.md").read_text(encoding="utf-8")
+    applicability_ref = (output / "020-applicability-catalog.md").read_text(encoding="utf-8")
+    relationship_ref = (output / "021-relationship-vocabulary.md").read_text(encoding="utf-8")
+    reason_ref = (output / "022-validation-reason-codes.md").read_text(encoding="utf-8")
+
+    assert "| Code | Name | Use when |" not in applicability
+    assert "`generated_reference`" in applicability_ref
+    for item in applicability_doc["content"]["type_applicability"]:
+        assert f"`{item['code']}`" in applicability_ref
+        assert item["use_when"] in applicability_ref
+    for item in ownership_doc["content"]["relationship_catalog"]:
+        assert f"`{item['code']}`" in relationship_ref
+        assert item["meaning"] in relationship_ref
+    for code in validation_doc["content"]["reason_codes"]:
+        assert f"`{code}`" in reason_ref
+
+    classification = (output / "002-classification.md").read_text(encoding="utf-8")
+    assert "[Previous: Specification](001-specification.md)" in classification
+    assert "[Next: Applicability and Selection](003-applicability-and-selection.md)" in classification
+    index = (output / "000-index.md").read_text(encoding="utf-8")
+    assert "## Generated reference" in index
+    assert "020-applicability-catalog.md" in index
+
+
+def test_governance_generated_links_resolve(tmp_path: Path) -> None:
+    repo = GovernanceRepository(ROOT, MRD_ROOT)
+    output = tmp_path / "build"
+    build_governance_spec(repo, PUBLICATION, output)
+
+    for page in output.rglob("*.md"):
+        text = page.read_text(encoding="utf-8")
+        for target in re.findall(r"\]\(([^)#]+)", text):
+            if "://" in target:
+                continue
+            resolved = (page.parent / target).resolve()
+            assert resolved.exists(), f"broken generated link in {page.name}: {target}"
 
 
 def test_manifest_hashes_and_verifier_detect_tampering(tmp_path: Path) -> None:

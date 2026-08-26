@@ -3,7 +3,7 @@
 
 <div id="enable-section-numbers" />
 
-[Specification](001-specification.md) | [Documentation index](000-index.md)
+[Previous: Dependency Rules](006-dependency-rules.md) | [Next: Lifecycle](008-lifecycle.md) | [Index](000-index.md)
 
 Provenance identifies the authority, origin, and quality of governed facts. It keeps authored prescription, captured observations, and generated projections distinct.
 

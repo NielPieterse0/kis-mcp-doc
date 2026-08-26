@@ -16,6 +16,12 @@ This generated collection follows the `mcp-spec` publication profile. Source MRD
 - [kis-op Governance Behavior](009-kis-op-governance-behavior.md)
 - [Validation and Enforcement](010-validation-and-enforcement.md)
 
+## Generated reference
+
+- [MRD applicability catalog](020-applicability-catalog.md)
+- [Governed relationship vocabulary](021-relationship-vocabulary.md)
+- [Validation reason codes](022-validation-reason-codes.md)
+
 ## Machine-readable traceability
 
 - [MRD index](data/mrd-index.json)

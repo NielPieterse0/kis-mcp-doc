@@ -3,7 +3,7 @@
 
 <div id="enable-section-numbers" />
 
-[Specification](001-specification.md) | [Documentation index](000-index.md)
+[Previous: kis-op Governance Behavior](009-kis-op-governance-behavior.md) | [Index](000-index.md)
 
 Governance validation combines structural checks, deterministic semantic checks, workflow controls, generation checks, and explicit review gates. Blocking failures fail closed and produce diagnosable results.
 
@@ -95,39 +95,9 @@ A validation result has one of these statuses: `valid`, `invalid`. It reports th
 
 ## Stable reason codes
 
-Validation failures use the following stable reason codes so callers can diagnose failure without parsing prose:
+Validation failures use stable reason codes so callers can diagnose failure without parsing prose. The complete catalog is exact generated reference rather than part of the conceptual flow.
 
-- `MRD_SCHEMA_INVALID`
-- `MRD_RULE_ID_DUPLICATE`
-- `MRD_GOVERNANCE_CONCERN_MISSING`
-- `MRD_GOVERNANCE_CONCERN_DUPLICATE`
-- `MRD_ID_CLASS_TYPE_MISMATCH`
-- `MRD_CLASS_UNKNOWN`
-- `MRD_TYPE_INVALID`
-- `MRD_CATALOG_COUNT_MISMATCH`
-- `MRD_LAYER_INVALID`
-- `MRD_DEPENDENCY_UNRESOLVED`
-- `MRD_DEPENDENCY_LAYER_VIOLATION`
-- `MRD_DEPENDENCY_CYCLE`
-- `MRD_DEPENDENCY_DUPLICATE`
-- `MRD_SOURCE_UNRESOLVED`
-- `MRD_SOURCE_FINGERPRINT_MISMATCH`
-- `MRD_SOURCE_HASH_MISMATCH`
-- `MRD_NORMATIVE_INFERENCE_PROHIBITED`
-- `MRD_RECORD_MODE_INVALID`
-- `MRD_STATUS_INVALID`
-- `MRD_EVD_RECORD_MODE_INVALID`
-- `MRD_META_RECORD_MODE_INVALID`
-- `MRD_SUPERSESSION_UNRESOLVED`
-- `MRD_CLASS_CATALOG_MISMATCH`
-- `MRD_LAYER_CATALOG_MISMATCH`
-- `MRD_RECORD_MODE_CATALOG_MISMATCH`
-- `MRD_META_FACT_QUALITY_INVALID`
-- `MRD_VALIDATION_CONTRACT_MISMATCH`
-- `MRD_APPLICABILITY_CATALOG_MISMATCH`
-- `MRD_RELATIONSHIP_UNKNOWN`
-- `MRD_OPERATOR_BEHAVIOR_INVALID`
-- `MRD_ENFORCEMENT_BINDING_INVALID`
+See the [validation reason-code reference](022-validation-reason-codes.md) for the complete list.
 
 ## Requirement traceability
 

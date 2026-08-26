@@ -24,6 +24,7 @@ _DOCUMENTATION_POLICY = "mrd/documentation/01-reference-standard.mrd.json"
 _DOCUMENTATION_REGISTRY = "mrd/documentation/02-reference-registry.mrd.json"
 _DOCUMENTATION_PUBLICATION = "publication/documentation-reference-standard.json"
 _DOCUMENTATION_OUTPUT_CLASS = "human_readable_specification"
+_REFERENCE_OUTPUT_CLASS = "generated_reference"
 
 
 def build_governance_spec(
@@ -261,6 +262,8 @@ def _validate_documentation_reference_binding(root: Path, config: dict[str, Any]
     output_classes = {item.get("class") for item in policy.get("content", {}).get("output_classes", [])}
     if binding["output_class"] not in output_classes:
         raise ValueError("documentation reference output class is not governed by the policy")
+    if _REFERENCE_OUTPUT_CLASS not in output_classes:
+        raise ValueError("generated-reference output class is not governed by the policy")
     authority_roles = {
         item.get("role"): item.get("may_define_kis_facts")
         for item in policy.get("content", {}).get("authority_model", [])
@@ -321,15 +324,22 @@ def _build_output_files(
         key=lambda item: (item["content"]["section_order"], item["_mrd"]["id"]),
     )
     root_page = _render_specification_root(config, ordered).encode("utf-8")
+    reference_pages = _governance_reference_pages(ordered)
     files: dict[str, bytes] = {
-        "000-index.md": _render_corpus_index(config, ordered, litho_evidence).encode("utf-8"),
+        "000-index.md": _render_corpus_index(config, ordered, litho_evidence, reference_pages).encode("utf-8"),
         "001-specification.md": root_page,
         config["output_file"]: root_page,
         "data/mrd-index.json": _json_bytes(_build_index(repository, documents)),
         "data/dependency-map.json": _json_bytes(_build_dependency_map(documents)),
     }
-    for document in ordered:
-        files[_document_page_name(document)] = _render_document_page(config, document).encode("utf-8")
+    for index, document in enumerate(ordered):
+        previous = None if index == 0 else ordered[index - 1]
+        following = None if index + 1 == len(ordered) else ordered[index + 1]
+        files[_document_page_name(document)] = _render_document_page(
+            config, document, previous=previous, following=following
+        ).encode("utf-8")
+    for relative, payload in reference_pages.items():
+        files[relative] = payload.encode("utf-8")
     if litho_evidence is not None:
         files["090-code-derived-analysis.md"] = _render_litho_page(config, litho_evidence).encode("utf-8")
         files["data/litho-evidence.json"] = _json_bytes(_normalized_litho_evidence(litho_evidence))
@@ -518,6 +528,7 @@ def _render_corpus_index(
     config: dict[str, Any],
     documents: list[dict[str, Any]],
     litho_evidence: dict[str, Any] | None,
+    reference_pages: dict[str, str],
 ) -> str:
     lines = [
         "<!-- GENERATED — DO NOT EDIT -->",
@@ -533,6 +544,14 @@ def _render_corpus_index(
         lines.append(f"- [{document['content']['heading']}]({_document_page_name(document)})")
     if litho_evidence is not None:
         lines.append("- [Code-derived analysis](090-code-derived-analysis.md) — inferred evidence, not authority")
+    lines.extend(["", "## Generated reference", ""])
+    reference_titles = {
+        "020-applicability-catalog.md": "MRD applicability catalog",
+        "021-relationship-vocabulary.md": "Governed relationship vocabulary",
+        "022-validation-reason-codes.md": "Validation reason codes",
+    }
+    for relative in reference_pages:
+        lines.append(f"- [{reference_titles[relative]}]({relative})")
     lines.extend([
         "",
         "## Machine-readable traceability",
@@ -589,7 +608,13 @@ def _render_specification_root(config: dict[str, Any], documents: list[dict[str,
     return "\n".join(lines)
 
 
-def _render_document_page(config: dict[str, Any], document: dict[str, Any]) -> str:
+def _render_document_page(
+    config: dict[str, Any],
+    document: dict[str, Any],
+    *,
+    previous: dict[str, Any] | None,
+    following: dict[str, Any] | None,
+) -> str:
     content = document["content"]
     lines = [
         "<!-- GENERATED — DO NOT EDIT -->",
@@ -597,7 +622,7 @@ def _render_document_page(config: dict[str, Any], document: dict[str, Any]) -> s
         "",
         '<div id="enable-section-numbers" />',
         "",
-        "[Specification](001-specification.md) | [Documentation index](000-index.md)",
+        _governance_navigation(document, previous, following),
         "",
         _page_intro(content),
         "",
@@ -631,6 +656,70 @@ def _render_document_page(config: dict[str, Any], document: dict[str, Any]) -> s
         "",
     ])
     return "\n".join(lines)
+
+
+def _governance_navigation(
+    document: dict[str, Any],
+    previous: dict[str, Any] | None,
+    following: dict[str, Any] | None,
+) -> str:
+    parts = []
+    if previous is None:
+        parts.append("[Previous: Specification](001-specification.md)")
+    else:
+        parts.append(f"[Previous: {previous['content']['heading']}]({_document_page_name(previous)})")
+    if following is not None:
+        parts.append(f"[Next: {following['content']['heading']}]({_document_page_name(following)})")
+    parts.append("[Index](000-index.md)")
+    return " | ".join(parts)
+
+
+def _reference_header(title: str, owner_page: str, owner_title: str) -> list[str]:
+    return [
+        "<!-- GENERATED — DO NOT EDIT -->",
+        f"# {title}",
+        "",
+        '<div id="enable-section-numbers" />',
+        "",
+        f"[Owning specification chapter: {owner_title}]({owner_page}) | [Documentation index](000-index.md)",
+        "",
+        f"> **Output class:** `{_REFERENCE_OUTPUT_CLASS}`. This page is an exact lookup projection of canonical Governance authority. It has no write-back authority.",
+        "",
+    ]
+
+
+def _governance_reference_pages(documents: list[dict[str, Any]]) -> dict[str, str]:
+    by_concern = {doc["content"]["concern"]: doc for doc in documents}
+    applicability = by_concern["applicability"]
+    ownership = by_concern["ownership"]
+    validation = by_concern["validation"]
+
+    lines = _reference_header("MRD applicability catalog", _document_page_name(applicability), applicability["content"]["heading"])
+    lines.extend(["Use this catalog after the specification's minimum-sufficient selection process identifies the governed need. The table does not require one artifact per row.", "", "| Code | Name | Use when |", "|---|---|---|"])
+    for item in applicability["content"]["type_applicability"]:
+        lines.append(f"| `{item['code']}` | {item['name']} | {item['use_when']} |")
+    lines.extend(["", "## Source and authority", "", f"This reference projects `{applicability['_mrd']['id']}` version `{applicability['_mrd']['version']}`. The MRD remains authoritative.", ""])
+    applicability_page = "\n".join(lines)
+
+    lines = _reference_header("Governed relationship vocabulary", _document_page_name(ownership), ownership["content"]["heading"])
+    lines.extend(["Relationships preserve authority by expressing how one governed artifact relates to another without creating duplicate ownership.", "", "| Relationship | Meaning |", "|---|---|"])
+    for item in ownership["content"]["relationship_catalog"]:
+        lines.append(f"| `{item['code']}` | {item['meaning']} |")
+    lines.extend(["", "## Source and authority", "", f"This reference projects `{ownership['_mrd']['id']}` version `{ownership['_mrd']['version']}`. The MRD remains authoritative.", ""])
+    relationship_page = "\n".join(lines)
+
+    lines = _reference_header("Validation reason codes", _document_page_name(validation), validation["content"]["heading"])
+    lines.extend(["Use these stable codes to diagnose validation failures without parsing human-readable error text.", ""])
+    for code in validation["content"]["reason_codes"]:
+        lines.append(f"- `{code}`")
+    lines.extend(["", "## Source and authority", "", f"This reference projects `{validation['_mrd']['id']}` version `{validation['_mrd']['version']}`. The MRD remains authoritative.", ""])
+    reason_page = "\n".join(lines)
+
+    return {
+        "020-applicability-catalog.md": applicability_page,
+        "021-relationship-vocabulary.md": relationship_page,
+        "022-validation-reason-codes.md": reason_page,
+    }
 
 
 def _promote_headings(lines: list[str]) -> list[str]:
@@ -793,16 +882,13 @@ def _render_applicability(lines: list[str], content: dict[str, Any]) -> None:
     ])
     for index, step in enumerate(contract["selection_order"], start=1):
         lines.append(f"{index}. {step[0].upper() + step[1:]}.")
-    lines.extend(["", rules[3]["statement"], "", "### MRD type applicability", ""])
     lines.extend([
-        "Use the following catalog to determine when each MRD type applies. The table is a selection reference; it does not require an artifact for every row:",
         "",
-        "| Code | Name | Use when |",
-        "|---|---|---|",
-    ])
-    for item in content["type_applicability"]:
-        lines.append(f"| `{item['code']}` | {item['name']} | {item['use_when']} |")
-    lines.extend([
+        rules[3]["statement"],
+        "",
+        "### Applicability reference",
+        "",
+        "The complete 47-type selection catalog is an exact lookup surface. See the [MRD applicability catalog](020-applicability-catalog.md) for every type, name, and applicability trigger.",
         "",
         "### Extending the catalog",
         "",
@@ -836,14 +922,11 @@ def _render_ownership(lines: list[str], content: dict[str, Any]) -> None:
         "",
         "### Governed relationships",
         "",
-        "Non-owning artifacts preserve authority by declaring typed relationships to the sources they depend on, implement, evidence, project, or reference. The following table defines that vocabulary:",
+        "Non-owning artifacts preserve authority by declaring typed relationships to the sources they depend on, implement, evidence, project, or reference. The vocabulary is governed and closed; ad hoc labels cannot create new relationship semantics.",
         "",
-        "| Relationship | Meaning |",
-        "|---|---|",
+        "See the [governed relationship vocabulary](021-relationship-vocabulary.md) for every relationship code and meaning.",
+        "",
     ])
-    for item in content["relationship_catalog"]:
-        lines.append(f"| `{item['code']}` | {item['meaning']} |")
-    lines.append("")
     _render_rule_statements(lines, rules[3:])
 
 
@@ -1038,9 +1121,8 @@ def _render_validation(lines: list[str], content: dict[str, Any]) -> None:
         "",
         "### Stable reason codes",
         "",
-        "Validation failures use the following stable reason codes so callers can diagnose failure without parsing prose:",
+        "Validation failures use stable reason codes so callers can diagnose failure without parsing prose. The complete catalog is exact generated reference rather than part of the conceptual flow.",
+        "",
+        "See the [validation reason-code reference](022-validation-reason-codes.md) for the complete list.",
         "",
     ])
-    for code in content["reason_codes"]:
-        lines.append(f"- `{code}`")
-    lines.append("")

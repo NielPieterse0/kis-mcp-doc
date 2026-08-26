@@ -1,0 +1,468 @@
+{
+  "_mrd": {
+    "schema_version": 1,
+    "id": "KIS-CHG010-WRK-WFL-001",
+    "title": "HRD Reader Experience and Reference Separation",
+    "module": "change-010",
+    "class": "WRK",
+    "type": "WFL",
+    "layer": "L3",
+    "record_mode": "descriptive",
+    "status": "active",
+    "version": "1.1.0",
+    "dependencies": [
+      {
+        "mrd_id": "KIS-CHG008-WRK-WFL-001",
+        "relationship": "depends_on"
+      },
+      {
+        "mrd_id": "KIS-CHG009-WRK-WFL-001",
+        "relationship": "depends_on"
+      },
+      {
+        "mrd_id": "KIS-DOC-CON-POL-001",
+        "relationship": "depends_on"
+      },
+      {
+        "mrd_id": "KIS-DOC-SEM-REG-001",
+        "relationship": "depends_on"
+      },
+      {
+        "mrd_id": "KIS-KNOW-EVL-TST-001",
+        "relationship": "validated_by"
+      }
+    ],
+    "provenance": {
+      "sources": [
+        {
+          "source_id": "KIS-OPERATOR-DIRECTION-2026-08-26-HRD-READER-EXPERIENCE",
+          "kind": "operator_direction",
+          "role": "approved_change_basis",
+          "locator": "conversation:2026-08-26",
+          "revision": "change-010-preparation-only",
+          "sha256": null
+        },
+        {
+          "source_id": "GH-ISSUE-16",
+          "kind": "operator_approved_work_item",
+          "role": "approved_change_basis",
+          "locator": "github:NielPieterse0/kis-mcp-doc#16",
+          "revision": "2026-08-26",
+          "sha256": null
+        },
+        {
+          "source_id": "KIS-CHG008-WRK-WFL-001",
+          "kind": "canonical_machine_readable_record",
+          "role": "documentation_reference_standard_basis",
+          "locator": ".work/changes/008-documentation-reference-standard/change.mrd.json",
+          "revision": "1.1.0",
+          "sha256": null
+        },
+        {
+          "source_id": "KIS-CHG009-WRK-WFL-001",
+          "kind": "canonical_machine_readable_record",
+          "role": "existing_hrd_integration_basis",
+          "locator": ".work/changes/009-apply-documentation-reference-standard-to-existing-hrds/change.mrd.json",
+          "revision": "1.1.0",
+          "sha256": null
+        },
+        {
+          "source_id": "KIS-DOC-CON-POL-001",
+          "kind": "canonical_machine_readable_record",
+          "role": "documentation_output_class_authority",
+          "locator": "mrd/documentation/01-reference-standard.mrd.json",
+          "revision": "1.0.0",
+          "sha256": null
+        },
+        {
+          "source_id": "KIS-DOC-SEM-REG-001",
+          "kind": "canonical_machine_readable_record",
+          "role": "documentation_reference_registry",
+          "locator": "mrd/documentation/02-reference-registry.mrd.json",
+          "revision": "1.0.0",
+          "sha256": null
+        },
+        {
+          "source_id": "MCP-SPEC-2026-07-28",
+          "kind": "external_reference",
+          "role": "bounded_specification_structure_evidence",
+          "locator": "C:/Projects/References/mcp-specification/mcp-docs-2026-07-28-direct-md-clean",
+          "revision": "2026-07-28",
+          "sha256": null
+        },
+        {
+          "source_id": "GOOGLE-DEVELOPER-DOCUMENTATION-STYLE-GUIDE",
+          "kind": "external_reference",
+          "role": "presentation_guidance",
+          "locator": "C:/Projects/References/google-developer-style-guide",
+          "revision": "captured-corpus",
+          "sha256": null
+        }
+      ],
+      "source_fingerprint": "sha256:f1b30350b357d0ebe9b1b048efca48b5e4ae54a728cf6d051b4ceacdc09afb1c",
+      "fact_quality": "direct"
+    },
+    "supersedes": [],
+    "superseded_by": null
+  },
+  "content": {
+    "change_id": "010-hrd-reader-experience-and-reference-separation",
+    "work_item": {
+      "repository": "NielPieterse0/kis-mcp-doc",
+      "issue": 16,
+      "project": "NielPieterse0/1",
+      "record_id": "SPEC-010"
+    },
+    "outcome": "Reshape the existing Governance and Work Management HRD publication families into prose-first human-readable specifications with explicit reader journeys and governed generated-reference separation, while preserving the full existing semantic contract.",
+    "preparation_boundary": [
+      "Preparation created only the governed Change 010 inputs and GitHub issue 16.",
+      "The operator separately authorized complete implementation on 2026-08-26.",
+      "Implementation remains bounded by scope.json; Governance, Work Management, and Documentation Reference Standard MRDs remain protected and unchanged."
+    ],
+    "problem": [
+      "Change 008 established distinct documentation output classes and Change 009 bound the Governance and Work Management specification families to that authority model, but several chapters still read as direct machine-record projections rather than reader-oriented specifications.",
+      "Lookup-heavy catalogs are embedded in specification chapters even when their primary purpose is exact reference, making conceptual flow harder to follow and increasing duplication across pages.",
+      "Normative rules are traceable, but some chapters present requirements as isolated rendered statements with too little explanatory context before or around them.",
+      "Navigation currently points mainly to the root specification and index; it does not fully express a progressive reader journey or reduce repeated explanation between related chapters.",
+      "The next improvement must change information architecture and rendering only, not Governance or Work Management semantics."
+    ],
+    "observed_reader_gaps": [
+      {
+        "family": "governance",
+        "page": "003-applicability-and-selection.md",
+        "observation": "The 47-row applicability catalog dominates a chapter whose main conceptual job is to explain minimum-sufficient selection.",
+        "candidate_treatment": "Keep selection semantics in the specification; evaluate moving the exhaustive catalog to generated reference."
+      },
+      {
+        "family": "governance",
+        "page": "004-authority-ownership-and-relationships.md",
+        "observation": "Canonical ownership is clear, but the complete relationship vocabulary is primarily lookup detail.",
+        "candidate_treatment": "Keep ownership and typed-relationship semantics in the specification; evaluate a linked generated-reference vocabulary."
+      },
+      {
+        "family": "governance",
+        "page": "007-provenance.md",
+        "observation": "An awkward canonical requirement sentence is visible and cannot be editorially rewritten without changing its owning semantic source.",
+        "candidate_treatment": "Improve surrounding explanation without silently changing the canonical requirement text or meaning."
+      },
+      {
+        "family": "governance",
+        "page": "010-validation-and-enforcement.md",
+        "observation": "The validation model is readable, but the complete reason-code catalog is lookup-heavy.",
+        "candidate_treatment": "Keep validation concepts inline; evaluate moving the exhaustive reason-code catalog to generated reference."
+      },
+      {
+        "family": "work_management",
+        "page": "002-work-management-domain-model.md",
+        "observation": "Large field and controlled-vocabulary tables dominate the chapter before the reader can fully absorb command, evidence, and handoff authority directions.",
+        "candidate_treatment": "Keep the authority-direction model in the specification; move exhaustive catalogs to generated reference where safe."
+      },
+      {
+        "family": "work_management",
+        "page": "006-authority-and-reconciliation-policy.md",
+        "observation": "GitHub Project schema, views, bindings, features, gates, and evidence limits interrupt the conceptual authority/reconciliation flow.",
+        "candidate_treatment": "Keep authority and reconciliation semantics in the specification; separate exact Project/configuration catalogs into generated reference."
+      },
+      {
+        "family": "work_management",
+        "page": "007-provider-and-command-plane-boundary.md",
+        "observation": "The page repeats field authority and lifecycle transition detail already explained elsewhere.",
+        "candidate_treatment": "Keep provider-boundary responsibilities and cross-reference the canonical domain/lifecycle explanations instead of duplicating their full tables."
+      }
+    ],
+    "authority_model": [
+      "Governance MRDs remain the sole owners of Governance semantics and normative requirements.",
+      "Work Management MRDs remain the sole owners of Work Management semantics and normative requirements.",
+      "KIS-DOC-CON-POL-001 controls documentation output classes and source authority boundaries.",
+      "KIS-DOC-SEM-REG-001 controls admitted documentation-reference roles and bounded permitted uses.",
+      "A human_readable_specification explains adopted normative behavior while preserving requirement strength, identifiers, ownership, and traceability.",
+      "A generated_reference exposes exact lookup-heavy facts from canonical sources without becoming a second owner.",
+      "MCP 2026 may guide specification structure and normative presentation only within the bounded roles already adopted; it cannot create KIS-specific semantics.",
+      "Google Developer Documentation guidance may improve prose, headings, lists, tables, and cross-references but cannot define KIS behavior.",
+      "External implementation references remain non-normative and cannot populate or override canonical KIS facts."
+    ],
+    "design_decisions": [
+      "D1: Treat reader quality as publication architecture, not domain redesign. No Governance or Work Management fact may change merely to make prose easier to read.",
+      "D2: Use the existing Documentation Reference Standard output classes rather than inventing a new document taxonomy.",
+      "D3: Human-readable specification pages should explain concepts and operating models before exhaustive lookup detail, with normative statements embedded naturally where possible while preserving exact strength and stable identifiers.",
+      "D4: Generated-reference separation is selective, not automatic. A table stays in the specification when it is necessary to understand the normative model.",
+      "D5: Every moved fact must retain one canonical owner and deterministic traceability from specification to generated reference to source.",
+      "D6: Replace duplicate explanatory content with cross-reference when one chapter already owns the concept; duplicate exact data is allowed only when explicitly justified and consistency-verified.",
+      "D7: Navigation should express an intentional reader journey with bounded previous, next, and related links rather than a generic link hub.",
+      "D8: Diagrams are permitted only when they materially clarify lifecycle, authority, dependency, or handoff relationships and every diagram fact is source-derived.",
+      "D9: Semantic-equivalence and coverage tests are a hard gate: no existing rule may disappear, weaken, change owner, change enforcement binding, or acquire invented meaning.",
+      "D10: The implementation should establish reusable renderer patterns so later human_documentation work can inherit the reader-quality discipline without coupling task docs to specification structure."
+    ],
+    "reader_journeys": {
+      "governance": [
+        "what governance is",
+        "classification",
+        "applicability and selection",
+        "authority ownership and relationships",
+        "layering",
+        "dependency rules",
+        "provenance",
+        "lifecycle",
+        "kis-op governance behavior",
+        "validation and enforcement"
+      ],
+      "work_management": [
+        "what Work Management is",
+        "domain model",
+        "work lifecycle",
+        "work operations",
+        "next-work selection",
+        "authority and reconciliation",
+        "provider and command-plane boundary",
+        "conformance"
+      ]
+    },
+    "reference_separation_candidates": {
+      "governance": [
+        {
+          "content": "47-type applicability catalog",
+          "default_target": "generated_reference",
+          "specification_retains": "selection rules, minimum-sufficient principle, extension rules, representative examples"
+        },
+        {
+          "content": "governed relationship vocabulary",
+          "default_target": "generated_reference_or_inline_if_needed",
+          "specification_retains": "canonical ownership and typed-relationship semantics"
+        },
+        {
+          "content": "stable validation reason-code catalog",
+          "default_target": "generated_reference",
+          "specification_retains": "validation model, enforcement modes, dimensions, failure behavior"
+        }
+      ],
+      "work_management": [
+        {
+          "content": "managed field catalog",
+          "default_target": "generated_reference",
+          "specification_retains": "command/evidence/handoff authority-direction model"
+        },
+        {
+          "content": "controlled-vocabulary catalogs",
+          "default_target": "generated_reference",
+          "specification_retains": "meaning and role of governed vocabularies plus values necessary for normative flow"
+        },
+        {
+          "content": "GitHub Project schema, views, bindings, features, gates, evidence limits",
+          "default_target": "generated_reference",
+          "specification_retains": "authority and reconciliation model plus provider drift principles"
+        },
+        {
+          "content": "duplicate provider field-authority table",
+          "default_target": "cross_reference",
+          "specification_retains": "provider-specific responsibility and mutation boundary"
+        },
+        {
+          "content": "duplicate provider lifecycle transition table",
+          "default_target": "cross_reference",
+          "specification_retains": "provider conformance to the canonical lifecycle graph"
+        }
+      ]
+    },
+    "diagram_candidates": [
+      {
+        "id": "governance-authority-flow",
+        "purpose": "Show canonical owner, MRD relationships, implementation/evidence, and generated projection direction without implying generated write-back authority.",
+        "source_rule": "All nodes and edges derive from canonical Governance MRDs and Documentation Reference Standard authority rules."
+      },
+      {
+        "id": "governance-mrd-lifecycle",
+        "purpose": "Show admitted MRD lifecycle and supersession flow where a diagram reduces textual repetition.",
+        "source_rule": "States and transitions derive from the lifecycle owner MRD."
+      },
+      {
+        "id": "work-lifecycle-and-delivery",
+        "purpose": "Distinguish Work Status from Delivery Stage and show the main progression without conflating the two state models.",
+        "source_rule": "States and relationships derive from Work Management MRDs."
+      },
+      {
+        "id": "work-authority-handoff",
+        "purpose": "Show Work command data, repository-change handoff, GitHub/Actions evidence, documentation reconciliation, commissioning, and completion authority direction.",
+        "source_rule": "Fields and ownership directions derive from Work Management MRDs."
+      }
+    ],
+    "requirements": [
+      "R1: Change 010 implementation MUST NOT change Governance or Work Management domain semantics solely for reader-experience or presentation purposes.",
+      "R2: Every existing Governance and Work Management normative requirement MUST remain represented with the same stable rule ID, normative strength, canonical owner, and enforcement binding after restructuring.",
+      "R3: Human-readable specification pages MUST explain the relevant concept or operating model before presenting dense normative or lookup-heavy reference detail where doing so improves comprehension.",
+      "R4: Normative requirements MAY be embedded in explanatory prose, but generated wording MUST preserve the source requirement's meaning and MUST NOT weaken, strengthen, or invent obligations.",
+      "R5: Exact lookup-heavy facts MAY move from a human_readable_specification to generated_reference only when the reference derives from the same canonical owner and the specification retains sufficient explanation and deterministic linkage.",
+      "R6: Generated-reference separation MUST use the output classes already governed by KIS-DOC-CON-POL-001 and MUST NOT introduce a parallel documentation authority model.",
+      "R7: Specification-to-reference links MUST be deterministic, repository-portable, and verified for resolution.",
+      "R8: A moved fact MUST NOT be independently restated as new authority in the specification, reference page, manifest, or navigation metadata.",
+      "R9: The Governance publication MUST preserve the declared reader journey from overview through validation and enforcement.",
+      "R10: The Work Management publication MUST preserve the declared reader journey from domain model through conformance.",
+      "R11: Navigation SHOULD provide bounded previous, next, and related links where they materially help the declared reader journey; navigation MUST NOT obscure source and authority information.",
+      "R12: Cross-page duplication SHOULD be removed when one chapter already owns the explanation; a dependent chapter SHOULD link to that owner and focus on its distinct concern.",
+      "R13: Duplicate exact data MAY remain in more than one generated surface only when an explicit publication requirement justifies it and deterministic verification proves the copies agree.",
+      "R14: The 47-type Governance applicability catalog MUST remain completely available to readers even if moved to generated reference.",
+      "R15: The Governance relationship vocabulary and validation reason-code catalog MUST remain completely available and source-traceable even if their presentation location changes.",
+      "R16: The complete Work Management field catalog, controlled vocabularies, Project schema, Project views, bindings, feature modes, gates, and other currently published exact configuration facts MUST remain available and source-traceable after any reference separation.",
+      "R17: Work lifecycle transitions MUST have one primary human-readable explanation; provider-boundary documentation MUST reference that lifecycle instead of presenting an independently maintained semantic copy.",
+      "R18: Any generated diagram MUST derive every governed node, label, state, relationship, and edge from canonical sources and MUST participate in deterministic generation and stale/tamper detection.",
+      "R19: Generated diagrams MUST be supplemental explanatory projections and MUST NOT become normative authority or replace required text/table accessibility where exact values are needed.",
+      "R20: MCP 2026 and Google Developer Documentation guidance MUST remain within the source roles already governed by Change 008 and MUST NOT be used to rewrite KIS terminology or semantics.",
+      "R21: External implementation references and inferred evidence MUST NOT define the target information architecture unless a separately governed adoption decision promotes a bounded pattern.",
+      "R22: Publication manifests MUST bind all canonical inputs used by both human-readable specification and generated-reference outputs introduced or changed by the implementation.",
+      "R23: Automated tests MUST prove semantic preservation, complete fact/rule coverage, deterministic generation, link integrity, authority separation, and stale/tamper detection across both output classes.",
+      "R24: Human review MUST assess every regenerated page for reader journey, concept explanation, normative context, table/reference placement, navigation, duplication, terminology, source clarity, and authority separation before acceptance.",
+      "R25: The implementation MUST remain bounded to the future implementation scope approved after this preparation and MUST NOT broaden into human task/concept documentation, domain redesign, or general site redesign."
+    ],
+    "future_implementation_scope": {
+      "candidate_owned_paths": [
+        "publication/governance-spec.json",
+        "publication/work-management-spec.json",
+        "src/kis_mcp_doc/render.py",
+        "src/kis_mcp_doc/work_management.py",
+        "generated/governance-spec/**",
+        "generated/work-management-spec/**",
+        "tests/test_governance_renderer.py",
+        "tests/test_work_management_spec.py",
+        "tests/test_documentation_reference_standard.py",
+        "scripts/verify.ps1"
+      ],
+      "conditional_paths": [
+        "publication/** for new generated-reference publication profiles only if separate profiles are required by the existing publication architecture",
+        "generated/** for new Governance/Work Management generated-reference surfaces only if approved during implementation",
+        "src/kis_mcp_doc/** for a small shared publication helper only if duplication between the existing two renderers cannot be avoided within their current modules",
+        "tests/** for focused cross-publication coverage only when existing test modules are insufficient"
+      ],
+      "explicitly_protected": [
+        "mrd/governance/**",
+        "mrd/work-management/**",
+        "mrd/documentation/**",
+        "contracts/documentation/reference/**",
+        "AGENTS.md",
+        "C:/Projects/kis-mcp/**",
+        "C:/Projects/References/**"
+      ]
+    },
+    "future_implementation_plan": [
+      "P1: Build a fact/rule coverage inventory for every current Governance and Work Management page before changing rendering, classifying each published element as conceptual specification content, normative requirement, or exact generated-reference content.",
+      "P2: Define the target page map and navigation for both reader journeys, including which existing tables stay inline, which move to generated reference, and which duplicate sections become cross-references.",
+      "P3: Update Governance rendering to produce prose-first chapter structure and any approved generated-reference surfaces while preserving all source rule IDs, strengths, enforcement bindings, and source authority statements.",
+      "P4: Update Work Management rendering to separate domain concepts from exact field/vocabulary/Project configuration reference and remove presentation duplication across lifecycle/provider chapters without changing source semantics.",
+      "P5: Add deterministic previous/next/related navigation and only the approved source-derived diagrams that materially improve comprehension.",
+      "P6: Extend publication manifests and link/reference verification so every new or moved surface is reproducible, provenance-bearing, portable, stale-detectable, and tamper-detectable.",
+      "P7: Add semantic-equivalence and publication-coverage tests comparing the pre-change canonical fact/rule inventory with the post-change outputs, plus negative tests for missing rules, broken links, divergent duplicate data, authority promotion, stale output, and diagram drift.",
+      "P8: Regenerate the complete Governance and Work Management specification/reference families and run page-by-page human review against MCP 2026 specification presentation evidence and Google Developer Documentation style guidance within their governed roles.",
+      "P9: Run focused tests, full repository tests, canonical verification, exact-commit verification, and a direct diff proving protected domain MRDs are unchanged before closeout."
+    ],
+    "verification_criteria": [
+      "V1: A pre/post rule inventory proves every Governance and Work Management normative rule ID remains present with unchanged source statement meaning, normative strength, owner, and enforcement binding.",
+      "V2: A pre/post published-fact inventory proves every exact fact intentionally exposed before Change 010 remains available either in the specification or a deterministically linked generated-reference surface.",
+      "V3: Direct diffs under mrd/governance/** and mrd/work-management/** are empty for the reader-experience implementation unless a separately approved semantic change is raised outside Change 010.",
+      "V4: Tests prove generated-reference content can only be populated from canonical KIS facts or explicitly applicable normative protocol facts allowed by KIS-DOC-CON-POL-001.",
+      "V5: Tests prove MCP/Google/implementation-reference source roles cannot alter Governance or Work Management facts during prose or information-architecture generation.",
+      "V6: Every specification-to-reference and navigation link resolves in the generated corpus and remains repository-portable.",
+      "V7: Any retained duplicated exact data is generated from one canonical source path and a negative fixture proves divergence is detected.",
+      "V8: Any diagrams regenerate deterministically from canonical inputs; changing a relevant canonical input without regeneration causes verification to fail.",
+      "V9: Repeated generation from identical inputs is byte-stable or satisfies the repository's defined deterministic equivalent for every changed output.",
+      "V10: Tampering with any changed specification, reference page, navigation artifact, manifest, or diagram causes canonical verification to fail.",
+      "V11: Existing Governance and Work Management semantic/conformance tests remain green without weakened assertions.",
+      "V12: Focused Change 010 tests pass for information architecture, output-class separation, coverage, links, navigation, duplication control, and source authority.",
+      "V13: scripts/verify.ps1 passes on the exact implementation commit.",
+      "V14: Human review confirms the complete generated families read as coherent specifications first and lookup references second, with no loss of discoverability or authority clarity."
+    ],
+    "future_acceptance": [
+      "Governance and Work Management HRDs are recognizably human-readable specifications rather than machine-record dumps, while preserving all governed semantics.",
+      "Specification prose explains concepts before dense detail where appropriate and retains clear normative language without invented interpretation.",
+      "Lookup-heavy material is separated into generated reference only where doing so improves reading flow; readers can still reach every exact fact deterministically.",
+      "The Governance and Work Management reader journeys are explicit in page ordering and navigation.",
+      "Cross-page duplication is reduced, particularly Work Management field-authority and lifecycle repetition, without removing required conformance evidence.",
+      "The 47-type catalog, relationship vocabulary, validation reason codes, Work field catalog, controlled vocabularies, Project schema/views/bindings/features/gates, and other exact published facts remain complete and source-traceable.",
+      "Any diagrams are source-derived explanatory views with deterministic verification and no write-back authority.",
+      "MCP 2026 and Google guidance improve presentation only within their governed roles; KIS terminology and semantics remain KIS-owned.",
+      "Semantic-equivalence, coverage, link, deterministic-generation, stale/tamper, and authority-separation tests pass, and canonical verification succeeds on the exact implementation commit.",
+      "Page-by-page human review finds no material reader-flow, duplication, authority, or terminology defects."
+    ],
+    "preparation_acceptance": [
+      "Change 010 exists on an isolated branch-backed worktree based on verified current main af18a1f2ec2670f14845557c4987b46faad780a4.",
+      "GitHub issue 16 records the same preparation-only outcome, semantic boundary, reader journeys, future implementation direction, and later acceptance criteria.",
+      "scope.json owns only the Change 010 preparation directory and excludes every implementation, publication, domain, test, verifier, evidence, parent-KIS, and reference-corpus path.",
+      "The change MRD records observed reader gaps against current generated pages rather than relying on generic documentation advice.",
+      "The change MRD defines authority constraints, design decisions, output-class separation candidates, navigation intent, diagram constraints, future paths, verification criteria, risks, and acceptance gates.",
+      "No renderer, publication profile, domain MRD, generated output, contract, test, verifier, evidence source, parent KIS file, or reference corpus is modified during preparation."
+    ],
+    "tasks": [
+      {
+        "id": "T0",
+        "status": "done",
+        "text": "Raise GitHub issue 16 and create the isolated Change 010 preparation branch/worktree from verified current main."
+      },
+      {
+        "id": "T1",
+        "status": "done",
+        "text": "Audit representative current Governance and Work Management HRD chapters and record the concrete reader-experience/reference-separation gaps."
+      },
+      {
+        "id": "T2",
+        "status": "done",
+        "text": "Define the semantic boundary, design decisions, reader journeys, reference-separation candidates, diagram constraints, future scope, verification plan, risks, and acceptance criteria in the Change 010 MRD."
+      },
+      {
+        "id": "T3",
+        "status": "planned",
+        "text": "After separate implementation authorization, build the pre-change rule/fact coverage inventory and final target page/reference map."
+      },
+      {
+        "id": "T4",
+        "status": "planned",
+        "text": "Implement prose-first Governance and Work Management specification rendering and approved generated-reference separation without domain MRD changes."
+      },
+      {
+        "id": "T5",
+        "status": "planned",
+        "text": "Implement bounded navigation, deduplication, and any approved source-derived diagrams."
+      },
+      {
+        "id": "T6",
+        "status": "planned",
+        "text": "Add semantic-equivalence, coverage, output-class, link, determinism, stale/tamper, authority, and diagram verification."
+      },
+      {
+        "id": "T7",
+        "status": "planned",
+        "text": "Regenerate all affected outputs and complete page-by-page human review plus exact-commit canonical verification."
+      }
+    ],
+    "risks": [
+      "Semantic drift through prose: a well-intentioned rewrite could change requirement meaning even when rule IDs remain present.",
+      "Reference fragmentation: moving too much detail out of the specification could force readers to jump constantly between pages.",
+      "Hidden information loss: a table moved or removed for readability could accidentally drop a field, vocabulary value, reason code, or configuration fact.",
+      "Authority inversion: generated reference pages or diagrams can look authoritative unless ownership and source statements remain explicit.",
+      "Duplication drift: keeping exact data in multiple surfaces can create inconsistent generated copies if they are not driven from one source and verified.",
+      "Over-styling: following external presentation examples too closely could replace KIS terminology or structure with source-specific conventions.",
+      "Diagram maintenance: diagrams can become another stale projection unless every element is deterministic and verified.",
+      "Scope expansion: reader-quality work could drift into task documentation, website design, domain redesign, or a general publication-kernel refactor."
+    ],
+    "out_of_scope_for_preparation": [
+      "Any edit outside .work/changes/010-hrd-reader-experience-and-reference-separation/**.",
+      "Any change to Governance, Work Management, or Documentation Reference Standard MRDs or governed semantics.",
+      "Any renderer, publication profile, generated HRD, generated-reference, manifest, diagram, contract, test, script, verifier, or evidence implementation.",
+      "Any human task/concept documentation or operations-document family beyond planning how later work may reuse the improved publication pattern.",
+      "Any parent KIS change, GitHub Project schema change, MCP/FastMCP runtime change, external reference refresh, or reference-corpus modification.",
+      "Any pull request, merge, release, or implementation commit during this preparation-only step."
+    ],
+    "closeout": {
+      "state": "implementation_in_progress",
+      "verification": [
+        "Preparation base is verified current main af18a1f2ec2670f14845557c4987b46faad780a4 with tree 712e4d127b06cf0c85edb041c9b409307a8d5d2e.",
+        "Current generated Governance and Work Management pages were inspected directly to ground the reader-gap inventory.",
+        "The adopted Documentation Reference Standard MRD was inspected directly to keep output-class and authority decisions within existing governance.",
+        "Preparation scope admits only the Change 010 directory; implementation paths are recorded only as future candidates and remain excluded now."
+      ],
+      "reviews": [],
+      "publication": null,
+      "merge": null,
+      "unresolved": [
+        "kis-mcp-doc has no direct GitHub Project binding in the registered project record. Issue 16 is the authoritative external work item; Project capture must use the governed Work Management route if the parent project binding permits it.",
+        "The pre-existing unrelated change/009-publication-kernel worktree remains untouched and is not part of Change 010."
+      ]
+    }
+  }
+}
