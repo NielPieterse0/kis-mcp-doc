@@ -1,0 +1,56 @@
+{
+  "schema_version": 4,
+  "change_id": "008-documentation-reference-standard",
+  "status": "active",
+  "branch": "change/008-documentation-reference-standard",
+  "worktree": ".work/worktrees/008-documentation-reference-standard",
+  "base": "main",
+  "outcome": "Implement the governed Documentation Reference Standard, semantic reference registry, validation, deterministic human-review publication, and verification for the approved ten-source baseline.",
+  "owned_paths": [
+    ".work/changes/008-documentation-reference-standard/**",
+    "contracts/documentation/reference/**",
+    "mrd/documentation/**",
+    "publication/documentation-reference-standard.json",
+    "generated/documentation-reference-standard/**",
+    "src/kis_mcp_doc/documentation_reference.py",
+    "src/kis_mcp_doc/cli.py",
+    "scripts/verify.ps1",
+    "tests/test_documentation_reference_standard.py"
+  ],
+  "shared_paths": [],
+  "excluded_paths": [
+    "AGENTS.md",
+    "mrd/governance/**",
+    "mrd/work-management/**",
+    "publication/harvest-sources.json",
+    "generated/governance-spec/**",
+    "generated/work-management-spec/**",
+    "src/kis_mcp_doc/governance.py",
+    "src/kis_mcp_doc/harvest.py",
+    "src/kis_mcp_doc/litho.py",
+    "src/kis_mcp_doc/render.py",
+    "src/kis_mcp_doc/work_management.py",    "C:/Projects/kis-mcp/**",
+    "C:/Projects/References/**"
+  ],
+  "dependencies": ["005-mcp-spec-2026-baseline"],
+  "integration_owner": null,
+  "complexity": "large",
+  "risk_triggers": ["public_contract"],
+  "base_evidence": {
+    "local_sha": "d0105b364056e00b5fab407d8426c60df83429d4",
+    "local_tree": "4214c33ea163002392d7391e31c182853ea4aecf",
+    "upstream_sha": "d0105b364056e00b5fab407d8426c60df83429d4",
+    "upstream_tree": "4214c33ea163002392d7391e31c182853ea4aecf",
+    "upstream_ref": "github:main",
+    "evidence_source": "verified_github_default",
+    "relation": "equal"
+  },
+  "work_management": {
+    "project_id": "kis-mcp",
+    "record_id": "SPEC-008",
+    "source_repository": "NielPieterse0/kis-mcp-doc",
+    "source_number": 12,
+    "source_kind": "issue",
+    "documentation_impact": "implementation"
+  }
+}

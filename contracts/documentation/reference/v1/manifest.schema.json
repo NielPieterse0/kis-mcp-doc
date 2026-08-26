@@ -1,0 +1,17 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://kis.local/contracts/documentation/reference/v1/manifest.schema.json",
+  "title":"KIS Documentation Reference Standard Build Manifest",
+  "type":"object","additionalProperties":false,
+  "required":["contract","specification","inputs","input_set_sha256","validation","files","bundle_sha256"],
+  "properties":{
+    "contract":{"type":"object","additionalProperties":false,"required":["name","version"],"properties":{"name":{"const":"documentation-reference-standard-build"},"version":{"const":1}}},
+    "specification":{"type":"object","additionalProperties":false,"required":["title","version","status","layout_profile"],"properties":{"title":{"const":"Documentation Reference Standard"},"version":{"type":"string","pattern":"^[0-9]+\\.[0-9]+\\.[0-9]+$"},"status":{"type":"string","minLength":1},"layout_profile":{"const":"mcp-spec"}}},
+    "inputs":{"type":"array","minItems":8,"uniqueItems":true,"items":{"$ref":"#/$defs/file"}},
+    "input_set_sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},
+    "validation":{"type":"object","required":["status","checks","diagnostics"]},
+    "files":{"type":"array","minItems":4,"uniqueItems":true,"items":{"$ref":"#/$defs/file"}},
+    "bundle_sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"}
+  },
+  "$defs":{"file":{"type":"object","additionalProperties":false,"required":["path","sha256","bytes"],"properties":{"path":{"type":"string","minLength":1},"sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},"bytes":{"type":"integer","minimum":0}}}}
+}

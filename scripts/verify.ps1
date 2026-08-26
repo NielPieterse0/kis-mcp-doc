@@ -22,7 +22,8 @@ if ($env:KIS_EXACT_SHA) {
 
 $AllowedGeneratedMarkdownPrefixes = @(
     'generated/governance-spec/',
-    'generated/work-management-spec/'
+    'generated/work-management-spec/',
+    'generated/documentation-reference-standard/'
 )
 $TrackedMarkdown = @(& git -C $RepositoryRoot ls-files '*.md')
 $UnexpectedMarkdown = @(
@@ -65,6 +66,16 @@ try {
     & $PythonCommand -m kis_mcp_doc --root . check-generated
     if ($LASTEXITCODE -ne 0) {
         throw "Generated-output verification failed with exit code $LASTEXITCODE"
+    }
+
+    & $PythonCommand -m kis_mcp_doc --root . references-validate
+    if ($LASTEXITCODE -ne 0) {
+        throw "Documentation Reference Standard validation failed with exit code $LASTEXITCODE"
+    }
+
+    & $PythonCommand -m kis_mcp_doc --root . references-check-generated
+    if ($LASTEXITCODE -ne 0) {
+        throw "Documentation Reference Standard generated-output verification failed with exit code $LASTEXITCODE"
     }
 
     & $PythonCommand -m kis_mcp_doc --root . work-validate

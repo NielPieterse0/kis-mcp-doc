@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kis.local/contracts/documentation/reference/v1/standard.schema.json",
+  "title": "KIS Documentation Reference Standard Content",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["concern","heading","purpose","authority_model","output_classes","registry_contract","conflict_behavior","requirements"],
+  "properties": {
+    "concern":{"const":"documentation_reference_authority"},
+    "heading":{"const":"Documentation Reference Standard"},
+    "purpose":{"type":"string","minLength":1},
+    "authority_model":{"type":"array","minItems":5,"items":{"type":"object","required":["role","domain","may_define_kis_facts"],"properties":{"role":{"type":"string"},"domain":{"type":"string"},"may_define_kis_facts":{"type":"boolean"}}}},
+    "output_classes":{"type":"array","minItems":3,"maxItems":3,"items":{"type":"object","required":["class","purpose","source_rule"],"properties":{"class":{"enum":["human_documentation","human_readable_specification","generated_reference"]},"purpose":{"type":"string"},"source_rule":{"type":"string"}}}},
+    "registry_contract":{"type":"object","required":["owner","harvest_registry","relationship","required_lifecycle_states"]},
+    "conflict_behavior":{"type":"object","required":["canonical_conflict","unsupported_promotion","stale_or_unpinned_reference"]},
+    "requirements":{"type":"array","minItems":9,"items":{"type":"object","required":["rule_id","statement","enforcement"],"properties":{"rule_id":{"type":"string","pattern":"^KIS-DOC-REF-[0-9]{3}$"},"statement":{"type":"string","minLength":1},"enforcement":{"type":"string","minLength":1}}}}
+  }
+}
