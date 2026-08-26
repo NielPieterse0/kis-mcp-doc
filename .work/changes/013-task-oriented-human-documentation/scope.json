@@ -1,0 +1,71 @@
+{
+  "schema_version": 4,
+  "change_id": "013-task-oriented-human-documentation",
+  "status": "active",
+  "branch": "change/013-task-oriented-human-documentation",
+  "worktree": ".work/worktrees/013-task-oriented-human-documentation",
+  "base": "main",
+  "outcome": "Implement registered task-oriented human-documentation publication families for Governance and Work Management using canonical MRDs and the existing publication kernel, without changing Governance or Work Management semantics.",
+  "owned_paths": [
+    ".work/changes/013-task-oriented-human-documentation/**",
+    "mrd/documentation/04-publication-family-registry.mrd.json",
+    "publication/governance-docs.json",
+    "publication/work-management-docs.json",
+    "src/kis_mcp_doc/human_docs.py",
+    "src/kis_mcp_doc/publication_adapters.py",
+    "generated/governance-docs/**",
+    "generated/work-management-docs/**",
+    "generated/governance-spec/**",
+    "generated/work-management-spec/**",
+    "generated/documentation-reference-standard/**",
+    "tests/test_human_docs.py",
+    "tests/test_publication_kernel.py",
+    "scripts/verify.ps1"
+  ],
+  "shared_paths": [],
+  "excluded_paths": [
+    "AGENTS.md",
+    "contracts/**",
+    "mrd/governance/**",
+    "mrd/work-management/**",
+    "mrd/documentation/01-reference-standard.mrd.json",
+    "mrd/documentation/02-reference-registry.mrd.json",
+    "mrd/documentation/03-publication-architecture.mrd.json",
+    "publication/governance-spec.json",
+    "publication/work-management-spec.json",
+    "publication/documentation-reference-standard.json",
+    "src/kis_mcp_doc/render.py",
+    "src/kis_mcp_doc/work_management.py",
+    "src/kis_mcp_doc/publication_kernel.py",
+    "evidence/**",
+    "C:/Projects/kis-mcp/**",
+    "C:/Projects/References/**"
+  ],  "dependencies": [
+    "008-documentation-reference-standard",
+    "010-hrd-reader-experience-and-reference-separation",
+    "011-publication-kernel-and-family-registry",
+    "012-deterministic-diagrams-and-semantic-coverage"
+  ],
+  "integration_owner": null,
+  "complexity": "large",
+  "risk_triggers": [
+    "public_contract"
+  ],
+  "base_evidence": {
+    "local_sha": "563bcfb56f6233b9711a39f6f49b8fbca82c467d",
+    "local_tree": "b5edac504260d77e6e3635026379277e06a36fc2",
+    "upstream_sha": "563bcfb56f6233b9711a39f6f49b8fbca82c467d",
+    "upstream_tree": "b5edac504260d77e6e3635026379277e06a36fc2",
+    "upstream_ref": "github:main",
+    "evidence_source": "verified_github_default",
+    "relation": "equal"
+  },
+  "work_management": {
+    "project_id": "kis-mcp",
+    "record_id": "SPEC-013",
+    "source_repository": "NielPieterse0/kis-mcp-doc",
+    "source_number": 22,
+    "source_kind": "issue",
+    "documentation_impact": "planned"
+  }
+}

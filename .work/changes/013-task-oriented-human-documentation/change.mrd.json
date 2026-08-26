@@ -1,0 +1,130 @@
+{
+  "_mrd": {
+    "schema_version": 1,
+    "id": "KIS-CHG013-WRK-WFL-001",
+    "title": "Task-Oriented Human Documentation",
+    "module": "change-013",
+    "class": "WRK",
+    "type": "WFL",
+    "layer": "L3",
+    "record_mode": "descriptive",
+    "status": "active",
+    "version": "1.0.0",
+    "dependencies": [
+      {"mrd_id": "KIS-DOC-CON-POL-001", "relationship": "depends_on"},
+      {"mrd_id": "KIS-DOC-CON-POL-002", "relationship": "depends_on"},
+      {"mrd_id": "KIS-DOC-SEM-REG-002", "relationship": "depends_on"}
+    ],
+    "provenance": {
+      "sources": [
+        {"source_id": "KIS-OPERATOR-DIRECTION-2026-08-26-HUMAN-DOCS", "kind": "operator_direction", "role": "approved_change_basis", "locator": "conversation:2026-08-26", "revision": "preparation-approved", "sha256": null},
+        {"source_id": "GH-ISSUE-22", "kind": "operator_approved_work_item", "role": "approved_change_basis", "locator": "github:NielPieterse0/kis-mcp-doc#22", "revision": "2026-08-26", "sha256": null},
+        {"source_id": "KIS-CHG012-WRK-WFL-001", "kind": "canonical_machine_readable_record", "role": "publication_capability_basis", "locator": ".work/changes/012-deterministic-diagrams-and-semantic-coverage/change.mrd.json", "revision": "1.0.0", "sha256": null}
+      ],
+      "source_fingerprint": null,
+      "fact_quality": "direct"
+    },    "supersedes": [],
+    "superseded_by": null
+  },
+  "content": {
+    "change_id": "013-task-oriented-human-documentation",
+    "work_item": {
+      "repository": "NielPieterse0/kis-mcp-doc",
+      "issue": 22,
+      "project": "NielPieterse0/1",
+      "record_id": "SPEC-013"
+    },
+    "outcome": "Prepare a governed implementation slice for task-oriented human documentation that complements existing Specification and generated-reference surfaces while preserving canonical fact ownership.",
+    "classification": {
+      "complexity": "large",
+      "risk_triggers": ["public_contract"],
+      "reason": "The future implementation will introduce a new reader-facing publication surface and must preserve authority, provenance, determinism, and separation from normative specification content."
+    },
+    "authority_model": [
+      "Canonical Governance and Work Management MRDs remain the sole owners of domain facts and requirements.",
+      "KIS-DOC-CON-POL-001 remains authoritative for documentation output classes and source-authority boundaries.",
+      "The publication kernel and family registry remain authoritative for shared deterministic publication mechanics and family discovery.",
+      "Task-oriented human documentation is downstream explanatory output and MUST NOT gain write-back or canonical fact ownership.",
+      "Specification and generated-reference surfaces remain the authoritative reader locations for exact normative and lookup material."
+    ],    "design_decisions": [
+      "D1: Treat Docs, Specification, and generated reference as distinct reader surfaces with explicit content-placement rules.",
+      "D2: Use Governance and Work Management as the first task-documentation reference domains.",
+      "D3: Human docs may explain concepts, workflows, examples, common operations, and troubleshooting, but factual claims must remain derivable from governed sources.",
+      "D4: Reuse the existing publication kernel, family registry, provenance, deterministic generation, diagrams, semantic coverage, stale/tamper detection, and verification paths.",
+      "D5: Avoid wholesale duplication of normative text; link to Specification/reference surfaces where exact rules or lookup facts belong.",
+      "D6: The existing governed human_documentation output class is sufficient; Change 013 registers two new families without changing the output-class contract.",
+      "D7: Only the publication-family registry changes canonically; Governance and Work Management MRDs remain untouched.",
+      "D8: Existing publication bundles are regenerated only because their manifests bind the family-registry hash; their reader-facing content remains unchanged."
+    ],
+    "requirements": [
+      "R1: The implementation plan MUST define an explicit Docs versus Specification versus generated-reference placement model.",
+      "R2: Human documentation MUST remain downstream of canonical MRDs and MUST NOT become a second fact owner.",
+      "R3: Every governed factual statement in human docs MUST be traceable to canonical source data or an existing governed publication projection.",
+      "R4: Exact normative requirements and lookup-heavy reference material SHOULD be linked rather than redundantly restated where duplication would create drift risk.",
+      "R5: Reader-oriented examples MUST be clearly identified and MUST NOT imply unsupported semantics.",
+      "R6: Human-documentation publication families MUST use the existing publication kernel/family registry rather than parallel mechanics.",
+      "R7: Determinism, provenance, stale/tamper detection, source traceability, accessibility, and existing verification guarantees MUST be retained.",
+      "R8: Governance and Work Management semantics MUST remain unchanged unless a later separately approved change explicitly authorizes such changes.",
+      "R9: Existing specification and generated-reference reader content MUST remain unchanged except for deterministic manifest updates caused by the family-registry revision."
+    ],
+    "implementation_plan": [
+      "P1: Reuse the already-governed human_documentation output class and register Governance Docs and Work Management Docs as distinct publication families.",
+      "P2: Add family-specific publication configs and a shared human-documentation renderer that consumes canonical domain MRDs without interpreting new semantics.",
+      "P3: Generate overview, concept/lifecycle, task/workflow, troubleshooting, and bounded example pages with source-traceability data.",
+      "P4: Route build/validate/verify through the existing publication kernel adapters and bind source, generator, registry, and output hashes in deterministic manifests.",
+      "P5: Regenerate pre-existing publication manifests required by the registry revision while preserving their reader-facing content byte-for-byte.",
+      "P6: Run focused, full, registry-wide, stale/tamper, link, and source-traceability verification plus specialist review before governed publication."
+    ],
+    "verification_criteria": [
+      "V1: Governance Docs and Work Management Docs are registered with output class human_documentation only.",
+      "V2: Generated docs are deterministic and every topic in source-traceability data resolves only to canonical MRDs in its registered domain.",
+      "V3: Generated docs link readers to existing specifications for exact normative/reference material and do not create a duplicate canonical authority.",
+      "V4: Tampering with a generated human-documentation file is detected by exact bundle verification.",
+      "V5: Direct diffs under mrd/governance/** and mrd/work-management/** remain empty.",
+      "V6: Existing Governance, Work Management, and Documentation Reference reader-facing publication files remain byte-identical; only their manifests may change from registry binding.",
+      "V7: Full repository tests and scripts/verify.ps1 pass with all registered publication families valid and current.",
+      "V8: Architecture, documentation, API-contract, and code-quality review find no authority inversion, invented semantics, or parallel publication mechanism."
+    ],
+    "tasks": [
+      {"id": "T0", "status": "done", "text": "Close Change 012 external work state and remove its merged clean worktree."},
+      {"id": "T1", "status": "done", "text": "Create GitHub issue 22 and the isolated governed Change 013 preparation records."},
+      {"id": "T2", "status": "done", "text": "Expand the governed scope after explicit implementation approval and register the two human-documentation families."},
+      {"id": "T3", "status": "done", "text": "Implement deterministic Governance and Work Management task-documentation generation, traceability, examples, and adapters."},
+      {"id": "T4", "status": "done", "text": "Regenerate affected publication bundles and prove existing reader-facing specification/reference content is unchanged."},
+      {"id": "T5", "status": "done", "text": "Run focused and full repository verification across all five registered publication families."},
+      {"id": "T6", "status": "in_progress", "text": "Complete specialist reviews, exact-commit verification, governed publication, CI, merge, reconciliation, and cleanup."}
+    ],
+    "risks": [
+      "Authority duplication: task docs can drift if they restate exact normative/reference content.",
+      "Audience mixing: one page can become unreadable if tutorial, concept, reference, and governance material are not separated.",
+      "Example invention: explanatory examples can imply unsupported behavior unless bounded by canonical semantics.",
+      "Publication sprawl: a new family can duplicate mechanics unless it is registered through the existing kernel."
+    ],
+    "explicit_exclusions": [
+      "Any change to canonical Governance or Work Management MRDs or their governed semantics.",
+      "Any change to the Documentation Reference Standard output-class contract or publication-kernel architecture contract.",
+      "Any independent publication mechanism outside the existing family registry, adapters, and kernel.",
+      "Any site/portal redesign, parent KIS change, or external-reference refresh."
+    ],
+    "closeout": {
+      "state": "implementation_verified_awaiting_exact_commit_and_publication",
+      "verification": [
+        "Focused human-documentation and publication-kernel tests passed.",
+        "Full repository verification passed with 123 tests and all five registered publication families valid and current.",
+        "git diff --check is clean after fixing generated index EOF whitespace at the generator.",
+        "Governance and Work Management canonical MRD diffs are empty.",
+        "Existing Governance, Work Management, and Documentation Reference reader-facing generated files are unchanged; only their deterministic manifests changed because the family-registry hash changed.",
+        "Generated human-documentation bundles include source traceability and exact stale/tamper verification."
+      ],
+      "reviews": [
+        "Architecture specialist review completed with no findings.",
+        "API-contract specialist review completed with informational observations only and no actionable findings.",
+        "Documentation specialist review reported two low list-marker findings; direct byte inspection proved both were false positives because generated indexes and generator both use hyphen list markers.",
+        "Automated code-quality review exhausted NVIDIA and Codex deadlines; the prescribed exact-diff manual fallback found only generated index EOF whitespace, which was fixed at the generator and reverified with a clean diff check and full repository verification."
+      ],
+      "publication": {"status": "pending_exact_commit_and_github_checks", "issue": 22},
+      "merge": null,
+      "unresolved": ["Exact-commit verification, GitHub publication, PR CI, merge, Work Management reconciliation, and worktree cleanup remain pending."]
+    }
+  }
+}

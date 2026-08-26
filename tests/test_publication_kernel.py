@@ -27,10 +27,16 @@ def test_registry_discovers_all_governed_publication_families_and_output_classes
     assert registry.validate() == {"status": "valid", "diagnostics": []}
     families = registry.load()["content"]["families"]
     assert [family["id"] for family in families] == [
-        "governance-spec", "work-management-spec", "documentation-reference-standard"
+        "governance-spec",
+        "work-management-spec",
+        "documentation-reference-standard",
+        "governance-docs",
+        "work-management-docs",
     ]
     assert families[0]["output_classes"] == ["human_readable_specification", "generated_reference"]
     assert families[1]["output_classes"] == ["human_readable_specification", "generated_reference"]
+    assert families[3]["output_classes"] == ["human_documentation"]
+    assert families[4]["output_classes"] == ["human_documentation"]
     assert registry.load()["content"]["adapter_protocol_version"] == 1
 
 
@@ -187,7 +193,11 @@ def test_registered_publication_verification_covers_every_family() -> None:
     result = verify_registered_publications(ROOT)
     assert result["status"] == "valid"
     assert set(result["families"]) == {
-        "governance-spec", "work-management-spec", "documentation-reference-standard"
+        "governance-spec",
+        "work-management-spec",
+        "documentation-reference-standard",
+        "governance-docs",
+        "work-management-docs",
     }
     assert all(item["status"] == "valid" for item in result["families"].values())
 

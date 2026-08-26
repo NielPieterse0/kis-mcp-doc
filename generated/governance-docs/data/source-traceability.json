@@ -1,0 +1,36 @@
+{
+  "output_class": "human_documentation",
+  "topics": [
+    {
+      "page": "002-understand-authority.md",
+      "source_mrds": [
+        "KIS-KNOW-CON-POL-002"
+      ]
+    },
+    {
+      "page": "003-apply-governance.md",
+      "source_mrds": [
+        "KIS-KNOW-WRK-WFL-001"
+      ]
+    },
+    {
+      "page": "004-mrd-lifecycle.md",
+      "source_mrds": [
+        "KIS-KNOW-WRK-STM-001"
+      ]
+    },
+    {
+      "page": "005-troubleshooting.md",
+      "source_mrds": [
+        "KIS-KNOW-WRK-WFL-001",
+        "KIS-KNOW-EVL-TST-001"
+      ]
+    },
+    {
+      "page": "006-examples.md",
+      "source_mrds": [
+        "KIS-KNOW-WRK-WFL-001"
+      ]
+    }
+  ]
+}

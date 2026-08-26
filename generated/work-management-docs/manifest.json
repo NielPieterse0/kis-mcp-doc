@@ -1,0 +1,115 @@
+{
+  "bundle_sha256": "0cc94a71603f82ca00d2680d1dbf73673a29b386b26d601c59eda6ecd2d240cd",
+  "contract": {
+    "name": "kis-human-documentation-build",
+    "version": 1
+  },
+  "family_id": "work-management-docs",
+  "files": [
+    {
+      "bytes": 708,
+      "path": "000-index.md",
+      "sha256": "647517d8b1cc3a198939fb7c7fed6f933869f9dfaea2b78e445d9222e29dce71"
+    },
+    {
+      "bytes": 1656,
+      "path": "002-work-lifecycle.md",
+      "sha256": "06ea7bfda15172482408478c89a0e6f627a9b99a2988eea3e72638bca83c8379"
+    },
+    {
+      "bytes": 2757,
+      "path": "003-work-operations.md",
+      "sha256": "913b85de3c010ab375c39a5a7cf14b2d78558e25e762471977ed9e4c3c281ca9"
+    },
+    {
+      "bytes": 803,
+      "path": "004-complete-work.md",
+      "sha256": "e484ca393f5c767238c38a2803c55f3aa576179d5bb60da4bebec419ddce4e43"
+    },
+    {
+      "bytes": 1961,
+      "path": "005-troubleshooting.md",
+      "sha256": "8f2008352054eb022238a5b3388e924bdc62aa6db6d1a9680ea75fe7e3f8398b"
+    },
+    {
+      "bytes": 925,
+      "path": "006-examples.md",
+      "sha256": "6c691f0e5432a253e8e91281f94922cfe7706e2049c7c10ad6796cc2507194ea"
+    },
+    {
+      "bytes": 723,
+      "path": "data/source-traceability.json",
+      "sha256": "b728a374828476383dfdeff4fe9711a2624f8907a978f15d78072ce91b98a9bb"
+    }
+  ],
+  "generator": {
+    "algorithm": "human-docs-v1",
+    "name": "kis-mcp-doc"
+  },
+  "inputs": {
+    "source_files": [
+      {
+        "bytes": 5712,
+        "path": "mrd/documentation/01-reference-standard.mrd.json",
+        "sha256": "da30a9f44828194a6b0b1e382c39936ae3d07705521dd6c07af60286b5133dc1"
+      },
+      {
+        "bytes": 6560,
+        "path": "mrd/documentation/04-publication-family-registry.mrd.json",
+        "sha256": "171891c0689908f5b074bd587266a22abf13d44a6aa98d35d08234b6cef1fcc9"
+      },
+      {
+        "bytes": 444,
+        "path": "publication/work-management-docs.json",
+        "sha256": "e32eb2e43fbb379eab936b9e8e9a672af7c9eeed3febe89335b384d611c219ab"
+      },
+      {
+        "bytes": 17941,
+        "path": "src/kis_mcp_doc/human_docs.py",
+        "sha256": "36fd13f6695f50f4d190516c33b23bf5b9a00571985634f5c5d155acbc857dce"
+      },
+      {
+        "bytes": 6152,
+        "path": "src/kis_mcp_doc/publication_adapters.py",
+        "sha256": "276df0de30dc879204ebffcf0eaf14f6ce2f1c6c24e5318562bd5cd9534822a0"
+      },
+      {
+        "bytes": 33211,
+        "path": "mrd/work-management/01-reg.mrd.json",
+        "sha256": "54f93adedfa74ccd8411a4c38bde91851ba1eddb1869ecf9301263f935336603"
+      },
+      {
+        "bytes": 9690,
+        "path": "mrd/work-management/02-stm.mrd.json",
+        "sha256": "60b2622666654ea2b0332c4720fe0bc70a902cab7ded3ba955737727f8b8d9a1"
+      },
+      {
+        "bytes": 5482,
+        "path": "mrd/work-management/03-wfl.mrd.json",
+        "sha256": "ad5cbeb8e675aa1edbcd670db83ebe4b59f3d6e09407a5ec62b81285156c9367"
+      },
+      {
+        "bytes": 5443,
+        "path": "mrd/work-management/04-scr.mrd.json",
+        "sha256": "934dc44aa1c173b09cb0e9185678a53703b4740dc7d6a5163b2853caf83b6b4e"
+      },
+      {
+        "bytes": 20109,
+        "path": "mrd/work-management/05-pol.mrd.json",
+        "sha256": "d83e7341af76952a3ca66c75bca0ec5407156d24237601677d8e71346b98d85f"
+      },
+      {
+        "bytes": 9077,
+        "path": "mrd/work-management/06-svc.mrd.json",
+        "sha256": "948f9370ec4c751085131bda230d469c23c2ec379a8004cfbfb92b01d4a1d1d5"
+      },
+      {
+        "bytes": 1922,
+        "path": "mrd/work-management/07-tst.mrd.json",
+        "sha256": "db8f93cd8aa889d29ed95a97375e78aa38a4a277ae3cd8e3f1bb1feb7302d894"
+      }
+    ]
+  },
+  "output_class": "human_documentation",
+  "traceability_topics": 5
+}

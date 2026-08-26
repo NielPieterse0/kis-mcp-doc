@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "title": "Work Management Documentation",
+  "subtitle": "Practical guidance for planning, executing, and closing governed work",
+  "version": "1.0.0",
+  "status": "draft",
+  "source_glob": "mrd/work-management/*.mrd.json",
+  "specification": "generated/work-management-spec/001-specification.md",
+  "documentation_reference": {
+    "output_class": "human_documentation",
+    "policy_mrd": "KIS-DOC-CON-POL-001"
+  }
+}
