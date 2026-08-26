@@ -11,10 +11,13 @@ Governance artifacts are selected according to the need being governed. The 47-t
 
 Selection starts from the 47-type catalog with `not_applicable` as the default disposition. A selected type can be classified as `required`, `optional`, `not_applicable`, `deferred`. The goal is to represent the governed need without creating duplicate authority.
 
+<span id="rule-kis-mrd-app-001"></span>
 A repository or change MUST NOT instantiate all 47 MRD types by default; it MUST select only types whose applicability conditions are satisfied.
 
+<span id="rule-kis-mrd-app-002"></span>
 Selection MUST classify the governed need by function before considering file location, technology, framework, or current implementation shape.
 
+<span id="rule-kis-mrd-app-003"></span>
 When several types could represent the same need, the minimum sufficient non-duplicative set MUST be selected and each governed fact MUST retain one canonical owner.
 
 ## Selection process
@@ -28,6 +31,7 @@ Apply the following process in order. It starts with the governed need and only 
 5. Record required gaps or justified deferrals before implementation.
 6. Propose a catalog amendment only when no existing type can represent the need.
 
+<span id="rule-kis-mrd-app-004"></span>
 A required applicability trigger with no selected or existing canonical artifact MUST be reported as a governance gap before dependent implementation is accepted.
 
 ## Applicability reference
@@ -38,8 +42,10 @@ The complete 47-type selection catalog is an exact lookup surface. See the [MRD 
 
 Technology and stack choices do not create new MRD types by themselves. First represent the need with the existing functional vocabulary when that vocabulary is sufficient.
 
+<span id="rule-kis-mrd-app-005"></span>
 A technology or stack change, including adoption of tools such as uv, MUST first be represented using existing functional types such as version constraints, configuration, package manifests, contracts, or workflows when those types are sufficient.
 
+<span id="rule-kis-mrd-app-006"></span>
 A new MRD type MAY be proposed only when the need cannot be represented without semantic distortion by any existing type, and the proposal MUST enter through a versioned governance amendment.
 
 ## Requirement traceability

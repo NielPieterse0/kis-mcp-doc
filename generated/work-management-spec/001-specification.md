@@ -46,4 +46,4 @@ The captured live GitHub Project evidence is observed. Inventory is complete, an
 
 ## Traceability
 
-See the [documentation index](000-index.md) and [build manifest](manifest.json) for exact source identities, MRD versions, hashes, and generated-file declarations.
+See the [documentation index](000-index.md), [semantic coverage](data/semantic-coverage.json), and [build manifest](manifest.json) for exact source identities, MRD versions, page/anchor mappings, hashes, and generated-file declarations.

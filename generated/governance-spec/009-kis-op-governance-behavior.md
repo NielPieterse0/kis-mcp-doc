@@ -11,12 +11,16 @@ kis-op applies governance as an ordered workflow from authority resolution throu
 
 kis-op applies governance through seven ordered phases. It resolves authority and applicable MRDs before mutation, validates blocking conditions before execution, and keeps generated review surfaces downstream of validated sources.
 
+<span id="rule-kis-op-gov-001"></span>
 kis-op MUST resolve applicable repository authority and the active governed change scope before proposing or performing repository mutation.
 
+<span id="rule-kis-op-gov-002"></span>
 kis-op MUST use the 47-type catalog as a selection vocabulary, not as a checklist requiring one artifact of every type.
 
+<span id="rule-kis-op-gov-003"></span>
 kis-op MUST prefer an existing MRD type when it can represent the governed need without semantic distortion and MUST NOT silently invent a new type.
 
+<span id="rule-kis-op-gov-004"></span>
 kis-op MUST fail closed on unresolved required authority, ownership, dependency, provenance, or blocking validation failures and MUST report the reason rather than infer authority.
 
 ## Governance application lifecycle
@@ -45,10 +49,13 @@ A completed governance application produces the following review and machine-rea
 
 ## Scope and review boundaries
 
+<span id="rule-kis-op-gov-005"></span>
 kis-op MUST keep generated HRDs downstream of machine-readable authority and MUST direct substantive corrections to the owning MRD or canonical source before regeneration.
 
+<span id="rule-kis-op-gov-006"></span>
 kis-op MUST preserve bounded scope and MUST NOT expand a governance-specification task into unrelated Knowledge, UI, discovery, or platform implementation work unless that work is required to generate or validate the requested governance specification.
 
+<span id="rule-kis-op-gov-007"></span>
 When governance requires human judgment, kis-op MUST identify the review gate explicitly and MUST NOT misrepresent an advisory or review-based conclusion as deterministic machine enforcement.
 
 ## Requirement traceability

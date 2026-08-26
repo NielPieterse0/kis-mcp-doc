@@ -320,12 +320,14 @@ def _build_output_files(
     )
     root_page = _render_specification_root(config, ordered).encode("utf-8")
     reference_pages = _governance_reference_pages(ordered)
+    coverage = _governance_semantic_coverage(ordered)
     files: dict[str, bytes] = {
         "000-index.md": _render_corpus_index(config, ordered, litho_evidence, reference_pages).encode("utf-8"),
         "001-specification.md": root_page,
         config["output_file"]: root_page,
         "data/mrd-index.json": _json_bytes(_build_index(repository, documents)),
         "data/dependency-map.json": _json_bytes(_build_dependency_map(documents)),
+        "data/semantic-coverage.json": _json_bytes(coverage),
     }
     for index, document in enumerate(ordered):
         previous = None if index == 0 else ordered[index - 1]
@@ -338,6 +340,7 @@ def _build_output_files(
     if litho_evidence is not None:
         files["090-code-derived-analysis.md"] = _render_litho_page(config, litho_evidence).encode("utf-8")
         files["data/litho-evidence.json"] = _json_bytes(_normalized_litho_evidence(litho_evidence))
+    _validate_governance_semantic_coverage(files, coverage)
     return files
 
 
@@ -560,6 +563,7 @@ def _render_corpus_index(
         "",
         "- [MRD index](data/mrd-index.json)",
         "- [Dependency map](data/dependency-map.json)",
+        "- [Semantic coverage](data/semantic-coverage.json)",
     ])
     if litho_evidence is not None:
         lines.append("- [Litho evidence index](data/litho-evidence.json)")
@@ -604,7 +608,7 @@ def _render_specification_root(config: dict[str, Any], documents: list[dict[str,
         "",
         "## Traceability",
         "",
-        "See the [documentation index](000-index.md), [MRD index](data/mrd-index.json), [dependency map](data/dependency-map.json), and [build manifest](manifest.json) for exact source identities, hashes, and generated-file declarations.",
+        "See the [documentation index](000-index.md), [MRD index](data/mrd-index.json), [dependency map](data/dependency-map.json), [semantic coverage](data/semantic-coverage.json), and [build manifest](manifest.json) for exact source identities, page/anchor mappings, hashes, and generated-file declarations.",
         "",
     ])
     return "\n".join(lines)
@@ -699,21 +703,24 @@ def _governance_reference_pages(documents: list[dict[str, Any]]) -> dict[str, st
     lines = _reference_header("MRD applicability catalog", _document_page_name(applicability), applicability["content"]["heading"])
     lines.extend(["Use this catalog after the specification's minimum-sufficient selection process identifies the governed need. The table does not require one artifact per row.", "", "| Code | Name | Use when |", "|---|---|---|"])
     for item in applicability["content"]["type_applicability"]:
-        lines.append(f"| `{item['code']}` | {item['name']} | {item['use_when']} |")
+        lines.append(f"| <span id=\"fact-applicability-{_heading_anchor(item['code'])}\"></span>`{item['code']}` | {item['name']} | {item['use_when']} |")
+    lines.append("")
     lines.extend(["", "## Source and authority", "", f"This reference projects `{applicability['_mrd']['id']}` version `{applicability['_mrd']['version']}`. The MRD remains authoritative.", ""])
     applicability_page = "\n".join(lines)
 
     lines = _reference_header("Governed relationship vocabulary", _document_page_name(ownership), ownership["content"]["heading"])
     lines.extend(["Relationships preserve authority by expressing how one governed artifact relates to another without creating duplicate ownership.", "", "| Relationship | Meaning |", "|---|---|"])
     for item in ownership["content"]["relationship_catalog"]:
-        lines.append(f"| `{item['code']}` | {item['meaning']} |")
+        lines.append(f"| <span id=\"fact-relationship-{_heading_anchor(item['code'])}\"></span>`{item['code']}` | {item['meaning']} |")
+    lines.append("")
     lines.extend(["", "## Source and authority", "", f"This reference projects `{ownership['_mrd']['id']}` version `{ownership['_mrd']['version']}`. The MRD remains authoritative.", ""])
     relationship_page = "\n".join(lines)
 
     lines = _reference_header("Validation reason codes", _document_page_name(validation), validation["content"]["heading"])
     lines.extend(["Use these stable codes to diagnose validation failures without parsing human-readable error text.", ""])
     for code in validation["content"]["reason_codes"]:
-        lines.append(f"- `{code}`")
+        lines.append(f"- <span id=\"fact-reason-{_heading_anchor(code)}\"></span>`{code}`")
+    lines.append("")
     lines.extend(["", "## Source and authority", "", f"This reference projects `{validation['_mrd']['id']}` version `{validation['_mrd']['version']}`. The MRD remains authoritative.", ""])
     reason_page = "\n".join(lines)
 
@@ -792,6 +799,81 @@ def _heading_anchor(value: str) -> str:
     return "-".join(part for part in raw.split("-") if part)
 
 
+def _rule_anchor(rule_id: str) -> str:
+    return f"rule-{_heading_anchor(rule_id)}"
+
+
+def _governance_semantic_coverage(documents: list[dict[str, Any]]) -> dict[str, Any]:
+    entries: list[dict[str, Any]] = []
+    by_concern = {document["content"]["concern"]: document for document in documents}
+    for document in documents:
+        page = _document_page_name(document)
+        for rule in document["content"].get("rules", []):
+            entries.append({
+                "kind": "rule",
+                "id": rule["rule_id"],
+                "source_mrd": document["_mrd"]["id"],
+                "source_version": document["_mrd"]["version"],
+                "page": page,
+                "anchor": _rule_anchor(rule["rule_id"]),
+                "enforcement": rule["enforcement"],
+            })
+    for item in by_concern["applicability"]["content"]["type_applicability"]:
+        entries.append({"kind":"reference_fact","id":f"applicability:{item['code']}","source_mrd":by_concern["applicability"]["_mrd"]["id"],"page":"020-applicability-catalog.md","anchor":f"fact-applicability-{_heading_anchor(item['code'])}"})
+    for item in by_concern["ownership"]["content"]["relationship_catalog"]:
+        entries.append({"kind":"reference_fact","id":f"relationship:{item['code']}","source_mrd":by_concern["ownership"]["_mrd"]["id"],"page":"021-relationship-vocabulary.md","anchor":f"fact-relationship-{_heading_anchor(item['code'])}"})
+    for code in by_concern["validation"]["content"]["reason_codes"]:
+        entries.append({"kind":"reference_fact","id":f"reason:{code}","source_mrd":by_concern["validation"]["_mrd"]["id"],"page":"022-validation-reason-codes.md","anchor":f"fact-reason-{_heading_anchor(code)}"})
+    return {"schema_version":1,"family":"governance-spec","entries":sorted(entries,key=lambda item:(item["kind"],item["id"]))}
+
+
+def _validate_governance_semantic_coverage(files: dict[str, bytes], coverage: dict[str, Any]) -> None:
+    seen: set[tuple[str, str]] = set()
+    for entry in coverage["entries"]:
+        key = (entry["kind"], entry["id"])
+        if key in seen:
+            raise ValueError(f"duplicate Governance semantic coverage entry: {key}")
+        seen.add(key)
+        page = entry["page"]
+        if page not in files:
+            raise ValueError(f"Governance semantic coverage page does not exist: {page}")
+        marker = f'id="{entry["anchor"]}"'.encode("utf-8")
+        if marker not in files[page]:
+            raise ValueError(f"Governance semantic coverage anchor does not resolve: {page}#{entry['anchor']}")
+
+
+def _governance_ownership_diagram(content: dict[str, Any]) -> list[str]:
+    contract = content["ownership_contract"]
+    return [
+        "### Authority and ownership model", "",
+        "The diagram groups the four fields of the canonical ownership contract. Connector lines show contract composition only; they do not invent relationships between governed actors.", "",
+        "```mermaid", "flowchart TD",
+        '  contract["Canonical ownership contract"]',
+        f'  contract --> owner["Canonical owner count: {contract["canonical_owner_count"]}"]',
+        f'  contract --> nonowner["Non-owner posture: {contract["non_owner_posture"]}"]',
+        f'  contract --> derived["Derived posture: {contract["derived_posture"]}"]',
+        f'  contract --> conflict["Conflict posture: {contract["conflict_posture"]}"]',
+        "```", "",
+    ]
+
+
+def _governance_lifecycle_diagram(content: dict[str, Any]) -> list[str]:
+    lines = ["### Lifecycle diagram", "", "Each record mode is shown as its own canonical state machine. Only transitions declared by the lifecycle MRD are drawn.", "", "```mermaid", "flowchart LR"]
+    for lifecycle in content["lifecycles"]:
+        mode = _heading_anchor(lifecycle["record_mode"])
+        lines.append(f'  subgraph {mode}["{lifecycle["record_mode"]}"]')
+        for state in lifecycle["states"]:
+            node = f"{mode}_{_heading_anchor(state)}"
+            lines.append(f'    {node}["{state}"]')
+        for transition in lifecycle["transitions"]:
+            source = f"{mode}_{_heading_anchor(transition['from'])}"
+            target = f"{mode}_{_heading_anchor(transition['to'])}"
+            lines.append(f"    {source} --> {target}")
+        lines.append("  end")
+    lines.extend(["```", ""])
+    return lines
+
+
 def _format_count(value: int) -> str:
     words = ("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine")
     return words[value] if 0 <= value < len(words) else str(value)
@@ -815,7 +897,7 @@ def _page_intro(content: dict[str, Any]) -> str:
 
 def _render_rule_statements(lines: list[str], rules: list[dict[str, Any]]) -> None:
     for rule in rules:
-        lines.extend([rule["statement"], ""])
+        lines.extend([f'<span id="{_rule_anchor(rule["rule_id"])}"></span>', rule["statement"], ""])
 
 
 def _render_rule_traceability(lines: list[str], rules: list[dict[str, Any]]) -> None:
@@ -886,6 +968,7 @@ def _render_applicability(lines: list[str], content: dict[str, Any]) -> None:
         lines.append(f"{index}. {step[0].upper() + step[1:]}.")
     lines.extend([
         "",
+        f'<span id="{_rule_anchor(rules[3]["rule_id"])}"></span>',
         rules[3]["statement"],
         "",
         "### Applicability reference",
@@ -910,6 +993,7 @@ def _render_ownership(lines: list[str], content: dict[str, Any]) -> None:
         "",
     ])
     _render_rule_statements(lines, rules[:3])
+    lines.extend(_governance_ownership_diagram(content))
     lines.extend([
         "### Canonical owner kinds",
         "",
@@ -1029,6 +1113,7 @@ def _render_provenance(lines: list[str], content: dict[str, Any]) -> None:
 
 
 def _render_lifecycle(lines: list[str], content: dict[str, Any]) -> None:
+    lines.extend(_governance_lifecycle_diagram(content))
     lines.extend([
         "### State machines",
         "",

@@ -23,4 +23,5 @@ The validated Work Management MRDs remain authoritative. These pages are determi
 
 ## Traceability
 
+- [Semantic coverage](data/semantic-coverage.json) — canonical MRD and fact-to-page/anchor mappings
 - [Build manifest](manifest.json) — exact MRD and generated-file hashes

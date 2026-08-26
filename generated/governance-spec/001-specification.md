@@ -38,4 +38,4 @@ Substantive changes are made in the owning MRD, contract, schema, code, configur
 
 ## Traceability
 
-See the [documentation index](000-index.md), [MRD index](data/mrd-index.json), [dependency map](data/dependency-map.json), and [build manifest](manifest.json) for exact source identities, hashes, and generated-file declarations.
+See the [documentation index](000-index.md), [MRD index](data/mrd-index.json), [dependency map](data/dependency-map.json), [semantic coverage](data/semantic-coverage.json), and [build manifest](manifest.json) for exact source identities, page/anchor mappings, hashes, and generated-file declarations.

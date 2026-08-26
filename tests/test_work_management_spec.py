@@ -3,6 +3,8 @@ import json
 import re
 import shutil
 
+import pytest
+import kis_mcp_doc.work_management as work_module
 from kis_mcp_doc.work_management import WorkManagementRepository, build_work_management_spec, verify_work_management_spec
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -226,3 +228,82 @@ def test_snapshot_pins_parent_revision_and_live_project_state():
     assert observation["schema_status"]["missing_options"]==[]
     assert observation["schema_status"]["missing_views"]==[]
     assert observation["schema_status"]["view_mismatches"]==[]
+
+
+def test_work_diagrams_preserve_independent_status_and_delivery_dimensions(tmp_path):
+    output = tmp_path / "build"
+    repo = WorkManagementRepository(ROOT)
+    build_work_management_spec(repo, output)
+    docs = repo.load()
+    lifecycle = docs["KIS-WORK-WRK-STM-001"]["content"]
+    page = (output / "003-work-lifecycle.md").read_text(encoding="utf-8")
+    assert "Work Status and Delivery Stage are separate dimensions" in page
+    assert 'subgraph work_status["Work Status"]' in page
+    assert 'subgraph delivery_stage["Delivery Stage"]' in page
+    actual_status_edges = {
+        line.strip() for line in page.splitlines()
+        if line.strip().startswith("status_") and " --> " in line
+    }
+    expected_status_edges = {
+        f"status_{work_module._mermaid_token(source)} --> status_{work_module._mermaid_token(target)}"
+        for source, targets in lifecycle["transitions"].items()
+        for target in targets
+    }
+    assert actual_status_edges == expected_status_edges
+    actual_stage_edges = {
+        line.strip() for line in page.splitlines()
+        if line.strip().startswith("stage_") and " --> " in line
+    }
+    expected_stage_edges = {
+        f"stage_{work_module._mermaid_token(first)} --> stage_{work_module._mermaid_token(second)}"
+        for first, second in zip(lifecycle["delivery"]["stages"], lifecycle["delivery"]["stages"][1:])
+    }
+    assert actual_stage_edges == expected_stage_edges
+    provider = (output / "007-provider-and-command-plane-boundary.md").read_text(encoding="utf-8")
+    assert "## Authority and handoff flow" in provider
+    authority = docs["KIS-WORK-CTR-SVC-001"]["content"]["command_plane"]["field_authority"]
+    grouped = {}
+    for field, contract in authority.items():
+        grouped.setdefault((contract["authority"], contract["direction"]), []).append(field)
+    for (owner, direction), fields in grouped.items():
+        assert f"- `{owner}` -> `{direction}`: {', '.join(sorted(fields))}." in provider
+
+
+def test_work_semantic_coverage_resolves_declared_facts(tmp_path):
+    output = tmp_path / "build"
+    repo = WorkManagementRepository(ROOT)
+    build_work_management_spec(repo, output)
+    coverage = json.loads((output / "data/semantic-coverage.json").read_text(encoding="utf-8"))
+    entries = coverage["entries"]
+    keys = [(entry["kind"], entry["id"]) for entry in entries]
+    assert len(keys) == len(set(keys))
+    docs = repo.load()
+    assert {entry["id"] for entry in entries if entry["kind"] == "mrd"} == set(docs)
+    lifecycle = docs["KIS-WORK-WRK-STM-001"]["content"]
+    assert {entry["id"] for entry in entries if entry["kind"] == "work_state"} == {
+        state["token"] for state in lifecycle["states"]
+    }
+    assert {entry["id"] for entry in entries if entry["kind"] == "delivery_stage"} == set(lifecycle["delivery"]["stages"])
+    for entry in entries:
+        page = output / entry["page"]
+        assert page.is_file()
+        assert f'id="{entry["anchor"]}"' in page.read_text(encoding="utf-8")
+
+
+def test_work_semantic_coverage_rejects_duplicate_and_unresolved_entries() -> None:
+    files = {"page.md": b'<span id="anchor-a"></span>'}
+    duplicate = {
+        "entries": [
+            {"kind": "field", "id": "A", "page": "page.md", "anchor": "anchor-a"},
+            {"kind": "field", "id": "A", "page": "page.md", "anchor": "anchor-a"},
+        ]
+    }
+    with pytest.raises(ValueError, match="duplicate Work semantic coverage entry"):
+        work_module._validate_work_semantic_coverage(files, duplicate)
+    broken = {
+        "entries": [
+            {"kind": "field", "id": "A", "page": "page.md", "anchor": "missing"}
+        ]
+    }
+    with pytest.raises(ValueError, match="Work semantic coverage anchor does not resolve"):
+        work_module._validate_work_semantic_coverage(files, broken)

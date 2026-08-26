@@ -1,79 +1,79 @@
 {
-  "bundle_sha256": "870c90bd4e25ebd3a8b59860aa5b953ad8f82fbe9af770215c7c293d0cad4e51",
+  "bundle_sha256": "9a0238ce5f870591dd277905beb1a8bc0e1303f9ae16448ddf4b5f7e7ab7d7f4",
   "contract": {
     "name": "kis-governance-spec-build",
     "version": 2
   },
   "files": [
     {
-      "bytes": 1136,
+      "bytes": 1187,
       "path": "000-index.md",
-      "sha256": "b2eeeb2e0c37b525977c096271d8f92da16bb8dae78375178130e44ed370855e"
+      "sha256": "b7f5e7732c82f3941d7cd5b751ebcf9710eba3a290071cbf504aaf367dcd02f0"
     },
     {
-      "bytes": 2393,
+      "bytes": 2465,
       "path": "001-specification.md",
-      "sha256": "493d4e4d8d37f8e929eb66cb4c7abb7c43520a2037e510ca737ba3b94e4ea592"
+      "sha256": "02737a117e86a9d3c0b9c2d1ff8d6286c5b44d5567dfb0c8774c2b64df71418a"
     },
     {
-      "bytes": 5969,
+      "bytes": 6179,
       "path": "002-classification.md",
-      "sha256": "a1fa5817420423e624183934877b6c1ef6c3371cba9dbe7174be37335495d1c1"
+      "sha256": "8106c7869f6812169a2cdf624490aa1b3cefca530d4715d326dc076d125dc1eb"
     },
     {
-      "bytes": 3474,
+      "bytes": 3714,
       "path": "003-applicability-and-selection.md",
-      "sha256": "ca9c10eaf3fb0720c675f4181297447efde0aa7b6d7e814180fbc7ae88511f05"
+      "sha256": "958266b8c26302d6b4aa3e5ad213e47b95b9c5d50235e8f3249cede17c8d6b88"
     },
     {
-      "bytes": 3059,
+      "bytes": 3858,
       "path": "004-authority-ownership-and-relationships.md",
-      "sha256": "ea3699a7f2779bc4772da7565edff352af467e32b7d03673ac59a1e7af96e83b"
+      "sha256": "ade31d51ad798e8bc5980eba165eac08b98015d4d30b4273bdaf19157bab4c12"
     },
     {
-      "bytes": 2209,
+      "bytes": 2335,
       "path": "005-layering.md",
-      "sha256": "0fa985ad5b1c2ff9c6efd4e7b2c53f43e1584cd63286e7066ce49ad2c78c9936"
+      "sha256": "60943494fc182a291a196e2e4e41cb58a58acafae58a168918b34bcfb204f075"
     },
     {
-      "bytes": 1931,
+      "bytes": 2171,
       "path": "006-dependency-rules.md",
-      "sha256": "5ad27a3aaf685797dc168d3409081324af80cb60d9ea0a15981302b627cece25"
+      "sha256": "7d87e8f23047d3879cb1230ef4350ecb962b907b368a9d2148321322812e95b2"
     },
     {
-      "bytes": 3473,
+      "bytes": 3801,
       "path": "007-provenance.md",
-      "sha256": "8e7f0a1b6cabc658c35708fc68a1a721a745a48ed593778fd0aeabd47beb13be"
+      "sha256": "80a9718779474d144203b90633f85eb560aa535fb21ebd556232742dfa1e39b4"
     },
     {
-      "bytes": 2159,
+      "bytes": 3124,
       "path": "008-lifecycle.md",
-      "sha256": "19993df77ba1fc6c934d77a7fc9a5c4a69c3c32c7a776ae36203ee604972a809"
+      "sha256": "559b1aea3d3c7cb3be546a12ca2c07fc8ffaae188a176c4ef93f41c2f81df352"
     },
     {
-      "bytes": 4449,
+      "bytes": 4722,
       "path": "009-kis-op-governance-behavior.md",
-      "sha256": "20fbda031c565e4a90717b647801f9d1741475cd1f2b10b07f121f7914b2cb30"
+      "sha256": "4fbdc6d977f92c520ba78bdfd9134579b2db56aecb64105a1da381114d3795da"
     },
     {
-      "bytes": 4638,
+      "bytes": 4838,
       "path": "010-validation-and-enforcement.md",
-      "sha256": "913ace4a35c21373aba252644cb882c30864d52ead872c2e7aba592b51b0fff7"
+      "sha256": "7ddb872cc4f2ac4cc3fe6537cbe76c0d44ccafc482e33b54b6bbe87711645a1a"
     },
     {
-      "bytes": 6702,
+      "bytes": 8822,
       "path": "020-applicability-catalog.md",
-      "sha256": "8a2db845f02852d97015218c1f491b7c5e793e62aa2c257113896a13c0d603b4"
+      "sha256": "687491d5dc476c001165377e213ebbe7923f75246186ad55c0ce7fdcaffdd4c0"
     },
     {
-      "bytes": 1684,
+      "bytes": 2192,
       "path": "021-relationship-vocabulary.md",
-      "sha256": "f77e03b1e428581e9b78d7b9819946c6e7dfe1c8f9d48461cac1bc37c0dec923"
+      "sha256": "59a88fb9f30b4075d94eb7be6eff8b88acaf034a12612d9d4480e740f7d67785"
     },
     {
-      "bytes": 1556,
+      "bytes": 3316,
       "path": "022-validation-reason-codes.md",
-      "sha256": "5491e14b9f6dcfd4d1a71b8cfd8e1d598bcba974dd947d114f77a36be839114e"
+      "sha256": "3d3a189e39bde7d8647485cba8ec818b6e5c983814b7d7e3619664064ca91b58"
     },
     {
       "bytes": 3963,
@@ -86,9 +86,14 @@
       "sha256": "591543630492d656a7f5b8906d060e4f19dd055ba2149044d4657b0af9731534"
     },
     {
-      "bytes": 2393,
+      "bytes": 33783,
+      "path": "data/semantic-coverage.json",
+      "sha256": "4c5c054ce93aecf528f8106cf1be2a74982ebcfd58f64433e75a638428d3f55d"
+    },
+    {
+      "bytes": 2465,
       "path": "specification.md",
-      "sha256": "493d4e4d8d37f8e929eb66cb4c7abb7c43520a2037e510ca737ba3b94e4ea592"
+      "sha256": "02737a117e86a9d3c0b9c2d1ff8d6286c5b44d5567dfb0c8774c2b64df71418a"
     }
   ],
   "generator": {
@@ -117,7 +122,7 @@
       },
       {
         "path": "src/kis_mcp_doc/render.py",
-        "sha256": "34f2430f0ea41d8b681547414c58a738349925f4ce5cb30a2a51fe0495fc2bae"
+        "sha256": "9e7040e8977737e5f40e7557b5e199bd5aca6d7d83c61551271101d074f9c066"
       },
       {
         "path": "contracts/publication/v2/governance-spec.schema.json",

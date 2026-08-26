@@ -1,69 +1,74 @@
 {
-  "bundle_sha256": "8b8a399ab61249dc29ed05dd60b396895873d3cd0dacf9ff4bd18f2301eeef24",
+  "bundle_sha256": "05905aef37c966e3db810787ca7ea91dfa3aa5987a8746a250f4b3c13ed3dcb7",
   "contract": {
     "name": "kis-work-management-spec-build",
     "version": 2
   },
   "files": [
     {
-      "bytes": 1221,
+      "bytes": 1323,
       "path": "000-index.md",
-      "sha256": "db76a73fa77ae29c96b7b0069cb7e4fed087ae424319f00ed346675801ff3ae7"
+      "sha256": "3ada153de57665eaaf5ca229785961bdf3cd41345cf44ab95f788f0207cc38d2"
     },
     {
-      "bytes": 3398,
+      "bytes": 3471,
       "path": "001-specification.md",
-      "sha256": "4babc2503e9a01835ee7cfa930e16310c87a0cf0e9ceb13285010510cf0aae52"
+      "sha256": "2436f72f2eb6d65f70ad3e70699c18604dffad6dcfe4799de49fd4feb38b0c7a"
     },
     {
-      "bytes": 1615,
+      "bytes": 1660,
       "path": "002-work-management-domain-model.md",
-      "sha256": "50e0fc957c21bea509410923b27be3714f539bc8632f9b38a83dadfd62da86bf"
+      "sha256": "3e1b884f3c96b929bbebb969fcd7cfec3a1ed193bd1ada23216c04eb157e255d"
     },
     {
-      "bytes": 6249,
+      "bytes": 11553,
       "path": "003-work-lifecycle.md",
-      "sha256": "547c013e6452ce731f20f01bc37add53615efab64ea9f2807e487d5d4eb1632e"
+      "sha256": "2793987b9af053cb3f61a458ba3ac25ba86285a8c8cba1bf9c94967a5a7b75d3"
     },
     {
-      "bytes": 4086,
+      "bytes": 4131,
       "path": "004-work-operations.md",
-      "sha256": "7d369b2e7ecae92a77a944f4d784030f6744cee297a1b97c8646d359ecd03616"
+      "sha256": "433d1ef5604b59caccf23aa77d8e3e439988978682d92bbcc750d8c689bc9803"
     },
     {
-      "bytes": 3891,
+      "bytes": 4489,
       "path": "005-next-work-selection.md",
-      "sha256": "41bf5adcc8155b44b26da5a04549e45ae82c37bd50b040c4514354531d196bfe"
+      "sha256": "b764b7aa83f99c82f3e8a56dd4e0ba90f13c3d2fec54352a209889c6fdbfa28a"
     },
     {
-      "bytes": 2271,
+      "bytes": 2316,
       "path": "006-authority-and-reconciliation-policy.md",
-      "sha256": "9e5a7afa6a9fc414adbeb23ac4f108bdd1cf5de6c7079460a49f66174b0cfff4"
+      "sha256": "46c248795e8661790daca86d30da6a748969c45bcb740b6606922a5c5bc70fcd"
     },
     {
-      "bytes": 3110,
+      "bytes": 4427,
       "path": "007-provider-and-command-plane-boundary.md",
-      "sha256": "9afb42d237f15f4e5c248f7c21009867acbce528a2422f779ac89eb495421da5"
+      "sha256": "dcfecc74faedaee9db072987c5c9da1a60d92e00bbde081138624b06b67fa6d3"
     },
     {
-      "bytes": 1156,
+      "bytes": 1201,
       "path": "008-work-management-conformance.md",
-      "sha256": "af773553fe3916bcac3957c85a3afaeac6987fc326083cb2a7afecf9b8aaf94a"
+      "sha256": "7d8856a17dd4a3991746ee790a80a6ae72ca962bf52660475c3a70ec48d3018a"
     },
     {
-      "bytes": 18488,
+      "bytes": 24252,
       "path": "020-work-field-and-vocabulary-reference.md",
-      "sha256": "71261fc3475d1c33c9123ce5a128f80358407c0c1df690de619cae9249d8a122"
+      "sha256": "5a297db8a54089517449109a264641d08dbdc008c626b756566bfa76655ad988"
     },
     {
-      "bytes": 10832,
+      "bytes": 12887,
       "path": "021-work-project-configuration-reference.md",
-      "sha256": "ed3501718521c0a56c06a88cf50e4bd38f40634da43f7ad3d69b110f94e343fe"
+      "sha256": "b4293ed500a90f52a6226decefd5795afe3e5eebf2a5be9e374aa89b03394c54"
     },
     {
-      "bytes": 3398,
+      "bytes": 44744,
+      "path": "data/semantic-coverage.json",
+      "sha256": "6eec176727afc71831447dafde352078d62a1ae9ec657f28fc5f3dd4afda029b"
+    },
+    {
+      "bytes": 3471,
       "path": "specification.md",
-      "sha256": "4babc2503e9a01835ee7cfa930e16310c87a0cf0e9ceb13285010510cf0aae52"
+      "sha256": "2436f72f2eb6d65f70ad3e70699c18604dffad6dcfe4799de49fd4feb38b0c7a"
     }
   ],
   "generator": {
@@ -79,7 +84,7 @@
       },
       {
         "path": "src/kis_mcp_doc/work_management.py",
-        "sha256": "c08a68865007763fa63ba2c1971b6060c8483fa8f12e01d8425e5dc6bbaac78c"
+        "sha256": "540ca9c573dead69a5fce212262944e48ba866a5f924e787d1effbaa2fe1ca10"
       }
     ],
     "version": "0.1.0"

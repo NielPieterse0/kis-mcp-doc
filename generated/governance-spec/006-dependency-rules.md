@@ -11,16 +11,22 @@ Dependencies make authority relationships explicit and verifiable. Each dependen
 
 A governed dependency must identify a stable target, resolve successfully, follow the authority-layer direction, and remain part of an acyclic graph. Generated dependency maps are projections of that validated graph, not a second source of truth.
 
+<span id="rule-kis-mrd-dep-001"></span>
 Every dependency target MUST resolve.
 
+<span id="rule-kis-mrd-dep-002"></span>
 MRD-to-MRD dependency direction MUST satisfy the L0-L5 authority ordering.
 
+<span id="rule-kis-mrd-dep-003"></span>
 The MRD dependency graph MUST be acyclic.
 
+<span id="rule-kis-mrd-dep-004"></span>
 Duplicate dependency edges MUST be rejected.
 
+<span id="rule-kis-mrd-dep-005"></span>
 Dependency identities MUST be stable; canonical non-MRD dependencies MUST use repo: paths.
 
+<span id="rule-kis-mrd-dep-006"></span>
 A META-DEP projection MAY be generated from the validated dependency graph and MUST NOT become primary authority.
 
 ## Dependency targets

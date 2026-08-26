@@ -5,6 +5,8 @@
 
 [Previous: Specification](001-specification.md) | [Next: Work lifecycle](003-work-lifecycle.md) | [Index](000-index.md)
 
+<span id="mrd-kis-work-sem-reg-001"></span>
+
 Work Management describes each work record through a single field model with explicit authority direction. The important distinction is not where a field is displayed, but which system may change it and whether the value is commanded, observed, or handed off to another authority.
 
 ## Authority directions

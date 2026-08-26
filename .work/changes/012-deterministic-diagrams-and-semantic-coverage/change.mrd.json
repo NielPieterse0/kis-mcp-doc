@@ -1,0 +1,174 @@
+{
+  "_mrd": {
+    "schema_version": 1,
+    "id": "KIS-CHG012-WRK-WFL-001",
+    "title": "Deterministic Diagrams and Semantic Coverage",
+    "module": "change-012",
+    "class": "WRK",
+    "type": "WFL",
+    "layer": "L3",
+    "record_mode": "descriptive",
+    "status": "active",
+    "version": "1.0.0",
+    "dependencies": [
+      {"mrd_id": "KIS-DOC-CON-POL-001", "relationship": "depends_on"},
+      {"mrd_id": "KIS-DOC-CON-POL-002", "relationship": "depends_on"},
+      {"mrd_id": "KIS-DOC-SEM-REG-002", "relationship": "depends_on"}
+    ],
+    "provenance": {
+      "sources": [
+        {
+          "source_id": "KIS-OPERATOR-DIRECTION-2026-08-26-DIAGRAMS-COVERAGE",
+          "kind": "operator_direction",
+          "role": "approved_change_basis",
+          "locator": "conversation:2026-08-26",
+          "revision": "implementation-approved",
+          "sha256": null
+        },
+        {
+          "source_id": "GH-ISSUE-20",
+          "kind": "operator_approved_work_item",
+          "role": "approved_change_basis",
+          "locator": "github:NielPieterse0/kis-mcp-doc#20",
+          "revision": "2026-08-26",
+          "sha256": null
+        },
+        {
+          "source_id": "KIS-CHG010-WRK-WFL-001",
+          "kind": "canonical_machine_readable_record",
+          "role": "reader_experience_basis",
+          "locator": ".work/changes/010-hrd-reader-experience-and-reference-separation/change.mrd.json",
+          "revision": "1.1.0",
+          "sha256": null
+        },
+        {
+          "source_id": "KIS-CHG011-WRK-WFL-001",
+          "kind": "canonical_machine_readable_record",
+          "role": "publication_architecture_basis",
+          "locator": ".work/changes/011-publication-kernel-and-family-registry/change.mrd.json",
+          "revision": "1.0.0",
+          "sha256": null
+        }
+      ],
+      "source_fingerprint": "sha256:84dc9badf40f8caa79e54bb2c0ccbfc4e00ed40b21e1a19f5bd0a9ab8f91c35f",
+      "fact_quality": "direct"
+    },
+    "supersedes": [],
+    "superseded_by": null
+  },
+  "content": {
+    "change_id": "012-deterministic-diagrams-and-semantic-coverage",
+    "work_item": {
+      "repository": "NielPieterse0/kis-mcp-doc",
+      "issue": 20,
+      "project": "NielPieterse0/1",
+      "record_id": "SPEC-012"
+    },
+    "outcome": "Add a small set of source-derived explanatory diagrams and deterministic semantic-coverage maps to the Governance and Work Management publication families so readers can understand key flows and tooling can prove that governed rules and lookup facts remain published.",
+    "classification": {
+      "complexity": "medium",
+      "risk_triggers": ["architecture_boundary"],
+      "reason": "The change extends two publication-family output structures and traceability behavior but does not alter canonical domain semantics or public command/schema contracts."
+    },
+    "authority_model": [
+      "Governance MRDs remain the sole owners of Governance facts, requirements, lifecycle states, and relationships.",
+      "Work Management MRDs remain the sole owners of Work states, delivery stages, fields, selection rules, Project configuration, and provider-boundary semantics.",
+      "KIS-DOC-CON-POL-001 continues to define documentation output classes and generated-output authority boundaries.",
+      "KIS-DOC-CON-POL-002 and KIS-DOC-SEM-REG-002 continue to govern publication mechanics and family discovery.",
+      "A diagram is a supplemental deterministic projection of canonical facts and has no write-back authority.",
+      "Semantic coverage is generated-reference traceability data and cannot become a second owner of any rule or fact."
+    ],
+    "design_decisions": [
+      "D1: Add diagrams only where the canonical model contains enough explicit structure to derive every node and edge without inference.",
+      "D2: Governance gains an authority/ownership flow and MRD lifecycle diagram; Work Management gains a Work Status versus Delivery Stage diagram and a provider field-authority/handoff diagram.",
+      "D3: Use Mermaid source embedded in generated Markdown so the diagram text remains deterministic, diffable, accessible beside explanatory prose, and covered by existing bundle hashing.",
+      "D4: Do not create an independent diagram registry or hand-maintained diagram source. Diagram content is generated directly from the owning MRD content during publication.",
+      "D5: Add data/semantic-coverage.json to Governance and Work Management bundles as generated_reference traceability data.",
+      "D6: Governance coverage maps every stable rule ID plus the exact applicability, relationship, and validation-reference facts introduced by Change 010 to a generated page and anchor.",
+      "D7: Work Management coverage maps every source MRD plus managed fields, vocabulary values, Work states, Delivery Stages, selection rules, Project fields, and Project views to generated pages and anchors.",
+      "D8: Coverage generation must fail closed on duplicate identifiers, missing pages, or unresolved anchors before a bundle can be written.",
+      "D9: Existing human-readable content and exact lookup tables remain the primary accessible representation; diagrams supplement rather than replace them.",
+      "D10: The change does not introduce a new schema contract for semantic coverage; the generated structure remains family-owned until reuse needs justify a separately governed contract."
+    ],
+    "requirements": [
+      "R1: Every diagram node, label, edge, count, and grouping MUST derive from canonical Governance or Work Management MRD data used by the owning publication family.",
+      "R2: Diagram generation MUST NOT infer or invent a relationship that is absent from canonical source data.",
+      "R3: Diagrams MUST remain supplemental generated projections and MUST NOT replace normative prose, exact tables, or source/authority statements.",
+      "R4: Governance authority-flow content MUST derive from the canonical ownership contract and MUST preserve its one-current-owner, non-owner, derived, and conflict postures.",
+      "R5: Governance lifecycle diagram transitions MUST exactly equal the transitions declared for each canonical record mode.",
+      "R6: Work Status and Delivery Stage MUST be presented as separate dimensions; the diagram MUST NOT imply a state-to-stage mapping that the canonical model does not define.",
+      "R7: Work authority/handoff diagram groups MUST derive from the canonical provider-boundary field_authority contract and MUST preserve authority and direction values.",
+      "R8: Each semantic-coverage entry MUST identify a stable kind, stable fact/rule identifier, canonical source MRD, generated page, and stable anchor.",
+      "R9: Coverage generation MUST reject duplicate kind/identifier pairs, unknown target pages, and anchors that are absent from the generated target page.",
+      "R10: Generated semantic coverage MUST be deterministic, manifest-bound, stale-detectable, and tamper-detectable through the existing publication kernel and family verification paths.",
+      "R11: Governance and Work Management canonical MRDs MUST remain unchanged.",
+      "R12: Existing specification/reference navigation, normative statements, and exact lookup availability MUST remain intact.",
+      "R13: Existing family-specific and registry-driven publication validation/build/check paths MUST continue to pass without weakened assertions.",
+      "R14: All implementation and verification activity MUST remain within C:/Projects."
+    ],
+    "implementation_plan": [
+      "P1: Add stable hidden anchors to existing specification/reference projections without changing canonical fact ownership.",
+      "P2: Generate Governance rule/reference coverage and Work Management MRD/fact coverage as deterministic JSON bundle files.",
+      "P3: Validate coverage resolution before bundle write and rely on existing manifest/bundle verification for stale and tamper detection.",
+      "P4: Add the four approved Mermaid diagrams directly in the relevant canonical projection pages.",
+      "P5: Link semantic coverage from documentation indexes/specification traceability sections where useful without turning it into primary reader content.",
+      "P6: Add positive derivation/coverage tests and negative tests for duplicate or unresolved coverage entries.",
+      "P7: Regenerate both publication families, inspect reader-facing diffs, run full/canonical/exact verification, and complete architecture/documentation review before publication."
+    ],
+    "verification_criteria": [
+      "V1: Focused tests prove each diagram is generated from the exact owning canonical data and contains no extra modeled relationship.",
+      "V2: Governance semantic coverage contains every canonical rule ID and every exact applicability, relationship, and validation-reference fact intentionally published by the family.",
+      "V3: Work Management semantic coverage contains every source MRD plus all managed fields, vocabulary values, Work states, Delivery Stages, selection rules, Project fields, and Project views intentionally published by the family.",
+      "V4: Every coverage page and anchor resolves in the generated bundle and a negative fixture proves broken coverage is rejected.",
+      "V5: Repeated generation from identical inputs is byte-stable for diagrams, coverage data, Markdown, and manifests.",
+      "V6: Tampering with diagram-bearing pages or semantic-coverage data causes existing family verification to fail.",
+      "V7: Direct diffs under mrd/governance/**, mrd/work-management/**, and mrd/documentation/** are empty.",
+      "V8: Existing Governance and Work Management semantic/readability tests remain green without weakening assertions.",
+      "V9: Full repository pytest and scripts/verify.ps1 pass on the final implementation tree and exact commit.",
+      "V10: Architecture/documentation review finds no invented semantics, authority inversion, inaccessible replacement of exact text, or unnecessary visual complexity."
+    ],
+    "tasks": [
+      {"id": "T0", "status": "done", "text": "Create GitHub issue 20 and isolated Change 012 worktree from merged main 2568b62e20560690ed91a44e48f1682543c38884."},
+      {"id": "T1", "status": "done", "text": "Create the governed Change 012 scope and implementation MRD."},
+      {"id": "T2", "status": "done", "text": "Implement source-derived Governance and Work Management diagrams plus semantic-coverage generation and validation."},
+      {"id": "T3", "status": "done", "text": "Add complete positive/negative diagram and semantic-coverage tests and traceability navigation."},
+      {"id": "T4", "status": "done", "text": "Regenerate both publication families and review reader-facing changes against canonical source data."},
+      {"id": "T5", "status": "in_progress", "text": "Run focused/full/canonical/exact verification and required specialist reviews."},
+      {"id": "T6", "status": "planned", "text": "Publish, verify exact-head GitHub Actions, merge, reconcile main, close issue 20, and clean the 012 worktree."}
+    ],
+    "risks": [
+      "Visual inference: a diagram can imply a relationship that the source model never declared.",
+      "Coverage theatre: a coverage file can look complete while omitting classes of facts unless the covered fact classes are explicitly tested.",
+      "Anchor churn: unstable anchors can break external links even when the prose remains correct.",
+      "Accessibility regression: diagrams can become a poor substitute for exact textual representation if tables or prose are removed.",
+      "Publication churn: adding hidden anchors broadly changes generated Markdown and manifests, so deterministic regeneration and focused human review are required."
+    ],
+    "explicit_exclusions": [
+      "Any change to Governance, Work Management, or Documentation canonical MRDs or semantics.",
+      "Any new documentation output class, publication-family contract, or semantic-coverage schema contract.",
+      "Any inferred diagram edge, hand-authored diagram authority, or generated write-back path.",
+      "Any task-oriented human documentation, site/portal redesign, parent KIS change, or external reference refresh.",
+      "Any edit, reset, cleanup, or deletion of the preserved change/009-publication-kernel worktree.",
+      "Any filesystem or execution work outside C:/Projects."
+    ],
+    "closeout": {
+      "state": "implementation_verified_awaiting_exact_commit_review_and_publication",
+      "verification": [
+        "Governance and Work Management focused suites passed with positive and negative semantic-coverage tests.",
+        "Full repository pytest passed: 117 tests.",
+        "scripts/verify.ps1 passed with locked offline dependencies, all semantic validators, all legacy generated-output checks, and all registry-driven publication checks.",
+        "Direct diffs under mrd/governance/**, mrd/work-management/**, mrd/documentation/**, contracts/**, and publication/** are empty.",
+        "Tracked Governance and Work bundles were byte-matched to fresh deterministic builds after a Windows directory-handle lock prevented atomic directory rename; no tracked directory deletion or process termination was used.",
+        "All execution, temporary generation, and quarantine work remained under C:/Projects."
+      ],
+      "reviews": [
+        "Working-tree architecture review projectors failed before review because the local worktree source could not be fingerprinted; no findings or approval were produced. Exact-commit architecture and documentation review remain required."
+      ],
+      "publication": {"status": "pending_exact_commit_and_github_checks", "issue": 20},
+      "merge": null,
+      "unresolved": [
+        "Exact-commit architecture/documentation review, exact-commit verification, GitHub publication, CI, merge, reconciliation, and cleanup remain pending."
+      ]
+    }
+  }
+}

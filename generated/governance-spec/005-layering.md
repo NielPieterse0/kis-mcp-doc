@@ -11,10 +11,13 @@ Authority layers constrain the direction of MRD dependencies. They express which
 
 The governance model uses six authority layers from `L0` through `L5`. Lower layer numbers have higher authority for dependency direction; the layer does not describe storage location or implementation order.
 
+<span id="rule-kis-mrd-layer-001"></span>
 An MRD MAY depend only on an MRD in the same layer or a higher-authority layer with a lower layer number.
 
+<span id="rule-kis-mrd-layer-002"></span>
 An MRD MUST NOT depend on an MRD in a lower-authority layer with a higher layer number.
 
+<span id="rule-kis-mrd-layer-003"></span>
 Layer assignment expresses authority ordering, not storage location or implementation order.
 
 ## Authority layers

@@ -5,6 +5,8 @@
 
 [Previous: Next-work selection](005-next-work-selection.md) | [Next: Provider and command-plane boundary](007-provider-and-command-plane-boundary.md) | [Index](000-index.md)
 
+<span id="mrd-kis-work-con-pol-001"></span>
+
 Authority determines which system may change a fact. Reconciliation compares observed provider state with those owners and surfaces drift rather than choosing a new truth. Generated documentation remains downstream of every canonical source.
 
 ## Authority principles

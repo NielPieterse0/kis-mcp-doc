@@ -5,7 +5,37 @@
 
 [Previous: Authority and reconciliation policy](006-authority-and-reconciliation-policy.md) | [Next: Work Management conformance](008-work-management-conformance.md) | [Index](000-index.md)
 
+<span id="mrd-kis-work-ctr-svc-001"></span>
+
 The command plane defines the work states and fields that KIS may change. The provider boundary observes and mutates GitHub Project only through the configured read and write models; provider state does not redefine repository-owned facts.
+
+## Authority and handoff flow
+
+Each arrow is derived from the provider-boundary field-authority contract. Labels name the fields carried in that authority direction.
+
+```mermaid
+flowchart LR
+  command["Command"]
+  evidence["Evidence"]
+  handoff["Handoff"]
+  owner_0["actions"] -->|"1 field"| evidence
+  owner_1["derived"] -->|"5 fields"| evidence
+  owner_2["git"] -->|"1 field"| evidence
+  owner_3["github"] -->|"3 fields"| evidence
+  owner_4["repository_change"] -->|"3 fields"| evidence
+  owner_5["work_management"] -->|"14 fields"| command
+  owner_6["work_management_then_repository_change"] -->|"2 fields"| handoff
+```
+
+Diagram details:
+
+- `actions` -> `evidence`: Verification.
+- `derived` -> `evidence`: Commissioning Key, Delivery Stage, Live Verification, Live Verification Evidence, Project ID.
+- `git` -> `evidence`: Authority Revision.
+- `github` -> `evidence`: Blocked By, Created, Repository.
+- `repository_change` -> `evidence`: Change ID, Complexity, Risk Triggers.
+- `work_management` -> `command`: Confidence, Disposition, Effort, Execution Owner, External Link, Iteration, Origin, Priority, Record Type, Review Trigger, Severity, Source Review, Status, Target Date.
+- `work_management_then_repository_change` -> `handoff`: Documentation Impact, Module.
 
 ## Command-plane model
 
