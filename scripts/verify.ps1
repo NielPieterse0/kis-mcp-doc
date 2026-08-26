@@ -99,6 +99,16 @@ try {
         throw "Registered publication generated-output verification failed with exit code $LASTEXITCODE"
     }
 
+    & $PythonCommand -m kis_mcp_doc --root . search-validate
+    if ($LASTEXITCODE -ne 0) {
+        throw "Documentation search validation failed with exit code $LASTEXITCODE"
+    }
+
+    & $PythonCommand -m kis_mcp_doc --root . search-check-generated
+    if ($LASTEXITCODE -ne 0) {
+        throw "Documentation search generated-output verification failed with exit code $LASTEXITCODE"
+    }
+
     & $PythonCommand -m kis_mcp_doc --root . site-validate
     if ($LASTEXITCODE -ne 0) {
         throw "Documentation site validation failed with exit code $LASTEXITCODE"

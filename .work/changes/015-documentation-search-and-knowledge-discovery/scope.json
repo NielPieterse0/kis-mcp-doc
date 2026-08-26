@@ -1,0 +1,57 @@
+{
+    "schema_version":  4,
+    "change_id":  "015-documentation-search-and-knowledge-discovery",
+    "status":  "active",
+    "branch":  "change/015-documentation-search-and-knowledge-discovery",
+    "worktree":  ".work/worktrees/015-documentation-search-and-knowledge-discovery",
+    "base":  "main",
+    "outcome":  "Add deterministic documentation search and knowledge discovery over the governed site routes without creating a new fact authority.",
+    "owned_paths":  [
+                        ".work/changes/015-documentation-search-and-knowledge-discovery/**",
+                        "publication/documentation-search.json",
+                        "publication/documentation-site.json",
+                        "src/kis_mcp_doc/documentation_search.py",
+                        "src/kis_mcp_doc/documentation_site.py",
+                        "src/kis_mcp_doc/cli.py",
+                        "generated/documentation-search/**",
+                        "generated/documentation-site/**",
+                        "tests/test_documentation_search.py",
+                        "scripts/verify.ps1"
+                    ],
+    "shared_paths":  [
+
+                     ],
+    "excluded_paths":  [
+                           "mrd/governance/**",
+                           "mrd/work-management/**",
+                           "mrd/documentation/**",
+                           "contracts/**",
+                           "C:/Projects/kis-mcp/**",
+                           "C:/Projects/References/**"
+                       ],
+    "dependencies":  [
+                         "014-documentation-site-and-navigation"
+                     ],
+    "integration_owner":  null,
+    "complexity":  "large",
+    "risk_triggers":  [
+                          "public_contract"
+                      ],
+    "base_evidence":  {
+                          "local_sha":  "a263d7d2e983a5de4085ed0652299176696287e7",
+                          "local_tree":  null,
+                          "upstream_sha":  "a263d7d2e983a5de4085ed0652299176696287e7",
+                          "upstream_tree":  null,
+                          "upstream_ref":  "main",
+                          "evidence_source":  "verified_remote_default",
+                          "relation":  "equal"
+                      },
+    "work_management":  {
+                            "project_id":  "kis-mcp",
+                            "record_id":  "SPEC-015",
+                            "source_repository":  "NielPieterse0/kis-mcp-doc",
+                            "source_number":  26,
+                            "source_kind":  "issue",
+                            "documentation_impact":  "planned"
+                        }
+}

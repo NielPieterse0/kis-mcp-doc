@@ -11,6 +11,7 @@ from .publication_kernel import PublicationFamilyRegistry, bundle_diagnostics, b
 
 _CONFIG = "publication/documentation-site.json"
 _REGISTRY = "mrd/documentation/04-publication-family-registry.mrd.json"
+_SITE_SOURCE = "src/kis_mcp_doc/documentation_site.py"
 _LINK_RE = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
 _HEADING_RE = re.compile(r"^(#{1,6})\s+(.+)$")
 
@@ -212,7 +213,7 @@ def _markdown_html(text: str, source: Path, source_to_route: dict[str, str], roo
 def _page(title: str, body: str, breadcrumb: str, prev_next: str = "") -> bytes:
     return ("<!doctype html>\n<html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">"
             f"<title>{html.escape(title)}</title><link rel=\"stylesheet\" href=\"/assets/site.css\"></head><body>"
-            "<header><a href=\"/\">KIS Documentation</a><nav><a href=\"/docs/\">Docs</a> <a href=\"/specification/\">Specification</a> <a href=\"/reference/\">Reference</a></nav></header>"
+            "<header><a href=\"/\">KIS Documentation</a><nav><a href=\"/docs/\">Docs</a> <a href=\"/specification/\">Specification</a> <a href=\"/reference/\">Reference</a> <a href=\"/search/\">Search</a></nav></header>"
             f"<main><div class=\"breadcrumbs\">{breadcrumb}</div>{body}{prev_next}</main></body></html>\n").encode("utf-8")
 
 
@@ -256,13 +257,24 @@ def render_documentation_site(root: Path) -> tuple[dict[str, bytes], dict[str, A
         body = f"<h1>{surface.title()}</h1><ul>" + "".join(f'<li><a href="{item["route"]}">{html.escape(item["title"])}</a></li>' for item in links) + "</ul>"
         files[_route_file(f"/{surface}/")] = _page(surface.title(), body, '<a href="/">Home</a>')
     home_sections = []
-    for surface in ("docs", "specification", "reference"):
+    for surface in ("docs", "specification", "reference", "search"):
         home_sections.append(f'<section><h2><a href="/{surface}/">{surface.title()}</a></h2></section>')
     files["index.html"] = _page(config["title"], f'<h1>{html.escape(config["title"])}</h1><p>{html.escape(config.get("subtitle", ""))}</p>' + "".join(home_sections), "Home")
     files["assets/site.css"] = b"body{font-family:system-ui,sans-serif;max-width:72rem;margin:auto;padding:1rem;line-height:1.55}header{display:flex;justify-content:space-between;border-bottom:1px solid #ccc;padding-bottom:1rem}main{padding-top:1rem}.breadcrumbs,.prev-next{margin:1rem 0;color:#555}pre{overflow:auto;background:#f6f8fa;padding:1rem}nav a{margin-right:.75rem}\n"
     files["routes.json"] = (json.dumps(entries, indent=2, ensure_ascii=False, sort_keys=True) + "\n").encode("utf-8")
+    search_relative = config.get("search_index")
+    if isinstance(search_relative, str):
+        search_path = root / search_relative
+        if not search_path.is_file():
+            raise ValueError(f"configured search index does not exist: {search_relative}")
+        search_bytes = search_path.read_bytes()
+        files["search-index.json"] = search_bytes
+        files["assets/search.js"] = b"fetch('/search-index.json').then(r=>r.json()).then(i=>{const f=document.querySelector('#search-form'),q=document.querySelector('#q'),o=document.querySelector('#results');f.addEventListener('submit',e=>{e.preventDefault();const ts=q.value.toLowerCase().split(/\\s+/).filter(Boolean);const rs=i.documents.map(d=>[ts.reduce((s,t)=>s+(d.title_terms[t]||0)*5+(d.terms[t]||0),0),d]).filter(x=>x[0]>0).sort((a,b)=>b[0]-a[0]||a[1].route.localeCompare(b[1].route)).slice(0,i.default_limit);o.innerHTML=rs.map(x=>`<li><a href=\"${x[1].route}\">${x[1].title}</a> - ${x[1].family}</li>`).join('');});});\n"
+        search_body = '<h1>Search</h1><form id="search-form"><label for="q">Search governed documentation</label><input id="q" name="q"><button>Search</button></form><ul id="results"></ul><script src="/assets/search.js"></script>'
+        files["search/index.html"] = _page("Search", search_body, '<a href="/">Home</a> / Search')
     inputs = []
-    for relative in [_CONFIG, _REGISTRY] + [entry["source"] for entry in entries]:
+    extra_inputs = [search_relative] if isinstance(search_relative, str) else []
+    for relative in [_CONFIG, _REGISTRY, _SITE_SOURCE] + extra_inputs + [entry["source"] for entry in entries]:
         payload = (root / relative).read_bytes()
         import hashlib
         inputs.append({"path": relative, "sha256": hashlib.sha256(payload).hexdigest(), "bytes": len(payload)})
