@@ -39,7 +39,7 @@
     "supersedes": [],
     "title": "Provider and command-plane boundary",
     "type": "SVC",
-    "version": "1.0.0"
+    "version": "1.0.1"
   },
   "content": {
     "command_plane": {
@@ -349,7 +349,7 @@
       ]
     },
     "provider_contract": {
-      "live_observation": "not captured in this revision because provider inventory response was invalid",
+      "live_observation": "Live Project evidence was observed; inventory is complete; the configured Project schema is ready with no field, option, type, or view drift in the captured evidence.",
       "project": "NielPieterse0/1",
       "read_model": "bounded inventory and schema observation",
       "write_model": "preview or idempotent mutation"

@@ -5,322 +5,87 @@
 
 [Specification](001-specification.md) | [Documentation index](000-index.md)
 
-Define Work states, transitions, readiness, claims, delivery stages, completion gates, and guards.
-
-## Claim
-
-**Auto expiry:** No
-
-**Execution owner field:** Execution Owner
-
-## Completion
-
-**Require no active claim after close:** No
-
-**Terminal state:** done
-
-## Delivery
-
-**Change created stage:** change_created
-
-**Change id field:** Change ID
-
-**Complete stage:** complete
-
-**Complexity field:** Complexity
-
-**Risk triggers field:** Risk Triggers
-
-**Stage field:** Delivery Stage
-
-**Stages:** none, change_created, implementing, pr_open, review, ci_pending, ci_failed, ci_passed, merged, documentation, commissioning, complete
-
-## Guards
-
-### approval-before-active
-
-**Condition:** approval_required_and_incomplete
-
-**Definition:** Reject activation when the record requires approval and approval is incomplete.
-
-**Disposition:** reject
-
-**Id:** approval-before-active
-
-**Reason code:** approval_incomplete
-
-**Target:** active
-
-### completion-no-active-claim
-
-**Condition:** completion_requires_no_active_claim_and_claim_present
-
-**Definition:** When configured, reject completion while an execution claim remains.
-
-**Disposition:** reject
-
-**Id:** completion-no-active-claim
-
-**Reason code:** active_claim_present
-
-**Target:** done
-
-### completion-documentation-due
-
-**Condition:** required_documentation_reconciliation_due
-
-**Definition:** Required post-merge documentation reconciliation must be completed before Done.
-
-**Disposition:** reject
-
-**Id:** completion-documentation-due
-
-**Reason code:** documentation_reconciliation_due
-
-**Target:** done
-
-### completion-documentation-due-advisory
-
-**Condition:** advisory_documentation_reconciliation_due
-
-**Definition:** Advisory post-merge documentation reconciliation may complete with an explicit advisory reason.
-
-**Disposition:** allow_with_reason
-
-**Id:** completion-documentation-due-advisory
-
-**Reason code:** documentation_reconciliation_advisory_due
-
-**Target:** done
-
-### completion-documentation-unrecorded
-
-**Condition:** required_documentation_reconciliation_unrecorded
-
-**Definition:** Required post-merge documentation milestone must be recorded before Done.
-
-**Disposition:** reject
-
-**Id:** completion-documentation-unrecorded
-
-**Reason code:** documentation_reconciliation_unrecorded
-
-**Target:** done
-
-### completion-documentation-unrecorded-advisory
-
-**Condition:** advisory_documentation_reconciliation_unrecorded
-
-**Definition:** Advisory documentation reconciliation may complete without a recorded post-merge milestone, with an explicit advisory reason.
-
-**Disposition:** allow_with_reason
-
-**Id:** completion-documentation-unrecorded-advisory
-
-**Reason code:** documentation_reconciliation_advisory_incomplete
-
-**Target:** done
-
-### completion-documentation-incomplete
-
-**Condition:** required_documentation_incomplete
-
-**Definition:** Required documentation impact must be complete before Done.
-
-**Disposition:** reject
-
-**Id:** completion-documentation-incomplete
-
-**Reason code:** documentation_incomplete
-
-**Target:** done
-
-### completion-documentation-incomplete-advisory
-
-**Condition:** advisory_documentation_incomplete
-
-**Definition:** Advisory documentation may complete while incomplete, with an explicit advisory reason.
-
-**Disposition:** allow_with_reason
-
-**Id:** completion-documentation-incomplete-advisory
-
-**Reason code:** documentation_advisory_incomplete
-
-**Target:** done
-
-## Intake aliases
-
-**Todo:** inbox
-
-## Readiness
-
-**Required issue sections:** Outcome, Acceptance criteria
-
-**Required project fields:** Record Type, Priority, Effort, Documentation Impact
-
-**Requires dependencies understood:** Yes
-
-## States
-
-### Inbox
-
-**Definition:** Captured work not yet triaged.
-
-**Project status:** Yes
-
-**Token:** inbox
-
-### Triage
-
-**Definition:** Work being classified.
-
-**Project status:** Yes
-
-**Token:** triage
-
-### Proposed
-
-**Definition:** Work proposed for approval.
-
-**Project status:** Yes
-
-**Token:** proposed
-
-### Approved
-
-**Definition:** Accepted work not yet admitted to Ready.
-
-**Project status:** Yes
-
-**Token:** approved
-
-### Ready
-
-**Definition:** Executable queue state subject to readiness guards.
-
-**Project status:** Yes
-
-**Token:** ready
-
-### Active
-
-**Definition:** Claimed execution state.
-
-**Project status:** Yes
-
-**Token:** active
-
-### Review
-
-**Definition:** Internal delivery state for review activity.
-
-**Project status:** No
-
-**Token:** review
-
-### Verification
-
-**Definition:** Internal delivery state for verification activity.
-
-**Project status:** No
-
-**Token:** verification
-
-### Documentation
-
-**Definition:** Internal delivery state for documentation reconciliation.
-
-**Project status:** No
-
-**Token:** documentation
-
-### Blocked
-
-**Definition:** Execution cannot proceed because a blocker is present.
-
-**Project status:** Yes
-
-**Token:** blocked
-
-### On Hold
-
-**Definition:** Intentionally paused pending a review trigger.
-
-**Project status:** Yes
-
-**Token:** on_hold
-
-### Deferred
-
-**Definition:** Postponed for later reconsideration.
-
-**Project status:** Yes
-
-**Token:** deferred
-
-### Rejected
-
-**Definition:** Not accepted for execution in current form.
-
-**Project status:** Yes
-
-**Token:** rejected
-
-### Superseded
-
-**Definition:** Replaced by newer authoritative work.
-
-**Project status:** Yes
-
-**Token:** superseded
-
-### Done
-
-**Definition:** Required completion gates are satisfied.
-
-**Project status:** Yes
-
-**Token:** done
-
-## Transition requirements
-
-**Deferred:** Review Trigger
-
-**On hold:** Review Trigger
+A work item moves through explicit states. Project-visible states describe the shared work queue, while internal states such as Review, Verification, and Documentation describe delivery activity without creating new GitHub Project status values.
+
+## State model
+
+| State | Meaning | GitHub Project status | Token |
+|---|---|---|---|
+| Inbox | Captured work not yet triaged. | Yes | `inbox` |
+| Triage | Work being classified. | Yes | `triage` |
+| Proposed | Work proposed for approval. | Yes | `proposed` |
+| Approved | Accepted work not yet admitted to Ready. | Yes | `approved` |
+| Ready | Executable queue state subject to readiness guards. | Yes | `ready` |
+| Active | Claimed execution state. | Yes | `active` |
+| Review | Internal delivery state for review activity. | No | `review` |
+| Verification | Internal delivery state for verification activity. | No | `verification` |
+| Documentation | Internal delivery state for documentation reconciliation. | No | `documentation` |
+| Blocked | Execution cannot proceed because a blocker is present. | Yes | `blocked` |
+| On Hold | Intentionally paused pending a review trigger. | Yes | `on_hold` |
+| Deferred | Postponed for later reconsideration. | Yes | `deferred` |
+| Rejected | Not accepted for execution in current form. | Yes | `rejected` |
+| Superseded | Replaced by newer authoritative work. | Yes | `superseded` |
+| Done | Required completion gates are satisfied. | Yes | `done` |
 
 ## Transitions
 
-**Active:** ready, review, blocked, on_hold, deferred, done, superseded
+Transitions are explicit. A work item **MUST** move only to a destination listed for its current state. On Hold and Deferred also require a Review Trigger.
 
-**Approved:** ready, active, on_hold, deferred, superseded
+| From | Allowed next states | Additional requirement |
+|---|---|---|
+| Active | Ready, Review, Blocked, On Hold, Deferred, Done, Superseded | None |
+| Approved | Ready, Active, On Hold, Deferred, Superseded | None |
+| Blocked | Ready, Active, On Hold, Deferred, Superseded | None |
+| Deferred | Triage, Proposed, Approved, Rejected, Superseded | Review Trigger |
+| Documentation | Done, Active, Blocked, Superseded | None |
+| Done | No transitions | None |
+| Inbox | Triage, Deferred, Rejected, Superseded | None |
+| On Hold | Ready, Active, Deferred, Rejected, Superseded | Review Trigger |
+| Proposed | Approved, Deferred, Rejected, Superseded | None |
+| Ready | Active, On Hold, Deferred, Superseded | None |
+| Rejected | Triage, Superseded | None |
+| Review | Active, Verification, Blocked, On Hold, Superseded | None |
+| Superseded | No transitions | None |
+| Triage | Proposed, Approved, Deferred, Rejected, Superseded | None |
+| Verification | Active, Documentation, Blocked, Superseded | None |
 
-**Blocked:** ready, active, on_hold, deferred, superseded
+## Readiness and claims
 
-**Deferred:** triage, proposed, approved, rejected, superseded
+Before a work item can enter Ready, it **MUST** satisfy all configured readiness requirements:
 
-**Documentation:** done, active, blocked, superseded
+- The source issue contains **Outcome** and **Acceptance criteria**.
+- The Project record contains **Record Type**, **Priority**, **Effort**, and **Documentation Impact**.
+- Dependencies are understood.
 
-**Done:** None
+Execution claims use the **Execution Owner** field. Claims do not expire automatically.
 
-**Inbox:** triage, deferred, rejected, superseded
+At intake, the alias `todo` is normalized to `inbox`.
 
-**On hold:** ready, active, deferred, rejected, superseded
+## Delivery and completion
 
-**Proposed:** approved, deferred, rejected, superseded
+Delivery is tracked separately from the work state. The configured delivery-stage sequence is:
 
-**Ready:** active, on_hold, deferred, superseded
+`none`, `change_created`, `implementing`, `pr_open`, `review`, `ci_pending`, `ci_failed`, `ci_passed`, `merged`, `documentation`, `commissioning`, `complete`
 
-**Rejected:** triage, superseded
+The **Delivery Stage** field stores that stage. **Change ID**, **Complexity**, and **Risk Triggers** connect the work record to repository change governance. The sequence starts its governed change at `change_created` and reaches `complete` when delivery is complete.
 
-**Review:** active, verification, blocked, on_hold, superseded
+Completion targets `done`. The current configuration does not require the execution claim to be absent after close.
 
-**Superseded:** None
+## Completion and activation guards
 
-**Triage:** proposed, approved, deferred, rejected, superseded
+Guards reject or qualify transitions when required evidence is missing or inconsistent:
 
-**Verification:** active, documentation, blocked, superseded
+| Guard | Applies when | Rule | Result | Reason |
+|---|---|---|---|---|
+| `approval-before-active` | `approval_required_and_incomplete` | Reject activation when the record requires approval and approval is incomplete. | `reject` to `active` | `approval_incomplete` |
+| `completion-no-active-claim` | `completion_requires_no_active_claim_and_claim_present` | When configured, reject completion while an execution claim remains. | `reject` to `done` | `active_claim_present` |
+| `completion-documentation-due` | `required_documentation_reconciliation_due` | Required post-merge documentation reconciliation must be completed before Done. | `reject` to `done` | `documentation_reconciliation_due` |
+| `completion-documentation-due-advisory` | `advisory_documentation_reconciliation_due` | Advisory post-merge documentation reconciliation may complete with an explicit advisory reason. | `allow_with_reason` to `done` | `documentation_reconciliation_advisory_due` |
+| `completion-documentation-unrecorded` | `required_documentation_reconciliation_unrecorded` | Required post-merge documentation milestone must be recorded before Done. | `reject` to `done` | `documentation_reconciliation_unrecorded` |
+| `completion-documentation-unrecorded-advisory` | `advisory_documentation_reconciliation_unrecorded` | Advisory documentation reconciliation may complete without a recorded post-merge milestone, with an explicit advisory reason. | `allow_with_reason` to `done` | `documentation_reconciliation_advisory_incomplete` |
+| `completion-documentation-incomplete` | `required_documentation_incomplete` | Required documentation impact must be complete before Done. | `reject` to `done` | `documentation_incomplete` |
+| `completion-documentation-incomplete-advisory` | `advisory_documentation_incomplete` | Advisory documentation may complete while incomplete, with an explicit advisory reason. | `allow_with_reason` to `done` | `documentation_advisory_incomplete` |
 
 ## Source and authority
 
-This page projects `KIS-WORK-WRK-STM-001` version `1.0.0`. The MRD is authoritative; this generated page has no write-back authority.
+This page projects `KIS-WORK-WRK-STM-001` version `1.0.0`. The MRD remains authoritative; this generated page has no write-back authority.

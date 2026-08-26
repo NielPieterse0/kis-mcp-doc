@@ -5,12 +5,18 @@
 
 [Specification](001-specification.md) | [Documentation index](000-index.md)
 
-Define conformance requirements for the Work Management specification.
+A Work Management implementation conforms to this specification only when its source MRDs, dependencies, evidence, generated views, and lifecycle behavior pass the checks below. These checks keep human-readable documentation aligned with machine-readable authority.
 
-## Checks
+## Conformance requirements
 
-MRD envelopes validate against the KIS MRD core schema., All MRD dependencies resolve and preserve one-owner authority., Harvested source hashes match the pinned canonical snapshot., Generated specification is byte deterministic., Generated output is stale/tamper detectable., Lifecycle transitions and selection rules are reproduced exactly from canonical contracts., Unavailable live Project evidence remains explicit and does not become inferred authority.
+1. MRD envelopes validate against the KIS MRD core schema.
+2. All MRD dependencies resolve and preserve one-owner authority.
+3. Harvested source hashes match the pinned canonical snapshot.
+4. Generated specification is byte deterministic.
+5. Generated output is stale/tamper detectable.
+6. Lifecycle transitions and selection rules are reproduced exactly from canonical contracts.
+7. Unavailable live Project evidence remains explicit and does not become inferred authority.
 
 ## Source and authority
 
-This page projects `KIS-WORK-EVL-TST-001` version `1.0.0`. The MRD is authoritative; this generated page has no write-back authority.
+This page projects `KIS-WORK-EVL-TST-001` version `1.0.0`. The MRD remains authoritative; this generated page has no write-back authority.

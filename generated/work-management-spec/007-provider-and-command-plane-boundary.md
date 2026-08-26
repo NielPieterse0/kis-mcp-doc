@@ -5,298 +5,98 @@
 
 [Specification](001-specification.md) | [Documentation index](000-index.md)
 
-Define the configured command plane and GitHub Project provider boundary.
+The command plane defines the work states and fields that KIS may change. The provider boundary observes and mutates GitHub Project only through the configured read and write models; provider state does not redefine repository-owned facts.
 
-## Command plane
+## Command-plane model
 
-### Claim
+Claims use **Execution Owner** and do not expire automatically. The completion policy targets `done` and does not require the claim to be absent after close.
 
-**Auto expiry:** No
+The command plane exposes these work states: `inbox`, `triage`, `proposed`, `approved`, `ready`, `active`, `blocked`, `on_hold`, `deferred`, `rejected`, `superseded`, `done`. Delivery uses `none`, `change_created`, `implementing`, `pr_open`, `review`, `ci_pending`, `ci_failed`, `ci_passed`, `merged`, `documentation`, `commissioning`, `complete`.
 
-**Execution owner field:** Execution Owner
-
-### Completion
-
-**Require no active claim after close:** No
-
-**Terminal state:** done
-
-### Delivery
-
-**Change created stage:** change_created
-
-**Change id field:** Change ID
-
-**Complete stage:** complete
-
-**Complexity field:** Complexity
-
-**Risk triggers field:** Risk Triggers
-
-**Stage field:** Delivery Stage
-
-**Delivery stages:** none, change_created, implementing, pr_open, review, ci_pending, ci_failed, ci_passed, merged, documentation, commissioning, complete
+The intake alias `todo` maps to `inbox`.
 
 ### Field authority
 
-#### Authority revision
-
-**Authority:** git
-
-**Direction:** evidence
-
-#### Blocked by
-
-**Authority:** github
-
-**Direction:** evidence
-
-#### Change id
-
-**Authority:** repository_change
-
-**Direction:** evidence
-
-#### Commissioning key
-
-**Authority:** derived
-
-**Direction:** evidence
-
-#### Complexity
-
-**Authority:** repository_change
-
-**Direction:** evidence
-
-#### Confidence
-
-**Authority:** work_management
-
-**Direction:** command
-
-#### Created
-
-**Authority:** github
-
-**Direction:** evidence
-
-#### Delivery stage
-
-**Authority:** derived
-
-**Direction:** evidence
-
-#### Disposition
-
-**Authority:** work_management
-
-**Direction:** command
-
-#### Documentation impact
-
-**Authority:** work_management_then_repository_change
-
-**Direction:** handoff
-
-#### Effort
-
-**Authority:** work_management
-
-**Direction:** command
-
-#### Execution owner
-
-**Authority:** work_management
-
-**Direction:** command
-
-#### External link
-
-**Authority:** work_management
-
-**Direction:** command
-
-#### Iteration
-
-**Authority:** work_management
-
-**Direction:** command
-
-#### Live verification
-
-**Authority:** derived
-
-**Direction:** evidence
-
-#### Live verification evidence
-
-**Authority:** derived
-
-**Direction:** evidence
-
-#### Module
-
-**Authority:** work_management_then_repository_change
-
-**Direction:** handoff
-
-#### Origin
-
-**Authority:** work_management
-
-**Direction:** command
-
-#### Priority
-
-**Authority:** work_management
-
-**Direction:** command
-
-#### Project id
-
-**Authority:** derived
-
-**Direction:** evidence
-
-#### Record type
-
-**Authority:** work_management
-
-**Direction:** command
-
-#### Repository
-
-**Authority:** github
-
-**Direction:** evidence
-
-#### Review trigger
-
-**Authority:** work_management
-
-**Direction:** command
-
-#### Risk triggers
-
-**Authority:** repository_change
-
-**Direction:** evidence
-
-#### Severity
-
-**Authority:** work_management
-
-**Direction:** command
-
-#### Source review
-
-**Authority:** work_management
-
-**Direction:** command
-
-#### Status
-
-**Authority:** work_management
-
-**Direction:** command
-
-#### Target date
-
-**Authority:** work_management
-
-**Direction:** command
-
-#### Verification
-
-**Authority:** actions
-
-**Direction:** evidence
-
-### Intake aliases
-
-**Todo:** inbox
-
-### Queue
-
-**Blocked by field:** Blocked By
-
-**Created field:** Created
-
-**Effort field:** Effort
-
-**Effort order:** tiny, small, medium, large
-
-**Eligible states:** ready
-
-**Priority field:** Priority
-
-**Priority order:** critical, high, medium, low
-
-**Ranking:** priority, effort, created_order, record_id
-
-**State field:** Status
-
-### Readiness
-
-**Required issue sections:** Outcome, Acceptance criteria
-
-**Required project fields:** Record Type, Priority, Effort, Documentation Impact
-
-**Requires dependencies understood:** Yes
-
-**Schema version:** 1
-
-### Transition requirements
-
-**Deferred:** Review Trigger
-
-**On hold:** Review Trigger
-
-### Transitions
-
-**Active:** ready, review, blocked, on_hold, deferred, done, superseded
-
-**Approved:** ready, active, on_hold, deferred, superseded
-
-**Blocked:** ready, active, on_hold, deferred, superseded
-
-**Deferred:** triage, proposed, approved, rejected, superseded
-
-**Documentation:** done, active, blocked, superseded
-
-**Done:** None
-
-**Inbox:** triage, deferred, rejected, superseded
-
-**On hold:** ready, active, deferred, rejected, superseded
-
-**Proposed:** approved, deferred, rejected, superseded
-
-**Ready:** active, on_hold, deferred, superseded
-
-**Rejected:** triage, superseded
-
-**Review:** active, verification, blocked, on_hold, superseded
-
-**Superseded:** None
-
-**Triage:** proposed, approved, deferred, rejected, superseded
-
-**Verification:** active, documentation, blocked, superseded
-
-**Work states:** inbox, triage, proposed, approved, ready, active, blocked, on_hold, deferred, rejected, superseded, done
+Each field keeps the authority and direction defined by the Work Management domain model:
+
+| Field | Authority | Direction |
+|---|---|---|
+| Authority Revision | `git` | `evidence` |
+| Blocked By | `github` | `evidence` |
+| Change ID | `repository_change` | `evidence` |
+| Commissioning Key | `derived` | `evidence` |
+| Complexity | `repository_change` | `evidence` |
+| Confidence | `work_management` | `command` |
+| Created | `github` | `evidence` |
+| Delivery Stage | `derived` | `evidence` |
+| Disposition | `work_management` | `command` |
+| Documentation Impact | `work_management_then_repository_change` | `handoff` |
+| Effort | `work_management` | `command` |
+| Execution Owner | `work_management` | `command` |
+| External Link | `work_management` | `command` |
+| Iteration | `work_management` | `command` |
+| Live Verification | `derived` | `evidence` |
+| Live Verification Evidence | `derived` | `evidence` |
+| Module | `work_management_then_repository_change` | `handoff` |
+| Origin | `work_management` | `command` |
+| Priority | `work_management` | `command` |
+| Project ID | `derived` | `evidence` |
+| Record Type | `work_management` | `command` |
+| Repository | `github` | `evidence` |
+| Review Trigger | `work_management` | `command` |
+| Risk Triggers | `repository_change` | `evidence` |
+| Severity | `work_management` | `command` |
+| Source Review | `work_management` | `command` |
+| Status | `work_management` | `command` |
+| Target Date | `work_management` | `command` |
+| Verification | `actions` | `evidence` |
+
+## Queue and readiness
+
+The executable queue accepts state `ready`. It ranks by `priority`, `effort`, `created_order`, `record_id`, using priority order `critical`, `high`, `medium`, `low` and effort order `tiny`, `small`, `medium`, `large`.
+
+Queue inputs come from **Status**, **Priority**, **Effort**, **Created**, and **Blocked By**.
+
+Before the provider-backed command plane can treat work as Ready, the record **MUST** satisfy its configured readiness requirements:
+
+- The source issue contains **Outcome** and **Acceptance criteria**.
+- The Project record contains **Record Type**, **Priority**, **Effort**, and **Documentation Impact**.
+- Dependencies are understood.
+
+## State transitions
+
+The provider-facing command plane uses the same transition graph as the Work lifecycle chapter. The table is repeated here because the provider adapter validates these exact transitions.
+
+| From | Allowed next states | Additional requirement |
+|---|---|---|
+| `active` | `ready`, `review`, `blocked`, `on_hold`, `deferred`, `done`, `superseded` | None |
+| `approved` | `ready`, `active`, `on_hold`, `deferred`, `superseded` | None |
+| `blocked` | `ready`, `active`, `on_hold`, `deferred`, `superseded` | None |
+| `deferred` | `triage`, `proposed`, `approved`, `rejected`, `superseded` | Review Trigger |
+| `documentation` | `done`, `active`, `blocked`, `superseded` | None |
+| `done` | No transitions | None |
+| `inbox` | `triage`, `deferred`, `rejected`, `superseded` | None |
+| `on_hold` | `ready`, `active`, `deferred`, `rejected`, `superseded` | Review Trigger |
+| `proposed` | `approved`, `deferred`, `rejected`, `superseded` | None |
+| `ready` | `active`, `on_hold`, `deferred`, `superseded` | None |
+| `rejected` | `triage`, `superseded` | None |
+| `review` | `active`, `verification`, `blocked`, `on_hold`, `superseded` | None |
+| `superseded` | No transitions | None |
+| `triage` | `proposed`, `approved`, `deferred`, `rejected`, `superseded` | None |
+| `verification` | `active`, `documentation`, `blocked`, `superseded` | None |
+
+## Delivery projection
+
+**Delivery Stage** carries the derived delivery stage. **Change ID**, **Complexity**, and **Risk Triggers** are projected from repository change governance. The change-created stage is `change_created` and the complete stage is `complete`.
 
 ## Provider contract
 
-**Live observation:** not captured in this revision because provider inventory response was invalid
+The configured Project is `NielPieterse0/1`. Reads use bounded inventory and schema observation; writes use preview or idempotent mutation.
 
-**Project:** NielPieterse0/1
+Live Project evidence was observed; inventory is complete; the configured Project schema is ready with no field, option, type, or view drift in the captured evidence.
 
-**Read model:** bounded inventory and schema observation
-
-**Write model:** preview or idempotent mutation
+Command-plane schema version: `1`.
 
 ## Source and authority
 
-This page projects `KIS-WORK-CTR-SVC-001` version `1.0.0`. The MRD is authoritative; this generated page has no write-back authority.
+This page projects `KIS-WORK-CTR-SVC-001` version `1.0.1`. The MRD remains authoritative; this generated page has no write-back authority.
