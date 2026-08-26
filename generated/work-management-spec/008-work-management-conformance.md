@@ -3,7 +3,7 @@
 
 <div id="enable-section-numbers" />
 
-[Specification](001-specification.md) | [Documentation index](000-index.md)
+[Previous: Provider and command-plane boundary](007-provider-and-command-plane-boundary.md) | [Index](000-index.md)
 
 A Work Management implementation conforms to this specification only when its source MRDs, dependencies, evidence, generated views, and lifecycle behavior pass the checks below. These checks keep human-readable documentation aligned with machine-readable authority.
 

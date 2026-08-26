@@ -18,6 +18,7 @@ _DOCUMENTATION_REGISTRY = "mrd/documentation/02-reference-registry.mrd.json"
 _DOCUMENTATION_PUBLICATION = "publication/documentation-reference-standard.json"
 _WORK_EVIDENCE = "evidence/work-management/canonical-snapshot.json"
 _DOCUMENTATION_OUTPUT_CLASS = "human_readable_specification"
+_REFERENCE_OUTPUT_CLASS = "generated_reference"
 
 
 class WorkManagementRepository:
@@ -141,7 +142,7 @@ def _source_and_authority(doc: dict[str, Any]) -> list[str]:
     ]
 
 
-def _render_domain_model(content: dict[str, Any]) -> list[str]:
+def _render_domain_reference(content: dict[str, Any]) -> list[str]:
     lines = [
         "Work Management defines the fields and controlled vocabularies used to describe a work record. The model keeps command data separate from observed evidence so that a generated view cannot silently become a second source of truth.",
         "",
@@ -210,6 +211,36 @@ def _render_domain_model(content: dict[str, Any]) -> list[str]:
             for value in vocabulary["values"]
         ]
         _append_table(lines, ["Value", "Token", "Meaning"], rows)
+    return lines
+
+
+def _render_domain_model(content: dict[str, Any]) -> list[str]:
+    counts = {
+        direction: sum(1 for item in content["fields"] if item["direction"] == direction)
+        for direction in ("command", "evidence", "handoff")
+    }
+    lines = [
+        "Work Management describes each work record through a single field model with explicit authority direction. The important distinction is not where a field is displayed, but which system may change it and whether the value is commanded, observed, or handed off to another authority.",
+        "",
+        "## Authority directions",
+        "",
+        "**Command** fields are changed through Work Management operations. **Evidence** fields are observed or projected from their canonical owner. **Handoff** fields begin as Work Management planning data and later become repository-change evidence when change governance takes authority.",
+        "",
+        f"The current model contains {counts['command']} command fields, {counts['evidence']} evidence fields, and {counts['handoff']} handoff fields.",
+        "",
+        "A generated specification can explain or index those fields, but it cannot turn an evidence field into command data or become a second owner of any value.",
+        "",
+        "## Authority rules",
+        "",
+    ]
+    lines.extend(f"- {rule}" for rule in content["rules"])
+    lines.extend([
+        "",
+        "## Exact field and vocabulary reference",
+        "",
+        "The complete managed-field catalog and every controlled-vocabulary value are exact lookup data. See the [Work field and vocabulary reference](020-work-field-and-vocabulary-reference.md).",
+        "",
+    ])
     return lines
 
 
@@ -376,7 +407,7 @@ def _render_selection(content: dict[str, Any]) -> list[str]:
     return lines
 
 
-def _render_authority_policy(content: dict[str, Any]) -> list[str]:
+def _render_authority_reference(content: dict[str, Any]) -> list[str]:
     lines = [
         "Authority determines which system may change a fact. Reconciliation then compares provider state with those owners and reports drift instead of choosing a new truth. Generated documentation stays downstream of every canonical source.",
         "",
@@ -468,6 +499,35 @@ def _render_authority_policy(content: dict[str, Any]) -> list[str]:
     return lines
 
 
+def _render_authority_policy(content: dict[str, Any]) -> list[str]:
+    lines = [
+        "Authority determines which system may change a fact. Reconciliation compares observed provider state with those owners and surfaces drift rather than choosing a new truth. Generated documentation remains downstream of every canonical source.",
+        "",
+        "## Authority principles",
+        "",
+    ]
+    lines.extend(f"- {item}" for item in content["principles"])
+    change = content["change_governance"]
+    lines.extend([
+        "",
+        "## Change-governance handoff",
+        "",
+        f"Work Management carries planning data into repository governance, but repository change governance owns governed change identity, complexity, and risk once a change exists. The current handoff uses change-governance schema version `{change['schema_version']}`.",
+        "",
+        "Complexity and risk classification therefore remain repository-change facts after handoff. Work Management may display them as evidence but does not reclassify them independently.",
+        "",
+        "## Reconciliation",
+        "",
+        "Reconciliation follows authority direction: command fields may be brought to the intended Work Management state; evidence fields are re-read from their owner; handoff fields change authority when the governed change takes ownership. Conflicting or unavailable evidence remains explicit rather than being normalized into a convenient value.",
+        "",
+        "## Exact Project and policy reference",
+        "",
+        "The complete change-classification tables, GitHub Project schema, views, bindings, features, gates, and evidence limits are exact lookup data. See the [Work Project configuration reference](021-work-project-configuration-reference.md).",
+        "",
+    ])
+    return lines
+
+
 def _render_provider_boundary(content: dict[str, Any]) -> list[str]:
     command = content["command_plane"]
     provider = content["provider_contract"]
@@ -484,14 +544,9 @@ def _render_provider_boundary(content: dict[str, Any]) -> list[str]:
         "",
         "### Field authority",
         "",
-        "Each field keeps the authority and direction defined by the Work Management domain model:",
+        "The provider adapter uses the field authority defined by the Work Management domain model; it does not maintain a second authority table. See the [Work Management domain model](002-work-management-domain-model.md) and [field reference](020-work-field-and-vocabulary-reference.md).",
         "",
     ]
-    _append_table(
-        lines,
-        ["Field", "Authority", "Direction"],
-        [[field, f"`{rule['authority']}`", f"`{rule['direction']}`"] for field, rule in command["field_authority"].items()],
-    )
 
     queue = command["queue"]
     readiness = command["readiness"]
@@ -514,15 +569,9 @@ def _render_provider_boundary(content: dict[str, Any]) -> list[str]:
         "",
         "## State transitions",
         "",
-        "The provider-facing command plane uses the same transition graph as the Work lifecycle chapter. The table is repeated here because the provider adapter validates these exact transitions.",
+        "The provider-facing command plane conforms to the same transition graph as the [Work lifecycle](003-work-lifecycle.md). It validates that graph; it does not define an independent lifecycle copy.",
         "",
     ])
-    transition_rows=[]
-    for source, targets in command["transitions"].items():
-        requirement=command["transition_requirements"].get(source, [])
-        target_text = _code_list(targets) if targets else "No transitions"
-        transition_rows.append([f"`{source}`", target_text, _text_list(requirement)])
-    _append_table(lines, ["From", "Allowed next states", "Additional requirement"], transition_rows)
 
     delivery = command["delivery"]
     lines.extend([
@@ -573,7 +622,27 @@ def _render_generic(content: dict[str, Any]) -> list[str]:
     return lines
 
 
-def render_document(doc: dict[str, Any]) -> str:
+def _work_navigation(
+    previous: tuple[str, dict[str, Any]] | None,
+    following: tuple[str, dict[str, Any]] | None,
+) -> str:
+    parts = []
+    if previous is None:
+        parts.append("[Previous: Specification](001-specification.md)")
+    else:
+        parts.append(f"[Previous: {previous[1]['_mrd']['title']}]({previous[0]})")
+    if following is not None:
+        parts.append(f"[Next: {following[1]['_mrd']['title']}]({following[0]})")
+    parts.append("[Index](000-index.md)")
+    return " | ".join(parts)
+
+
+def render_document(
+    doc: dict[str, Any],
+    *,
+    previous: tuple[str, dict[str, Any]] | None = None,
+    following: tuple[str, dict[str, Any]] | None = None,
+) -> str:
     renderers = {
         "KIS-WORK-SEM-REG-001": _render_domain_model,
         "KIS-WORK-WRK-STM-001": _render_lifecycle,
@@ -589,13 +658,54 @@ def render_document(doc: dict[str, Any]) -> str:
         "",
         '<div id="enable-section-numbers" />',
         "",
-        "[Specification](001-specification.md) | [Documentation index](000-index.md)",
+        _work_navigation(previous, following),
         "",
     ]
     renderer = renderers.get(doc["_mrd"]["id"], _render_generic)
     lines.extend(renderer(doc["content"]))
     lines.extend(_source_and_authority(doc))
     return "\n".join(lines)
+
+
+def _work_reference_pages(docs: list[dict[str, Any]]) -> dict[str, str]:
+    by_id = {doc["_mrd"]["id"]: doc for doc in docs}
+    domain = by_id["KIS-WORK-SEM-REG-001"]
+    authority = by_id["KIS-WORK-CON-POL-001"]
+
+    lines = [
+        "<!-- GENERATED — DO NOT EDIT -->",
+        "# Work field and vocabulary reference",
+        "",
+        '<div id="enable-section-numbers" />',
+        "",
+        "[Owning specification chapter: Work Management domain model](002-work-management-domain-model.md) | [Documentation index](000-index.md)",
+        "",
+        f"> **Output class:** `{_REFERENCE_OUTPUT_CLASS}`. This page is an exact lookup projection of canonical Work Management authority. It has no write-back authority.",
+        "",
+    ]
+    lines.extend(_render_domain_reference(domain["content"]))
+    lines.extend(_source_and_authority(domain))
+    domain_page = "\n".join(lines)
+
+    lines = [
+        "<!-- GENERATED — DO NOT EDIT -->",
+        "# Work Project configuration reference",
+        "",
+        '<div id="enable-section-numbers" />',
+        "",
+        "[Owning specification chapter: Authority and reconciliation policy](006-authority-and-reconciliation-policy.md) | [Documentation index](000-index.md)",
+        "",
+        f"> **Output class:** `{_REFERENCE_OUTPUT_CLASS}`. This page is an exact lookup projection of canonical Work Management policy and configuration. It has no write-back authority.",
+        "",
+    ]
+    lines.extend(_render_authority_reference(authority["content"]))
+    lines.extend(_source_and_authority(authority))
+    authority_page = "\n".join(lines)
+
+    return {
+        "020-work-field-and-vocabulary-reference.md": domain_page,
+        "021-work-project-configuration-reference.md": authority_page,
+    }
 
 
 def _load_work_publication(repo: WorkManagementRepository) -> dict[str, Any]:
@@ -631,6 +741,8 @@ def _validate_documentation_reference_binding(root: Path, config: dict[str, Any]
     output_classes = {item.get("class") for item in policy.get("content", {}).get("output_classes", [])}
     if binding["output_class"] not in output_classes:
         raise ValueError("documentation reference output class is not governed by the policy")
+    if _REFERENCE_OUTPUT_CLASS not in output_classes:
+        raise ValueError("generated-reference output class is not governed by the policy")
     governed_roles = {item.get("role") for item in policy.get("content", {}).get("authority_model", [])}
     for reference in registry.get("content", {}).get("references", []):
         if reference.get("role") not in governed_roles or reference.get("may_define_kis_facts") is not False:
@@ -667,9 +779,15 @@ def build_work_management_spec(repo: WorkManagementRepository, output: Path, *, 
     output=Path(output)
     staging=Path(tempfile.mkdtemp(prefix=f".{output.name}.",suffix=".tmp",dir=output.parent))
     try:
-        pages=[]
-        for i,doc in enumerate(docs,2):
-            name=_page_name(i,doc); text=render_document(doc); (staging/name).write_bytes(text.encode("utf-8")); pages.append((name,doc))
+        pages=[(_page_name(i,doc),doc) for i,doc in enumerate(docs,2)]
+        for index_value,(name,doc) in enumerate(pages):
+            previous = None if index_value == 0 else pages[index_value - 1]
+            following = None if index_value + 1 == len(pages) else pages[index_value + 1]
+            text=render_document(doc,previous=previous,following=following)
+            (staging/name).write_bytes(text.encode("utf-8"))
+        reference_pages = _work_reference_pages(docs)
+        for name,text in reference_pages.items():
+            (staging/name).write_bytes(text.encode("utf-8"))
         index = [
             "<!-- GENERATED — DO NOT EDIT -->",
             f"# {config['title']} — documentation index",
@@ -682,6 +800,11 @@ def build_work_management_spec(repo: WorkManagementRepository, output: Path, *, 
             "",
             "- [Specification](001-specification.md)",
         ] + [f"- [{d['_mrd']['title']}]({n})" for n, d in pages] + [
+            "",
+            "## Generated reference",
+            "",
+            "- [Work field and vocabulary reference](020-work-field-and-vocabulary-reference.md)",
+            "- [Work Project configuration reference](021-work-project-configuration-reference.md)",
             "",
             "## Traceability",
             "",

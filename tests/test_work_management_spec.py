@@ -1,5 +1,6 @@
 from pathlib import Path
 import json
+import re
 import shutil
 
 from kis_mcp_doc.work_management import WorkManagementRepository, build_work_management_spec, verify_work_management_spec
@@ -99,8 +100,9 @@ def test_generated_spec_is_human_readable(tmp_path):
     conformance=(out/"008-work-management-conformance.md").read_text(encoding="utf-8")
 
     assert "<!-- GENERATED — DO NOT EDIT -->" in domain
-    assert "Work Management uses three authority directions" in domain
-    assert "| Field | Meaning | Authority | Direction |" in domain
+    assert "## Authority directions" in domain
+    assert "| Field | Meaning | Authority | Direction |" not in domain
+    assert "020-work-field-and-vocabulary-reference.md" in domain
     assert "\n### Status\n" not in domain
     assert "**Id:**" not in domain
     assert "A work item moves through explicit states" in lifecycle
@@ -110,7 +112,8 @@ def test_generated_spec_is_human_readable(tmp_path):
     assert "Selection is deterministic" in selection
     assert "1. Keep only candidates" in selection
     assert "Authority determines which system may change a fact" in authority
-    assert "| Field | Type | Options |" in authority
+    assert "| Field | Type | Options |" not in authority
+    assert "021-work-project-configuration-reference.md" in authority
     assert "A Work Management implementation conforms" in conformance
     assert "1. MRD envelopes validate" in conformance
     assert "- `{\"" not in domain
@@ -131,7 +134,7 @@ def test_generated_spec_preserves_reference_facts(tmp_path):
     build_work_management_spec(repo,out)
     docs=repo.load()
 
-    domain=(out/"002-work-management-domain-model.md").read_text(encoding="utf-8")
+    domain=(out/"020-work-field-and-vocabulary-reference.md").read_text(encoding="utf-8")
     for field in docs["KIS-WORK-SEM-REG-001"]["content"]["fields"]:
         assert field["name"] in domain
         assert f"`{field['id']}`" in domain
@@ -156,12 +159,45 @@ def test_generated_spec_preserves_reference_facts(tmp_path):
         if rule["reason_code"] is not None:
             assert f"`{rule['reason_code']}`" in selection
 
-    authority=(out/"006-authority-and-reconciliation-policy.md").read_text(encoding="utf-8")
+    authority=(out/"021-work-project-configuration-reference.md").read_text(encoding="utf-8")
     policy=docs["KIS-WORK-CON-POL-001"]["content"]
     for field in policy["github_project_schema"]["fields"]:
         assert field["name"] in authority
     for view in policy["github_project_schema"]["views"]:
         assert view["name"] in authority
+
+
+def test_work_management_reference_separation_and_navigation(tmp_path):
+    repo=WorkManagementRepository(ROOT); out=tmp_path/"build"
+    build_work_management_spec(repo,out)
+
+    domain_ref=(out/"020-work-field-and-vocabulary-reference.md").read_text(encoding="utf-8")
+    project_ref=(out/"021-work-project-configuration-reference.md").read_text(encoding="utf-8")
+    provider=(out/"007-provider-and-command-plane-boundary.md").read_text(encoding="utf-8")
+    first=(out/"002-work-management-domain-model.md").read_text(encoding="utf-8")
+    index=(out/"000-index.md").read_text(encoding="utf-8")
+
+    assert "`generated_reference`" in domain_ref
+    assert "`generated_reference`" in project_ref
+    assert "| Field | Meaning | Authority | Direction | Details |" in domain_ref
+    assert "| Field | Type | Options |" in project_ref
+    assert "| Field | Authority | Direction |" not in provider
+    assert "| From | Allowed next states | Additional requirement |" not in provider
+    assert "[Work lifecycle](003-work-lifecycle.md)" in provider
+    assert "[Previous: Specification](001-specification.md)" in first
+    assert "[Next: Work lifecycle](003-work-lifecycle.md)" in first
+    assert "## Generated reference" in index
+
+
+def test_work_management_generated_links_resolve(tmp_path):
+    repo=WorkManagementRepository(ROOT); out=tmp_path/"build"
+    build_work_management_spec(repo,out)
+    for page in out.rglob("*.md"):
+        text=page.read_text(encoding="utf-8")
+        for target in re.findall(r"\]\(([^)#]+)",text):
+            if "://" in target:
+                continue
+            assert (page.parent/target).resolve().exists(), f"broken generated link in {page.name}: {target}"
 
 
 def test_snapshot_pins_parent_revision_and_live_project_state():

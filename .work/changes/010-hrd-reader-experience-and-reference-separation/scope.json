@@ -1,0 +1,58 @@
+{
+  "schema_version": 4,
+  "change_id": "010-hrd-reader-experience-and-reference-separation",
+  "status": "active",
+  "branch": "change/010-hrd-reader-experience-and-reference-separation",
+  "worktree": ".work/worktrees/010-hrd-reader-experience-and-reference-separation",
+  "base": "main",
+  "outcome": "Improve Governance and Work Management HRD reader experience and separate lookup-heavy generated reference detail from human-readable specification prose without changing governed domain semantics.",
+  "owned_paths": [
+    ".work/changes/010-hrd-reader-experience-and-reference-separation/**",
+    "publication/governance-spec.json",
+    "publication/work-management-spec.json",
+    "src/kis_mcp_doc/render.py",
+    "src/kis_mcp_doc/work_management.py",
+    "generated/governance-spec/**",
+    "generated/work-management-spec/**",
+    "tests/test_governance_renderer.py",
+    "tests/test_work_management_spec.py",
+    "tests/test_docs_backend.py",
+    "tests/test_documentation_reference_standard.py",
+    "scripts/verify.ps1"
+  ],
+  "shared_paths": [],
+  "excluded_paths": [
+    "AGENTS.md",
+    "contracts/**",
+    "mrd/**",
+    "evidence/**",
+    "C:/Projects/kis-mcp/**",
+    "C:/Projects/References/**"
+  ],
+  "dependencies": [
+    "008-documentation-reference-standard",
+    "009-apply-documentation-reference-standard-to-existing-hrds"
+  ],
+  "integration_owner": null,
+  "complexity": "large",
+  "risk_triggers": [
+    "public_contract"
+  ],
+  "base_evidence": {
+    "local_sha": "af18a1f2ec2670f14845557c4987b46faad780a4",
+    "local_tree": "712e4d127b06cf0c85edb041c9b409307a8d5d2e",
+    "upstream_sha": "af18a1f2ec2670f14845557c4987b46faad780a4",
+    "upstream_tree": "712e4d127b06cf0c85edb041c9b409307a8d5d2e",
+    "upstream_ref": "github:main",
+    "evidence_source": "verified_github_default",
+    "relation": "equal"
+  },
+  "work_management": {
+    "project_id": "kis-mcp",
+    "record_id": "SPEC-010",
+    "source_repository": "NielPieterse0/kis-mcp-doc",
+    "source_number": 16,
+    "source_kind": "issue",
+    "documentation_impact": "planned"
+  }
+}

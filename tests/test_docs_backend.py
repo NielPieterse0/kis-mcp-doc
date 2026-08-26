@@ -90,6 +90,9 @@ def test_governance_build_uses_mcp_spec_multi_page_profile(tmp_path: Path) -> No
         "008-lifecycle.md",
         "009-kis-op-governance-behavior.md",
         "010-validation-and-enforcement.md",
+        "020-applicability-catalog.md",
+        "021-relationship-vocabulary.md",
+        "022-validation-reason-codes.md",
         "specification.md",
     }
     actual_pages = {path.name for path in output.glob("*.md")}

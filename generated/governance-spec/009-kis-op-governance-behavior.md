@@ -3,7 +3,7 @@
 
 <div id="enable-section-numbers" />
 
-[Specification](001-specification.md) | [Documentation index](000-index.md)
+[Previous: Lifecycle](008-lifecycle.md) | [Next: Validation and Enforcement](010-validation-and-enforcement.md) | [Index](000-index.md)
 
 kis-op applies governance as an ordered workflow from authority resolution through verification and reporting. Blocking failures stop the workflow rather than becoming inferred authority.
 

@@ -3,7 +3,7 @@
 
 <div id="enable-section-numbers" />
 
-[Specification](001-specification.md) | [Documentation index](000-index.md)
+[Previous: Work operations](004-work-operations.md) | [Next: Authority and reconciliation policy](006-authority-and-reconciliation-policy.md) | [Index](000-index.md)
 
 Selection is deterministic. Work Management first applies the eligibility rules for the active profile, then ranks only the candidates that remain.
 

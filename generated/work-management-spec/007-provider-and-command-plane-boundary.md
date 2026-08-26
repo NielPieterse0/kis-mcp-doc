@@ -3,7 +3,7 @@
 
 <div id="enable-section-numbers" />
 
-[Specification](001-specification.md) | [Documentation index](000-index.md)
+[Previous: Authority and reconciliation policy](006-authority-and-reconciliation-policy.md) | [Next: Work Management conformance](008-work-management-conformance.md) | [Index](000-index.md)
 
 The command plane defines the work states and fields that KIS may change. The provider boundary observes and mutates GitHub Project only through the configured read and write models; provider state does not redefine repository-owned facts.
 
@@ -17,39 +17,7 @@ The intake alias `todo` maps to `inbox`.
 
 ### Field authority
 
-Each field keeps the authority and direction defined by the Work Management domain model:
-
-| Field | Authority | Direction |
-|---|---|---|
-| Authority Revision | `git` | `evidence` |
-| Blocked By | `github` | `evidence` |
-| Change ID | `repository_change` | `evidence` |
-| Commissioning Key | `derived` | `evidence` |
-| Complexity | `repository_change` | `evidence` |
-| Confidence | `work_management` | `command` |
-| Created | `github` | `evidence` |
-| Delivery Stage | `derived` | `evidence` |
-| Disposition | `work_management` | `command` |
-| Documentation Impact | `work_management_then_repository_change` | `handoff` |
-| Effort | `work_management` | `command` |
-| Execution Owner | `work_management` | `command` |
-| External Link | `work_management` | `command` |
-| Iteration | `work_management` | `command` |
-| Live Verification | `derived` | `evidence` |
-| Live Verification Evidence | `derived` | `evidence` |
-| Module | `work_management_then_repository_change` | `handoff` |
-| Origin | `work_management` | `command` |
-| Priority | `work_management` | `command` |
-| Project ID | `derived` | `evidence` |
-| Record Type | `work_management` | `command` |
-| Repository | `github` | `evidence` |
-| Review Trigger | `work_management` | `command` |
-| Risk Triggers | `repository_change` | `evidence` |
-| Severity | `work_management` | `command` |
-| Source Review | `work_management` | `command` |
-| Status | `work_management` | `command` |
-| Target Date | `work_management` | `command` |
-| Verification | `actions` | `evidence` |
+The provider adapter uses the field authority defined by the Work Management domain model; it does not maintain a second authority table. See the [Work Management domain model](002-work-management-domain-model.md) and [field reference](020-work-field-and-vocabulary-reference.md).
 
 ## Queue and readiness
 
@@ -65,25 +33,7 @@ Before the provider-backed command plane can treat work as Ready, the record **M
 
 ## State transitions
 
-The provider-facing command plane uses the same transition graph as the Work lifecycle chapter. The table is repeated here because the provider adapter validates these exact transitions.
-
-| From | Allowed next states | Additional requirement |
-|---|---|---|
-| `active` | `ready`, `review`, `blocked`, `on_hold`, `deferred`, `done`, `superseded` | None |
-| `approved` | `ready`, `active`, `on_hold`, `deferred`, `superseded` | None |
-| `blocked` | `ready`, `active`, `on_hold`, `deferred`, `superseded` | None |
-| `deferred` | `triage`, `proposed`, `approved`, `rejected`, `superseded` | Review Trigger |
-| `documentation` | `done`, `active`, `blocked`, `superseded` | None |
-| `done` | No transitions | None |
-| `inbox` | `triage`, `deferred`, `rejected`, `superseded` | None |
-| `on_hold` | `ready`, `active`, `deferred`, `rejected`, `superseded` | Review Trigger |
-| `proposed` | `approved`, `deferred`, `rejected`, `superseded` | None |
-| `ready` | `active`, `on_hold`, `deferred`, `superseded` | None |
-| `rejected` | `triage`, `superseded` | None |
-| `review` | `active`, `verification`, `blocked`, `on_hold`, `superseded` | None |
-| `superseded` | No transitions | None |
-| `triage` | `proposed`, `approved`, `deferred`, `rejected`, `superseded` | None |
-| `verification` | `active`, `documentation`, `blocked`, `superseded` | None |
+The provider-facing command plane conforms to the same transition graph as the [Work lifecycle](003-work-lifecycle.md). It validates that graph; it does not define an independent lifecycle copy.
 
 ## Delivery projection
 

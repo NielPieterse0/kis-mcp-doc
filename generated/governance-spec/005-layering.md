@@ -3,7 +3,7 @@
 
 <div id="enable-section-numbers" />
 
-[Specification](001-specification.md) | [Documentation index](000-index.md)
+[Previous: Authority, Ownership, and Relationships](004-authority-ownership-and-relationships.md) | [Next: Dependency Rules](006-dependency-rules.md) | [Index](000-index.md)
 
 Authority layers constrain the direction of MRD dependencies. They express which governed facts can depend on which other facts, not repository layout or implementation order.
 

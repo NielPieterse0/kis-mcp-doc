@@ -3,7 +3,7 @@
 
 <div id="enable-section-numbers" />
 
-[Specification](001-specification.md) | [Documentation index](000-index.md)
+[Previous: Layering](005-layering.md) | [Next: Provenance](007-provenance.md) | [Index](000-index.md)
 
 Dependencies make authority relationships explicit and verifiable. Each dependency identifies either another MRD or a canonical repository source that the MRD requires.
 
