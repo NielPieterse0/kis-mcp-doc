@@ -11,6 +11,8 @@
     "contracts/publication/family/v1/registry.schema.json",
     "mrd/documentation/03-publication-architecture.mrd.json",
     "mrd/documentation/04-publication-family-registry.mrd.json",
+    "src/kis_mcp_doc/canonical.py",
+    "src/kis_mcp_doc/governance.py",
     "src/kis_mcp_doc/publication_kernel.py",
     "src/kis_mcp_doc/publication_adapters.py",
     "src/kis_mcp_doc/render.py",

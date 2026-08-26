@@ -160,27 +160,27 @@
       },
       {
         "id": "T2",
-        "status": "planned",
+        "status": "done",
         "text": "Add publication architecture/registry authority and registry schema."
       },
       {
         "id": "T3",
-        "status": "planned",
+        "status": "done",
         "text": "Implement and test the common publication kernel and family adapters."
       },
       {
         "id": "T4",
-        "status": "planned",
+        "status": "done",
         "text": "Refactor current family builders/verifiers and add registry-driven CLI/verifier integration."
       },
       {
         "id": "T5",
-        "status": "planned",
+        "status": "done",
         "text": "Regenerate and verify current publication bundles with semantic/reader-facing preservation."
       },
       {
         "id": "T6",
-        "status": "planned",
+        "status": "in_progress",
         "text": "Complete focused/full/exact verification and architecture/code review, then publish through the governed GitHub path."
       }
     ],
@@ -199,12 +199,28 @@
       "Any general HRD prose rewrite unrelated to publication mechanics."
     ],
     "closeout": {
-      "state": "implementation_planned",
-      "verification": [],
-      "reviews": [],
-      "publication": null,
+      "state": "implementation_verified_awaiting_publication",
+      "verification": [
+        "Focused publication and HRD suite passed after final contract fixes.",
+        "Full repository pytest passed.",
+        "scripts/verify.ps1 passed with locked offline dependencies and all legacy plus registry-driven publication checks.",
+        "Generated reader-facing files are unchanged from Change 010; only manifests changed.",
+        "Protected Governance, Work Management, KIS-DOC-CON-POL-001, and KIS-DOC-SEM-REG-001 diffs are empty."
+      ],
+      "reviews": [
+        "Architecture review initially found two high boundary findings and one medium dependency-direction finding; all were corrected.",
+        "Final architecture review completed with no findings.",
+        "API-contract review findings for path containment, structured build failures, adapter protocol, Work manifest versioning, and compatibility coverage were corrected and covered by tests.",
+        "Follow-up broad API/code-quality review projectors were incomplete because of evidence-size omission; they are not treated as approvals."
+      ],
+      "publication": {
+        "status": "pending_exact_commit_and_github_checks",
+        "issue": 18
+      },
       "merge": null,
-      "unresolved": []
+      "unresolved": [
+        "Broad code-quality/API review projectors could not ingest the complete final evidence set; deterministic tests, exact-diff inspection, and the completed architecture review cover the implemented boundaries."
+      ]
     }
   }
 }

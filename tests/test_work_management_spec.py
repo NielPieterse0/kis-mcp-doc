@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def copied_work_repository(tmp_path):
     root = tmp_path / "repo"
-    for name in ("contracts", "mrd", "publication", "evidence"):
+    for name in ("contracts", "mrd", "publication", "evidence", "src"):
         shutil.copytree(ROOT / name, root / name)
     return root, WorkManagementRepository(root)
 
@@ -29,6 +29,17 @@ def test_work_management_spec_is_deterministic(tmp_path):
     assert a==b
 
 
+def test_work_management_manifest_v2_declares_generator_provenance(tmp_path):
+    manifest=build_work_management_spec(WorkManagementRepository(ROOT),tmp_path/"build")
+    assert manifest["contract"] == {"name":"kis-work-management-spec-build","version":2}
+    assert manifest["generator"]["name"] == "kis-mcp-doc"
+    assert {item["path"] for item in manifest["generator"]["sources"]} == {
+        "src/kis_mcp_doc/canonical.py",
+        "src/kis_mcp_doc/publication_kernel.py",
+        "src/kis_mcp_doc/work_management.py",
+    }
+
+
 def test_work_management_publication_consumes_documentation_reference_profile(tmp_path):
     repo=WorkManagementRepository(ROOT); out=tmp_path/"build"
     manifest=build_work_management_spec(repo,out)
@@ -40,8 +51,11 @@ def test_work_management_publication_consumes_documentation_reference_profile(tm
     }
     source_paths={item["path"] for item in manifest["inputs"]["source_files"]}
     assert source_paths == {
+        "contracts/publication/family/v1/registry.schema.json",
         "mrd/documentation/01-reference-standard.mrd.json",
         "mrd/documentation/02-reference-registry.mrd.json",
+        "mrd/documentation/03-publication-architecture.mrd.json",
+        "mrd/documentation/04-publication-family-registry.mrd.json",
         "publication/documentation-reference-standard.json",
         "evidence/work-management/canonical-snapshot.json",
     }

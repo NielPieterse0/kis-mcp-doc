@@ -10,6 +10,8 @@ from jsonschema.exceptions import SchemaError
 from referencing import Registry, Resource
 from referencing.exceptions import Unresolvable
 
+from .canonical import canonical_hash
+
 
 CONCERNS = (
     "classification", "applicability", "ownership", "layering", "dependencies",
@@ -33,11 +35,6 @@ CORE_REASON_CODES = frozenset({
     "MRD_RELATIONSHIP_UNKNOWN", "MRD_OPERATOR_BEHAVIOR_INVALID",
     "MRD_ENFORCEMENT_BINDING_INVALID",
 })
-
-
-def canonical_hash(value: object) -> str:
-    payload = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
-    return hashlib.sha256(payload).hexdigest()
 
 
 _CANONICAL_TEXT_SUFFIXES = frozenset({

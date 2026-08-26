@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "KIS publication family registry",
+  "type": "object",
+  "required": [
+    "_mrd",
+    "content"
+  ],
+  "properties": {
+    "_mrd": {
+      "type": "object"
+    },
+    "content": {
+      "type": "object",
+      "required": [
+        "registry_version",
+        "adapter_protocol_version",
+        "families"
+      ],
+      "properties": {
+        "registry_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "adapter_protocol_version": {
+          "const": 1
+        },
+        "families": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "title",
+              "semantic_owner",
+              "mrd_root",
+              "publication_config",
+              "output",
+              "output_classes",
+              "adapter",
+              "legacy_commands"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1
+              },
+              "semantic_owner": {
+                "type": "string",
+                "minLength": 1
+              },
+              "mrd_root": {
+                "type": "string",
+                "pattern": "^mrd/(?:[A-Za-z0-9][A-Za-z0-9._-]*/)*[A-Za-z0-9][A-Za-z0-9._-]*$"
+              },
+              "publication_config": {
+                "type": "string",
+                "pattern": "^publication/(?:[A-Za-z0-9][A-Za-z0-9._-]*/)*[A-Za-z0-9][A-Za-z0-9._-]*\\.json$"
+              },
+              "output": {
+                "type": "string",
+                "pattern": "^generated/(?:[A-Za-z0-9][A-Za-z0-9._-]*/)*[A-Za-z0-9][A-Za-z0-9._-]*$"
+              },
+              "output_classes": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {
+                  "enum": [
+                    "human_documentation",
+                    "human_readable_specification",
+                    "generated_reference"
+                  ]
+                }
+              },
+              "adapter": {
+                "$ref": "#/$defs/adapter"
+              },
+              "legacy_commands": {
+                "$ref": "#/$defs/commands"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "adapter": {
+      "type": "object",
+      "required": [
+        "validate",
+        "build",
+        "verify"
+      ],
+      "properties": {
+        "validate": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.]+:[A-Za-z0-9_]+$"
+        },
+        "build": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.]+:[A-Za-z0-9_]+$"
+        },
+        "verify": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.]+:[A-Za-z0-9_]+$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "commands": {
+      "type": "object",
+      "required": [
+        "validate",
+        "build",
+        "verify"
+      ],
+      "properties": {
+        "validate": {
+          "type": "string",
+          "minLength": 1
+        },
+        "build": {
+          "type": "string",
+          "minLength": 1
+        },
+        "verify": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

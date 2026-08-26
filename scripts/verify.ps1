@@ -88,6 +88,16 @@ try {
         throw "Work Management generated-output verification failed with exit code $LASTEXITCODE"
     }
 
+    & $PythonCommand -m kis_mcp_doc --root . publications-validate
+    if ($LASTEXITCODE -ne 0) {
+        throw "Publication family registry validation failed with exit code $LASTEXITCODE"
+    }
+
+    & $PythonCommand -m kis_mcp_doc --root . publications-check-generated
+    if ($LASTEXITCODE -ne 0) {
+        throw "Registered publication generated-output verification failed with exit code $LASTEXITCODE"
+    }
+
     & git diff --check
     if ($LASTEXITCODE -ne 0) {
         throw "Whitespace verification failed with exit code $LASTEXITCODE"

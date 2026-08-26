@@ -1,0 +1,130 @@
+{
+  "_mrd": {
+    "schema_version": 1,
+    "id": "KIS-DOC-CON-POL-002",
+    "title": "Documentation Publication Architecture",
+    "module": "documentation",
+    "class": "CON",
+    "type": "POL",
+    "layer": "L1",
+    "record_mode": "prescriptive",
+    "status": "active",
+    "version": "1.0.0",
+    "dependencies": [
+      {
+        "mrd_id": "KIS-DOC-CON-POL-001",
+        "relationship": "depends_on"
+      },
+      {
+        "mrd_id": "KIS-DOC-SEM-REG-002",
+        "relationship": "governs"
+      },
+      {
+        "source": "repo:contracts/publication/family/v1/registry.schema.json",
+        "relationship": "references"
+      }
+    ],
+    "provenance": {
+      "sources": [
+        {
+          "source_id": "KIS-OPERATOR-DIRECTION-2026-08-26-PUBLICATION-KERNEL",
+          "kind": "operator_direction",
+          "role": "normative_adoption_basis",
+          "locator": "conversation:2026-08-26",
+          "revision": "implementation-approved",
+          "sha256": null
+        },
+        {
+          "source_id": "GH-ISSUE-18",
+          "kind": "operator_approved_work_item",
+          "role": "traceability",
+          "locator": "github:NielPieterse0/kis-mcp-doc#18",
+          "revision": "2026-08-26",
+          "sha256": null
+        }
+      ],
+      "source_fingerprint": "sha256:5b6189c2fe6ee2fdb487108a9deb1201a7030fa3f5f9aeab5f655cd1136c0a25",
+      "fact_quality": "direct"
+    },
+    "supersedes": [],
+    "superseded_by": null
+  },
+  "content": {
+    "concern": "documentation_publication_architecture",
+    "purpose": "Define one shared deterministic publication mechanism while keeping semantic validation, rendering, canonical fact interpretation, and family-specific manifest meaning in the owning documentation family.",
+    "registry_owner": "KIS-DOC-SEM-REG-002",
+    "adapter_protocol": {
+      "version": 1,
+      "validate": "adapter(root, family) returns an object with status and diagnostics",
+      "build": "adapter(root, family, replace=boolean) returns the family build manifest",
+      "verify": "adapter(root, family) returns an object with status and diagnostics"
+    },
+    "kernel_owns": [
+      "deterministic generated-file declarations and bundle hashes",
+      "safe staged publication-bundle replacement",
+      "exact generated file inventory and content drift checks",
+      "publication-family registry loading, validation, discovery, and orchestration"
+    ],
+    "family_adapters_own": [
+      "semantic validation",
+      "domain-specific rendering",
+      "canonical fact interpretation",
+      "family-specific diagnostics",
+      "family-specific manifest and source semantics",
+      "family-specific optional build parameters"
+    ],
+    "bundle_contract": {
+      "manifest_name": "manifest.json",
+      "replacement": "stage_complete_bundle_before_replacing_current_output",
+      "drift": "compare_exact_expected_inventory_and_bytes",
+      "write_back_authority": false
+    },
+    "requirements": [
+      {
+        "rule_id": "KIS-DOC-PUB-001",
+        "statement": "Cross-family publication mechanics MUST be implemented by the shared publication kernel and MUST NOT be independently redefined by a publication family without an explicit family-specific requirement.",
+        "enforcement": "review"
+      },
+      {
+        "rule_id": "KIS-DOC-PUB-002",
+        "statement": "Every publication family MUST retain a named semantic owner and adapter; the publication kernel MUST NOT interpret or rewrite canonical domain facts.",
+        "enforcement": "validator"
+      },
+      {
+        "rule_id": "KIS-DOC-PUB-003",
+        "statement": "Publication-family discovery MUST use KIS-DOC-SEM-REG-002 as its canonical registry and MUST NOT maintain a second hard-coded family inventory.",
+        "enforcement": "validator"
+      },
+      {
+        "rule_id": "KIS-DOC-PUB-004",
+        "statement": "Existing family-specific validation, build, and generated-output verification commands MUST remain compatible while a family remains active.",
+        "enforcement": "review"
+      },
+      {
+        "rule_id": "KIS-DOC-PUB-005",
+        "statement": "Generated publication output MUST remain a deterministic downstream projection with no write-back authority.",
+        "enforcement": "generator"
+      },
+      {
+        "rule_id": "KIS-DOC-PUB-006",
+        "statement": "External references, inferred evidence, and moving live web content MUST NOT become canonical KIS facts or silent deterministic build inputs through the publication kernel.",
+        "enforcement": "validator"
+      },
+      {
+        "rule_id": "KIS-DOC-PUB-007",
+        "statement": "A publication bundle MUST be staged completely before replacement of the current bundle, and replacement failure MUST restore the previous complete bundle when recovery is possible.",
+        "enforcement": "generator"
+      },
+      {
+        "rule_id": "KIS-DOC-PUB-008",
+        "statement": "Exact publication verification MUST detect missing, extra, changed, stale, or tampered generated files and manifest drift.",
+        "enforcement": "generator"
+      },
+      {
+        "rule_id": "KIS-DOC-PUB-009",
+        "statement": "Every registered publication adapter MUST conform to the versioned adapter protocol for invocation shape and validation or verification result envelopes.",
+        "enforcement": "validator"
+      }
+    ]
+  }
+}

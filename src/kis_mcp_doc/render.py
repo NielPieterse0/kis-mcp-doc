@@ -2,9 +2,6 @@ from __future__ import annotations
 
 import hashlib
 import json
-import os
-import shutil
-import tempfile
 from pathlib import Path
 from typing import Any
 
@@ -13,6 +10,7 @@ from jsonschema import Draft202012Validator
 from .governance import GovernanceRepository, canonical_hash, canonical_source_bytes
 from .harvest import load_harvest_registry
 from .litho import load_litho_evidence
+from .publication_kernel import exact_bundle_diagnostics, file_declarations, write_bundle
 
 
 _PUBLICATION_SCHEMA = "contracts/publication/v2/governance-spec.schema.json"
@@ -23,6 +21,9 @@ _HARVEST_REGISTRY = "publication/harvest-sources.json"
 _DOCUMENTATION_POLICY = "mrd/documentation/01-reference-standard.mrd.json"
 _DOCUMENTATION_REGISTRY = "mrd/documentation/02-reference-registry.mrd.json"
 _DOCUMENTATION_PUBLICATION = "publication/documentation-reference-standard.json"
+_PUBLICATION_ARCHITECTURE = "mrd/documentation/03-publication-architecture.mrd.json"
+_PUBLICATION_FAMILY_REGISTRY = "mrd/documentation/04-publication-family-registry.mrd.json"
+_PUBLICATION_FAMILY_SCHEMA = "contracts/publication/family/v1/registry.schema.json"
 _DOCUMENTATION_OUTPUT_CLASS = "human_readable_specification"
 _REFERENCE_OUTPUT_CLASS = "generated_reference"
 
@@ -50,37 +51,19 @@ def build_governance_spec(
         else None
     )
     files = _build_output_files(repository, config, documents, litho_evidence)
-
-    parent = output.parent
-    parent.mkdir(parents=True, exist_ok=True)
-    staging = Path(tempfile.mkdtemp(prefix=f".{output.name}.", suffix=".tmp", dir=parent))
-    try:
-        for relative, payload in files.items():
-            path = staging / Path(*relative.split("/"))
-            path.parent.mkdir(parents=True, exist_ok=True)
-            path.write_bytes(payload)
-        manifest = _build_manifest(
-            repository,
-            publication_path,
-            config,
-            documents,
-            files,
-            validation,
-            harvest_registry,
-            litho_evidence,
-        )
-        _validate_contract(repository.root, _MANIFEST_SCHEMA, manifest, "build manifest")
-        (staging / "manifest.json").write_bytes(_json_bytes(manifest))
-        if output.exists():
-            if not replace:
-                raise FileExistsError(f"output already exists: {output}")
-            shutil.rmtree(output)
-        os.replace(staging, output)
-        return manifest
-    except Exception:
-        if staging.exists():
-            shutil.rmtree(staging, ignore_errors=True)
-        raise
+    manifest = _build_manifest(
+        repository,
+        publication_path,
+        config,
+        documents,
+        files,
+        validation,
+        harvest_registry,
+        litho_evidence,
+    )
+    _validate_contract(repository.root, _MANIFEST_SCHEMA, manifest, "build manifest")
+    write_bundle(output, files, manifest, replace=replace)
+    return manifest
 
 
 def verify_governance_spec(
@@ -195,20 +178,20 @@ def verify_governance_spec(
     if manifest_files != expected_declarations:
         diagnostics.append(_verification_diag("GENERATED_DECLARATION_MISMATCH", "manifest generated-file declarations differ from deterministic current output"))
 
+    diagnostics.extend(
+        exact_bundle_diagnostics(
+            output,
+            expected_payloads,
+            manifest,
+            code_prefix=None,
+        )
+    )
     declared_files = {item["path"]: item for item in manifest_files}
-    expected_files = set(expected_payloads) | {"manifest.json"}
-    actual_files = {path.relative_to(output).as_posix() for path in output.rglob("*") if path.is_file()}
-    if actual_files != expected_files:
-        diagnostics.append(_verification_diag("GENERATED_FILE_SET_MISMATCH", "generated bundle file inventory differs from deterministic expected output"))
-
-    for relative, expected_payload in expected_payloads.items():
+    for relative in expected_payloads:
         path = output / Path(*relative.split("/"))
         if not path.is_file():
-            diagnostics.append(_verification_diag("GENERATED_FILE_MISSING", f"generated file missing: {relative}"))
             continue
         actual_payload = path.read_bytes()
-        if actual_payload != expected_payload:
-            diagnostics.append(_verification_diag("GENERATED_FILE_CONTENT_MISMATCH", f"generated file does not match deterministic current output: {relative}"))
         declaration = declared_files.get(relative)
         if declaration is not None and (
             hashlib.sha256(actual_payload).hexdigest() != declaration.get("sha256")
@@ -232,6 +215,19 @@ def _validate_contract(root: Path, schema_relative: str, instance: object, label
         error = errors[0]
         location = "/".join(str(part) for part in error.absolute_path) or "$"
         raise ValueError(f"{label} invalid at {location}: {error.message}")
+
+
+def validate_governance_publication(
+    repository: GovernanceRepository,
+    publication_path: Path,
+) -> dict[str, Any]:
+    try:
+        _load_publication_config(repository, publication_path)
+    except (OSError, UnicodeError, json.JSONDecodeError, ValueError) as error:
+        return _verification_result([
+            _verification_diag("PUBLICATION_CONFIG_INVALID", str(error))
+        ])
+    return _verification_result([])
 
 
 def _load_publication_config(repository: GovernanceRepository, publication_path: Path) -> dict[str, Any]:
@@ -279,9 +275,11 @@ def _validate_documentation_reference_binding(root: Path, config: dict[str, Any]
 def _generator_source_declarations(repository: GovernanceRepository) -> list[dict[str, Any]]:
     declarations = []
     for relative in (
+        "src/kis_mcp_doc/canonical.py",
         "src/kis_mcp_doc/governance.py",
         "src/kis_mcp_doc/harvest.py",
         "src/kis_mcp_doc/litho.py",
+        "src/kis_mcp_doc/publication_kernel.py",
         "src/kis_mcp_doc/render.py",
         _PUBLICATION_SCHEMA,
         _MANIFEST_SCHEMA,
@@ -307,10 +305,7 @@ def _mrd_input_declarations(repository: GovernanceRepository, documents: dict[st
 
 
 def _file_declarations(files: dict[str, bytes]) -> list[dict[str, Any]]:
-    return [
-        {"path": path, "sha256": hashlib.sha256(payload).hexdigest(), "bytes": len(payload)}
-        for path, payload in sorted(files.items())
-    ]
+    return file_declarations(files)
 
 
 def _build_output_files(
@@ -396,7 +391,14 @@ def _source_file_declarations(
             for dependency in document["_mrd"]["dependencies"]
             if "source" in dependency and dependency["source"].startswith("repo:")
         }
-        | {_DOCUMENTATION_POLICY, _DOCUMENTATION_REGISTRY, _DOCUMENTATION_PUBLICATION}
+        | {
+            _DOCUMENTATION_POLICY,
+            _DOCUMENTATION_REGISTRY,
+            _DOCUMENTATION_PUBLICATION,
+            _PUBLICATION_ARCHITECTURE,
+            _PUBLICATION_FAMILY_REGISTRY,
+            _PUBLICATION_FAMILY_SCHEMA,
+        }
     )
     declarations = []
     for relative in paths:

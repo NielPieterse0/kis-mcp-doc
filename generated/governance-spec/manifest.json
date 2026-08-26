@@ -96,8 +96,12 @@
     "name": "kis-mcp-doc",
     "sources": [
       {
+        "path": "src/kis_mcp_doc/canonical.py",
+        "sha256": "0a6b0eba30e070cf0a290c85dc7947036993f81c09217f7d2c9b9e451eac3fb4"
+      },
+      {
         "path": "src/kis_mcp_doc/governance.py",
-        "sha256": "4157674cc1f92bb4d69e5a0883f26745d6d6f751e47e5504257da338fe8c8602"
+        "sha256": "65ab4548ae8663ced06519ff7f679482d48ab047abd08fe5680f28629be40c94"
       },
       {
         "path": "src/kis_mcp_doc/harvest.py",
@@ -108,8 +112,12 @@
         "sha256": "0ed515ceb43183e19b6eb6e40ba20a09aa782635e0aabd69c51fd21fc99cc05b"
       },
       {
+        "path": "src/kis_mcp_doc/publication_kernel.py",
+        "sha256": "4d52bd6ede3033ee2f6cd33b284870ef616325aea108db8bb14ca056adb66707"
+      },
+      {
         "path": "src/kis_mcp_doc/render.py",
-        "sha256": "ef1deb1f9c0e8d5cbb81319f320f23dac6987c548044a801698b9a2d5e7025c0"
+        "sha256": "34f2430f0ea41d8b681547414c58a738349925f4ce5cb30a2a51fe0495fc2bae"
       },
       {
         "path": "contracts/publication/v2/governance-spec.schema.json",
@@ -214,6 +222,11 @@
         "sha256": "fb9f3210b022d8def12a92bfccc1cb45e5ccf1146fa9d59168baf3f630ded153"
       },
       {
+        "bytes": 3657,
+        "path": "contracts/publication/family/v1/registry.schema.json",
+        "sha256": "526acd37af7fa91a96fa4a2b0a7af0594299167c915190fd0c0364805ce4f58e"
+      },
+      {
         "bytes": 5712,
         "path": "mrd/documentation/01-reference-standard.mrd.json",
         "sha256": "da30a9f44828194a6b0b1e382c39936ae3d07705521dd6c07af60286b5133dc1"
@@ -222,6 +235,16 @@
         "bytes": 8944,
         "path": "mrd/documentation/02-reference-registry.mrd.json",
         "sha256": "5a1f98e9fb937df209e303abc6fa3af3fd73c922a868e76519939d6dd42ec24c"
+      },
+      {
+        "bytes": 5375,
+        "path": "mrd/documentation/03-publication-architecture.mrd.json",
+        "sha256": "e266a4a60b6037129a106f5f7f977161cd01d69983560a8de790d7d9d6cf9c71"
+      },
+      {
+        "bytes": 4479,
+        "path": "mrd/documentation/04-publication-family-registry.mrd.json",
+        "sha256": "e72c7546e6e02b13a384e4ce722a057e5fdae50ee8d0e099af4f1ac491775d17"
       },
       {
         "bytes": 403,
