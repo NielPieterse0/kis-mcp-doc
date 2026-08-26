@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "title": "KIS Documentation Search",
+  "version": "1.0.0",
+  "status": "draft",
+  "default_limit": 10,
+  "minimum_token_length": 2
+}
