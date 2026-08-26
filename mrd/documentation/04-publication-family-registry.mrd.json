@@ -9,7 +9,7 @@
     "layer": "L1",
     "record_mode": "prescriptive",
     "status": "active",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "dependencies": [
       {
         "mrd_id": "KIS-DOC-CON-POL-002",
@@ -45,16 +45,24 @@
           "locator": ".work/changes/010-hrd-reader-experience-and-reference-separation/change.mrd.json",
           "revision": "1.1.0",
           "sha256": "c7050f80722400a481a35b1a26979f16c88b5b88b879101f5337cb80ebce739d"
+        },
+        {
+          "source_id": "GH-ISSUE-22",
+          "kind": "operator_approved_work_item",
+          "role": "human_documentation_family_adoption",
+          "locator": "github:NielPieterse0/kis-mcp-doc#22",
+          "revision": "2026-08-26",
+          "sha256": null
         }
       ],
-      "source_fingerprint": "sha256:dbdadfe5335334920b10cdda767424425997945ec1c96f17fcca469eff83a865",
+      "source_fingerprint": "sha256:fa01de8f4d733421a5488fd76a5c01a3eff6de215e8ce0a1393b427740178a81",
       "fact_quality": "direct"
     },
     "supersedes": [],
     "superseded_by": null
   },
   "content": {
-    "registry_version": "1.0.0",
+    "registry_version": "1.1.0",
     "adapter_protocol_version": 1,
     "families": [
       {
@@ -121,6 +129,44 @@
           "validate": "references-validate",
           "build": "references-build",
           "verify": "references-check-generated"
+        }
+      },
+      {
+        "id": "governance-docs",
+        "title": "Governance Documentation",
+        "semantic_owner": "KIS-KNOW-CON-POL-002",
+        "mrd_root": "mrd/governance",
+        "publication_config": "publication/governance-docs.json",
+        "output": "generated/governance-docs",
+        "output_classes": ["human_documentation"],
+        "adapter": {
+          "validate": "kis_mcp_doc.publication_adapters:validate_governance_docs",
+          "build": "kis_mcp_doc.publication_adapters:build_governance_docs",
+          "verify": "kis_mcp_doc.publication_adapters:verify_governance_docs"
+        },
+        "legacy_commands": {
+          "validate": "publications-validate --family governance-docs",
+          "build": "publications-build --family governance-docs",
+          "verify": "publications-check-generated --family governance-docs"
+        }
+      },
+      {
+        "id": "work-management-docs",
+        "title": "Work Management Documentation",
+        "semantic_owner": "KIS-WORK-CON-POL-001",
+        "mrd_root": "mrd/work-management",
+        "publication_config": "publication/work-management-docs.json",
+        "output": "generated/work-management-docs",
+        "output_classes": ["human_documentation"],
+        "adapter": {
+          "validate": "kis_mcp_doc.publication_adapters:validate_work_management_docs",
+          "build": "kis_mcp_doc.publication_adapters:build_work_management_docs",
+          "verify": "kis_mcp_doc.publication_adapters:verify_work_management_docs"
+        },
+        "legacy_commands": {
+          "validate": "publications-validate --family work-management-docs",
+          "build": "publications-build --family work-management-docs",
+          "verify": "publications-check-generated --family work-management-docs"
         }
       }
     ]

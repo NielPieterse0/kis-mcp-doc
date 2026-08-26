@@ -26,7 +26,7 @@
       "sha256": "0daffac7e07d744a752affde559c65708568fd2ce6fc95d7672185717145d3cc"
     }
   ],
-  "input_set_sha256": "59d3af152f7f9624883c20a2f770a53b21a83ccd3f317ac52514179c826cacaf",
+  "input_set_sha256": "a395b51f0e609b0ac9eb359a9a924054a849ddf95c7b88ac148e56adab5e3910",
   "inputs": [
     {
       "bytes": 5712,
@@ -49,9 +49,9 @@
       "sha256": "e266a4a60b6037129a106f5f7f977161cd01d69983560a8de790d7d9d6cf9c71"
     },
     {
-      "bytes": 4479,
+      "bytes": 6560,
       "path": "mrd/documentation/04-publication-family-registry.mrd.json",
-      "sha256": "e72c7546e6e02b13a384e4ce722a057e5fdae50ee8d0e099af4f1ac491775d17"
+      "sha256": "171891c0689908f5b074bd587266a22abf13d44a6aa98d35d08234b6cef1fcc9"
     },
     {
       "bytes": 3657,

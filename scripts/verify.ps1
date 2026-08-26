@@ -20,10 +20,11 @@ if ($env:KIS_EXACT_SHA) {
     }
 }
 
+$PublicationRegistryPath = Join-Path $RepositoryRoot 'mrd\documentation\04-publication-family-registry.mrd.json'
+$PublicationRegistry = Get-Content -LiteralPath $PublicationRegistryPath -Raw | ConvertFrom-Json
 $AllowedGeneratedMarkdownPrefixes = @(
-    'generated/governance-spec/',
-    'generated/work-management-spec/',
-    'generated/documentation-reference-standard/'
+    $PublicationRegistry.content.families |
+        ForEach-Object { ($_.output.TrimEnd('/') + '/').Replace('\', '/') }
 )
 $TrackedMarkdown = @(& git -C $RepositoryRoot ls-files '*.md')
 $UnexpectedMarkdown = @(

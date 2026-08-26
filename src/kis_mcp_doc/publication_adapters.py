@@ -10,6 +10,7 @@ from .documentation_reference import (
     verify_documentation_reference_standard,
 )
 from .governance import GovernanceRepository
+from .human_docs import build_human_docs_family, validate_human_docs_family, verify_human_docs_family
 from .render import build_governance_spec, validate_governance_publication, verify_governance_spec
 from .work_management import (
     WorkManagementRepository,
@@ -114,3 +115,31 @@ def build_documentation_reference(root: Path, family: dict[str, Any], *, output:
 
 def verify_documentation_reference(root: Path, family: dict[str, Any]) -> dict[str, Any]:
     return verify_documentation_reference_standard(DocumentationReferenceRepository(root), root / family["output"])
+
+
+def validate_governance_docs(root: Path, family: dict[str, Any]) -> dict[str, Any]:
+    semantic = GovernanceRepository(root, root / family["mrd_root"]).validate()
+    docs = validate_human_docs_family(root, family, "governance")
+    return _combined_validation(semantic, docs)
+
+
+def build_governance_docs(root: Path, family: dict[str, Any], *, output: Path | None = None, replace: bool = False) -> dict[str, Any]:
+    return build_human_docs_family(root, family, "governance", output=output, replace=replace)
+
+
+def verify_governance_docs(root: Path, family: dict[str, Any]) -> dict[str, Any]:
+    return verify_human_docs_family(root, family, "governance")
+
+
+def validate_work_management_docs(root: Path, family: dict[str, Any]) -> dict[str, Any]:
+    semantic = WorkManagementRepository(root, root / family["mrd_root"]).validate()
+    docs = validate_human_docs_family(root, family, "work-management")
+    return _combined_validation(semantic, docs)
+
+
+def build_work_management_docs(root: Path, family: dict[str, Any], *, output: Path | None = None, replace: bool = False) -> dict[str, Any]:
+    return build_human_docs_family(root, family, "work-management", output=output, replace=replace)
+
+
+def verify_work_management_docs(root: Path, family: dict[str, Any]) -> dict[str, Any]:
+    return verify_human_docs_family(root, family, "work-management")

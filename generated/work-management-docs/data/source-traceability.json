@@ -1,0 +1,38 @@
+{
+  "output_class": "human_documentation",
+  "topics": [
+    {
+      "page": "002-work-lifecycle.md",
+      "source_mrds": [
+        "KIS-WORK-WRK-STM-001"
+      ]
+    },
+    {
+      "page": "003-work-operations.md",
+      "source_mrds": [
+        "KIS-WORK-WRK-WFL-001"
+      ]
+    },
+    {
+      "page": "004-complete-work.md",
+      "source_mrds": [
+        "KIS-WORK-WRK-STM-001"
+      ]
+    },
+    {
+      "page": "005-troubleshooting.md",
+      "source_mrds": [
+        "KIS-WORK-WRK-STM-001",
+        "KIS-WORK-WRK-WFL-001",
+        "KIS-WORK-CTR-SVC-001"
+      ]
+    },
+    {
+      "page": "006-examples.md",
+      "source_mrds": [
+        "KIS-WORK-WRK-STM-001",
+        "KIS-WORK-WRK-WFL-001"
+      ]
+    }
+  ]
+}
