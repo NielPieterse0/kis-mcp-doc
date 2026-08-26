@@ -1,0 +1,70 @@
+{
+  "schema_version": 4,
+  "change_id": "011-publication-kernel-and-family-registry",
+  "status": "active",
+  "branch": "change/011-publication-kernel-and-family-registry",
+  "worktree": ".work/worktrees/011-publication-kernel-and-family-registry",
+  "base": "main",
+  "outcome": "Create a governed shared publication kernel and publication-family registry for all current documentation publication families without changing Governance or Work Management domain semantics.",
+  "owned_paths": [
+    ".work/changes/011-publication-kernel-and-family-registry/**",
+    "contracts/publication/family/v1/registry.schema.json",
+    "mrd/documentation/03-publication-architecture.mrd.json",
+    "mrd/documentation/04-publication-family-registry.mrd.json",
+    "src/kis_mcp_doc/publication_kernel.py",
+    "src/kis_mcp_doc/publication_adapters.py",
+    "src/kis_mcp_doc/render.py",
+    "src/kis_mcp_doc/work_management.py",
+    "src/kis_mcp_doc/documentation_reference.py",
+    "src/kis_mcp_doc/cli.py",
+    "generated/governance-spec/**",
+    "generated/work-management-spec/**",
+    "generated/documentation-reference-standard/**",
+    "tests/test_publication_kernel.py",
+    "tests/test_governance_renderer.py",
+    "tests/test_work_management_spec.py",
+    "tests/test_documentation_reference_standard.py",
+    "tests/test_docs_backend.py",
+    "scripts/verify.ps1"
+  ],
+  "shared_paths": [],
+  "excluded_paths": [
+    "AGENTS.md",
+    "mrd/governance/**",
+    "mrd/work-management/**",
+    "mrd/documentation/01-reference-standard.mrd.json",
+    "mrd/documentation/02-reference-registry.mrd.json",
+    "publication/**",
+    "evidence/**",
+    "C:/Projects/kis-mcp/**",
+    "C:/Projects/References/**",
+    ".work/worktrees/009-publication-kernel/**"
+  ],
+  "dependencies": [
+    "008-documentation-reference-standard",
+    "009-apply-documentation-reference-standard-to-existing-hrds",
+    "010-hrd-reader-experience-and-reference-separation"
+  ],
+  "integration_owner": null,
+  "complexity": "large",
+  "risk_triggers": [
+    "public_contract"
+  ],
+  "base_evidence": {
+    "local_sha": "40c32f7b6dd61915d240d7ae40846cce7dc98d44",
+    "local_tree": "048c7891437bdf80d3e45d86123aaf00d508427a",
+    "upstream_sha": "40c32f7b6dd61915d240d7ae40846cce7dc98d44",
+    "upstream_tree": "048c7891437bdf80d3e45d86123aaf00d508427a",
+    "upstream_ref": "github:main",
+    "evidence_source": "verified_github_default",
+    "relation": "equal"
+  },
+  "work_management": {
+    "project_id": "kis-mcp",
+    "record_id": "SPEC-011",
+    "source_repository": "NielPieterse0/kis-mcp-doc",
+    "source_number": 18,
+    "source_kind": "issue",
+    "documentation_impact": "planned"
+  }
+}

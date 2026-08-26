@@ -1,0 +1,210 @@
+{
+  "_mrd": {
+    "schema_version": 1,
+    "id": "KIS-CHG011-WRK-WFL-001",
+    "title": "Publication Kernel and Publication Family Registry",
+    "module": "change-011",
+    "class": "WRK",
+    "type": "WFL",
+    "layer": "L3",
+    "record_mode": "descriptive",
+    "status": "active",
+    "version": "1.0.0",
+    "dependencies": [
+      {
+        "mrd_id": "KIS-DOC-CON-POL-001",
+        "relationship": "depends_on"
+      },
+      {
+        "mrd_id": "KIS-DOC-SEM-REG-001",
+        "relationship": "depends_on"
+      }
+    ],
+    "provenance": {
+      "sources": [
+        {
+          "source_id": "KIS-OPERATOR-DIRECTION-2026-08-26-PUBLICATION-KERNEL",
+          "kind": "operator_direction",
+          "role": "approved_change_basis",
+          "locator": "conversation:2026-08-26",
+          "revision": "implementation-approved",
+          "sha256": null
+        },
+        {
+          "source_id": "GH-ISSUE-18",
+          "kind": "operator_approved_work_item",
+          "role": "approved_change_basis",
+          "locator": "github:NielPieterse0/kis-mcp-doc#18",
+          "revision": "2026-08-26",
+          "sha256": null
+        },
+        {
+          "source_id": "KIS-DOC-CON-POL-001",
+          "kind": "canonical_machine_readable_record",
+          "role": "documentation_output_class_authority",
+          "locator": "mrd/documentation/01-reference-standard.mrd.json",
+          "revision": "1.0.0",
+          "sha256": null
+        },
+        {
+          "source_id": "KIS-DOC-SEM-REG-001",
+          "kind": "canonical_machine_readable_record",
+          "role": "documentation_reference_authority",
+          "locator": "mrd/documentation/02-reference-registry.mrd.json",
+          "revision": "1.0.0",
+          "sha256": null
+        },
+        {
+          "source_id": "KIS-CHG010-WRK-WFL-001",
+          "kind": "canonical_machine_readable_record",
+          "role": "current_hrd_architecture_basis",
+          "locator": ".work/changes/010-hrd-reader-experience-and-reference-separation/change.mrd.json",
+          "revision": "1.1.0",
+          "sha256": null
+        },
+        {
+          "source_id": "ORPHAN-009-PUBLICATION-KERNEL",
+          "kind": "implementation_evidence",
+          "role": "non_authoritative_design_evidence",
+          "locator": ".work/worktrees/009-publication-kernel",
+          "revision": "preserved-uncommitted-worktree",
+          "sha256": null
+        }
+      ],
+      "source_fingerprint": "sha256:613b5131686cb813c58de96736d1c45965e7ba551aa665981b9e8451844c3425",
+      "fact_quality": "direct"
+    },
+    "supersedes": [],
+    "superseded_by": null
+  },
+  "content": {
+    "change_id": "011-publication-kernel-and-family-registry",
+    "work_item": {
+      "repository": "NielPieterse0/kis-mcp-doc",
+      "issue": 18,
+      "project": "NielPieterse0/1",
+      "record_id": "SPEC-011"
+    },
+    "outcome": "Create one small governed publication kernel and one publication-family registry that remove duplicated publication mechanics across current documentation families while preserving family semantic ownership and post-010 reader-facing behavior.",
+    "classification": {
+      "complexity": "large",
+      "risk_triggers": [
+        "public_contract"
+      ],
+      "reason": "The change adds L1 publication authority, a versioned registry contract, and shared mechanics used by every current generated documentation family."
+    },
+    "authority_model": [
+      "KIS-DOC-CON-POL-001 continues to own documentation output classes and source-authority boundaries.",
+      "Governance MRDs continue to own Governance facts and requirements.",
+      "Work Management MRDs continue to own Work Management facts and requirements.",
+      "The Documentation Reference Standard MRDs continue to own documentation reference semantics.",
+      "The publication kernel may own only deterministic publication mechanics; it must not interpret canonical domain facts.",
+      "Each family must retain a named semantic owner and adapter for validation, rendering, canonical fact interpretation, and family-specific manifest semantics.",
+      "The preserved change/009-publication-kernel worktree is non-authoritative implementation evidence and remains untouched."
+    ],
+    "design_decisions": [
+      "D1: Introduce KIS-DOC-CON-POL-002 as the publication-architecture owner and KIS-DOC-SEM-REG-002 as the publication-family discovery owner.",
+      "D2: A publication family is a generated bundle, not a single output class. The registry must therefore admit one or more output classes per family so the post-010 Governance and Work Management bundles can contain both human_readable_specification and generated_reference surfaces.",
+      "D3: Kernel responsibilities are limited to sorted file declarations, deterministic bundle hashes, staged bundle replacement, exact generated-file/manifest drift checks, registry validation/discovery, and registered-family orchestration.",
+      "D4: Domain adapters own semantic validation, rendering, domain-specific diagnostics, family-specific manifest/source semantics, and optional family-specific build parameters.",
+      "D5: Existing family-specific CLI commands remain supported. Registry-driven commands may be added for cross-family validation and verification but must not remove legacy entry points.",
+      "D6: Repository verification should use the family registry as the discovery source for cross-family publication checking instead of duplicating a hard-coded family inventory.",
+      "D7: Refactoring must preserve the post-010 generated Markdown byte-for-byte where feasible; mechanically necessary manifest changes must be deterministic and explicitly tested.",
+      "D8: No live external reference, inferred evidence, or generated output may become a canonical input through publication-family discovery."
+    ],
+    "requirements": [
+      "R1: Shared publication mechanics MUST be implemented once in the common kernel rather than duplicated across family renderers.",
+      "R2: Every registered family MUST declare a stable family ID, title, semantic owner, source root, publication config, output bundle, one or more admitted output classes, and validate/build/verify adapter entrypoints.",
+      "R3: Family IDs and output bundle paths MUST be unique.",
+      "R4: Every registered output class MUST be defined by KIS-DOC-CON-POL-001.",
+      "R5: Every registered adapter entrypoint MUST resolve to a callable before registry validation succeeds.",
+      "R6: The kernel MUST NOT interpret, normalize, or rewrite canonical domain facts.",
+      "R7: Generated publication output MUST remain downstream and MUST NOT gain write-back authority.",
+      "R8: External references MUST NOT become live deterministic build inputs through the kernel or registry.",
+      "R9: Existing family-specific validate/build/check CLI commands MUST remain compatible.",
+      "R10: Registry-driven validation and verification MUST cover every registered family and fail if any family is invalid or stale.",
+      "R11: Bundle writes MUST stage complete output before replacement so a failed build does not leave a partially generated family.",
+      "R12: Exact verification MUST detect missing, extra, changed, stale, or tampered generated files and manifest drift.",
+      "R13: Governance and Work Management post-010 human-readable specification and generated-reference separation MUST remain intact.",
+      "R14: Governance, Work Management, and existing Documentation Reference Standard canonical MRDs MUST remain unchanged by this implementation."
+    ],
+    "implementation_plan": [
+      "P1: Inspect current family builders/verifiers and the preserved orphan prototype; extract only mechanics that remain valid after Change 010.",
+      "P2: Add the publication architecture MRD, family registry MRD, and strict registry schema with multi-output-class support.",
+      "P3: Implement the common kernel and thin family adapters with tests first for registry validity, bundle mechanics, and failure cases.",
+      "P4: Refactor Governance, Work Management, and Documentation Reference Standard builders/verifiers to use common bundle mechanics without moving semantic logic into the kernel.",
+      "P5: Add registry-driven CLI validation/check operations and update canonical verification to consume the registry while retaining legacy commands.",
+      "P6: Regenerate affected bundles, compare reader-facing content with the 010 baseline, and add compatibility/semantic-boundary tests.",
+      "P7: Run focused tests, full pytest, canonical verification, exact-commit verification, architecture/code review, and protected-MRD diffs before publication."
+    ],
+    "verification_criteria": [
+      "V1: Registry schema and semantic validation pass for all current families and reject duplicate IDs/outputs, unsupported output classes, and unresolved adapters.",
+      "V2: Kernel unit tests prove deterministic declarations/hashes, staged replacement, and exact drift/tamper diagnostics.",
+      "V3: Existing Governance, Work Management, and Documentation Reference Standard tests remain green without weakened semantic assertions.",
+      "V4: Generated Markdown content remains semantically identical to Change 010; any changed manifests are deterministic and provenance-complete.",
+      "V5: Direct diffs under mrd/governance/**, mrd/work-management/**, mrd/documentation/01-reference-standard.mrd.json, and mrd/documentation/02-reference-registry.mrd.json are empty.",
+      "V6: Legacy CLI validation/build/check paths and new registry-driven validation/check paths agree.",
+      "V7: scripts/verify.ps1 passes on the final exact commit.",
+      "V8: Architecture and code review find no semantic leakage into the kernel and no material regression."
+    ],
+    "tasks": [
+      {
+        "id": "T0",
+        "status": "done",
+        "text": "Create GitHub issue 18 and isolated Change 011 worktree from verified main 40c32f7b6dd61915d240d7ae40846cce7dc98d44."
+      },
+      {
+        "id": "T1",
+        "status": "done",
+        "text": "Prepare the governed Change 011 scope and implementation MRD."
+      },
+      {
+        "id": "T2",
+        "status": "planned",
+        "text": "Add publication architecture/registry authority and registry schema."
+      },
+      {
+        "id": "T3",
+        "status": "planned",
+        "text": "Implement and test the common publication kernel and family adapters."
+      },
+      {
+        "id": "T4",
+        "status": "planned",
+        "text": "Refactor current family builders/verifiers and add registry-driven CLI/verifier integration."
+      },
+      {
+        "id": "T5",
+        "status": "planned",
+        "text": "Regenerate and verify current publication bundles with semantic/reader-facing preservation."
+      },
+      {
+        "id": "T6",
+        "status": "planned",
+        "text": "Complete focused/full/exact verification and architecture/code review, then publish through the governed GitHub path."
+      }
+    ],
+    "risks": [
+      "Semantic leakage: a generic kernel could accidentally become a second interpreter of domain facts.",
+      "Registry underspecification: treating a family as one output class would lose Change 010's specification/reference separation.",
+      "Manifest churn: refactoring generator mechanics can cause unnecessary generated diffs unless byte stability is actively preserved.",
+      "Partial replacement: a shared write path can amplify failures if it replaces output before a bundle is complete.",
+      "Prototype drift: blindly copying the pre-010 orphan implementation would regress current publication behavior."
+    ],
+    "explicit_exclusions": [
+      "Any change to Governance or Work Management domain MRDs or semantics.",
+      "Any change to KIS-DOC-CON-POL-001 or KIS-DOC-SEM-REG-001 semantics.",
+      "Any edit, reset, cleanup, or deletion of the preserved change/009-publication-kernel worktree.",
+      "Any new task-oriented human documentation, diagrams, site/portal design, parent KIS change, or external reference refresh.",
+      "Any general HRD prose rewrite unrelated to publication mechanics."
+    ],
+    "closeout": {
+      "state": "implementation_planned",
+      "verification": [],
+      "reviews": [],
+      "publication": null,
+      "merge": null,
+      "unresolved": []
+    }
+  }
+}
