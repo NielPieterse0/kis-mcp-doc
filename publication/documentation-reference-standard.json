@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "layout_profile": "mcp-spec",
+  "title": "Documentation Reference Standard",
+  "subtitle": "Source roles, authority boundaries, provenance, lifecycle, and permitted use for KIS documentation references",
+  "version": "1.0.0",
+  "status": "draft",
+  "generator": {
+    "name": "kis-mcp-doc",
+    "version": "0.1.0",
+    "algorithm": "documentation-reference-standard-v1"
+  }
+}

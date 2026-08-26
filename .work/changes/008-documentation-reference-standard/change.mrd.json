@@ -1,251 +1,448 @@
 {
-  "_mrd": {
-    "schema_version": 1,
-    "id": "KIS-CHG008-WRK-WFL-001",
-    "title": "Documentation Reference Standard preparation",
-    "module": "change-008",
-    "class": "WRK",
-    "type": "WFL",
-    "layer": "L3",
-    "record_mode": "descriptive",
-    "status": "active",
-    "version": "1.0.0",
-    "dependencies": [
-      {"mrd_id": "KIS-KNOW-WRK-WFL-001", "relationship": "depends_on"},
-      {"mrd_id": "KIS-KNOW-CON-POL-002", "relationship": "depends_on"},
-      {"mrd_id": "KIS-CHG005-WRK-WFL-001", "relationship": "depends_on"},
-      {"mrd_id": "KIS-KNOW-EVL-TST-001", "relationship": "validated_by"}
-    ],
-    "provenance": {
-      "sources": [
-        {
-          "source_id": "KIS-OPERATOR-DIRECTION-2026-08-26-DOCUMENTATION-REFERENCE-STANDARD",
-          "kind": "operator_direction",
-          "role": "approved_change_basis",
-          "locator": "conversation:2026-08-26",
-          "revision": "documentation-reference-standard-approved",
-          "sha256": null
-        },
-        {
-          "source_id": "GH-ISSUE-12",
-          "kind": "operator_approved_work_item",
-          "role": "approved_change_basis",
-          "locator": "github:NielPieterse0/kis-mcp-doc#12",
-          "revision": "2026-08-26",
-          "sha256": null
-        },
-        {
-          "source_id": "MCP-SPEC-2026-07-28",
-          "kind": "external_reference",
-          "role": "normative_protocol_reference",
-          "locator": "C:/Projects/References/mcp-specification/mcp-docs-2026-07-28-direct-md-clean",
-          "revision": "2026-07-28",
-          "sha256": null
-        },
-        {
-          "source_id": "GOOGLE-DEVELOPER-DOCUMENTATION-STYLE-GUIDE",
-          "kind": "external_reference",
-          "role": "prescriptive_writing_reference",
-          "locator": "C:/Projects/References/google-developer-style-guide",
-          "revision": "captured-corpus",
-          "sha256": null
-        },
-        {
-          "source_id": "KIS-EXTERNAL-MCP-DOC-RESEARCH-2026-08-26",
-          "kind": "research_evidence",
-          "role": "implementation_reference_selection",
-          "locator": "conversation:2026-08-26",
-          "revision": "comparative-mcp-documentation-research",
-          "sha256": null
-        }
-      ],
-      "source_fingerprint": "sha256:d77b758a7d1cd8c8c4372fb66b45e0750a4511219d83c4a47e38370f01df3bfe",
-      "fact_quality": "direct"
-    },
-    "supersedes": [],
-    "superseded_by": null
-  },
-  "content": {
-    "change_id": "008-documentation-reference-standard",
-    "work_item": {
-      "repository": "NielPieterse0/kis-mcp-doc",
-      "issue": 12,
-      "project": "NielPieterse0/1",
-      "record_id": "SPEC-008"
-    },
-    "outcome": "Prepare a governed Documentation Reference Standard so future KIS documentation can use normative protocol sources, writing guidance, and external MCP implementation examples without confusing evidence with authority.",
-    "preparation_boundary": [
-      "This change currently creates planning and change-definition records only.",
-      "No canonical MRD, contract, schema, harvest registry, publication profile, generator, renderer, generated document, runtime behavior, or test behavior is changed during preparation.",
-      "The later implementation MUST enter through a separately approved implementation step within this governed change or a successor change, depending on review outcome."
-    ],
-    "problem": [
-      "KIS has authoritative source and provenance rules, a captured MCP 2026 reference corpus, a captured Google style corpus, and an existing harvest-source registry, but it does not yet prescribe one documentation-specific contract for how those sources and external implementation examples may influence generated documentation.",
-      "Without that contract, useful external patterns can become informal tribal knowledge, reference roles can overlap, and future generators can accidentally duplicate source facts or elevate non-normative evidence into apparent KIS authority.",
-      "The standard must make the source role, permitted use, provenance, freshness, and conflict behavior explicit before the external reference set is used to reshape additional KIS HRDs."
-    ],
-    "authority_model": [
-      "KIS canonical sources and adopted KIS MRDs own KIS-specific facts, behavior, policy, configuration, and lifecycle semantics.",
-      "The pinned MCP 2026-07-28 specification is normative for MCP protocol conformance within the protocol concerns it defines. It is not authority for unrelated KIS product behavior.",
-      "KIS repository and documentation governance controls how KIS-owned documentation is produced and how external evidence is classified.",
-      "The Google Developer Documentation Style Guide is prescriptive presentation guidance for human-facing prose where higher KIS authority does not prescribe a different form. It does not define KIS behavior.",
-      "External MCP implementations are non-normative evidence and design references. They may demonstrate useful documentation structures and engineering patterns, but they cannot create or override KIS facts.",
-      "Model-generated, semantic-provider, DeepWiki/Litho, Graphify, and similar inferred material remains advisory or inferred evidence until verified against an owning source and explicitly adopted through KIS governance."
-    ],
-    "candidate_source_roles": [
-      {"role": "canonical_kis", "meaning": "KIS-owned canonical fact or adopted prescriptive MRD", "may_define_kis_facts": true},
-      {"role": "normative_external", "meaning": "External standard that is normative within a bounded conformance domain such as MCP", "may_define_kis_facts": false},
-      {"role": "prescriptive_external", "meaning": "External guidance that prescribes presentation or practice without owning KIS behavior", "may_define_kis_facts": false},
-      {"role": "implementation_reference", "meaning": "External implementation used to study reusable patterns", "may_define_kis_facts": false},
-      {"role": "inferred_evidence", "meaning": "Derived, semantic, or model-generated evidence requiring verification", "may_define_kis_facts": false}
-    ],
-    "requirements": [
-      "R1: The future Documentation Reference Standard MUST define source roles, authority boundaries, permitted uses, provenance requirements, freshness requirements, and conflict behavior for every admitted documentation reference.",
-      "R2: KIS-owned behavior and factual generated reference content MUST remain sourced from the current canonical KIS owner or an adopted KIS MRD; a documentation reference MUST NOT become a second fact owner.",
-      "R3: MCP 2026-07-28 MUST be treated as normative within its applicable protocol-conformance domain, while remaining non-authoritative for KIS-specific behavior outside that domain.",
-      "R4: Google Developer Documentation Style Guide material MUST be treated as prescriptive writing guidance only and MUST NOT define KIS semantics, state, policy, or runtime behavior.",
-      "R5: External implementation references MUST be explicitly non-normative and MUST NOT populate canonical KIS facts, generated factual reference tables, or normative requirements without a separate evidence-backed adoption decision.",
-      "R6: Each external implementation reference MUST have a bounded role that states which documentation concern it may inform; the repository MUST NOT adopt an external project as a general undocumented template.",
-      "R7: The future standard MUST provide a versioned machine-readable reference registry whose semantic role is distinct from acquisition metadata in publication/harvest-sources.json and whose entries can reference existing harvest-source identities instead of duplicating them.",
-      "R8: Material used by deterministic builds MUST be pinned to reproducible revisions or content hashes when the source supports them; documentation builds MUST NOT silently depend on live moving web content.",
-      "R9: The reference registry MUST support add, update, deprecate, supersede, and remove lifecycle states without erasing historical provenance.",
-      "R10: The documentation system MUST distinguish human task/concept documentation, human-readable normative specifications, and exact generated reference material because each output class has different source and presentation rules.",
-      "R11: Exact generated reference material for tools, schemas, settings, policies, states, relationships, capabilities, and permissions MUST derive from canonical KIS facts rather than external examples or independently maintained prose.",
-      "R12: Human-readable normative specifications MUST preserve the strength and meaning of adopted KIS requirements while explaining concepts in prose before dense reference detail where appropriate.",
-      "R13: Human task and concept documentation MAY use workflow and presentation patterns from approved implementation references but MUST preserve KIS terminology, behavior, authority, and provenance.",
-      "R14: Contradictions between a reference and a canonical owner MUST surface as diagnostics or review findings; the system MUST NOT silently normalize the canonical fact to match the reference.",
-      "R15: Validation MUST prevent implementation_reference, prescriptive_external, and inferred_evidence material from being promoted to canonical KIS fact solely because it appears in generated documentation.",
-      "R16: A generated human-review page MUST explain the official reference set, each source role, permitted uses, authority limits, provenance, and lifecycle without becoming write-back authority.",
-      "R17: External-source licensing, attribution, and copying constraints MUST be recorded before source material is harvested beyond metadata or small evidence excerpts.",
-      "R18: This preparation slice MUST NOT implement any of the future registry, schema, generator, validator, renderer, harvest, or publication behavior described by these requirements."
-    ],
-    "reference_set": [
-      {"id": "mcp-2026", "name": "Model Context Protocol 2026-07-28", "role": "normative_external", "use_for": ["protocol_conformance", "specification_structure", "normative_presentation", "schema_reference"]},
-      {"id": "google-developer-style", "name": "Google Developer Documentation Style Guide", "role": "prescriptive_external", "use_for": ["human_prose", "task_documentation", "headings", "lists", "tables", "cross_references"]},
-      {"id": "sentry-mcp", "name": "Sentry MCP", "role": "implementation_reference", "use_for": ["documentation_architecture", "engineering_documentation", "operations", "security"]},
-      {"id": "github-mcp", "name": "GitHub MCP Server", "role": "implementation_reference", "use_for": ["tool_reference", "configuration_reference", "generated_documentation", "stale_detection"]},
-      {"id": "azure-mcp", "name": "Azure MCP Server", "role": "implementation_reference", "use_for": ["large_scale_reference", "generated_reference", "drift_control"]},
-      {"id": "playwright-mcp", "name": "Playwright MCP", "role": "implementation_reference", "use_for": ["task_oriented_documentation", "getting_started", "generated_tool_reference"]},
-      {"id": "atlassian-rovo-mcp", "name": "Atlassian Rovo MCP", "role": "implementation_reference", "use_for": ["permissions_presentation", "capability_catalogue", "discover_execute_patterns"]},
-      {"id": "figma-mcp", "name": "Figma MCP", "role": "implementation_reference", "use_for": ["workflow_oriented_documentation", "task_grouping"]},
-      {"id": "aws-labs-mcp", "name": "AWS Labs MCP", "role": "implementation_reference", "use_for": ["multi_module_consistency", "repeatable_server_documentation"]},
-      {"id": "cloudflare-mcp", "name": "Cloudflare MCP", "role": "implementation_reference", "use_for": ["tool_surface_scaling", "context_budget", "dynamic_discovery"]}
-    ],
-    "reference_locators": [
-      {"id": "sentry-mcp", "locator": "https://github.com/getsentry/sentry-mcp"},
-      {"id": "github-mcp", "locator": "https://github.com/github/github-mcp-server"},
-      {"id": "azure-mcp", "locator": "https://github.com/microsoft/mcp"},
-      {"id": "playwright-mcp", "locator": "https://github.com/microsoft/playwright-mcp"},
-      {"id": "atlassian-rovo-mcp", "locator": "https://developer.atlassian.com/cloud/rovo-mcp/guides/supported-tools/"},
-      {"id": "figma-mcp", "locator": "https://developers.figma.com/docs/figma-mcp-server/"},
-      {"id": "aws-labs-mcp", "locator": "https://github.com/awslabs/mcp"},
-      {"id": "cloudflare-mcp", "locator": "https://github.com/cloudflare/mcp"}
-    ],
-    "decisions": [
-      "D1: Use domain-scoped authority rather than a single total precedence list. KIS owns KIS facts; MCP owns MCP conformance requirements within its domain; writing guidance and implementation references cannot override either owner.",
-      "D2: Register external implementation references by bounded documentation concern instead of treating any repository as the KIS documentation template.",
-      "D3: Keep documentation-reference semantics distinct from harvest/acquisition semantics. The future reference registry should reference harvest-source identities and provenance rather than duplicate retrieval configuration.",
-      "D4: Require pinned or hashed evidence for deterministic generation; live web access may support research and refresh workflows but not silent build-time authority.",
-      "D5: Define three human output classes: task/concept documentation, human-readable specification, and generated reference. Their presentation may differ, but each remains downstream of governed sources.",
-      "D6: Adopt the initial ten-source reference set in this change as the proposed official baseline for later implementation review, with MCP and Google carrying specialized external roles and the eight implementation sources remaining non-normative.",
-      "D7: Do not copy external documentation wholesale. Harvest only the bounded patterns, metadata, or evidence needed for an approved use and preserve source provenance and licensing constraints.",
-      "D8: The standard itself must be machine-readable authority first and a generated human-review surface second. No hand-authored durable Markdown is introduced."
-    ],
-    "output_classes": [
-      {
-        "class": "human_documentation",
-        "purpose": "Teach concepts, tasks, workflows, examples, architecture, and operations in reader-oriented prose.",
-        "source_rule": "Canonical KIS facts provide factual content; approved external references may inform organization and presentation only."
-      },
-      {
-        "class": "human_readable_specification",
-        "purpose": "Explain adopted normative KIS behavior while preserving requirement strength, identifiers, ownership, and traceability.",
-        "source_rule": "Adopted KIS MRDs and applicable normative external standards provide requirements; presentation remains generated and non-authoritative."
-      },
-      {
-        "class": "generated_reference",
-        "purpose": "Expose exact tools, schemas, settings, policies, states, relationships, capabilities, permissions, and provenance.",
-        "source_rule": "Only canonical KIS facts or explicitly applicable normative protocol facts may populate factual reference data."
-      }
-    ],
-    "reference_basis": [
-      "C:/Projects/kis-mcp-doc/AGENTS.md for source classification, authority, harvest posture, generated-view rules, and the MCP 2026 presentation mandate.",
-      "C:/Projects/kis-mcp-doc/mrd/governance/** for KIS MRD classification, ownership, provenance, lifecycle, dependencies, applicability, and validation semantics.",
-      "C:/Projects/kis-mcp-doc/publication/harvest-sources.json for the existing machine-readable acquisition/source inventory that the future semantic reference registry must complement rather than duplicate.",
-      "C:/Projects/kis-mcp-doc/.work/changes/005-mcp-spec-2026-baseline/change.mrd.json for the adopted MCP 2026-07-28 documentation/specification baseline.",
-      "C:/Projects/References/mcp-specification/mcp-docs-2026-07-28-direct-md-clean/markdown/025-specification-specification.md for specification vocabulary and normative-keyword conventions.",
-      "C:/Projects/References/mcp-specification/mcp-docs-2026-07-28-direct-md-clean/markdown/029-specification-overview.md for protocol structure and current MCP request/result conventions.",
-      "C:/Projects/References/mcp-specification/mcp-docs-2026-07-28-direct-md-clean/markdown/030-specification-versioning-and-compatibility.md for date-based protocol versioning and compatibility presentation.",
-      "C:/Projects/References/mcp-specification/mcp-docs-2026-07-28-direct-md-clean/markdown/055-specification-schema-reference.md for the current MCP 2026 schema-reference model.",
-      "C:/Projects/References/mcp-specification/mcp-docs-2026-07-28-direct-md-clean/markdown/056-extensions-extensions-overview.md for bounded optional-extension and explicit-negotiation patterns.",
-      "C:/Projects/References/google-developer-style-guide/014-prescriptive-documentation.md for task-focused prescriptive documentation.",
-      "C:/Projects/References/google-developer-style-guide/017-tone.md and 019-voice.md for professional tone and active voice.",
-      "C:/Projects/References/google-developer-style-guide/030-sentence-structure.md and 052-paragraph-structure.md for focused sentence and paragraph construction.",
-      "C:/Projects/References/google-developer-style-guide/046-headings.md, 048-lists.md, 055-tables.md, and 057-cross-references.md for scannable structure and references.",
-      "Comparative research completed on 2026-08-26 for Sentry MCP, GitHub MCP Server, Azure MCP Server, Playwright MCP, Atlassian Rovo MCP, Figma MCP, AWS Labs MCP, and Cloudflare MCP."
-    ],
-    "future_implementation_plan": [
-      "P1: Define the machine-readable Documentation Reference Standard and reference-registry schema using the minimum sufficient existing MRD types and repository contract conventions.",
-      "P2: Bind the reference registry to existing harvest-source identities and add role, bounded-use, provenance, freshness, lifecycle, licensing, and supersession semantics without duplicating acquisition configuration.",
-      "P3: Pin the approved external implementation evidence to exact revisions or content hashes and record refresh policy.",
-      "P4: Add validation that blocks non-normative or inferred reference material from becoming canonical KIS facts without explicit adoption through the owning authority.",
-      "P5: Add deterministic generation of the human-readable Documentation Reference Standard and reference catalogue from validated machine-readable authority.",
-      "P6: Add tests for authority separation, provenance, deterministic generation, stale/tamper detection, reference lifecycle, and conflict diagnostics.",
-      "P7: After the standard is reviewed and implemented, use it as the governed basis for later HRD/documentation refinements rather than changing Work Management HRDs in this change."
-    ],
-    "tasks": [
-      {"id": "T0", "status": "done", "text": "Raise the governed change and GitHub issue, load the documentation skill, and review the applicable MCP 2026 and Google Developer Documentation references."},
-      {"id": "T1", "status": "pending", "text": "Select the minimum sufficient KIS MRD types and define the prescriptive Documentation Reference Standard authority model."},
-      {"id": "T2", "status": "pending", "text": "Define the versioned reference-registry contract and its relationship to publication/harvest-sources.json."},
-      {"id": "T3", "status": "pending", "text": "Pin and classify the approved external implementation reference evidence, including licensing and refresh metadata."},
-      {"id": "T4", "status": "pending", "text": "Implement validation and deterministic generation for the standard and human review surface."},
-      {"id": "T5", "status": "pending", "text": "Verify authority separation, source coverage, provenance, determinism, drift handling, and generated readability before review."}
-    ],
-    "risks": [
-      "Authority confusion: readers or generators could mistake an external implementation example for KIS authority unless source roles are explicit and enforced.",
-      "Registry duplication: a new semantic reference registry could drift from publication/harvest-sources.json if identities and ownership are not linked cleanly.",
-      "Reference churn: external repositories and product documentation change independently and can make unpinned examples stale.",
-      "Overfitting: copying one external project's information architecture could distort KIS concepts or create unnecessary structure.",
-      "Licensing and attribution: harvested external content may carry reuse restrictions that differ from metadata-only reference use.",
-      "Generated-authority inversion: a polished HRD can appear authoritative unless the publication contract keeps write-back and fact ownership explicit."
-    ],
-    "future_acceptance": [
-      "Every admitted documentation source has one explicit role, bounded permitted use, provenance identity, freshness strategy, and lifecycle state.",
-      "The official reference set distinguishes MCP normative protocol authority, Google prescriptive writing guidance, and non-normative implementation references.",
-      "The semantic reference registry does not duplicate harvest acquisition facts and can resolve its source identities to reproducible evidence.",
-      "No implementation reference or inferred evidence can populate canonical KIS factual reference content without an explicit governed adoption path.",
-      "Task documentation, human-readable specification, and generated reference have distinct source and presentation contracts.",
-      "The human-readable Documentation Reference Standard is generated from validated machine-readable authority and explains the model in plain English.",
-      "External-reference conflicts, stale evidence, missing hashes, and unsupported authority promotions fail visibly rather than being silently accepted.",
-      "Deterministic generation, provenance, stale/tamper checks, schema validation, and repository verification pass."
-    ],
-    "preparation_acceptance": [
-      "Change 008 exists in an isolated branch-backed worktree and owns only .work/changes/008-documentation-reference-standard/**.",
-      "GitHub issue 12 records the same preparation-only outcome and reference basis.",
-      "The change records the approved initial reference set and bounded roles for every reference.",
-      "The change records the MCP 2026, Google Developer Documentation, KIS governance, harvest-registry, and external comparative research basis used to prepare it.",
-      "The change defines authority separation, future registry semantics, output classes, validation expectations, implementation plan, risks, and later acceptance criteria without implementing them.",
-      "No tracked file outside the change directory is modified by this preparation."
-    ],
-    "out_of_scope_for_preparation": [
-      "Creating or adopting prescriptive documentation-reference MRDs outside this change directory.",
-      "Creating the future reference-registry schema or modifying publication/harvest-sources.json.",
-      "Harvesting or vendoring external implementation documentation into the repository.",
-      "Changing the publication contract, generator, renderer, generated HRDs, or generated reference pages.",
-      "Changing Work Management documentation, Work Management behavior, or GitHub Project configuration.",
-      "Changing MCP/FastMCP runtime protocol behavior or adopting new MCP 2026 runtime features.",
-      "Adding validators, tests, CI behavior, or source-code implementation for the future standard."
-    ],
-    "closeout": {
-      "state": "prepared_for_review",
-      "verification": [],
-      "reviews": [],
-      "publication": null,
-      "merge": null,
-      "unresolved": [
-        "GitHub issue 12 is created, but governed Work Management Project capture is blocked by GITHUB_PROJECT_MANAGEMENT_INVALID_COMMAND because the source repository NielPieterse0/kis-mcp-doc does not match the current kis-mcp Project repository binding. Do not bypass this boundary; resolve it through Work Management governance before relying on Project state for this change.",
-        "The exact MRD type set and canonical on-disk location for the future semantic reference registry remain implementation-design decisions to resolve in T1-T2 using minimum-sufficient selection and existing ownership rules."
-      ]
-    }
-  }
+    "_mrd":  {
+                 "schema_version":  1,
+                 "id":  "KIS-CHG008-WRK-WFL-001",
+                 "title":  "Documentation Reference Standard",
+                 "module":  "change-008",
+                 "class":  "WRK",
+                 "type":  "WFL",
+                 "layer":  "L3",
+                 "record_mode":  "descriptive",
+                 "status":  "active",
+                 "version":  "1.1.0",
+                 "dependencies":  [
+                                      {
+                                          "mrd_id":  "KIS-KNOW-WRK-WFL-001",
+                                          "relationship":  "depends_on"
+                                      },
+                                      {
+                                          "mrd_id":  "KIS-KNOW-CON-POL-002",
+                                          "relationship":  "depends_on"
+                                      },
+                                      {
+                                          "mrd_id":  "KIS-CHG005-WRK-WFL-001",
+                                          "relationship":  "depends_on"
+                                      },
+                                      {
+                                          "mrd_id":  "KIS-KNOW-EVL-TST-001",
+                                          "relationship":  "validated_by"
+                                      }
+                                  ],
+                 "provenance":  {
+                                    "sources":  [
+                                                    {
+                                                        "source_id":  "KIS-OPERATOR-DIRECTION-2026-08-26-DOCUMENTATION-REFERENCE-STANDARD",
+                                                        "kind":  "operator_direction",
+                                                        "role":  "approved_change_basis",
+                                                        "locator":  "conversation:2026-08-26",
+                                                        "revision":  "documentation-reference-standard-approved",
+                                                        "sha256":  null
+                                                    },
+                                                    {
+                                                        "source_id":  "GH-ISSUE-12",
+                                                        "kind":  "operator_approved_work_item",
+                                                        "role":  "approved_change_basis",
+                                                        "locator":  "github:NielPieterse0/kis-mcp-doc#12",
+                                                        "revision":  "2026-08-26",
+                                                        "sha256":  null
+                                                    },
+                                                    {
+                                                        "source_id":  "MCP-SPEC-2026-07-28",
+                                                        "kind":  "external_reference",
+                                                        "role":  "normative_protocol_reference",
+                                                        "locator":  "C:/Projects/References/mcp-specification/mcp-docs-2026-07-28-direct-md-clean",
+                                                        "revision":  "2026-07-28",
+                                                        "sha256":  null
+                                                    },
+                                                    {
+                                                        "source_id":  "GOOGLE-DEVELOPER-DOCUMENTATION-STYLE-GUIDE",
+                                                        "kind":  "external_reference",
+                                                        "role":  "prescriptive_writing_reference",
+                                                        "locator":  "C:/Projects/References/google-developer-style-guide",
+                                                        "revision":  "captured-corpus",
+                                                        "sha256":  null
+                                                    },
+                                                    {
+                                                        "source_id":  "KIS-EXTERNAL-MCP-DOC-RESEARCH-2026-08-26",
+                                                        "kind":  "research_evidence",
+                                                        "role":  "implementation_reference_selection",
+                                                        "locator":  "conversation:2026-08-26",
+                                                        "revision":  "comparative-mcp-documentation-research",
+                                                        "sha256":  null
+                                                    }
+                                                ],
+                                    "source_fingerprint":  "sha256:d77b758a7d1cd8c8c4372fb66b45e0750a4511219d83c4a47e38370f01df3bfe",
+                                    "fact_quality":  "direct"
+                                },
+                 "supersedes":  [
+
+                                ],
+                 "superseded_by":  null
+             },
+    "content":  {
+                    "change_id":  "008-documentation-reference-standard",
+                    "work_item":  {
+                                      "repository":  "NielPieterse0/kis-mcp-doc",
+                                      "issue":  12,
+                                      "project":  "NielPieterse0/1",
+                                      "record_id":  "SPEC-008"
+                                  },
+                    "outcome":  "Implement a governed Documentation Reference Standard so KIS documentation can use normative protocol sources, writing guidance, and external MCP implementation evidence without confusing evidence with authority.",
+                    "preparation_boundary":  [
+                                                 "Preparation was completed and preserved at commit 2785a3b7a6f42b22ef48e8b151473717a7af5a1e.",
+                                                 "The operator separately authorized implementation in this governed change on 2026-08-26.",
+                                                 "Implementation remains bounded by scope.json and does not change Work Management behavior, parent KIS, reference corpora, or existing governance/work-management MRDs."
+                                             ],
+                    "problem":  [
+                                    "KIS has authoritative source and provenance rules, a captured MCP 2026 reference corpus, a captured Google style corpus, and an existing harvest-source registry, but it does not yet prescribe one documentation-specific contract for how those sources and external implementation examples may influence generated documentation.",
+                                    "Without that contract, useful external patterns can become informal tribal knowledge, reference roles can overlap, and future generators can accidentally duplicate source facts or elevate non-normative evidence into apparent KIS authority.",
+                                    "The standard must make the source role, permitted use, provenance, freshness, and conflict behavior explicit before the external reference set is used to reshape additional KIS HRDs."
+                                ],
+                    "authority_model":  [
+                                            "KIS canonical sources and adopted KIS MRDs own KIS-specific facts, behavior, policy, configuration, and lifecycle semantics.",
+                                            "The pinned MCP 2026-07-28 specification is normative for MCP protocol conformance within the protocol concerns it defines. It is not authority for unrelated KIS product behavior.",
+                                            "KIS repository and documentation governance controls how KIS-owned documentation is produced and how external evidence is classified.",
+                                            "The Google Developer Documentation Style Guide is prescriptive presentation guidance for human-facing prose where higher KIS authority does not prescribe a different form. It does not define KIS behavior.",
+                                            "External MCP implementations are non-normative evidence and design references. They may demonstrate useful documentation structures and engineering patterns, but they cannot create or override KIS facts.",
+                                            "Model-generated, semantic-provider, DeepWiki/Litho, Graphify, and similar inferred material remains advisory or inferred evidence until verified against an owning source and explicitly adopted through KIS governance."
+                                        ],
+                    "candidate_source_roles":  [
+                                                   {
+                                                       "role":  "canonical_kis",
+                                                       "meaning":  "KIS-owned canonical fact or adopted prescriptive MRD",
+                                                       "may_define_kis_facts":  true
+                                                   },
+                                                   {
+                                                       "role":  "normative_external",
+                                                       "meaning":  "External standard that is normative within a bounded conformance domain such as MCP",
+                                                       "may_define_kis_facts":  false
+                                                   },
+                                                   {
+                                                       "role":  "prescriptive_external",
+                                                       "meaning":  "External guidance that prescribes presentation or practice without owning KIS behavior",
+                                                       "may_define_kis_facts":  false
+                                                   },
+                                                   {
+                                                       "role":  "implementation_reference",
+                                                       "meaning":  "External implementation used to study reusable patterns",
+                                                       "may_define_kis_facts":  false
+                                                   },
+                                                   {
+                                                       "role":  "inferred_evidence",
+                                                       "meaning":  "Derived, semantic, or model-generated evidence requiring verification",
+                                                       "may_define_kis_facts":  false
+                                                   }
+                                               ],
+                    "requirements":  [
+                                         "R1: The future Documentation Reference Standard MUST define source roles, authority boundaries, permitted uses, provenance requirements, freshness requirements, and conflict behavior for every admitted documentation reference.",
+                                         "R2: KIS-owned behavior and factual generated reference content MUST remain sourced from the current canonical KIS owner or an adopted KIS MRD; a documentation reference MUST NOT become a second fact owner.",
+                                         "R3: MCP 2026-07-28 MUST be treated as normative within its applicable protocol-conformance domain, while remaining non-authoritative for KIS-specific behavior outside that domain.",
+                                         "R4: Google Developer Documentation Style Guide material MUST be treated as prescriptive writing guidance only and MUST NOT define KIS semantics, state, policy, or runtime behavior.",
+                                         "R5: External implementation references MUST be explicitly non-normative and MUST NOT populate canonical KIS facts, generated factual reference tables, or normative requirements without a separate evidence-backed adoption decision.",
+                                         "R6: Each external implementation reference MUST have a bounded role that states which documentation concern it may inform; the repository MUST NOT adopt an external project as a general undocumented template.",
+                                         "R7: The future standard MUST provide a versioned machine-readable reference registry whose semantic role is distinct from acquisition metadata in publication/harvest-sources.json and whose entries can reference existing harvest-source identities instead of duplicating them.",
+                                         "R8: Material used by deterministic builds MUST be pinned to reproducible revisions or content hashes when the source supports them; documentation builds MUST NOT silently depend on live moving web content.",
+                                         "R9: The reference registry MUST support add, update, deprecate, supersede, and remove lifecycle states without erasing historical provenance.",
+                                         "R10: The documentation system MUST distinguish human task/concept documentation, human-readable normative specifications, and exact generated reference material because each output class has different source and presentation rules.",
+                                         "R11: Exact generated reference material for tools, schemas, settings, policies, states, relationships, capabilities, and permissions MUST derive from canonical KIS facts rather than external examples or independently maintained prose.",
+                                         "R12: Human-readable normative specifications MUST preserve the strength and meaning of adopted KIS requirements while explaining concepts in prose before dense reference detail where appropriate.",
+                                         "R13: Human task and concept documentation MAY use workflow and presentation patterns from approved implementation references but MUST preserve KIS terminology, behavior, authority, and provenance.",
+                                         "R14: Contradictions between a reference and a canonical owner MUST surface as diagnostics or review findings; the system MUST NOT silently normalize the canonical fact to match the reference.",
+                                         "R15: Validation MUST prevent implementation_reference, prescriptive_external, and inferred_evidence material from being promoted to canonical KIS fact solely because it appears in generated documentation.",
+                                         "R16: A generated human-review page MUST explain the official reference set, each source role, permitted uses, authority limits, provenance, and lifecycle without becoming write-back authority.",
+                                         "R17: External-source licensing, attribution, and copying constraints MUST be recorded before source material is harvested beyond metadata or small evidence excerpts.",
+                                         "R18: Implementation MUST begin only after a separately approved implementation step. Preparation was preserved at commit 2785a3b7a6f42b22ef48e8b151473717a7af5a1e before that approval was exercised."
+                                     ],
+                    "reference_set":  [
+                                          {
+                                              "id":  "mcp-2026",
+                                              "name":  "Model Context Protocol 2026-07-28",
+                                              "role":  "normative_external",
+                                              "use_for":  [
+                                                              "protocol_conformance",
+                                                              "specification_structure",
+                                                              "normative_presentation",
+                                                              "schema_reference"
+                                                          ]
+                                          },
+                                          {
+                                              "id":  "google-developer-style",
+                                              "name":  "Google Developer Documentation Style Guide",
+                                              "role":  "prescriptive_external",
+                                              "use_for":  [
+                                                              "human_prose",
+                                                              "task_documentation",
+                                                              "headings",
+                                                              "lists",
+                                                              "tables",
+                                                              "cross_references"
+                                                          ]
+                                          },
+                                          {
+                                              "id":  "sentry-mcp",
+                                              "name":  "Sentry MCP",
+                                              "role":  "implementation_reference",
+                                              "use_for":  [
+                                                              "documentation_architecture",
+                                                              "engineering_documentation",
+                                                              "operations",
+                                                              "security"
+                                                          ]
+                                          },
+                                          {
+                                              "id":  "github-mcp",
+                                              "name":  "GitHub MCP Server",
+                                              "role":  "implementation_reference",
+                                              "use_for":  [
+                                                              "tool_reference",
+                                                              "configuration_reference",
+                                                              "generated_documentation",
+                                                              "stale_detection"
+                                                          ]
+                                          },
+                                          {
+                                              "id":  "azure-mcp",
+                                              "name":  "Azure MCP Server",
+                                              "role":  "implementation_reference",
+                                              "use_for":  [
+                                                              "large_scale_reference",
+                                                              "generated_reference",
+                                                              "drift_control"
+                                                          ]
+                                          },
+                                          {
+                                              "id":  "playwright-mcp",
+                                              "name":  "Playwright MCP",
+                                              "role":  "implementation_reference",
+                                              "use_for":  [
+                                                              "task_oriented_documentation",
+                                                              "getting_started",
+                                                              "generated_tool_reference"
+                                                          ]
+                                          },
+                                          {
+                                              "id":  "atlassian-rovo-mcp",
+                                              "name":  "Atlassian Rovo MCP",
+                                              "role":  "implementation_reference",
+                                              "use_for":  [
+                                                              "permissions_presentation",
+                                                              "capability_catalogue",
+                                                              "discover_execute_patterns"
+                                                          ]
+                                          },
+                                          {
+                                              "id":  "figma-mcp",
+                                              "name":  "Figma MCP",
+                                              "role":  "implementation_reference",
+                                              "use_for":  [
+                                                              "workflow_oriented_documentation",
+                                                              "task_grouping"
+                                                          ]
+                                          },
+                                          {
+                                              "id":  "aws-labs-mcp",
+                                              "name":  "AWS Labs MCP",
+                                              "role":  "implementation_reference",
+                                              "use_for":  [
+                                                              "multi_module_consistency",
+                                                              "repeatable_server_documentation"
+                                                          ]
+                                          },
+                                          {
+                                              "id":  "cloudflare-mcp",
+                                              "name":  "Cloudflare MCP",
+                                              "role":  "implementation_reference",
+                                              "use_for":  [
+                                                              "tool_surface_scaling",
+                                                              "context_budget",
+                                                              "dynamic_discovery"
+                                                          ]
+                                          }
+                                      ],
+                    "reference_locators":  [
+                                               {
+                                                   "id":  "sentry-mcp",
+                                                   "locator":  "https://github.com/getsentry/sentry-mcp"
+                                               },
+                                               {
+                                                   "id":  "github-mcp",
+                                                   "locator":  "https://github.com/github/github-mcp-server"
+                                               },
+                                               {
+                                                   "id":  "azure-mcp",
+                                                   "locator":  "https://github.com/microsoft/mcp"
+                                               },
+                                               {
+                                                   "id":  "playwright-mcp",
+                                                   "locator":  "https://github.com/microsoft/playwright-mcp"
+                                               },
+                                               {
+                                                   "id":  "atlassian-rovo-mcp",
+                                                   "locator":  "https://developer.atlassian.com/cloud/rovo-mcp/guides/supported-tools/"
+                                               },
+                                               {
+                                                   "id":  "figma-mcp",
+                                                   "locator":  "https://developers.figma.com/docs/figma-mcp-server/"
+                                               },
+                                               {
+                                                   "id":  "aws-labs-mcp",
+                                                   "locator":  "https://github.com/awslabs/mcp"
+                                               },
+                                               {
+                                                   "id":  "cloudflare-mcp",
+                                                   "locator":  "https://github.com/cloudflare/mcp"
+                                               }
+                                           ],
+                    "decisions":  [
+                                      "D1: Use domain-scoped authority rather than a single total precedence list. KIS owns KIS facts; MCP owns MCP conformance requirements within its domain; writing guidance and implementation references cannot override either owner.",
+                                      "D2: Register external implementation references by bounded documentation concern instead of treating any repository as the KIS documentation template.",
+                                      "D3: Keep documentation-reference semantics distinct from harvest/acquisition semantics. The future reference registry should reference harvest-source identities and provenance rather than duplicate retrieval configuration.",
+                                      "D4: Require pinned or hashed evidence for deterministic generation; live web access may support research and refresh workflows but not silent build-time authority.",
+                                      "D5: Define three human output classes: task/concept documentation, human-readable specification, and generated reference. Their presentation may differ, but each remains downstream of governed sources.",
+                                      "D6: Adopt the initial ten-source reference set in this change as the proposed official baseline for later implementation review, with MCP and Google carrying specialized external roles and the eight implementation sources remaining non-normative.",
+                                      "D7: Do not copy external documentation wholesale. Harvest only the bounded patterns, metadata, or evidence needed for an approved use and preserve source provenance and licensing constraints.",
+                                      "D8: The standard itself must be machine-readable authority first and a generated human-review surface second. No hand-authored durable Markdown is introduced."
+                                  ],
+                    "output_classes":  [
+                                           {
+                                               "class":  "human_documentation",
+                                               "purpose":  "Teach concepts, tasks, workflows, examples, architecture, and operations in reader-oriented prose.",
+                                               "source_rule":  "Canonical KIS facts provide factual content; approved external references may inform organization and presentation only."
+                                           },
+                                           {
+                                               "class":  "human_readable_specification",
+                                               "purpose":  "Explain adopted normative KIS behavior while preserving requirement strength, identifiers, ownership, and traceability.",
+                                               "source_rule":  "Adopted KIS MRDs and applicable normative external standards provide requirements; presentation remains generated and non-authoritative."
+                                           },
+                                           {
+                                               "class":  "generated_reference",
+                                               "purpose":  "Expose exact tools, schemas, settings, policies, states, relationships, capabilities, permissions, and provenance.",
+                                               "source_rule":  "Only canonical KIS facts or explicitly applicable normative protocol facts may populate factual reference data."
+                                           }
+                                       ],
+                    "reference_basis":  [
+                                            "C:/Projects/kis-mcp-doc/AGENTS.md for source classification, authority, harvest posture, generated-view rules, and the MCP 2026 presentation mandate.",
+                                            "C:/Projects/kis-mcp-doc/mrd/governance/** for KIS MRD classification, ownership, provenance, lifecycle, dependencies, applicability, and validation semantics.",
+                                            "C:/Projects/kis-mcp-doc/publication/harvest-sources.json for the existing machine-readable acquisition/source inventory that the future semantic reference registry must complement rather than duplicate.",
+                                            "C:/Projects/kis-mcp-doc/.work/changes/005-mcp-spec-2026-baseline/change.mrd.json for the adopted MCP 2026-07-28 documentation/specification baseline.",
+                                            "C:/Projects/References/mcp-specification/mcp-docs-2026-07-28-direct-md-clean/markdown/025-specification-specification.md for specification vocabulary and normative-keyword conventions.",
+                                            "C:/Projects/References/mcp-specification/mcp-docs-2026-07-28-direct-md-clean/markdown/029-specification-overview.md for protocol structure and current MCP request/result conventions.",
+                                            "C:/Projects/References/mcp-specification/mcp-docs-2026-07-28-direct-md-clean/markdown/030-specification-versioning-and-compatibility.md for date-based protocol versioning and compatibility presentation.",
+                                            "C:/Projects/References/mcp-specification/mcp-docs-2026-07-28-direct-md-clean/markdown/055-specification-schema-reference.md for the current MCP 2026 schema-reference model.",
+                                            "C:/Projects/References/mcp-specification/mcp-docs-2026-07-28-direct-md-clean/markdown/056-extensions-extensions-overview.md for bounded optional-extension and explicit-negotiation patterns.",
+                                            "C:/Projects/References/google-developer-style-guide/014-prescriptive-documentation.md for task-focused prescriptive documentation.",
+                                            "C:/Projects/References/google-developer-style-guide/017-tone.md and 019-voice.md for professional tone and active voice.",
+                                            "C:/Projects/References/google-developer-style-guide/030-sentence-structure.md and 052-paragraph-structure.md for focused sentence and paragraph construction.",
+                                            "C:/Projects/References/google-developer-style-guide/046-headings.md, 048-lists.md, 055-tables.md, and 057-cross-references.md for scannable structure and references.",
+                                            "Comparative research completed on 2026-08-26 for Sentry MCP, GitHub MCP Server, Azure MCP Server, Playwright MCP, Atlassian Rovo MCP, Figma MCP, AWS Labs MCP, and Cloudflare MCP."
+                                        ],
+                    "future_implementation_plan":  [
+                                                       "P1: Define the machine-readable Documentation Reference Standard and reference-registry schema using the minimum sufficient existing MRD types and repository contract conventions.",
+                                                       "P2: Bind the reference registry to existing harvest-source identities and add role, bounded-use, provenance, freshness, lifecycle, licensing, and supersession semantics without duplicating acquisition configuration.",
+                                                       "P3: Pin the approved external implementation evidence to exact revisions or content hashes and record refresh policy.",
+                                                       "P4: Add validation that blocks non-normative or inferred reference material from becoming canonical KIS facts without explicit adoption through the owning authority.",
+                                                       "P5: Add deterministic generation of the human-readable Documentation Reference Standard and reference catalogue from validated machine-readable authority.",
+                                                       "P6: Add tests for authority separation, provenance, deterministic generation, stale/tamper detection, reference lifecycle, and conflict diagnostics.",
+                                                       "P7: After the standard is reviewed and implemented, use it as the governed basis for later HRD/documentation refinements rather than changing Work Management HRDs in this change."
+                                                   ],
+                    "tasks":  [
+                                  {
+                                      "id":  "T0",
+                                      "status":  "done",
+                                      "text":  "Raise the governed change and GitHub issue, load the documentation skill, and review the applicable MCP 2026 and Google Developer Documentation references."
+                                  },
+                                  {
+                                      "id":  "T1",
+                                      "status":  "done",
+                                      "text":  "Select the minimum sufficient KIS MRD types and define the prescriptive Documentation Reference Standard authority model."
+                                  },
+                                  {
+                                      "id":  "T2",
+                                      "status":  "done",
+                                      "text":  "Define the versioned reference-registry contract and its relationship to publication/harvest-sources.json."
+                                  },
+                                  {
+                                      "id":  "T3",
+                                      "status":  "done",
+                                      "text":  "Pin and classify the approved external implementation reference evidence, including licensing and refresh metadata."
+                                  },
+                                  {
+                                      "id":  "T4",
+                                      "status":  "done",
+                                      "text":  "Implement validation and deterministic generation for the standard and human review surface."
+                                  },
+                                  {
+                                      "id":  "T5",
+                                      "status":  "done",
+                                      "text":  "Verify authority separation, source coverage, provenance, determinism, drift handling, and generated readability before review."
+                                  }
+                              ],
+                    "risks":  [
+                                  "Authority confusion: readers or generators could mistake an external implementation example for KIS authority unless source roles are explicit and enforced.",
+                                  "Registry duplication: a new semantic reference registry could drift from publication/harvest-sources.json if identities and ownership are not linked cleanly.",
+                                  "Reference churn: external repositories and product documentation change independently and can make unpinned examples stale.",
+                                  "Overfitting: copying one external project\u0027s information architecture could distort KIS concepts or create unnecessary structure.",
+                                  "Licensing and attribution: harvested external content may carry reuse restrictions that differ from metadata-only reference use.",
+                                  "Generated-authority inversion: a polished HRD can appear authoritative unless the publication contract keeps write-back and fact ownership explicit."
+                              ],
+                    "future_acceptance":  [
+                                              "Every admitted documentation source has one explicit role, bounded permitted use, provenance identity, freshness strategy, and lifecycle state.",
+                                              "The official reference set distinguishes MCP normative protocol authority, Google prescriptive writing guidance, and non-normative implementation references.",
+                                              "The semantic reference registry does not duplicate harvest acquisition facts and can resolve its source identities to reproducible evidence.",
+                                              "No implementation reference or inferred evidence can populate canonical KIS factual reference content without an explicit governed adoption path.",
+                                              "Task documentation, human-readable specification, and generated reference have distinct source and presentation contracts.",
+                                              "The human-readable Documentation Reference Standard is generated from validated machine-readable authority and explains the model in plain English.",
+                                              "External-reference conflicts, stale evidence, missing hashes, and unsupported authority promotions fail visibly rather than being silently accepted.",
+                                              "Deterministic generation, provenance, stale/tamper checks, schema validation, and repository verification pass."
+                                          ],
+                    "preparation_acceptance":  [
+                                                   "Change 008 exists in an isolated branch-backed worktree and owns only .work/changes/008-documentation-reference-standard/**.",
+                                                   "GitHub issue 12 records the same preparation-only outcome and reference basis.",
+                                                   "The change records the approved initial reference set and bounded roles for every reference.",
+                                                   "The change records the MCP 2026, Google Developer Documentation, KIS governance, harvest-registry, and external comparative research basis used to prepare it.",
+                                                   "The change defines authority separation, future registry semantics, output classes, validation expectations, implementation plan, risks, and later acceptance criteria without implementing them.",
+                                                   "No tracked file outside the change directory is modified by this preparation."
+                                               ],
+                    "out_of_scope_for_preparation":  [
+                                                         "Creating or adopting prescriptive documentation-reference MRDs outside this change directory.",
+                                                         "Creating the future reference-registry schema or modifying publication/harvest-sources.json.",
+                                                         "Harvesting or vendoring external implementation documentation into the repository.",
+                                                         "Changing the publication contract, generator, renderer, generated HRDs, or generated reference pages.",
+                                                         "Changing Work Management documentation, Work Management behavior, or GitHub Project configuration.",
+                                                         "Changing MCP/FastMCP runtime protocol behavior or adopting new MCP 2026 runtime features.",
+                                                         "Adding validators, tests, CI behavior, or source-code implementation for the future standard."
+                                                     ],
+                    "closeout":  {
+                                     "state":  "implementation_complete_pending_review",
+                                     "verification":  [
+                                                          "Focused Documentation Reference Standard tests pass.",
+                                                          "Full repository pytest suite passes.",
+                                                          "scripts/verify.ps1 passes with locked offline dependency synchronization, all validators, all generated-output checks, and git diff --check."
+                                                      ],
+                                     "reviews":  [
+
+                                                 ],
+                                     "publication":  "generated/documentation-reference-standard/**",
+                                     "merge":  null,
+                                     "unresolved":  [
+                                                        "GitHub issue 12 exists, but governed Work Management Project capture remains blocked because kis-mcp-doc is not bound to the current kis-mcp Project repository configuration. This implementation does not bypass that boundary."
+                                                    ]
+                                 },
+                    "implementation":  {
+                                           "authorization":  "operator approved implementation in conversation:2026-08-26 after preparation commit 2785a3b7a6f42b22ef48e8b151473717a7af5a1e",
+                                           "selected_mrd_types":  [
+                                                                      "CON-POL",
+                                                                      "SEM-REG"
+                                                                  ],
+                                           "canonical_mrds":  [
+                                                                  "KIS-DOC-CON-POL-001",
+                                                                  "KIS-DOC-SEM-REG-001"
+                                                              ],
+                                           "contract":  "contracts/documentation/reference/v1/**",
+                                           "publication":  "publication/documentation-reference-standard.json",
+                                           "generated_review_surface":  "generated/documentation-reference-standard/**",
+                                           "validator":  "src/kis_mcp_doc/documentation_reference.py",
+                                           "canonical_verification":  "scripts/verify.ps1"
+                                       }
+                }
 }

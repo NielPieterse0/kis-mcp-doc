@@ -1,0 +1,100 @@
+{
+  "bundle_sha256": "6add3c2ee2137cecd272eedc83151bd747490030b22274b1692a47873ccac7a2",
+  "contract": {
+    "name": "documentation-reference-standard-build",
+    "version": 1
+  },
+  "files": [
+    {
+      "bytes": 419,
+      "path": "000-index.md",
+      "sha256": "73c7320926d381dd89a99a55eaeb9b92617a49da32e406359c2db468fbdd28ee"
+    },
+    {
+      "bytes": 3907,
+      "path": "001-specification.md",
+      "sha256": "51bcb9eb34c848d2ef4c0229fe10c8f61b33584d105201dbae874045e39e2934"
+    },
+    {
+      "bytes": 2573,
+      "path": "002-reference-catalogue.md",
+      "sha256": "4a3049eb7b772ef586ba9df7c70bf07884d84c1e07ee41bea39770489481be55"
+    },
+    {
+      "bytes": 10384,
+      "path": "data/reference-registry.json",
+      "sha256": "0daffac7e07d744a752affde559c65708568fd2ce6fc95d7672185717145d3cc"
+    }
+  ],
+  "input_set_sha256": "b96d60b414c18921aa43fb76a1b2a820a97d09fce00ddb0e084ba42c300a0b09",
+  "inputs": [
+    {
+      "bytes": 5712,
+      "path": "mrd/documentation/01-reference-standard.mrd.json",
+      "sha256": "da30a9f44828194a6b0b1e382c39936ae3d07705521dd6c07af60286b5133dc1"
+    },
+    {
+      "bytes": 8944,
+      "path": "mrd/documentation/02-reference-registry.mrd.json",
+      "sha256": "5a1f98e9fb937df209e303abc6fa3af3fd73c922a868e76519939d6dd42ec24c"
+    },
+    {
+      "bytes": 403,
+      "path": "publication/documentation-reference-standard.json",
+      "sha256": "35f4170ba7e70cabc664b6f880f41af40a897909c982c4cdc30cb03d5f412fdd"
+    },
+    {
+      "bytes": 5511,
+      "path": "contracts/mrd/v1/mrd.schema.json",
+      "sha256": "fb9f3210b022d8def12a92bfccc1cb45e5ccf1146fa9d59168baf3f630ded153"
+    },
+    {
+      "bytes": 1686,
+      "path": "contracts/documentation/reference/v1/standard.schema.json",
+      "sha256": "5169879bbf6f2438d805e79daf89288be7e06174136109ad195f189efea27995"
+    },
+    {
+      "bytes": 3013,
+      "path": "contracts/documentation/reference/v1/registry.schema.json",
+      "sha256": "5463214ffde7a87354bd4760a2f91af72258c5c8114cd9d01545874c33c578ec"
+    },
+    {
+      "bytes": 964,
+      "path": "contracts/documentation/reference/v1/publication.schema.json",
+      "sha256": "3c00d080610c02816a0d13e8b2677f7af3fefb777b0bd1d9f493ae4b1d7507b7"
+    },
+    {
+      "bytes": 1575,
+      "path": "contracts/documentation/reference/v1/manifest.schema.json",
+      "sha256": "c319f7a303e859787a59c0ff1a0299820977bcfd8a9542135ff67546e42d2e8e"
+    },
+    {
+      "bytes": 4012,
+      "path": "publication/harvest-sources.json",
+      "sha256": "c95235389e40f4761f345225db13a4465d16d4024f029858206571b6bd6ab4a7"
+    },
+    {
+      "bytes": 20315,
+      "path": "src/kis_mcp_doc/documentation_reference.py",
+      "sha256": "a4587ece5b73b39b0f3060001ba1879452f0dc3c43405b682329c1b16dc78578"
+    }
+  ],
+  "specification": {
+    "layout_profile": "mcp-spec",
+    "status": "draft",
+    "title": "Documentation Reference Standard",
+    "version": "1.0.0"
+  },
+  "validation": {
+    "checks": {
+      "authority": "pass",
+      "harvest_binding": "pass",
+      "lifecycle": "pass",
+      "pinning": "pass",
+      "provenance": "pass",
+      "schema": "pass"
+    },
+    "diagnostics": [],
+    "status": "valid"
+  }
+}

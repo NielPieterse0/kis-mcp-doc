@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kis.local/contracts/documentation/reference/v1/registry.schema.json",
+  "title": "KIS Documentation Reference Registry Content",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["registry_version", "refresh_policy", "licensing_policy", "evidence_records", "references"],
+  "properties": {
+    "registry_version": {"type":"string","pattern":"^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "refresh_policy": {"type":"string","minLength":1},
+    "licensing_policy": {"type":"string","minLength":1},
+    "evidence_records": {"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"object","additionalProperties":false,"required":["id","kind","source_path","git_commit","sha256"],"properties":{"id":{"type":"string","minLength":1},"kind":{"const":"governed_research_record"},"source_path":{"type":"string","minLength":1},"git_commit":{"type":"string","pattern":"^[a-f0-9]{40}$"},"sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"}}}},
+    "references": {"type":"array","minItems":10,"maxItems":10,"items":{"$ref":"#/$defs/reference"}}
+  },
+  "$defs": {
+    "reference": {
+      "type":"object","additionalProperties":false,
+      "required":["id","name","role","locator","harvest_source_id","permitted_uses","may_define_kis_facts","pin","freshness","lifecycle","license"],
+      "properties": {
+        "id":{"type":"string","pattern":"^[a-z0-9][a-z0-9-]*$"},
+        "name":{"type":"string","minLength":1},
+        "role":{"enum":["canonical_kis","normative_external","prescriptive_external","implementation_reference","inferred_evidence"]},
+        "locator":{"type":"string","minLength":1},
+        "harvest_source_id":{"type":["string","null"]},
+        "permitted_uses":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string","minLength":1}},
+        "may_define_kis_facts":{"type":"boolean"},        "pin":{"oneOf":[{"type":"null"},{"type":"object","additionalProperties":false,"required":["kind","value","revision"],"properties":{"kind":{"enum":["content_sha256","captured_corpus_sha256","research_evidence_sha256"]},"value":{"type":"string","pattern":"^[a-f0-9]{64}$"},"revision":{"type":"string","minLength":1}}}]},
+        "freshness":{"type":"object","additionalProperties":false,"required":["strategy","checked_on"],"properties":{"strategy":{"type":"string","minLength":1},"checked_on":{"type":"string","pattern":"^[0-9]{4}-[0-9]{2}-[0-9]{2}$"}}},
+        "lifecycle":{"type":"object","additionalProperties":false,"required":["state","supersedes","superseded_by"],"properties":{"state":{"enum":["active","deprecated","superseded","removed"]},"supersedes":{"type":"array","uniqueItems":true,"items":{"type":"string"}},"superseded_by":{"type":["string","null"]}}},
+        "license":{"type":"object","additionalProperties":false,"required":["reuse_boundary","status"],"properties":{"reuse_boundary":{"type":"string","minLength":1},"status":{"type":"string","minLength":1}}}
+      }
+    }
+  }
+}

@@ -4,9 +4,18 @@ import argparse
 import json
 from pathlib import Path
 
+from .documentation_reference import (
+    DocumentationReferenceRepository,
+    build_documentation_reference_standard,
+    verify_documentation_reference_standard,
+)
 from .governance import GovernanceRepository
 from .render import build_governance_spec, verify_governance_spec
-from .work_management import WorkManagementRepository, build_work_management_spec, verify_work_management_spec
+from .work_management import (
+    WorkManagementRepository,
+    build_work_management_spec,
+    verify_work_management_spec,
+)
 
 
 def _repository(root: Path) -> GovernanceRepository:
@@ -18,6 +27,12 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--root", type=Path, default=Path.cwd())
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("validate")
+    sub.add_parser("references-validate")
+    references_build = sub.add_parser("references-build")
+    references_build.add_argument("--output", type=Path)
+    references_build.add_argument("--replace", action="store_true")
+    references_check = sub.add_parser("references-check-generated")
+    references_check.add_argument("--output", type=Path)
     sub.add_parser("work-validate")
     work_build = sub.add_parser("work-build")
     work_build.add_argument("--output", type=Path)
@@ -40,6 +55,24 @@ def main(argv: list[str] | None = None) -> int:
         result = repo.validate()
         print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
         return 0 if result["status"] == "valid" else 1
+    if args.command == "references-validate":
+        result = DocumentationReferenceRepository(root).validate()
+        print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
+        return 0 if result["status"] == "valid" else 1
+    if args.command == "references-build":
+        output = args.output or (root / "generated" / "documentation-reference-standard")
+        manifest = build_documentation_reference_standard(
+            DocumentationReferenceRepository(root), output, replace=args.replace
+        )
+        print(json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True))
+        return 0
+    if args.command == "references-check-generated":
+        output = args.output or (root / "generated" / "documentation-reference-standard")
+        result = verify_documentation_reference_standard(
+            DocumentationReferenceRepository(root), output
+        )
+        print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
+        return 0 if result["status"] == "valid" else 1
 
     if args.command == "work-validate":
         result = WorkManagementRepository(root).validate()
@@ -47,7 +80,9 @@ def main(argv: list[str] | None = None) -> int:
         return 0 if result["status"] == "valid" else 1
     if args.command == "work-build":
         output = args.output or (root / "generated" / "work-management-spec")
-        manifest = build_work_management_spec(WorkManagementRepository(root), output, replace=args.replace)
+        manifest = build_work_management_spec(
+            WorkManagementRepository(root), output, replace=args.replace
+        )
         print(json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True))
         return 0
     if args.command == "work-check-generated":
@@ -67,14 +102,12 @@ def main(argv: list[str] | None = None) -> int:
         )
         print(json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True))
         return 0
-
     if args.command == "check-generated":
         result = verify_governance_spec(
             repo, publication, output, litho_package=args.litho_package
         )
         print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
         return 0 if result["status"] == "valid" else 1
-
     return 2
 
 

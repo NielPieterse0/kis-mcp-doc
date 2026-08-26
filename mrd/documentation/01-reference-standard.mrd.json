@@ -1,0 +1,66 @@
+{
+  "_mrd": {
+    "schema_version": 1,
+    "id": "KIS-DOC-CON-POL-001",
+    "title": "Documentation Reference Standard",
+    "module": "documentation",
+    "class": "CON",
+    "type": "POL",
+    "layer": "L1",
+    "record_mode": "prescriptive",
+    "status": "active",
+    "version": "1.0.0",
+    "dependencies": [
+      {"mrd_id": "KIS-KNOW-CON-POL-002", "relationship": "depends_on"},
+      {"mrd_id": "KIS-KNOW-SEM-REG-001", "relationship": "depends_on"},
+      {"mrd_id": "KIS-DOC-SEM-REG-001", "relationship": "governs"},
+      {"source": "repo:publication/harvest-sources.json", "relationship": "references"}
+    ],
+    "provenance": {
+      "sources": [
+        {"source_id": "KIS-OPERATOR-DIRECTION-2026-08-26-DOCUMENTATION-REFERENCE-STANDARD", "kind": "operator_direction", "role": "normative_adoption_basis", "locator": "conversation:2026-08-26", "revision": "implementation-approved", "sha256": null}
+      ],
+      "source_fingerprint": "sha256:d3bbcb111a0cdb3c83a2bcbad87ff21b886b07ba8454a4756ff3332b03396a16",
+      "fact_quality": "direct"
+    },
+    "supersedes": [],
+    "superseded_by": null
+  },  "content": {
+    "concern": "documentation_reference_authority",
+    "heading": "Documentation Reference Standard",
+    "purpose": "Govern how KIS documentation uses canonical KIS authority, normative protocol sources, prescriptive writing guidance, implementation references, and inferred evidence without creating duplicate fact ownership.",
+    "authority_model": [
+      {"role": "canonical_kis", "domain": "KIS-specific facts, behavior, policy, configuration, lifecycle, and adopted requirements", "may_define_kis_facts": true},
+      {"role": "normative_external", "domain": "The bounded conformance domain owned by the external standard", "may_define_kis_facts": false},
+      {"role": "prescriptive_external", "domain": "Presentation or practice guidance where KIS authority is silent", "may_define_kis_facts": false},
+      {"role": "implementation_reference", "domain": "Bounded reusable documentation or engineering patterns", "may_define_kis_facts": false},
+      {"role": "inferred_evidence", "domain": "Derived evidence requiring verification against an owning source", "may_define_kis_facts": false}
+    ],
+    "output_classes": [
+      {"class": "human_documentation", "purpose": "Teach concepts, tasks, workflows, examples, architecture, and operations in reader-oriented prose.", "source_rule": "Canonical KIS facts supply factual content; approved references may inform organization and presentation only."},
+      {"class": "human_readable_specification", "purpose": "Explain adopted normative behavior while preserving requirement strength, identifiers, ownership, and traceability.", "source_rule": "Adopted KIS MRDs and applicable normative external standards supply requirements; generated prose remains non-authoritative."},
+      {"class": "generated_reference", "purpose": "Expose exact tools, schemas, settings, policies, states, relationships, capabilities, permissions, and provenance.", "source_rule": "Only canonical KIS facts or explicitly applicable normative protocol facts may populate factual reference data."}
+    ],
+    "registry_contract": {
+      "owner": "KIS-DOC-SEM-REG-001",
+      "harvest_registry": "publication/harvest-sources.json",
+      "relationship": "semantic registry references acquisition identities; it does not duplicate acquisition configuration",
+      "required_lifecycle_states": ["active", "deprecated", "superseded", "removed"]
+    },    "conflict_behavior": {
+      "canonical_conflict": "surface_diagnostic_and_keep_canonical_owner",
+      "unsupported_promotion": "block",
+      "stale_or_unpinned_reference": "block_when_active_or_used_by_deterministic_generation"
+    },
+    "requirements": [
+      {"rule_id": "KIS-DOC-REF-001", "statement": "Every admitted documentation reference MUST declare one source role, bounded permitted uses, provenance, freshness strategy, lifecycle state, and authority limit.", "enforcement": "validator"},
+      {"rule_id": "KIS-DOC-REF-002", "statement": "KIS-owned factual content MUST remain sourced from its current canonical owner; a documentation reference MUST NOT become a second owner.", "enforcement": "validator"},
+      {"rule_id": "KIS-DOC-REF-003", "statement": "MCP 2026-07-28 MUST be treated as normative only within its applicable MCP protocol-conformance domain.", "enforcement": "validator"},
+      {"rule_id": "KIS-DOC-REF-004", "statement": "Google Developer Documentation guidance MUST remain presentation guidance and MUST NOT define KIS runtime or governance semantics.", "enforcement": "validator"},
+      {"rule_id": "KIS-DOC-REF-005", "statement": "Implementation references and inferred evidence MUST NOT populate canonical KIS facts without a separately governed adoption decision.", "enforcement": "validator"},
+      {"rule_id": "KIS-DOC-REF-006", "statement": "Material used by deterministic generation MUST resolve to a reproducible revision or content hash; live moving web content MUST NOT be a silent build input.", "enforcement": "validator"},
+      {"rule_id": "KIS-DOC-REF-007", "statement": "Contradictions with a canonical owner MUST surface as diagnostics and MUST NOT silently change the canonical value.", "enforcement": "validator"},
+      {"rule_id": "KIS-DOC-REF-008", "statement": "Generated documentation MUST remain a deterministic review projection with no write-back authority.", "enforcement": "generator"},
+      {"rule_id": "KIS-DOC-REF-009", "statement": "External content MUST NOT be harvested beyond metadata or bounded evidence until licensing, attribution, and reuse constraints are recorded.", "enforcement": "workflow"}
+    ]
+  }
+}
