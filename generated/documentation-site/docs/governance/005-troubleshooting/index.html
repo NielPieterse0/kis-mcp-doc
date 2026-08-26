@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Troubleshoot governance failures</title><link rel="stylesheet" href="/assets/site.css"></head><body><header><a href="/">KIS Documentation</a><nav><a href="/docs/">Docs</a> <a href="/specification/">Specification</a> <a href="/reference/">Reference</a></nav></header><main><div class="breadcrumbs"><a href="/">Home</a> / <a href="/docs/">Docs</a> / Governance Documentation</div><h1>Troubleshoot governance failures</h1>
+<p>Use canonical stop conditions and validation evidence to decide what must be fixed before work continues.</p>
+<h2>Common blocking situations</h2>
+<ul>
+<li>required authority cannot be resolved.</li>
+<li>a required need has no representable type and no governed extension path.</li>
+<li>required dependency or canonical owner is unresolved.</li>
+<li>blocking governance validation fails.</li>
+<li>requested mutation exceeds admitted scope or authority.</li>
+<li>source validation or deterministic generation fails.</li>
+</ul>
+<h2>Validation evidence</h2>
+<p>Validation uses stable reason codes. Do not infer past a blocking diagnostic.</p>
+<ul>
+<li>`MRD_SCHEMA_INVALID`</li>
+<li>`MRD_RULE_ID_DUPLICATE`</li>
+<li>`MRD_GOVERNANCE_CONCERN_MISSING`</li>
+<li>`MRD_GOVERNANCE_CONCERN_DUPLICATE`</li>
+<li>`MRD_ID_CLASS_TYPE_MISMATCH`</li>
+<li>`MRD_CLASS_UNKNOWN`</li>
+<li>`MRD_TYPE_INVALID`</li>
+<li>`MRD_CATALOG_COUNT_MISMATCH`</li>
+<li>`MRD_LAYER_INVALID`</li>
+<li>`MRD_DEPENDENCY_UNRESOLVED`</li>
+<li>`MRD_DEPENDENCY_LAYER_VIOLATION`</li>
+<li>`MRD_DEPENDENCY_CYCLE`</li>
+<li>`MRD_DEPENDENCY_DUPLICATE`</li>
+<li>`MRD_SOURCE_UNRESOLVED`</li>
+<li>`MRD_SOURCE_FINGERPRINT_MISMATCH`</li>
+<li>`MRD_SOURCE_HASH_MISMATCH`</li>
+<li>`MRD_NORMATIVE_INFERENCE_PROHIBITED`</li>
+<li>`MRD_RECORD_MODE_INVALID`</li>
+<li>`MRD_STATUS_INVALID`</li>
+<li>`MRD_EVD_RECORD_MODE_INVALID`</li>
+<li>`MRD_META_RECORD_MODE_INVALID`</li>
+<li>`MRD_SUPERSESSION_UNRESOLVED`</li>
+<li>`MRD_CLASS_CATALOG_MISMATCH`</li>
+<li>`MRD_LAYER_CATALOG_MISMATCH`</li>
+<li>`MRD_RECORD_MODE_CATALOG_MISMATCH`</li>
+<li>`MRD_META_FACT_QUALITY_INVALID`</li>
+<li>`MRD_VALIDATION_CONTRACT_MISMATCH`</li>
+<li>`MRD_APPLICABILITY_CATALOG_MISMATCH`</li>
+<li>`MRD_RELATIONSHIP_UNKNOWN`</li>
+<li>`MRD_OPERATOR_BEHAVIOR_INVALID`</li>
+<li>`MRD_ENFORCEMENT_BINDING_INVALID`</li>
+</ul>
+<p>Use the <a href="/specification/governance/001-specification/">Governance Specification</a> to resolve a reason code against its normative validation contract.</p><nav class="prev-next"><a rel="prev" href="/docs/governance/004-mrd-lifecycle/">Previous</a> <a rel="next" href="/docs/governance/006-examples/">Next</a></nav></main></body></html>

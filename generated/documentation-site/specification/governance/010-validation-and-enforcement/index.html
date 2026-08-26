@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Validation and Enforcement</title><link rel="stylesheet" href="/assets/site.css"></head><body><header><a href="/">KIS Documentation</a><nav><a href="/docs/">Docs</a> <a href="/specification/">Specification</a> <a href="/reference/">Reference</a></nav></header><main><div class="breadcrumbs"><a href="/">Home</a> / <a href="/specification/">Specification</a> / kis-op Governance Specification</div><h1>Validation and Enforcement</h1>
+<p>&lt;div id=&quot;enable-section-numbers&quot; /&gt;</p>
+<p><a href="/specification/governance/009-kis-op-governance-behavior/">Previous: kis-op Governance Behavior</a> | <a href="/specification/governance/">Index</a></p>
+<p>Governance validation combines structural checks, deterministic semantic checks, workflow controls, generation checks, and explicit review gates. Blocking failures fail closed and produce diagnosable results.</p>
+<h2>Validation model</h2>
+<p>Validation first establishes that the governance set is structurally valid, then evaluates the cross-record semantics that depend on that structure. A blocking failure prevents the affected governance state from being accepted as valid and produces machine-readable diagnostics.</p>
+<p>&lt;span id=&quot;rule-kis-mrd-val-001&quot;&gt;&lt;/span&gt;</p>
+<p>Every MRD MUST pass structural, dependency, provenance, and lifecycle validation before it is accepted as valid.</p>
+<p>&lt;span id=&quot;rule-kis-mrd-val-002&quot;&gt;&lt;/span&gt;</p>
+<p>Validation failures MUST emit stable reason codes and machine-readable diagnostics.</p>
+<p>&lt;span id=&quot;rule-kis-mrd-val-003&quot;&gt;&lt;/span&gt;</p>
+<p>A validation result MUST report classification, layering, dependencies, provenance, lifecycle, and schema check status.</p>
+<p>&lt;span id=&quot;rule-kis-mrd-val-004&quot;&gt;&lt;/span&gt;</p>
+<p>Governance MRDs MUST validate through the public composed governance MRD profile, which binds the reusable core envelope to governance content.</p>
+<p>&lt;span id=&quot;rule-kis-mrd-val-005&quot;&gt;&lt;/span&gt;</p>
+<p>Any structural schema failure in the governance MRD set MUST short-circuit semantic validation for the entire set, because cross-record semantics are valid only over a structurally valid governance set.</p>
+<h2>Enforcement modes</h2>
+<p>The following table identifies where each kind of governance requirement is enforced and whether failure blocks progress:</p>
+<p>| Mode | Meaning | Blocking |</p>
+<p>|---|---|---|</p>
+<p>| `schema` | JSON Schema rejects structurally invalid authority before semantic checks. | Yes |</p>
+<p>| `validator` | Deterministic semantic validation emits stable machine-readable reason codes. | Yes |</p>
+<p>| `workflow` | KIS/kis-op governed workflow prevents prohibited state transitions or unadmitted mutation. | Yes |</p>
+<p>| `generator` | Deterministic generation and stale-output verification enforce one-way source-to-view behavior. | Yes |</p>
+<p>| `review` | Human or agent review is required where semantic adequacy cannot be proven deterministically. | Yes |</p>
+<h2>Validation dimensions</h2>
+<p>Validation covers the following dimensions. Each dimension groups checks that evaluate one governance concern:</p>
+<h3>Structural</h3>
+<ul>
+<li>required fields present</li>
+<li>identifier shape</li>
+<li>schema-compatible envelope and payload</li>
+<li>exactly one owner for each governance concern</li>
+<li>public composed governance MRD profile</li>
+</ul>
+<h3>Applicability</h3>
+<ul>
+<li>all 47 catalog types have one selection trigger</li>
+<li>applicability catalog matches classification catalog exactly</li>
+<li>minimum-sufficient selection is prescribed</li>
+<li>extension path remains versioned</li>
+</ul>
+<h3>Ownership</h3>
+<ul>
+<li>one canonical owner is prescribed for each governed fact</li>
+<li>dependency relationship labels use the governed relationship vocabulary</li>
+<li>generated projections remain non-authoritative</li>
+</ul>
+<h3>Dependency</h3>
+<ul>
+<li>all targets resolve</li>
+<li>layer direction valid</li>
+<li>no cycles</li>
+<li>no duplicate edges</li>
+<li>stable dependency identities</li>
+</ul>
+<h3>Provenance</h3>
+<ul>
+<li>source kinds valid</li>
+<li>repo sources resolve</li>
+<li>external references are fingerprinted</li>
+<li>source fingerprint matches source set</li>
+<li>no inferred normative facts</li>
+</ul>
+<h3>Lifecycle</h3>
+<ul>
+<li>record mode recognized</li>
+<li>status valid for mode</li>
+<li>active authority resolves</li>
+<li>EVD descriptive posture</li>
+<li>META meta posture</li>
+<li>supersession targets resolve</li>
+</ul>
+<h3>Operator behavior</h3>
+<ul>
+<li>kis-op phases are complete and ordered</li>
+<li>blocking stop conditions are explicit</li>
+<li>generated review surface is downstream of validated authority</li>
+</ul>
+<h2>Validation result</h2>
+<p>A validation result has one of these statuses: `valid`, `invalid`. It reports these check keys: `classification`, `applicability`, `ownership`, `layering`, `dependencies`, `provenance`, `lifecycle`, `operator_behavior`, `schema`. Machine-readable diagnostics on failure are required.</p>
+<h2>Stable reason codes</h2>
+<p>Validation failures use stable reason codes so callers can diagnose failure without parsing prose. The complete catalog is exact generated reference rather than part of the conceptual flow.</p>
+<p>See the <a href="/specification/governance/022-validation-reason-codes/">validation reason-code reference</a> for the complete list.</p>
+<h2>Requirement traceability</h2>
+<p>The following table preserves the stable rule identifier and enforcement binding for each requirement stated in this chapter:</p>
+<p>| Rule | Enforcement |</p>
+<p>|---|---|</p>
+<p>| `KIS-MRD-VAL-001` | `validator` |</p>
+<p>| `KIS-MRD-VAL-002` | `validator` |</p>
+<p>| `KIS-MRD-VAL-003` | `validator` |</p>
+<p>| `KIS-MRD-VAL-004` | `schema` |</p>
+<p>| `KIS-MRD-VAL-005` | `validator` |</p>
+<h2>Source and authority</h2>
+<p>This page projects `KIS-KNOW-EVL-TST-001` version `2.0.0`. The MRD remains authoritative; this page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/specification/governance/009-kis-op-governance-behavior/">Previous</a> <a rel="next" href="/specification/governance/020-applicability-catalog/">Next</a></nav></main></body></html>

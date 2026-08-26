@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Dependency Map</title><link rel="stylesheet" href="/assets/site.css"></head><body><header><a href="/">KIS Documentation</a><nav><a href="/docs/">Docs</a> <a href="/specification/">Specification</a> <a href="/reference/">Reference</a></nav></header><main><div class="breadcrumbs"><a href="/">Home</a> / <a href="/reference/">Reference</a> / governance-spec</div><h1>Dependency Map</h1><pre>{
+  &quot;_mrd_projection&quot;: {
+    &quot;class&quot;: &quot;META&quot;,
+    &quot;record_mode&quot;: &quot;meta&quot;,
+    &quot;type&quot;: &quot;DEP&quot;
+  },
+  &quot;edges&quot;: [
+    {
+      &quot;from&quot;: &quot;KIS-KNOW-CON-CTR-001&quot;,
+      &quot;relationship&quot;: &quot;depends_on&quot;,
+      &quot;target_kind&quot;: &quot;mrd&quot;,
+      &quot;to&quot;: &quot;KIS-KNOW-SEM-ENUM-001&quot;
+    },
+    {
+      &quot;from&quot;: &quot;KIS-KNOW-CON-CTR-001&quot;,
+      &quot;relationship&quot;: &quot;depends_on&quot;,
+      &quot;target_kind&quot;: &quot;mrd&quot;,
+      &quot;to&quot;: &quot;KIS-KNOW-SEM-REG-001&quot;
+    },
+    {
+      &quot;from&quot;: &quot;KIS-KNOW-CON-POL-001&quot;,
+      &quot;relationship&quot;: &quot;depends_on&quot;,
+      &quot;target_kind&quot;: &quot;mrd&quot;,
+      &quot;to&quot;: &quot;KIS-KNOW-SEM-REG-001&quot;
+    },
+    {
+      &quot;from&quot;: &quot;KIS-KNOW-CON-POL-002&quot;,
+      &quot;relationship&quot;: &quot;depends_on&quot;,
+      &quot;target_kind&quot;: &quot;mrd&quot;,
+      &quot;to&quot;: &quot;KIS-KNOW-SEM-REG-001&quot;
+    },
+    {
+      &quot;from&quot;: &quot;KIS-KNOW-DEC-TAB-001&quot;,
+      &quot;relationship&quot;: &quot;depends_on&quot;,
+      &quot;target_kind&quot;: &quot;mrd&quot;,
+      &quot;to&quot;: &quot;KIS-KNOW-SEM-REG-001&quot;
+    },
+    {
+      &quot;from&quot;: &quot;KIS-KNOW-EVL-TST-001&quot;,
+      &quot;relationship&quot;: &quot;depends_on&quot;,
+      &quot;target_kind&quot;: &quot;mrd&quot;,
+      &quot;to&quot;: &quot;KIS-KNOW-CON-CTR-001&quot;
+    },
+    {
+      &quot;from&quot;: &quot;KIS-KNOW-EVL-TST-001&quot;,
+      &quot;relationship&quot;: &quot;depends_on&quot;,
+      &quot;target_kind&quot;: &quot;mrd&quot;,
+      &quot;to&quot;: &quot;KIS-KNOW-CON-POL-001&quot;
+    },
+    {
+      &quot;from&quot;: &quot;KIS-KNOW-EVL-TST-001&quot;,
+      &quot;relationship&quot;: &quot;depends_on&quot;,
+      &quot;target_kind&quot;: &quot;mrd&quot;,
+      &quot;to&quot;: &quot;KIS-KNOW-CON-POL-002&quot;
+    },
+    {
+      &quot;from&quot;: &quot;KIS-KNOW-EVL-TST-001&quot;,
+      &quot;relationship&quot;: &quot;depends_on&quot;,
+      &quot;target_kind&quot;: &quot;mrd&quot;,
+      &quot;to&quot;: &quot;KIS-KNOW-DEC-TAB-001&quot;
+    },
+    {
+      &quot;from&quot;: &quot;KIS-KNOW-EVL-TST-001&quot;,
+      &quot;relationship&quot;: &quot;depends_on&quot;,
+      &quot;target_kind&quot;: &quot;mrd&quot;,
+      &quot;to&quot;: &quot;KIS-KNOW-SEM-ENUM-001&quot;
+    },
+    {
+      &quot;from&quot;: &quot;KIS-KNOW-EVL-TST-001&quot;,
+      &quot;relationship&quot;: &quot;depends_on&quot;,
+      &quot;target_kind&quot;: &quot;mrd&quot;,
+      &quot;to&quot;: &quot;KIS-KNOW-SEM-REG-001&quot;
+    },
+    {
+      &quot;from&quot;: &quot;KIS-KNOW-EVL-TST-001&quot;,
+      &quot;relationship&quot;: &quot;depends_on&quot;,
+      &quot;target_kind&quot;: &quot;mrd&quot;,
+      &quot;to&quot;: &quot;KIS-KNOW-WRK-STM-001&quot;
+    },
+    {
+      &quot;from&quot;: &quot;KIS-KNOW-EVL-TST-001&quot;,
+      &quot;relationship&quot;: &quot;depends_on&quot;,
+      &quot;target_kind&quot;: &quot;mrd&quot;,
+      &quot;to&quot;: &quot;KIS-KNOW-WRK-WFL-001&quot;
+    },
+    {
+      &quot;from&quot;: &quot;KIS-KNOW-EVL-TST-001&quot;,
+      &quot;relationship&quot;: &quot;validated_by&quot;,
+      &quot;target_kind&quot;: &quot;source&quot;,
+      &quot;to&quot;: &quot;repo:contracts/governance/v1/content.schema.json&quot;
+    },
+    {
+      &quot;from&quot;: &quot;KIS-KNOW-EVL-TST-001&quot;,
+      &quot;relationship&quot;: &quot;validated_by&quot;,
+      &quot;target_kind&quot;: &quot;source&quot;,
+      &quot;to&quot;: &quot;repo:contracts/governance/v1/governance-mrd.schema.json&quot;
+    },
+    {
+      &quot;from&quot;: &quot;KIS-KNOW-EVL-TST-001&quot;,
+      &quot;relationship&quot;: &quot;validated_by&quot;,
+      &quot;target_kind&quot;: &quot;source&quot;,
+      &quot;to&quot;: &quot;repo:contracts/mrd/v1/mrd.schema.json&quot;
+    },
+    {
+      &quot;from&quot;: &quot;KIS-KNOW-SEM-ENUM-001&quot;,
+      &quot;relationship&quot;: &quot;depends_on&quot;,
+      &quot;target_kind&quot;: &quot;mrd&quot;,
+      &quot;to&quot;: &quot;KIS-KNOW-SEM-REG-001&quot;
+    },
+    {
+      &quot;from&quot;: &quot;KIS-KNOW-WRK-STM-001&quot;,
+      &quot;relationship&quot;: &quot;depends_on&quot;,
+      &quot;target_kind&quot;: &quot;mrd&quot;,
+      &quot;to&quot;: &quot;KIS-KNOW-CON-POL-001&quot;
+    },
+    {
+      &quot;from&quot;: &quot;KIS-KNOW-WRK-WFL-001&quot;,
+      &quot;relationship&quot;: &quot;depends_on&quot;,
+      &quot;target_kind&quot;: &quot;mrd&quot;,
+      &quot;to&quot;: &quot;KIS-KNOW-CON-CTR-001&quot;
+    },
+    {
+      &quot;from&quot;: &quot;KIS-KNOW-WRK-WFL-001&quot;,
+      &quot;relationship&quot;: &quot;depends_on&quot;,
+      &quot;target_kind&quot;: &quot;mrd&quot;,
+      &quot;to&quot;: &quot;KIS-KNOW-CON-POL-001&quot;
+    },
+    {
+      &quot;from&quot;: &quot;KIS-KNOW-WRK-WFL-001&quot;,
+      &quot;relationship&quot;: &quot;depends_on&quot;,
+      &quot;target_kind&quot;: &quot;mrd&quot;,
+      &quot;to&quot;: &quot;KIS-KNOW-CON-POL-002&quot;
+    },
+    {
+      &quot;from&quot;: &quot;KIS-KNOW-WRK-WFL-001&quot;,
+      &quot;relationship&quot;: &quot;depends_on&quot;,
+      &quot;target_kind&quot;: &quot;mrd&quot;,
+      &quot;to&quot;: &quot;KIS-KNOW-DEC-TAB-001&quot;
+    },
+    {
+      &quot;from&quot;: &quot;KIS-KNOW-WRK-WFL-001&quot;,
+      &quot;relationship&quot;: &quot;depends_on&quot;,
+      &quot;target_kind&quot;: &quot;mrd&quot;,
+      &quot;to&quot;: &quot;KIS-KNOW-SEM-ENUM-001&quot;
+    },
+    {
+      &quot;from&quot;: &quot;KIS-KNOW-WRK-WFL-001&quot;,
+      &quot;relationship&quot;: &quot;depends_on&quot;,
+      &quot;target_kind&quot;: &quot;mrd&quot;,
+      &quot;to&quot;: &quot;KIS-KNOW-SEM-REG-001&quot;
+    },
+    {
+      &quot;from&quot;: &quot;KIS-KNOW-WRK-WFL-001&quot;,
+      &quot;relationship&quot;: &quot;depends_on&quot;,
+      &quot;target_kind&quot;: &quot;mrd&quot;,
+      &quot;to&quot;: &quot;KIS-KNOW-WRK-STM-001&quot;
+    }
+  ]
+}
+</pre></main></body></html>

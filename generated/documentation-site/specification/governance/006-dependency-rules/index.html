@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Dependency Rules</title><link rel="stylesheet" href="/assets/site.css"></head><body><header><a href="/">KIS Documentation</a><nav><a href="/docs/">Docs</a> <a href="/specification/">Specification</a> <a href="/reference/">Reference</a></nav></header><main><div class="breadcrumbs"><a href="/">Home</a> / <a href="/specification/">Specification</a> / kis-op Governance Specification</div><h1>Dependency Rules</h1>
+<p>&lt;div id=&quot;enable-section-numbers&quot; /&gt;</p>
+<p><a href="/specification/governance/005-layering/">Previous: Layering</a> | <a href="/specification/governance/007-provenance/">Next: Provenance</a> | <a href="/specification/governance/">Index</a></p>
+<p>Dependencies make authority relationships explicit and verifiable. Each dependency identifies either another MRD or a canonical repository source that the MRD requires.</p>
+<h2>Dependency model</h2>
+<p>A governed dependency must identify a stable target, resolve successfully, follow the authority-layer direction, and remain part of an acyclic graph. Generated dependency maps are projections of that validated graph, not a second source of truth.</p>
+<p>&lt;span id=&quot;rule-kis-mrd-dep-001&quot;&gt;&lt;/span&gt;</p>
+<p>Every dependency target MUST resolve.</p>
+<p>&lt;span id=&quot;rule-kis-mrd-dep-002&quot;&gt;&lt;/span&gt;</p>
+<p>MRD-to-MRD dependency direction MUST satisfy the L0-L5 authority ordering.</p>
+<p>&lt;span id=&quot;rule-kis-mrd-dep-003&quot;&gt;&lt;/span&gt;</p>
+<p>The MRD dependency graph MUST be acyclic.</p>
+<p>&lt;span id=&quot;rule-kis-mrd-dep-004&quot;&gt;&lt;/span&gt;</p>
+<p>Duplicate dependency edges MUST be rejected.</p>
+<p>&lt;span id=&quot;rule-kis-mrd-dep-005&quot;&gt;&lt;/span&gt;</p>
+<p>Dependency identities MUST be stable; canonical non-MRD dependencies MUST use repo: paths.</p>
+<p>&lt;span id=&quot;rule-kis-mrd-dep-006&quot;&gt;&lt;/span&gt;</p>
+<p>A META-DEP projection MAY be generated from the validated dependency graph and MUST NOT become primary authority.</p>
+<h2>Dependency targets</h2>
+<p>Dependencies use one of the following target forms. MRD dependencies use stable MRD IDs; canonical repository dependencies use `repo:` paths:</p>
+<p>| Kind | Field | Example |</p>
+<p>|---|---|---|</p>
+<p>| mrd | `mrd_id` | `KIS-KNOW-SEM-REG-001` |</p>
+<p>| canonical_source | `source` | `repo:contracts/mrd/v1/mrd.schema.json` |</p>
+<h2>Requirement traceability</h2>
+<p>The following table preserves the stable rule identifier and enforcement binding for each requirement stated in this chapter:</p>
+<p>| Rule | Enforcement |</p>
+<p>|---|---|</p>
+<p>| `KIS-MRD-DEP-001` | `validator` |</p>
+<p>| `KIS-MRD-DEP-002` | `validator` |</p>
+<p>| `KIS-MRD-DEP-003` | `validator` |</p>
+<p>| `KIS-MRD-DEP-004` | `validator` |</p>
+<p>| `KIS-MRD-DEP-005` | `validator` |</p>
+<p>| `KIS-MRD-DEP-006` | `generator` |</p>
+<h2>Source and authority</h2>
+<p>This page projects `KIS-KNOW-CON-CTR-001` version `1.0.0`. The MRD remains authoritative; this page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/specification/governance/005-layering/">Previous</a> <a rel="next" href="/specification/governance/007-provenance/">Next</a></nav></main></body></html>

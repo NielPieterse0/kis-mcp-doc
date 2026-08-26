@@ -1,0 +1,34 @@
+{
+  "schema_version": 4,
+  "change_id": "014-documentation-site-and-navigation",
+  "status": "active",
+  "branch": "change/014-documentation-site-and-navigation",
+  "worktree": ".work/worktrees/014-documentation-site-and-navigation",
+  "base": "main",
+  "outcome": "Create a deterministic reader-facing documentation site derived from registered publication families without changing governed semantics.",
+  "owned_paths": [
+    ".work/changes/014-documentation-site-and-navigation/**",
+    "publication/documentation-site.json",
+    "src/kis_mcp_doc/documentation_site.py",
+    "src/kis_mcp_doc/cli.py",
+    "generated/documentation-site/**",
+    "tests/test_documentation_site.py",
+    "scripts/verify.ps1"
+  ],
+  "shared_paths": [],
+  "excluded_paths": ["mrd/governance/**", "mrd/work-management/**", "mrd/documentation/**", "contracts/**", "C:/Projects/kis-mcp/**", "C:/Projects/References/**"],
+  "dependencies": ["011-publication-kernel-and-family-registry", "013-task-oriented-human-documentation"],
+  "integration_owner": null,
+  "complexity": "large",
+  "risk_triggers": ["public_contract"],
+  "base_evidence": {
+    "local_sha": "21bf5e53c7007cbc8ca690c2f73d4dcba66c45a2",
+    "local_tree": "38dd45853a0124e80927c06e7db9e5414d6e8c73",
+    "upstream_sha": "21bf5e53c7007cbc8ca690c2f73d4dcba66c45a2",
+    "upstream_tree": "38dd45853a0124e80927c06e7db9e5414d6e8c73",
+    "upstream_ref": "github:main",
+    "evidence_source": "verified_github_default",
+    "relation": "equal"
+  },
+  "work_management": {"project_id": "kis-mcp", "record_id": "SPEC-014", "source_repository": "NielPieterse0/kis-mcp-doc", "source_number": 25, "source_kind": "issue", "documentation_impact": "planned"}
+}

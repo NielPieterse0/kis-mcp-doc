@@ -10,6 +10,7 @@ from .documentation_reference import (
     verify_documentation_reference_standard,
 )
 from .governance import GovernanceRepository
+from .documentation_site import build_documentation_site, validate_documentation_site, verify_documentation_site
 from .publication_kernel import (
     build_registered_publication,
     validate_registered_publications,
@@ -32,6 +33,12 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--root", type=Path, default=Path.cwd())
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("validate")
+    sub.add_parser("site-validate")
+    site_build = sub.add_parser("site-build")
+    site_build.add_argument("--output", type=Path)
+    site_build.add_argument("--replace", action="store_true")
+    site_check = sub.add_parser("site-check-generated")
+    site_check.add_argument("--output", type=Path)
     publications_validate = sub.add_parser("publications-validate")
     publications_validate.add_argument("--family", action="append")
     publications_build = sub.add_parser("publications-build")
@@ -63,6 +70,18 @@ def main(argv: list[str] | None = None) -> int:
     root = args.root.resolve()
     repo = _repository(root)
     publication = root / "publication" / "governance-spec.json"
+    if args.command == "site-validate":
+        result = validate_documentation_site(root)
+        print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
+        return 0 if result["status"] == "valid" else 1
+    if args.command == "site-build":
+        manifest = build_documentation_site(root, args.output, replace=args.replace)
+        print(json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True))
+        return 0
+    if args.command == "site-check-generated":
+        result = verify_documentation_site(root, args.output)
+        print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
+        return 0 if result["status"] == "valid" else 1
     if args.command == "publications-validate":
         result = validate_registered_publications(root, family_ids=args.family)
         print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))

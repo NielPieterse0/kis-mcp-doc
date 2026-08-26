@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Work operations</title><link rel="stylesheet" href="/assets/site.css"></head><body><header><a href="/">KIS Documentation</a><nav><a href="/docs/">Docs</a> <a href="/specification/">Specification</a> <a href="/reference/">Reference</a></nav></header><main><div class="breadcrumbs"><a href="/">Home</a> / <a href="/specification/">Specification</a> / KIS Work Management Specification</div><h1>Work operations</h1>
+<p>&lt;div id=&quot;enable-section-numbers&quot; /&gt;</p>
+<p><a href="/specification/work-management/003-work-lifecycle/">Previous: Work lifecycle</a> | <a href="/specification/work-management/005-next-work-selection/">Next: Next-work selection</a> | <a href="/specification/work-management/">Index</a></p>
+<p>&lt;span id=&quot;mrd-kis-work-wrk-wfl-001&quot;&gt;&lt;/span&gt;</p>
+<p>Work Management exposes a bounded set of operations for intake, claiming, state changes, verification, and post-merge commissioning. Each operation has a defined effect and implementation surface so callers can distinguish reads from mutations and evidence collection.</p>
+<h2>Mutation safety</h2>
+<p>External Project mutations require `apply=true` and an explicit idempotency key.</p>
+<h2>Operations</h2>
+<p>| Operation | Purpose | Effect | Implementation surface |</p>
+<p>|---|---|---|---|</p>
+<p>| Capture work (`capture_work`) | Capture one bounded source record into Work without duplicating source identity. | `external_or_local_change` | `project_management_reconcile` |</p>
+<p>| Create work (`create_work`) | Create or reconcile one new Work record through the configured provider boundary. | `external_or_local_change` | `project_management_reconcile` |</p>
+<p>| Take next work (`take_next_work`) | Select the next eligible Ready item and establish its execution claim. | `external_or_local_change` | `project_management_take_next_work` |</p>
+<p>| Claim work (`claim_work`) | Establish one execution owner after revision and state guards pass. | `external_or_local_change` | `project_management_claim_work` |</p>
+<p>| Release work (`release_work`) | Clear an execution claim through the bounded command plane. | `external_or_local_change` | `project_management_release_work` |</p>
+<p>| Hold work (`hold_work`) | Move work to On Hold only with the required review trigger. | `external_or_local_change` | `project_management_hold_work` |</p>
+<p>| Defer work (`defer_work`) | Move work to Deferred only with the required review trigger. | `external_or_local_change` | `project_management_defer_work` |</p>
+<p>| Complete work (`complete_work`) | Complete work only after configured completion and evidence guards pass. | `external_or_local_change` | `project_management_complete_work` |</p>
+<p>| Readiness (`readiness`) | Evaluate deterministic queue eligibility and readiness evidence. | `read_only` | `project_management_next_work` |</p>
+<p>| Assignment packet (`assignment_packet`) | Bind execution to a generation-specific work packet and reservation fence. | `local_change` | `coordinator_work_packet` |</p>
+<p>| Verification (`verification`) | Evaluate repository/source verification evidence for the exact delivery identity. | `read_only_or_external_evidence` | `project_management_merge_readiness` |</p>
+<p>| Commissioning (`commissioning`) | Track post-merge live verification separately from source verification. | `external_or_local_change` | `issue_419_commissioning` |</p>
+<p>| Authority revision (`authority_revision`) | Retain provider/Git revision evidence used for optimistic concurrency and traceability. | `read_only` | `project_management_inventory` |</p>
+<h2>Result envelope</h2>
+<p>Operation results use a common envelope so readers and tools can identify when the observation was made, what target was resolved, where the evidence came from, the operation result, and any valid next action.</p>
+<ul>
+<li>`observed_at`</li>
+<li>`resolved_target`</li>
+<li>`provenance`</li>
+<li>`result`</li>
+<li>`next_actions`</li>
+</ul>
+<h2>Typed errors</h2>
+<p>Failures use bounded error categories rather than unstructured provider text:</p>
+<ul>
+<li>`provider_unavailable`</li>
+<li>`project_not_commissioned`</li>
+<li>`inventory_incomplete`</li>
+<li>`conflict`</li>
+<li>`invalid_transition`</li>
+<li>`not_found`</li>
+<li>`invalid_request`</li>
+<li>`internal`</li>
+</ul>
+<h2>Verification domains</h2>
+<p>Source verification and live verification are separate evidence domains. A successful repository check does not by itself prove the post-merge runtime surface.</p>
+<p>| Domain | Field | Meaning |</p>
+<p>|---|---|---|</p>
+<p>| `source_verification` | Verification | Repository/source verification evidence tied to the delivery identity. |</p>
+<p>| `live_verification` | Live Verification | Post-merge runtime proof tied to the actual exposed capability or runtime path. |</p>
+<h2>Source and authority</h2>
+<p>This page projects `KIS-WORK-WRK-WFL-001` version `1.0.0`. The MRD remains authoritative; this generated page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/specification/work-management/003-work-lifecycle/">Previous</a> <a rel="next" href="/specification/work-management/005-next-work-selection/">Next</a></nav></main></body></html>

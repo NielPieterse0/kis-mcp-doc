@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Understand MRD lifecycle</title><link rel="stylesheet" href="/assets/site.css"></head><body><header><a href="/">KIS Documentation</a><nav><a href="/docs/">Docs</a> <a href="/specification/">Specification</a> <a href="/reference/">Reference</a></nav></header><main><div class="breadcrumbs"><a href="/">Home</a> / <a href="/docs/">Docs</a> / Governance Documentation</div><h1>Understand MRD lifecycle</h1>
+<p>Define minimal lifecycle and mutability rules for each record mode.</p>
+<p>The lifecycle depends on the MRD record mode.</p>
+<h2>Prescriptive</h2>
+<p>States: `draft`, `active`, `superseded`.</p>
+<p>Allowed transitions: `draft` → `active`, `active` → `superseded`.</p>
+<h2>Descriptive</h2>
+<p>States: `created`, `retained`.</p>
+<p>Allowed transitions: `created` → `retained`.</p>
+<h2>Meta</h2>
+<p>States: `generated`, `replaced`.</p>
+<p>Allowed transitions: `generated` → `replaced`.</p>
+<p>See the <a href="/specification/governance/001-specification/">Governance Specification</a> for lifecycle requirements and lineage rules.</p><nav class="prev-next"><a rel="prev" href="/docs/governance/003-apply-governance/">Previous</a> <a rel="next" href="/docs/governance/005-troubleshooting/">Next</a></nav></main></body></html>

@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Work field and vocabulary reference</title><link rel="stylesheet" href="/assets/site.css"></head><body><header><a href="/">KIS Documentation</a><nav><a href="/docs/">Docs</a> <a href="/specification/">Specification</a> <a href="/reference/">Reference</a></nav></header><main><div class="breadcrumbs"><a href="/">Home</a> / <a href="/specification/">Specification</a> / KIS Work Management Specification</div><h1>Work field and vocabulary reference</h1>
+<p>&lt;div id=&quot;enable-section-numbers&quot; /&gt;</p>
+<p><a href="/specification/work-management/002-work-management-domain-model/">Owning specification chapter: Work Management domain model</a> | <a href="/specification/work-management/">Documentation index</a></p>
+<p>&gt; **Output class:** `generated_reference`. This page is an exact lookup projection of canonical Work Management authority. It has no write-back authority.</p>
+<p>Work Management defines the fields and controlled vocabularies used to describe a work record. The model keeps command data separate from observed evidence so that a generated view cannot silently become a second source of truth.</p>
+<h2>Field model</h2>
+<p>Work Management uses three authority directions. **Command** fields are changed through Work Management. **Evidence** fields are observed or projected from their owning source. **Handoff** fields start in Work Management and later become governed repository-change facts.</p>
+<h3>Command fields</h3>
+<p>| Field | Meaning | Authority | Direction | Details |</p>
+<p>|---|---|---|---|---|</p>
+<p>| &lt;span id=&quot;fact-field-status&quot;&gt;&lt;/span&gt;Status | Operational Work lifecycle status. Set by explicit Work lifecycle operations. | `work_management` | `command` | ID `status`; provider `single_select`; KIS-managed; applies to all record types; vocabulary `status` |</p>
+<p>| &lt;span id=&quot;fact-field-record-type&quot;&gt;&lt;/span&gt;Record Type | Purpose classification of the Work record. Set during intake/triage and changed only by explicit Work authority. | `work_management` | `command` | ID `record_type`; provider `single_select`; KIS-managed; applies to all record types; required for `ready_metadata`; vocabulary `record_type` |</p>
+<p>| &lt;span id=&quot;fact-field-priority&quot;&gt;&lt;/span&gt;Priority | Relative scheduling importance. Set by Work Management and consumed by selection ranking. | `work_management` | `command` | ID `priority`; provider `single_select`; KIS-managed; applies to all record types; required for `ready_metadata`; vocabulary `priority` |</p>
+<p>| &lt;span id=&quot;fact-field-effort&quot;&gt;&lt;/span&gt;Effort | Relative implementation or coordination effort. Set by Work Management and consumed by selection ranking. | `work_management` | `command` | ID `effort`; provider `single_select`; KIS-managed; applies to all record types; required for `ready_metadata`; vocabulary `effort` |</p>
+<p>| &lt;span id=&quot;fact-field-execution-owner&quot;&gt;&lt;/span&gt;Execution Owner | Stable identity of the current execution claimant. Set and cleared only by claim/release lifecycle operations. | `work_management` | `command` | ID `execution_owner`; provider `text`; KIS-managed; applies to all record types; required for `active_claim` |</p>
+<p>| &lt;span id=&quot;fact-field-origin&quot;&gt;&lt;/span&gt;Origin | Context that originated the record. Set when the Work record is created or classified. | `work_management` | `command` | ID `origin`; provider `single_select`; KIS-managed; applies to all record types; vocabulary `origin` |</p>
+<p>| &lt;span id=&quot;fact-field-disposition&quot;&gt;&lt;/span&gt;Disposition | Explicit decision disposition for records that use disposition semantics. Set by explicit Work decision/review operations. | `work_management` | `command` | ID `disposition`; provider `single_select`; KIS-managed; applies to all record types; vocabulary `disposition` |</p>
+<p>| &lt;span id=&quot;fact-field-severity&quot;&gt;&lt;/span&gt;Severity | Relative material impact for finding/risk records. Set when a finding or risk is classified. | `work_management` | `command` | ID `severity`; provider `single_select`; KIS-managed; applies to finding, security_finding, risk; required for `finding_or_risk`; vocabulary `severity` |</p>
+<p>| &lt;span id=&quot;fact-field-confidence&quot;&gt;&lt;/span&gt;Confidence | Evidence confidence for finding/assumption records. Set from the evidence quality supporting the record. | `work_management` | `command` | ID `confidence`; provider `single_select`; KIS-managed; applies to finding, security_finding, assumption; required for `finding_or_assumption`; vocabulary `confidence` |</p>
+<p>| &lt;span id=&quot;fact-field-review-trigger&quot;&gt;&lt;/span&gt;Review Trigger | Condition or date/event trigger for reconsidering paused work. Required when work enters On Hold or Deferred. | `work_management` | `command` | ID `review_trigger`; provider `text`; KIS-managed; applies to all record types; required for `hold_or_defer` |</p>
+<p>| &lt;span id=&quot;fact-field-target-date&quot;&gt;&lt;/span&gt;Target Date | Optional target date for planned work or reconsideration. Set explicitly by Work Management. | `work_management` | `command` | ID `target_date`; provider `date`; KIS-managed; applies to all record types |</p>
+<p>| &lt;span id=&quot;fact-field-iteration&quot;&gt;&lt;/span&gt;Iteration | Optional provider iteration assignment. Set explicitly by Work Management. | `work_management` | `command` | ID `iteration`; provider `iteration`; KIS-managed; applies to all record types |</p>
+<p>| &lt;span id=&quot;fact-field-source-review&quot;&gt;&lt;/span&gt;Source Review | Reference to the review source that produced or governs the record. Set when review-derived records are captured. | `work_management` | `command` | ID `source_review`; provider `text`; KIS-managed; applies to all record types |</p>
+<p>| &lt;span id=&quot;fact-field-external-link&quot;&gt;&lt;/span&gt;External Link | Optional bounded external reference associated with the work. Set explicitly by Work Management. | `work_management` | `command` | ID `external_link`; provider `text`; KIS-managed; applies to all record types |</p>
+<h3>Evidence fields</h3>
+<p>| Field | Meaning | Authority | Direction | Details |</p>
+<p>|---|---|---|---|---|</p>
+<p>| &lt;span id=&quot;fact-field-delivery-stage&quot;&gt;&lt;/span&gt;Delivery Stage | Evidence-derived governed delivery stage. Projected from repository/GitHub delivery evidence. | `derived` | `evidence` | ID `delivery_stage`; provider `single_select`; KIS-managed; applies to all record types; vocabulary `delivery_stage` |</p>
+<p>| &lt;span id=&quot;fact-field-blocked-by&quot;&gt;&lt;/span&gt;Blocked By | Provider-observed dependency or blocker reference; explicit empty differs from unavailable evidence. Read from GitHub Project dependency evidence. | `github` | `evidence` | ID `blocked_by`; provider `text`; KIS-managed; applies to all record types |</p>
+<p>| &lt;span id=&quot;fact-field-complexity&quot;&gt;&lt;/span&gt;Complexity | Repository change-governance complexity projected into Work. Projected from authoritative schema-v4 governed change scope. | `repository_change` | `evidence` | ID `complexity`; provider `single_select`; KIS-managed; applies to all record types; vocabulary `complexity` |</p>
+<p>| &lt;span id=&quot;fact-field-risk-triggers&quot;&gt;&lt;/span&gt;Risk Triggers | Comma-separated repository change-governance risk-trigger tokens. Projected from authoritative governed change scope. | `repository_change` | `evidence` | ID `risk_triggers`; provider `text`; KIS-managed; applies to all record types |</p>
+<p>| &lt;span id=&quot;fact-field-project-id&quot;&gt;&lt;/span&gt;Project ID | Stable KIS project registry identity for the work item. Derived from the registered repository-to-project mapping. | `derived` | `evidence` | ID `project_id`; provider `text`; KIS-managed; applies to all record types |</p>
+<p>| &lt;span id=&quot;fact-field-repository&quot;&gt;&lt;/span&gt;Repository | GitHub repository identity of the source item. Read from the GitHub source item/provider binding. | `github` | `evidence` | ID `repository`; provider `repository`; KIS-managed; applies to all record types |</p>
+<p>| &lt;span id=&quot;fact-field-change-id&quot;&gt;&lt;/span&gt;Change ID | Canonical governed repository change ID once one exists. Projected from authoritative local change scope. | `repository_change` | `evidence` | ID `change_id`; provider `text`; KIS-managed; applies to all record types; required for `governed_change` |</p>
+<p>| &lt;span id=&quot;fact-field-verification&quot;&gt;&lt;/span&gt;Verification | Repository/source verification state; never live-runtime commissioning state. Projected from provider-native or governed verification evidence. | `actions` | `evidence` | ID `verification`; provider `single_select`; KIS-managed; applies to all record types; vocabulary `verification` |</p>
+<p>| &lt;span id=&quot;fact-field-authority-revision&quot;&gt;&lt;/span&gt;Authority Revision | Revision identity of the authority evidence used for the Work record. Projected from Git/provider revision evidence. | `git` | `evidence` | ID `authority_revision`; provider `text`; KIS-managed; applies to all record types |</p>
+<p>| &lt;span id=&quot;fact-field-created&quot;&gt;&lt;/span&gt;Created | Provider-native creation timestamp used as deterministic age evidence. Read from GitHub native item metadata. | `github` | `evidence` | ID `created`; provider `native_datetime`; provider-managed; applies to all record types |</p>
+<p>| &lt;span id=&quot;fact-field-live-verification&quot;&gt;&lt;/span&gt;Live Verification | Post-merge live runtime verification state, distinct from source Verification. Projected by the deterministic commissioning lifecycle under #419. | `derived` | `evidence` | ID `live_verification`; provider `single_select`; KIS-managed; applies to all record types; vocabulary `live_verification` |</p>
+<p>| &lt;span id=&quot;fact-field-commissioning-key&quot;&gt;&lt;/span&gt;Commissioning Key | Deterministic commissioning identity: the exact obligation key for one required surface, or the deterministic set key for a source merge with multiple required surfaces. Derived by the commissioning classifier/runner under #419; source projection uses a set-&lt;digest24&gt; key when multiple obligations must be aggregated. | `derived` | `evidence` | ID `commissioning_key`; provider `text`; KIS-managed; applies to all record types |</p>
+<p>| &lt;span id=&quot;fact-field-live-verification-evidence&quot;&gt;&lt;/span&gt;Live Verification Evidence | Compact reference to durable live-verification evidence or linked commissioning work; never free-form logs. Projected from commissioning evidence under #419. | `derived` | `evidence` | ID `live_verification_evidence`; provider `text`; KIS-managed; applies to all record types |</p>
+<h3>Handoff fields</h3>
+<p>| Field | Meaning | Authority | Direction | Details |</p>
+<p>|---|---|---|---|---|</p>
+<p>| &lt;span id=&quot;fact-field-documentation-impact&quot;&gt;&lt;/span&gt;Documentation Impact | Expected or completed documentation impact for the work/change. Starts as Work command data and becomes governed change evidence. | `work_management_then_repository_change` | `handoff` | ID `documentation_impact`; provider `single_select`; KIS-managed; applies to all record types; required for `ready_metadata`; vocabulary `documentation_impact` |</p>
+<p>| &lt;span id=&quot;fact-field-module&quot;&gt;&lt;/span&gt;Module | Optional bounded module or subsystem context for the work. Set by Work and handed to governed change planning when applicable. | `work_management_then_repository_change` | `handoff` | ID `module`; provider `text`; KIS-managed; applies to all record types |</p>
+<h2>Authority rules</h2>
+<p>These rules prevent field ownership from drifting between Work Management, repository change governance, GitHub, Actions, and generated documentation:</p>
+<ul>
+<li>Every managed field has one authority and one direction.</li>
+<li>Project-native evidence is observed, not redefined by generated documentation.</li>
+</ul>
+<h2>Controlled vocabularies</h2>
+<p>Single-select fields use the following governed values. The display label is what readers see; the token is the stable machine value.</p>
+<h3>Status values</h3>
+<p>Operational Work lifecycle status projected to GitHub Project Status.</p>
+<p>| Value | Token | Meaning |</p>
+<p>|---|---|---|</p>
+<p>| &lt;span id=&quot;fact-vocabulary-status-inbox&quot;&gt;&lt;/span&gt;Inbox | `inbox` | Captured work not yet triaged. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-status-triage&quot;&gt;&lt;/span&gt;Triage | `triage` | Work being classified and prepared for a disposition. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-status-proposed&quot;&gt;&lt;/span&gt;Proposed | `proposed` | Work proposed for acceptance but not yet approved. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-status-approved&quot;&gt;&lt;/span&gt;Approved | `approved` | Accepted work that is not yet admitted to the executable queue. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-status-ready&quot;&gt;&lt;/span&gt;Ready | `ready` | Work admitted for deterministic next-work eligibility subject to readiness, claim, and dependency guards. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-status-active&quot;&gt;&lt;/span&gt;Active | `active` | Work currently claimed for execution. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-status-blocked&quot;&gt;&lt;/span&gt;Blocked | `blocked` | Work that cannot proceed because a blocking condition is present. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-status-on-hold&quot;&gt;&lt;/span&gt;On Hold | `on_hold` | Work intentionally paused pending a declared review trigger. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-status-deferred&quot;&gt;&lt;/span&gt;Deferred | `deferred` | Work postponed for later reconsideration with a declared review trigger. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-status-rejected&quot;&gt;&lt;/span&gt;Rejected | `rejected` | Work explicitly not accepted for execution in its current form. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-status-superseded&quot;&gt;&lt;/span&gt;Superseded | `superseded` | Work replaced by a newer authoritative record or outcome. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-status-done&quot;&gt;&lt;/span&gt;Done | `done` | Work whose required completion and closeout gates are satisfied. |</p>
+<h3>Record type values</h3>
+<p>Classification of the purpose of a Work record.</p>
+<p>| Value | Token | Meaning |</p>
+<p>|---|---|---|</p>
+<p>| &lt;span id=&quot;fact-vocabulary-record-type-idea&quot;&gt;&lt;/span&gt;Idea | `idea` | Uncommitted candidate work requiring triage before it becomes actionable. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-record-type-task&quot;&gt;&lt;/span&gt;Task | `task` | A bounded actionable unit of work. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-record-type-specification-slice&quot;&gt;&lt;/span&gt;Specification Slice | `specification_slice` | A bounded specification or delivery slice tracked as work. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-record-type-review-run&quot;&gt;&lt;/span&gt;Review Run | `review_run` | A record representing one review execution and its evidence. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-record-type-finding&quot;&gt;&lt;/span&gt;Finding | `finding` | An actionable observation produced by review, verification, audit, or commissioning. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-record-type-decision&quot;&gt;&lt;/span&gt;Decision | `decision` | A record of an explicit authoritative choice. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-record-type-assumption&quot;&gt;&lt;/span&gt;Assumption | `assumption` | A proposition tracked because later evidence may validate or invalidate it. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-record-type-risk&quot;&gt;&lt;/span&gt;Risk | `risk` | A potential adverse condition tracked for mitigation or disposition. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-record-type-approval&quot;&gt;&lt;/span&gt;Approval | `approval` | A record of an explicit approval decision. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-record-type-hold&quot;&gt;&lt;/span&gt;Hold | `hold` | A record whose purpose is to track a pause or hold condition. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-record-type-research&quot;&gt;&lt;/span&gt;Research | `research` | A bounded investigation intended to produce evidence or a decision. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-record-type-defect&quot;&gt;&lt;/span&gt;Defect | `defect` | A known incorrect or broken product or system behavior requiring correction. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-record-type-security-finding&quot;&gt;&lt;/span&gt;Security Finding | `security_finding` | A finding whose material impact is security-related. |</p>
+<h3>Priority values</h3>
+<p>Relative scheduling importance used by the current deterministic Work queue.</p>
+<p>| Value | Token | Meaning |</p>
+<p>|---|---|---|</p>
+<p>| &lt;span id=&quot;fact-vocabulary-priority-critical&quot;&gt;&lt;/span&gt;Critical | `critical` | Highest configured scheduling importance. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-priority-high&quot;&gt;&lt;/span&gt;High | `high` | High scheduling importance below Critical. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-priority-medium&quot;&gt;&lt;/span&gt;Medium | `medium` | Normal scheduling importance below High. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-priority-low&quot;&gt;&lt;/span&gt;Low | `low` | Lowest configured scheduling importance. |</p>
+<h3>Effort values</h3>
+<p>Relative implementation or coordination size used by the current deterministic Work queue.</p>
+<p>| Value | Token | Meaning |</p>
+<p>|---|---|---|</p>
+<p>| &lt;span id=&quot;fact-vocabulary-effort-tiny&quot;&gt;&lt;/span&gt;Tiny | `tiny` | Smallest configured relative effort. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-effort-small&quot;&gt;&lt;/span&gt;Small | `small` | Small relative effort. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-effort-medium&quot;&gt;&lt;/span&gt;Medium | `medium` | Moderate relative effort. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-effort-large&quot;&gt;&lt;/span&gt;Large | `large` | Largest configured relative effort. |</p>
+<h3>Delivery stage values</h3>
+<p>Evidence-derived stage of governed repository delivery.</p>
+<p>| Value | Token | Meaning |</p>
+<p>|---|---|---|</p>
+<p>| &lt;span id=&quot;fact-vocabulary-delivery-stage-none&quot;&gt;&lt;/span&gt;None | `none` | No governed delivery stage has been established. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-delivery-stage-change-created&quot;&gt;&lt;/span&gt;Change Created | `change_created` | A governed repository change has been created. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-delivery-stage-implementing&quot;&gt;&lt;/span&gt;Implementing | `implementing` | Implementation is in progress. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-delivery-stage-pr-open&quot;&gt;&lt;/span&gt;PR Open | `pr_open` | A pull request is open for the governed change. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-delivery-stage-review&quot;&gt;&lt;/span&gt;Review | `review` | The governed change is in review. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-delivery-stage-ci-pending&quot;&gt;&lt;/span&gt;CI Pending | `ci_pending` | Provider-native verification is pending. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-delivery-stage-ci-failed&quot;&gt;&lt;/span&gt;CI Failed | `ci_failed` | Provider-native verification failed. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-delivery-stage-ci-passed&quot;&gt;&lt;/span&gt;CI Passed | `ci_passed` | Provider-native verification passed for the applicable head. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-delivery-stage-merged&quot;&gt;&lt;/span&gt;Merged | `merged` | The governed change has been observed merged. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-delivery-stage-documentation&quot;&gt;&lt;/span&gt;Documentation | `documentation` | Post-merge documentation reconciliation is due or in progress. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-delivery-stage-commissioning&quot;&gt;&lt;/span&gt;Commissioning | `commissioning` | Live verification or commissioning is pending or in progress. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-delivery-stage-complete&quot;&gt;&lt;/span&gt;Complete | `complete` | Delivery and required closeout evidence are complete. |</p>
+<h3>Documentation impact values</h3>
+<p>Repository documentation impact projected from Work to governed change and back as evidence.</p>
+<p>| Value | Token | Meaning |</p>
+<p>|---|---|---|</p>
+<p>| &lt;span id=&quot;fact-vocabulary-documentation-impact-not-assessed&quot;&gt;&lt;/span&gt;Not Assessed | `not_assessed` | Documentation impact has not yet been assessed. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-documentation-impact-none&quot;&gt;&lt;/span&gt;None | `none` | No documentation change is required, with rationale recorded where required. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-documentation-impact-planned&quot;&gt;&lt;/span&gt;Planned | `planned` | Documentation changes are planned. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-documentation-impact-in-progress&quot;&gt;&lt;/span&gt;In Progress | `in_progress` | Documentation changes are being implemented. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-documentation-impact-pre-merge-complete&quot;&gt;&lt;/span&gt;Pre-merge Complete | `pre_merge_complete` | Required pre-merge documentation work is complete. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-documentation-impact-post-merge-complete&quot;&gt;&lt;/span&gt;Post-merge Complete | `post_merge_complete` | Required post-merge documentation reconciliation is complete. |</p>
+<h3>Complexity values</h3>
+<p>Projection of repository change-governance complexity; detailed classification criteria remain owned by change-governance settings.</p>
+<p>| Value | Token | Meaning |</p>
+<p>|---|---|---|</p>
+<p>| &lt;span id=&quot;fact-vocabulary-complexity-small&quot;&gt;&lt;/span&gt;Small | `small` | Repository change-governance Small classification. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-complexity-medium&quot;&gt;&lt;/span&gt;Medium | `medium` | Repository change-governance Medium classification. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-complexity-large&quot;&gt;&lt;/span&gt;Large | `large` | Repository change-governance Large classification. |</p>
+<h3>Origin values</h3>
+<p>Source context that caused a Work record to be created.</p>
+<p>| Value | Token | Meaning |</p>
+<p>|---|---|---|</p>
+<p>| &lt;span id=&quot;fact-vocabulary-origin-operator&quot;&gt;&lt;/span&gt;Operator | `operator` | Created directly from operator intent. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-origin-review&quot;&gt;&lt;/span&gt;Review | `review` | Created from review evidence. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-origin-verification&quot;&gt;&lt;/span&gt;Verification | `verification` | Created from verification evidence. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-origin-implementation&quot;&gt;&lt;/span&gt;Implementation | `implementation` | Created from implementation activity or discovery. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-origin-research&quot;&gt;&lt;/span&gt;Research | `research` | Created from research activity or evidence. |</p>
+<h3>Disposition values</h3>
+<p>Current decision disposition for records that require an explicit disposition.</p>
+<p>| Value | Token | Meaning |</p>
+<p>|---|---|---|</p>
+<p>| &lt;span id=&quot;fact-vocabulary-disposition-open&quot;&gt;&lt;/span&gt;Open | `open` | No terminal disposition has been selected. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-disposition-accepted&quot;&gt;&lt;/span&gt;Accepted | `accepted` | The record or proposition is accepted. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-disposition-rejected&quot;&gt;&lt;/span&gt;Rejected | `rejected` | The record or proposition is rejected. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-disposition-superseded&quot;&gt;&lt;/span&gt;Superseded | `superseded` | A newer authoritative record replaces this one. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-disposition-mitigated&quot;&gt;&lt;/span&gt;Mitigated | `mitigated` | The tracked risk or finding has been mitigated. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-disposition-deferred&quot;&gt;&lt;/span&gt;Deferred | `deferred` | Disposition is intentionally postponed. |</p>
+<h3>Verification values</h3>
+<p>Repository/source verification state; it does not represent post-merge live runtime proof.</p>
+<p>| Value | Token | Meaning |</p>
+<p>|---|---|---|</p>
+<p>| &lt;span id=&quot;fact-vocabulary-verification-not-run&quot;&gt;&lt;/span&gt;Not Run | `not_run` | Repository/source verification has not run. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-verification-pending&quot;&gt;&lt;/span&gt;Pending | `pending` | Repository/source verification is pending or running. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-verification-passed&quot;&gt;&lt;/span&gt;Passed | `passed` | Repository/source verification passed for the applicable evidence identity. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-verification-failed&quot;&gt;&lt;/span&gt;Failed | `failed` | Repository/source verification failed. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-verification-blocked&quot;&gt;&lt;/span&gt;Blocked | `blocked` | Repository/source verification cannot currently complete. |</p>
+<h3>Severity values</h3>
+<p>Relative material impact of a finding or risk.</p>
+<p>| Value | Token | Meaning |</p>
+<p>|---|---|---|</p>
+<p>| &lt;span id=&quot;fact-vocabulary-severity-critical&quot;&gt;&lt;/span&gt;Critical | `critical` | Highest material impact requiring urgent attention. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-severity-high&quot;&gt;&lt;/span&gt;High | `high` | High material impact. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-severity-medium&quot;&gt;&lt;/span&gt;Medium | `medium` | Moderate material impact. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-severity-low&quot;&gt;&lt;/span&gt;Low | `low` | Limited material impact. |</p>
+<h3>Confidence values</h3>
+<p>Relative confidence classification for finding and assumption evidence; current Work authority does not define quantitative or qualitative thresholds.</p>
+<p>| Value | Token | Meaning |</p>
+<p>|---|---|---|</p>
+<p>| &lt;span id=&quot;fact-vocabulary-confidence-high&quot;&gt;&lt;/span&gt;High | `high` | Highest configured confidence label; no additional threshold is defined by current Work authority. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-confidence-medium&quot;&gt;&lt;/span&gt;Medium | `medium` | Middle configured confidence label; no additional threshold is defined by current Work authority. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-confidence-low&quot;&gt;&lt;/span&gt;Low | `low` | Lowest configured confidence label; no additional threshold is defined by current Work authority. |</p>
+<h3>Live verification values</h3>
+<p>Post-merge live runtime verification state, distinct from repository/source Verification.</p>
+<p>| Value | Token | Meaning |</p>
+<p>|---|---|---|</p>
+<p>| &lt;span id=&quot;fact-vocabulary-live-verification-not-assessed&quot;&gt;&lt;/span&gt;Not Assessed | `not_assessed` | The need for live verification has not yet been classified. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-live-verification-not-required&quot;&gt;&lt;/span&gt;Not Required | `not_required` | Deterministic classification found no live verification obligation. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-live-verification-pending&quot;&gt;&lt;/span&gt;Pending | `pending` | Live verification is required and has not yet completed. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-live-verification-passed&quot;&gt;&lt;/span&gt;Passed | `passed` | Required live verification passed against the actual exposed capability or runtime path. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-live-verification-failed&quot;&gt;&lt;/span&gt;Failed | `failed` | Required live verification ran and failed its expected invariant. |</p>
+<p>| &lt;span id=&quot;fact-vocabulary-live-verification-blocked&quot;&gt;&lt;/span&gt;Blocked | `blocked` | Required live verification cannot currently complete. |</p>
+<h2>Source and authority</h2>
+<p>This page projects `KIS-WORK-SEM-REG-001` version `1.0.0`. The MRD remains authoritative; this generated page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/specification/work-management/008-work-management-conformance/">Previous</a> <a rel="next" href="/specification/work-management/021-work-project-configuration-reference/">Next</a></nav></main></body></html>

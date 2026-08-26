@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Governed relationship vocabulary</title><link rel="stylesheet" href="/assets/site.css"></head><body><header><a href="/">KIS Documentation</a><nav><a href="/docs/">Docs</a> <a href="/specification/">Specification</a> <a href="/reference/">Reference</a></nav></header><main><div class="breadcrumbs"><a href="/">Home</a> / <a href="/specification/">Specification</a> / kis-op Governance Specification</div><h1>Governed relationship vocabulary</h1>
+<p>&lt;div id=&quot;enable-section-numbers&quot; /&gt;</p>
+<p><a href="/specification/governance/004-authority-ownership-and-relationships/">Owning specification chapter: Authority, Ownership, and Relationships</a> | <a href="/specification/governance/">Documentation index</a></p>
+<p>&gt; **Output class:** `generated_reference`. This page is an exact lookup projection of canonical Governance authority. It has no write-back authority.</p>
+<p>Relationships preserve authority by expressing how one governed artifact relates to another without creating duplicate ownership.</p>
+<p>| Relationship | Meaning |</p>
+<p>|---|---|</p>
+<p>| &lt;span id=&quot;fact-relationship-depends-on&quot;&gt;&lt;/span&gt;`depends_on` | The source requires the target authority to be valid or interpretable. |</p>
+<p>| &lt;span id=&quot;fact-relationship-validated-by&quot;&gt;&lt;/span&gt;`validated_by` | The source is structurally or semantically checked by the target contract or validator. |</p>
+<p>| &lt;span id=&quot;fact-relationship-governs&quot;&gt;&lt;/span&gt;`governs` | The source prescribes requirements for the target. |</p>
+<p>| &lt;span id=&quot;fact-relationship-constrains&quot;&gt;&lt;/span&gt;`constrains` | The source restricts permitted values or behavior of the target. |</p>
+<p>| &lt;span id=&quot;fact-relationship-selects&quot;&gt;&lt;/span&gt;`selects` | The source chooses among behaviors already permitted by the target authority. |</p>
+<p>| &lt;span id=&quot;fact-relationship-maps-to&quot;&gt;&lt;/span&gt;`maps_to` | The source translates deterministically to the target representation. |</p>
+<p>| &lt;span id=&quot;fact-relationship-implements&quot;&gt;&lt;/span&gt;`implements` | The source is an implementation of target authority. |</p>
+<p>| &lt;span id=&quot;fact-relationship-evidences&quot;&gt;&lt;/span&gt;`evidences` | The source records evidence about the target without becoming its authority. |</p>
+<p>| &lt;span id=&quot;fact-relationship-projects&quot;&gt;&lt;/span&gt;`projects` | The source is a generated view of the target and has no write-back authority. |</p>
+<p>| &lt;span id=&quot;fact-relationship-references&quot;&gt;&lt;/span&gt;`references` | The source points to the target owner without restating the governed fact as new authority. |</p>
+<p>| &lt;span id=&quot;fact-relationship-supersedes&quot;&gt;&lt;/span&gt;`supersedes` | The source replaces the target while preserving lineage. |</p>
+<h2>Source and authority</h2>
+<p>This reference projects `KIS-KNOW-CON-POL-002` version `1.0.0`. The MRD remains authoritative.</p><nav class="prev-next"><a rel="prev" href="/specification/governance/020-applicability-catalog/">Previous</a> <a rel="next" href="/specification/governance/022-validation-reason-codes/">Next</a></nav></main></body></html>
