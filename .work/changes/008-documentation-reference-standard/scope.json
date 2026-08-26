@@ -1,0 +1,47 @@
+{
+  "schema_version": 4,
+  "change_id": "008-documentation-reference-standard",
+  "status": "active",
+  "branch": "change/008-documentation-reference-standard",
+  "worktree": ".work/worktrees/008-documentation-reference-standard",
+  "base": "main",
+  "outcome": "Prepare the governed Documentation Reference Standard that will define source roles, authority boundaries, provenance, and permitted uses for documentation references without implementing the standard yet.",
+  "owned_paths": [
+    ".work/changes/008-documentation-reference-standard/**"
+  ],
+  "shared_paths": [],
+  "excluded_paths": [
+    "AGENTS.md",
+    "contracts/**",
+    "mrd/**",
+    "publication/**",
+    "generated/**",
+    "src/**",
+    "tests/**",
+    "C:/Projects/kis-mcp/**",
+    "C:/Projects/References/**"
+  ],
+  "dependencies": [
+    "005-mcp-spec-2026-baseline"
+  ],
+  "integration_owner": null,
+  "complexity": "large",
+  "risk_triggers": ["public_contract"],
+  "base_evidence": {
+    "local_sha": "d0105b364056e00b5fab407d8426c60df83429d4",
+    "local_tree": "4214c33ea163002392d7391e31c182853ea4aecf",
+    "upstream_sha": "d0105b364056e00b5fab407d8426c60df83429d4",
+    "upstream_tree": "4214c33ea163002392d7391e31c182853ea4aecf",
+    "upstream_ref": "github:main",
+    "evidence_source": "verified_github_default",
+    "relation": "equal"
+  },
+  "work_management": {
+    "project_id": "kis-mcp",
+    "record_id": "SPEC-008",
+    "source_repository": "NielPieterse0/kis-mcp-doc",
+    "source_number": 12,
+    "source_kind": "issue",
+    "documentation_impact": "planned"
+  }
+}
