@@ -1,9 +1,18 @@
 from pathlib import Path
 import json
+import shutil
 
 from kis_mcp_doc.work_management import WorkManagementRepository, build_work_management_spec, verify_work_management_spec
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def copied_work_repository(tmp_path):
+    root = tmp_path / "repo"
+    for name in ("contracts", "mrd", "publication", "evidence"):
+        shutil.copytree(ROOT / name, root / name)
+    return root, WorkManagementRepository(root)
+
 
 def test_work_management_mrds_validate():
     result = WorkManagementRepository(ROOT).validate()
@@ -17,6 +26,51 @@ def test_work_management_spec_is_deterministic(tmp_path):
     a={p.relative_to(first).as_posix():p.read_bytes() for p in first.rglob("*") if p.is_file()}
     b={p.relative_to(second).as_posix():p.read_bytes() for p in second.rglob("*") if p.is_file()}
     assert a==b
+
+
+def test_work_management_publication_consumes_documentation_reference_profile(tmp_path):
+    repo=WorkManagementRepository(ROOT); out=tmp_path/"build"
+    manifest=build_work_management_spec(repo,out)
+    config=json.loads((ROOT/"publication/work-management-spec.json").read_text(encoding="utf-8"))
+    assert config["documentation_reference"] == {
+        "output_class": "human_readable_specification",
+        "policy_mrd": "KIS-DOC-CON-POL-001",
+        "registry_mrd": "KIS-DOC-SEM-REG-001",
+    }
+    source_paths={item["path"] for item in manifest["inputs"]["source_files"]}
+    assert source_paths == {
+        "mrd/documentation/01-reference-standard.mrd.json",
+        "mrd/documentation/02-reference-registry.mrd.json",
+        "publication/documentation-reference-standard.json",
+        "evidence/work-management/canonical-snapshot.json",
+    }
+    assert "`KIS-DOC-CON-POL-001`" in (out/"001-specification.md").read_text(encoding="utf-8")
+
+
+def test_work_management_publication_rejects_external_authority_promotion(tmp_path):
+    root,repo=copied_work_repository(tmp_path)
+    registry_path=root/"mrd/documentation/02-reference-registry.mrd.json"
+    registry=json.loads(registry_path.read_text(encoding="utf-8"))
+    registry["content"]["references"][0]["may_define_kis_facts"]=True
+    registry_path.write_text(json.dumps(registry,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+    try:
+        build_work_management_spec(repo,tmp_path/"build")
+    except ValueError as error:
+        assert "external documentation reference authority is invalid" in str(error)
+    else:
+        raise AssertionError("external documentation reference authority promotion was accepted")
+
+
+def test_work_management_verifier_detects_publication_profile_drift(tmp_path):
+    root,repo=copied_work_repository(tmp_path); out=tmp_path/"build"
+    build_work_management_spec(repo,out)
+    publication=root/"publication/work-management-spec.json"
+    config=json.loads(publication.read_text(encoding="utf-8"))
+    config["subtitle"] += " Changed after build."
+    publication.write_text(json.dumps(config,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+    result=verify_work_management_spec(repo,out)
+    assert result["status"]=="invalid"
+    assert result["diagnostics"][0]["code"]=="WORK_GENERATED_DRIFT"
 
 def test_work_management_generated_bundle_verifies(tmp_path):
     repo=WorkManagementRepository(ROOT); out=tmp_path/"build"

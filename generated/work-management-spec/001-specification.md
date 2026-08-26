@@ -3,7 +3,11 @@
 
 <div id="enable-section-numbers" />
 
+Governed operating specification for work intake, state, selection, delivery, reconciliation, and GitHub Project integration
+
 Work Management is the governed KIS system for capturing, classifying, selecting, executing, verifying, and closing work across registered projects.
+
+This publication follows `KIS-DOC-CON-POL-001` as a `human_readable_specification`. MCP 2026 applies only within its bounded protocol domain, Google guidance affects presentation only, and implementation references cannot create or override Work Management facts.
 
 The key words "MUST", "MUST NOT", "SHOULD", "SHOULD NOT", "MAY", and "OPTIONAL" are normative when they appear in all capitals.
 

@@ -20,6 +20,10 @@ _MANIFEST_SCHEMA = "contracts/publication/v2/manifest.schema.json"
 _LITHO_SCHEMA = "contracts/documentation/litho/v1/package.schema.json"
 _HARVEST_SCHEMA = "contracts/documentation/harvest/v1/registry.schema.json"
 _HARVEST_REGISTRY = "publication/harvest-sources.json"
+_DOCUMENTATION_POLICY = "mrd/documentation/01-reference-standard.mrd.json"
+_DOCUMENTATION_REGISTRY = "mrd/documentation/02-reference-registry.mrd.json"
+_DOCUMENTATION_PUBLICATION = "publication/documentation-reference-standard.json"
+_DOCUMENTATION_OUTPUT_CLASS = "human_readable_specification"
 
 
 def build_governance_spec(
@@ -231,8 +235,42 @@ def _validate_contract(root: Path, schema_relative: str, instance: object, label
 
 def _load_publication_config(repository: GovernanceRepository, publication_path: Path) -> dict[str, Any]:
     config = json.loads(Path(publication_path).read_text(encoding="utf-8"))
-    _validate_contract(repository.root, _PUBLICATION_SCHEMA, config, "publication configuration")
+    schema_config = dict(config)
+    schema_config.pop("documentation_reference", None)
+    _validate_contract(repository.root, _PUBLICATION_SCHEMA, schema_config, "publication configuration")
+    _validate_documentation_reference_binding(repository.root, config)
     return config
+
+
+def _validate_documentation_reference_binding(root: Path, config: dict[str, Any]) -> None:
+    binding = config.get("documentation_reference")
+    expected = {
+        "output_class": _DOCUMENTATION_OUTPUT_CLASS,
+        "policy_mrd": "KIS-DOC-CON-POL-001",
+        "registry_mrd": "KIS-DOC-SEM-REG-001",
+    }
+    if binding != expected:
+        raise ValueError(f"publication documentation_reference must equal {expected}")
+
+    policy = json.loads((root / _DOCUMENTATION_POLICY).read_text(encoding="utf-8"))
+    registry = json.loads((root / _DOCUMENTATION_REGISTRY).read_text(encoding="utf-8"))
+    if policy.get("_mrd", {}).get("id") != binding["policy_mrd"]:
+        raise ValueError("documentation reference policy binding does not resolve")
+    if registry.get("_mrd", {}).get("id") != binding["registry_mrd"]:
+        raise ValueError("documentation reference registry binding does not resolve")
+    output_classes = {item.get("class") for item in policy.get("content", {}).get("output_classes", [])}
+    if binding["output_class"] not in output_classes:
+        raise ValueError("documentation reference output class is not governed by the policy")
+    authority_roles = {
+        item.get("role"): item.get("may_define_kis_facts")
+        for item in policy.get("content", {}).get("authority_model", [])
+    }
+    for reference in registry.get("content", {}).get("references", []):
+        role = reference.get("role")
+        if role not in authority_roles:
+            raise ValueError(f"documentation reference role is not governed: {role}")
+        if reference.get("may_define_kis_facts") is not False:
+            raise ValueError(f"external documentation reference cannot define KIS facts: {reference.get('id')}")
 
 
 def _generator_source_declarations(repository: GovernanceRepository) -> list[dict[str, Any]]:
@@ -348,6 +386,7 @@ def _source_file_declarations(
             for dependency in document["_mrd"]["dependencies"]
             if "source" in dependency and dependency["source"].startswith("repo:")
         }
+        | {_DOCUMENTATION_POLICY, _DOCUMENTATION_REGISTRY, _DOCUMENTATION_PUBLICATION}
     )
     declarations = []
     for relative in paths:
@@ -517,6 +556,8 @@ def _render_specification_root(config: dict[str, Any], documents: list[dict[str,
         config["subtitle"],
         "",
         "This specification defines the generated human-review contract for KIS governance. The validated MRDs and canonical repository sources are authoritative; this corpus is a deterministic projection for review and navigation.",
+        "",
+        "The publication follows `KIS-DOC-CON-POL-001` as a `human_readable_specification`. MCP 2026 applies only within its bounded protocol domain, Google guidance affects presentation only, and implementation references cannot create or override KIS governance facts.",
         "",
         'The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals.',
         "",

@@ -1,59 +1,59 @@
 {
-  "bundle_sha256": "d16a7b4ecd29d02a6d0d40103bad70e2d959daf69b9054baea1477bdd94399ad",
+  "bundle_sha256": "7e3785eea0ae5c4d56fcd18b0cebe6ca0e5d4054b300f23a7c93ca0616763122",
   "contract": {
     "name": "kis-work-management-spec-build",
     "version": 1
   },
   "files": [
     {
-      "bytes": 1047,
+      "bytes": 1026,
       "path": "000-index.md",
-      "sha256": "45237e7931a739472945647ec0312bcc8d43ee504cbde58b1f025dc65fb43433"
+      "sha256": "715ede1d06940ac72b1aac740ddbb87b42cd3c89598b81b6bd4215a3159bf32a"
     },
     {
-      "bytes": 3052,
+      "bytes": 3398,
       "path": "001-specification.md",
-      "sha256": "af16af714b1a446b96cf9f90b6ba43e7ff0eb3d89bf2596563ad0cb2d51c176e"
+      "sha256": "4babc2503e9a01835ee7cfa930e16310c87a0cf0e9ceb13285010510cf0aae52"
     },
     {
-      "bytes": 18510,
+      "bytes": 18265,
       "path": "002-work-management-domain-model.md",
-      "sha256": "5c37c948bd6d0576baaaff26470b04e533f6705167115271d198062ff9ebc32f"
+      "sha256": "ec0794a8e1a05dd92be60e29a55ade26a480e4e079e08818802d4d43114a953b"
     },
     {
-      "bytes": 6264,
+      "bytes": 6173,
       "path": "003-work-lifecycle.md",
-      "sha256": "e211d1041219390a50572485cdbb9b38c70f24d4a4f9157f269845f47ed337cb"
+      "sha256": "eea754cdeb97a65a381bf0d729d2a6af36118f8a89fe5dbe70c2ad5a8865310e"
     },
     {
-      "bytes": 4096,
+      "bytes": 4030,
       "path": "004-work-operations.md",
-      "sha256": "17413f9980560090b5aa4953a455847a0f6383a08c1c1a653a4242073362ee93"
+      "sha256": "76879408f7854a6013716c009b05e03187b06a8c354b05d393587f5c220aa8df"
     },
     {
-      "bytes": 3859,
+      "bytes": 3801,
       "path": "005-next-work-selection.md",
-      "sha256": "f9b126e24454e35063249ddab32ee968198e500a992a186466181103c82a4c8f"
+      "sha256": "0a637e7e35d19351446ea4778c57887972073a6649d165e4e00fdf7968e44449"
     },
     {
-      "bytes": 10732,
+      "bytes": 10586,
       "path": "006-authority-and-reconciliation-policy.md",
-      "sha256": "9e0e59f59399b29b6c8709b424944ee395f37e107ab3b7187ed8b434a4a470f3"
+      "sha256": "6d130ff7f5d29e6db183ca80efea3bf5c6ca91c91c7640470b51f10bec79f7a5"
     },
     {
-      "bytes": 5492,
+      "bytes": 5390,
       "path": "007-provider-and-command-plane-boundary.md",
-      "sha256": "0665aea5a22b76d8cc2369d31f45ef45db6c50539ce4ec7c3dde867ab2058619"
+      "sha256": "3148b8f88653382ff2ee0bac905afc0bb7f3ed0eb7cb8625793edd070d7e0c7b"
     },
     {
-      "bytes": 1138,
+      "bytes": 1116,
       "path": "008-work-management-conformance.md",
-      "sha256": "c178810c40e72de20468ab942ac82d689467a7aad98aa6fdcef343fc4474542d"
+      "sha256": "cbf54e3322022dc32ffde08aebd5864bbfb72b602f3639a24ae63101758f8356"
     },
     {
-      "bytes": 3052,
+      "bytes": 3398,
       "path": "specification.md",
-      "sha256": "af16af714b1a446b96cf9f90b6ba43e7ff0eb3d89bf2596563ad0cb2d51c176e"
+      "sha256": "4babc2503e9a01835ee7cfa930e16310c87a0cf0e9ceb13285010510cf0aae52"
     }
   ],
   "inputs": {
@@ -99,6 +99,32 @@
         "path": "mrd/work-management/07-tst.mrd.json",
         "sha256": "db8f93cd8aa889d29ed95a97375e78aa38a4a277ae3cd8e3f1bb1feb7302d894",
         "version": "1.0.0"
+      }
+    ],
+    "publication": {
+      "path": "publication/work-management-spec.json",
+      "sha256": "57861fedc63a3f1d2ff0ba31b977bcf6e6b563c1b9af674bd805d4158eaad40f"
+    },
+    "source_files": [
+      {
+        "bytes": 5712,
+        "path": "mrd/documentation/01-reference-standard.mrd.json",
+        "sha256": "da30a9f44828194a6b0b1e382c39936ae3d07705521dd6c07af60286b5133dc1"
+      },
+      {
+        "bytes": 8944,
+        "path": "mrd/documentation/02-reference-registry.mrd.json",
+        "sha256": "5a1f98e9fb937df209e303abc6fa3af3fd73c922a868e76519939d6dd42ec24c"
+      },
+      {
+        "bytes": 403,
+        "path": "publication/documentation-reference-standard.json",
+        "sha256": "35f4170ba7e70cabc664b6f880f41af40a897909c982c4cdc30cb03d5f412fdd"
+      },
+      {
+        "bytes": 85543,
+        "path": "evidence/work-management/canonical-snapshot.json",
+        "sha256": "343154fdc443d75d03b14feb9471331fe5c25c9f9bdfe7d38c8b179a1731d79d"
       }
     ],
     "source_set_sha256": "43470929a16053378938ebf19ea5c4a6251d0cd7a0e77cc863ad527ffec14caa"

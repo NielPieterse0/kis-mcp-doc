@@ -1,6 +1,11 @@
 {
   "schema_version": 2,
   "layout_profile": "mcp-spec",
+  "documentation_reference": {
+    "output_class": "human_readable_specification",
+    "policy_mrd": "KIS-DOC-CON-POL-001",
+    "registry_mrd": "KIS-DOC-SEM-REG-001"
+  },
   "title": "kis-op Governance Specification",
   "subtitle": "Governance contract for MRD selection, authority, lifecycle, enforcement, and kis-op behavior",
   "version": "2.0.0",

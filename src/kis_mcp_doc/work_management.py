@@ -12,6 +12,14 @@ from jsonschema import Draft202012Validator
 from .governance import canonical_hash, canonical_source_bytes
 
 
+_WORK_PUBLICATION = "publication/work-management-spec.json"
+_DOCUMENTATION_POLICY = "mrd/documentation/01-reference-standard.mrd.json"
+_DOCUMENTATION_REGISTRY = "mrd/documentation/02-reference-registry.mrd.json"
+_DOCUMENTATION_PUBLICATION = "publication/documentation-reference-standard.json"
+_WORK_EVIDENCE = "evidence/work-management/canonical-snapshot.json"
+_DOCUMENTATION_OUTPUT_CLASS = "human_readable_specification"
+
+
 class WorkManagementRepository:
     def __init__(self, root: Path, mrd_root: Path | None = None) -> None:
         self.root = Path(root).resolve()
@@ -590,6 +598,53 @@ def render_document(doc: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
+def _load_work_publication(repo: WorkManagementRepository) -> dict[str, Any]:
+    path = repo.root / _WORK_PUBLICATION
+    config = json.loads(path.read_text(encoding="utf-8"))
+    required = {
+        "output_dir", "schema_version", "documentation_reference", "source_glob",
+        "status", "subtitle", "title", "version",
+    }
+    if set(config) != required:
+        raise ValueError("Work Management publication configuration has an unexpected field set")
+    if config["schema_version"] != 1 or config["source_glob"] != "mrd/work-management/*.mrd.json":
+        raise ValueError("Work Management publication configuration has an invalid source contract")
+    if config["output_dir"] != "generated/work-management-spec" or config["status"] not in {"draft", "stabilized", "superseded"}:
+        raise ValueError("Work Management publication configuration has invalid publication metadata")
+    _validate_documentation_reference_binding(repo.root, config)
+    return config
+
+
+def _validate_documentation_reference_binding(root: Path, config: dict[str, Any]) -> None:
+    binding = config.get("documentation_reference")
+    expected = {
+        "output_class": _DOCUMENTATION_OUTPUT_CLASS,
+        "policy_mrd": "KIS-DOC-CON-POL-001",
+        "registry_mrd": "KIS-DOC-SEM-REG-001",
+    }
+    if binding != expected:
+        raise ValueError(f"publication documentation_reference must equal {expected}")
+    policy = json.loads((root / _DOCUMENTATION_POLICY).read_text(encoding="utf-8"))
+    registry = json.loads((root / _DOCUMENTATION_REGISTRY).read_text(encoding="utf-8"))
+    if policy.get("_mrd", {}).get("id") != binding["policy_mrd"] or registry.get("_mrd", {}).get("id") != binding["registry_mrd"]:
+        raise ValueError("documentation reference binding does not resolve")
+    output_classes = {item.get("class") for item in policy.get("content", {}).get("output_classes", [])}
+    if binding["output_class"] not in output_classes:
+        raise ValueError("documentation reference output class is not governed by the policy")
+    governed_roles = {item.get("role") for item in policy.get("content", {}).get("authority_model", [])}
+    for reference in registry.get("content", {}).get("references", []):
+        if reference.get("role") not in governed_roles or reference.get("may_define_kis_facts") is not False:
+            raise ValueError(f"external documentation reference authority is invalid: {reference.get('id')}")
+
+
+def _work_source_file_declarations(repo: WorkManagementRepository) -> list[dict[str, Any]]:
+    declarations = []
+    for relative in (_DOCUMENTATION_POLICY, _DOCUMENTATION_REGISTRY, _DOCUMENTATION_PUBLICATION, _WORK_EVIDENCE):
+        payload = canonical_source_bytes(repo.root / relative)
+        declarations.append({"path": relative, "sha256": hashlib.sha256(payload).hexdigest(), "bytes": len(payload)})
+    return declarations
+
+
 def _live_project_summary(repo: WorkManagementRepository) -> str:
     path = repo.root / "evidence" / "work-management" / "canonical-snapshot.json"
     try:
@@ -607,16 +662,17 @@ def _live_project_summary(repo: WorkManagementRepository) -> str:
 def build_work_management_spec(repo: WorkManagementRepository, output: Path, *, replace: bool=False) -> dict[str, Any]:
     validation=repo.validate()
     if validation["status"]!="valid": raise ValueError(f"work-management MRDs invalid: {validation['diagnostics']}")
+    config = _load_work_publication(repo)
     docs=list(repo.load().values())
     output=Path(output)
     staging=Path(tempfile.mkdtemp(prefix=f".{output.name}.",suffix=".tmp",dir=output.parent))
     try:
         pages=[]
         for i,doc in enumerate(docs,2):
-            name=_page_name(i,doc); text=render_document(doc); (staging/name).write_text(text,encoding="utf-8"); pages.append((name,doc))
+            name=_page_name(i,doc); text=render_document(doc); (staging/name).write_bytes(text.encode("utf-8")); pages.append((name,doc))
         index = [
             "<!-- GENERATED — DO NOT EDIT -->",
-            "# KIS Work Management Specification — documentation index",
+            f"# {config['title']} — documentation index",
             "",
             "Start with the [Specification](001-specification.md) for the operating model. The remaining chapters provide the detailed lifecycle, selection, authority, provider, and conformance rules.",
             "",
@@ -632,14 +688,18 @@ def build_work_management_spec(repo: WorkManagementRepository, output: Path, *, 
             "- [Build manifest](manifest.json) — exact MRD and generated-file hashes",
             "",
         ]
-        (staging/'000-index.md').write_text("\n".join(index),encoding='utf-8')
+        (staging/'000-index.md').write_bytes("\n".join(index).encode("utf-8"))
         root = [
             "<!-- GENERATED — DO NOT EDIT -->",
-            "# KIS Work Management Specification",
+            f"# {config['title']}",
             "",
             '<div id="enable-section-numbers" />',
             "",
+            config["subtitle"],
+            "",
             "Work Management is the governed KIS system for capturing, classifying, selecting, executing, verifying, and closing work across registered projects.",
+            "",
+            "This publication follows `KIS-DOC-CON-POL-001` as a `human_readable_specification`. MCP 2026 applies only within its bounded protocol domain, Google guidance affects presentation only, and implementation references cannot create or override Work Management facts.",
             "",
             'The key words "MUST", "MUST NOT", "SHOULD", "SHOULD NOT", "MAY", and "OPTIONAL" are normative when they appear in all capitals.',
             "",
@@ -675,7 +735,7 @@ def build_work_management_spec(repo: WorkManagementRepository, output: Path, *, 
             "See the [documentation index](000-index.md) and [build manifest](manifest.json) for exact source identities, MRD versions, hashes, and generated-file declarations.",
             "",
         ]
-        spec="\n".join(root); (staging/'001-specification.md').write_text(spec,encoding='utf-8'); (staging/'specification.md').write_text(spec,encoding='utf-8')
+        spec="\n".join(root); (staging/'001-specification.md').write_bytes(spec.encode("utf-8")); (staging/'specification.md').write_bytes(spec.encode("utf-8"))
         files=[]
         for path in sorted(staging.rglob('*')):
             if path.is_file():
@@ -683,8 +743,22 @@ def build_work_management_spec(repo: WorkManagementRepository, output: Path, *, 
         mrds=[]
         for path in sorted(repo.mrd_root.glob('*.mrd.json')):
             b=canonical_source_bytes(path); d=json.loads(path.read_text(encoding='utf-8')); mrds.append({'id':d['_mrd']['id'],'path':path.relative_to(repo.root).as_posix(),'sha256':hashlib.sha256(b).hexdigest(),'version':d['_mrd']['version']})
-        manifest={'contract':{'name':'kis-work-management-spec-build','version':1},'specification':{'title':'KIS Work Management Specification','version':'1.0.0','status':'draft','layout_profile':'mcp-spec'},'inputs':{'mrds':mrds,'source_set_sha256':canonical_hash(mrds)},'validation':validation,'files':files,'bundle_sha256':canonical_hash(files)}
-        (staging/'manifest.json').write_text(json.dumps(manifest,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+        publication_path = repo.root / _WORK_PUBLICATION
+        publication_bytes = canonical_source_bytes(publication_path)
+        manifest={
+            'contract':{'name':'kis-work-management-spec-build','version':1},
+            'specification':{'title':config['title'],'version':config['version'],'status':config['status'],'layout_profile':'mcp-spec'},
+            'inputs':{
+                'mrds':mrds,
+                'source_set_sha256':canonical_hash(mrds),
+                'source_files':_work_source_file_declarations(repo),
+                'publication':{'path':_WORK_PUBLICATION,'sha256':hashlib.sha256(publication_bytes).hexdigest()},
+            },
+            'validation':validation,
+            'files':files,
+            'bundle_sha256':canonical_hash(files),
+        }
+        (staging/'manifest.json').write_bytes((json.dumps(manifest,indent=2,sort_keys=True)+'\n').encode("utf-8"))
         if output.exists():
             if not replace: raise FileExistsError(output)
             shutil.rmtree(output)

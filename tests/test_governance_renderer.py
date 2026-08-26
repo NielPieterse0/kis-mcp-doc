@@ -180,7 +180,40 @@ def test_manifest_binds_canonical_repo_dependencies(tmp_path: Path) -> None:
         "contracts/mrd/v1/mrd.schema.json",
         "contracts/governance/v1/content.schema.json",
         "contracts/governance/v1/governance-mrd.schema.json",
+        "mrd/documentation/01-reference-standard.mrd.json",
+        "mrd/documentation/02-reference-registry.mrd.json",
+        "publication/documentation-reference-standard.json",
     }
+
+
+def test_governance_publication_consumes_documentation_reference_profile(tmp_path: Path) -> None:
+    repo = GovernanceRepository(ROOT, MRD_ROOT)
+    output = tmp_path / "build"
+    manifest = build_governance_spec(repo, PUBLICATION, output)
+    config = json.loads(PUBLICATION.read_text(encoding="utf-8"))
+
+    assert config["documentation_reference"] == {
+        "output_class": "human_readable_specification",
+        "policy_mrd": "KIS-DOC-CON-POL-001",
+        "registry_mrd": "KIS-DOC-SEM-REG-001",
+    }
+    assert "`KIS-DOC-CON-POL-001`" in (output / "001-specification.md").read_text(encoding="utf-8")
+    assert any(item["path"] == "mrd/documentation/01-reference-standard.mrd.json" for item in manifest["inputs"]["source_files"])
+
+
+def test_governance_publication_rejects_external_authority_promotion(tmp_path: Path) -> None:
+    root, repo, publication = copied_repository(tmp_path)
+    registry_path = root / "mrd" / "documentation" / "02-reference-registry.mrd.json"
+    registry = json.loads(registry_path.read_text(encoding="utf-8"))
+    registry["content"]["references"][1]["may_define_kis_facts"] = True
+    registry_path.write_text(json.dumps(registry, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+    try:
+        build_governance_spec(repo, publication, tmp_path / "build")
+    except ValueError as error:
+        assert "external documentation reference cannot define KIS facts" in str(error)
+    else:
+        raise AssertionError("external documentation reference authority promotion was accepted")
 
 
 def test_verifier_detects_bundle_digest_tampering(tmp_path: Path) -> None:

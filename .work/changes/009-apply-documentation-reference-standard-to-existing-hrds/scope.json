@@ -1,0 +1,49 @@
+{
+  "schema_version": 4,
+  "change_id": "009-apply-documentation-reference-standard-to-existing-hrds",
+  "status": "active",
+  "branch": "change/009-apply-documentation-reference-standard-to-existing-hrds",
+  "worktree": ".work/worktrees/009-apply-documentation-reference-standard-to-existing-hrds",
+  "base": "main",
+  "outcome": "Apply the adopted Documentation Reference Standard to the existing Governance and Work Management HRD publication pipelines without changing their governed semantics.",
+  "owned_paths": [
+    ".work/changes/009-apply-documentation-reference-standard-to-existing-hrds/**",
+    "publication/governance-spec.json",
+    "publication/work-management-spec.json",
+    "src/kis_mcp_doc/render.py",
+    "src/kis_mcp_doc/work_management.py",
+    "mrd/governance/*.mrd.json",
+    "mrd/work-management/*.mrd.json",
+    "generated/governance-spec/**",
+    "generated/work-management-spec/**",
+    "tests/test_governance_renderer.py",
+    "tests/test_work_management_spec.py",
+    "tests/test_documentation_reference_standard.py",
+    "scripts/verify.ps1"
+  ],
+  "shared_paths": [],
+  "excluded_paths": [
+    "AGENTS.md",
+    "contracts/**",
+    "mrd/documentation/**",
+    "publication/documentation-reference-standard.json",
+    "generated/documentation-reference-standard/**",
+    "src/kis_mcp_doc/documentation_reference.py",
+    "src/kis_mcp_doc/cli.py",
+    "C:/Projects/kis-mcp/**",
+    "C:/Projects/References/**"
+  ],
+  "dependencies": ["008-documentation-reference-standard"],
+  "integration_owner": null,
+  "complexity": "large",
+  "risk_triggers": ["public_contract"],
+  "base_evidence": {
+    "local_sha": "beb0a280d0eb78713bcf218b3d72fd31d5eac7fa",
+    "local_tree": "caa69ae1f3e445ebef291b260dc24b3af115af68",
+    "upstream_sha": "beb0a280d0eb78713bcf218b3d72fd31d5eac7fa",
+    "upstream_tree": "caa69ae1f3e445ebef291b260dc24b3af115af68",
+    "upstream_ref": "github:main",
+    "evidence_source": "verified_github_default",
+    "relation": "equal"
+  }
+}
