@@ -92,7 +92,7 @@
       {"id": "T3", "status": "done", "text": "Implement deterministic Governance and Work Management task-documentation generation, traceability, examples, and adapters."},
       {"id": "T4", "status": "done", "text": "Regenerate affected publication bundles and prove existing reader-facing specification/reference content is unchanged."},
       {"id": "T5", "status": "done", "text": "Run focused and full repository verification across all five registered publication families."},
-      {"id": "T6", "status": "in_progress", "text": "Complete specialist reviews, exact-commit verification, governed publication, CI, merge, reconciliation, and cleanup."}
+      {"id": "T6", "status": "done", "text": "Complete specialist reviews, exact-commit verification, governed publication, PR-context CI, exact-head merge, main reconciliation, and closeout cleanup."}
     ],
     "risks": [
       "Authority duplication: task docs can drift if they restate exact normative/reference content.",
@@ -107,14 +107,17 @@
       "Any site/portal redesign, parent KIS change, or external-reference refresh."
     ],
     "closeout": {
-      "state": "implementation_verified_awaiting_exact_commit_and_publication",
+      "state": "post_merge_complete",
       "verification": [
         "Focused human-documentation and publication-kernel tests passed.",
         "Full repository verification passed with 123 tests and all five registered publication families valid and current.",
         "git diff --check is clean after fixing generated index EOF whitespace at the generator.",
         "Governance and Work Management canonical MRD diffs are empty.",
         "Existing Governance, Work Management, and Documentation Reference reader-facing generated files are unchanged; only their deterministic manifests changed because the family-registry hash changed.",
-        "Generated human-documentation bundles include source traceability and exact stale/tamper verification."
+        "Generated human-documentation bundles include source traceability and exact stale/tamper verification.",
+        "Exact-commit verification passed for 5336ce1310c7ab5c1ef47a491b2f286595c2344b.",
+        "GitHub Actions run 33003331548 job 98290506836 passed on the exact pull-request head.",
+        "Registered default-branch tracking and local main were reconciled to GitHub main 635b6570a37380e40dfa569ffbafe2831ac819f9."
       ],
       "reviews": [
         "Architecture specialist review completed with no findings.",
@@ -122,9 +125,14 @@
         "Documentation specialist review reported two low list-marker findings; direct byte inspection proved both were false positives because generated indexes and generator both use hyphen list markers.",
         "Automated code-quality review exhausted NVIDIA and Codex deadlines; the prescribed exact-diff manual fallback found only generated index EOF whitespace, which was fixed at the generator and reverified with a clean diff check and full repository verification."
       ],
-      "publication": {"status": "pending_exact_commit_and_github_checks", "issue": 22},
-      "merge": null,
-      "unresolved": ["Exact-commit verification, GitHub publication, PR CI, merge, Work Management reconciliation, and worktree cleanup remain pending."]
+      "publication": {"status": "merged", "issue": 22, "pull_request": 23},
+      "merge": {
+        "approved_head": "5336ce1310c7ab5c1ef47a491b2f286595c2344b",
+        "merge_commit": "635b6570a37380e40dfa569ffbafe2831ac819f9",
+        "merged_at": "2026-08-26T19:10:46Z",
+        "method": "merge"
+      },
+      "unresolved": []
     }
   }
 }
