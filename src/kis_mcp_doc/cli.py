@@ -6,6 +6,7 @@ from pathlib import Path
 
 from .governance import GovernanceRepository
 from .render import build_governance_spec, verify_governance_spec
+from .work_management import WorkManagementRepository, build_work_management_spec, verify_work_management_spec
 
 
 def _repository(root: Path) -> GovernanceRepository:
@@ -17,6 +18,12 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--root", type=Path, default=Path.cwd())
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("validate")
+    sub.add_parser("work-validate")
+    work_build = sub.add_parser("work-build")
+    work_build.add_argument("--output", type=Path)
+    work_build.add_argument("--replace", action="store_true")
+    work_check = sub.add_parser("work-check-generated")
+    work_check.add_argument("--output", type=Path)
     build = sub.add_parser("build")
     build.add_argument("--output", type=Path)
     build.add_argument("--replace", action="store_true")
@@ -31,6 +38,21 @@ def main(argv: list[str] | None = None) -> int:
     publication = root / "publication" / "governance-spec.json"
     if args.command == "validate":
         result = repo.validate()
+        print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
+        return 0 if result["status"] == "valid" else 1
+
+    if args.command == "work-validate":
+        result = WorkManagementRepository(root).validate()
+        print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
+        return 0 if result["status"] == "valid" else 1
+    if args.command == "work-build":
+        output = args.output or (root / "generated" / "work-management-spec")
+        manifest = build_work_management_spec(WorkManagementRepository(root), output, replace=args.replace)
+        print(json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True))
+        return 0
+    if args.command == "work-check-generated":
+        output = args.output or (root / "generated" / "work-management-spec")
+        result = verify_work_management_spec(WorkManagementRepository(root), output)
         print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
         return 0 if result["status"] == "valid" else 1
 

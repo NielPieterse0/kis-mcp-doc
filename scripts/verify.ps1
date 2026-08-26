@@ -20,11 +20,16 @@ if ($env:KIS_EXACT_SHA) {
     }
 }
 
-$AllowedGeneratedMarkdownPrefix = 'generated/governance-spec/'
+$AllowedGeneratedMarkdownPrefixes = @(
+    'generated/governance-spec/',
+    'generated/work-management-spec/'
+)
 $TrackedMarkdown = @(& git -C $RepositoryRoot ls-files '*.md')
 $UnexpectedMarkdown = @(
     $TrackedMarkdown | Where-Object {
-        $_ -ne 'AGENTS.md' -and -not $_.StartsWith($AllowedGeneratedMarkdownPrefix)
+        $Path = $_
+        $AllowedGenerated = @($AllowedGeneratedMarkdownPrefixes | Where-Object { $Path.StartsWith($_) }).Count -gt 0
+        $Path -ne 'AGENTS.md' -and -not $AllowedGenerated
     }
 )
 if ($UnexpectedMarkdown.Count -gt 0) {
@@ -60,6 +65,16 @@ try {
     & $PythonCommand -m kis_mcp_doc --root . check-generated
     if ($LASTEXITCODE -ne 0) {
         throw "Generated-output verification failed with exit code $LASTEXITCODE"
+    }
+
+    & $PythonCommand -m kis_mcp_doc --root . work-validate
+    if ($LASTEXITCODE -ne 0) {
+        throw "Work Management validation failed with exit code $LASTEXITCODE"
+    }
+
+    & $PythonCommand -m kis_mcp_doc --root . work-check-generated
+    if ($LASTEXITCODE -ne 0) {
+        throw "Work Management generated-output verification failed with exit code $LASTEXITCODE"
     }
 
     & git diff --check
