@@ -2,9 +2,6 @@ from __future__ import annotations
 
 import hashlib
 import json
-import os
-import shutil
-import tempfile
 from copy import deepcopy
 from pathlib import Path
 from typing import Any
@@ -13,6 +10,7 @@ from jsonschema import Draft202012Validator
 
 from .governance import canonical_hash, canonical_source_bytes
 from .harvest import load_harvest_registry
+from .publication_kernel import exact_bundle_diagnostics, file_declarations, write_bundle
 
 
 _POLICY_PATH = "mrd/documentation/01-reference-standard.mrd.json"
@@ -23,6 +21,9 @@ _REGISTRY_SCHEMA = "contracts/documentation/reference/v1/registry.schema.json"
 _PUBLICATION_SCHEMA = "contracts/documentation/reference/v1/publication.schema.json"
 _MANIFEST_SCHEMA = "contracts/documentation/reference/v1/manifest.schema.json"
 _PUBLICATION = "publication/documentation-reference-standard.json"
+_PUBLICATION_ARCHITECTURE = "mrd/documentation/03-publication-architecture.mrd.json"
+_PUBLICATION_FAMILY_REGISTRY = "mrd/documentation/04-publication-family-registry.mrd.json"
+_PUBLICATION_FAMILY_SCHEMA = "contracts/publication/family/v1/registry.schema.json"
 
 _EXPECTED_REFERENCES = {
     "mcp-2026": "normative_external",
@@ -162,6 +163,22 @@ class DocumentationReferenceRepository:
         return _result(diagnostics, checks)
 
 
+def validate_documentation_reference_publication(
+    repository: DocumentationReferenceRepository,
+) -> dict[str, Any]:
+    try:
+        config = _load_json(repository.root / _PUBLICATION, "documentation reference publication")
+    except ValueError as error:
+        return _verification([_diag("REFERENCE_PUBLICATION_INVALID", str(error))])
+    diagnostics = _schema_diagnostics(
+        repository.root,
+        _PUBLICATION_SCHEMA,
+        config,
+        "documentation reference publication",
+    )
+    return _verification(diagnostics)
+
+
 def build_documentation_reference_standard(
     repository: DocumentationReferenceRepository,
     output: Path,
@@ -181,23 +198,7 @@ def build_documentation_reference_standard(
     manifest_diagnostics = _schema_diagnostics(repository.root, _MANIFEST_SCHEMA, manifest, "documentation reference build manifest")
     if manifest_diagnostics:
         raise ValueError(f"documentation reference build manifest is invalid: {manifest_diagnostics}")
-    output = Path(output)
-    output.parent.mkdir(parents=True, exist_ok=True)
-    staging = Path(tempfile.mkdtemp(prefix=f".{output.name}.", suffix=".tmp", dir=output.parent))
-    try:
-        for relative, payload in files.items():
-            target = staging / Path(*relative.split("/"))
-            target.parent.mkdir(parents=True, exist_ok=True)
-            target.write_bytes(payload)
-        (staging / "manifest.json").write_bytes(_json_bytes(manifest))
-        if output.exists():
-            if not replace:
-                raise FileExistsError(f"output already exists: {output}")
-            shutil.rmtree(output)
-        os.replace(staging, output)
-    except Exception:
-        shutil.rmtree(staging, ignore_errors=True)
-        raise
+    write_bundle(Path(output), files, manifest, replace=replace)
     return manifest
 
 
@@ -230,17 +231,14 @@ def verify_documentation_reference_standard(
     expected_manifest = _build_manifest(repository, documents, config, expected_files, validation)
     if actual_manifest != expected_manifest:
         diagnostics.append(_diag("GENERATED_MANIFEST_MISMATCH", "manifest differs from deterministic current inputs"))
-    expected_paths = set(expected_files) | {"manifest.json"}
-    actual_paths = {path.relative_to(output).as_posix() for path in output.rglob("*") if path.is_file()}
-    if actual_paths != expected_paths:
-        diagnostics.append(_diag("GENERATED_FILE_SET_MISMATCH", "generated file inventory differs from deterministic output"))
-    for relative, payload in expected_files.items():
-        path = output / Path(*relative.split("/"))
-        if not path.is_file():
-            diagnostics.append(_diag("GENERATED_FILE_MISSING", f"generated file missing: {relative}"))
-            continue
-        if path.read_bytes() != payload:
-            diagnostics.append(_diag("GENERATED_FILE_CONTENT_MISMATCH", f"generated file differs from deterministic output: {relative}"))
+    diagnostics.extend(
+        exact_bundle_diagnostics(
+            output,
+            expected_files,
+            expected_manifest,
+            code_prefix=None,
+        )
+    )
     return _verification(diagnostics)
 
 
@@ -263,13 +261,26 @@ def _build_manifest(
     validation: dict[str, Any],
 ) -> dict[str, Any]:
     inputs = []
-    for relative in (_POLICY_PATH, _REGISTRY_PATH, _PUBLICATION, _CORE_SCHEMA, _POLICY_SCHEMA, _REGISTRY_SCHEMA, _PUBLICATION_SCHEMA, _MANIFEST_SCHEMA, "publication/harvest-sources.json", "src/kis_mcp_doc/documentation_reference.py"):
+    for relative in (
+        _POLICY_PATH,
+        _REGISTRY_PATH,
+        _PUBLICATION,
+        _PUBLICATION_ARCHITECTURE,
+        _PUBLICATION_FAMILY_REGISTRY,
+        _PUBLICATION_FAMILY_SCHEMA,
+        _CORE_SCHEMA,
+        _POLICY_SCHEMA,
+        _REGISTRY_SCHEMA,
+        _PUBLICATION_SCHEMA,
+        _MANIFEST_SCHEMA,
+        "publication/harvest-sources.json",
+        "src/kis_mcp_doc/canonical.py",
+        "src/kis_mcp_doc/publication_kernel.py",
+        "src/kis_mcp_doc/documentation_reference.py",
+    ):
         payload = canonical_source_bytes(repository.root / relative)
         inputs.append({"path": relative, "sha256": hashlib.sha256(payload).hexdigest(), "bytes": len(payload)})
-    declarations = [
-        {"path": path, "sha256": hashlib.sha256(payload).hexdigest(), "bytes": len(payload)}
-        for path, payload in sorted(files.items())
-    ]
+    declarations = file_declarations(files)
     return {
         "contract": {"name": "documentation-reference-standard-build", "version": 1},
         "specification": {key: config[key] for key in ("title", "version", "status", "layout_profile")},

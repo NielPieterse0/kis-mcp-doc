@@ -230,8 +230,11 @@ def test_manifest_binds_canonical_repo_dependencies(tmp_path: Path) -> None:
         "contracts/mrd/v1/mrd.schema.json",
         "contracts/governance/v1/content.schema.json",
         "contracts/governance/v1/governance-mrd.schema.json",
+        "contracts/publication/family/v1/registry.schema.json",
         "mrd/documentation/01-reference-standard.mrd.json",
         "mrd/documentation/02-reference-registry.mrd.json",
+        "mrd/documentation/03-publication-architecture.mrd.json",
+        "mrd/documentation/04-publication-family-registry.mrd.json",
         "publication/documentation-reference-standard.json",
     }
 

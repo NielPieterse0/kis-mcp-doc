@@ -10,6 +10,11 @@ from .documentation_reference import (
     verify_documentation_reference_standard,
 )
 from .governance import GovernanceRepository
+from .publication_kernel import (
+    build_registered_publication,
+    validate_registered_publications,
+    verify_registered_publications,
+)
 from .render import build_governance_spec, verify_governance_spec
 from .work_management import (
     WorkManagementRepository,
@@ -27,6 +32,13 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--root", type=Path, default=Path.cwd())
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("validate")
+    publications_validate = sub.add_parser("publications-validate")
+    publications_validate.add_argument("--family", action="append")
+    publications_build = sub.add_parser("publications-build")
+    publications_build.add_argument("--family", required=True)
+    publications_build.add_argument("--replace", action="store_true")
+    publications_check = sub.add_parser("publications-check-generated")
+    publications_check.add_argument("--family", action="append")
     sub.add_parser("references-validate")
     references_build = sub.add_parser("references-build")
     references_build.add_argument("--output", type=Path)
@@ -51,6 +63,22 @@ def main(argv: list[str] | None = None) -> int:
     root = args.root.resolve()
     repo = _repository(root)
     publication = root / "publication" / "governance-spec.json"
+    if args.command == "publications-validate":
+        result = validate_registered_publications(root, family_ids=args.family)
+        print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
+        return 0 if result["status"] == "valid" else 1
+    if args.command == "publications-build":
+        result = build_registered_publication(
+            root,
+            args.family,
+            replace=args.replace,
+        )
+        print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
+        return 0 if result["status"] == "valid" else 1
+    if args.command == "publications-check-generated":
+        result = verify_registered_publications(root, family_ids=args.family)
+        print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
+        return 0 if result["status"] == "valid" else 1
     if args.command == "validate":
         result = repo.validate()
         print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))

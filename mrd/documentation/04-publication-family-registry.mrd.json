@@ -1,0 +1,128 @@
+{
+  "_mrd": {
+    "schema_version": 1,
+    "id": "KIS-DOC-SEM-REG-002",
+    "title": "Publication Family Registry",
+    "module": "documentation",
+    "class": "SEM",
+    "type": "REG",
+    "layer": "L1",
+    "record_mode": "prescriptive",
+    "status": "active",
+    "version": "1.0.0",
+    "dependencies": [
+      {
+        "mrd_id": "KIS-DOC-CON-POL-002",
+        "relationship": "depends_on"
+      },
+      {
+        "source": "repo:contracts/publication/family/v1/registry.schema.json",
+        "relationship": "validated_by"
+      }
+    ],
+    "provenance": {
+      "sources": [
+        {
+          "source_id": "KIS-OPERATOR-DIRECTION-2026-08-26-PUBLICATION-KERNEL",
+          "kind": "operator_direction",
+          "role": "registry_adoption_basis",
+          "locator": "conversation:2026-08-26",
+          "revision": "implementation-approved",
+          "sha256": null
+        },
+        {
+          "source_id": "GH-ISSUE-18",
+          "kind": "operator_approved_work_item",
+          "role": "traceability",
+          "locator": "github:NielPieterse0/kis-mcp-doc#18",
+          "revision": "2026-08-26",
+          "sha256": null
+        },
+        {
+          "source_id": "KIS-CHG010-WRK-WFL-001",
+          "kind": "canonical_machine_readable_record",
+          "role": "post_010_publication_shape_basis",
+          "locator": ".work/changes/010-hrd-reader-experience-and-reference-separation/change.mrd.json",
+          "revision": "1.1.0",
+          "sha256": "c7050f80722400a481a35b1a26979f16c88b5b88b879101f5337cb80ebce739d"
+        }
+      ],
+      "source_fingerprint": "sha256:dbdadfe5335334920b10cdda767424425997945ec1c96f17fcca469eff83a865",
+      "fact_quality": "direct"
+    },
+    "supersedes": [],
+    "superseded_by": null
+  },
+  "content": {
+    "registry_version": "1.0.0",
+    "adapter_protocol_version": 1,
+    "families": [
+      {
+        "id": "governance-spec",
+        "title": "kis-op Governance Specification",
+        "semantic_owner": "KIS-KNOW-CON-POL-002",
+        "mrd_root": "mrd/governance",
+        "publication_config": "publication/governance-spec.json",
+        "output": "generated/governance-spec",
+        "output_classes": [
+          "human_readable_specification",
+          "generated_reference"
+        ],
+        "adapter": {
+          "validate": "kis_mcp_doc.publication_adapters:validate_governance",
+          "build": "kis_mcp_doc.publication_adapters:build_governance",
+          "verify": "kis_mcp_doc.publication_adapters:verify_governance"
+        },
+        "legacy_commands": {
+          "validate": "validate",
+          "build": "build",
+          "verify": "check-generated"
+        }
+      },
+      {
+        "id": "work-management-spec",
+        "title": "KIS Work Management Specification",
+        "semantic_owner": "KIS-WORK-CON-POL-001",
+        "mrd_root": "mrd/work-management",
+        "publication_config": "publication/work-management-spec.json",
+        "output": "generated/work-management-spec",
+        "output_classes": [
+          "human_readable_specification",
+          "generated_reference"
+        ],
+        "adapter": {
+          "validate": "kis_mcp_doc.publication_adapters:validate_work_management",
+          "build": "kis_mcp_doc.publication_adapters:build_work_management",
+          "verify": "kis_mcp_doc.publication_adapters:verify_work_management"
+        },
+        "legacy_commands": {
+          "validate": "work-validate",
+          "build": "work-build",
+          "verify": "work-check-generated"
+        }
+      },
+      {
+        "id": "documentation-reference-standard",
+        "title": "Documentation Reference Standard",
+        "semantic_owner": "KIS-DOC-CON-POL-001",
+        "mrd_root": "mrd/documentation",
+        "publication_config": "publication/documentation-reference-standard.json",
+        "output": "generated/documentation-reference-standard",
+        "output_classes": [
+          "human_readable_specification",
+          "generated_reference"
+        ],
+        "adapter": {
+          "validate": "kis_mcp_doc.publication_adapters:validate_documentation_reference",
+          "build": "kis_mcp_doc.publication_adapters:build_documentation_reference",
+          "verify": "kis_mcp_doc.publication_adapters:verify_documentation_reference"
+        },
+        "legacy_commands": {
+          "validate": "references-validate",
+          "build": "references-build",
+          "verify": "references-check-generated"
+        }
+      }
+    ]
+  }
+}

@@ -10,12 +10,16 @@ from typing import Any
 from jsonschema import Draft202012Validator
 
 from .governance import canonical_hash, canonical_source_bytes
+from .publication_kernel import bundle_diagnostics, file_declarations, write_bundle
 
 
 _WORK_PUBLICATION = "publication/work-management-spec.json"
 _DOCUMENTATION_POLICY = "mrd/documentation/01-reference-standard.mrd.json"
 _DOCUMENTATION_REGISTRY = "mrd/documentation/02-reference-registry.mrd.json"
 _DOCUMENTATION_PUBLICATION = "publication/documentation-reference-standard.json"
+_PUBLICATION_ARCHITECTURE = "mrd/documentation/03-publication-architecture.mrd.json"
+_PUBLICATION_FAMILY_REGISTRY = "mrd/documentation/04-publication-family-registry.mrd.json"
+_PUBLICATION_FAMILY_SCHEMA = "contracts/publication/family/v1/registry.schema.json"
 _WORK_EVIDENCE = "evidence/work-management/canonical-snapshot.json"
 _DOCUMENTATION_OUTPUT_CLASS = "human_readable_specification"
 _REFERENCE_OUTPUT_CLASS = "generated_reference"
@@ -725,6 +729,17 @@ def _load_work_publication(repo: WorkManagementRepository) -> dict[str, Any]:
     return config
 
 
+def validate_work_management_publication(repo: WorkManagementRepository) -> dict[str, Any]:
+    try:
+        _load_work_publication(repo)
+    except (OSError, UnicodeError, json.JSONDecodeError, ValueError) as error:
+        return {
+            "status": "invalid",
+            "diagnostics": [{"code": "WORK_PUBLICATION_CONFIG_INVALID", "message": str(error)}],
+        }
+    return {"status": "valid", "diagnostics": []}
+
+
 def _validate_documentation_reference_binding(root: Path, config: dict[str, Any]) -> None:
     binding = config.get("documentation_reference")
     expected = {
@@ -751,9 +766,29 @@ def _validate_documentation_reference_binding(root: Path, config: dict[str, Any]
 
 def _work_source_file_declarations(repo: WorkManagementRepository) -> list[dict[str, Any]]:
     declarations = []
-    for relative in (_DOCUMENTATION_POLICY, _DOCUMENTATION_REGISTRY, _DOCUMENTATION_PUBLICATION, _WORK_EVIDENCE):
+    for relative in (
+        _DOCUMENTATION_POLICY,
+        _DOCUMENTATION_REGISTRY,
+        _DOCUMENTATION_PUBLICATION,
+        _PUBLICATION_ARCHITECTURE,
+        _PUBLICATION_FAMILY_REGISTRY,
+        _PUBLICATION_FAMILY_SCHEMA,
+        _WORK_EVIDENCE,
+    ):
         payload = canonical_source_bytes(repo.root / relative)
         declarations.append({"path": relative, "sha256": hashlib.sha256(payload).hexdigest(), "bytes": len(payload)})
+    return declarations
+
+
+def _work_generator_declarations(repo: WorkManagementRepository) -> list[dict[str, Any]]:
+    declarations = []
+    for relative in (
+        "src/kis_mcp_doc/canonical.py",
+        "src/kis_mcp_doc/publication_kernel.py",
+        "src/kis_mcp_doc/work_management.py",
+    ):
+        payload = canonical_source_bytes(repo.root / relative)
+        declarations.append({"path": relative, "sha256": hashlib.sha256(payload).hexdigest()})
     return declarations
 
 
@@ -777,6 +812,7 @@ def build_work_management_spec(repo: WorkManagementRepository, output: Path, *, 
     config = _load_work_publication(repo)
     docs=list(repo.load().values())
     output=Path(output)
+    output.parent.mkdir(parents=True, exist_ok=True)
     staging=Path(tempfile.mkdtemp(prefix=f".{output.name}.",suffix=".tmp",dir=output.parent))
     try:
         pages=[(_page_name(i,doc),doc) for i,doc in enumerate(docs,2)]
@@ -859,18 +895,21 @@ def build_work_management_spec(repo: WorkManagementRepository, output: Path, *, 
             "",
         ]
         spec="\n".join(root); (staging/'001-specification.md').write_bytes(spec.encode("utf-8")); (staging/'specification.md').write_bytes(spec.encode("utf-8"))
-        files=[]
-        for path in sorted(staging.rglob('*')):
-            if path.is_file():
-                b=path.read_bytes(); files.append({'path':path.relative_to(staging).as_posix(),'sha256':hashlib.sha256(b).hexdigest(),'bytes':len(b)})
+        bundle_files={
+            path.relative_to(staging).as_posix(): path.read_bytes()
+            for path in sorted(staging.rglob('*'))
+            if path.is_file()
+        }
+        files=file_declarations(bundle_files)
         mrds=[]
         for path in sorted(repo.mrd_root.glob('*.mrd.json')):
             b=canonical_source_bytes(path); d=json.loads(path.read_text(encoding='utf-8')); mrds.append({'id':d['_mrd']['id'],'path':path.relative_to(repo.root).as_posix(),'sha256':hashlib.sha256(b).hexdigest(),'version':d['_mrd']['version']})
         publication_path = repo.root / _WORK_PUBLICATION
         publication_bytes = canonical_source_bytes(publication_path)
         manifest={
-            'contract':{'name':'kis-work-management-spec-build','version':1},
+            'contract':{'name':'kis-work-management-spec-build','version':2},
             'specification':{'title':config['title'],'version':config['version'],'status':config['status'],'layout_profile':'mcp-spec'},
+            'generator':{'name':'kis-mcp-doc','version':'0.1.0','sources':_work_generator_declarations(repo)},
             'inputs':{
                 'mrds':mrds,
                 'source_set_sha256':canonical_hash(mrds),
@@ -881,13 +920,15 @@ def build_work_management_spec(repo: WorkManagementRepository, output: Path, *, 
             'files':files,
             'bundle_sha256':canonical_hash(files),
         }
-        (staging/'manifest.json').write_bytes((json.dumps(manifest,indent=2,sort_keys=True)+'\n').encode("utf-8"))
-        if output.exists():
-            if not replace: raise FileExistsError(output)
-            shutil.rmtree(output)
-        output.parent.mkdir(parents=True,exist_ok=True); staging.replace(output); return manifest
+        shutil.rmtree(staging,ignore_errors=True)
+        write_bundle(output,bundle_files,manifest,replace=replace)
+        return manifest
     except Exception:
         shutil.rmtree(staging,ignore_errors=True); raise
+
+
+def _normalize_generated_line_endings(_relative: str, payload: bytes) -> bytes:
+    return payload.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
 
 
 def verify_work_management_spec(repo: WorkManagementRepository, output: Path) -> dict[str, Any]:
@@ -897,9 +938,20 @@ def verify_work_management_spec(repo: WorkManagementRepository, output: Path) ->
     if temp.exists(): shutil.rmtree(temp)
     try:
         build_work_management_spec(repo,temp)
-        expected={p.relative_to(temp).as_posix():canonical_source_bytes(p) for p in temp.rglob('*') if p.is_file()}
-        actual={p.relative_to(output).as_posix():canonical_source_bytes(p) for p in output.rglob('*') if p.is_file()}
-        if expected!=actual: return {'status':'invalid','diagnostics':[{'code':'WORK_GENERATED_DRIFT','message':'generated Work Management specification differs from deterministic current output'}]}
+        expected_manifest=json.loads((temp/'manifest.json').read_text(encoding='utf-8'))
+        expected_files={
+            p.relative_to(temp).as_posix(): p.read_bytes()
+            for p in temp.rglob('*')
+            if p.is_file() and p.name != 'manifest.json'
+        }
+        drift=bundle_diagnostics(
+            output,
+            expected_files,
+            expected_manifest,
+            code_prefix='WORK',
+            normalizer=_normalize_generated_line_endings,
+        )
+        if drift: return {'status':'invalid','diagnostics':[{'code':'WORK_GENERATED_DRIFT','message':'generated Work Management specification differs from deterministic current output'}]}
         return {'status':'valid','diagnostics':[]}
     finally:
         shutil.rmtree(temp,ignore_errors=True)
