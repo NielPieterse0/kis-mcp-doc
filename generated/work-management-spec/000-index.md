@@ -1,7 +1,9 @@
 <!-- GENERATED — DO NOT EDIT -->
 # KIS Work Management Specification — documentation index
 
-The validated Work Management MRDs are authoritative. These pages are deterministic review projections.
+Start with the [Specification](001-specification.md) for the operating model. The remaining chapters provide the detailed lifecycle, selection, authority, provider, and conformance rules.
+
+The validated Work Management MRDs remain authoritative. These pages are deterministic review projections and have no write-back authority.
 
 ## Specification pages
 
@@ -16,4 +18,4 @@ The validated Work Management MRDs are authoritative. These pages are determinis
 
 ## Traceability
 
-- [Build manifest](manifest.json)
+- [Build manifest](manifest.json) — exact MRD and generated-file hashes

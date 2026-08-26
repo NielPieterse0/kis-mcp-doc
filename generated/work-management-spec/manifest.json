@@ -1,59 +1,59 @@
 {
-  "bundle_sha256": "a74e185bacc5372a7ffefebd819ead38090469695c049c79cc9c048e253b621c",
+  "bundle_sha256": "d16a7b4ecd29d02a6d0d40103bad70e2d959daf69b9054baea1477bdd94399ad",
   "contract": {
     "name": "kis-work-management-spec-build",
     "version": 1
   },
   "files": [
     {
-      "bytes": 780,
+      "bytes": 1047,
       "path": "000-index.md",
-      "sha256": "7bdd16776e4db148096d96eca8094777ba751554d68beec389aeb2f232c6c2a7"
+      "sha256": "45237e7931a739472945647ec0312bcc8d43ee504cbde58b1f025dc65fb43433"
     },
     {
-      "bytes": 1516,
+      "bytes": 3052,
       "path": "001-specification.md",
-      "sha256": "4b90e222164801bbb7e7370c1c41d1af6c709fe2ffef87351dfdc144a219f810"
+      "sha256": "af16af714b1a446b96cf9f90b6ba43e7ff0eb3d89bf2596563ad0cb2d51c176e"
     },
     {
-      "bytes": 23896,
+      "bytes": 18510,
       "path": "002-work-management-domain-model.md",
-      "sha256": "25b14dafd0a6ebfeeb079ea310a2e30fb34a66d5f21274488ca57154ca1d0dbf"
+      "sha256": "5c37c948bd6d0576baaaff26470b04e533f6705167115271d198062ff9ebc32f"
     },
     {
-      "bytes": 6917,
+      "bytes": 6264,
       "path": "003-work-lifecycle.md",
-      "sha256": "f8dea98c659bdab5efb9fa74792c64ced2f8e183ddc26fb8072059d4fb0810d5"
+      "sha256": "e211d1041219390a50572485cdbb9b38c70f24d4a4f9157f269845f47ed337cb"
     },
     {
-      "bytes": 4213,
+      "bytes": 4096,
       "path": "004-work-operations.md",
-      "sha256": "310f64aa32606427bde125ba32156a9cf8efec7a45ccbf46f99fee6f60ce779b"
+      "sha256": "17413f9980560090b5aa4953a455847a0f6383a08c1c1a653a4242073362ee93"
     },
     {
-      "bytes": 3785,
+      "bytes": 3859,
       "path": "005-next-work-selection.md",
-      "sha256": "243f2fcf4faae34e39b2bb043b22baa480a56a3f0c444fcacc8ff8ee614beb0e"
+      "sha256": "f9b126e24454e35063249ddab32ee968198e500a992a186466181103c82a4c8f"
     },
     {
-      "bytes": 12945,
+      "bytes": 10732,
       "path": "006-authority-and-reconciliation-policy.md",
-      "sha256": "e16ede2f461b86a40459b2954a3780df4c1e5b6436d28790f1d83dcdd318080f"
+      "sha256": "9e0e59f59399b29b6c8709b424944ee395f37e107ab3b7187ed8b434a4a470f3"
     },
     {
-      "bytes": 5322,
+      "bytes": 5492,
       "path": "007-provider-and-command-plane-boundary.md",
-      "sha256": "533211f83b23ea5f19915521ebf151aebbfeff8a1cd6f228fdf8dbe94189799b"
+      "sha256": "0665aea5a22b76d8cc2369d31f45ef45db6c50539ce4ec7c3dde867ab2058619"
     },
     {
-      "bytes": 899,
+      "bytes": 1138,
       "path": "008-work-management-conformance.md",
-      "sha256": "5dc644e111b06f20df0436804b7053314e507262a355b78ac133b3fd4bd40287"
+      "sha256": "c178810c40e72de20468ab942ac82d689467a7aad98aa6fdcef343fc4474542d"
     },
     {
-      "bytes": 1516,
+      "bytes": 3052,
       "path": "specification.md",
-      "sha256": "4b90e222164801bbb7e7370c1c41d1af6c709fe2ffef87351dfdc144a219f810"
+      "sha256": "af16af714b1a446b96cf9f90b6ba43e7ff0eb3d89bf2596563ad0cb2d51c176e"
     }
   ],
   "inputs": {
@@ -91,8 +91,8 @@
       {
         "id": "KIS-WORK-CTR-SVC-001",
         "path": "mrd/work-management/06-svc.mrd.json",
-        "sha256": "efda40ea7a1918ed077bc3c6782089046daf4e7d0f0587d031d375476851e7e9",
-        "version": "1.0.0"
+        "sha256": "948f9370ec4c751085131bda230d469c23c2ec379a8004cfbfb92b01d4a1d1d5",
+        "version": "1.0.1"
       },
       {
         "id": "KIS-WORK-EVL-TST-001",
@@ -101,7 +101,7 @@
         "version": "1.0.0"
       }
     ],
-    "source_set_sha256": "8b0bfecf145821e6481e388e57a0f5673d39b181b6f022a46a1d69b91cefd182"
+    "source_set_sha256": "43470929a16053378938ebf19ea5c4a6251d0cd7a0e77cc863ad527ffec14caa"
   },
   "specification": {
     "layout_profile": "mcp-spec",
