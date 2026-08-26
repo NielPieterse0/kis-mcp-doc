@@ -1,0 +1,183 @@
+{
+  "_mrd": {
+    "class": "DEC",
+    "dependencies": [
+      {
+        "mrd_id": "KIS-WORK-SEM-REG-001",
+        "relationship": "depends_on"
+      },
+      {
+        "relationship": "evidenced_by",
+        "source": "repo:evidence/work-management/canonical-snapshot.json"
+      }
+    ],
+    "id": "KIS-WORK-DEC-SCR-001",
+    "layer": "L2",
+    "module": "work-management",
+    "provenance": {
+      "fact_quality": "direct",
+      "source_fingerprint": "sha256:3a6da5488cfc8c782fb3ee38617de7ac28d0ba28d877c352033528bfca8797fa",
+      "sources": [
+        {
+          "kind": "repo_path",
+          "locator": "repo:evidence/work-management/canonical-snapshot.json",
+          "revision": "b1c7f00a90c063c6cae287669035e358a04295e0",
+          "role": "implementation_evidence",
+          "sha256": "343154fdc443d75d03b14feb9471331fe5c25c9f9bdfe7d38c8b179a1731d79d",
+          "source_id": "KIS-MCP-WORK-MANAGEMENT-SNAPSHOT"
+        }
+      ]
+    },
+    "record_mode": "prescriptive",
+    "schema_version": 1,
+    "status": "active",
+    "superseded_by": null,
+    "supersedes": [],
+    "title": "Next-work selection",
+    "type": "SCR",
+    "version": "1.0.0"
+  },
+  "content": {
+    "dependency_evidence": [
+      "unavailable",
+      "partial",
+      "observed"
+    ],
+    "effort_order": [
+      "tiny",
+      "small",
+      "medium",
+      "large"
+    ],
+    "eligible_states": [
+      "ready"
+    ],
+    "fields": {
+      "blocked_by": "Blocked By",
+      "created": "Created",
+      "effort": "Effort",
+      "execution_owner": "Execution Owner",
+      "priority": "Priority",
+      "state": "Status"
+    },
+    "priority_order": [
+      "critical",
+      "high",
+      "medium",
+      "low"
+    ],
+    "profiles": {
+      "normalized_domain": {
+        "reason_overrides": {
+          "dependencies_clear": "dependency_incomplete:{dependency_id}",
+          "eligible_state": "state_not_executable"
+        },
+        "rules": [
+          "project_match",
+          "eligible_state",
+          "unclaimed",
+          "approval_complete",
+          "dependencies_clear"
+        ]
+      },
+      "provider_project": {
+        "reason_overrides": {
+          "dependencies_clear": "native_dependency_blocking",
+          "eligible_state": "state_not_ready"
+        },
+        "rules": [
+          "source_issue",
+          "source_open",
+          "eligible_state",
+          "valid_priority",
+          "valid_effort",
+          "required_fields",
+          "unclaimed",
+          "dependency_evidence",
+          "dependencies_clear"
+        ]
+      }
+    },
+    "purpose": "Define deterministic eligibility and ranking for selecting executable work.",
+    "ranking": [
+      "priority",
+      "effort",
+      "created_order",
+      "record_id"
+    ],
+    "rules": [
+      {
+        "definition": "Only issue records are eligible in the provider-backed next-work queue.",
+        "id": "SEL-001",
+        "kind": "source_issue",
+        "reason_code": "not_issue"
+      },
+      {
+        "definition": "Provider-backed source issues must remain open.",
+        "id": "SEL-002",
+        "kind": "source_open",
+        "reason_code": "source_not_open"
+      },
+      {
+        "definition": "Normalized-domain selection respects an explicit project scope.",
+        "id": "SEL-003",
+        "kind": "project_match",
+        "reason_code": "project_mismatch"
+      },
+      {
+        "definition": "Candidate state must be one of the configured eligible states; domain adapters may preserve their existing equivalent reason code.",
+        "id": "SEL-004",
+        "kind": "eligible_state",
+        "reason_code": "state_not_ready"
+      },
+      {
+        "definition": "Priority must be present in the canonical priority order.",
+        "id": "SEL-005",
+        "kind": "valid_priority",
+        "reason_code": "missing_or_invalid:{field}"
+      },
+      {
+        "definition": "Effort must be present in the canonical effort order.",
+        "id": "SEL-006",
+        "kind": "valid_effort",
+        "reason_code": "missing_or_invalid:{field}"
+      },
+      {
+        "definition": "Configured readiness fields must be present before provider-backed selection.",
+        "id": "SEL-007",
+        "kind": "required_fields",
+        "reason_code": "missing_required:{field}"
+      },
+      {
+        "definition": "Already claimed work is excluded from next-work selection.",
+        "id": "SEL-008",
+        "kind": "unclaimed",
+        "reason_code": "already_claimed:{owner}"
+      },
+      {
+        "definition": "Normalized-domain records that require approval must have completed approval.",
+        "id": "SEL-009",
+        "kind": "approval_complete",
+        "reason_code": "approval_incomplete"
+      },
+      {
+        "definition": "Required provider dependency evidence must be observable.",
+        "id": "SEL-010",
+        "kind": "dependency_evidence",
+        "reason_code": "dependency_evidence_unavailable"
+      },
+      {
+        "definition": "Provider-native blocker evidence must be empty; normalized-domain adapters preserve dependency-specific reason codes.",
+        "id": "SEL-011",
+        "kind": "dependencies_clear",
+        "reason_code": "native_dependency_blocking"
+      },
+      {
+        "definition": "Eligible candidates rank by Priority, Effort, creation order, then stable record identity.",
+        "id": "SEL-012",
+        "kind": "ranking",
+        "reason_code": null
+      }
+    ]
+  }
+}

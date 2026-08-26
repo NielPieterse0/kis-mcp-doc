@@ -1,0 +1,9 @@
+{
+  "output_dir": "generated/work-management-spec",
+  "schema_version": 1,
+  "source_glob": "mrd/work-management/*.mrd.json",
+  "status": "draft",
+  "subtitle": "Governed operating specification for work intake, state, selection, delivery, reconciliation, and GitHub Project integration",
+  "title": "KIS Work Management Specification",
+  "version": "1.0.0"
+}

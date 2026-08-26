@@ -1,0 +1,359 @@
+{
+  "_mrd": {
+    "class": "CTR",
+    "dependencies": [
+      {
+        "mrd_id": "KIS-WORK-CON-POL-001",
+        "relationship": "depends_on"
+      },
+      {
+        "mrd_id": "KIS-WORK-WRK-WFL-001",
+        "relationship": "depends_on"
+      },
+      {
+        "relationship": "evidenced_by",
+        "source": "repo:evidence/work-management/canonical-snapshot.json"
+      }
+    ],
+    "id": "KIS-WORK-CTR-SVC-001",
+    "layer": "L3",
+    "module": "work-management",
+    "provenance": {
+      "fact_quality": "direct",
+      "source_fingerprint": "sha256:3a6da5488cfc8c782fb3ee38617de7ac28d0ba28d877c352033528bfca8797fa",
+      "sources": [
+        {
+          "kind": "repo_path",
+          "locator": "repo:evidence/work-management/canonical-snapshot.json",
+          "revision": "b1c7f00a90c063c6cae287669035e358a04295e0",
+          "role": "implementation_evidence",
+          "sha256": "343154fdc443d75d03b14feb9471331fe5c25c9f9bdfe7d38c8b179a1731d79d",
+          "source_id": "KIS-MCP-WORK-MANAGEMENT-SNAPSHOT"
+        }
+      ]
+    },
+    "record_mode": "prescriptive",
+    "schema_version": 1,
+    "status": "active",
+    "superseded_by": null,
+    "supersedes": [],
+    "title": "Provider and command-plane boundary",
+    "type": "SVC",
+    "version": "1.0.0"
+  },
+  "content": {
+    "command_plane": {
+      "claim": {
+        "auto_expiry": false,
+        "execution_owner_field": "Execution Owner"
+      },
+      "completion": {
+        "require_no_active_claim_after_close": false,
+        "terminal_state": "done"
+      },
+      "delivery": {
+        "change_created_stage": "change_created",
+        "change_id_field": "Change ID",
+        "complete_stage": "complete",
+        "complexity_field": "Complexity",
+        "risk_triggers_field": "Risk Triggers",
+        "stage_field": "Delivery Stage"
+      },
+      "delivery_stages": [
+        "none",
+        "change_created",
+        "implementing",
+        "pr_open",
+        "review",
+        "ci_pending",
+        "ci_failed",
+        "ci_passed",
+        "merged",
+        "documentation",
+        "commissioning",
+        "complete"
+      ],
+      "field_authority": {
+        "Authority Revision": {
+          "authority": "git",
+          "direction": "evidence"
+        },
+        "Blocked By": {
+          "authority": "github",
+          "direction": "evidence"
+        },
+        "Change ID": {
+          "authority": "repository_change",
+          "direction": "evidence"
+        },
+        "Commissioning Key": {
+          "authority": "derived",
+          "direction": "evidence"
+        },
+        "Complexity": {
+          "authority": "repository_change",
+          "direction": "evidence"
+        },
+        "Confidence": {
+          "authority": "work_management",
+          "direction": "command"
+        },
+        "Created": {
+          "authority": "github",
+          "direction": "evidence"
+        },
+        "Delivery Stage": {
+          "authority": "derived",
+          "direction": "evidence"
+        },
+        "Disposition": {
+          "authority": "work_management",
+          "direction": "command"
+        },
+        "Documentation Impact": {
+          "authority": "work_management_then_repository_change",
+          "direction": "handoff"
+        },
+        "Effort": {
+          "authority": "work_management",
+          "direction": "command"
+        },
+        "Execution Owner": {
+          "authority": "work_management",
+          "direction": "command"
+        },
+        "External Link": {
+          "authority": "work_management",
+          "direction": "command"
+        },
+        "Iteration": {
+          "authority": "work_management",
+          "direction": "command"
+        },
+        "Live Verification": {
+          "authority": "derived",
+          "direction": "evidence"
+        },
+        "Live Verification Evidence": {
+          "authority": "derived",
+          "direction": "evidence"
+        },
+        "Module": {
+          "authority": "work_management_then_repository_change",
+          "direction": "handoff"
+        },
+        "Origin": {
+          "authority": "work_management",
+          "direction": "command"
+        },
+        "Priority": {
+          "authority": "work_management",
+          "direction": "command"
+        },
+        "Project ID": {
+          "authority": "derived",
+          "direction": "evidence"
+        },
+        "Record Type": {
+          "authority": "work_management",
+          "direction": "command"
+        },
+        "Repository": {
+          "authority": "github",
+          "direction": "evidence"
+        },
+        "Review Trigger": {
+          "authority": "work_management",
+          "direction": "command"
+        },
+        "Risk Triggers": {
+          "authority": "repository_change",
+          "direction": "evidence"
+        },
+        "Severity": {
+          "authority": "work_management",
+          "direction": "command"
+        },
+        "Source Review": {
+          "authority": "work_management",
+          "direction": "command"
+        },
+        "Status": {
+          "authority": "work_management",
+          "direction": "command"
+        },
+        "Target Date": {
+          "authority": "work_management",
+          "direction": "command"
+        },
+        "Verification": {
+          "authority": "actions",
+          "direction": "evidence"
+        }
+      },
+      "intake_aliases": {
+        "todo": "inbox"
+      },
+      "queue": {
+        "blocked_by_field": "Blocked By",
+        "created_field": "Created",
+        "effort_field": "Effort",
+        "effort_order": [
+          "tiny",
+          "small",
+          "medium",
+          "large"
+        ],
+        "eligible_states": [
+          "ready"
+        ],
+        "priority_field": "Priority",
+        "priority_order": [
+          "critical",
+          "high",
+          "medium",
+          "low"
+        ],
+        "ranking": [
+          "priority",
+          "effort",
+          "created_order",
+          "record_id"
+        ],
+        "state_field": "Status"
+      },
+      "readiness": {
+        "required_issue_sections": [
+          "Outcome",
+          "Acceptance criteria"
+        ],
+        "required_project_fields": [
+          "Record Type",
+          "Priority",
+          "Effort",
+          "Documentation Impact"
+        ],
+        "requires_dependencies_understood": true
+      },
+      "schema_version": 1,
+      "transition_requirements": {
+        "deferred": [
+          "Review Trigger"
+        ],
+        "on_hold": [
+          "Review Trigger"
+        ]
+      },
+      "transitions": {
+        "active": [
+          "ready",
+          "review",
+          "blocked",
+          "on_hold",
+          "deferred",
+          "done",
+          "superseded"
+        ],
+        "approved": [
+          "ready",
+          "active",
+          "on_hold",
+          "deferred",
+          "superseded"
+        ],
+        "blocked": [
+          "ready",
+          "active",
+          "on_hold",
+          "deferred",
+          "superseded"
+        ],
+        "deferred": [
+          "triage",
+          "proposed",
+          "approved",
+          "rejected",
+          "superseded"
+        ],
+        "documentation": [
+          "done",
+          "active",
+          "blocked",
+          "superseded"
+        ],
+        "done": [],
+        "inbox": [
+          "triage",
+          "deferred",
+          "rejected",
+          "superseded"
+        ],
+        "on_hold": [
+          "ready",
+          "active",
+          "deferred",
+          "rejected",
+          "superseded"
+        ],
+        "proposed": [
+          "approved",
+          "deferred",
+          "rejected",
+          "superseded"
+        ],
+        "ready": [
+          "active",
+          "on_hold",
+          "deferred",
+          "superseded"
+        ],
+        "rejected": [
+          "triage",
+          "superseded"
+        ],
+        "review": [
+          "active",
+          "verification",
+          "blocked",
+          "on_hold",
+          "superseded"
+        ],
+        "superseded": [],
+        "triage": [
+          "proposed",
+          "approved",
+          "deferred",
+          "rejected",
+          "superseded"
+        ],
+        "verification": [
+          "active",
+          "documentation",
+          "blocked",
+          "superseded"
+        ]
+      },
+      "work_states": [
+        "inbox",
+        "triage",
+        "proposed",
+        "approved",
+        "ready",
+        "active",
+        "blocked",
+        "on_hold",
+        "deferred",
+        "rejected",
+        "superseded",
+        "done"
+      ]
+    },
+    "provider_contract": {
+      "live_observation": "not captured in this revision because provider inventory response was invalid",
+      "project": "NielPieterse0/1",
+      "read_model": "bounded inventory and schema observation",
+      "write_model": "preview or idempotent mutation"
+    },
+    "purpose": "Define the configured command plane and GitHub Project provider boundary."
+  }
+}

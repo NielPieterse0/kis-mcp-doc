@@ -1,0 +1,56 @@
+{
+  "_mrd": {
+    "class": "EVL",
+    "dependencies": [
+      {
+        "mrd_id": "KIS-WORK-CTR-SVC-001",
+        "relationship": "validated_by"
+      },
+      {
+        "mrd_id": "KIS-WORK-DEC-SCR-001",
+        "relationship": "validated_by"
+      },
+      {
+        "relationship": "evidenced_by",
+        "source": "repo:evidence/work-management/canonical-snapshot.json"
+      }
+    ],
+    "id": "KIS-WORK-EVL-TST-001",
+    "layer": "L4",
+    "module": "work-management",
+    "provenance": {
+      "fact_quality": "direct",
+      "source_fingerprint": "sha256:3a6da5488cfc8c782fb3ee38617de7ac28d0ba28d877c352033528bfca8797fa",
+      "sources": [
+        {
+          "kind": "repo_path",
+          "locator": "repo:evidence/work-management/canonical-snapshot.json",
+          "revision": "b1c7f00a90c063c6cae287669035e358a04295e0",
+          "role": "implementation_evidence",
+          "sha256": "343154fdc443d75d03b14feb9471331fe5c25c9f9bdfe7d38c8b179a1731d79d",
+          "source_id": "KIS-MCP-WORK-MANAGEMENT-SNAPSHOT"
+        }
+      ]
+    },
+    "record_mode": "prescriptive",
+    "schema_version": 1,
+    "status": "active",
+    "superseded_by": null,
+    "supersedes": [],
+    "title": "Work Management conformance",
+    "type": "TST",
+    "version": "1.0.0"
+  },
+  "content": {
+    "checks": [
+      "MRD envelopes validate against the KIS MRD core schema.",
+      "All MRD dependencies resolve and preserve one-owner authority.",
+      "Harvested source hashes match the pinned canonical snapshot.",
+      "Generated specification is byte deterministic.",
+      "Generated output is stale/tamper detectable.",
+      "Lifecycle transitions and selection rules are reproduced exactly from canonical contracts.",
+      "Unavailable live Project evidence remains explicit and does not become inferred authority."
+    ],
+    "purpose": "Define conformance requirements for the Work Management specification."
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "_mrd": {
+    "class": "WRK",
+    "dependencies": [
+      {
+        "mrd_id": "KIS-WORK-WRK-STM-001",
+        "relationship": "depends_on"
+      },
+      {
+        "relationship": "evidenced_by",
+        "source": "repo:evidence/work-management/canonical-snapshot.json"
+      }
+    ],
+    "id": "KIS-WORK-WRK-WFL-001",
+    "layer": "L3",
+    "module": "work-management",
+    "provenance": {
+      "fact_quality": "direct",
+      "source_fingerprint": "sha256:3a6da5488cfc8c782fb3ee38617de7ac28d0ba28d877c352033528bfca8797fa",
+      "sources": [
+        {
+          "kind": "repo_path",
+          "locator": "repo:evidence/work-management/canonical-snapshot.json",
+          "revision": "b1c7f00a90c063c6cae287669035e358a04295e0",
+          "role": "implementation_evidence",
+          "sha256": "343154fdc443d75d03b14feb9471331fe5c25c9f9bdfe7d38c8b179a1731d79d",
+          "source_id": "KIS-MCP-WORK-MANAGEMENT-SNAPSHOT"
+        }
+      ]
+    },
+    "record_mode": "prescriptive",
+    "schema_version": 1,
+    "status": "active",
+    "superseded_by": null,
+    "supersedes": [],
+    "title": "Work operations",
+    "type": "WFL",
+    "version": "1.0.0"
+  },
+  "content": {
+    "mutation_rule": "External Project mutations require apply=true and an explicit idempotency key.",
+    "operations": [
+      {
+        "definition": "Capture one bounded source record into Work without duplicating source identity.",
+        "effect": "external_or_local_change",
+        "id": "capture_work",
+        "implementation_surface": "project_management_reconcile"
+      },
+      {
+        "definition": "Create or reconcile one new Work record through the configured provider boundary.",
+        "effect": "external_or_local_change",
+        "id": "create_work",
+        "implementation_surface": "project_management_reconcile"
+      },
+      {
+        "definition": "Select the next eligible Ready item and establish its execution claim.",
+        "effect": "external_or_local_change",
+        "id": "take_next_work",
+        "implementation_surface": "project_management_take_next_work"
+      },
+      {
+        "definition": "Establish one execution owner after revision and state guards pass.",
+        "effect": "external_or_local_change",
+        "id": "claim_work",
+        "implementation_surface": "project_management_claim_work"
+      },
+      {
+        "definition": "Clear an execution claim through the bounded command plane.",
+        "effect": "external_or_local_change",
+        "id": "release_work",
+        "implementation_surface": "project_management_release_work"
+      },
+      {
+        "definition": "Move work to On Hold only with the required review trigger.",
+        "effect": "external_or_local_change",
+        "id": "hold_work",
+        "implementation_surface": "project_management_hold_work"
+      },
+      {
+        "definition": "Move work to Deferred only with the required review trigger.",
+        "effect": "external_or_local_change",
+        "id": "defer_work",
+        "implementation_surface": "project_management_defer_work"
+      },
+      {
+        "definition": "Complete work only after configured completion and evidence guards pass.",
+        "effect": "external_or_local_change",
+        "id": "complete_work",
+        "implementation_surface": "project_management_complete_work"
+      },
+      {
+        "definition": "Evaluate deterministic queue eligibility and readiness evidence.",
+        "effect": "read_only",
+        "id": "readiness",
+        "implementation_surface": "project_management_next_work"
+      },
+      {
+        "definition": "Bind execution to a generation-specific work packet and reservation fence.",
+        "effect": "local_change",
+        "id": "assignment_packet",
+        "implementation_surface": "coordinator_work_packet"
+      },
+      {
+        "definition": "Evaluate repository/source verification evidence for the exact delivery identity.",
+        "effect": "read_only_or_external_evidence",
+        "id": "verification",
+        "implementation_surface": "project_management_merge_readiness"
+      },
+      {
+        "definition": "Track post-merge live verification separately from source verification.",
+        "effect": "external_or_local_change",
+        "id": "commissioning",
+        "implementation_surface": "issue_419_commissioning"
+      },
+      {
+        "definition": "Retain provider/Git revision evidence used for optimistic concurrency and traceability.",
+        "effect": "read_only",
+        "id": "authority_revision",
+        "implementation_surface": "project_management_inventory"
+      }
+    ],
+    "purpose": "Define the bounded Work Management operations and their implementation surfaces.",
+    "result_envelope": [
+      "observed_at",
+      "resolved_target",
+      "provenance",
+      "result",
+      "next_actions"
+    ],
+    "typed_errors": [
+      "provider_unavailable",
+      "project_not_commissioned",
+      "inventory_incomplete",
+      "conflict",
+      "invalid_transition",
+      "not_found",
+      "invalid_request",
+      "internal"
+    ],
+    "verification_domains": [
+      {
+        "definition": "Repository/source verification evidence tied to the delivery identity.",
+        "field": "Verification",
+        "id": "source_verification"
+      },
+      {
+        "definition": "Post-merge runtime proof tied to the actual exposed capability or runtime path.",
+        "field": "Live Verification",
+        "id": "live_verification"
+      }
+    ]
+  }
+}

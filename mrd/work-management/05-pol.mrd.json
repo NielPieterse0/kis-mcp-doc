@@ -1,0 +1,687 @@
+{
+  "_mrd": {
+    "class": "CON",
+    "dependencies": [
+      {
+        "mrd_id": "KIS-WORK-SEM-REG-001",
+        "relationship": "depends_on"
+      },
+      {
+        "relationship": "evidenced_by",
+        "source": "repo:evidence/work-management/canonical-snapshot.json"
+      }
+    ],
+    "id": "KIS-WORK-CON-POL-001",
+    "layer": "L1",
+    "module": "work-management",
+    "provenance": {
+      "fact_quality": "direct",
+      "source_fingerprint": "sha256:3a6da5488cfc8c782fb3ee38617de7ac28d0ba28d877c352033528bfca8797fa",
+      "sources": [
+        {
+          "kind": "repo_path",
+          "locator": "repo:evidence/work-management/canonical-snapshot.json",
+          "revision": "b1c7f00a90c063c6cae287669035e358a04295e0",
+          "role": "implementation_evidence",
+          "sha256": "343154fdc443d75d03b14feb9471331fe5c25c9f9bdfe7d38c8b179a1731d79d",
+          "source_id": "KIS-MCP-WORK-MANAGEMENT-SNAPSHOT"
+        }
+      ]
+    },
+    "record_mode": "prescriptive",
+    "schema_version": 1,
+    "status": "active",
+    "superseded_by": null,
+    "supersedes": [],
+    "title": "Authority and reconciliation policy",
+    "type": "POL",
+    "version": "1.0.0"
+  },
+  "content": {
+    "change_governance": {
+      "complexities": {
+        "large": {
+          "artifacts": [
+            "scope.json",
+            "spec.md",
+            "plan.md",
+            "tasks.md",
+            "closeout.md"
+          ],
+          "base_reviews": [
+            "code-quality"
+          ],
+          "description": "Work spanning components or system boundaries, independently reviewable subwork, substantial state or architecture change, a new integration, or significant release or commissioning coordination.",
+          "max_verifications": 20
+        },
+        "medium": {
+          "artifacts": [
+            "scope.json",
+            "spec.md",
+            "plan.md",
+            "tasks.md",
+            "closeout.md"
+          ],
+          "base_reviews": [
+            "code-quality"
+          ],
+          "description": "Several dependent steps or bounded design/shared-interface work in one contained area.",
+          "max_verifications": 20
+        },
+        "small": {
+          "artifacts": [
+            "scope.json",
+            "change.md"
+          ],
+          "base_reviews": [],
+          "description": "One bounded straightforward outcome with no material design or interface redesign.",
+          "max_verifications": 6
+        }
+      },
+      "review_types": [
+        "code-quality",
+        "safety-security",
+        "architecture",
+        "performance",
+        "test-quality",
+        "documentation",
+        "api-contracts"
+      ],
+      "risk_triggers": {
+        "architecture_boundary": {
+          "description": "A module, provider, subsystem, ownership, dependency-direction, or system-boundary contract changes.",
+          "reviews": [
+            "architecture"
+          ]
+        },
+        "deployment": {
+          "description": "Deployment, release, environment promotion, or commissioning behavior changes.",
+          "reviews": []
+        },
+        "destructive": {
+          "description": "The change can remove, replace, invalidate, or irreversibly transform durable resources or state.",
+          "reviews": []
+        },
+        "external_action": {
+          "description": "The change can cause externally observable actions through an approved provider or integration.",
+          "reviews": []
+        },
+        "migration": {
+          "description": "Existing state, schema, configuration, or users require migration or compatibility handling.",
+          "reviews": []
+        },
+        "money": {
+          "description": "Payments, balances, billing, settlement, or other monetary-value behavior changes.",
+          "reviews": []
+        },
+        "persistent_state": {
+          "description": "Durable state, stored records, or persistence semantics change.",
+          "reviews": []
+        },
+        "public_contract": {
+          "description": "A public or externally consumed interface, schema, command, tool, API, or contract changes.",
+          "reviews": [
+            "api-contracts"
+          ]
+        },
+        "secrets": {
+          "description": "Secret material, credentials, key handling, or secret-storage behavior changes.",
+          "reviews": [
+            "safety-security"
+          ]
+        },
+        "security": {
+          "description": "Authentication, authorization, trust-boundary, or security-control behavior changes.",
+          "reviews": [
+            "safety-security"
+          ]
+        },
+        "sensitive_data": {
+          "description": "Personal, regulated, confidential, or otherwise sensitive data handling changes.",
+          "reviews": [
+            "safety-security"
+          ]
+        }
+      },
+      "schema_version": 1
+    },
+    "github_project_schema": {
+      "fields": [
+        {
+          "name": "Status",
+          "options": [
+            "Inbox",
+            "Triage",
+            "Proposed",
+            "Approved",
+            "Ready",
+            "Active",
+            "Blocked",
+            "On Hold",
+            "Deferred",
+            "Rejected",
+            "Superseded",
+            "Done"
+          ],
+          "type": "single_select"
+        },
+        {
+          "name": "Record Type",
+          "options": [
+            "Idea",
+            "Task",
+            "Specification Slice",
+            "Review Run",
+            "Finding",
+            "Decision",
+            "Assumption",
+            "Risk",
+            "Approval",
+            "Hold",
+            "Research",
+            "Defect",
+            "Security Finding"
+          ],
+          "type": "single_select"
+        },
+        {
+          "name": "Priority",
+          "options": [
+            "Critical",
+            "High",
+            "Medium",
+            "Low"
+          ],
+          "type": "single_select"
+        },
+        {
+          "name": "Effort",
+          "options": [
+            "Tiny",
+            "Small",
+            "Medium",
+            "Large"
+          ],
+          "type": "single_select"
+        },
+        {
+          "name": "Delivery Stage",
+          "options": [
+            "None",
+            "Change Created",
+            "Implementing",
+            "PR Open",
+            "Review",
+            "CI Pending",
+            "CI Failed",
+            "CI Passed",
+            "Merged",
+            "Documentation",
+            "Commissioning",
+            "Complete"
+          ],
+          "type": "single_select"
+        },
+        {
+          "name": "Execution Owner",
+          "options": [],
+          "type": "text"
+        },
+        {
+          "name": "Blocked By",
+          "options": [],
+          "type": "text"
+        },
+        {
+          "name": "Documentation Impact",
+          "options": [
+            "Not Assessed",
+            "None",
+            "Planned",
+            "In Progress",
+            "Pre-merge Complete",
+            "Post-merge Complete"
+          ],
+          "type": "single_select"
+        },
+        {
+          "name": "Complexity",
+          "options": [
+            "Small",
+            "Medium",
+            "Large"
+          ],
+          "type": "single_select"
+        },
+        {
+          "name": "Risk Triggers",
+          "options": [],
+          "type": "text"
+        },
+        {
+          "name": "Project ID",
+          "options": [],
+          "type": "text"
+        },
+        {
+          "name": "Repository",
+          "options": [],
+          "type": "repository"
+        },
+        {
+          "name": "Module",
+          "options": [],
+          "type": "text"
+        },
+        {
+          "name": "Change ID",
+          "options": [],
+          "type": "text"
+        },
+        {
+          "name": "Origin",
+          "options": [
+            "Operator",
+            "Review",
+            "Verification",
+            "Implementation",
+            "Research"
+          ],
+          "type": "single_select"
+        },
+        {
+          "name": "Disposition",
+          "options": [
+            "Open",
+            "Accepted",
+            "Rejected",
+            "Superseded",
+            "Mitigated",
+            "Deferred"
+          ],
+          "type": "single_select"
+        },
+        {
+          "name": "Verification",
+          "options": [
+            "Not Run",
+            "Pending",
+            "Passed",
+            "Failed",
+            "Blocked"
+          ],
+          "type": "single_select"
+        },
+        {
+          "name": "Severity",
+          "options": [
+            "Critical",
+            "High",
+            "Medium",
+            "Low"
+          ],
+          "type": "single_select"
+        },
+        {
+          "name": "Confidence",
+          "options": [
+            "High",
+            "Medium",
+            "Low"
+          ],
+          "type": "single_select"
+        },
+        {
+          "name": "Review Trigger",
+          "options": [],
+          "type": "text"
+        },
+        {
+          "name": "Target Date",
+          "options": [],
+          "type": "date"
+        },
+        {
+          "name": "Iteration",
+          "options": [],
+          "type": "iteration"
+        },
+        {
+          "name": "Source Review",
+          "options": [],
+          "type": "text"
+        },
+        {
+          "name": "Authority Revision",
+          "options": [],
+          "type": "text"
+        },
+        {
+          "name": "External Link",
+          "options": [],
+          "type": "text"
+        },
+        {
+          "name": "Live Verification",
+          "options": [
+            "Not Assessed",
+            "Not Required",
+            "Pending",
+            "Passed",
+            "Failed",
+            "Blocked"
+          ],
+          "type": "single_select"
+        },
+        {
+          "name": "Commissioning Key",
+          "options": [],
+          "type": "text"
+        },
+        {
+          "name": "Live Verification Evidence",
+          "options": [],
+          "type": "text"
+        }
+      ],
+      "portfolio_id": "default",
+      "schema_version": 1,
+      "views": [
+        {
+          "filter": "status:Inbox",
+          "group_by": [],
+          "layout": "table",
+          "name": "01 Inbox",
+          "purpose": "Untriaged ideas and tasks",
+          "sort_by": [],
+          "vertical_group_by": [],
+          "visible_fields": [
+            "Title",
+            "Status",
+            "Record Type",
+            "Priority",
+            "Effort",
+            "Repository"
+          ]
+        },
+        {
+          "filter": "status:Inbox,Triage,Proposed,Approved,Ready,Active,Blocked,\"On Hold\",Deferred",
+          "group_by": [],
+          "layout": "table",
+          "name": "02 Programme Table",
+          "purpose": "All active records and key fields",
+          "sort_by": [],
+          "vertical_group_by": [],
+          "visible_fields": [
+            "Title",
+            "Status",
+            "Record Type",
+            "Priority",
+            "Effort",
+            "Execution Owner",
+            "Repository",
+            "Change ID",
+            "Delivery Stage"
+          ]
+        },
+        {
+          "filter": "status:Inbox,Triage,Proposed,Approved,Ready,Active,Blocked,\"On Hold\",Deferred",
+          "group_by": [],
+          "layout": "board",
+          "name": "03 Delivery Board",
+          "purpose": "Delivery flow grouped by lifecycle status",
+          "sort_by": [],
+          "vertical_group_by": [
+            "Status"
+          ],
+          "visible_fields": [
+            "Title",
+            "Priority",
+            "Effort",
+            "Execution Owner",
+            "Repository",
+            "Delivery Stage"
+          ]
+        },
+        {
+          "filter": "record-type:\"Specification Slice\",Task status:Inbox,Triage,Proposed,Approved,Ready,Active,Blocked,\"On Hold\",Deferred,Rejected,Superseded,Done",
+          "group_by": [],
+          "layout": "roadmap",
+          "name": "04 Roadmap",
+          "purpose": "Dated or iterated specification and implementation slices",
+          "sort_by": [],
+          "vertical_group_by": [],
+          "visible_fields": []
+        },
+        {
+          "filter": "record-type:\"Specification Slice\" status:Proposed,Approved,Ready,Active,Blocked,\"On Hold\",Deferred,Rejected,Superseded,Done",
+          "group_by": [],
+          "layout": "table",
+          "name": "05 Specification Slices",
+          "purpose": "Proposed through completed specification records",
+          "sort_by": [],
+          "vertical_group_by": [],
+          "visible_fields": [
+            "Title",
+            "Status",
+            "Priority",
+            "Change ID",
+            "Delivery Stage",
+            "Repository"
+          ]
+        },
+        {
+          "filter": "record-type:Decision status:Inbox,Triage,Proposed,Approved,Ready,Active,Blocked,\"On Hold\",Deferred,Rejected,Superseded,Done",
+          "group_by": [],
+          "layout": "table",
+          "name": "06 Decisions",
+          "purpose": "Proposed, accepted, rejected, and superseded decisions",
+          "sort_by": [],
+          "vertical_group_by": [],
+          "visible_fields": [
+            "Title",
+            "Status",
+            "Disposition",
+            "Review Trigger",
+            "Authority Revision",
+            "Repository"
+          ]
+        },
+        {
+          "filter": "record-type:Assumption,Risk status:Inbox,Triage,Proposed,Approved,Ready,Active,Blocked,\"On Hold\",Deferred",
+          "group_by": [],
+          "layout": "table",
+          "name": "07 Assumptions and Risks",
+          "purpose": "Open validation and mitigation work",
+          "sort_by": [],
+          "vertical_group_by": [],
+          "visible_fields": [
+            "Title",
+            "Status",
+            "Severity",
+            "Confidence",
+            "Review Trigger",
+            "Disposition",
+            "Repository"
+          ]
+        },
+        {
+          "filter": "status:\"On Hold\",Deferred",
+          "group_by": [],
+          "layout": "table",
+          "name": "08 Holds and Deferred",
+          "purpose": "Paused items with review triggers",
+          "sort_by": [],
+          "vertical_group_by": [],
+          "visible_fields": [
+            "Title",
+            "Status",
+            "Review Trigger",
+            "Execution Owner",
+            "Blocked By",
+            "Target Date",
+            "Repository"
+          ]
+        },
+        {
+          "filter": "record-type:\"Review Run\",Finding,\"Security Finding\" status:Inbox,Triage,Proposed,Approved,Ready,Active,Blocked,\"On Hold\",Deferred,Rejected,Superseded,Done",
+          "group_by": [],
+          "layout": "table",
+          "name": "09 Reviews and Findings",
+          "purpose": "Review runs and extracted records",
+          "sort_by": [],
+          "vertical_group_by": [],
+          "visible_fields": [
+            "Title",
+            "Status",
+            "Severity",
+            "Confidence",
+            "Source Review",
+            "Verification",
+            "Disposition",
+            "Repository"
+          ]
+        },
+        {
+          "filter": "verification:Pending,Failed,Blocked status:Inbox,Triage,Proposed,Approved,Ready,Active,Blocked,\"On Hold\",Deferred,Rejected,Superseded,Done",
+          "group_by": [],
+          "layout": "table",
+          "name": "10 Verification",
+          "purpose": "Work awaiting or failing verification",
+          "sort_by": [],
+          "vertical_group_by": [],
+          "visible_fields": [
+            "Title",
+            "Status",
+            "Verification",
+            "Change ID",
+            "Delivery Stage",
+            "Repository"
+          ]
+        },
+        {
+          "filter": "delivery-stage:Documentation,Commissioning status:Inbox,Triage,Proposed,Approved,Ready,Active,Blocked,\"On Hold\",Deferred,Rejected,Superseded,Done",
+          "group_by": [],
+          "layout": "table",
+          "name": "11 Documentation and Closeout",
+          "purpose": "Records awaiting documentation reconciliation or final closeout",
+          "sort_by": [],
+          "vertical_group_by": [],
+          "visible_fields": [
+            "Title",
+            "Status",
+            "Documentation Impact",
+            "Change ID",
+            "Delivery Stage",
+            "Repository"
+          ]
+        },
+        {
+          "filter": "status:Done",
+          "group_by": [],
+          "layout": "table",
+          "name": "12 Completed",
+          "purpose": "Closed records retained for history",
+          "sort_by": [],
+          "vertical_group_by": [],
+          "visible_fields": [
+            "Title",
+            "Record Type",
+            "Repository",
+            "Change ID",
+            "Delivery Stage",
+            "Verification",
+            "Authority Revision"
+          ]
+        }
+      ]
+    },
+    "principles": [
+      "Work Management owns command fields.",
+      "Repository change governance owns Change ID, Complexity, and Risk Triggers after a governed change exists.",
+      "GitHub owns provider-native source identity and observed dependency evidence.",
+      "Actions and governed verification evidence own source Verification.",
+      "Generated specifications are downstream review projections with no write-back authority.",
+      "Conflicts and unavailable evidence fail closed or remain explicitly unknown."
+    ],
+    "project_bindings": {
+      "backend_bindings": [
+        {
+          "binding_id": "github-default",
+          "owner": "NielPieterse0",
+          "owner_type": "user",
+          "project_number": 1,
+          "provider": "github-mcp"
+        }
+      ],
+      "enabled": true,
+      "evidence": {
+        "max_file_bytes": 1048576,
+        "max_total_bytes": 4194304
+      },
+      "features": {
+        "intake": "read_only",
+        "programme_status": "enabled",
+        "reconciliation": "enabled",
+        "review_import": "read_only"
+      },
+      "gates": {
+        "change_traceability": "required",
+        "decision_authority": "advisory",
+        "hold_integrity": "advisory",
+        "programme_drift": "advisory",
+        "project_schema_drift": "advisory",
+        "project_settings": "required",
+        "review_disposition": "advisory",
+        "verification_evidence": "required"
+      },
+      "managed_projects": [
+        {
+          "backend_binding": "github-default",
+          "display_name": "ChatGPT-skill",
+          "local_root": "C:\\Projects\\ChatGPT-skill",
+          "project_id": "chatgpt-skill",
+          "repository": "NielPieterse0/chatgpt-skill"
+        },
+        {
+          "backend_binding": "github-default",
+          "display_name": "college",
+          "local_root": "C:\\Projects\\college",
+          "project_id": "college",
+          "repository": "NielPieterse0/college"
+        },
+        {
+          "backend_binding": "github-default",
+          "display_name": "commodity",
+          "local_root": "C:\\Projects\\commodity",
+          "project_id": "commodity",
+          "repository": "NielPieterse0/commodity"
+        },
+        {
+          "backend_binding": "github-default",
+          "display_name": "import-isolate",
+          "local_root": "C:\\Projects\\import-isolate",
+          "project_id": "import-isolate",
+          "repository": "NielPieterse0/import-isolate"
+        },
+        {
+          "backend_binding": "github-default",
+          "display_name": "kis-mcp",
+          "local_root": "C:\\Projects\\kis-mcp",
+          "project_id": "kis-mcp",
+          "repository": "NielPieterse0/kis-mcp"
+        },
+        {
+          "backend_binding": "github-default",
+          "display_name": "kis-mcp-doc",
+          "local_root": "C:\\Projects\\kis-mcp-doc",
+          "project_id": "kis-mcp-doc",
+          "repository": "NielPieterse0/kis-mcp-doc"
+        }
+      ],
+      "portfolio_id": "default",
+      "schema_version": 1
+    },
+    "purpose": "Define authority ownership, repository handoff, Project reconciliation, and no-drift rules."
+  }
+}
