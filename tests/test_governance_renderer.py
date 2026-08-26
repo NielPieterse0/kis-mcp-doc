@@ -6,6 +6,7 @@ import re
 import shutil
 from pathlib import Path
 
+import pytest
 import kis_mcp_doc.render as render_module
 from kis_mcp_doc.governance import GovernanceRepository, canonical_source_bytes
 from kis_mcp_doc.render import build_governance_spec, verify_governance_spec
@@ -512,3 +513,71 @@ def test_verifier_detects_generated_data_file_tampering(tmp_path: Path) -> None:
     result = verify_governance_spec(repo, PUBLICATION, output)
     assert result["status"] == "invalid"
     assert "GENERATED_FILE_HASH_MISMATCH" in {item["code"] for item in result["diagnostics"]}
+
+def test_governance_diagrams_are_derived_from_canonical_mrds(tmp_path: Path) -> None:
+    repo = GovernanceRepository(ROOT, MRD_ROOT)
+    output = tmp_path / "build"
+    build_governance_spec(repo, PUBLICATION, output)
+    documents = repo.load()
+    lifecycle = documents["KIS-KNOW-WRK-STM-001"]["content"]
+    page = (output / "008-lifecycle.md").read_text(encoding="utf-8")
+    assert "```mermaid" in page
+    expected_edges = {
+        f"{render_module._heading_anchor(machine['record_mode'])}_{render_module._heading_anchor(transition['from'])} --> {render_module._heading_anchor(machine['record_mode'])}_{render_module._heading_anchor(transition['to'])}"
+        for machine in lifecycle["lifecycles"]
+        for transition in machine["transitions"]
+    }
+    actual_edges = {
+        line.strip() for line in page.splitlines()
+        if " --> " in line and any(
+            line.strip().startswith(render_module._heading_anchor(machine["record_mode"]) + "_")
+            for machine in lifecycle["lifecycles"]
+        )
+    }
+    assert actual_edges == expected_edges
+    ownership = documents["KIS-KNOW-CON-POL-002"]["content"]["ownership_contract"]
+    ownership_page = (output / "004-authority-ownership-and-relationships.md").read_text(encoding="utf-8")
+    assert f'Canonical owner count: {ownership["canonical_owner_count"]}' in ownership_page
+    assert ownership["non_owner_posture"] in ownership_page
+    assert ownership["derived_posture"] in ownership_page
+    assert ownership["conflict_posture"] in ownership_page
+
+
+def test_governance_semantic_coverage_resolves_every_rule_and_reference_fact(tmp_path: Path) -> None:
+    repo = GovernanceRepository(ROOT, MRD_ROOT)
+    output = tmp_path / "build"
+    build_governance_spec(repo, PUBLICATION, output)
+    coverage = json.loads((output / "data/semantic-coverage.json").read_text(encoding="utf-8"))
+    entries = coverage["entries"]
+    keys = [(entry["kind"], entry["id"]) for entry in entries]
+    assert len(keys) == len(set(keys))
+    expected_rules = {
+        rule["rule_id"]
+        for document in repo.load().values()
+        for rule in document["content"].get("rules", [])
+    }
+    actual_rules = {entry["id"] for entry in entries if entry["kind"] == "rule"}
+    assert actual_rules == expected_rules
+    for entry in entries:
+        page = output / entry["page"]
+        assert page.is_file()
+        assert f'id="{entry["anchor"]}"' in page.read_text(encoding="utf-8")
+
+
+def test_governance_semantic_coverage_rejects_duplicate_and_unresolved_entries() -> None:
+    files = {"page.md": b'<span id="anchor-a"></span>'}
+    duplicate = {
+        "entries": [
+            {"kind": "rule", "id": "A", "page": "page.md", "anchor": "anchor-a"},
+            {"kind": "rule", "id": "A", "page": "page.md", "anchor": "anchor-a"},
+        ]
+    }
+    with pytest.raises(ValueError, match="duplicate Governance semantic coverage entry"):
+        render_module._validate_governance_semantic_coverage(files, duplicate)
+    broken = {
+        "entries": [
+            {"kind": "rule", "id": "A", "page": "page.md", "anchor": "missing"}
+        ]
+    }
+    with pytest.raises(ValueError, match="Governance semantic coverage anchor does not resolve"):
+        render_module._validate_governance_semantic_coverage(files, broken)

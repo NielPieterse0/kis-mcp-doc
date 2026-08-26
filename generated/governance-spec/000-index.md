@@ -26,4 +26,5 @@ This generated collection follows the `mcp-spec` publication profile. Source MRD
 
 - [MRD index](data/mrd-index.json)
 - [Dependency map](data/dependency-map.json)
+- [Semantic coverage](data/semantic-coverage.json)
 - [Build manifest](manifest.json)

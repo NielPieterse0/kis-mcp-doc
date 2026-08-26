@@ -11,14 +11,19 @@ Governance validation combines structural checks, deterministic semantic checks,
 
 Validation first establishes that the governance set is structurally valid, then evaluates the cross-record semantics that depend on that structure. A blocking failure prevents the affected governance state from being accepted as valid and produces machine-readable diagnostics.
 
+<span id="rule-kis-mrd-val-001"></span>
 Every MRD MUST pass structural, dependency, provenance, and lifecycle validation before it is accepted as valid.
 
+<span id="rule-kis-mrd-val-002"></span>
 Validation failures MUST emit stable reason codes and machine-readable diagnostics.
 
+<span id="rule-kis-mrd-val-003"></span>
 A validation result MUST report classification, layering, dependencies, provenance, lifecycle, and schema check status.
 
+<span id="rule-kis-mrd-val-004"></span>
 Governance MRDs MUST validate through the public composed governance MRD profile, which binds the reusable core envelope to governance content.
 
+<span id="rule-kis-mrd-val-005"></span>
 Any structural schema failure in the governance MRD set MUST short-circuit semantic validation for the entire set, because cross-record semantics are valid only over a structurally valid governance set.
 
 ## Enforcement modes

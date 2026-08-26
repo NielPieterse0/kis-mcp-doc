@@ -11,14 +11,19 @@ KIS MRDs use a functional classification model. Classification describes what an
 
 The catalog contains 12 functional classes and 47 allowed MRD types. Classification is based on function so that the same governed need keeps the same meaning across repository layouts and technology choices.
 
+<span id="rule-kis-mrd-class-001"></span>
 Every MRD MUST declare exactly one class and one type from this catalog.
 
+<span id="rule-kis-mrd-class-002"></span>
 Classification MUST describe what an artifact does, not where the artifact is stored.
 
+<span id="rule-kis-mrd-class-003"></span>
 A new MRD type MUST NOT be introduced when an existing catalog type adequately represents the artifact.
 
+<span id="rule-kis-mrd-class-004"></span>
 Artifacts MUST NOT be created merely to populate unused catalog types; absence of an unused type has no compliance implication.
 
+<span id="rule-kis-mrd-class-005"></span>
 The catalog MAY be extended by a versioned governance amendment when a genuine artifact need cannot be represented by an existing type.
 
 ## Classes

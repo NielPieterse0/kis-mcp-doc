@@ -1,0 +1,1097 @@
+{
+  "entries": [
+    {
+      "anchor": "fact-applicability-cfg-env",
+      "id": "applicability:CFG-ENV",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-cfg-flg",
+      "id": "applicability:CFG-FLG",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-cfg-prm",
+      "id": "applicability:CFG-PRM",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-con-bnd",
+      "id": "applicability:CON-BND",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-con-ctr",
+      "id": "applicability:CON-CTR",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-con-pol",
+      "id": "applicability:CON-POL",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-con-vrs",
+      "id": "applicability:CON-VRS",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-ctr-api",
+      "id": "applicability:CTR-API",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-ctr-evt",
+      "id": "applicability:CTR-EVT",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-ctr-svc",
+      "id": "applicability:CTR-SVC",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-dec-scr",
+      "id": "applicability:DEC-SCR",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-dec-tab",
+      "id": "applicability:DEC-TAB",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-dec-tre",
+      "id": "applicability:DEC-TRE",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-evd-apr",
+      "id": "applicability:EVD-APR",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-evd-lin",
+      "id": "applicability:EVD-LIN",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-evd-log",
+      "id": "applicability:EVD-LOG",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-evd-tsr",
+      "id": "applicability:EVD-TSR",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-evl-ben",
+      "id": "applicability:EVL-BEN",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-evl-rub",
+      "id": "applicability:EVL-RUB",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-evl-tst",
+      "id": "applicability:EVL-TST",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-man-act",
+      "id": "applicability:MAN-ACT",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-man-bom",
+      "id": "applicability:MAN-BOM",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-man-pkg",
+      "id": "applicability:MAN-PKG",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-man-rel",
+      "id": "applicability:MAN-REL",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-man-skl",
+      "id": "applicability:MAN-SKL",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-map-fld",
+      "id": "applicability:MAP-FLD",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-map-fmt",
+      "id": "applicability:MAP-FMT",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-map-mig",
+      "id": "applicability:MAP-MIG",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-meta-dep",
+      "id": "applicability:META-DEP",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-meta-idx",
+      "id": "applicability:META-IDX",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-meta-map",
+      "id": "applicability:META-MAP",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-prm-ctx",
+      "id": "applicability:PRM-CTX",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-prm-rol",
+      "id": "applicability:PRM-ROL",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-prm-sys",
+      "id": "applicability:PRM-SYS",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-prm-tol",
+      "id": "applicability:PRM-TOL",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-sem-asr",
+      "id": "applicability:SEM-ASR",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-sem-dom",
+      "id": "applicability:SEM-DOM",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-sem-ent",
+      "id": "applicability:SEM-ENT",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-sem-enum",
+      "id": "applicability:SEM-ENUM",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-sem-ont",
+      "id": "applicability:SEM-ONT",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-sem-reg",
+      "id": "applicability:SEM-REG",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-wrk-act",
+      "id": "applicability:WRK-ACT",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-wrk-apr",
+      "id": "applicability:WRK-APR",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-wrk-ctr",
+      "id": "applicability:WRK-CTR",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-wrk-prc",
+      "id": "applicability:WRK-PRC",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-wrk-stm",
+      "id": "applicability:WRK-STM",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-applicability-wrk-wfl",
+      "id": "applicability:WRK-WFL",
+      "kind": "reference_fact",
+      "page": "020-applicability-catalog.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001"
+    },
+    {
+      "anchor": "fact-reason-mrd-applicability-catalog-mismatch",
+      "id": "reason:MRD_APPLICABILITY_CATALOG_MISMATCH",
+      "kind": "reference_fact",
+      "page": "022-validation-reason-codes.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001"
+    },
+    {
+      "anchor": "fact-reason-mrd-catalog-count-mismatch",
+      "id": "reason:MRD_CATALOG_COUNT_MISMATCH",
+      "kind": "reference_fact",
+      "page": "022-validation-reason-codes.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001"
+    },
+    {
+      "anchor": "fact-reason-mrd-class-catalog-mismatch",
+      "id": "reason:MRD_CLASS_CATALOG_MISMATCH",
+      "kind": "reference_fact",
+      "page": "022-validation-reason-codes.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001"
+    },
+    {
+      "anchor": "fact-reason-mrd-class-unknown",
+      "id": "reason:MRD_CLASS_UNKNOWN",
+      "kind": "reference_fact",
+      "page": "022-validation-reason-codes.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001"
+    },
+    {
+      "anchor": "fact-reason-mrd-dependency-cycle",
+      "id": "reason:MRD_DEPENDENCY_CYCLE",
+      "kind": "reference_fact",
+      "page": "022-validation-reason-codes.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001"
+    },
+    {
+      "anchor": "fact-reason-mrd-dependency-duplicate",
+      "id": "reason:MRD_DEPENDENCY_DUPLICATE",
+      "kind": "reference_fact",
+      "page": "022-validation-reason-codes.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001"
+    },
+    {
+      "anchor": "fact-reason-mrd-dependency-layer-violation",
+      "id": "reason:MRD_DEPENDENCY_LAYER_VIOLATION",
+      "kind": "reference_fact",
+      "page": "022-validation-reason-codes.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001"
+    },
+    {
+      "anchor": "fact-reason-mrd-dependency-unresolved",
+      "id": "reason:MRD_DEPENDENCY_UNRESOLVED",
+      "kind": "reference_fact",
+      "page": "022-validation-reason-codes.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001"
+    },
+    {
+      "anchor": "fact-reason-mrd-enforcement-binding-invalid",
+      "id": "reason:MRD_ENFORCEMENT_BINDING_INVALID",
+      "kind": "reference_fact",
+      "page": "022-validation-reason-codes.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001"
+    },
+    {
+      "anchor": "fact-reason-mrd-evd-record-mode-invalid",
+      "id": "reason:MRD_EVD_RECORD_MODE_INVALID",
+      "kind": "reference_fact",
+      "page": "022-validation-reason-codes.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001"
+    },
+    {
+      "anchor": "fact-reason-mrd-governance-concern-duplicate",
+      "id": "reason:MRD_GOVERNANCE_CONCERN_DUPLICATE",
+      "kind": "reference_fact",
+      "page": "022-validation-reason-codes.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001"
+    },
+    {
+      "anchor": "fact-reason-mrd-governance-concern-missing",
+      "id": "reason:MRD_GOVERNANCE_CONCERN_MISSING",
+      "kind": "reference_fact",
+      "page": "022-validation-reason-codes.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001"
+    },
+    {
+      "anchor": "fact-reason-mrd-id-class-type-mismatch",
+      "id": "reason:MRD_ID_CLASS_TYPE_MISMATCH",
+      "kind": "reference_fact",
+      "page": "022-validation-reason-codes.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001"
+    },
+    {
+      "anchor": "fact-reason-mrd-layer-catalog-mismatch",
+      "id": "reason:MRD_LAYER_CATALOG_MISMATCH",
+      "kind": "reference_fact",
+      "page": "022-validation-reason-codes.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001"
+    },
+    {
+      "anchor": "fact-reason-mrd-layer-invalid",
+      "id": "reason:MRD_LAYER_INVALID",
+      "kind": "reference_fact",
+      "page": "022-validation-reason-codes.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001"
+    },
+    {
+      "anchor": "fact-reason-mrd-meta-fact-quality-invalid",
+      "id": "reason:MRD_META_FACT_QUALITY_INVALID",
+      "kind": "reference_fact",
+      "page": "022-validation-reason-codes.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001"
+    },
+    {
+      "anchor": "fact-reason-mrd-meta-record-mode-invalid",
+      "id": "reason:MRD_META_RECORD_MODE_INVALID",
+      "kind": "reference_fact",
+      "page": "022-validation-reason-codes.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001"
+    },
+    {
+      "anchor": "fact-reason-mrd-normative-inference-prohibited",
+      "id": "reason:MRD_NORMATIVE_INFERENCE_PROHIBITED",
+      "kind": "reference_fact",
+      "page": "022-validation-reason-codes.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001"
+    },
+    {
+      "anchor": "fact-reason-mrd-operator-behavior-invalid",
+      "id": "reason:MRD_OPERATOR_BEHAVIOR_INVALID",
+      "kind": "reference_fact",
+      "page": "022-validation-reason-codes.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001"
+    },
+    {
+      "anchor": "fact-reason-mrd-record-mode-catalog-mismatch",
+      "id": "reason:MRD_RECORD_MODE_CATALOG_MISMATCH",
+      "kind": "reference_fact",
+      "page": "022-validation-reason-codes.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001"
+    },
+    {
+      "anchor": "fact-reason-mrd-record-mode-invalid",
+      "id": "reason:MRD_RECORD_MODE_INVALID",
+      "kind": "reference_fact",
+      "page": "022-validation-reason-codes.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001"
+    },
+    {
+      "anchor": "fact-reason-mrd-relationship-unknown",
+      "id": "reason:MRD_RELATIONSHIP_UNKNOWN",
+      "kind": "reference_fact",
+      "page": "022-validation-reason-codes.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001"
+    },
+    {
+      "anchor": "fact-reason-mrd-rule-id-duplicate",
+      "id": "reason:MRD_RULE_ID_DUPLICATE",
+      "kind": "reference_fact",
+      "page": "022-validation-reason-codes.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001"
+    },
+    {
+      "anchor": "fact-reason-mrd-schema-invalid",
+      "id": "reason:MRD_SCHEMA_INVALID",
+      "kind": "reference_fact",
+      "page": "022-validation-reason-codes.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001"
+    },
+    {
+      "anchor": "fact-reason-mrd-source-fingerprint-mismatch",
+      "id": "reason:MRD_SOURCE_FINGERPRINT_MISMATCH",
+      "kind": "reference_fact",
+      "page": "022-validation-reason-codes.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001"
+    },
+    {
+      "anchor": "fact-reason-mrd-source-hash-mismatch",
+      "id": "reason:MRD_SOURCE_HASH_MISMATCH",
+      "kind": "reference_fact",
+      "page": "022-validation-reason-codes.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001"
+    },
+    {
+      "anchor": "fact-reason-mrd-source-unresolved",
+      "id": "reason:MRD_SOURCE_UNRESOLVED",
+      "kind": "reference_fact",
+      "page": "022-validation-reason-codes.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001"
+    },
+    {
+      "anchor": "fact-reason-mrd-status-invalid",
+      "id": "reason:MRD_STATUS_INVALID",
+      "kind": "reference_fact",
+      "page": "022-validation-reason-codes.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001"
+    },
+    {
+      "anchor": "fact-reason-mrd-supersession-unresolved",
+      "id": "reason:MRD_SUPERSESSION_UNRESOLVED",
+      "kind": "reference_fact",
+      "page": "022-validation-reason-codes.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001"
+    },
+    {
+      "anchor": "fact-reason-mrd-type-invalid",
+      "id": "reason:MRD_TYPE_INVALID",
+      "kind": "reference_fact",
+      "page": "022-validation-reason-codes.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001"
+    },
+    {
+      "anchor": "fact-reason-mrd-validation-contract-mismatch",
+      "id": "reason:MRD_VALIDATION_CONTRACT_MISMATCH",
+      "kind": "reference_fact",
+      "page": "022-validation-reason-codes.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001"
+    },
+    {
+      "anchor": "fact-relationship-constrains",
+      "id": "relationship:constrains",
+      "kind": "reference_fact",
+      "page": "021-relationship-vocabulary.md",
+      "source_mrd": "KIS-KNOW-CON-POL-002"
+    },
+    {
+      "anchor": "fact-relationship-depends-on",
+      "id": "relationship:depends_on",
+      "kind": "reference_fact",
+      "page": "021-relationship-vocabulary.md",
+      "source_mrd": "KIS-KNOW-CON-POL-002"
+    },
+    {
+      "anchor": "fact-relationship-evidences",
+      "id": "relationship:evidences",
+      "kind": "reference_fact",
+      "page": "021-relationship-vocabulary.md",
+      "source_mrd": "KIS-KNOW-CON-POL-002"
+    },
+    {
+      "anchor": "fact-relationship-governs",
+      "id": "relationship:governs",
+      "kind": "reference_fact",
+      "page": "021-relationship-vocabulary.md",
+      "source_mrd": "KIS-KNOW-CON-POL-002"
+    },
+    {
+      "anchor": "fact-relationship-implements",
+      "id": "relationship:implements",
+      "kind": "reference_fact",
+      "page": "021-relationship-vocabulary.md",
+      "source_mrd": "KIS-KNOW-CON-POL-002"
+    },
+    {
+      "anchor": "fact-relationship-maps-to",
+      "id": "relationship:maps_to",
+      "kind": "reference_fact",
+      "page": "021-relationship-vocabulary.md",
+      "source_mrd": "KIS-KNOW-CON-POL-002"
+    },
+    {
+      "anchor": "fact-relationship-projects",
+      "id": "relationship:projects",
+      "kind": "reference_fact",
+      "page": "021-relationship-vocabulary.md",
+      "source_mrd": "KIS-KNOW-CON-POL-002"
+    },
+    {
+      "anchor": "fact-relationship-references",
+      "id": "relationship:references",
+      "kind": "reference_fact",
+      "page": "021-relationship-vocabulary.md",
+      "source_mrd": "KIS-KNOW-CON-POL-002"
+    },
+    {
+      "anchor": "fact-relationship-selects",
+      "id": "relationship:selects",
+      "kind": "reference_fact",
+      "page": "021-relationship-vocabulary.md",
+      "source_mrd": "KIS-KNOW-CON-POL-002"
+    },
+    {
+      "anchor": "fact-relationship-supersedes",
+      "id": "relationship:supersedes",
+      "kind": "reference_fact",
+      "page": "021-relationship-vocabulary.md",
+      "source_mrd": "KIS-KNOW-CON-POL-002"
+    },
+    {
+      "anchor": "fact-relationship-validated-by",
+      "id": "relationship:validated_by",
+      "kind": "reference_fact",
+      "page": "021-relationship-vocabulary.md",
+      "source_mrd": "KIS-KNOW-CON-POL-002"
+    },
+    {
+      "anchor": "rule-kis-mrd-app-001",
+      "enforcement": "workflow",
+      "id": "KIS-MRD-APP-001",
+      "kind": "rule",
+      "page": "003-applicability-and-selection.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-app-002",
+      "enforcement": "review",
+      "id": "KIS-MRD-APP-002",
+      "kind": "rule",
+      "page": "003-applicability-and-selection.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-app-003",
+      "enforcement": "review",
+      "id": "KIS-MRD-APP-003",
+      "kind": "rule",
+      "page": "003-applicability-and-selection.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-app-004",
+      "enforcement": "validator",
+      "id": "KIS-MRD-APP-004",
+      "kind": "rule",
+      "page": "003-applicability-and-selection.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-app-005",
+      "enforcement": "review",
+      "id": "KIS-MRD-APP-005",
+      "kind": "rule",
+      "page": "003-applicability-and-selection.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-app-006",
+      "enforcement": "workflow",
+      "id": "KIS-MRD-APP-006",
+      "kind": "rule",
+      "page": "003-applicability-and-selection.md",
+      "source_mrd": "KIS-KNOW-DEC-TAB-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-class-001",
+      "enforcement": "validator",
+      "id": "KIS-MRD-CLASS-001",
+      "kind": "rule",
+      "page": "002-classification.md",
+      "source_mrd": "KIS-KNOW-SEM-REG-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-class-002",
+      "enforcement": "review",
+      "id": "KIS-MRD-CLASS-002",
+      "kind": "rule",
+      "page": "002-classification.md",
+      "source_mrd": "KIS-KNOW-SEM-REG-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-class-003",
+      "enforcement": "review",
+      "id": "KIS-MRD-CLASS-003",
+      "kind": "rule",
+      "page": "002-classification.md",
+      "source_mrd": "KIS-KNOW-SEM-REG-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-class-004",
+      "enforcement": "workflow",
+      "id": "KIS-MRD-CLASS-004",
+      "kind": "rule",
+      "page": "002-classification.md",
+      "source_mrd": "KIS-KNOW-SEM-REG-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-class-005",
+      "enforcement": "workflow",
+      "id": "KIS-MRD-CLASS-005",
+      "kind": "rule",
+      "page": "002-classification.md",
+      "source_mrd": "KIS-KNOW-SEM-REG-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-dep-001",
+      "enforcement": "validator",
+      "id": "KIS-MRD-DEP-001",
+      "kind": "rule",
+      "page": "006-dependency-rules.md",
+      "source_mrd": "KIS-KNOW-CON-CTR-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-dep-002",
+      "enforcement": "validator",
+      "id": "KIS-MRD-DEP-002",
+      "kind": "rule",
+      "page": "006-dependency-rules.md",
+      "source_mrd": "KIS-KNOW-CON-CTR-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-dep-003",
+      "enforcement": "validator",
+      "id": "KIS-MRD-DEP-003",
+      "kind": "rule",
+      "page": "006-dependency-rules.md",
+      "source_mrd": "KIS-KNOW-CON-CTR-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-dep-004",
+      "enforcement": "validator",
+      "id": "KIS-MRD-DEP-004",
+      "kind": "rule",
+      "page": "006-dependency-rules.md",
+      "source_mrd": "KIS-KNOW-CON-CTR-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-dep-005",
+      "enforcement": "validator",
+      "id": "KIS-MRD-DEP-005",
+      "kind": "rule",
+      "page": "006-dependency-rules.md",
+      "source_mrd": "KIS-KNOW-CON-CTR-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-dep-006",
+      "enforcement": "generator",
+      "id": "KIS-MRD-DEP-006",
+      "kind": "rule",
+      "page": "006-dependency-rules.md",
+      "source_mrd": "KIS-KNOW-CON-CTR-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-layer-001",
+      "enforcement": "validator",
+      "id": "KIS-MRD-LAYER-001",
+      "kind": "rule",
+      "page": "005-layering.md",
+      "source_mrd": "KIS-KNOW-SEM-ENUM-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-layer-002",
+      "enforcement": "validator",
+      "id": "KIS-MRD-LAYER-002",
+      "kind": "rule",
+      "page": "005-layering.md",
+      "source_mrd": "KIS-KNOW-SEM-ENUM-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-layer-003",
+      "enforcement": "review",
+      "id": "KIS-MRD-LAYER-003",
+      "kind": "rule",
+      "page": "005-layering.md",
+      "source_mrd": "KIS-KNOW-SEM-ENUM-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-life-001",
+      "enforcement": "validator",
+      "id": "KIS-MRD-LIFE-001",
+      "kind": "rule",
+      "page": "008-lifecycle.md",
+      "source_mrd": "KIS-KNOW-WRK-STM-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-life-002",
+      "enforcement": "workflow",
+      "id": "KIS-MRD-LIFE-002",
+      "kind": "rule",
+      "page": "008-lifecycle.md",
+      "source_mrd": "KIS-KNOW-WRK-STM-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-life-003",
+      "enforcement": "generator",
+      "id": "KIS-MRD-LIFE-003",
+      "kind": "rule",
+      "page": "008-lifecycle.md",
+      "source_mrd": "KIS-KNOW-WRK-STM-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-life-004",
+      "enforcement": "generator",
+      "id": "KIS-MRD-LIFE-004",
+      "kind": "rule",
+      "page": "008-lifecycle.md",
+      "source_mrd": "KIS-KNOW-WRK-STM-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-life-005",
+      "enforcement": "validator",
+      "id": "KIS-MRD-LIFE-005",
+      "kind": "rule",
+      "page": "008-lifecycle.md",
+      "source_mrd": "KIS-KNOW-WRK-STM-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-life-006",
+      "enforcement": "review",
+      "id": "KIS-MRD-LIFE-006",
+      "kind": "rule",
+      "page": "008-lifecycle.md",
+      "source_mrd": "KIS-KNOW-WRK-STM-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-own-001",
+      "enforcement": "review",
+      "id": "KIS-MRD-OWN-001",
+      "kind": "rule",
+      "page": "004-authority-ownership-and-relationships.md",
+      "source_mrd": "KIS-KNOW-CON-POL-002",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-own-002",
+      "enforcement": "review",
+      "id": "KIS-MRD-OWN-002",
+      "kind": "rule",
+      "page": "004-authority-ownership-and-relationships.md",
+      "source_mrd": "KIS-KNOW-CON-POL-002",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-own-003",
+      "enforcement": "generator",
+      "id": "KIS-MRD-OWN-003",
+      "kind": "rule",
+      "page": "004-authority-ownership-and-relationships.md",
+      "source_mrd": "KIS-KNOW-CON-POL-002",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-own-004",
+      "enforcement": "validator",
+      "id": "KIS-MRD-OWN-004",
+      "kind": "rule",
+      "page": "004-authority-ownership-and-relationships.md",
+      "source_mrd": "KIS-KNOW-CON-POL-002",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-own-005",
+      "enforcement": "workflow",
+      "id": "KIS-MRD-OWN-005",
+      "kind": "rule",
+      "page": "004-authority-ownership-and-relationships.md",
+      "source_mrd": "KIS-KNOW-CON-POL-002",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-own-006",
+      "enforcement": "validator",
+      "id": "KIS-MRD-OWN-006",
+      "kind": "rule",
+      "page": "004-authority-ownership-and-relationships.md",
+      "source_mrd": "KIS-KNOW-CON-POL-002",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-prov-001",
+      "enforcement": "validator",
+      "id": "KIS-MRD-PROV-001",
+      "kind": "rule",
+      "page": "007-provenance.md",
+      "source_mrd": "KIS-KNOW-CON-POL-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-prov-002",
+      "enforcement": "workflow",
+      "id": "KIS-MRD-PROV-002",
+      "kind": "rule",
+      "page": "007-provenance.md",
+      "source_mrd": "KIS-KNOW-CON-POL-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-prov-003",
+      "enforcement": "workflow",
+      "id": "KIS-MRD-PROV-003",
+      "kind": "rule",
+      "page": "007-provenance.md",
+      "source_mrd": "KIS-KNOW-CON-POL-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-prov-004",
+      "enforcement": "validator",
+      "id": "KIS-MRD-PROV-004",
+      "kind": "rule",
+      "page": "007-provenance.md",
+      "source_mrd": "KIS-KNOW-CON-POL-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-prov-005",
+      "enforcement": "generator",
+      "id": "KIS-MRD-PROV-005",
+      "kind": "rule",
+      "page": "007-provenance.md",
+      "source_mrd": "KIS-KNOW-CON-POL-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-prov-006",
+      "enforcement": "validator",
+      "id": "KIS-MRD-PROV-006",
+      "kind": "rule",
+      "page": "007-provenance.md",
+      "source_mrd": "KIS-KNOW-CON-POL-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-prov-007",
+      "enforcement": "review",
+      "id": "KIS-MRD-PROV-007",
+      "kind": "rule",
+      "page": "007-provenance.md",
+      "source_mrd": "KIS-KNOW-CON-POL-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-prov-008",
+      "enforcement": "validator",
+      "id": "KIS-MRD-PROV-008",
+      "kind": "rule",
+      "page": "007-provenance.md",
+      "source_mrd": "KIS-KNOW-CON-POL-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-val-001",
+      "enforcement": "validator",
+      "id": "KIS-MRD-VAL-001",
+      "kind": "rule",
+      "page": "010-validation-and-enforcement.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001",
+      "source_version": "2.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-val-002",
+      "enforcement": "validator",
+      "id": "KIS-MRD-VAL-002",
+      "kind": "rule",
+      "page": "010-validation-and-enforcement.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001",
+      "source_version": "2.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-val-003",
+      "enforcement": "validator",
+      "id": "KIS-MRD-VAL-003",
+      "kind": "rule",
+      "page": "010-validation-and-enforcement.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001",
+      "source_version": "2.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-val-004",
+      "enforcement": "schema",
+      "id": "KIS-MRD-VAL-004",
+      "kind": "rule",
+      "page": "010-validation-and-enforcement.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001",
+      "source_version": "2.0.0"
+    },
+    {
+      "anchor": "rule-kis-mrd-val-005",
+      "enforcement": "validator",
+      "id": "KIS-MRD-VAL-005",
+      "kind": "rule",
+      "page": "010-validation-and-enforcement.md",
+      "source_mrd": "KIS-KNOW-EVL-TST-001",
+      "source_version": "2.0.0"
+    },
+    {
+      "anchor": "rule-kis-op-gov-001",
+      "enforcement": "workflow",
+      "id": "KIS-OP-GOV-001",
+      "kind": "rule",
+      "page": "009-kis-op-governance-behavior.md",
+      "source_mrd": "KIS-KNOW-WRK-WFL-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-op-gov-002",
+      "enforcement": "workflow",
+      "id": "KIS-OP-GOV-002",
+      "kind": "rule",
+      "page": "009-kis-op-governance-behavior.md",
+      "source_mrd": "KIS-KNOW-WRK-WFL-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-op-gov-003",
+      "enforcement": "review",
+      "id": "KIS-OP-GOV-003",
+      "kind": "rule",
+      "page": "009-kis-op-governance-behavior.md",
+      "source_mrd": "KIS-KNOW-WRK-WFL-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-op-gov-004",
+      "enforcement": "workflow",
+      "id": "KIS-OP-GOV-004",
+      "kind": "rule",
+      "page": "009-kis-op-governance-behavior.md",
+      "source_mrd": "KIS-KNOW-WRK-WFL-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-op-gov-005",
+      "enforcement": "generator",
+      "id": "KIS-OP-GOV-005",
+      "kind": "rule",
+      "page": "009-kis-op-governance-behavior.md",
+      "source_mrd": "KIS-KNOW-WRK-WFL-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-op-gov-006",
+      "enforcement": "workflow",
+      "id": "KIS-OP-GOV-006",
+      "kind": "rule",
+      "page": "009-kis-op-governance-behavior.md",
+      "source_mrd": "KIS-KNOW-WRK-WFL-001",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "rule-kis-op-gov-007",
+      "enforcement": "review",
+      "id": "KIS-OP-GOV-007",
+      "kind": "rule",
+      "page": "009-kis-op-governance-behavior.md",
+      "source_mrd": "KIS-KNOW-WRK-WFL-001",
+      "source_version": "1.0.0"
+    }
+  ],
+  "family": "governance-spec",
+  "schema_version": 1
+}

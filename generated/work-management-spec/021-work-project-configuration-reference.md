@@ -52,34 +52,35 @@ The configured Project schema belongs to portfolio `default` and uses schema ver
 
 | Field | Type | Options |
 |---|---|---|
-| Status | `single_select` | Inbox, Triage, Proposed, Approved, Ready, Active, Blocked, On Hold, Deferred, Rejected, Superseded, Done |
-| Record Type | `single_select` | Idea, Task, Specification Slice, Review Run, Finding, Decision, Assumption, Risk, Approval, Hold, Research, Defect, Security Finding |
-| Priority | `single_select` | Critical, High, Medium, Low |
-| Effort | `single_select` | Tiny, Small, Medium, Large |
-| Delivery Stage | `single_select` | None, Change Created, Implementing, PR Open, Review, CI Pending, CI Failed, CI Passed, Merged, Documentation, Commissioning, Complete |
-| Execution Owner | `text` | Not applicable |
-| Blocked By | `text` | Not applicable |
-| Documentation Impact | `single_select` | Not Assessed, None, Planned, In Progress, Pre-merge Complete, Post-merge Complete |
-| Complexity | `single_select` | Small, Medium, Large |
-| Risk Triggers | `text` | Not applicable |
-| Project ID | `text` | Not applicable |
-| Repository | `repository` | Not applicable |
-| Module | `text` | Not applicable |
-| Change ID | `text` | Not applicable |
-| Origin | `single_select` | Operator, Review, Verification, Implementation, Research |
-| Disposition | `single_select` | Open, Accepted, Rejected, Superseded, Mitigated, Deferred |
-| Verification | `single_select` | Not Run, Pending, Passed, Failed, Blocked |
-| Severity | `single_select` | Critical, High, Medium, Low |
-| Confidence | `single_select` | High, Medium, Low |
-| Review Trigger | `text` | Not applicable |
-| Target Date | `date` | Not applicable |
-| Iteration | `iteration` | Not applicable |
-| Source Review | `text` | Not applicable |
-| Authority Revision | `text` | Not applicable |
-| External Link | `text` | Not applicable |
-| Live Verification | `single_select` | Not Assessed, Not Required, Pending, Passed, Failed, Blocked |
-| Commissioning Key | `text` | Not applicable |
-| Live Verification Evidence | `text` | Not applicable |
+| <span id="fact-project-field-status"></span>Status | `single_select` | Inbox, Triage, Proposed, Approved, Ready, Active, Blocked, On Hold, Deferred, Rejected, Superseded, Done |
+| <span id="fact-project-field-record-type"></span>Record Type | `single_select` | Idea, Task, Specification Slice, Review Run, Finding, Decision, Assumption, Risk, Approval, Hold, Research, Defect, Security Finding |
+| <span id="fact-project-field-priority"></span>Priority | `single_select` | Critical, High, Medium, Low |
+| <span id="fact-project-field-effort"></span>Effort | `single_select` | Tiny, Small, Medium, Large |
+| <span id="fact-project-field-delivery-stage"></span>Delivery Stage | `single_select` | None, Change Created, Implementing, PR Open, Review, CI Pending, CI Failed, CI Passed, Merged, Documentation, Commissioning, Complete |
+| <span id="fact-project-field-execution-owner"></span>Execution Owner | `text` | Not applicable |
+| <span id="fact-project-field-blocked-by"></span>Blocked By | `text` | Not applicable |
+| <span id="fact-project-field-documentation-impact"></span>Documentation Impact | `single_select` | Not Assessed, None, Planned, In Progress, Pre-merge Complete, Post-merge Complete |
+| <span id="fact-project-field-complexity"></span>Complexity | `single_select` | Small, Medium, Large |
+| <span id="fact-project-field-risk-triggers"></span>Risk Triggers | `text` | Not applicable |
+| <span id="fact-project-field-project-id"></span>Project ID | `text` | Not applicable |
+| <span id="fact-project-field-repository"></span>Repository | `repository` | Not applicable |
+| <span id="fact-project-field-module"></span>Module | `text` | Not applicable |
+| <span id="fact-project-field-change-id"></span>Change ID | `text` | Not applicable |
+| <span id="fact-project-field-origin"></span>Origin | `single_select` | Operator, Review, Verification, Implementation, Research |
+| <span id="fact-project-field-disposition"></span>Disposition | `single_select` | Open, Accepted, Rejected, Superseded, Mitigated, Deferred |
+| <span id="fact-project-field-verification"></span>Verification | `single_select` | Not Run, Pending, Passed, Failed, Blocked |
+| <span id="fact-project-field-severity"></span>Severity | `single_select` | Critical, High, Medium, Low |
+| <span id="fact-project-field-confidence"></span>Confidence | `single_select` | High, Medium, Low |
+| <span id="fact-project-field-review-trigger"></span>Review Trigger | `text` | Not applicable |
+| <span id="fact-project-field-target-date"></span>Target Date | `date` | Not applicable |
+| <span id="fact-project-field-iteration"></span>Iteration | `iteration` | Not applicable |
+| <span id="fact-project-field-source-review"></span>Source Review | `text` | Not applicable |
+| <span id="fact-project-field-authority-revision"></span>Authority Revision | `text` | Not applicable |
+| <span id="fact-project-field-external-link"></span>External Link | `text` | Not applicable |
+| <span id="fact-project-field-live-verification"></span>Live Verification | `single_select` | Not Assessed, Not Required, Pending, Passed, Failed, Blocked |
+| <span id="fact-project-field-commissioning-key"></span>Commissioning Key | `text` | Not applicable |
+| <span id="fact-project-field-live-verification-evidence"></span>Live Verification Evidence | `text` | Not applicable |
+
 
 ### Project views
 
@@ -87,18 +88,19 @@ Views are derived navigation surfaces over the same Project data. Their filters 
 
 | View | Purpose | Layout | Filter | Grouping / sort | Visible fields |
 |---|---|---|---|---|---|
-| 01 Inbox | Untriaged ideas and tasks | `table` | status:Inbox | None | Title, Status, Record Type, Priority, Effort, Repository |
-| 02 Programme Table | All active records and key fields | `table` | status:Inbox,Triage,Proposed,Approved,Ready,Active,Blocked,"On Hold",Deferred | None | Title, Status, Record Type, Priority, Effort, Execution Owner, Repository, Change ID, Delivery Stage |
-| 03 Delivery Board | Delivery flow grouped by lifecycle status | `board` | status:Inbox,Triage,Proposed,Approved,Ready,Active,Blocked,"On Hold",Deferred | vertical group by Status | Title, Priority, Effort, Execution Owner, Repository, Delivery Stage |
-| 04 Roadmap | Dated or iterated specification and implementation slices | `roadmap` | record-type:"Specification Slice",Task status:Inbox,Triage,Proposed,Approved,Ready,Active,Blocked,"On Hold",Deferred,Rejected,Superseded,Done | None | None |
-| 05 Specification Slices | Proposed through completed specification records | `table` | record-type:"Specification Slice" status:Proposed,Approved,Ready,Active,Blocked,"On Hold",Deferred,Rejected,Superseded,Done | None | Title, Status, Priority, Change ID, Delivery Stage, Repository |
-| 06 Decisions | Proposed, accepted, rejected, and superseded decisions | `table` | record-type:Decision status:Inbox,Triage,Proposed,Approved,Ready,Active,Blocked,"On Hold",Deferred,Rejected,Superseded,Done | None | Title, Status, Disposition, Review Trigger, Authority Revision, Repository |
-| 07 Assumptions and Risks | Open validation and mitigation work | `table` | record-type:Assumption,Risk status:Inbox,Triage,Proposed,Approved,Ready,Active,Blocked,"On Hold",Deferred | None | Title, Status, Severity, Confidence, Review Trigger, Disposition, Repository |
-| 08 Holds and Deferred | Paused items with review triggers | `table` | status:"On Hold",Deferred | None | Title, Status, Review Trigger, Execution Owner, Blocked By, Target Date, Repository |
-| 09 Reviews and Findings | Review runs and extracted records | `table` | record-type:"Review Run",Finding,"Security Finding" status:Inbox,Triage,Proposed,Approved,Ready,Active,Blocked,"On Hold",Deferred,Rejected,Superseded,Done | None | Title, Status, Severity, Confidence, Source Review, Verification, Disposition, Repository |
-| 10 Verification | Work awaiting or failing verification | `table` | verification:Pending,Failed,Blocked status:Inbox,Triage,Proposed,Approved,Ready,Active,Blocked,"On Hold",Deferred,Rejected,Superseded,Done | None | Title, Status, Verification, Change ID, Delivery Stage, Repository |
-| 11 Documentation and Closeout | Records awaiting documentation reconciliation or final closeout | `table` | delivery-stage:Documentation,Commissioning status:Inbox,Triage,Proposed,Approved,Ready,Active,Blocked,"On Hold",Deferred,Rejected,Superseded,Done | None | Title, Status, Documentation Impact, Change ID, Delivery Stage, Repository |
-| 12 Completed | Closed records retained for history | `table` | status:Done | None | Title, Record Type, Repository, Change ID, Delivery Stage, Verification, Authority Revision |
+| <span id="fact-project-view-01-inbox"></span>01 Inbox | Untriaged ideas and tasks | `table` | status:Inbox | None | Title, Status, Record Type, Priority, Effort, Repository |
+| <span id="fact-project-view-02-programme-table"></span>02 Programme Table | All active records and key fields | `table` | status:Inbox,Triage,Proposed,Approved,Ready,Active,Blocked,"On Hold",Deferred | None | Title, Status, Record Type, Priority, Effort, Execution Owner, Repository, Change ID, Delivery Stage |
+| <span id="fact-project-view-03-delivery-board"></span>03 Delivery Board | Delivery flow grouped by lifecycle status | `board` | status:Inbox,Triage,Proposed,Approved,Ready,Active,Blocked,"On Hold",Deferred | vertical group by Status | Title, Priority, Effort, Execution Owner, Repository, Delivery Stage |
+| <span id="fact-project-view-04-roadmap"></span>04 Roadmap | Dated or iterated specification and implementation slices | `roadmap` | record-type:"Specification Slice",Task status:Inbox,Triage,Proposed,Approved,Ready,Active,Blocked,"On Hold",Deferred,Rejected,Superseded,Done | None | None |
+| <span id="fact-project-view-05-specification-slices"></span>05 Specification Slices | Proposed through completed specification records | `table` | record-type:"Specification Slice" status:Proposed,Approved,Ready,Active,Blocked,"On Hold",Deferred,Rejected,Superseded,Done | None | Title, Status, Priority, Change ID, Delivery Stage, Repository |
+| <span id="fact-project-view-06-decisions"></span>06 Decisions | Proposed, accepted, rejected, and superseded decisions | `table` | record-type:Decision status:Inbox,Triage,Proposed,Approved,Ready,Active,Blocked,"On Hold",Deferred,Rejected,Superseded,Done | None | Title, Status, Disposition, Review Trigger, Authority Revision, Repository |
+| <span id="fact-project-view-07-assumptions-and-risks"></span>07 Assumptions and Risks | Open validation and mitigation work | `table` | record-type:Assumption,Risk status:Inbox,Triage,Proposed,Approved,Ready,Active,Blocked,"On Hold",Deferred | None | Title, Status, Severity, Confidence, Review Trigger, Disposition, Repository |
+| <span id="fact-project-view-08-holds-and-deferred"></span>08 Holds and Deferred | Paused items with review triggers | `table` | status:"On Hold",Deferred | None | Title, Status, Review Trigger, Execution Owner, Blocked By, Target Date, Repository |
+| <span id="fact-project-view-09-reviews-and-findings"></span>09 Reviews and Findings | Review runs and extracted records | `table` | record-type:"Review Run",Finding,"Security Finding" status:Inbox,Triage,Proposed,Approved,Ready,Active,Blocked,"On Hold",Deferred,Rejected,Superseded,Done | None | Title, Status, Severity, Confidence, Source Review, Verification, Disposition, Repository |
+| <span id="fact-project-view-10-verification"></span>10 Verification | Work awaiting or failing verification | `table` | verification:Pending,Failed,Blocked status:Inbox,Triage,Proposed,Approved,Ready,Active,Blocked,"On Hold",Deferred,Rejected,Superseded,Done | None | Title, Status, Verification, Change ID, Delivery Stage, Repository |
+| <span id="fact-project-view-11-documentation-and-closeout"></span>11 Documentation and Closeout | Records awaiting documentation reconciliation or final closeout | `table` | delivery-stage:Documentation,Commissioning status:Inbox,Triage,Proposed,Approved,Ready,Active,Blocked,"On Hold",Deferred,Rejected,Superseded,Done | None | Title, Status, Documentation Impact, Change ID, Delivery Stage, Repository |
+| <span id="fact-project-view-12-completed"></span>12 Completed | Closed records retained for history | `table` | status:Done | None | Title, Record Type, Repository, Change ID, Delivery Stage, Verification, Authority Revision |
+
 
 ## Project bindings
 

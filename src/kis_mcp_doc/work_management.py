@@ -81,6 +81,106 @@ def _page_name(index: int, doc: dict[str, Any]) -> str:
     return f"{index:03d}-{slug}.md"
 
 
+def _anchor_token(value: str) -> str:
+    raw = "".join(character.lower() if character.isalnum() else "-" for character in value)
+    return "-".join(part for part in raw.split("-") if part)
+
+
+def _mermaid_token(value: str) -> str:
+    return _anchor_token(value).replace("-", "_")
+
+
+def _validate_work_semantic_coverage(files: dict[str, bytes], coverage: dict[str, Any]) -> None:
+    seen: set[tuple[str, str]] = set()
+    for entry in coverage["entries"]:
+        key = (entry["kind"], entry["id"])
+        if key in seen:
+            raise ValueError(f"duplicate Work semantic coverage entry: {key}")
+        seen.add(key)
+        page = entry["page"]
+        if page not in files:
+            raise ValueError(f"Work semantic coverage page does not exist: {page}")
+        marker = f'id="{entry["anchor"]}"'.encode("utf-8")
+        if marker not in files[page]:
+            raise ValueError(f"Work semantic coverage anchor does not resolve: {page}#{entry['anchor']}")
+
+
+def _work_status_delivery_diagram(content: dict[str, Any]) -> list[str]:
+    lines = [
+        "## Work status and delivery stage", "",
+        "Work Status and Delivery Stage are separate dimensions. The diagram shows the canonical Work lifecycle graph and Delivery Stage sequence independently; it does not map a work state to a delivery stage.", "",
+        "```mermaid", "flowchart LR",
+        '  subgraph work_status["Work Status"]',
+    ]
+    for state in content["states"]:
+        node = f"status_{_mermaid_token(state['token'])}"
+        label = state["label"] if state["project_status"] else f"{state['label']} (internal)"
+        lines.append(f'    {node}["{label}"]')
+    for source, targets in content["transitions"].items():
+        for target in targets:
+            lines.append(f"    status_{_mermaid_token(source)} --> status_{_mermaid_token(target)}")
+    lines.append("  end")
+    lines.append('  subgraph delivery_stage["Delivery Stage"]')
+    stages = content["delivery"]["stages"]
+    for stage in stages:
+        node = f"stage_{_mermaid_token(stage)}"
+        lines.append(f'    {node}["{stage}"]')
+    for first, second in zip(stages, stages[1:]):
+        lines.append(f"    stage_{_mermaid_token(first)} --> stage_{_mermaid_token(second)}")
+    lines.extend(["  end", "```", ""])
+    return lines
+
+
+def _work_authority_handoff_diagram(content: dict[str, Any]) -> list[str]:
+    authority = content["command_plane"]["field_authority"]
+    grouped: dict[tuple[str, str], list[str]] = {}
+    for field, contract in authority.items():
+        grouped.setdefault((contract["authority"], contract["direction"]), []).append(field)
+    lines = [
+        "## Authority and handoff flow", "",
+        "Each arrow is derived from the provider-boundary field-authority contract. Labels name the fields carried in that authority direction.", "",
+        "```mermaid", "flowchart LR",
+        '  command["Command"]', '  evidence["Evidence"]', '  handoff["Handoff"]',
+    ]
+    for index, ((owner, direction), fields) in enumerate(sorted(grouped.items())):
+        owner_node = f"owner_{index}"
+        lines.append(f'  {owner_node}["{owner}"] -->|"{len(fields)} field{"s" if len(fields) != 1 else ""}"| {direction}')
+    lines.extend(["```", "", "Diagram details:", ""])
+    for (owner, direction), fields in sorted(grouped.items()):
+        lines.append(f"- `{owner}` -> `{direction}`: {', '.join(sorted(fields))}.")
+    lines.append("")
+    return lines
+
+
+def _work_semantic_coverage(docs: list[dict[str, Any]]) -> dict[str, Any]:
+    pages = {_doc["_mrd"]["id"]: _page_name(index, _doc) for index, _doc in enumerate(docs, 2)}
+    by_id = {_doc["_mrd"]["id"]: _doc for _doc in docs}
+    entries: list[dict[str, Any]] = []
+    for doc in docs:
+        doc_id = doc["_mrd"]["id"]
+        entries.append({"kind":"mrd","id":doc_id,"source_mrd":doc_id,"source_version":doc["_mrd"]["version"],"page":pages[doc_id],"anchor":f"mrd-{_anchor_token(doc_id)}"})
+    domain = by_id["KIS-WORK-SEM-REG-001"]
+    for field in domain["content"]["fields"]:
+        entries.append({"kind":"field","id":field["id"],"source_mrd":domain["_mrd"]["id"],"page":"020-work-field-and-vocabulary-reference.md","anchor":f"fact-field-{_anchor_token(field['id'])}"})
+    for vocabulary in domain["content"]["vocabularies"]:
+        for value in vocabulary["values"]:
+            entries.append({"kind":"vocabulary_value","id":f"{vocabulary['id']}:{value['token']}","source_mrd":domain["_mrd"]["id"],"page":"020-work-field-and-vocabulary-reference.md","anchor":f"fact-vocabulary-{_anchor_token(vocabulary['id'])}-{_anchor_token(value['token'])}"})
+    lifecycle = by_id["KIS-WORK-WRK-STM-001"]
+    for state in lifecycle["content"]["states"]:
+        entries.append({"kind":"work_state","id":state["token"],"source_mrd":lifecycle["_mrd"]["id"],"page":pages[lifecycle["_mrd"]["id"]],"anchor":f"fact-work-state-{_anchor_token(state['token'])}"})
+    for stage in lifecycle["content"]["delivery"]["stages"]:
+        entries.append({"kind":"delivery_stage","id":stage,"source_mrd":lifecycle["_mrd"]["id"],"page":pages[lifecycle["_mrd"]["id"]],"anchor":f"fact-delivery-stage-{_anchor_token(stage)}"})
+    selection = by_id["KIS-WORK-DEC-SCR-001"]
+    for rule in selection["content"]["rules"]:
+        entries.append({"kind":"selection_rule","id":rule["id"],"source_mrd":selection["_mrd"]["id"],"page":pages[selection["_mrd"]["id"]],"anchor":f"fact-selection-rule-{_anchor_token(rule['id'])}"})
+    authority = by_id["KIS-WORK-CON-POL-001"]
+    for field in authority["content"]["github_project_schema"]["fields"]:
+        entries.append({"kind":"project_field","id":field["name"],"source_mrd":authority["_mrd"]["id"],"page":"021-work-project-configuration-reference.md","anchor":f"fact-project-field-{_anchor_token(field['name'])}"})
+    for view in authority["content"]["github_project_schema"]["views"]:
+        entries.append({"kind":"project_view","id":view["name"],"source_mrd":authority["_mrd"]["id"],"page":"021-work-project-configuration-reference.md","anchor":f"fact-project-view-{_anchor_token(view['name'])}"})
+    return {"schema_version":1,"family":"work-management-spec","entries":sorted(entries,key=lambda item:(item["kind"],item["id"]))}
+
+
 def _inline_value(value: Any) -> str | None:
     if value is None:
         return "None"
@@ -180,13 +280,14 @@ def _render_domain_reference(content: dict[str, Any]) -> list[str]:
                 details.append(f"vocabulary `{field['vocabulary']}`")
             meaning = f"{field['definition']} {field['population']}"
             rows.append([
-                field["name"],
+                f'<span id="fact-field-{_anchor_token(field["id"])}"></span>{field["name"]}',
                 meaning,
                 f"`{field['authority']}`",
                 f"`{field['direction']}`",
                 "; ".join(details),
             ])
         _append_table(lines, ["Field", "Meaning", "Authority", "Direction", "Details"], rows)
+        lines.append("")
 
     lines.extend([
         "## Authority rules",
@@ -211,10 +312,15 @@ def _render_domain_reference(content: dict[str, Any]) -> list[str]:
             "",
         ])
         rows = [
-            [value["label"], f"`{value['token']}`", value["definition"]]
+            [
+                f'<span id="fact-vocabulary-{_anchor_token(vocabulary["id"])}-{_anchor_token(value["token"])}"></span>{value["label"]}',
+                f"`{value['token']}`",
+                value["definition"],
+            ]
             for value in vocabulary["values"]
         ]
         _append_table(lines, ["Value", "Token", "Meaning"], rows)
+        lines.append("")
     return lines
 
 
@@ -253,14 +359,19 @@ def _render_lifecycle(content: dict[str, Any]) -> list[str]:
     lines = [
         "A work item moves through explicit states. Project-visible states describe the shared work queue, while internal states such as Review, Verification, and Documentation describe delivery activity without creating new GitHub Project status values.",
         "",
+    ]
+    lines.extend(_work_status_delivery_diagram(content))
+    lines.extend([
         "## State model",
         "",
-    ]
+    ])
     _append_table(
         lines,
         ["State", "Meaning", "GitHub Project status", "Token"],
         [[state["label"], state["definition"], "Yes" if state["project_status"] else "No", f"`{state['token']}`"] for state in content["states"]],
     )
+    lines.extend(f'<span id="fact-work-state-{_anchor_token(state["token"])}"></span>' for state in content["states"])
+    lines.append("")
 
     lines.extend([
         "## Transitions",
@@ -299,7 +410,10 @@ def _render_lifecycle(content: dict[str, Any]) -> list[str]:
         "",
         "Delivery is tracked separately from the work state. The configured delivery-stage sequence is:",
         "",
-        _code_list(content["delivery"]["stages"]),
+        ", ".join(
+            f'<span id="fact-delivery-stage-{_anchor_token(stage)}"></span>`{stage}`'
+            for stage in content["delivery"]["stages"]
+        ),
         "",
         f"The **{content['delivery']['stage_field']}** field stores that stage. **{content['delivery']['change_id_field']}**, **{content['delivery']['complexity_field']}**, and **{content['delivery']['risk_triggers_field']}** connect the work record to repository change governance. The sequence starts its governed change at `{content['delivery']['change_created_stage']}` and reaches `{content['delivery']['complete_stage']}` when delivery is complete.",
         "",
@@ -406,8 +520,9 @@ def _render_selection(content: dict[str, Any]) -> list[str]:
     _append_table(
         lines,
         ["Rule", "Kind", "Requirement", "Failure reason"],
-        [[f"`{rule['id']}`", f"`{rule['kind']}`", rule["definition"], f"`{rule['reason_code']}`" if rule["reason_code"] is not None else "None"] for rule in content["rules"]],
+        [[f'<span id="fact-selection-rule-{_anchor_token(rule["id"])}"></span>`{rule["id"]}`', f"`{rule['kind']}`", rule["definition"], f"`{rule['reason_code']}`" if rule["reason_code"] is not None else "None"] for rule in content["rules"]],
     )
+    lines.append("")
     return lines
 
 
@@ -452,8 +567,9 @@ def _render_authority_reference(content: dict[str, Any]) -> list[str]:
     _append_table(
         lines,
         ["Field", "Type", "Options"],
-        [[field["name"], f"`{field['type']}`", _text_list(field["options"]) if field["options"] else "Not applicable"] for field in schema["fields"]],
+        [[f'<span id="fact-project-field-{_anchor_token(field["name"])}"></span>{field["name"]}', f"`{field['type']}`", _text_list(field["options"]) if field["options"] else "Not applicable"] for field in schema["fields"]],
     )
+    lines.append("")
     lines.extend([
         "### Project views",
         "",
@@ -470,8 +586,9 @@ def _render_authority_reference(content: dict[str, Any]) -> list[str]:
         if view["sort_by"]:
             grouping_parts.append(f"sort by {_text_list(view['sort_by'])}")
         grouping = "; ".join(grouping_parts) or "None"
-        view_rows.append([view["name"], view["purpose"], f"`{view['layout']}`", view["filter"], grouping, _text_list(view["visible_fields"])])
+        view_rows.append([f'<span id="fact-project-view-{_anchor_token(view["name"])}"></span>{view["name"]}', view["purpose"], f"`{view['layout']}`", view["filter"], grouping, _text_list(view["visible_fields"])])
     _append_table(lines, ["View", "Purpose", "Layout", "Filter", "Grouping / sort", "Visible fields"], view_rows)
+    lines.append("")
 
     bindings = content["project_bindings"]
     lines.extend([
@@ -538,6 +655,9 @@ def _render_provider_boundary(content: dict[str, Any]) -> list[str]:
     lines = [
         "The command plane defines the work states and fields that KIS may change. The provider boundary observes and mutates GitHub Project only through the configured read and write models; provider state does not redefine repository-owned facts.",
         "",
+    ]
+    lines.extend(_work_authority_handoff_diagram(content))
+    lines.extend([
         "## Command-plane model",
         "",
         f"Claims use **{command['claim']['execution_owner_field']}** and {'expire automatically' if command['claim']['auto_expiry'] else 'do not expire automatically'}. The completion policy targets `{command['completion']['terminal_state']}` and {'requires' if command['completion']['require_no_active_claim_after_close'] else 'does not require'} the claim to be absent after close.",
@@ -550,7 +670,7 @@ def _render_provider_boundary(content: dict[str, Any]) -> list[str]:
         "",
         "The provider adapter uses the field authority defined by the Work Management domain model; it does not maintain a second authority table. See the [Work Management domain model](002-work-management-domain-model.md) and [field reference](020-work-field-and-vocabulary-reference.md).",
         "",
-    ]
+    ])
 
     queue = command["queue"]
     readiness = command["readiness"]
@@ -663,6 +783,8 @@ def render_document(
         '<div id="enable-section-numbers" />',
         "",
         _work_navigation(previous, following),
+        "",
+        f'<span id="mrd-{_anchor_token(doc["_mrd"]["id"])}"></span>',
         "",
     ]
     renderer = renderers.get(doc["_mrd"]["id"], _render_generic)
@@ -824,6 +946,9 @@ def build_work_management_spec(repo: WorkManagementRepository, output: Path, *, 
         reference_pages = _work_reference_pages(docs)
         for name,text in reference_pages.items():
             (staging/name).write_bytes(text.encode("utf-8"))
+        coverage = _work_semantic_coverage(docs)
+        (staging/'data').mkdir(parents=True, exist_ok=True)
+        (staging/'data/semantic-coverage.json').write_bytes((json.dumps(coverage, indent=2, ensure_ascii=False, sort_keys=True) + "\n").encode("utf-8"))
         index = [
             "<!-- GENERATED — DO NOT EDIT -->",
             f"# {config['title']} — documentation index",
@@ -844,6 +969,7 @@ def build_work_management_spec(repo: WorkManagementRepository, output: Path, *, 
             "",
             "## Traceability",
             "",
+            "- [Semantic coverage](data/semantic-coverage.json) — canonical MRD and fact-to-page/anchor mappings",
             "- [Build manifest](manifest.json) — exact MRD and generated-file hashes",
             "",
         ]
@@ -891,7 +1017,7 @@ def build_work_management_spec(repo: WorkManagementRepository, output: Path, *, 
             "",
             "## Traceability",
             "",
-            "See the [documentation index](000-index.md) and [build manifest](manifest.json) for exact source identities, MRD versions, hashes, and generated-file declarations.",
+            "See the [documentation index](000-index.md), [semantic coverage](data/semantic-coverage.json), and [build manifest](manifest.json) for exact source identities, MRD versions, page/anchor mappings, hashes, and generated-file declarations.",
             "",
         ]
         spec="\n".join(root); (staging/'001-specification.md').write_bytes(spec.encode("utf-8")); (staging/'specification.md').write_bytes(spec.encode("utf-8"))
@@ -900,6 +1026,7 @@ def build_work_management_spec(repo: WorkManagementRepository, output: Path, *, 
             for path in sorted(staging.rglob('*'))
             if path.is_file()
         }
+        _validate_work_semantic_coverage(bundle_files, coverage)
         files=file_declarations(bundle_files)
         mrds=[]
         for path in sorted(repo.mrd_root.glob('*.mrd.json')):

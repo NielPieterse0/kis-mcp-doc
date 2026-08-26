@@ -5,7 +5,118 @@
 
 [Previous: Work Management domain model](002-work-management-domain-model.md) | [Next: Work operations](004-work-operations.md) | [Index](000-index.md)
 
+<span id="mrd-kis-work-wrk-stm-001"></span>
+
 A work item moves through explicit states. Project-visible states describe the shared work queue, while internal states such as Review, Verification, and Documentation describe delivery activity without creating new GitHub Project status values.
+
+## Work status and delivery stage
+
+Work Status and Delivery Stage are separate dimensions. The diagram shows the canonical Work lifecycle graph and Delivery Stage sequence independently; it does not map a work state to a delivery stage.
+
+```mermaid
+flowchart LR
+  subgraph work_status["Work Status"]
+    status_inbox["Inbox"]
+    status_triage["Triage"]
+    status_proposed["Proposed"]
+    status_approved["Approved"]
+    status_ready["Ready"]
+    status_active["Active"]
+    status_review["Review (internal)"]
+    status_verification["Verification (internal)"]
+    status_documentation["Documentation (internal)"]
+    status_blocked["Blocked"]
+    status_on_hold["On Hold"]
+    status_deferred["Deferred"]
+    status_rejected["Rejected"]
+    status_superseded["Superseded"]
+    status_done["Done"]
+    status_active --> status_ready
+    status_active --> status_review
+    status_active --> status_blocked
+    status_active --> status_on_hold
+    status_active --> status_deferred
+    status_active --> status_done
+    status_active --> status_superseded
+    status_approved --> status_ready
+    status_approved --> status_active
+    status_approved --> status_on_hold
+    status_approved --> status_deferred
+    status_approved --> status_superseded
+    status_blocked --> status_ready
+    status_blocked --> status_active
+    status_blocked --> status_on_hold
+    status_blocked --> status_deferred
+    status_blocked --> status_superseded
+    status_deferred --> status_triage
+    status_deferred --> status_proposed
+    status_deferred --> status_approved
+    status_deferred --> status_rejected
+    status_deferred --> status_superseded
+    status_documentation --> status_done
+    status_documentation --> status_active
+    status_documentation --> status_blocked
+    status_documentation --> status_superseded
+    status_inbox --> status_triage
+    status_inbox --> status_deferred
+    status_inbox --> status_rejected
+    status_inbox --> status_superseded
+    status_on_hold --> status_ready
+    status_on_hold --> status_active
+    status_on_hold --> status_deferred
+    status_on_hold --> status_rejected
+    status_on_hold --> status_superseded
+    status_proposed --> status_approved
+    status_proposed --> status_deferred
+    status_proposed --> status_rejected
+    status_proposed --> status_superseded
+    status_ready --> status_active
+    status_ready --> status_on_hold
+    status_ready --> status_deferred
+    status_ready --> status_superseded
+    status_rejected --> status_triage
+    status_rejected --> status_superseded
+    status_review --> status_active
+    status_review --> status_verification
+    status_review --> status_blocked
+    status_review --> status_on_hold
+    status_review --> status_superseded
+    status_triage --> status_proposed
+    status_triage --> status_approved
+    status_triage --> status_deferred
+    status_triage --> status_rejected
+    status_triage --> status_superseded
+    status_verification --> status_active
+    status_verification --> status_documentation
+    status_verification --> status_blocked
+    status_verification --> status_superseded
+  end
+  subgraph delivery_stage["Delivery Stage"]
+    stage_none["none"]
+    stage_change_created["change_created"]
+    stage_implementing["implementing"]
+    stage_pr_open["pr_open"]
+    stage_review["review"]
+    stage_ci_pending["ci_pending"]
+    stage_ci_failed["ci_failed"]
+    stage_ci_passed["ci_passed"]
+    stage_merged["merged"]
+    stage_documentation["documentation"]
+    stage_commissioning["commissioning"]
+    stage_complete["complete"]
+    stage_none --> stage_change_created
+    stage_change_created --> stage_implementing
+    stage_implementing --> stage_pr_open
+    stage_pr_open --> stage_review
+    stage_review --> stage_ci_pending
+    stage_ci_pending --> stage_ci_failed
+    stage_ci_failed --> stage_ci_passed
+    stage_ci_passed --> stage_merged
+    stage_merged --> stage_documentation
+    stage_documentation --> stage_commissioning
+    stage_commissioning --> stage_complete
+  end
+```
 
 ## State model
 
@@ -26,6 +137,22 @@ A work item moves through explicit states. Project-visible states describe the s
 | Rejected | Not accepted for execution in current form. | Yes | `rejected` |
 | Superseded | Replaced by newer authoritative work. | Yes | `superseded` |
 | Done | Required completion gates are satisfied. | Yes | `done` |
+
+<span id="fact-work-state-inbox"></span>
+<span id="fact-work-state-triage"></span>
+<span id="fact-work-state-proposed"></span>
+<span id="fact-work-state-approved"></span>
+<span id="fact-work-state-ready"></span>
+<span id="fact-work-state-active"></span>
+<span id="fact-work-state-review"></span>
+<span id="fact-work-state-verification"></span>
+<span id="fact-work-state-documentation"></span>
+<span id="fact-work-state-blocked"></span>
+<span id="fact-work-state-on-hold"></span>
+<span id="fact-work-state-deferred"></span>
+<span id="fact-work-state-rejected"></span>
+<span id="fact-work-state-superseded"></span>
+<span id="fact-work-state-done"></span>
 
 ## Transitions
 
@@ -65,7 +192,7 @@ At intake, the alias `todo` is normalized to `inbox`.
 
 Delivery is tracked separately from the work state. The configured delivery-stage sequence is:
 
-`none`, `change_created`, `implementing`, `pr_open`, `review`, `ci_pending`, `ci_failed`, `ci_passed`, `merged`, `documentation`, `commissioning`, `complete`
+<span id="fact-delivery-stage-none"></span>`none`, <span id="fact-delivery-stage-change-created"></span>`change_created`, <span id="fact-delivery-stage-implementing"></span>`implementing`, <span id="fact-delivery-stage-pr-open"></span>`pr_open`, <span id="fact-delivery-stage-review"></span>`review`, <span id="fact-delivery-stage-ci-pending"></span>`ci_pending`, <span id="fact-delivery-stage-ci-failed"></span>`ci_failed`, <span id="fact-delivery-stage-ci-passed"></span>`ci_passed`, <span id="fact-delivery-stage-merged"></span>`merged`, <span id="fact-delivery-stage-documentation"></span>`documentation`, <span id="fact-delivery-stage-commissioning"></span>`commissioning`, <span id="fact-delivery-stage-complete"></span>`complete`
 
 The **Delivery Stage** field stores that stage. **Change ID**, **Complexity**, and **Risk Triggers** connect the work record to repository change governance. The sequence starts its governed change at `change_created` and reaches `complete` when delivery is complete.
 

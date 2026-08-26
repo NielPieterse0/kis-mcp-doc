@@ -5,6 +5,8 @@
 
 [Previous: Work operations](004-work-operations.md) | [Next: Authority and reconciliation policy](006-authority-and-reconciliation-policy.md) | [Index](000-index.md)
 
+<span id="mrd-kis-work-dec-scr-001"></span>
+
 Selection is deterministic. Work Management first applies the eligibility rules for the active profile, then ranks only the candidates that remain.
 
 ## Selection procedure
@@ -40,18 +42,19 @@ Profiles reuse the same rule catalog but apply different subsets and preserve pr
 
 | Rule | Kind | Requirement | Failure reason |
 |---|---|---|---|
-| `SEL-001` | `source_issue` | Only issue records are eligible in the provider-backed next-work queue. | `not_issue` |
-| `SEL-002` | `source_open` | Provider-backed source issues must remain open. | `source_not_open` |
-| `SEL-003` | `project_match` | Normalized-domain selection respects an explicit project scope. | `project_mismatch` |
-| `SEL-004` | `eligible_state` | Candidate state must be one of the configured eligible states; domain adapters may preserve their existing equivalent reason code. | `state_not_ready` |
-| `SEL-005` | `valid_priority` | Priority must be present in the canonical priority order. | `missing_or_invalid:{field}` |
-| `SEL-006` | `valid_effort` | Effort must be present in the canonical effort order. | `missing_or_invalid:{field}` |
-| `SEL-007` | `required_fields` | Configured readiness fields must be present before provider-backed selection. | `missing_required:{field}` |
-| `SEL-008` | `unclaimed` | Already claimed work is excluded from next-work selection. | `already_claimed:{owner}` |
-| `SEL-009` | `approval_complete` | Normalized-domain records that require approval must have completed approval. | `approval_incomplete` |
-| `SEL-010` | `dependency_evidence` | Required provider dependency evidence must be observable. | `dependency_evidence_unavailable` |
-| `SEL-011` | `dependencies_clear` | Provider-native blocker evidence must be empty; normalized-domain adapters preserve dependency-specific reason codes. | `native_dependency_blocking` |
-| `SEL-012` | `ranking` | Eligible candidates rank by Priority, Effort, creation order, then stable record identity. | None |
+| <span id="fact-selection-rule-sel-001"></span>`SEL-001` | `source_issue` | Only issue records are eligible in the provider-backed next-work queue. | `not_issue` |
+| <span id="fact-selection-rule-sel-002"></span>`SEL-002` | `source_open` | Provider-backed source issues must remain open. | `source_not_open` |
+| <span id="fact-selection-rule-sel-003"></span>`SEL-003` | `project_match` | Normalized-domain selection respects an explicit project scope. | `project_mismatch` |
+| <span id="fact-selection-rule-sel-004"></span>`SEL-004` | `eligible_state` | Candidate state must be one of the configured eligible states; domain adapters may preserve their existing equivalent reason code. | `state_not_ready` |
+| <span id="fact-selection-rule-sel-005"></span>`SEL-005` | `valid_priority` | Priority must be present in the canonical priority order. | `missing_or_invalid:{field}` |
+| <span id="fact-selection-rule-sel-006"></span>`SEL-006` | `valid_effort` | Effort must be present in the canonical effort order. | `missing_or_invalid:{field}` |
+| <span id="fact-selection-rule-sel-007"></span>`SEL-007` | `required_fields` | Configured readiness fields must be present before provider-backed selection. | `missing_required:{field}` |
+| <span id="fact-selection-rule-sel-008"></span>`SEL-008` | `unclaimed` | Already claimed work is excluded from next-work selection. | `already_claimed:{owner}` |
+| <span id="fact-selection-rule-sel-009"></span>`SEL-009` | `approval_complete` | Normalized-domain records that require approval must have completed approval. | `approval_incomplete` |
+| <span id="fact-selection-rule-sel-010"></span>`SEL-010` | `dependency_evidence` | Required provider dependency evidence must be observable. | `dependency_evidence_unavailable` |
+| <span id="fact-selection-rule-sel-011"></span>`SEL-011` | `dependencies_clear` | Provider-native blocker evidence must be empty; normalized-domain adapters preserve dependency-specific reason codes. | `native_dependency_blocking` |
+| <span id="fact-selection-rule-sel-012"></span>`SEL-012` | `ranking` | Eligible candidates rank by Priority, Effort, creation order, then stable record identity. | None |
+
 
 ## Source and authority
 

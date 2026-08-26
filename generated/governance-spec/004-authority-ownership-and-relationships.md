@@ -11,11 +11,27 @@ Every governed fact has one current canonical owner. Other artifacts can referen
 
 The ownership contract assigns one current canonical owner to each governed fact. Non-owners reference rather than restate authority, derived artifacts remain projections, and ownership conflicts are surfaced and resolved against the current owner.
 
+<span id="rule-kis-mrd-own-001"></span>
 Every governed fact MUST have exactly one current canonical owner.
 
+<span id="rule-kis-mrd-own-002"></span>
 A non-owning MRD or repository artifact MAY summarize or project an owned fact for its audience but MUST reference the canonical owner and MUST NOT redefine the fact as independent authority.
 
+<span id="rule-kis-mrd-own-003"></span>
 Generated HRDs, indexes, dependency maps, and other META projections MUST remain downstream of their canonical sources and MUST NOT become write-back authority.
+
+## Authority and ownership model
+
+The diagram groups the four fields of the canonical ownership contract. Connector lines show contract composition only; they do not invent relationships between governed actors.
+
+```mermaid
+flowchart TD
+  contract["Canonical ownership contract"]
+  contract --> owner["Canonical owner count: 1"]
+  contract --> nonowner["Non-owner posture: reference_not_restate"]
+  contract --> derived["Derived posture: projection_only"]
+  contract --> conflict["Conflict posture: surface_diagnostic_and_resolve_against_current_owner"]
+```
 
 ## Canonical owner kinds
 
@@ -33,10 +49,13 @@ Non-owning artifacts preserve authority by declaring typed relationships to the 
 
 See the [governed relationship vocabulary](021-relationship-vocabulary.md) for every relationship code and meaning.
 
+<span id="rule-kis-mrd-own-004"></span>
 Relationships between governed artifacts MUST use the governed relationship vocabulary; ad hoc relationship labels MUST NOT silently create new semantics.
 
+<span id="rule-kis-mrd-own-005"></span>
 When two sources appear to own the same current fact, kis-op MUST surface the conflict and resolve ownership through the applicable authority order before accepting dependent work.
 
+<span id="rule-kis-mrd-own-006"></span>
 Supersession MUST preserve the previous owner's stable identity and lineage while making the replacement unambiguous.
 
 ## Requirement traceability

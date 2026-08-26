@@ -11,20 +11,28 @@ Provenance identifies the authority, origin, and quality of governed facts. It k
 
 Record mode expresses both authority and mutability, while fact quality describes how directly a fact is supported by admitted evidence. This separation prevents harvested, inferred, or generated material from silently becoming prescriptive authority.
 
+<span id="rule-kis-mrd-prov-001"></span>
 Record mode MUST express authority and mutability; KIS does not define a separate generation_mode in the core standard.
 
+<span id="rule-kis-mrd-prov-002"></span>
 Code harvesting MAY produce candidate or meta/descriptive MRDs but MUST NOT automatically create prescriptive authority.
 
+<span id="rule-kis-mrd-prov-003"></span>
 A harvested candidate becomes prescriptive only through explicit adoption or review; after adoption, implementation MUST conform to the prescriptive MRD.
 
+<span id="rule-kis-mrd-prov-004"></span>
 Inferred facts MUST NOT become normative automatically and MUST NOT appear as active prescriptive facts.
 
+<span id="rule-kis-mrd-prov-005"></span>
 Generated human-readable documents and META projections MUST NOT write back authority into their sources.
 
+<span id="rule-kis-mrd-prov-006"></span>
 The provenance source fingerprint MUST deterministically identify the declared provenance source set.
 
+<span id="rule-kis-mrd-prov-007"></span>
 Author intent, invariants, choices, and contracts; derive implementation observations; capture runtime evidence; evaluate conformance between them.
 
+<span id="rule-kis-mrd-prov-008"></span>
 A repo_path provenance source MUST carry the SHA-256 of the resolved repository file; a mismatch MUST invalidate provenance.
 
 ## Record modes

@@ -1,0 +1,57 @@
+{
+  "schema_version": 4,
+  "change_id": "012-deterministic-diagrams-and-semantic-coverage",
+  "status": "active",
+  "branch": "change/012-deterministic-diagrams-and-semantic-coverage",
+  "worktree": ".work/worktrees/012-deterministic-diagrams-and-semantic-coverage",
+  "base": "main",
+  "outcome": "Add source-derived explanatory diagrams and machine-verifiable semantic coverage to the Governance and Work Management publication families without changing canonical domain semantics.",
+  "owned_paths": [
+    ".work/changes/012-deterministic-diagrams-and-semantic-coverage/**",
+    "src/kis_mcp_doc/render.py",
+    "src/kis_mcp_doc/work_management.py",
+    "generated/governance-spec/**",
+    "generated/work-management-spec/**",
+    "tests/test_governance_renderer.py",
+    "tests/test_work_management_spec.py"
+  ],
+  "shared_paths": [],
+  "excluded_paths": [
+    "AGENTS.md",
+    "contracts/**",
+    "mrd/governance/**",
+    "mrd/work-management/**",
+    "mrd/documentation/**",
+    "publication/**",
+    "evidence/**",
+    "C:/Projects/kis-mcp/**",
+    "C:/Projects/References/**",
+    ".work/worktrees/009-publication-kernel/**"
+  ],
+  "dependencies": [
+    "010-hrd-reader-experience-and-reference-separation",
+    "011-publication-kernel-and-family-registry"
+  ],
+  "integration_owner": null,
+  "complexity": "medium",
+  "risk_triggers": [
+    "architecture_boundary"
+  ],
+  "base_evidence": {
+    "local_sha": "2568b62e20560690ed91a44e48f1682543c38884",
+    "local_tree": "5151a62bb38cd2fc2a546c98a1d349f2e99ad475",
+    "upstream_sha": "2568b62e20560690ed91a44e48f1682543c38884",
+    "upstream_tree": "5151a62bb38cd2fc2a546c98a1d349f2e99ad475",
+    "upstream_ref": "github:main",
+    "evidence_source": "verified_github_default",
+    "relation": "equal"
+  },
+  "work_management": {
+    "project_id": "kis-mcp",
+    "record_id": "SPEC-012",
+    "source_repository": "NielPieterse0/kis-mcp-doc",
+    "source_number": 20,
+    "source_kind": "issue",
+    "documentation_impact": "planned"
+  }
+}
