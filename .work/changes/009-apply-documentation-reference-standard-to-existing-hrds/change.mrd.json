@@ -1,0 +1,147 @@
+{
+  "_mrd": {
+    "schema_version": 1,
+    "id": "KIS-CHG009-WRK-WFL-001",
+    "title": "Apply Documentation Reference Standard to existing HRDs",
+    "module": "change-009",
+    "class": "WRK",
+    "type": "WFL",
+    "layer": "L3",
+    "record_mode": "descriptive",
+    "status": "active",
+    "version": "1.1.0",
+    "dependencies": [
+      {"mrd_id": "KIS-CHG008-WRK-WFL-001", "relationship": "depends_on"},
+      {"mrd_id": "KIS-DOC-CON-POL-001", "relationship": "depends_on"},
+      {"mrd_id": "KIS-DOC-SEM-REG-001", "relationship": "depends_on"},
+      {"mrd_id": "KIS-KNOW-EVL-TST-001", "relationship": "validated_by"}
+    ],
+    "provenance": {
+      "sources": [
+        {"source_id": "KIS-OPERATOR-DIRECTION-2026-08-26-APPLY-DOCUMENTATION-REFERENCE-STANDARD", "kind": "operator_direction", "role": "approved_change_basis", "locator": "conversation:2026-08-26", "revision": "change-009-preparation-only", "sha256": null},
+        {"source_id": "KIS-CHG008-WRK-WFL-001", "kind": "canonical_machine_readable_record", "role": "documentation_reference_standard_basis", "locator": ".work/changes/008-documentation-reference-standard/change.mrd.json", "revision": "1.1.0", "sha256": null}
+      ],
+      "source_fingerprint": "sha256:5d66c2e6970738944f388ef6383762a329f308d1473281e2681e7f40b3ca399a",
+      "fact_quality": "direct"
+    },
+    "supersedes": [],
+    "superseded_by": null
+  },
+  "content": {
+    "change_id": "009-apply-documentation-reference-standard-to-existing-hrds",
+    "outcome": "Pull the adopted Documentation Reference Standard through the existing Governance and Work Management publication pipelines so both HRD families use the governed documentation profile while preserving all existing domain semantics.",
+    "preparation_boundary": [
+      "Preparation created only the governed Change 009 documents.",
+      "The operator separately authorized complete implementation on 2026-08-26.",
+      "Implementation remained bounded by scope.json and preserved Governance and Work Management domain MRDs unchanged."
+    ],
+    "problem": [
+      "Change 008 now governs how documentation references may influence KIS human documentation, human-readable specifications, and generated reference material, but the existing Governance and Work Management publication pipelines do not yet explicitly consume that contract.",
+      "Governance and Work Management HRDs therefore remain downstream of their canonical MRDs but have not yet been re-published under the new documentation-reference authority and presentation rules.",
+      "The integration must improve communication and publication provenance without allowing MCP, Google guidance, external implementation examples, or generated prose to alter Governance or Work Management facts."
+    ],
+    "authority_model": [
+      "Governance MRDs remain the sole KIS owners of Governance semantics.",
+      "Work Management MRDs remain the sole KIS owners of Work Management semantics.",
+      "The Documentation Reference Standard controls documentation source roles, permitted uses, authority boundaries, provenance, and presentation behavior for both publications.",
+      "MCP 2026 is normative only within its applicable MCP protocol-conformance domain and may otherwise inform specification presentation only where Change 008 permits it.",
+      "Google Developer Documentation guidance affects human-facing presentation only and cannot define KIS behavior.",
+      "External MCP implementations remain non-normative implementation references and cannot create or override Governance or Work Management facts."
+    ],
+    "requirements": [
+      "R1: Governance and Work Management publication contracts MUST explicitly consume the adopted Documentation Reference Standard or its governed publication profile.",
+      "R2: Change 009 MUST preserve all existing Governance and Work Management domain facts, requirements, lifecycle semantics, authority rules, identifiers, and conformance behavior.",
+      "R3: Governance and Work Management MRDs MUST NOT be rewritten for presentation; MRD changes are permitted only when the existing MRD contract requires explicit documentation-standard metadata or dependency relationships.",
+      "R4: Governance HRDs MUST use prose-first human-readable specification structure, explaining concepts before dense normative or reference detail where appropriate.",
+      "R5: Work Management HRDs MUST use the same publication rules and preserve the reader journey from domain model through lifecycle, operations, selection, reconciliation, provider boundary, and conformance.",
+      "R6: Normative requirement strength and meaning MUST remain traceable to the owning Governance or Work Management MRD after re-rendering.",
+      "R7: MCP 2026 material MUST be used only within the bounded roles allowed by the Documentation Reference Standard and MUST NOT create KIS-specific semantics.",
+      "R8: Google Developer Documentation guidance MUST affect presentation only and MUST NOT become a factual or behavioral source.",
+      "R9: External MCP implementation references MUST remain non-normative evidence and MUST NOT populate canonical KIS facts or normative requirements.",
+      "R10: Generated-output manifests MUST include every authoritative input relevant to each publication, including the Documentation Reference Standard/profile where applicable.",
+      "R11: Generated Governance and Work Management HRDs MUST remain deterministic, reproducible, provenance-bearing, stale-detectable, and tamper-detectable.",
+      "R12: Canonical verification MUST fail when a downstream HRD or manifest no longer matches its governed publication inputs.",
+      "R13: Existing semantic and conformance tests MUST remain green; a documentation integration MUST NOT be accepted by weakening semantic assertions.",
+      "R14: Focused tests MUST prove that each publication uses only reference roles permitted for its output class and concern.",
+      "R15: The complete Governance HRD family and complete Work Management HRD family MUST be regenerated and reviewed as human-readable documents, not only as schema projections.",
+      "R16: Human review MUST check reader journey, concept explanation, normative context, useful tables/examples/relationships, source clarity, and authority separation across every regenerated page.",
+      "R17: No generated HRD may become write-back authority; corrections to facts MUST route to the owning MRD or canonical source and then regenerate.",
+      "R18: Implementation MUST remain limited to the paths admitted by scope.json and MUST not broaden into general documentation cleanup or domain redesign."
+    ],
+    "publication_targets": {
+      "governance": ["000-index.md", "001-specification.md", "002-classification.md", "003-applicability-and-selection.md", "004-authority-ownership-and-relationships.md", "005-layering.md", "006-dependency-rules.md", "007-provenance.md", "008-lifecycle.md", "009-kis-op-governance-behavior.md", "010-validation-and-enforcement.md"],
+      "work_management": ["000-index.md", "001-specification.md", "002-work-management-domain-model.md", "003-work-lifecycle.md", "004-work-operations.md", "005-next-work-selection.md", "006-authority-and-reconciliation-policy.md", "007-provider-and-command-plane-boundary.md", "008-work-management-conformance.md"]
+    },
+    "implementation_plan": [
+      "P1: Bind publication/governance-spec.json and publication/work-management-spec.json to the adopted Documentation Reference Standard/profile without duplicating its source registry or authority rules.",
+      "P2: Update Governance rendering in src/kis_mcp_doc/render.py to apply the governed prose-first specification, authority-separation, provenance, and presentation rules while preserving source semantics.",
+      "P3: Update Work Management rendering in src/kis_mcp_doc/work_management.py with the same governed publication behavior and the approved domain-model-to-conformance reader journey.",
+      "P4: Change Governance or Work Management MRDs only if the existing MRD contract requires an explicit documentation-standard dependency or publication relationship; do not alter domain facts.",
+      "P5: Add focused Governance, Work Management, and cross-publication tests for profile consumption, permitted source roles, semantic preservation, determinism, provenance, and drift detection.",
+      "P6: Regenerate both complete HRD families and their manifests from validated authoritative inputs.",
+      "P7: Extend scripts/verify.ps1 only as needed so canonical verification rejects stale, tampered, or incompletely-bound downstream publications.",
+      "P8: Run focused tests, existing semantic/conformance tests, full canonical verification, and a page-by-page human-document review before closeout."
+    ],
+    "verification_criteria": [
+      "V1: Both publication contracts resolve the adopted documentation-reference profile as an authoritative publication input.",
+      "V2: A source-fact comparison proves that no Governance or Work Management normative requirement changed as a result of rendering changes.",
+      "V3: Tests prove MCP 2026 cannot define KIS semantics outside its applicable normative protocol domain.",
+      "V4: Tests prove Google guidance and implementation-reference sources cannot populate or override canonical Governance or Work Management facts.",
+      "V5: Every generated publication manifest identifies the documentation-reference contract/profile and all other relevant authoritative inputs.",
+      "V6: Repeated generation from identical inputs produces byte-stable governed outputs or the repository's defined deterministic equivalent.",
+      "V7: Tampering with a generated page or changing an authoritative publication input without regeneration causes verification to fail.",
+      "V8: Existing Governance semantic tests and Work Management semantic/conformance tests remain green without relaxed assertions.",
+      "V9: Focused documentation-reference integration tests pass for both publication families.",
+      "V10: scripts/verify.ps1 passes on the exact implementation commit.",
+      "V11: Human review confirms every generated page reads as a coherent specification chapter and preserves clear authority/source information."
+    ],
+    "acceptance": [
+      "Both complete HRD families are regenerated from their existing domain MRDs plus the adopted Documentation Reference Standard/profile.",
+      "The regenerated Governance HRDs demonstrably follow Change 008 output and authority rules while preserving the full existing Governance requirement set.",
+      "The regenerated Work Management HRDs demonstrably follow Change 008 output and authority rules while preserving the full existing Work Management requirement set.",
+      "MCP 2026 is used only in its valid normative domain; elsewhere it is bounded presentation or structural evidence as permitted by Change 008.",
+      "Google guidance affects presentation only, and external MCP implementations remain non-normative reference evidence.",
+      "No Governance or Work Management requirement, lifecycle rule, authority direction, selection rule, provider boundary, or conformance requirement changes accidentally.",
+      "Generated-output manifests include all relevant authoritative inputs, including the documentation-reference contract/profile where applicable.",
+      "Tampered or stale generated HRDs fail canonical verification.",
+      "Existing semantic and conformance tests remain green, focused integration tests pass, and the full canonical repository verifier passes.",
+      "The complete generated HRDs pass human-document review for reader journey, prose-first explanation, normative context, useful reference detail, and authority clarity."
+    ],
+    "tasks": [
+      {"id": "T0", "status": "done", "text": "Prepare the governed Change 009 scope and change MRD from operator direction and the adopted Change 008 authority model."},
+      {"id": "T1", "status": "done", "text": "Bind Governance and Work Management publication contracts to the adopted Documentation Reference Standard/profile."},
+      {"id": "T2", "status": "done", "text": "Apply the governed documentation profile to Governance rendering without changing Governance semantics."},
+      {"id": "T3", "status": "done", "text": "Apply the governed documentation profile to Work Management rendering without changing Work Management semantics."},
+      {"id": "T4", "status": "done", "text": "Add semantic-preservation, authority-separation, provenance, deterministic-generation, and drift/tamper tests."},
+      {"id": "T5", "status": "done", "text": "Regenerate both complete HRD families and publication manifests."},
+      {"id": "T6", "status": "done", "text": "Run focused tests, existing conformance tests, full canonical verification, and human-document review."}
+    ],
+    "out_of_scope_for_preparation": [
+      "Any edit outside .work/changes/009-apply-documentation-reference-standard-to-existing-hrds/**.",
+      "Implementation changes to publication contracts, renderers, MRDs, generated HRDs, tests, or scripts/verify.ps1.",
+      "Changes to Governance or Work Management domain semantics, policies, lifecycle rules, authority, selection, operations, provider boundaries, or conformance behavior.",
+      "Changes to the Documentation Reference Standard authority, reference registry, source-role definitions, or approved external reference baseline.",
+      "Changes to parent C:/Projects/kis-mcp, external reference corpora, MCP/FastMCP runtime behavior, or general documentation cleanup unrelated to these two publication families.",
+      "Creating a GitHub issue, Project item, pull request, implementation commit, generated publication, or release artifact during this preparation-only step."
+    ],
+    "closeout": {
+      "state": "implementation_complete_pending_review",
+      "verification": [
+        "Focused Change 009 integration tests passed: governance renderer, Work Management specification, and Documentation Reference Standard suites.",
+        "Full repository pytest suite completed with no failures.",
+        "scripts/verify.ps1 -SkipDependencySync passed: tests, Governance validation/generated checks, Documentation Reference Standard validation/generated checks, Work Management validation/generated checks, and git diff --check.",
+        "A direct MRD diff confirmed no changes under mrd/governance/** or mrd/work-management/**.",
+        "Both generated manifests now bind the Documentation Reference Standard inputs; the Work Management manifest also binds its canonical evidence snapshot."
+      ],
+      "reviews": [
+        "Documentation review agent reported no material findings and no semantic alterations to Governance or Work Management models.",
+        "Manual page-by-page review covered all Governance and Work Management specification chapters and found the intended reader journeys, source/authority sections, and no invented domain requirements."
+      ],
+      "publication": "generated/governance-spec/** and generated/work-management-spec/**",
+      "merge": null,
+      "unresolved": [
+        "A pre-existing worktree/branch named change/009-publication-kernel contains uncommitted implementation work but no governed Change 009 documents. It was preserved untouched and still requires separate repository-hygiene reconciliation before identifier cleanup."
+      ]
+    }
+  }
+}

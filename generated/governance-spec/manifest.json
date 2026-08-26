@@ -1,5 +1,5 @@
 {
-  "bundle_sha256": "49350d5e19d90806245a02d0ee57ab2d1ced3c8693d87ccb6d2ebad9e0d62eed",
+  "bundle_sha256": "d6963e2f4ccbf66275a0893854cb2d7c2d93d133eebc96e5cdafa224496f056f",
   "contract": {
     "name": "kis-governance-spec-build",
     "version": 2
@@ -11,9 +11,9 @@
       "sha256": "3b3f604e9be788a136387387531e77e14ac48492a5bae80595429f47f0d87b22"
     },
     {
-      "bytes": 2130,
+      "bytes": 2393,
       "path": "001-specification.md",
-      "sha256": "3c00df8aa21a633a699da9bead7f58c510e5793053b9793a6e29ecae3214b3ff"
+      "sha256": "493d4e4d8d37f8e929eb66cb4c7abb7c43520a2037e510ca737ba3b94e4ea592"
     },
     {
       "bytes": 5899,
@@ -71,9 +71,9 @@
       "sha256": "591543630492d656a7f5b8906d060e4f19dd055ba2149044d4657b0af9731534"
     },
     {
-      "bytes": 2130,
+      "bytes": 2393,
       "path": "specification.md",
-      "sha256": "3c00df8aa21a633a699da9bead7f58c510e5793053b9793a6e29ecae3214b3ff"
+      "sha256": "493d4e4d8d37f8e929eb66cb4c7abb7c43520a2037e510ca737ba3b94e4ea592"
     }
   ],
   "generator": {
@@ -94,7 +94,7 @@
       },
       {
         "path": "src/kis_mcp_doc/render.py",
-        "sha256": "ef384525c9df22274287f5ea6613cc410824ca3e54c5bcaa88101cac8e1a6744"
+        "sha256": "a283b6eec646d2d7498f297b374ab7a21760e7d271e336e20efeb2e0b2f1634d"
       },
       {
         "path": "contracts/publication/v2/governance-spec.schema.json",
@@ -180,7 +180,7 @@
     ],
     "publication": {
       "path": "publication/governance-spec.json",
-      "sha256": "cf20f156b64dcb50440cedb71033a9829f5e363e90ccc8d1076d1554052771ad"
+      "sha256": "6e95fd8c3170939d81ce898a795329a3e632a3f554604b9764554c806a1acd5b"
     },
     "source_files": [
       {
@@ -197,6 +197,21 @@
         "bytes": 5511,
         "path": "contracts/mrd/v1/mrd.schema.json",
         "sha256": "fb9f3210b022d8def12a92bfccc1cb45e5ccf1146fa9d59168baf3f630ded153"
+      },
+      {
+        "bytes": 5712,
+        "path": "mrd/documentation/01-reference-standard.mrd.json",
+        "sha256": "da30a9f44828194a6b0b1e382c39936ae3d07705521dd6c07af60286b5133dc1"
+      },
+      {
+        "bytes": 8944,
+        "path": "mrd/documentation/02-reference-registry.mrd.json",
+        "sha256": "5a1f98e9fb937df209e303abc6fa3af3fd73c922a868e76519939d6dd42ec24c"
+      },
+      {
+        "bytes": 403,
+        "path": "publication/documentation-reference-standard.json",
+        "sha256": "35f4170ba7e70cabc664b6f880f41af40a897909c982c4cdc30cb03d5f412fdd"
       }
     ],
     "source_set_sha256": "c169f1ed844a2a7da0029656f1371a2e8e787cf48d369bfa304380c4ed990fe7"

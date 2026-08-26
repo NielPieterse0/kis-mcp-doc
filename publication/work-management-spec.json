@@ -1,6 +1,11 @@
 {
   "output_dir": "generated/work-management-spec",
   "schema_version": 1,
+  "documentation_reference": {
+    "output_class": "human_readable_specification",
+    "policy_mrd": "KIS-DOC-CON-POL-001",
+    "registry_mrd": "KIS-DOC-SEM-REG-001"
+  },
   "source_glob": "mrd/work-management/*.mrd.json",
   "status": "draft",
   "subtitle": "Governed operating specification for work intake, state, selection, delivery, reconciliation, and GitHub Project integration",
