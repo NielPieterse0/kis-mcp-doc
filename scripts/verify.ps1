@@ -99,6 +99,16 @@ try {
         throw "Registered publication generated-output verification failed with exit code $LASTEXITCODE"
     }
 
+    & $PythonCommand -m kis_mcp_doc --root . site-validate
+    if ($LASTEXITCODE -ne 0) {
+        throw "Documentation site validation failed with exit code $LASTEXITCODE"
+    }
+
+    & $PythonCommand -m kis_mcp_doc --root . site-check-generated
+    if ($LASTEXITCODE -ne 0) {
+        throw "Documentation site generated-output verification failed with exit code $LASTEXITCODE"
+    }
+
     & git diff --check
     if ($LASTEXITCODE -ne 0) {
         throw "Whitespace verification failed with exit code $LASTEXITCODE"

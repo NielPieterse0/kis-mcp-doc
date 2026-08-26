@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lifecycle</title><link rel="stylesheet" href="/assets/site.css"></head><body><header><a href="/">KIS Documentation</a><nav><a href="/docs/">Docs</a> <a href="/specification/">Specification</a> <a href="/reference/">Reference</a></nav></header><main><div class="breadcrumbs"><a href="/">Home</a> / <a href="/specification/">Specification</a> / kis-op Governance Specification</div><h1>Lifecycle</h1>
+<p>&lt;div id=&quot;enable-section-numbers&quot; /&gt;</p>
+<p><a href="/specification/governance/007-provenance/">Previous: Provenance</a> | <a href="/specification/governance/009-kis-op-governance-behavior/">Next: kis-op Governance Behavior</a> | <a href="/specification/governance/">Index</a></p>
+<p>MRD lifecycle depends on record mode. Prescriptive authority, descriptive evidence, and generated metadata follow different states and mutability rules.</p>
+<h2>Lifecycle diagram</h2>
+<p>Each record mode is shown as its own canonical state machine. Only transitions declared by the lifecycle MRD are drawn.</p>
+<p>```mermaid</p>
+<p>flowchart LR</p>
+<p>  subgraph prescriptive[&quot;prescriptive&quot;]</p>
+<p>    prescriptive_draft[&quot;draft&quot;]</p>
+<p>    prescriptive_active[&quot;active&quot;]</p>
+<p>    prescriptive_superseded[&quot;superseded&quot;]</p>
+<p>    prescriptive_draft --&gt; prescriptive_active</p>
+<p>    prescriptive_active --&gt; prescriptive_superseded</p>
+<p>  end</p>
+<p>  subgraph descriptive[&quot;descriptive&quot;]</p>
+<p>    descriptive_created[&quot;created&quot;]</p>
+<p>    descriptive_retained[&quot;retained&quot;]</p>
+<p>    descriptive_created --&gt; descriptive_retained</p>
+<p>  end</p>
+<p>  subgraph meta[&quot;meta&quot;]</p>
+<p>    meta_generated[&quot;generated&quot;]</p>
+<p>    meta_replaced[&quot;replaced&quot;]</p>
+<p>    meta_generated --&gt; meta_replaced</p>
+<p>  end</p>
+<p>```</p>
+<h2>State machines</h2>
+<p>Each record mode has its own state machine. Prescriptive MRDs move from draft authority to active authority and then supersession; descriptive evidence and generated metadata use lifecycles that match their different mutability rules.</p>
+<p>The following table shows the allowed states and transitions for each record mode:</p>
+<p>| Record mode | States | Allowed transitions |</p>
+<p>|---|---|---|</p>
+<p>| `prescriptive` | draft → active → superseded | draft → active; active → superseded |</p>
+<p>| `descriptive` | created → retained | created → retained |</p>
+<p>| `meta` | generated → replaced | generated → replaced |</p>
+<h2>Lifecycle requirements</h2>
+<p>&lt;span id=&quot;rule-kis-mrd-life-001&quot;&gt;&lt;/span&gt;</p>
+<p>Active prescriptive MRDs MUST have resolved dependencies and valid provenance.</p>
+<p>&lt;span id=&quot;rule-kis-mrd-life-002&quot;&gt;&lt;/span&gt;</p>
+<p>Descriptive EVD records MUST be immutable after creation.</p>
+<p>&lt;span id=&quot;rule-kis-mrd-life-003&quot;&gt;&lt;/span&gt;</p>
+<p>META records MUST be regenerated from their sources rather than manually maintained.</p>
+<p>&lt;span id=&quot;rule-kis-mrd-life-004&quot;&gt;&lt;/span&gt;</p>
+<p>A derived or generated artifact MUST be treated as stale when its declared source fingerprint no longer matches its admitted sources.</p>
+<p>&lt;span id=&quot;rule-kis-mrd-life-005&quot;&gt;&lt;/span&gt;</p>
+<p>Superseded MRDs MUST remain addressable for lineage and MUST identify their replacement when one exists.</p>
+<p>&lt;span id=&quot;rule-kis-mrd-life-006&quot;&gt;&lt;/span&gt;</p>
+<p>Git history is the change history; a duplicate body changelog is not required by the core MRD standard.</p>
+<h2>Requirement traceability</h2>
+<p>The following table preserves the stable rule identifier and enforcement binding for each requirement stated in this chapter:</p>
+<p>| Rule | Enforcement |</p>
+<p>|---|---|</p>
+<p>| `KIS-MRD-LIFE-001` | `validator` |</p>
+<p>| `KIS-MRD-LIFE-002` | `workflow` |</p>
+<p>| `KIS-MRD-LIFE-003` | `generator` |</p>
+<p>| `KIS-MRD-LIFE-004` | `generator` |</p>
+<p>| `KIS-MRD-LIFE-005` | `validator` |</p>
+<p>| `KIS-MRD-LIFE-006` | `review` |</p>
+<h2>Source and authority</h2>
+<p>This page projects `KIS-KNOW-WRK-STM-001` version `1.0.0`. The MRD remains authoritative; this page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/specification/governance/007-provenance/">Previous</a> <a rel="next" href="/specification/governance/009-kis-op-governance-behavior/">Next</a></nav></main></body></html>

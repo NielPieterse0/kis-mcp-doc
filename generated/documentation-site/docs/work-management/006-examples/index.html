@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Work Management examples</title><link rel="stylesheet" href="/assets/site.css"></head><body><header><a href="/">KIS Documentation</a><nav><a href="/docs/">Docs</a> <a href="/specification/">Specification</a> <a href="/reference/">Reference</a></nav></header><main><div class="breadcrumbs"><a href="/">Home</a> / <a href="/docs/">Docs</a> / Work Management Documentation</div><h1>Work Management examples</h1>
+<p>These examples compose canonical operations and states; they do not create new transitions or authority.</p>
+<h2>Example: take and complete ready work</h2>
+<p>1. Confirm the item satisfies Ready metadata and dependency requirements.</p>
+<p>2. Use `take_next_work` or `claim_work` to establish the execution claim.</p>
+<p>3. Perform the governed repository change while Work remains evidence-linked to its delivery stage.</p>
+<p>4. Run source verification for the exact delivery identity.</p>
+<p>5. After merge, complete required documentation reconciliation and any required commissioning.</p>
+<p>6. Use `complete_work` only after the completion guards are satisfied.</p>
+<p>If a guard rejects a transition, resolve its reason code instead of forcing the state.</p>
+<p>For exact transitions, guards, fields, and operation contracts, use the <a href="/specification/work-management/001-specification/">Work Management Specification</a>.</p><nav class="prev-next"><a rel="prev" href="/docs/work-management/005-troubleshooting/">Previous</a> </nav></main></body></html>

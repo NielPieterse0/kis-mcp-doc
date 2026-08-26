@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Classification</title><link rel="stylesheet" href="/assets/site.css"></head><body><header><a href="/">KIS Documentation</a><nav><a href="/docs/">Docs</a> <a href="/specification/">Specification</a> <a href="/reference/">Reference</a></nav></header><main><div class="breadcrumbs"><a href="/">Home</a> / <a href="/specification/">Specification</a> / kis-op Governance Specification</div><h1>Classification</h1>
+<p>&lt;div id=&quot;enable-section-numbers&quot; /&gt;</p>
+<p><a href="/specification/governance/001-specification/">Previous: Specification</a> | <a href="/specification/governance/003-applicability-and-selection/">Next: Applicability and Selection</a> | <a href="/specification/governance/">Index</a></p>
+<p>KIS MRDs use a functional classification model. Classification describes what an artifact does, independent of where a repository stores or implements it.</p>
+<h2>Classification requirements</h2>
+<p>The catalog contains 12 functional classes and 47 allowed MRD types. Classification is based on function so that the same governed need keeps the same meaning across repository layouts and technology choices.</p>
+<p>&lt;span id=&quot;rule-kis-mrd-class-001&quot;&gt;&lt;/span&gt;</p>
+<p>Every MRD MUST declare exactly one class and one type from this catalog.</p>
+<p>&lt;span id=&quot;rule-kis-mrd-class-002&quot;&gt;&lt;/span&gt;</p>
+<p>Classification MUST describe what an artifact does, not where the artifact is stored.</p>
+<p>&lt;span id=&quot;rule-kis-mrd-class-003&quot;&gt;&lt;/span&gt;</p>
+<p>A new MRD type MUST NOT be introduced when an existing catalog type adequately represents the artifact.</p>
+<p>&lt;span id=&quot;rule-kis-mrd-class-004&quot;&gt;&lt;/span&gt;</p>
+<p>Artifacts MUST NOT be created merely to populate unused catalog types; absence of an unused type has no compliance implication.</p>
+<p>&lt;span id=&quot;rule-kis-mrd-class-005&quot;&gt;&lt;/span&gt;</p>
+<p>The catalog MAY be extended by a versioned governance amendment when a genuine artifact need cannot be represented by an existing type.</p>
+<h2>Classes</h2>
+<p>The following table defines the functional classes used to group MRD types:</p>
+<p>| Class | Name | Definition |</p>
+<p>|---|---|---|</p>
+<p>| `SEM` | Semantics | Defines canonical meaning, vocabulary, entities, enumerations, ontologies, registries, domains, and assertions. |</p>
+<p>| `CON` | Constraints | Restricts permitted meaning or behavior through validation, boundaries, policy, and constraint contracts. |</p>
+<p>| `DEC` | Decisions | Determines outcomes through decision tables, trees, and scoring models. |</p>
+<p>| `WRK` | Workflows | Defines permitted state transitions, processes, approvals, phases, workflows, and actions. |</p>
+<p>| `CFG` | Configuration | Selects or parameterizes allowed behavior through environments, flags, and runtime parameters. |</p>
+<p>| `MAP` | Mappings | Defines deterministic translation between fields, formats, or versions. |</p>
+<p>| `CTR` | Contracts | Defines externally or internally consumable API, event, and service interfaces. |</p>
+<p>| `MAN` | Manifests | Declares package, bill-of-materials, release, skill, and action inventories. |</p>
+<p>| `PRM` | Prompts | Defines system, role, context, and tool prompt behavior. |</p>
+<p>| `EVL` | Evaluations | Defines tests, rubrics, and benchmarks used to measure conformance or quality. |</p>
+<p>| `EVD` | Evidence | Records logs, approvals, lineage, and test-result observations. |</p>
+<p>| `META` | Derived metadata | Contains generated indexes, dependency maps, and metadata maps; never primary authority. |</p>
+<h2>Type catalog (47 allowed types)</h2>
+<p>The following table lists each governed type and its canonical representation format:</p>
+<p>| Class | Type | Code | Meaning | Canonical format |</p>
+<p>|---|---|---|---|---|</p>
+<p>| `SEM` | `ENT` | `SEM-ENT` | Entity definition schema | JSON Schema |</p>
+<p>| `SEM` | `ENUM` | `SEM-ENUM` | Enumeration schema | JSON Schema |</p>
+<p>| `SEM` | `ONT` | `SEM-ONT` | Ontology | JSON Schema |</p>
+<p>| `SEM` | `REG` | `SEM-REG` | Registry | JSON |</p>
+<p>| `SEM` | `DOM` | `SEM-DOM` | Domain definition register | JSON |</p>
+<p>| `SEM` | `ASR` | `SEM-ASR` | Assertion rules | JSON Schema |</p>
+<p>| `CON` | `VRS` | `CON-VRS` | Version constraint | JSON |</p>
+<p>| `CON` | `BND` | `CON-BND` | Boundary rule | JSON |</p>
+<p>| `CON` | `POL` | `CON-POL` | Policy implementation | JSON |</p>
+<p>| `CON` | `CTR` | `CON-CTR` | Constraint contract | JSON |</p>
+<p>| `DEC` | `TAB` | `DEC-TAB` | Decision table | JSON |</p>
+<p>| `DEC` | `TRE` | `DEC-TRE` | Decision tree | JSON |</p>
+<p>| `DEC` | `SCR` | `DEC-SCR` | Scoring model | JSON |</p>
+<p>| `WRK` | `STM` | `WRK-STM` | State machine | JSON |</p>
+<p>| `WRK` | `PRC` | `WRK-PRC` | Process definition | JSON |</p>
+<p>| `WRK` | `APR` | `WRK-APR` | Approval workflow | JSON |</p>
+<p>| `WRK` | `CTR` | `WRK-CTR` | Phase contract | JSON |</p>
+<p>| `WRK` | `WFL` | `WRK-WFL` | Workflow definition | JSON |</p>
+<p>| `WRK` | `ACT` | `WRK-ACT` | Action or automation workflow | JSON |</p>
+<p>| `CFG` | `ENV` | `CFG-ENV` | Environment config | JSON or YAML |</p>
+<p>| `CFG` | `FLG` | `CFG-FLG` | Feature flag | JSON or YAML |</p>
+<p>| `CFG` | `PRM` | `CFG-PRM` | Runtime parameter | JSON or YAML |</p>
+<p>| `MAP` | `FLD` | `MAP-FLD` | Field mapping | JSON |</p>
+<p>| `MAP` | `FMT` | `MAP-FMT` | Format translation | JSON |</p>
+<p>| `MAP` | `MIG` | `MAP-MIG` | Migration map | JSON |</p>
+<p>| `CTR` | `API` | `CTR-API` | API contract | JSON |</p>
+<p>| `CTR` | `EVT` | `CTR-EVT` | Event contract | JSON |</p>
+<p>| `CTR` | `SVC` | `CTR-SVC` | Service contract | JSON |</p>
+<p>| `MAN` | `PKG` | `MAN-PKG` | Package manifest | JSON |</p>
+<p>| `MAN` | `BOM` | `MAN-BOM` | Bill of materials | JSON |</p>
+<p>| `MAN` | `REL` | `MAN-REL` | Release manifest | JSON |</p>
+<p>| `MAN` | `SKL` | `MAN-SKL` | Skill manifest | JSON |</p>
+<p>| `MAN` | `ACT` | `MAN-ACT` | Action manifest | JSON |</p>
+<p>| `PRM` | `SYS` | `PRM-SYS` | System prompt | JSON |</p>
+<p>| `PRM` | `ROL` | `PRM-ROL` | Role prompt | JSON |</p>
+<p>| `PRM` | `CTX` | `PRM-CTX` | Context prompt | JSON |</p>
+<p>| `PRM` | `TOL` | `PRM-TOL` | Tool prompt | JSON |</p>
+<p>| `EVL` | `TST` | `EVL-TST` | Test suite | JSON Schema |</p>
+<p>| `EVL` | `RUB` | `EVL-RUB` | Rubric | JSON Schema |</p>
+<p>| `EVL` | `BEN` | `EVL-BEN` | Benchmark | JSON Schema |</p>
+<p>| `EVD` | `LOG` | `EVD-LOG` | Log | JSON |</p>
+<p>| `EVD` | `APR` | `EVD-APR` | Approval record | JSON |</p>
+<p>| `EVD` | `LIN` | `EVD-LIN` | Lineage record | JSON |</p>
+<p>| `EVD` | `TSR` | `EVD-TSR` | Test result snapshot | JSON |</p>
+<p>| `META` | `IDX` | `META-IDX` | Index | JSON |</p>
+<p>| `META` | `DEP` | `META-DEP` | Dependency map | JSON |</p>
+<p>| `META` | `MAP` | `META-MAP` | Metadata map | JSON |</p>
+<h2>Requirement traceability</h2>
+<p>The following table preserves the stable rule identifier and enforcement binding for each requirement stated in this chapter:</p>
+<p>| Rule | Enforcement |</p>
+<p>|---|---|</p>
+<p>| `KIS-MRD-CLASS-001` | `validator` |</p>
+<p>| `KIS-MRD-CLASS-002` | `review` |</p>
+<p>| `KIS-MRD-CLASS-003` | `review` |</p>
+<p>| `KIS-MRD-CLASS-004` | `workflow` |</p>
+<p>| `KIS-MRD-CLASS-005` | `workflow` |</p>
+<h2>Source and authority</h2>
+<p>This page projects `KIS-KNOW-SEM-REG-001` version `1.0.0`. The MRD remains authoritative; this page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/specification/governance/001-specification/">Previous</a> <a rel="next" href="/specification/governance/003-applicability-and-selection/">Next</a></nav></main></body></html>

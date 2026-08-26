@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Move work through its lifecycle</title><link rel="stylesheet" href="/assets/site.css"></head><body><header><a href="/">KIS Documentation</a><nav><a href="/docs/">Docs</a> <a href="/specification/">Specification</a> <a href="/reference/">Reference</a></nav></header><main><div class="breadcrumbs"><a href="/">Home</a> / <a href="/docs/">Docs</a> / Work Management Documentation</div><h1>Move work through its lifecycle</h1>
+<p>Define Work states, transitions, readiness, claims, delivery stages, completion gates, and guards.</p>
+<p>Work Status and Delivery Stage are separate dimensions. Change one only through its owning authority.</p>
+<h2>Work states</h2>
+<ul>
+<li>**Inbox** (`inbox`): Captured work not yet triaged.</li>
+<li>**Triage** (`triage`): Work being classified.</li>
+<li>**Proposed** (`proposed`): Work proposed for approval.</li>
+<li>**Approved** (`approved`): Accepted work not yet admitted to Ready.</li>
+<li>**Ready** (`ready`): Executable queue state subject to readiness guards.</li>
+<li>**Active** (`active`): Claimed execution state.</li>
+<li>**Review** (`review`): Internal delivery state for review activity.</li>
+<li>**Verification** (`verification`): Internal delivery state for verification activity.</li>
+<li>**Documentation** (`documentation`): Internal delivery state for documentation reconciliation.</li>
+<li>**Blocked** (`blocked`): Execution cannot proceed because a blocker is present.</li>
+<li>**On Hold** (`on_hold`): Intentionally paused pending a review trigger.</li>
+<li>**Deferred** (`deferred`): Postponed for later reconsideration.</li>
+<li>**Rejected** (`rejected`): Not accepted for execution in current form.</li>
+<li>**Superseded** (`superseded`): Replaced by newer authoritative work.</li>
+<li>**Done** (`done`): Required completion gates are satisfied.</li>
+</ul>
+<h2>Before work becomes Ready</h2>
+<ul>
+<li>Required Project fields: Record Type, Priority, Effort, Documentation Impact.</li>
+<li>Required issue sections: Outcome, Acceptance criteria.</li>
+<li>Dependencies must be understood.</li>
+</ul>
+<p>See the <a href="/specification/work-management/001-specification/">Work Management Specification</a> for every allowed transition and guard.</p><nav class="prev-next"><a rel="prev" href="/docs/work-management/">Previous</a> <a rel="next" href="/docs/work-management/003-work-operations/">Next</a></nav></main></body></html>

@@ -1,0 +1,366 @@
+[
+  {
+    "family": "governance-spec",
+    "route": "/specification/governance/",
+    "source": "generated/governance-spec/000-index.md",
+    "surface": "specification",
+    "title": "kis-op Governance Specification — documentation index"
+  },
+  {
+    "family": "governance-spec",
+    "route": "/specification/governance/001-specification/",
+    "source": "generated/governance-spec/001-specification.md",
+    "surface": "specification",
+    "title": "kis-op Governance Specification"
+  },
+  {
+    "family": "governance-spec",
+    "route": "/specification/governance/002-classification/",
+    "source": "generated/governance-spec/002-classification.md",
+    "surface": "specification",
+    "title": "Classification"
+  },
+  {
+    "family": "governance-spec",
+    "route": "/specification/governance/003-applicability-and-selection/",
+    "source": "generated/governance-spec/003-applicability-and-selection.md",
+    "surface": "specification",
+    "title": "Applicability and Selection"
+  },
+  {
+    "family": "governance-spec",
+    "route": "/specification/governance/004-authority-ownership-and-relationships/",
+    "source": "generated/governance-spec/004-authority-ownership-and-relationships.md",
+    "surface": "specification",
+    "title": "Authority, Ownership, and Relationships"
+  },
+  {
+    "family": "governance-spec",
+    "route": "/specification/governance/005-layering/",
+    "source": "generated/governance-spec/005-layering.md",
+    "surface": "specification",
+    "title": "Layering"
+  },
+  {
+    "family": "governance-spec",
+    "route": "/specification/governance/006-dependency-rules/",
+    "source": "generated/governance-spec/006-dependency-rules.md",
+    "surface": "specification",
+    "title": "Dependency Rules"
+  },
+  {
+    "family": "governance-spec",
+    "route": "/specification/governance/007-provenance/",
+    "source": "generated/governance-spec/007-provenance.md",
+    "surface": "specification",
+    "title": "Provenance"
+  },
+  {
+    "family": "governance-spec",
+    "route": "/specification/governance/008-lifecycle/",
+    "source": "generated/governance-spec/008-lifecycle.md",
+    "surface": "specification",
+    "title": "Lifecycle"
+  },
+  {
+    "family": "governance-spec",
+    "route": "/specification/governance/009-kis-op-governance-behavior/",
+    "source": "generated/governance-spec/009-kis-op-governance-behavior.md",
+    "surface": "specification",
+    "title": "kis-op Governance Behavior"
+  },
+  {
+    "family": "governance-spec",
+    "route": "/specification/governance/010-validation-and-enforcement/",
+    "source": "generated/governance-spec/010-validation-and-enforcement.md",
+    "surface": "specification",
+    "title": "Validation and Enforcement"
+  },
+  {
+    "family": "governance-spec",
+    "route": "/specification/governance/020-applicability-catalog/",
+    "source": "generated/governance-spec/020-applicability-catalog.md",
+    "surface": "specification",
+    "title": "MRD applicability catalog"
+  },
+  {
+    "family": "governance-spec",
+    "route": "/specification/governance/021-relationship-vocabulary/",
+    "source": "generated/governance-spec/021-relationship-vocabulary.md",
+    "surface": "specification",
+    "title": "Governed relationship vocabulary"
+  },
+  {
+    "family": "governance-spec",
+    "route": "/specification/governance/022-validation-reason-codes/",
+    "source": "generated/governance-spec/022-validation-reason-codes.md",
+    "surface": "specification",
+    "title": "Validation reason codes"
+  },
+  {
+    "family": "governance-spec",
+    "route": "/reference/governance-spec/data/dependency-map/",
+    "source": "generated/governance-spec/data/dependency-map.json",
+    "surface": "reference",
+    "title": "Dependency Map"
+  },
+  {
+    "family": "governance-spec",
+    "route": "/reference/governance-spec/data/mrd-index/",
+    "source": "generated/governance-spec/data/mrd-index.json",
+    "surface": "reference",
+    "title": "Mrd Index"
+  },
+  {
+    "family": "governance-spec",
+    "route": "/reference/governance-spec/data/semantic-coverage/",
+    "source": "generated/governance-spec/data/semantic-coverage.json",
+    "surface": "reference",
+    "title": "Semantic Coverage"
+  },
+  {
+    "family": "governance-spec",
+    "route": "/reference/governance-spec/manifest/",
+    "source": "generated/governance-spec/manifest.json",
+    "surface": "reference",
+    "title": "Manifest"
+  },
+  {
+    "family": "work-management-spec",
+    "route": "/specification/work-management/",
+    "source": "generated/work-management-spec/000-index.md",
+    "surface": "specification",
+    "title": "KIS Work Management Specification — documentation index"
+  },
+  {
+    "family": "work-management-spec",
+    "route": "/specification/work-management/001-specification/",
+    "source": "generated/work-management-spec/001-specification.md",
+    "surface": "specification",
+    "title": "KIS Work Management Specification"
+  },
+  {
+    "family": "work-management-spec",
+    "route": "/specification/work-management/002-work-management-domain-model/",
+    "source": "generated/work-management-spec/002-work-management-domain-model.md",
+    "surface": "specification",
+    "title": "Work Management domain model"
+  },
+  {
+    "family": "work-management-spec",
+    "route": "/specification/work-management/003-work-lifecycle/",
+    "source": "generated/work-management-spec/003-work-lifecycle.md",
+    "surface": "specification",
+    "title": "Work lifecycle"
+  },
+  {
+    "family": "work-management-spec",
+    "route": "/specification/work-management/004-work-operations/",
+    "source": "generated/work-management-spec/004-work-operations.md",
+    "surface": "specification",
+    "title": "Work operations"
+  },
+  {
+    "family": "work-management-spec",
+    "route": "/specification/work-management/005-next-work-selection/",
+    "source": "generated/work-management-spec/005-next-work-selection.md",
+    "surface": "specification",
+    "title": "Next-work selection"
+  },
+  {
+    "family": "work-management-spec",
+    "route": "/specification/work-management/006-authority-and-reconciliation-policy/",
+    "source": "generated/work-management-spec/006-authority-and-reconciliation-policy.md",
+    "surface": "specification",
+    "title": "Authority and reconciliation policy"
+  },
+  {
+    "family": "work-management-spec",
+    "route": "/specification/work-management/007-provider-and-command-plane-boundary/",
+    "source": "generated/work-management-spec/007-provider-and-command-plane-boundary.md",
+    "surface": "specification",
+    "title": "Provider and command-plane boundary"
+  },
+  {
+    "family": "work-management-spec",
+    "route": "/specification/work-management/008-work-management-conformance/",
+    "source": "generated/work-management-spec/008-work-management-conformance.md",
+    "surface": "specification",
+    "title": "Work Management conformance"
+  },
+  {
+    "family": "work-management-spec",
+    "route": "/specification/work-management/020-work-field-and-vocabulary-reference/",
+    "source": "generated/work-management-spec/020-work-field-and-vocabulary-reference.md",
+    "surface": "specification",
+    "title": "Work field and vocabulary reference"
+  },
+  {
+    "family": "work-management-spec",
+    "route": "/specification/work-management/021-work-project-configuration-reference/",
+    "source": "generated/work-management-spec/021-work-project-configuration-reference.md",
+    "surface": "specification",
+    "title": "Work Project configuration reference"
+  },
+  {
+    "family": "work-management-spec",
+    "route": "/reference/work-management-spec/data/semantic-coverage/",
+    "source": "generated/work-management-spec/data/semantic-coverage.json",
+    "surface": "reference",
+    "title": "Semantic Coverage"
+  },
+  {
+    "family": "work-management-spec",
+    "route": "/reference/work-management-spec/manifest/",
+    "source": "generated/work-management-spec/manifest.json",
+    "surface": "reference",
+    "title": "Manifest"
+  },
+  {
+    "family": "documentation-reference-standard",
+    "route": "/specification/documentation-reference-standard/",
+    "source": "generated/documentation-reference-standard/000-index.md",
+    "surface": "specification",
+    "title": "Documentation Reference Standard — documentation index"
+  },
+  {
+    "family": "documentation-reference-standard",
+    "route": "/specification/documentation-reference-standard/001-specification/",
+    "source": "generated/documentation-reference-standard/001-specification.md",
+    "surface": "specification",
+    "title": "Documentation Reference Standard"
+  },
+  {
+    "family": "documentation-reference-standard",
+    "route": "/specification/documentation-reference-standard/002-reference-catalogue/",
+    "source": "generated/documentation-reference-standard/002-reference-catalogue.md",
+    "surface": "specification",
+    "title": "Documentation reference catalogue"
+  },
+  {
+    "family": "documentation-reference-standard",
+    "route": "/reference/documentation-reference-standard/data/reference-registry/",
+    "source": "generated/documentation-reference-standard/data/reference-registry.json",
+    "surface": "reference",
+    "title": "Reference Registry"
+  },
+  {
+    "family": "documentation-reference-standard",
+    "route": "/reference/documentation-reference-standard/manifest/",
+    "source": "generated/documentation-reference-standard/manifest.json",
+    "surface": "reference",
+    "title": "Manifest"
+  },
+  {
+    "family": "governance-docs",
+    "route": "/docs/governance/",
+    "source": "generated/governance-docs/000-index.md",
+    "surface": "docs",
+    "title": "Governance Documentation"
+  },
+  {
+    "family": "governance-docs",
+    "route": "/docs/governance/002-understand-authority/",
+    "source": "generated/governance-docs/002-understand-authority.md",
+    "surface": "docs",
+    "title": "Understand authority and ownership"
+  },
+  {
+    "family": "governance-docs",
+    "route": "/docs/governance/003-apply-governance/",
+    "source": "generated/governance-docs/003-apply-governance.md",
+    "surface": "docs",
+    "title": "Apply governance to a change"
+  },
+  {
+    "family": "governance-docs",
+    "route": "/docs/governance/004-mrd-lifecycle/",
+    "source": "generated/governance-docs/004-mrd-lifecycle.md",
+    "surface": "docs",
+    "title": "Understand MRD lifecycle"
+  },
+  {
+    "family": "governance-docs",
+    "route": "/docs/governance/005-troubleshooting/",
+    "source": "generated/governance-docs/005-troubleshooting.md",
+    "surface": "docs",
+    "title": "Troubleshoot governance failures"
+  },
+  {
+    "family": "governance-docs",
+    "route": "/docs/governance/006-examples/",
+    "source": "generated/governance-docs/006-examples.md",
+    "surface": "docs",
+    "title": "Governance examples"
+  },
+  {
+    "family": "governance-docs",
+    "route": "/reference/governance-docs/data/source-traceability/",
+    "source": "generated/governance-docs/data/source-traceability.json",
+    "surface": "reference",
+    "title": "Source Traceability"
+  },
+  {
+    "family": "governance-docs",
+    "route": "/reference/governance-docs/manifest/",
+    "source": "generated/governance-docs/manifest.json",
+    "surface": "reference",
+    "title": "Manifest"
+  },
+  {
+    "family": "work-management-docs",
+    "route": "/docs/work-management/",
+    "source": "generated/work-management-docs/000-index.md",
+    "surface": "docs",
+    "title": "Work Management Documentation"
+  },
+  {
+    "family": "work-management-docs",
+    "route": "/docs/work-management/002-work-lifecycle/",
+    "source": "generated/work-management-docs/002-work-lifecycle.md",
+    "surface": "docs",
+    "title": "Move work through its lifecycle"
+  },
+  {
+    "family": "work-management-docs",
+    "route": "/docs/work-management/003-work-operations/",
+    "source": "generated/work-management-docs/003-work-operations.md",
+    "surface": "docs",
+    "title": "Use Work Management operations"
+  },
+  {
+    "family": "work-management-docs",
+    "route": "/docs/work-management/004-complete-work/",
+    "source": "generated/work-management-docs/004-complete-work.md",
+    "surface": "docs",
+    "title": "Complete governed work"
+  },
+  {
+    "family": "work-management-docs",
+    "route": "/docs/work-management/005-troubleshooting/",
+    "source": "generated/work-management-docs/005-troubleshooting.md",
+    "surface": "docs",
+    "title": "Troubleshoot work state"
+  },
+  {
+    "family": "work-management-docs",
+    "route": "/docs/work-management/006-examples/",
+    "source": "generated/work-management-docs/006-examples.md",
+    "surface": "docs",
+    "title": "Work Management examples"
+  },
+  {
+    "family": "work-management-docs",
+    "route": "/reference/work-management-docs/data/source-traceability/",
+    "source": "generated/work-management-docs/data/source-traceability.json",
+    "surface": "reference",
+    "title": "Source Traceability"
+  },
+  {
+    "family": "work-management-docs",
+    "route": "/reference/work-management-docs/manifest/",
+    "source": "generated/work-management-docs/manifest.json",
+    "surface": "reference",
+    "title": "Manifest"
+  }
+]

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Provenance</title><link rel="stylesheet" href="/assets/site.css"></head><body><header><a href="/">KIS Documentation</a><nav><a href="/docs/">Docs</a> <a href="/specification/">Specification</a> <a href="/reference/">Reference</a></nav></header><main><div class="breadcrumbs"><a href="/">Home</a> / <a href="/specification/">Specification</a> / kis-op Governance Specification</div><h1>Provenance</h1>
+<p>&lt;div id=&quot;enable-section-numbers&quot; /&gt;</p>
+<p><a href="/specification/governance/006-dependency-rules/">Previous: Dependency Rules</a> | <a href="/specification/governance/008-lifecycle/">Next: Lifecycle</a> | <a href="/specification/governance/">Index</a></p>
+<p>Provenance identifies the authority, origin, and quality of governed facts. It keeps authored prescription, captured observations, and generated projections distinct.</p>
+<h2>Provenance model</h2>
+<p>Record mode expresses both authority and mutability, while fact quality describes how directly a fact is supported by admitted evidence. This separation prevents harvested, inferred, or generated material from silently becoming prescriptive authority.</p>
+<p>&lt;span id=&quot;rule-kis-mrd-prov-001&quot;&gt;&lt;/span&gt;</p>
+<p>Record mode MUST express authority and mutability; KIS does not define a separate generation_mode in the core standard.</p>
+<p>&lt;span id=&quot;rule-kis-mrd-prov-002&quot;&gt;&lt;/span&gt;</p>
+<p>Code harvesting MAY produce candidate or meta/descriptive MRDs but MUST NOT automatically create prescriptive authority.</p>
+<p>&lt;span id=&quot;rule-kis-mrd-prov-003&quot;&gt;&lt;/span&gt;</p>
+<p>A harvested candidate becomes prescriptive only through explicit adoption or review; after adoption, implementation MUST conform to the prescriptive MRD.</p>
+<p>&lt;span id=&quot;rule-kis-mrd-prov-004&quot;&gt;&lt;/span&gt;</p>
+<p>Inferred facts MUST NOT become normative automatically and MUST NOT appear as active prescriptive facts.</p>
+<p>&lt;span id=&quot;rule-kis-mrd-prov-005&quot;&gt;&lt;/span&gt;</p>
+<p>Generated human-readable documents and META projections MUST NOT write back authority into their sources.</p>
+<p>&lt;span id=&quot;rule-kis-mrd-prov-006&quot;&gt;&lt;/span&gt;</p>
+<p>The provenance source fingerprint MUST deterministically identify the declared provenance source set.</p>
+<p>&lt;span id=&quot;rule-kis-mrd-prov-007&quot;&gt;&lt;/span&gt;</p>
+<p>Author intent, invariants, choices, and contracts; derive implementation observations; capture runtime evidence; evaluate conformance between them.</p>
+<p>&lt;span id=&quot;rule-kis-mrd-prov-008&quot;&gt;&lt;/span&gt;</p>
+<p>A repo_path provenance source MUST carry the SHA-256 of the resolved repository file; a mismatch MUST invalidate provenance.</p>
+<h2>Record modes</h2>
+<p>The following table defines the authority and mutability posture of each record mode:</p>
+<p>| Record mode | Meaning | Mutability |</p>
+<p>|---|---|---|</p>
+<p>| `prescriptive` | What must be true. Authored, reviewed, and explicitly adopted as governing authority. | `versioned` |</p>
+<p>| `descriptive` | What happened or is observed. Captured evidence or records. | `immutable_after_creation` |</p>
+<p>| `meta` | A generated representation, index, or map of other authority. | `regenerate_only` |</p>
+<h2>Fact quality</h2>
+<p>Fact quality records whether a fact is direct, deterministically derived, or inferred:</p>
+<p>| Quality | Meaning |</p>
+<p>|---|---|</p>
+<p>| `direct` | Explicitly present in an admitted source. |</p>
+<p>| `derived` | Deterministic transformation of direct facts. |</p>
+<p>| `inferred` | Interpretation not directly guaranteed by an admitted source. |</p>
+<h2>Provenance source kinds</h2>
+<p>Each provenance source kind has a resolution or fingerprint requirement, as shown in the following table:</p>
+<p>| Kind | Resolution requirement |</p>
+<p>|---|---|</p>
+<p>| `operator_direction` | stable opaque identity |</p>
+<p>| `repo_path` | must resolve inside repository and carry the current file SHA-256 |</p>
+<p>| `external_reference` | must carry an immutable SHA-256 fingerprint |</p>
+<h2>Requirement traceability</h2>
+<p>The following table preserves the stable rule identifier and enforcement binding for each requirement stated in this chapter:</p>
+<p>| Rule | Enforcement |</p>
+<p>|---|---|</p>
+<p>| `KIS-MRD-PROV-001` | `validator` |</p>
+<p>| `KIS-MRD-PROV-002` | `workflow` |</p>
+<p>| `KIS-MRD-PROV-003` | `workflow` |</p>
+<p>| `KIS-MRD-PROV-004` | `validator` |</p>
+<p>| `KIS-MRD-PROV-005` | `generator` |</p>
+<p>| `KIS-MRD-PROV-006` | `validator` |</p>
+<p>| `KIS-MRD-PROV-007` | `review` |</p>
+<p>| `KIS-MRD-PROV-008` | `validator` |</p>
+<h2>Source and authority</h2>
+<p>This page projects `KIS-KNOW-CON-POL-001` version `1.0.0`. The MRD remains authoritative; this page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/specification/governance/006-dependency-rules/">Previous</a> <a rel="next" href="/specification/governance/008-lifecycle/">Next</a></nav></main></body></html>
