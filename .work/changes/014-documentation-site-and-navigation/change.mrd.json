@@ -1,24 +1,24 @@
 {
-  "_mrd": {"schema_version": 1, "id": "KIS-CHG014-WRK-WFL-001", "title": "Documentation Site and Navigation", "module": "change-014", "class": "WRK", "type": "WFL", "layer": "L3", "record_mode": "descriptive", "status": "active", "version": "1.0.0", "dependencies": [{"mrd_id": "KIS-DOC-SEM-REG-002", "relationship": "depends_on"}], "provenance": {"sources": [{"source_id": "GH-ISSUE-25", "kind": "operator_approved_work_item", "role": "approved_change_basis", "locator": "github:NielPieterse0/kis-mcp-doc#25", "revision": "2026-08-26", "sha256": null}], "source_fingerprint": null, "fact_quality": "direct"}, "supersedes": [], "superseded_by": null},
+  "_mrd": {"schema_version": 1, "id": "KIS-CHG014-WRK-WFL-001", "title": "Documentation Site and Navigation", "module": "change-014", "class": "WRK", "type": "WFL", "layer": "L3", "record_mode": "descriptive", "status": "done", "version": "1.0.0", "dependencies": [{"mrd_id": "KIS-DOC-SEM-REG-002", "relationship": "depends_on"}], "provenance": {"sources": [{"source_id": "GH-ISSUE-25", "kind": "operator_approved_work_item", "role": "approved_change_basis", "locator": "github:NielPieterse0/kis-mcp-doc#25", "revision": "2026-08-26", "sha256": null}], "source_fingerprint": null, "fact_quality": "direct"}, "supersedes": [], "superseded_by": null},
   "content": {
     "change_id": "014-documentation-site-and-navigation",
     "work_item": {"repository": "NielPieterse0/kis-mcp-doc", "issue": 25, "project": "NielPieterse0/1", "record_id": "SPEC-014"},
     "outcome": "Provide one reader-facing site over Docs, Specification, and generated reference while preserving existing publication families as source artifacts and authorities.",
     "classification": {"complexity": "large", "risk_triggers": ["public_contract"], "reason": "The change introduces a public reader route and navigation contract without changing domain semantics."},
     "authority_model": ["Canonical MRDs remain sole fact owners.", "The publication family registry remains the sole family discovery inventory.", "The site is a deterministic downstream aggregation and has no write-back authority."],
-    "requirements": [
-      "R1: The site MUST expose Docs, Specification, and relevant generated-reference surfaces from one entry point.",
-      "R2: Family and route discovery MUST derive from KIS-DOC-SEM-REG-002 and MUST NOT duplicate the family inventory.",
-      "R3: Governance and Work Management MUST have stable navigation, landing pages, breadcrumbs, and previous/next paths.",
-      "R4: Validation MUST detect broken links, orphan Markdown pages, duplicate routes, stale output, and tampering.",
-      "R5: The site MUST consume existing generated publication bundles without changing their semantic or output-class authority.",
-      "R6: Search, deployment, branding, and semantic changes are excluded from Change 014."
-    ],
+    "requirements": ["R1: The site MUST expose Docs, Specification, and relevant generated-reference surfaces from one entry point.", "R2: Family and route discovery MUST derive from KIS-DOC-SEM-REG-002 and MUST NOT duplicate the family inventory.", "R3: Governance and Work Management MUST have stable navigation, landing pages, breadcrumbs, and previous/next paths.", "R4: Validation MUST detect broken links, orphan Markdown pages, duplicate routes, stale output, and tampering.", "R5: The site MUST consume existing generated publication bundles without changing their semantic or output-class authority.", "R6: Search, deployment, branding, and semantic changes are excluded from Change 014."],
     "implementation_plan": ["P1: Add a presentation-only site config and deterministic site renderer.", "P2: Derive routes and navigation from registered families and their generated files.", "P3: Render static HTML with cross-link rewriting, breadcrumbs, and previous/next navigation.", "P4: Add exact build/validation/stale checks to CLI and canonical verification."],
     "verification_criteria": ["V1: All five registered family indexes are represented by deterministic routes.", "V2: Broken links and orphan pages fail validation.", "V3: Exact verification detects stale or tampered site bytes.", "V4: Full repository verification passes and canonical domain MRDs remain unchanged."],
-    "tasks": [{"id": "T1", "status": "done", "text": "Raise issue and governed change records."}, {"id": "T2", "status": "done", "text": "Implement registry-derived site and navigation."}, {"id": "T3", "status": "active", "text": "Verify, review, publish, merge, and reconcile."}],
+    "tasks": [{"id": "T1", "status": "done", "text": "Raise issue and governed change records."}, {"id": "T2", "status": "done", "text": "Implement registry-derived site and navigation."}, {"id": "T3", "status": "done", "text": "Verify, review, publish, merge, and reconcile."}],
     "risks": ["Route drift if a second family inventory is introduced.", "Broken cross-family links if source-relative links are not rewritten deterministically."],
     "explicit_exclusions": ["Search or ranking infrastructure.", "Hosting or deployment.", "Branding or visual redesign.", "Changes to governed Governance, Work Management, or Documentation semantics."],
-    "closeout": {"state": "implementation_complete", "verification": [], "reviews": [], "publication": {"status": "pending", "issue": 25, "pull_request": null}, "unresolved": []}
+    "closeout": {
+      "state": "post_merge_complete",
+      "verification": ["PR 28 merged the deterministic site and navigation implementation at head ac4f6a59a311870c85f95280d2eabbfd5606bc79 into main as a263d7d2e983a5de4085ed0652299176696287e7.", "Post-merge canonical verification on 2026-08-27 passed site validation and exact generated-output checks with no diagnostics."],
+      "reviews": ["Post-merge closeout audit found no unresolved site, navigation, authority, or generated-output findings."],
+      "publication": {"status": "merged", "issue": 25, "pull_request": 28},
+      "merge": {"approved_head": "ac4f6a59a311870c85f95280d2eabbfd5606bc79", "merge_commit": "a263d7d2e983a5de4085ed0652299176696287e7", "merged_at": "2026-08-26T20:34:06Z", "method": "merge"},
+      "unresolved": []
+    }
   }
 }

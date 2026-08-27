@@ -10,117 +10,41 @@
     "record_mode": "descriptive",
     "status": "active",
     "version": "1.0.0",
-    "dependencies": [
-      {
-        "source": "repo:.work/changes/015-documentation-search-and-knowledge-discovery/change.mrd.json",
-        "relationship": "depends_on"
-      }
-    ],
-    "provenance": {
-      "sources": [
-        {
-          "source_id": "GH-ISSUE-27",
-          "kind": "operator_approved_work_item",
-          "role": "approved_change_basis",
-          "locator": "github:NielPieterse0/kis-mcp-doc#27",
-          "revision": "2026-08-26",
-          "sha256": null
-        }
-      ],
-      "source_fingerprint": null,
-      "fact_quality": "direct"
-    },
+    "dependencies": [{"source": "repo:.work/changes/015-documentation-search-and-knowledge-discovery/change.mrd.json", "relationship": "depends_on"}],
+    "provenance": {"sources": [{"source_id": "GH-ISSUE-27", "kind": "operator_approved_work_item", "role": "approved_change_basis", "locator": "github:NielPieterse0/kis-mcp-doc#27", "revision": "2026-08-26", "sha256": null}], "source_fingerprint": null, "fact_quality": "direct"},
     "supersedes": [],
     "superseded_by": null
   },
   "content": {
     "change_id": "016-documentation-publication-hosting-and-release-integration",
-    "work_item": {
-      "repository": "NielPieterse0/kis-mcp-doc",
-      "issue": 27,
-      "project": "NielPieterse0/1",
-      "record_id": "SPEC-016"
-    },
+    "work_item": {"repository": "NielPieterse0/kis-mcp-doc", "issue": 27, "project": "NielPieterse0/1", "record_id": "SPEC-016"},
     "outcome": "Publish the already-governed documentation site through GitHub Pages and package the exact deterministic site as release assets.",
-    "classification": {
-      "complexity": "large",
-      "risk_triggers": [
-        "public_contract",
-        "external_network"
-      ],
-      "reason": "The change introduces external publication and release-write workflows while preserving generated-site authority boundaries."
-    },
-    "authority_model": [
-      "Generated documentation-site remains the sole deployment payload.",
-      "Hosting and release workflows consume verified generated output and never reinterpret canonical MRDs.",
-      "Release archives are deterministic downstream packages with no write-back authority."
-    ],
-    "requirements": [
-      "R1: GitHub Pages publication MUST deploy only a canonically verified generated/documentation-site bundle.",
-      "R2: Project-site base paths MUST resolve correctly under /kis-mcp-doc.",
-      "R3: Release packaging MUST be byte-deterministic and bind current site and search bundle hashes.",
-      "R4: Repository release publication MUST attach the deterministic archive and metadata without rebuilding semantics.",
-      "R5: Deployment actions MUST be pinned to immutable release commits.",
-      "R6: Full repository verification MUST reject stale site, search, or release artifacts."
-    ],
-    "implementation_plan": [
-      "P1: Add normalized public base-path support to the site renderer.",
-      "P2: Add deterministic documentation release packaging and exact verification.",
-      "P3: Add pinned GitHub Pages build/deploy workflow over generated site output.",
-      "P4: Add release-event workflow that attaches deterministic documentation assets.",
-      "P5: Extend CLI, canonical verification, tests, and governed change evidence."
-    ],
-    "verification_criteria": [
-      "V1: Generated links and search results resolve under /kis-mcp-doc.",
-      "V2: Repeated release builds produce identical ZIP bytes and manifests.",
-      "V3: Tampered or stale site/search/release output fails verification.",
-      "V4: Pages workflow uses pinned official actions and release workflow uploads only generated release assets.",
-      "V5: Canonical Governance, Work Management, and Documentation MRDs remain unchanged."
-    ],
+    "classification": {"complexity": "large", "risk_triggers": ["public_contract", "external_network"], "reason": "The change introduces external publication and release-write workflows while preserving generated-site authority boundaries."},
+    "authority_model": ["Generated documentation-site remains the sole deployment payload.", "Hosting and release workflows consume verified generated output and never reinterpret canonical MRDs.", "Release archives are deterministic downstream packages with no write-back authority."],
+    "requirements": ["R1: GitHub Pages publication MUST deploy only a canonically verified generated/documentation-site bundle.", "R2: Project-site base paths MUST resolve correctly under /kis-mcp-doc.", "R3: Release packaging MUST be byte-deterministic and bind current site and search bundle hashes.", "R4: Repository release publication MUST attach the deterministic archive and metadata without rebuilding semantics.", "R5: Deployment actions MUST be pinned to immutable release commits.", "R6: Full repository verification MUST reject stale site, search, or release artifacts."],
+    "implementation_plan": ["P1: Add normalized public base-path support to the site renderer.", "P2: Add deterministic documentation release packaging and exact verification.", "P3: Add pinned GitHub Pages build/deploy workflow over generated site output.", "P4: Add release-event workflow that attaches deterministic documentation assets.", "P5: Extend CLI, canonical verification, tests, and governed change evidence."],
+    "verification_criteria": ["V1: Generated links and search results resolve under /kis-mcp-doc.", "V2: Repeated release builds produce identical ZIP bytes and manifests.", "V3: Tampered or stale site/search/release output fails verification.", "V4: Pages workflow uses pinned official actions and release workflow uploads only generated release assets.", "V5: Canonical Governance, Work Management, and Documentation MRDs remain unchanged."],
     "tasks": [
-      {
-        "id": "T1",
-        "status": "done",
-        "text": "Raise issue and governed change records."
-      },
-      {
-        "id": "T2",
-        "status": "done",
-        "text": "Implement hosting path, deterministic release package, workflows, and verification."
-      },
-      {
-        "id": "T3",
-        "status": "active",
-        "text": "Verify, publish, merge, observe Pages deployment, and reconcile closeout."
-      }
+      {"id": "T1", "status": "done", "text": "Raise issue and governed change records."},
+      {"id": "T2", "status": "done", "text": "Implement hosting path, deterministic release package, workflows, and verification."},
+      {"id": "T3", "status": "active", "text": "Verify, publish, merge, observe Pages deployment, and reconcile closeout."}
     ],
-    "risks": [
-      "Absolute site links can break under GitHub Pages project paths.",
-      "Deployment workflows can bypass governed generation if they rebuild or transform content independently.",
-      "Release archives can drift if ZIP metadata is not normalized."
-    ],
-    "explicit_exclusions": [
-      "Canonical semantic changes.",
-      "Branding redesign.",
-      "External search service.",
-      "Custom-domain or DNS management."
-    ],
+    "risks": ["Absolute site links can break under GitHub Pages project paths.", "Deployment workflows can bypass governed generation if they rebuild or transform content independently.", "Release archives can drift if ZIP metadata is not normalized."],
+    "explicit_exclusions": ["Canonical semantic changes.", "Branding redesign.", "External search service.", "Custom-domain or DNS management."],
     "closeout": {
-      "state": "implementation_verified_awaiting_publication",
+      "state": "implementation_merged_deployment_follow_up_required",
       "verification": [
         "Rebased Change 016 onto current main 399fab9859696bbac1766e80a36f13c734f1f04d before final verification.",
-        "Full scripts/verify.ps1 passed with exact-head enforcement on rebased implementation a3162d683d024a75f3b82050b48a26cea53f486a.",
-        "Publication-specific review confirmed /kis-mcp-doc base-path generation, deterministic release hashes, and canonical site/search/release validation."
+        "Full scripts/verify.ps1 passed locally through the Defender-safe Python path after rebasing and again on the final locally verified tree.",
+        "The locally verified final tree 5a7db280bab1784b349717ffbcd75eeea987dfb2 exactly matched the GitHub PR head tree.",
+        "GitHub Canonical Verification run 33084428692 succeeded on exact PR head e86c37cedc15726c16a25fafee12c182ea057226.",
+        "PR 30 merged to main as d60687a4f764b0f0458b42fcfd0ac6409810772f.",
+        "Documentation Pages run 33084607163 completed its build job successfully, including canonical verification and Pages artifact upload; the deploy job then failed before a deployment was created."
       ],
-      "reviews": [
-        "GitHub Pages and release workflows use immutable action commit pins and consume only canonically verified generated documentation artifacts."
-      ],
-      "publication": {
-        "status": "pending",
-        "issue": 27,
-        "pull_request": null
-      },
-      "unresolved": []
+      "reviews": ["GitHub Pages and release workflows use immutable action commit pins and consume only canonically verified generated documentation artifacts.", "Post-merge audit confirms the generated documentation build and release payload are valid; only the external Pages deployment step remains unresolved."],
+      "publication": {"status": "merged_deployment_follow_up_required", "issue": 27, "pull_request": 30, "approved_head": "e86c37cedc15726c16a25fafee12c182ea057226", "merge_commit": "d60687a4f764b0f0458b42fcfd0ac6409810772f", "pages_workflow_run": 33084607163},
+      "merge": {"approved_head": "e86c37cedc15726c16a25fafee12c182ea057226", "merge_commit": "d60687a4f764b0f0458b42fcfd0ac6409810772f", "merged_at": "2026-08-27T14:51:49Z", "method": "merge"},
+      "unresolved": ["The first GitHub Pages deploy job failed after successful build, canonical verification, and artifact upload. The connected GitHub interface does not expose the repository Pages settings or deploy-step log needed to complete the external deployment diagnosis from this session."]
     }
   }
 }
