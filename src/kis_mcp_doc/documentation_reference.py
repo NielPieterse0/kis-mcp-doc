@@ -8,7 +8,7 @@ from typing import Any
 
 from jsonschema import Draft202012Validator
 
-from .governance import canonical_hash, canonical_source_bytes
+from .canonical import canonical_hash, canonical_source_bytes, normative_keywords_statement, resolve_repo_file
 from .harvest import load_harvest_registry
 from .publication_kernel import exact_bundle_diagnostics, file_declarations, write_bundle
 
@@ -99,13 +99,23 @@ class DocumentationReferenceRepository:
             if provenance.get("source_fingerprint") != expected_fingerprint:
                 diagnostics.append(_diag("REFERENCE_PROVENANCE_FINGERPRINT_MISMATCH", f"provenance fingerprint mismatch: {doc_id}"))
                 checks["provenance"] = "fail"
+            for source in provenance.get("sources", []):
+                if source.get("kind") != "repo_path":
+                    continue
+                resolved = resolve_repo_file(self.root, source.get("locator"))
+                if resolved is None:
+                    diagnostics.append(_diag("REFERENCE_SOURCE_UNRESOLVED", f"unresolved repository provenance source: {doc_id} -> {source.get('locator')}"))
+                    checks["provenance"] = "fail"
+                elif hashlib.sha256(canonical_source_bytes(resolved)).hexdigest() != source.get("sha256"):
+                    diagnostics.append(_diag("REFERENCE_SOURCE_HASH_MISMATCH", f"repository provenance hash mismatch: {doc_id} -> {source.get('locator')}"))
+                    checks["provenance"] = "fail"
             for dependency in document.get("_mrd", {}).get("dependencies", []):
                 target_id = dependency.get("mrd_id")
                 if target_id and target_id not in known_mrd_ids:
                     diagnostics.append(_diag("REFERENCE_DEPENDENCY_UNRESOLVED", f"unresolved MRD dependency: {doc_id} -> {target_id}"))
                     checks["provenance"] = "fail"
                 source = dependency.get("source")
-                if source and source.startswith("repo:") and not (self.root / source[5:]).is_file():
+                if source and resolve_repo_file(self.root, source) is None:
                     diagnostics.append(_diag("REFERENCE_SOURCE_UNRESOLVED", f"unresolved repository source: {doc_id} -> {source}"))
                     checks["provenance"] = "fail"
 
@@ -318,6 +328,8 @@ def _render_specification(config: dict[str, Any], policy: dict[str, Any], regist
         "",
         "This specification governs how documentation references can influence KIS documentation. It keeps source authority separate from presentation guidance and implementation evidence.",
         "",
+        normative_keywords_statement(),
+        "",
         "## Authority model",
         "",
     ]
@@ -390,7 +402,9 @@ def _diag(code: str, message: str) -> dict[str, str]:
 
 def _result(diagnostics: list[dict[str, str]], checks: dict[str, str] | None = None) -> dict[str, Any]:
     if checks is None:
-        checks = {key: "fail" for key in ("schema", "authority", "harvest_binding", "pinning", "lifecycle", "provenance")}
+        checks = {key: "pass" for key in ("schema", "authority", "harvest_binding", "pinning", "lifecycle", "provenance")}
+    if diagnostics and "fail" not in checks.values():
+        checks["provenance"] = "fail"
     return {"status": "invalid" if diagnostics else "valid", "checks": checks, "diagnostics": diagnostics}
 
 

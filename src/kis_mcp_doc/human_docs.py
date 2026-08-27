@@ -74,6 +74,11 @@ def _header(title: str, subtitle: str) -> list[str]:
     return ["<!-- GENERATED — DO NOT EDIT -->", f"# {title}", "", subtitle, ""]
 
 
+def _sentence_case_label(value: str) -> str:
+    text = value.replace("_", " ").strip()
+    return text[:1].upper() + text[1:] if text else text
+
+
 def _spec_link(config: dict[str, Any]) -> str:
     spec = Path(config["specification"])
     return f"../{spec.parent.name}/{spec.name}"
@@ -116,7 +121,7 @@ def _governance_pages(config: dict[str, Any], docs: dict[str, dict[str, Any]]) -
     applying = _header("Apply governance to a change", workflow["purpose"])
     applying += ["Follow the canonical phases in order. A phase can stop the change when its declared stop condition is met.", ""]
     for phase in sorted(workflow["phases"], key=lambda item: item["order"]):
-        applying += [f"## {phase['order']}. {phase['name'].replace('_', ' ').title()}", ""]
+        applying += [f"## {_sentence_case_label(phase['name'])}", ""]
         applying += [f"- {action}." for action in phase["required_actions"]]
         if phase["stop_when"]:
             applying += ["", "Stop here when:"] + [f"- {condition}." for condition in phase["stop_when"]]
@@ -206,7 +211,7 @@ def _work_pages(config: dict[str, Any], docs: dict[str, dict[str, Any]]) -> tupl
     ops = _header("Use Work Management operations", operations["purpose"])
     ops += ["Choose the operation that matches the intended lifecycle action; mutation authority is bounded by the command plane.", ""]
     for operation in operations["operations"]:
-        ops += [f"## {operation['id'].replace('_', ' ').title()}", "", operation["definition"], "", f"Implementation surface: `{operation['implementation_surface']}`. Effect: `{operation['effect']}`.", ""]
+        ops += [f"## {_sentence_case_label(operation['id'])}", "", operation["definition"], "", f"Implementation surface: `{operation['implementation_surface']}`. Effect: `{operation['effect']}`.", ""]
     ops += [f"For operation contracts and typed errors, use the [Work Management Specification]({spec})."]
 
     complete = _header("Complete governed work", "Completion is evidence-gated; merge is not the same as Done.")

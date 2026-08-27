@@ -1,44 +1,44 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Use Work Management operations</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/docs/">Docs</a> / Work Management Documentation</div><h1>Use Work Management operations</h1>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Use Work Management operations</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/docs/">Docs</a> / Work Management Documentation</div><aside class="publication-meta"><strong>Version:</strong> 1.0.0. <strong>Status:</strong> draft. <strong>Authority:</strong> generated projection of <code>KIS-WORK-CON-POL-001</code>; canonical sources remain authoritative.</aside><h1 id="use-work-management-operations">Use Work Management operations</h1>
 <p>Define the bounded Work Management operations and their implementation surfaces.</p>
 <p>Choose the operation that matches the intended lifecycle action; mutation authority is bounded by the command plane.</p>
-<h2>Capture Work</h2>
+<h2 id="capture-work">Capture work</h2>
 <p>Capture one bounded source record into Work without duplicating source identity.</p>
 <p>Implementation surface: <code>project_management_reconcile</code>. Effect: <code>external_or_local_change</code>.</p>
-<h2>Create Work</h2>
+<h2 id="create-work">Create work</h2>
 <p>Create or reconcile one new Work record through the configured provider boundary.</p>
 <p>Implementation surface: <code>project_management_reconcile</code>. Effect: <code>external_or_local_change</code>.</p>
-<h2>Take Next Work</h2>
+<h2 id="take-next-work">Take next work</h2>
 <p>Select the next eligible Ready item and establish its execution claim.</p>
 <p>Implementation surface: <code>project_management_take_next_work</code>. Effect: <code>external_or_local_change</code>.</p>
-<h2>Claim Work</h2>
+<h2 id="claim-work">Claim work</h2>
 <p>Establish one execution owner after revision and state guards pass.</p>
 <p>Implementation surface: <code>project_management_claim_work</code>. Effect: <code>external_or_local_change</code>.</p>
-<h2>Release Work</h2>
+<h2 id="release-work">Release work</h2>
 <p>Clear an execution claim through the bounded command plane.</p>
 <p>Implementation surface: <code>project_management_release_work</code>. Effect: <code>external_or_local_change</code>.</p>
-<h2>Hold Work</h2>
+<h2 id="hold-work">Hold work</h2>
 <p>Move work to On Hold only with the required review trigger.</p>
 <p>Implementation surface: <code>project_management_hold_work</code>. Effect: <code>external_or_local_change</code>.</p>
-<h2>Defer Work</h2>
+<h2 id="defer-work">Defer work</h2>
 <p>Move work to Deferred only with the required review trigger.</p>
 <p>Implementation surface: <code>project_management_defer_work</code>. Effect: <code>external_or_local_change</code>.</p>
-<h2>Complete Work</h2>
+<h2 id="complete-work">Complete work</h2>
 <p>Complete work only after configured completion and evidence guards pass.</p>
 <p>Implementation surface: <code>project_management_complete_work</code>. Effect: <code>external_or_local_change</code>.</p>
-<h2>Readiness</h2>
+<h2 id="readiness">Readiness</h2>
 <p>Evaluate deterministic queue eligibility and readiness evidence.</p>
 <p>Implementation surface: <code>project_management_next_work</code>. Effect: <code>read_only</code>.</p>
-<h2>Assignment Packet</h2>
+<h2 id="assignment-packet">Assignment packet</h2>
 <p>Bind execution to a generation-specific work packet and reservation fence.</p>
 <p>Implementation surface: <code>coordinator_work_packet</code>. Effect: <code>local_change</code>.</p>
-<h2>Verification</h2>
+<h2 id="verification">Verification</h2>
 <p>Evaluate repository/source verification evidence for the exact delivery identity.</p>
 <p>Implementation surface: <code>project_management_merge_readiness</code>. Effect: <code>read_only_or_external_evidence</code>.</p>
-<h2>Commissioning</h2>
+<h2 id="commissioning">Commissioning</h2>
 <p>Track post-merge live verification separately from source verification.</p>
 <p>Implementation surface: <code>issue_419_commissioning</code>. Effect: <code>external_or_local_change</code>.</p>
-<h2>Authority Revision</h2>
+<h2 id="authority-revision">Authority revision</h2>
 <p>Retain provider/Git revision evidence used for optimistic concurrency and traceability.</p>
 <p>Implementation surface: <code>project_management_inventory</code>. Effect: <code>read_only</code>.</p>
 <p>For operation contracts and typed errors, use the <a href="/kis-mcp-doc/specification/work-management/001-specification/">Work Management Specification</a>.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/docs/work-management/002-work-lifecycle/">Previous</a> <a rel="next" href="/kis-mcp-doc/docs/work-management/004-complete-work/">Next</a></nav></main></body></html>

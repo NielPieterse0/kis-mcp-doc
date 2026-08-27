@@ -1,19 +1,19 @@
 {
-  "bundle_sha256": "8472db99f555d7563e0605f25364960b9bc0ea7eaf9d3f9a923bac87b07876bb",
+  "bundle_sha256": "6254e6cdda425cb60ba59dcab5d66a142a044f3c53d8657ca2f0d823f979a66d",
   "contract": {
     "name": "kis-documentation-search",
-    "version": 1
+    "version": 2
   },
   "documents": 52,
   "files": [
     {
-      "bytes": 267981,
+      "bytes": 269333,
       "path": "search-index.json",
-      "sha256": "bcf54c28448365f7a04e0915f5cf1e47411ae6bad960f040e0f2e10f071d7e78"
+      "sha256": "cf2cf91b7f79d8b6b6b0652f8e3f1ef613b8202e0eb865f8d26db047d95859db"
     }
   ],
   "generator": {
-    "algorithm": "documentation-search-v1",
+    "algorithm": "documentation-search-v2",
     "name": "kis-mcp-doc"
   },
   "inputs": [
@@ -23,9 +23,9 @@
       "sha256": "73c7320926d381dd89a99a55eaeb9b92617a49da32e406359c2db468fbdd28ee"
     },
     {
-      "bytes": 3907,
+      "bytes": 4298,
       "path": "generated/documentation-reference-standard/001-specification.md",
-      "sha256": "51bcb9eb34c848d2ef4c0229fe10c8f61b33584d105201dbae874045e39e2934"
+      "sha256": "90d2d8b22199c340ca403154db30a182a84f61963f394e9724bc4896b736170c"
     },
     {
       "bytes": 2573,
@@ -38,9 +38,9 @@
       "sha256": "0daffac7e07d744a752affde559c65708568fd2ce6fc95d7672185717145d3cc"
     },
     {
-      "bytes": 4076,
+      "bytes": 4077,
       "path": "generated/documentation-reference-standard/manifest.json",
-      "sha256": "507ff0db4c872d7b588c08d02df30b80513de9fc25e31aefe7ab57b83c0c2883"
+      "sha256": "d38184bd63600c59deb54c3cc3e9b979558e39ec60fef787801e3a45d984535c"
     },
     {
       "bytes": 718,
@@ -53,9 +53,9 @@
       "sha256": "23da8a7492417709bcabb898da54686e91a287af44946b3b35eeba146fab106e"
     },
     {
-      "bytes": 1923,
+      "bytes": 1902,
       "path": "generated/governance-docs/003-apply-governance.md",
-      "sha256": "199da9ddd101b6853125724ada62a77a7450fb5272aebc89008cec2466bac8c0"
+      "sha256": "0b1898e9ac8ab6944510a3923563a6a1b48ad8a03f351ab27dc56ac3fd48d164"
     },
     {
       "bytes": 620,
@@ -80,7 +80,7 @@
     {
       "bytes": 4089,
       "path": "generated/governance-docs/manifest.json",
-      "sha256": "154b03507b3f05121dac054ee4525004ac375d7e9299042fee195688f834d3a3"
+      "sha256": "e69178e7835d0d9b4238379686e67ced11401553b5e72201175b71c25cfacff5"
     },
     {
       "bytes": 1187,
@@ -88,9 +88,9 @@
       "sha256": "b7f5e7732c82f3941d7cd5b751ebcf9710eba3a290071cbf504aaf367dcd02f0"
     },
     {
-      "bytes": 2465,
+      "bytes": 2575,
       "path": "generated/governance-spec/001-specification.md",
-      "sha256": "02737a117e86a9d3c0b9c2d1ff8d6286c5b44d5567dfb0c8774c2b64df71418a"
+      "sha256": "b6fd4781328cb317ed85a9fddff9cefcc14eaa521afe6a8d87abc862ade00581"
     },
     {
       "bytes": 6179,
@@ -170,7 +170,7 @@
     {
       "bytes": 9604,
       "path": "generated/governance-spec/manifest.json",
-      "sha256": "83fe5b009f9f050b113bf2b98d918fba1a07cb9bf0cbddc0dd596d5a6117b127"
+      "sha256": "74ae80c93b584fc14f93926f769975a5427dfb2eed50904a4bb0edc340a33f1b"
     },
     {
       "bytes": 708,
@@ -185,7 +185,7 @@
     {
       "bytes": 2757,
       "path": "generated/work-management-docs/003-work-operations.md",
-      "sha256": "913b85de3c010ab375c39a5a7cf14b2d78558e25e762471977ed9e4c3c281ca9"
+      "sha256": "975c4b09015c239541adbe48003185cda88f71a0b8d7aeb0a3add12ef467e1cc"
     },
     {
       "bytes": 803,
@@ -210,7 +210,7 @@
     {
       "bytes": 3705,
       "path": "generated/work-management-docs/manifest.json",
-      "sha256": "3c6f247b515c910c66b21a722193d08fb6efc71cb38acc2e7f67001075680d3c"
+      "sha256": "3c9586d3f244db702d03db98a19493c30f2d283e48d743fbdbd49a59b88135df"
     },
     {
       "bytes": 1323,
@@ -218,9 +218,9 @@
       "sha256": "3ada153de57665eaaf5ca229785961bdf3cd41345cf44ab95f788f0207cc38d2"
     },
     {
-      "bytes": 3471,
+      "bytes": 3733,
       "path": "generated/work-management-spec/001-specification.md",
-      "sha256": "2436f72f2eb6d65f70ad3e70699c18604dffad6dcfe4799de49fd4feb38b0c7a"
+      "sha256": "90b12fcf362f5b788bd832b32e1f8d7a9cec52a88e0fe9452c0c987367a31249"
     },
     {
       "bytes": 1660,
@@ -273,9 +273,9 @@
       "sha256": "6eec176727afc71831447dafde352078d62a1ae9ec657f28fc5f3dd4afda029b"
     },
     {
-      "bytes": 6373,
+      "bytes": 6879,
       "path": "generated/work-management-spec/manifest.json",
-      "sha256": "0726be383d3d2653961d678f9d896e96c1c9311f0ca1102748891d0b2618ac54"
+      "sha256": "be311fd4128ef41e66300a269a7963def1faa4ebb9681a1e5907b2abe70866f4"
     },
     {
       "bytes": 160,
@@ -283,14 +283,14 @@
       "sha256": "72b0668269cdff72c2f840ed40f53be56bb1947d0ac580e74d22e994a4f586cc"
     },
     {
-      "bytes": 7692,
+      "bytes": 8231,
       "path": "src/kis_mcp_doc/documentation_search.py",
-      "sha256": "2971486e3c0bcaf7007c4e3d2beb69d090c0ef8a7167b646a438b6b9a2a12a8f"
+      "sha256": "2fb5f35dffa256406d0d77a59f48698e06f11fe0a91ea76fc78d2f2df1d44ecd"
     },
     {
-      "bytes": 22852,
+      "bytes": 26314,
       "path": "src/kis_mcp_doc/documentation_site.py",
-      "sha256": "6cbd2b7e9815478432e3969992100c49d74265fc725ef8f4c3dcebb5868e3f69"
+      "sha256": "08c68a0c1a88cd42e65b646d94849863a17af11d6912284fd7a5e0e27325601e"
     }
   ]
 }

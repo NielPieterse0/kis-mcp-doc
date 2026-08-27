@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Authority, Ownership, and Relationships</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/specification/">Specification</a> / kis-op Governance Specification</div><h1>Authority, Ownership, and Relationships</h1>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Authority, Ownership, and Relationships</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/specification/">Specification</a> / kis-op Governance Specification</div><aside class="publication-meta"><strong>Version:</strong> 2.0.0. <strong>Status:</strong> draft. <strong>Authority:</strong> generated projection of <code>KIS-KNOW-CON-POL-002</code>; canonical sources remain authoritative.</aside><h1 id="authority-ownership-and-relationships">Authority, Ownership, and Relationships</h1>
 <div id="enable-section-numbers"></div>
 <p><a href="/kis-mcp-doc/specification/governance/003-applicability-and-selection/">Previous: Applicability and Selection</a> | <a href="/kis-mcp-doc/specification/governance/005-layering/">Next: Layering</a> | <a href="/kis-mcp-doc/specification/governance/">Index</a></p>
 <p>Every governed fact has one current canonical owner. Other artifacts can reference or project that fact, but they do not become independent authority by repeating it.</p>
-<h2>Canonical ownership</h2>
+<h2 id="canonical-ownership">Canonical ownership</h2>
 <p>The ownership contract assigns one current canonical owner to each governed fact. Non-owners reference rather than restate authority, derived artifacts remain projections, and ownership conflicts are surfaced and resolved against the current owner.</p>
 <span id="rule-kis-mrd-own-001"></span>
 <p>Every governed fact MUST have exactly one current canonical owner.</p>
@@ -11,7 +11,7 @@
 <p>A non-owning MRD or repository artifact MAY summarize or project an owned fact for its audience but MUST reference the canonical owner and MUST NOT redefine the fact as independent authority.</p>
 <span id="rule-kis-mrd-own-003"></span>
 <p>Generated HRDs, indexes, dependency maps, and other META projections MUST remain downstream of their canonical sources and MUST NOT become write-back authority.</p>
-<h2>Authority and ownership model</h2>
+<h2 id="authority-and-ownership-model">Authority and ownership model</h2>
 <p>The diagram groups the four fields of the canonical ownership contract. Connector lines show contract composition only; they do not invent relationships between governed actors.</p>
 <pre><code class="language-mermaid">flowchart TD
   contract[&quot;Canonical ownership contract&quot;]
@@ -19,14 +19,14 @@
   contract --&gt; nonowner[&quot;Non-owner posture: reference_not_restate&quot;]
   contract --&gt; derived[&quot;Derived posture: projection_only&quot;]
   contract --&gt; conflict[&quot;Conflict posture: surface_diagnostic_and_resolve_against_current_owner&quot;]</code></pre>
-<h2>Canonical owner kinds</h2>
+<h2 id="canonical-owner-kinds">Canonical owner kinds</h2>
 <p>The following table identifies the kinds of sources that can own governed facts:</p>
-<table><thead><tr><th>Kind</th><th>Meaning</th></tr></thead><tbody>
+<table><caption>Canonical owner kinds</caption><thead><tr><th scope="col">Kind</th><th scope="col">Meaning</th></tr></thead><tbody>
 <tr><td><code>prescriptive_mrd</code></td><td>Machine-readable governance or product authority intentionally adopted as the canonical owner.</td></tr>
 <tr><td><code>executable_repo_source</code></td><td>Code, configuration, schema, contract, or test that canonically owns an executable fact under repository authority routing.</td></tr>
 <tr><td><code>parent_governance_source</code></td><td>A higher-authority KIS source that remains canonical until a governed adoption changes ownership.</td></tr>
 </tbody></table>
-<h2>Governed relationships</h2>
+<h2 id="governed-relationships">Governed relationships</h2>
 <p>Non-owning artifacts preserve authority by declaring typed relationships to the sources they depend on, implement, evidence, project, or reference. The vocabulary is governed and closed; ad hoc labels cannot create new relationship semantics.</p>
 <p>See the <a href="/kis-mcp-doc/specification/governance/021-relationship-vocabulary/">governed relationship vocabulary</a> for every relationship code and meaning.</p>
 <span id="rule-kis-mrd-own-004"></span>
@@ -35,9 +35,9 @@
 <p>When two sources appear to own the same current fact, kis-op MUST surface the conflict and resolve ownership through the applicable authority order before accepting dependent work.</p>
 <span id="rule-kis-mrd-own-006"></span>
 <p>Supersession MUST preserve the previous owner&#x27;s stable identity and lineage while making the replacement unambiguous.</p>
-<h2>Requirement traceability</h2>
+<h2 id="requirement-traceability">Requirement traceability</h2>
 <p>The following table preserves the stable rule identifier and enforcement binding for each requirement stated in this chapter:</p>
-<table><thead><tr><th>Rule</th><th>Enforcement</th></tr></thead><tbody>
+<table><caption>Requirement traceability</caption><thead><tr><th scope="col">Rule</th><th scope="col">Enforcement</th></tr></thead><tbody>
 <tr><td><code>KIS-MRD-OWN-001</code></td><td><code>review</code></td></tr>
 <tr><td><code>KIS-MRD-OWN-002</code></td><td><code>review</code></td></tr>
 <tr><td><code>KIS-MRD-OWN-003</code></td><td><code>generator</code></td></tr>
@@ -45,5 +45,5 @@
 <tr><td><code>KIS-MRD-OWN-005</code></td><td><code>workflow</code></td></tr>
 <tr><td><code>KIS-MRD-OWN-006</code></td><td><code>validator</code></td></tr>
 </tbody></table>
-<h2>Source and authority</h2>
+<h2 id="source-and-authority">Source and authority</h2>
 <p>This page projects <code>KIS-KNOW-CON-POL-002</code> version <code>1.0.0</code>. The MRD remains authoritative; this page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/specification/governance/003-applicability-and-selection/">Previous</a> <a rel="next" href="/kis-mcp-doc/specification/governance/005-layering/">Next</a></nav></main></body></html>

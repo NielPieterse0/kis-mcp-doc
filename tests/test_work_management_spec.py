@@ -39,6 +39,9 @@ def test_work_management_manifest_v2_declares_generator_provenance(tmp_path):
         "src/kis_mcp_doc/canonical.py",
         "src/kis_mcp_doc/publication_kernel.py",
         "src/kis_mcp_doc/work_management.py",
+        "contracts/mrd/v1/mrd.schema.json",
+        "contracts/work-management/v1/content.schema.json",
+        "contracts/work-management/v1/work-management-mrd.schema.json",
     }
 
 
@@ -307,3 +310,27 @@ def test_work_semantic_coverage_rejects_duplicate_and_unresolved_entries() -> No
     }
     with pytest.raises(ValueError, match="Work semantic coverage anchor does not resolve"):
         work_module._validate_work_semantic_coverage(files, broken)
+
+
+def test_work_management_rejects_repository_source_escape(tmp_path):
+    root, repo = copied_work_repository(tmp_path)
+    outside = root.parent / "outside.txt"
+    outside.write_text("outside\n", encoding="utf-8")
+    path = next((root / "mrd/work-management").glob("*.mrd.json"))
+    document = json.loads(path.read_text(encoding="utf-8"))
+    document["_mrd"]["dependencies"].append({"source": "repo:../outside.txt", "relationship": "depends_on"})
+    path.write_text(json.dumps(document, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    result = repo.validate()
+    assert result["status"] == "invalid"
+    assert "WORK_MRD_SOURCE_UNRESOLVED" in {item["code"] for item in result["diagnostics"]}
+
+
+def test_work_management_domain_profile_rejects_empty_content(tmp_path):
+    root, repo = copied_work_repository(tmp_path)
+    path = next((root / "mrd/work-management").glob("*.mrd.json"))
+    document = json.loads(path.read_text(encoding="utf-8"))
+    document["content"] = {}
+    path.write_text(json.dumps(document, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    result = repo.validate()
+    assert result["status"] == "invalid"
+    assert "WORK_MRD_SCHEMA_INVALID" in {item["code"] for item in result["diagnostics"]}

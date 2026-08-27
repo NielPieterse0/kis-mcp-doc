@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Work lifecycle</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/specification/">Specification</a> / KIS Work Management Specification</div><h1>Work lifecycle</h1>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Work lifecycle</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/specification/">Specification</a> / KIS Work Management Specification</div><aside class="publication-meta"><strong>Version:</strong> 1.0.0. <strong>Status:</strong> draft. <strong>Authority:</strong> generated projection of <code>KIS-WORK-CON-POL-001</code>; canonical sources remain authoritative.</aside><h1 id="work-lifecycle">Work lifecycle</h1>
 <div id="enable-section-numbers"></div>
 <p><a href="/kis-mcp-doc/specification/work-management/002-work-management-domain-model/">Previous: Work Management domain model</a> | <a href="/kis-mcp-doc/specification/work-management/004-work-operations/">Next: Work operations</a> | <a href="/kis-mcp-doc/specification/work-management/">Index</a></p>
 <span id="mrd-kis-work-wrk-stm-001"></span>
 <p>A work item moves through explicit states. Project-visible states describe the shared work queue, while internal states such as Review, Verification, and Documentation describe delivery activity without creating new GitHub Project status values.</p>
-<h2>Work status and delivery stage</h2>
+<h2 id="work-status-and-delivery-stage">Work status and delivery stage</h2>
 <p>Work Status and Delivery Stage are separate dimensions. The diagram shows the canonical Work lifecycle graph and Delivery Stage sequence independently; it does not map a work state to a delivery stage.</p>
 <pre><code class="language-mermaid">flowchart LR
   subgraph work_status[&quot;Work Status&quot;]
@@ -108,8 +108,8 @@
     stage_documentation --&gt; stage_commissioning
     stage_commissioning --&gt; stage_complete
   end</code></pre>
-<h2>State model</h2>
-<table><thead><tr><th>State</th><th>Meaning</th><th>GitHub Project status</th><th>Token</th></tr></thead><tbody>
+<h2 id="state-model">State model</h2>
+<table><caption>State model</caption><thead><tr><th scope="col">State</th><th scope="col">Meaning</th><th scope="col">GitHub Project status</th><th scope="col">Token</th></tr></thead><tbody>
 <tr><td>Inbox</td><td>Captured work not yet triaged.</td><td>Yes</td><td><code>inbox</code></td></tr>
 <tr><td>Triage</td><td>Work being classified.</td><td>Yes</td><td><code>triage</code></td></tr>
 <tr><td>Proposed</td><td>Work proposed for approval.</td><td>Yes</td><td><code>proposed</code></td></tr>
@@ -141,9 +141,9 @@
 <span id="fact-work-state-rejected"></span>
 <span id="fact-work-state-superseded"></span>
 <span id="fact-work-state-done"></span>
-<h2>Transitions</h2>
+<h2 id="transitions">Transitions</h2>
 <p>Transitions are explicit. A work item <strong>MUST</strong> move only to a destination listed for its current state. On Hold and Deferred also require a Review Trigger.</p>
-<table><thead><tr><th>From</th><th>Allowed next states</th><th>Additional requirement</th></tr></thead><tbody>
+<table><caption>Transitions</caption><thead><tr><th scope="col">From</th><th scope="col">Allowed next states</th><th scope="col">Additional requirement</th></tr></thead><tbody>
 <tr><td>Active</td><td>Ready, Review, Blocked, On Hold, Deferred, Done, Superseded</td><td>None</td></tr>
 <tr><td>Approved</td><td>Ready, Active, On Hold, Deferred, Superseded</td><td>None</td></tr>
 <tr><td>Blocked</td><td>Ready, Active, On Hold, Deferred, Superseded</td><td>None</td></tr>
@@ -160,7 +160,7 @@
 <tr><td>Triage</td><td>Proposed, Approved, Deferred, Rejected, Superseded</td><td>None</td></tr>
 <tr><td>Verification</td><td>Active, Documentation, Blocked, Superseded</td><td>None</td></tr>
 </tbody></table>
-<h2>Readiness and claims</h2>
+<h2 id="readiness-and-claims">Readiness and claims</h2>
 <p>Before a work item can enter Ready, it <strong>MUST</strong> satisfy all configured readiness requirements:</p>
 <ul>
 <li>The source issue contains <strong>Outcome</strong> and <strong>Acceptance criteria</strong>.</li>
@@ -169,14 +169,14 @@
 </ul>
 <p>Execution claims use the <strong>Execution Owner</strong> field. Claims do not expire automatically.</p>
 <p>At intake, the alias <code>todo</code> is normalized to <code>inbox</code>.</p>
-<h2>Delivery and completion</h2>
+<h2 id="delivery-and-completion">Delivery and completion</h2>
 <p>Delivery is tracked separately from the work state. The configured delivery-stage sequence is:</p>
 <p><span id="fact-delivery-stage-none"></span><code>none</code>, <span id="fact-delivery-stage-change-created"></span><code>change_created</code>, <span id="fact-delivery-stage-implementing"></span><code>implementing</code>, <span id="fact-delivery-stage-pr-open"></span><code>pr_open</code>, <span id="fact-delivery-stage-review"></span><code>review</code>, <span id="fact-delivery-stage-ci-pending"></span><code>ci_pending</code>, <span id="fact-delivery-stage-ci-failed"></span><code>ci_failed</code>, <span id="fact-delivery-stage-ci-passed"></span><code>ci_passed</code>, <span id="fact-delivery-stage-merged"></span><code>merged</code>, <span id="fact-delivery-stage-documentation"></span><code>documentation</code>, <span id="fact-delivery-stage-commissioning"></span><code>commissioning</code>, <span id="fact-delivery-stage-complete"></span><code>complete</code></p>
 <p>The <strong>Delivery Stage</strong> field stores that stage. <strong>Change ID</strong>, <strong>Complexity</strong>, and <strong>Risk Triggers</strong> connect the work record to repository change governance. The sequence starts its governed change at <code>change_created</code> and reaches <code>complete</code> when delivery is complete.</p>
 <p>Completion targets <code>done</code>. The current configuration does not require the execution claim to be absent after close.</p>
-<h2>Completion and activation guards</h2>
+<h2 id="completion-and-activation-guards">Completion and activation guards</h2>
 <p>Guards reject or qualify transitions when required evidence is missing or inconsistent:</p>
-<table><thead><tr><th>Guard</th><th>Applies when</th><th>Rule</th><th>Result</th><th>Reason</th></tr></thead><tbody>
+<table><caption>Completion and activation guards</caption><thead><tr><th scope="col">Guard</th><th scope="col">Applies when</th><th scope="col">Rule</th><th scope="col">Result</th><th scope="col">Reason</th></tr></thead><tbody>
 <tr><td><code>approval-before-active</code></td><td><code>approval_required_and_incomplete</code></td><td>Reject activation when the record requires approval and approval is incomplete.</td><td><code>reject</code> to <code>active</code></td><td><code>approval_incomplete</code></td></tr>
 <tr><td><code>completion-no-active-claim</code></td><td><code>completion_requires_no_active_claim_and_claim_present</code></td><td>When configured, reject completion while an execution claim remains.</td><td><code>reject</code> to <code>done</code></td><td><code>active_claim_present</code></td></tr>
 <tr><td><code>completion-documentation-due</code></td><td><code>required_documentation_reconciliation_due</code></td><td>Required post-merge documentation reconciliation must be completed before Done.</td><td><code>reject</code> to <code>done</code></td><td><code>documentation_reconciliation_due</code></td></tr>
@@ -186,5 +186,5 @@
 <tr><td><code>completion-documentation-incomplete</code></td><td><code>required_documentation_incomplete</code></td><td>Required documentation impact must be complete before Done.</td><td><code>reject</code> to <code>done</code></td><td><code>documentation_incomplete</code></td></tr>
 <tr><td><code>completion-documentation-incomplete-advisory</code></td><td><code>advisory_documentation_incomplete</code></td><td>Advisory documentation may complete while incomplete, with an explicit advisory reason.</td><td><code>allow_with_reason</code> to <code>done</code></td><td><code>documentation_advisory_incomplete</code></td></tr>
 </tbody></table>
-<h2>Source and authority</h2>
+<h2 id="source-and-authority">Source and authority</h2>
 <p>This page projects <code>KIS-WORK-WRK-STM-001</code> version <code>1.0.0</code>. The MRD remains authoritative; this generated page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/specification/work-management/002-work-management-domain-model/">Previous</a> <a rel="next" href="/kis-mcp-doc/specification/work-management/004-work-operations/">Next</a></nav></main></body></html>

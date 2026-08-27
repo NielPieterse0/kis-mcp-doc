@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lifecycle</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/specification/">Specification</a> / kis-op Governance Specification</div><h1>Lifecycle</h1>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lifecycle</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/specification/">Specification</a> / kis-op Governance Specification</div><aside class="publication-meta"><strong>Version:</strong> 2.0.0. <strong>Status:</strong> draft. <strong>Authority:</strong> generated projection of <code>KIS-KNOW-CON-POL-002</code>; canonical sources remain authoritative.</aside><h1 id="lifecycle">Lifecycle</h1>
 <div id="enable-section-numbers"></div>
 <p><a href="/kis-mcp-doc/specification/governance/007-provenance/">Previous: Provenance</a> | <a href="/kis-mcp-doc/specification/governance/009-kis-op-governance-behavior/">Next: kis-op Governance Behavior</a> | <a href="/kis-mcp-doc/specification/governance/">Index</a></p>
 <p>MRD lifecycle depends on record mode. Prescriptive authority, descriptive evidence, and generated metadata follow different states and mutability rules.</p>
-<h2>Lifecycle diagram</h2>
+<h2 id="lifecycle-diagram">Lifecycle diagram</h2>
 <p>Each record mode is shown as its own canonical state machine. Only transitions declared by the lifecycle MRD are drawn.</p>
 <pre><code class="language-mermaid">flowchart LR
   subgraph prescriptive[&quot;prescriptive&quot;]
@@ -23,15 +23,15 @@
     meta_replaced[&quot;replaced&quot;]
     meta_generated --&gt; meta_replaced
   end</code></pre>
-<h2>State machines</h2>
+<h2 id="state-machines">State machines</h2>
 <p>Each record mode has its own state machine. Prescriptive MRDs move from draft authority to active authority and then supersession; descriptive evidence and generated metadata use lifecycles that match their different mutability rules.</p>
 <p>The following table shows the allowed states and transitions for each record mode:</p>
-<table><thead><tr><th>Record mode</th><th>States</th><th>Allowed transitions</th></tr></thead><tbody>
+<table><caption>State machines</caption><thead><tr><th scope="col">Record mode</th><th scope="col">States</th><th scope="col">Allowed transitions</th></tr></thead><tbody>
 <tr><td><code>prescriptive</code></td><td>draft → active → superseded</td><td>draft → active; active → superseded</td></tr>
 <tr><td><code>descriptive</code></td><td>created → retained</td><td>created → retained</td></tr>
 <tr><td><code>meta</code></td><td>generated → replaced</td><td>generated → replaced</td></tr>
 </tbody></table>
-<h2>Lifecycle requirements</h2>
+<h2 id="lifecycle-requirements">Lifecycle requirements</h2>
 <span id="rule-kis-mrd-life-001"></span>
 <p>Active prescriptive MRDs MUST have resolved dependencies and valid provenance.</p>
 <span id="rule-kis-mrd-life-002"></span>
@@ -44,9 +44,9 @@
 <p>Superseded MRDs MUST remain addressable for lineage and MUST identify their replacement when one exists.</p>
 <span id="rule-kis-mrd-life-006"></span>
 <p>Git history is the change history; a duplicate body changelog is not required by the core MRD standard.</p>
-<h2>Requirement traceability</h2>
+<h2 id="requirement-traceability">Requirement traceability</h2>
 <p>The following table preserves the stable rule identifier and enforcement binding for each requirement stated in this chapter:</p>
-<table><thead><tr><th>Rule</th><th>Enforcement</th></tr></thead><tbody>
+<table><caption>Requirement traceability</caption><thead><tr><th scope="col">Rule</th><th scope="col">Enforcement</th></tr></thead><tbody>
 <tr><td><code>KIS-MRD-LIFE-001</code></td><td><code>validator</code></td></tr>
 <tr><td><code>KIS-MRD-LIFE-002</code></td><td><code>workflow</code></td></tr>
 <tr><td><code>KIS-MRD-LIFE-003</code></td><td><code>generator</code></td></tr>
@@ -54,5 +54,5 @@
 <tr><td><code>KIS-MRD-LIFE-005</code></td><td><code>validator</code></td></tr>
 <tr><td><code>KIS-MRD-LIFE-006</code></td><td><code>review</code></td></tr>
 </tbody></table>
-<h2>Source and authority</h2>
+<h2 id="source-and-authority">Source and authority</h2>
 <p>This page projects <code>KIS-KNOW-WRK-STM-001</code> version <code>1.0.0</code>. The MRD remains authoritative; this page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/specification/governance/007-provenance/">Previous</a> <a rel="next" href="/kis-mcp-doc/specification/governance/009-kis-op-governance-behavior/">Next</a></nav></main></body></html>

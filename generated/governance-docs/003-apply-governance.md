@@ -5,7 +5,7 @@ Prescribe how kis-op applies the governance model when inspecting, planning, cha
 
 Follow the canonical phases in order. A phase can stop the change when its declared stop condition is met.
 
-## 1. Resolve Authority
+## Resolve authority
 
 - load repository authority and active change scope.
 - identify canonical owners relevant to the request.
@@ -13,7 +13,7 @@ Follow the canonical phases in order. A phase can stop the change when its decla
 Stop here when:
 - required authority cannot be resolved.
 
-## 2. Select Applicable Mrds
+## Select applicable mrds
 
 - classify the actual governed needs.
 - apply the 47-type applicability contract.
@@ -22,7 +22,7 @@ Stop here when:
 Stop here when:
 - a required need has no representable type and no governed extension path.
 
-## 3. Resolve Relationships
+## Resolve relationships
 
 - bind dependencies and typed relationships.
 - detect duplicate ownership and authority conflicts.
@@ -30,7 +30,7 @@ Stop here when:
 Stop here when:
 - required dependency or canonical owner is unresolved.
 
-## 4. Validate Governance
+## Validate governance
 
 - run structural and semantic governance validation.
 - surface stable reason codes for blocking failures.
@@ -38,7 +38,7 @@ Stop here when:
 Stop here when:
 - blocking governance validation fails.
 
-## 5. Execute Bounded Change
+## Execute bounded change
 
 - work only inside the admitted change scope.
 - preserve parent KIS trust and Git authority.
@@ -47,7 +47,7 @@ Stop here when:
 Stop here when:
 - requested mutation exceeds admitted scope or authority.
 
-## 6. Generate Review Surface
+## Generate review surface
 
 - generate the HRD specification from validated MRDs.
 - preserve provenance and deterministic source bindings.
@@ -55,7 +55,7 @@ Stop here when:
 Stop here when:
 - source validation or deterministic generation fails.
 
-## 7. Verify And Report
+## Verify and report
 
 - verify generated output is current and untampered.
 - report completion, gaps, deferrals, and diagnostics against the requested scope.

@@ -81,3 +81,63 @@ def test_markdown_renderer_preserves_expected_document_formatting() -> None:
     assert "Use <code>inline code</code> and <strong>bold</strong> and <em>emphasis</em>." in rendered
     assert '<pre><code class="language-json">{&quot;ok&quot;: true}</code></pre>' in rendered
     assert "<hr>" in rendered
+
+
+def test_site_validates_nested_markdown_and_fragments(tmp_path: Path) -> None:
+    root = tmp_path / "repo"
+    shutil.copytree(ROOT, root, ignore=shutil.ignore_patterns(".git", ".venv", ".work"))
+    nested = root / "generated/governance-docs/nested/orphan.md"
+    nested.parent.mkdir(parents=True, exist_ok=True)
+    nested.write_text("# Nested orphan\n", encoding="utf-8")
+    codes = {item["code"] for item in validate_documentation_site(root)["diagnostics"]}
+    assert "SITE_ORPHAN_PAGE" in codes
+    nested.unlink()
+    index = root / "generated/governance-docs/000-index.md"
+    index.write_text(index.read_text(encoding="utf-8").replace("002-understand-authority.md)", "002-understand-authority.md#missing-anchor)"), encoding="utf-8")
+    codes = {item["code"] for item in validate_documentation_site(root)["diagnostics"]}
+    assert "SITE_BROKEN_SOURCE_FRAGMENT" in codes
+
+
+def test_browser_search_uses_safe_dom_and_shared_ranking(tmp_path: Path) -> None:
+    output = tmp_path / "site"
+    build_documentation_site(ROOT, output)
+    script = (output / "assets/search.js").read_text(encoding="utf-8")
+    assert "innerHTML" not in script
+    assert "textContent" in script
+    assert "matched_terms" in script
+
+
+def test_markdown_tables_have_accessible_headers_and_caption() -> None:
+    source = ROOT / "generated/governance-spec/010-validation-and-enforcement.md"
+    markdown = "## Modes\n\n| Mode | Meaning |\n|---|---|\n| schema | Structural validation |\n"
+    rendered = _markdown_html(markdown, source, {}, ROOT, "/kis-mcp-doc")
+    assert "<caption>Modes</caption>" in rendered
+    assert '<th scope="col">Mode</th>' in rendered
+
+
+def test_site_rejects_invalid_heading_hierarchy(tmp_path: Path) -> None:
+    root = tmp_path / "repo"
+    shutil.copytree(ROOT, root, ignore=shutil.ignore_patterns(".git", ".venv", ".work"))
+    index = root / "generated/governance-docs/000-index.md"
+    index.write_text(index.read_text(encoding="utf-8") + "\n#### Skipped level\n", encoding="utf-8")
+    codes = {item["code"] for item in validate_documentation_site(root)["diagnostics"]}
+    assert "SITE_HEADING_HIERARCHY_INVALID" in codes
+
+
+def test_public_site_exposes_publication_status_version_and_authority(tmp_path: Path) -> None:
+    output = tmp_path / "site"
+    build_documentation_site(ROOT, output)
+    page = (output / "specification/governance/index.html").read_text(encoding="utf-8")
+    assert 'class="publication-meta"' in page
+    assert "draft" in page
+    assert "2.0.0" in page
+    assert "KIS-KNOW-CON-POL-002" in page
+
+
+def test_site_validates_same_page_fragments(tmp_path: Path) -> None:
+    root = tmp_path / "repo"
+    shutil.copytree(ROOT, root, ignore=shutil.ignore_patterns(".git", ".venv", ".work"))
+    index = root / "generated/governance-docs/000-index.md"
+    index.write_text(index.read_text(encoding="utf-8") + "\n[Broken](#missing-fragment)\n", encoding="utf-8")
+    codes = {item["code"] for item in validate_documentation_site(root)["diagnostics"]}
+    assert "SITE_BROKEN_SOURCE_FRAGMENT" in codes

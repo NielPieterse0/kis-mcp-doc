@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Authority and reconciliation policy</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/specification/">Specification</a> / KIS Work Management Specification</div><h1>Authority and reconciliation policy</h1>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Authority and reconciliation policy</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/specification/">Specification</a> / KIS Work Management Specification</div><aside class="publication-meta"><strong>Version:</strong> 1.0.0. <strong>Status:</strong> draft. <strong>Authority:</strong> generated projection of <code>KIS-WORK-CON-POL-001</code>; canonical sources remain authoritative.</aside><h1 id="authority-and-reconciliation-policy">Authority and reconciliation policy</h1>
 <div id="enable-section-numbers"></div>
 <p><a href="/kis-mcp-doc/specification/work-management/005-next-work-selection/">Previous: Next-work selection</a> | <a href="/kis-mcp-doc/specification/work-management/007-provider-and-command-plane-boundary/">Next: Provider and command-plane boundary</a> | <a href="/kis-mcp-doc/specification/work-management/">Index</a></p>
 <span id="mrd-kis-work-con-pol-001"></span>
 <p>Authority determines which system may change a fact. Reconciliation compares observed provider state with those owners and surfaces drift rather than choosing a new truth. Generated documentation remains downstream of every canonical source.</p>
-<h2>Authority principles</h2>
+<h2 id="authority-principles">Authority principles</h2>
 <ul>
 <li>Work Management owns command fields.</li>
 <li>Repository change governance owns Change ID, Complexity, and Risk Triggers after a governed change exists.</li>
@@ -13,12 +13,12 @@
 <li>Generated specifications are downstream review projections with no write-back authority.</li>
 <li>Conflicts and unavailable evidence fail closed or remain explicitly unknown.</li>
 </ul>
-<h2>Change-governance handoff</h2>
+<h2 id="change-governance-handoff">Change-governance handoff</h2>
 <p>Work Management carries planning data into repository governance, but repository change governance owns governed change identity, complexity, and risk once a change exists. The current handoff uses change-governance schema version <code>1</code>.</p>
 <p>Complexity and risk classification therefore remain repository-change facts after handoff. Work Management may display them as evidence but does not reclassify them independently.</p>
-<h2>Reconciliation</h2>
+<h2 id="reconciliation">Reconciliation</h2>
 <p>Reconciliation follows authority direction: command fields may be brought to the intended Work Management state; evidence fields are re-read from their owner; handoff fields change authority when the governed change takes ownership. Conflicting or unavailable evidence remains explicit rather than being normalized into a convenient value.</p>
-<h2>Exact Project and policy reference</h2>
+<h2 id="exact-project-and-policy-reference">Exact Project and policy reference</h2>
 <p>The complete change-classification tables, GitHub Project schema, views, bindings, features, gates, and evidence limits are exact lookup data. See the <a href="/kis-mcp-doc/specification/work-management/021-work-project-configuration-reference/">Work Project configuration reference</a>.</p>
-<h2>Source and authority</h2>
+<h2 id="source-and-authority">Source and authority</h2>
 <p>This page projects <code>KIS-WORK-CON-POL-001</code> version <code>1.0.0</code>. The MRD remains authoritative; this generated page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/specification/work-management/005-next-work-selection/">Previous</a> <a rel="next" href="/kis-mcp-doc/specification/work-management/007-provider-and-command-plane-boundary/">Next</a></nav></main></body></html>

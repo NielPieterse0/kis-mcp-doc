@@ -1,5 +1,5 @@
 {
-  "bundle_sha256": "05905aef37c966e3db810787ca7ea91dfa3aa5987a8746a250f4b3c13ed3dcb7",
+  "bundle_sha256": "3a0eda44b495ca6ce6014dfd8d4f70d15738047ef3969a49f4ae85d0f75fef78",
   "contract": {
     "name": "kis-work-management-spec-build",
     "version": 2
@@ -11,9 +11,9 @@
       "sha256": "3ada153de57665eaaf5ca229785961bdf3cd41345cf44ab95f788f0207cc38d2"
     },
     {
-      "bytes": 3471,
+      "bytes": 3733,
       "path": "001-specification.md",
-      "sha256": "2436f72f2eb6d65f70ad3e70699c18604dffad6dcfe4799de49fd4feb38b0c7a"
+      "sha256": "90b12fcf362f5b788bd832b32e1f8d7a9cec52a88e0fe9452c0c987367a31249"
     },
     {
       "bytes": 1660,
@@ -66,9 +66,9 @@
       "sha256": "6eec176727afc71831447dafde352078d62a1ae9ec657f28fc5f3dd4afda029b"
     },
     {
-      "bytes": 3471,
+      "bytes": 3733,
       "path": "specification.md",
-      "sha256": "2436f72f2eb6d65f70ad3e70699c18604dffad6dcfe4799de49fd4feb38b0c7a"
+      "sha256": "90b12fcf362f5b788bd832b32e1f8d7a9cec52a88e0fe9452c0c987367a31249"
     }
   ],
   "generator": {
@@ -76,7 +76,7 @@
     "sources": [
       {
         "path": "src/kis_mcp_doc/canonical.py",
-        "sha256": "0a6b0eba30e070cf0a290c85dc7947036993f81c09217f7d2c9b9e451eac3fb4"
+        "sha256": "3846d0758e8a11589b1038615150c4c3a2bb446fa72cd0b51013d4615c4763cf"
       },
       {
         "path": "src/kis_mcp_doc/publication_kernel.py",
@@ -84,7 +84,19 @@
       },
       {
         "path": "src/kis_mcp_doc/work_management.py",
-        "sha256": "540ca9c573dead69a5fce212262944e48ba866a5f924e787d1effbaa2fe1ca10"
+        "sha256": "7a6439ba05ee41f853f09f8f4abbb97587cf8af07b1fb8cc00984c338e1d1ee4"
+      },
+      {
+        "path": "contracts/mrd/v1/mrd.schema.json",
+        "sha256": "fb9f3210b022d8def12a92bfccc1cb45e5ccf1146fa9d59168baf3f630ded153"
+      },
+      {
+        "path": "contracts/work-management/v1/content.schema.json",
+        "sha256": "57e750f18fcc391a399cb1c83bbbefa61b2282e1afe20ed549f739b2272cd54c"
+      },
+      {
+        "path": "contracts/work-management/v1/work-management-mrd.schema.json",
+        "sha256": "28c7e8eaede199be6dc9cfb83a1bcc681e3a33472aa372361f6f76d354cc610d"
       }
     ],
     "version": "0.1.0"

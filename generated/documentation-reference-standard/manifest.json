@@ -1,5 +1,5 @@
 {
-  "bundle_sha256": "6add3c2ee2137cecd272eedc83151bd747490030b22274b1692a47873ccac7a2",
+  "bundle_sha256": "8c8a3376ec0c220e32ad067740fe684c19a1ac1523e2a3d60fba621f82f69220",
   "contract": {
     "name": "documentation-reference-standard-build",
     "version": 1
@@ -11,9 +11,9 @@
       "sha256": "73c7320926d381dd89a99a55eaeb9b92617a49da32e406359c2db468fbdd28ee"
     },
     {
-      "bytes": 3907,
+      "bytes": 4298,
       "path": "001-specification.md",
-      "sha256": "51bcb9eb34c848d2ef4c0229fe10c8f61b33584d105201dbae874045e39e2934"
+      "sha256": "90d2d8b22199c340ca403154db30a182a84f61963f394e9724bc4896b736170c"
     },
     {
       "bytes": 2573,
@@ -26,7 +26,7 @@
       "sha256": "0daffac7e07d744a752affde559c65708568fd2ce6fc95d7672185717145d3cc"
     }
   ],
-  "input_set_sha256": "a395b51f0e609b0ac9eb359a9a924054a849ddf95c7b88ac148e56adab5e3910",
+  "input_set_sha256": "5d30745fb80bd664c98d1234e7ed90883feb79e65ca818711ec3ce77cdf38b78",
   "inputs": [
     {
       "bytes": 5712,
@@ -89,9 +89,9 @@
       "sha256": "c95235389e40f4761f345225db13a4465d16d4024f029858206571b6bd6ab4a7"
     },
     {
-      "bytes": 300,
+      "bytes": 1982,
       "path": "src/kis_mcp_doc/canonical.py",
-      "sha256": "0a6b0eba30e070cf0a290c85dc7947036993f81c09217f7d2c9b9e451eac3fb4"
+      "sha256": "3846d0758e8a11589b1038615150c4c3a2bb446fa72cd0b51013d4615c4763cf"
     },
     {
       "bytes": 20576,
@@ -99,9 +99,9 @@
       "sha256": "4d52bd6ede3033ee2f6cd33b284870ef616325aea108db8bb14ca056adb66707"
     },
     {
-      "bytes": 20056,
+      "bytes": 21001,
       "path": "src/kis_mcp_doc/documentation_reference.py",
-      "sha256": "cfad1c628d782bdb05709a6f200c7c1a451a5725c27bb781ca2490955876b125"
+      "sha256": "9c4b6bf81143568c5f9d808065511e511fdba04856dbba3f5f2670592e0e4da5"
     }
   ],
   "specification": {

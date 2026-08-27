@@ -7,7 +7,8 @@ from typing import Any
 
 from jsonschema import Draft202012Validator
 
-from .governance import GovernanceRepository, canonical_hash, canonical_source_bytes
+from .canonical import canonical_hash, canonical_source_bytes, normative_keywords_statement, resolve_repo_file
+from .governance import GovernanceRepository
 from .harvest import load_harvest_registry
 from .litho import load_litho_evidence
 from .publication_kernel import exact_bundle_diagnostics, file_declarations, write_bundle
@@ -405,7 +406,10 @@ def _source_file_declarations(
     )
     declarations = []
     for relative in paths:
-        payload = canonical_source_bytes(repository.root / Path(*relative.split("/")))
+        resolved = resolve_repo_file(repository.root, "repo:" + relative)
+        if resolved is None:
+            raise ValueError(f"canonical source declaration does not resolve inside repository: {relative}")
+        payload = canonical_source_bytes(resolved)
         declarations.append(
             {
                 "path": relative,
@@ -584,7 +588,7 @@ def _render_specification_root(config: dict[str, Any], documents: list[dict[str,
         "",
         "The publication follows `KIS-DOC-CON-POL-001` as a `human_readable_specification`. MCP 2026 applies only within its bounded protocol domain, Google guidance affects presentation only, and implementation references cannot create or override KIS governance facts.",
         "",
-        'The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals.',
+        normative_keywords_statement(),
         "",
         "## Overview",
         "",
