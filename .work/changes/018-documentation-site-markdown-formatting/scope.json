@@ -1,7 +1,7 @@
 {
   "schema_version": 4,
   "change_id": "018-documentation-site-markdown-formatting",
-  "status": "active",
+  "status": "complete",
   "branch": "change/018-documentation-site-markdown-formatting",
   "worktree": null,
   "base": "main",
@@ -21,5 +21,5 @@
   "complexity": "medium",
   "risk_triggers": ["public_contract"],
   "base_evidence": {"local_sha": "67dc1718edef311e81e1d7e8b4e2d0f1be442b3a", "local_tree": "db2baae6571028f4bb58860cab43829125a3d02e", "upstream_sha": "67dc1718edef311e81e1d7e8b4e2d0f1be442b3a", "upstream_tree": "db2baae6571028f4bb58860cab43829125a3d02e", "upstream_ref": "github:main", "evidence_source": "verified_github_default", "relation": "equal"},
-  "work_management": {"project_id": "kis-mcp", "record_id": "SPEC-018", "source_repository": "NielPieterse0/kis-mcp-doc", "source_number": 35, "source_kind": "issue", "documentation_impact": "in_progress"}
+  "work_management": {"project_id": "kis-mcp", "record_id": "SPEC-018", "source_repository": "NielPieterse0/kis-mcp-doc", "source_number": 35, "source_kind": "issue", "documentation_impact": "complete"}
 }
