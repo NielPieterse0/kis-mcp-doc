@@ -1,5 +1,5 @@
 {
-  "_mrd": {"schema_version": 1, "id": "KIS-CHG015-WRK-WFL-001", "title": "Documentation Search and Knowledge Discovery", "module": "change-015", "class": "WRK", "type": "WFL", "layer": "L3", "record_mode": "descriptive", "status": "active", "version": "1.0.0", "dependencies": [{"source": "repo:.work/changes/014-documentation-site-and-navigation/change.mrd.json", "relationship": "depends_on"}], "provenance": {"sources": [{"source_id": "GH-ISSUE-26", "kind": "operator_approved_work_item", "role": "approved_change_basis", "locator": "github:NielPieterse0/kis-mcp-doc#26", "revision": "2026-08-26", "sha256": null}], "source_fingerprint": null, "fact_quality": "direct"}, "supersedes": [], "superseded_by": null},
+  "_mrd": {"schema_version": 1, "id": "KIS-CHG015-WRK-WFL-001", "title": "Documentation Search and Knowledge Discovery", "module": "change-015", "class": "WRK", "type": "WFL", "layer": "L3", "record_mode": "descriptive", "status": "done", "version": "1.0.0", "dependencies": [{"source": "repo:.work/changes/014-documentation-site-and-navigation/change.mrd.json", "relationship": "depends_on"}], "provenance": {"sources": [{"source_id": "GH-ISSUE-26", "kind": "operator_approved_work_item", "role": "approved_change_basis", "locator": "github:NielPieterse0/kis-mcp-doc#26", "revision": "2026-08-26", "sha256": null}], "source_fingerprint": null, "fact_quality": "direct"}, "supersedes": [], "superseded_by": null},
   "content": {
     "change_id": "015-documentation-search-and-knowledge-discovery",
     "work_item": {"repository": "NielPieterse0/kis-mcp-doc", "issue": 26, "project": "NielPieterse0/1", "record_id": "SPEC-015"},
@@ -9,9 +9,16 @@
     "requirements": ["R1: Search MUST index only current governed site routes.", "R2: Search documents MUST retain stable IDs and source/family/surface provenance.", "R3: Ranking MUST be deterministic with stable tie-breaking.", "R4: Validation MUST reject stale site output, missing sources, duplicate routes, stale search output, and tampering.", "R5: The reader site MUST expose a static search surface without a network search dependency.", "R6: Hosting and deployment remain excluded."],
     "implementation_plan": ["P1: Build a deterministic static inverted index from Change 014 routes.", "P2: Add stable query ranking and traceable result envelopes.", "P3: Integrate the index into the generated site as a client-side search surface.", "P4: Add build/validate/exact verification to CLI and canonical verification."],
     "verification_criteria": ["V1: Search index covers current site source routes and no unregistered content.", "V2: Repeated queries return the same order.", "V3: Stale site and tampered search output are detected.", "V4: Full repository verification passes with canonical MRDs unchanged."],
-    "tasks": [{"id": "T1", "status": "done", "text": "Raise issue and governed change records."}, {"id": "T2", "status": "done", "text": "Implement deterministic search index and site discovery surface."}, {"id": "T3", "status": "active", "text": "Verify, review, publish, merge, and reconcile."}],
+    "tasks": [{"id": "T1", "status": "done", "text": "Raise issue and governed change records."}, {"id": "T2", "status": "done", "text": "Implement deterministic search index and site discovery surface."}, {"id": "T3", "status": "done", "text": "Verify, review, publish, merge, and reconcile."}],
     "risks": ["Ranking may imply authority if result provenance is hidden.", "Search may become stale if site freshness is not a prerequisite."],
     "explicit_exclusions": ["External search service.", "Semantic changes.", "Hosting or deployment."],
-    "closeout": {"state": "implementation_complete", "verification": [], "reviews": [], "publication": {"status": "pending", "issue": 26, "pull_request": null}, "unresolved": []}
+    "closeout": {
+      "state": "post_merge_complete",
+      "verification": ["PR 29 merged the deterministic search implementation at head 99ab12962cb6ce44a623357950c934cdf74b9331 into main as 8221649e4bbb5836712223c3d5b22845b4769ea0.", "Post-merge canonical verification on 2026-08-27 passed search validation, deterministic generated-output checks, and site integration with no diagnostics."],
+      "reviews": ["Post-merge closeout audit found no unresolved ranking, provenance, authority, stale-output, or generated-search findings."],
+      "publication": {"status": "merged", "issue": 26, "pull_request": 29},
+      "merge": {"approved_head": "99ab12962cb6ce44a623357950c934cdf74b9331", "merge_commit": "8221649e4bbb5836712223c3d5b22845b4769ea0", "merged_at": "2026-08-26T21:55:27Z", "method": "merge"},
+      "unresolved": []
+    }
   }
 }
