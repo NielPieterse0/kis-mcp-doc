@@ -141,3 +141,20 @@ def test_site_validates_same_page_fragments(tmp_path: Path) -> None:
     index.write_text(index.read_text(encoding="utf-8") + "\n[Broken](#missing-fragment)\n", encoding="utf-8")
     codes = {item["code"] for item in validate_documentation_site(root)["diagnostics"]}
     assert "SITE_BROKEN_SOURCE_FRAGMENT" in codes
+
+
+def test_markdown_renderer_emits_mermaid_diagram_container() -> None:
+    source = ROOT / "generated/governance-spec/008-lifecycle.md"
+    markdown = """```mermaid\nflowchart LR\n  draft --> active\n```\n"""
+    rendered = _markdown_html(markdown, source, {}, ROOT, "/kis-mcp-doc")
+    assert '<div class="mermaid">flowchart LR\n  draft --&gt; active</div>' in rendered
+    assert 'language-mermaid' not in rendered
+
+
+def test_site_pages_load_pinned_mermaid_runtime_when_needed(tmp_path: Path) -> None:
+    output = tmp_path / "site"
+    build_documentation_site(ROOT, output)
+    page = (output / "specification/governance/008-lifecycle/index.html").read_text(encoding="utf-8")
+    assert 'class="mermaid"' in page
+    assert 'mermaid@11.17.2/dist/mermaid.esm.min.mjs' in page
+    assert 'mermaid.initialize({startOnLoad:true' in page

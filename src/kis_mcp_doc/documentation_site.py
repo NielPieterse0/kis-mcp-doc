@@ -285,8 +285,11 @@ def _markdown_html(text: str, source: Path, source_to_route: dict[str, str], roo
             while index < len(source_lines) and not source_lines[index].strip().startswith("```"):
                 code_lines.append(source_lines[index])
                 index += 1
-            class_name = f' class="language-{html.escape(language, quote=True)}"' if language else ""
-            output.append(f"<pre><code{class_name}>{html.escape(chr(10).join(code_lines))}</code></pre>")
+            if language.lower() == "mermaid":
+                output.append(f'<div class="mermaid">{html.escape(chr(10).join(code_lines))}</div>')
+            else:
+                class_name = f' class="language-{html.escape(language, quote=True)}"' if language else ""
+                output.append(f"<pre><code{class_name}>{html.escape(chr(10).join(code_lines))}</code></pre>")
             index += 1
             continue
         safe_anchor = _SAFE_ANCHOR_RE.match(stripped)
@@ -364,10 +367,15 @@ def _markdown_html(text: str, source: Path, source_to_route: dict[str, str], roo
 
 
 def _page(title: str, body: str, breadcrumb: str, base_path: str, prev_next: str = "") -> bytes:
+    mermaid_runtime = ""
+    if 'class="mermaid"' in body:
+        mermaid_runtime = ("<script type=\"module\">import mermaid from "
+                           "'https://cdn.jsdelivr.net/npm/mermaid@11.17.2/dist/mermaid.esm.min.mjs';"
+                           "mermaid.initialize({startOnLoad:true,securityLevel:'strict'});</script>")
     return ("<!doctype html>\n<html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">"
             f"<title>{html.escape(title)}</title><link rel=\"stylesheet\" href=\"{_public_url('/assets/site.css', base_path)}\"></head><body>"
             f"<header><a href=\"{_public_url('/', base_path)}\">KIS Documentation</a><nav><a href=\"{_public_url('/docs/', base_path)}\">Docs</a> <a href=\"{_public_url('/specification/', base_path)}\">Specification</a> <a href=\"{_public_url('/reference/', base_path)}\">Reference</a> <a href=\"{_public_url('/search/', base_path)}\">Search</a></nav></header>"
-            f"<main><div class=\"breadcrumbs\">{breadcrumb}</div>{body}{prev_next}</main></body></html>\n").encode("utf-8")
+            f"<main><div class=\"breadcrumbs\">{breadcrumb}</div>{body}{prev_next}</main>{mermaid_runtime}</body></html>\n").encode("utf-8")
 
 
 def _route_file(route: str) -> str:

@@ -5,7 +5,7 @@
 <p>MRD lifecycle depends on record mode. Prescriptive authority, descriptive evidence, and generated metadata follow different states and mutability rules.</p>
 <h2 id="lifecycle-diagram">Lifecycle diagram</h2>
 <p>Each record mode is shown as its own canonical state machine. Only transitions declared by the lifecycle MRD are drawn.</p>
-<pre><code class="language-mermaid">flowchart LR
+<div class="mermaid">flowchart LR
   subgraph prescriptive[&quot;prescriptive&quot;]
     prescriptive_draft[&quot;draft&quot;]
     prescriptive_active[&quot;active&quot;]
@@ -22,7 +22,7 @@
     meta_generated[&quot;generated&quot;]
     meta_replaced[&quot;replaced&quot;]
     meta_generated --&gt; meta_replaced
-  end</code></pre>
+  end</div>
 <h2 id="state-machines">State machines</h2>
 <p>Each record mode has its own state machine. Prescriptive MRDs move from draft authority to active authority and then supersession; descriptive evidence and generated metadata use lifecycles that match their different mutability rules.</p>
 <p>The following table shows the allowed states and transitions for each record mode:</p>
@@ -55,4 +55,4 @@
 <tr><td><code>KIS-MRD-LIFE-006</code></td><td><code>review</code></td></tr>
 </tbody></table>
 <h2 id="source-and-authority">Source and authority</h2>
-<p>This page projects <code>KIS-KNOW-WRK-STM-001</code> version <code>1.0.0</code>. The MRD remains authoritative; this page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/specification/governance/007-provenance/">Previous</a> <a rel="next" href="/kis-mcp-doc/specification/governance/009-kis-op-governance-behavior/">Next</a></nav></main></body></html>
+<p>This page projects <code>KIS-KNOW-WRK-STM-001</code> version <code>1.0.0</code>. The MRD remains authoritative; this page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/specification/governance/007-provenance/">Previous</a> <a rel="next" href="/kis-mcp-doc/specification/governance/009-kis-op-governance-behavior/">Next</a></nav></main><script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.17.2/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,securityLevel:'strict'});</script></body></html>

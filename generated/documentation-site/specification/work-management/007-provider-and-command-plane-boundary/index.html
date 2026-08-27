@@ -6,7 +6,7 @@
 <p>The command plane defines the work states and fields that KIS may change. The provider boundary observes and mutates GitHub Project only through the configured read and write models; provider state does not redefine repository-owned facts.</p>
 <h2 id="authority-and-handoff-flow">Authority and handoff flow</h2>
 <p>Each arrow is derived from the provider-boundary field-authority contract. Labels name the fields carried in that authority direction.</p>
-<pre><code class="language-mermaid">flowchart LR
+<div class="mermaid">flowchart LR
   command[&quot;Command&quot;]
   evidence[&quot;Evidence&quot;]
   handoff[&quot;Handoff&quot;]
@@ -16,7 +16,7 @@
   owner_3[&quot;github&quot;] --&gt;|&quot;3 fields&quot;| evidence
   owner_4[&quot;repository_change&quot;] --&gt;|&quot;3 fields&quot;| evidence
   owner_5[&quot;work_management&quot;] --&gt;|&quot;14 fields&quot;| command
-  owner_6[&quot;work_management_then_repository_change&quot;] --&gt;|&quot;2 fields&quot;| handoff</code></pre>
+  owner_6[&quot;work_management_then_repository_change&quot;] --&gt;|&quot;2 fields&quot;| handoff</div>
 <p>Diagram details:</p>
 <ul>
 <li><code>actions</code> -&gt; <code>evidence</code>: Verification.</li>
@@ -51,4 +51,4 @@
 <p>Live Project evidence was observed; inventory is complete; the configured Project schema is ready with no field, option, type, or view drift in the captured evidence.</p>
 <p>Command-plane schema version: <code>1</code>.</p>
 <h2 id="source-and-authority">Source and authority</h2>
-<p>This page projects <code>KIS-WORK-CTR-SVC-001</code> version <code>1.0.1</code>. The MRD remains authoritative; this generated page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/specification/work-management/006-authority-and-reconciliation-policy/">Previous</a> <a rel="next" href="/kis-mcp-doc/specification/work-management/008-work-management-conformance/">Next</a></nav></main></body></html>
+<p>This page projects <code>KIS-WORK-CTR-SVC-001</code> version <code>1.0.1</code>. The MRD remains authoritative; this generated page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/specification/work-management/006-authority-and-reconciliation-policy/">Previous</a> <a rel="next" href="/kis-mcp-doc/specification/work-management/008-work-management-conformance/">Next</a></nav></main><script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.17.2/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,securityLevel:'strict'});</script></body></html>

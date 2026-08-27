@@ -1,5 +1,5 @@
 {
-  "bundle_sha256": "4ff784b857acbbfb580b62a952ac2000e1785cb7e291dd468bdf2e0c1d520c5d",
+  "bundle_sha256": "902b318eacaa3cff98c19633157abfbff434900ce468bf54f9fbf135e34f5cb4",
   "contract": {
     "name": "kis-documentation-site",
     "version": 1
@@ -196,9 +196,9 @@
       "sha256": "8290b4c75c1b880ea75a06e35eed19cdf98140441b3f5050e8a73b786eab1137"
     },
     {
-      "bytes": 6190,
+      "bytes": 6353,
       "path": "specification/governance/004-authority-ownership-and-relationships/index.html",
-      "sha256": "fd0c03a1f83759b805781e0ad418c3bf8a71c93cf6ec4ff7b3403fe64bac23d8"
+      "sha256": "73c06efa7af32cbf6a309821b11cd228f50106ca7004e773b7cfab21f3c7799e"
     },
     {
       "bytes": 4751,
@@ -216,9 +216,9 @@
       "sha256": "cc2d5f64fccd9177badef11eb988d4cf3f16c107b3fb9c3d4536fc1e606aa57f"
     },
     {
-      "bytes": 5361,
+      "bytes": 5524,
       "path": "specification/governance/008-lifecycle/index.html",
-      "sha256": "6dae1c1346d80080b34f45466017e40d73f5dd53ac3c68a058b4e68457d6305c"
+      "sha256": "5e8681ace85400458507d605888c651deae6f76aae65e23b5dee3a06f56726ee"
     },
     {
       "bytes": 7213,
@@ -266,9 +266,9 @@
       "sha256": "50c0ff5c5ef0b611fb3e0ea79eda1e6cbbb035353adb9ca284d0d77169928dfb"
     },
     {
-      "bytes": 16279,
+      "bytes": 16442,
       "path": "specification/work-management/003-work-lifecycle/index.html",
-      "sha256": "8298cb2c80fe5d68ee83bf5c136f23e1f3e3365dfc5dce705e596b0ad1c7a740"
+      "sha256": "f750cae2ac28367ebbf95b26e9588763366c6c5ae92e827454968d5607ef8cad"
     },
     {
       "bytes": 7069,
@@ -286,9 +286,9 @@
       "sha256": "70fc711c574918b6675436f914d838fbe974004bcb93a32834950bdf7ca84760"
     },
     {
-      "bytes": 7473,
+      "bytes": 7636,
       "path": "specification/work-management/007-provider-and-command-plane-boundary/index.html",
-      "sha256": "dbf75defb46db1666b8aada1a5052fd05ba119331ab4d2427103a0327357150e"
+      "sha256": "d9832bac1125ad56147507e180d0ebaf684d12b1d3083619dd64c1508df31512"
     },
     {
       "bytes": 2632,
@@ -592,9 +592,9 @@
       "sha256": "73b890fa1ba99bf4fb7fb7e0d6b45596873a50d0895d486a79720c65ed3851e5"
     },
     {
-      "bytes": 26314,
+      "bytes": 27347,
       "path": "src/kis_mcp_doc/documentation_site.py",
-      "sha256": "08c68a0c1a88cd42e65b646d94849863a17af11d6912284fd7a5e0e27325601e"
+      "sha256": "305711b6292bd5dd5319b7dfc497c5297b7cfefbb8ce3e2aca382a90ebc5cbd4"
     }
   ],
   "registry_sha256": "eee1014e29668f5bae571d1875d4c1481469efd01ab27d3123dfd6eeb1c67472",

@@ -13,12 +13,12 @@
 <p>Generated HRDs, indexes, dependency maps, and other META projections MUST remain downstream of their canonical sources and MUST NOT become write-back authority.</p>
 <h2 id="authority-and-ownership-model">Authority and ownership model</h2>
 <p>The diagram groups the four fields of the canonical ownership contract. Connector lines show contract composition only; they do not invent relationships between governed actors.</p>
-<pre><code class="language-mermaid">flowchart TD
+<div class="mermaid">flowchart TD
   contract[&quot;Canonical ownership contract&quot;]
   contract --&gt; owner[&quot;Canonical owner count: 1&quot;]
   contract --&gt; nonowner[&quot;Non-owner posture: reference_not_restate&quot;]
   contract --&gt; derived[&quot;Derived posture: projection_only&quot;]
-  contract --&gt; conflict[&quot;Conflict posture: surface_diagnostic_and_resolve_against_current_owner&quot;]</code></pre>
+  contract --&gt; conflict[&quot;Conflict posture: surface_diagnostic_and_resolve_against_current_owner&quot;]</div>
 <h2 id="canonical-owner-kinds">Canonical owner kinds</h2>
 <p>The following table identifies the kinds of sources that can own governed facts:</p>
 <table><caption>Canonical owner kinds</caption><thead><tr><th scope="col">Kind</th><th scope="col">Meaning</th></tr></thead><tbody>
@@ -46,4 +46,4 @@
 <tr><td><code>KIS-MRD-OWN-006</code></td><td><code>validator</code></td></tr>
 </tbody></table>
 <h2 id="source-and-authority">Source and authority</h2>
-<p>This page projects <code>KIS-KNOW-CON-POL-002</code> version <code>1.0.0</code>. The MRD remains authoritative; this page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/specification/governance/003-applicability-and-selection/">Previous</a> <a rel="next" href="/kis-mcp-doc/specification/governance/005-layering/">Next</a></nav></main></body></html>
+<p>This page projects <code>KIS-KNOW-CON-POL-002</code> version <code>1.0.0</code>. The MRD remains authoritative; this page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/specification/governance/003-applicability-and-selection/">Previous</a> <a rel="next" href="/kis-mcp-doc/specification/governance/005-layering/">Next</a></nav></main><script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.17.2/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,securityLevel:'strict'});</script></body></html>

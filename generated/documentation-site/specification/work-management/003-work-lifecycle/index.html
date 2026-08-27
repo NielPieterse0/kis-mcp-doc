@@ -6,7 +6,7 @@
 <p>A work item moves through explicit states. Project-visible states describe the shared work queue, while internal states such as Review, Verification, and Documentation describe delivery activity without creating new GitHub Project status values.</p>
 <h2 id="work-status-and-delivery-stage">Work status and delivery stage</h2>
 <p>Work Status and Delivery Stage are separate dimensions. The diagram shows the canonical Work lifecycle graph and Delivery Stage sequence independently; it does not map a work state to a delivery stage.</p>
-<pre><code class="language-mermaid">flowchart LR
+<div class="mermaid">flowchart LR
   subgraph work_status[&quot;Work Status&quot;]
     status_inbox[&quot;Inbox&quot;]
     status_triage[&quot;Triage&quot;]
@@ -107,7 +107,7 @@
     stage_merged --&gt; stage_documentation
     stage_documentation --&gt; stage_commissioning
     stage_commissioning --&gt; stage_complete
-  end</code></pre>
+  end</div>
 <h2 id="state-model">State model</h2>
 <table><caption>State model</caption><thead><tr><th scope="col">State</th><th scope="col">Meaning</th><th scope="col">GitHub Project status</th><th scope="col">Token</th></tr></thead><tbody>
 <tr><td>Inbox</td><td>Captured work not yet triaged.</td><td>Yes</td><td><code>inbox</code></td></tr>
@@ -187,4 +187,4 @@
 <tr><td><code>completion-documentation-incomplete-advisory</code></td><td><code>advisory_documentation_incomplete</code></td><td>Advisory documentation may complete while incomplete, with an explicit advisory reason.</td><td><code>allow_with_reason</code> to <code>done</code></td><td><code>documentation_advisory_incomplete</code></td></tr>
 </tbody></table>
 <h2 id="source-and-authority">Source and authority</h2>
-<p>This page projects <code>KIS-WORK-WRK-STM-001</code> version <code>1.0.0</code>. The MRD remains authoritative; this generated page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/specification/work-management/002-work-management-domain-model/">Previous</a> <a rel="next" href="/kis-mcp-doc/specification/work-management/004-work-operations/">Next</a></nav></main></body></html>
+<p>This page projects <code>KIS-WORK-WRK-STM-001</code> version <code>1.0.0</code>. The MRD remains authoritative; this generated page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/specification/work-management/002-work-management-domain-model/">Previous</a> <a rel="next" href="/kis-mcp-doc/specification/work-management/004-work-operations/">Next</a></nav></main><script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.17.2/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,securityLevel:'strict'});</script></body></html>
