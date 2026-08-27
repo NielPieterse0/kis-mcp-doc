@@ -1,0 +1,89 @@
+{
+  "_mrd": {
+    "schema_version": 1,
+    "id": "KIS-CHG017-WRK-WFL-001",
+    "title": "Defender-safe Python Runtime ID Reconciliation",
+    "module": "change-017",
+    "class": "WRK",
+    "type": "WFL",
+    "layer": "L3",
+    "record_mode": "descriptive",
+    "status": "active",
+    "version": "1.0.0",
+    "dependencies": [],
+    "provenance": {
+      "sources": [
+        {"source_id": "OPERATOR-APPROVAL-2026-08-27", "kind": "operator_direction", "role": "approved_change_basis", "locator": "conversation:2026-08-27", "revision": "2026-08-27", "sha256": null},
+        {"source_id": "GH-PR-31", "kind": "implementation_publication", "role": "landed_runtime_lineage", "locator": "github:NielPieterse0/kis-mcp-doc#31", "revision": "e83d76d785725bfff55089b94e966b86b637abfb", "sha256": null}
+      ],
+      "source_fingerprint": null,
+      "fact_quality": "direct"
+    },
+    "supersedes": [],
+    "superseded_by": null
+  },  "content": {
+    "change_id": "017-defender-safe-python-runtime",
+    "outcome": "Eliminate the concurrent Change 015 numeric-prefix collision by moving the Defender-safe Python runtime record to canonical Change 017 while preserving the already-landed implementation unchanged.",
+    "classification": {
+      "complexity": "small",
+      "risk_triggers": [],
+      "reason": "This reconciliation changes only governed change identity metadata; the runtime implementation already landed through PR 31."
+    },
+    "authority_model": [
+      "Numeric change prefixes are unique repository identifiers and the documentation-search work retains canonical Change 015 identity.",
+      "The Defender-safe runtime implementation lineage remains PR 31, reconciled head 236843a72a65cb1b96d8e04149d0f9129efac03d, and merge e83d76d785725bfff55089b94e966b86b637abfb.",
+      "Renaming the governed change record does not alter scripts, tests, tooling policy, runtime behavior, or parent KIS authority."
+    ],
+    "requirements": [
+      "R1: Exactly one governed Change 015 record MUST remain and it MUST be documentation-search-and-knowledge-discovery.",
+      "R2: The Defender-safe Python runtime record MUST be owned under .work/changes/017-defender-safe-python-runtime.",
+      "R3: The Defender runtime MRD identity, module, change_id, scope identity, branch/worktree claim, and Work record identifier MUST consistently use 017.",
+      "R4: This reconciliation MUST NOT modify the already-landed runtime implementation files.",
+      "R5: Prior verification evidence for signed local CPython and zero fresh Code Integrity 3033/3077 blocks MUST remain implementation evidence rather than be restated as new runtime behavior."
+    ],    "implementation_plan": [
+      "P1: Rename the collided Defender runtime change record from numeric prefix 015 to 017.",
+      "P2: Reconcile all identity-bearing fields to 017 and preserve PR 31 as implementation publication provenance.",
+      "P3: Verify that the diff is metadata-only, numeric prefixes are unique, full repository verification passes, and no fresh Code Integrity block appears."
+    ],
+    "verification_criteria": [
+      "V1: The .work/changes directory contains no duplicate numeric prefix among active canonical records.",
+      "V2: The exact Change 017 diff contains only the moved and reconciled scope.json and change.mrd.json files.",
+      "V3: Full scripts/verify.ps1 passes from the Change 017 worktree.",
+      "V4: No Code Integrity 3033/3077 block attributable to verification appears after the verification start time."
+    ],
+    "tasks": [
+      {"id": "T1", "status": "done", "text": "Identify the concurrent Change 015 numeric-prefix collision after refreshing verified GitHub main."},
+      {"id": "T2", "status": "done", "text": "Move and reconcile the Defender-safe runtime change record to canonical Change 017."},
+      {"id": "T3", "status": "active", "text": "Verify, publish, merge, refresh local main, and close the reconciliation."}
+    ],
+    "risks": [
+      "Leaving the historical PR 31 title and branch with 015 is acceptable only as immutable publication provenance; canonical repository change identity must be 017.",
+      "Any implementation-byte change in this reconciliation would expand scope and invalidate the metadata-only correction."
+    ],
+    "explicit_exclusions": [
+      "Runtime implementation changes.",
+      "Defender or Smart App Control policy changes.",
+      "Parent kis-mcp changes or wider C:/Projects rollout.",
+      "Renumbering the independently landed documentation-search Change 015."
+    ],    "closeout": {
+      "state": "reconciliation_in_progress",
+      "verification": [
+        "PR 31 implementation verification passed on signed Python Software Foundation CPython 3.11.9 with zero fresh Code Integrity 3033/3077 blocks.",
+        "Integrated main verification at e83d76d785725bfff55089b94e966b86b637abfb passed with VERIFY_EXIT=0 and CODEINTEGRITY_BLOCKS=0.",
+        "Change 017 reconciliation verification passed with VERIFY_EXIT=0, CODEINTEGRITY_BLOCKS=0, unique numeric prefixes, and a metadata-only two-file diff."
+      ],
+      "reviews": [
+        "Initial safety-security reviewer routes were unavailable; exact implementation diff received manual fallback review before PR 31 merge.",
+        "Change 017 metadata-only reconciliation review completed with no findings."
+      ],
+      "publication": {
+        "status": "implementation_merged_reconciliation_pending",
+        "implementation_pull_request": 31,
+        "implementation_head": "236843a72a65cb1b96d8e04149d0f9129efac03d",
+        "implementation_merge": "e83d76d785725bfff55089b94e966b86b637abfb",
+        "reconciliation_pull_request": null
+      },
+      "unresolved": []
+    }
+  }
+}

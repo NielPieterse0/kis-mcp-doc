@@ -1,0 +1,21 @@
+{
+  "schema_version": 4,
+  "change_id": "017-defender-safe-python-runtime",
+  "status": "active",
+  "branch": "change/017-defender-safe-python-runtime-id-reconciliation",
+  "worktree": ".work/worktrees/017-defender-safe-python-runtime-id-reconciliation",
+  "base": "main",
+  "outcome": "Reconcile the concurrent numeric-prefix collision by establishing the already-landed Defender-safe Python runtime work as canonical Change 017 without changing implementation behavior.",
+  "owned_paths": [
+    ".work/changes/015-defender-safe-python-runtime/**",
+    ".work/changes/017-defender-safe-python-runtime/**"
+  ],
+  "shared_paths": [],
+  "excluded_paths": ["scripts/**", "tooling/**", "tests/**", "src/**", "mrd/**", "contracts/**", "publication/**", "generated/**", "C:/Projects/kis-mcp/**", "C:/Projects/References/**"],
+  "dependencies": [],
+  "integration_owner": null,
+  "complexity": "small",
+  "risk_triggers": [],
+  "base_evidence": {"local_sha": "e83d76d785725bfff55089b94e966b86b637abfb", "local_tree": "05172c24cbb703002cb83e044f73885811da1995", "upstream_sha": "e83d76d785725bfff55089b94e966b86b637abfb", "upstream_tree": "05172c24cbb703002cb83e044f73885811da1995", "upstream_ref": "github:main", "evidence_source": "verified_github_default", "relation": "equal"},
+  "work_management": {"project_id": "kis-mcp", "record_id": "SPEC-017", "source_repository": "NielPieterse0/kis-mcp-doc", "source_number": null, "source_kind": "issue", "documentation_impact": "none"}
+}
