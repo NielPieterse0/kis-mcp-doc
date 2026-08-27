@@ -1,0 +1,24 @@
+{
+  "schema_version": 4,
+  "change_id": "015-defender-safe-python-runtime",
+  "status": "active",
+  "branch": "change/015-defender-safe-python-runtime",
+  "worktree": ".work/worktrees/015-defender-safe-python-runtime",
+  "base": "main",
+  "outcome": "Prove and implement a Defender/Smart App Control compatible Python runtime path for kis-mcp-doc that remains reusable for later KIS-wide rollout.",
+  "owned_paths": [
+    ".work/changes/015-defender-safe-python-runtime/**",
+    "scripts/verify.ps1",
+    "scripts/runtime-preflight.ps1",
+    "tooling/windows-runtime.json",
+    "tests/test_windows_runtime_policy.py"
+  ],
+  "shared_paths": [],
+  "excluded_paths": ["mrd/**", "contracts/**", "publication/**", "generated/**", "C:/Projects/kis-mcp/**", "C:/Projects/References/**"],
+  "dependencies": [],
+  "integration_owner": null,
+  "complexity": "large",
+  "risk_triggers": ["security", "architecture_boundary"],
+  "base_evidence": {"local_sha": "a263d7d2e983a5de4085ed0652299176696287e7", "local_tree": null, "upstream_sha": "a263d7d2e983a5de4085ed0652299176696287e7", "upstream_tree": null, "upstream_ref": "github:main", "evidence_source": "verified_github_default", "relation": "equal"},
+  "work_management": {"project_id": "kis-mcp", "record_id": "SPEC-015", "source_repository": "NielPieterse0/kis-mcp-doc", "source_number": null, "source_kind": "issue", "documentation_impact": "planned"}
+}
