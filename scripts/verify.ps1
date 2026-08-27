@@ -39,10 +39,26 @@ if ($UnexpectedMarkdown.Count -gt 0) {
 }
 $BeforeStatus = @(& git -C $RepositoryRoot status --porcelain --untracked-files=no)
 $PythonCommand = 'python'
+$IsLocalWindows = $IsWindows -and $env:GITHUB_ACTIONS -ne 'true'
+
+if ($IsLocalWindows) {
+    $RuntimePreflight = Join-Path $RepositoryRoot 'scripts\runtime-preflight.ps1'
+    $SystemPython = (& pwsh -NoProfile -File $RuntimePreflight).Trim()
+    if ($LASTEXITCODE -ne 0 -or -not $SystemPython) {
+        throw 'Compliant Windows Python runtime preflight failed.'
+    }
+    $env:UV_PYTHON = $SystemPython
+}
+$env:PYTHONPATH = (Join-Path $RepositoryRoot 'src')
 
 if (-not $SkipDependencySync) {
     $env:UV_OFFLINE = '1'
-    & uv sync --offline --locked --all-groups --project $RepositoryRoot
+    if ($IsLocalWindows) {
+        & uv sync --offline --locked --all-groups --project $RepositoryRoot --no-managed-python --no-python-downloads --no-install-project
+    }
+    else {
+        & uv sync --offline --locked --all-groups --project $RepositoryRoot --no-install-project
+    }
     if ($LASTEXITCODE -ne 0) {
         throw "Offline locked dependency synchronization failed with exit code $LASTEXITCODE"
     }

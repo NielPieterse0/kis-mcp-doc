@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "platform": "windows",
+  "purpose": "Canonical local Python runtime selection compatible with Windows Code Integrity and Smart App Control.",
+  "python": {
+    "minimum_version": "3.11",
+    "preferred_launcher": "py.exe",
+    "preferred_selector": "-3.11",
+    "require_authenticode": true,
+    "trusted_publisher_subject_contains": "Python Software Foundation",
+    "forbidden_path_fragments": [
+      "\\uv\\python\\",
+      "\\AppData\\Roaming\\uv\\python\\",
+      "\\.kis-mcp\\AppData\\Roaming\\uv\\python\\"
+    ]
+  },
+  "uv": {
+    "allow_managed_python": false,
+    "allow_python_downloads": false,
+    "offline_canonical_verification": true
+  },
+  "security": {
+    "defender_exclusions_allowed": false,
+    "smart_app_control_bypass_allowed": false,
+    "execution_policy_weakening_allowed": false
+  },
+  "rollout": {
+    "scope": "kis-mcp-doc-pilot",
+    "portable_pattern": true,
+    "parent_kis_authority_changed": false
+  }
+}
