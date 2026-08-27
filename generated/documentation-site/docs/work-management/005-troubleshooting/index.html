@@ -3,26 +3,26 @@
 <p>Use guards, authority, and typed errors instead of forcing a state transition.</p>
 <h2>Guards</h2>
 <ul>
-<li>`approval-before-active` → `approval_incomplete`: Reject activation when the record requires approval and approval is incomplete.</li>
-<li>`completion-no-active-claim` → `active_claim_present`: When configured, reject completion while an execution claim remains.</li>
-<li>`completion-documentation-due` → `documentation_reconciliation_due`: Required post-merge documentation reconciliation must be completed before Done.</li>
-<li>`completion-documentation-due-advisory` → `documentation_reconciliation_advisory_due`: Advisory post-merge documentation reconciliation may complete with an explicit advisory reason.</li>
-<li>`completion-documentation-unrecorded` → `documentation_reconciliation_unrecorded`: Required post-merge documentation milestone must be recorded before Done.</li>
-<li>`completion-documentation-unrecorded-advisory` → `documentation_reconciliation_advisory_incomplete`: Advisory documentation reconciliation may complete without a recorded post-merge milestone, with an explicit advisory reason.</li>
-<li>`completion-documentation-incomplete` → `documentation_incomplete`: Required documentation impact must be complete before Done.</li>
-<li>`completion-documentation-incomplete-advisory` → `documentation_advisory_incomplete`: Advisory documentation may complete while incomplete, with an explicit advisory reason.</li>
+<li><code>approval-before-active</code> → <code>approval_incomplete</code>: Reject activation when the record requires approval and approval is incomplete.</li>
+<li><code>completion-no-active-claim</code> → <code>active_claim_present</code>: When configured, reject completion while an execution claim remains.</li>
+<li><code>completion-documentation-due</code> → <code>documentation_reconciliation_due</code>: Required post-merge documentation reconciliation must be completed before Done.</li>
+<li><code>completion-documentation-due-advisory</code> → <code>documentation_reconciliation_advisory_due</code>: Advisory post-merge documentation reconciliation may complete with an explicit advisory reason.</li>
+<li><code>completion-documentation-unrecorded</code> → <code>documentation_reconciliation_unrecorded</code>: Required post-merge documentation milestone must be recorded before Done.</li>
+<li><code>completion-documentation-unrecorded-advisory</code> → <code>documentation_reconciliation_advisory_incomplete</code>: Advisory documentation reconciliation may complete without a recorded post-merge milestone, with an explicit advisory reason.</li>
+<li><code>completion-documentation-incomplete</code> → <code>documentation_incomplete</code>: Required documentation impact must be complete before Done.</li>
+<li><code>completion-documentation-incomplete-advisory</code> → <code>documentation_advisory_incomplete</code>: Advisory documentation may complete while incomplete, with an explicit advisory reason.</li>
 </ul>
 <h2>Provider boundary</h2>
 <p>Live Project evidence was observed; inventory is complete; the configured Project schema is ready with no field, option, type, or view drift in the captured evidence.</p>
 <p>Typed errors:</p>
 <ul>
-<li>`provider_unavailable`</li>
-<li>`project_not_commissioned`</li>
-<li>`inventory_incomplete`</li>
-<li>`conflict`</li>
-<li>`invalid_transition`</li>
-<li>`not_found`</li>
-<li>`invalid_request`</li>
-<li>`internal`</li>
+<li><code>provider_unavailable</code></li>
+<li><code>project_not_commissioned</code></li>
+<li><code>inventory_incomplete</code></li>
+<li><code>conflict</code></li>
+<li><code>invalid_transition</code></li>
+<li><code>not_found</code></li>
+<li><code>invalid_request</code></li>
+<li><code>internal</code></li>
 </ul>
 <p>Use the <a href="/kis-mcp-doc/specification/work-management/001-specification/">Work Management Specification</a> for exact field authority and recovery semantics.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/docs/work-management/004-complete-work/">Previous</a> <a rel="next" href="/kis-mcp-doc/docs/work-management/006-examples/">Next</a></nav></main></body></html>

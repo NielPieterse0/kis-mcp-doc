@@ -1,192 +1,190 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Work lifecycle</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/specification/">Specification</a> / KIS Work Management Specification</div><h1>Work lifecycle</h1>
-<p>&lt;div id=&quot;enable-section-numbers&quot; /&gt;</p>
+<div id="enable-section-numbers"></div>
 <p><a href="/kis-mcp-doc/specification/work-management/002-work-management-domain-model/">Previous: Work Management domain model</a> | <a href="/kis-mcp-doc/specification/work-management/004-work-operations/">Next: Work operations</a> | <a href="/kis-mcp-doc/specification/work-management/">Index</a></p>
-<p>&lt;span id=&quot;mrd-kis-work-wrk-stm-001&quot;&gt;&lt;/span&gt;</p>
+<span id="mrd-kis-work-wrk-stm-001"></span>
 <p>A work item moves through explicit states. Project-visible states describe the shared work queue, while internal states such as Review, Verification, and Documentation describe delivery activity without creating new GitHub Project status values.</p>
 <h2>Work status and delivery stage</h2>
 <p>Work Status and Delivery Stage are separate dimensions. The diagram shows the canonical Work lifecycle graph and Delivery Stage sequence independently; it does not map a work state to a delivery stage.</p>
-<p>```mermaid</p>
-<p>flowchart LR</p>
-<p>  subgraph work_status[&quot;Work Status&quot;]</p>
-<p>    status_inbox[&quot;Inbox&quot;]</p>
-<p>    status_triage[&quot;Triage&quot;]</p>
-<p>    status_proposed[&quot;Proposed&quot;]</p>
-<p>    status_approved[&quot;Approved&quot;]</p>
-<p>    status_ready[&quot;Ready&quot;]</p>
-<p>    status_active[&quot;Active&quot;]</p>
-<p>    status_review[&quot;Review (internal)&quot;]</p>
-<p>    status_verification[&quot;Verification (internal)&quot;]</p>
-<p>    status_documentation[&quot;Documentation (internal)&quot;]</p>
-<p>    status_blocked[&quot;Blocked&quot;]</p>
-<p>    status_on_hold[&quot;On Hold&quot;]</p>
-<p>    status_deferred[&quot;Deferred&quot;]</p>
-<p>    status_rejected[&quot;Rejected&quot;]</p>
-<p>    status_superseded[&quot;Superseded&quot;]</p>
-<p>    status_done[&quot;Done&quot;]</p>
-<p>    status_active --&gt; status_ready</p>
-<p>    status_active --&gt; status_review</p>
-<p>    status_active --&gt; status_blocked</p>
-<p>    status_active --&gt; status_on_hold</p>
-<p>    status_active --&gt; status_deferred</p>
-<p>    status_active --&gt; status_done</p>
-<p>    status_active --&gt; status_superseded</p>
-<p>    status_approved --&gt; status_ready</p>
-<p>    status_approved --&gt; status_active</p>
-<p>    status_approved --&gt; status_on_hold</p>
-<p>    status_approved --&gt; status_deferred</p>
-<p>    status_approved --&gt; status_superseded</p>
-<p>    status_blocked --&gt; status_ready</p>
-<p>    status_blocked --&gt; status_active</p>
-<p>    status_blocked --&gt; status_on_hold</p>
-<p>    status_blocked --&gt; status_deferred</p>
-<p>    status_blocked --&gt; status_superseded</p>
-<p>    status_deferred --&gt; status_triage</p>
-<p>    status_deferred --&gt; status_proposed</p>
-<p>    status_deferred --&gt; status_approved</p>
-<p>    status_deferred --&gt; status_rejected</p>
-<p>    status_deferred --&gt; status_superseded</p>
-<p>    status_documentation --&gt; status_done</p>
-<p>    status_documentation --&gt; status_active</p>
-<p>    status_documentation --&gt; status_blocked</p>
-<p>    status_documentation --&gt; status_superseded</p>
-<p>    status_inbox --&gt; status_triage</p>
-<p>    status_inbox --&gt; status_deferred</p>
-<p>    status_inbox --&gt; status_rejected</p>
-<p>    status_inbox --&gt; status_superseded</p>
-<p>    status_on_hold --&gt; status_ready</p>
-<p>    status_on_hold --&gt; status_active</p>
-<p>    status_on_hold --&gt; status_deferred</p>
-<p>    status_on_hold --&gt; status_rejected</p>
-<p>    status_on_hold --&gt; status_superseded</p>
-<p>    status_proposed --&gt; status_approved</p>
-<p>    status_proposed --&gt; status_deferred</p>
-<p>    status_proposed --&gt; status_rejected</p>
-<p>    status_proposed --&gt; status_superseded</p>
-<p>    status_ready --&gt; status_active</p>
-<p>    status_ready --&gt; status_on_hold</p>
-<p>    status_ready --&gt; status_deferred</p>
-<p>    status_ready --&gt; status_superseded</p>
-<p>    status_rejected --&gt; status_triage</p>
-<p>    status_rejected --&gt; status_superseded</p>
-<p>    status_review --&gt; status_active</p>
-<p>    status_review --&gt; status_verification</p>
-<p>    status_review --&gt; status_blocked</p>
-<p>    status_review --&gt; status_on_hold</p>
-<p>    status_review --&gt; status_superseded</p>
-<p>    status_triage --&gt; status_proposed</p>
-<p>    status_triage --&gt; status_approved</p>
-<p>    status_triage --&gt; status_deferred</p>
-<p>    status_triage --&gt; status_rejected</p>
-<p>    status_triage --&gt; status_superseded</p>
-<p>    status_verification --&gt; status_active</p>
-<p>    status_verification --&gt; status_documentation</p>
-<p>    status_verification --&gt; status_blocked</p>
-<p>    status_verification --&gt; status_superseded</p>
-<p>  end</p>
-<p>  subgraph delivery_stage[&quot;Delivery Stage&quot;]</p>
-<p>    stage_none[&quot;none&quot;]</p>
-<p>    stage_change_created[&quot;change_created&quot;]</p>
-<p>    stage_implementing[&quot;implementing&quot;]</p>
-<p>    stage_pr_open[&quot;pr_open&quot;]</p>
-<p>    stage_review[&quot;review&quot;]</p>
-<p>    stage_ci_pending[&quot;ci_pending&quot;]</p>
-<p>    stage_ci_failed[&quot;ci_failed&quot;]</p>
-<p>    stage_ci_passed[&quot;ci_passed&quot;]</p>
-<p>    stage_merged[&quot;merged&quot;]</p>
-<p>    stage_documentation[&quot;documentation&quot;]</p>
-<p>    stage_commissioning[&quot;commissioning&quot;]</p>
-<p>    stage_complete[&quot;complete&quot;]</p>
-<p>    stage_none --&gt; stage_change_created</p>
-<p>    stage_change_created --&gt; stage_implementing</p>
-<p>    stage_implementing --&gt; stage_pr_open</p>
-<p>    stage_pr_open --&gt; stage_review</p>
-<p>    stage_review --&gt; stage_ci_pending</p>
-<p>    stage_ci_pending --&gt; stage_ci_failed</p>
-<p>    stage_ci_failed --&gt; stage_ci_passed</p>
-<p>    stage_ci_passed --&gt; stage_merged</p>
-<p>    stage_merged --&gt; stage_documentation</p>
-<p>    stage_documentation --&gt; stage_commissioning</p>
-<p>    stage_commissioning --&gt; stage_complete</p>
-<p>  end</p>
-<p>```</p>
+<pre><code class="language-mermaid">flowchart LR
+  subgraph work_status[&quot;Work Status&quot;]
+    status_inbox[&quot;Inbox&quot;]
+    status_triage[&quot;Triage&quot;]
+    status_proposed[&quot;Proposed&quot;]
+    status_approved[&quot;Approved&quot;]
+    status_ready[&quot;Ready&quot;]
+    status_active[&quot;Active&quot;]
+    status_review[&quot;Review (internal)&quot;]
+    status_verification[&quot;Verification (internal)&quot;]
+    status_documentation[&quot;Documentation (internal)&quot;]
+    status_blocked[&quot;Blocked&quot;]
+    status_on_hold[&quot;On Hold&quot;]
+    status_deferred[&quot;Deferred&quot;]
+    status_rejected[&quot;Rejected&quot;]
+    status_superseded[&quot;Superseded&quot;]
+    status_done[&quot;Done&quot;]
+    status_active --&gt; status_ready
+    status_active --&gt; status_review
+    status_active --&gt; status_blocked
+    status_active --&gt; status_on_hold
+    status_active --&gt; status_deferred
+    status_active --&gt; status_done
+    status_active --&gt; status_superseded
+    status_approved --&gt; status_ready
+    status_approved --&gt; status_active
+    status_approved --&gt; status_on_hold
+    status_approved --&gt; status_deferred
+    status_approved --&gt; status_superseded
+    status_blocked --&gt; status_ready
+    status_blocked --&gt; status_active
+    status_blocked --&gt; status_on_hold
+    status_blocked --&gt; status_deferred
+    status_blocked --&gt; status_superseded
+    status_deferred --&gt; status_triage
+    status_deferred --&gt; status_proposed
+    status_deferred --&gt; status_approved
+    status_deferred --&gt; status_rejected
+    status_deferred --&gt; status_superseded
+    status_documentation --&gt; status_done
+    status_documentation --&gt; status_active
+    status_documentation --&gt; status_blocked
+    status_documentation --&gt; status_superseded
+    status_inbox --&gt; status_triage
+    status_inbox --&gt; status_deferred
+    status_inbox --&gt; status_rejected
+    status_inbox --&gt; status_superseded
+    status_on_hold --&gt; status_ready
+    status_on_hold --&gt; status_active
+    status_on_hold --&gt; status_deferred
+    status_on_hold --&gt; status_rejected
+    status_on_hold --&gt; status_superseded
+    status_proposed --&gt; status_approved
+    status_proposed --&gt; status_deferred
+    status_proposed --&gt; status_rejected
+    status_proposed --&gt; status_superseded
+    status_ready --&gt; status_active
+    status_ready --&gt; status_on_hold
+    status_ready --&gt; status_deferred
+    status_ready --&gt; status_superseded
+    status_rejected --&gt; status_triage
+    status_rejected --&gt; status_superseded
+    status_review --&gt; status_active
+    status_review --&gt; status_verification
+    status_review --&gt; status_blocked
+    status_review --&gt; status_on_hold
+    status_review --&gt; status_superseded
+    status_triage --&gt; status_proposed
+    status_triage --&gt; status_approved
+    status_triage --&gt; status_deferred
+    status_triage --&gt; status_rejected
+    status_triage --&gt; status_superseded
+    status_verification --&gt; status_active
+    status_verification --&gt; status_documentation
+    status_verification --&gt; status_blocked
+    status_verification --&gt; status_superseded
+  end
+  subgraph delivery_stage[&quot;Delivery Stage&quot;]
+    stage_none[&quot;none&quot;]
+    stage_change_created[&quot;change_created&quot;]
+    stage_implementing[&quot;implementing&quot;]
+    stage_pr_open[&quot;pr_open&quot;]
+    stage_review[&quot;review&quot;]
+    stage_ci_pending[&quot;ci_pending&quot;]
+    stage_ci_failed[&quot;ci_failed&quot;]
+    stage_ci_passed[&quot;ci_passed&quot;]
+    stage_merged[&quot;merged&quot;]
+    stage_documentation[&quot;documentation&quot;]
+    stage_commissioning[&quot;commissioning&quot;]
+    stage_complete[&quot;complete&quot;]
+    stage_none --&gt; stage_change_created
+    stage_change_created --&gt; stage_implementing
+    stage_implementing --&gt; stage_pr_open
+    stage_pr_open --&gt; stage_review
+    stage_review --&gt; stage_ci_pending
+    stage_ci_pending --&gt; stage_ci_failed
+    stage_ci_failed --&gt; stage_ci_passed
+    stage_ci_passed --&gt; stage_merged
+    stage_merged --&gt; stage_documentation
+    stage_documentation --&gt; stage_commissioning
+    stage_commissioning --&gt; stage_complete
+  end</code></pre>
 <h2>State model</h2>
-<p>| State | Meaning | GitHub Project status | Token |</p>
-<p>|---|---|---|---|</p>
-<p>| Inbox | Captured work not yet triaged. | Yes | `inbox` |</p>
-<p>| Triage | Work being classified. | Yes | `triage` |</p>
-<p>| Proposed | Work proposed for approval. | Yes | `proposed` |</p>
-<p>| Approved | Accepted work not yet admitted to Ready. | Yes | `approved` |</p>
-<p>| Ready | Executable queue state subject to readiness guards. | Yes | `ready` |</p>
-<p>| Active | Claimed execution state. | Yes | `active` |</p>
-<p>| Review | Internal delivery state for review activity. | No | `review` |</p>
-<p>| Verification | Internal delivery state for verification activity. | No | `verification` |</p>
-<p>| Documentation | Internal delivery state for documentation reconciliation. | No | `documentation` |</p>
-<p>| Blocked | Execution cannot proceed because a blocker is present. | Yes | `blocked` |</p>
-<p>| On Hold | Intentionally paused pending a review trigger. | Yes | `on_hold` |</p>
-<p>| Deferred | Postponed for later reconsideration. | Yes | `deferred` |</p>
-<p>| Rejected | Not accepted for execution in current form. | Yes | `rejected` |</p>
-<p>| Superseded | Replaced by newer authoritative work. | Yes | `superseded` |</p>
-<p>| Done | Required completion gates are satisfied. | Yes | `done` |</p>
-<p>&lt;span id=&quot;fact-work-state-inbox&quot;&gt;&lt;/span&gt;</p>
-<p>&lt;span id=&quot;fact-work-state-triage&quot;&gt;&lt;/span&gt;</p>
-<p>&lt;span id=&quot;fact-work-state-proposed&quot;&gt;&lt;/span&gt;</p>
-<p>&lt;span id=&quot;fact-work-state-approved&quot;&gt;&lt;/span&gt;</p>
-<p>&lt;span id=&quot;fact-work-state-ready&quot;&gt;&lt;/span&gt;</p>
-<p>&lt;span id=&quot;fact-work-state-active&quot;&gt;&lt;/span&gt;</p>
-<p>&lt;span id=&quot;fact-work-state-review&quot;&gt;&lt;/span&gt;</p>
-<p>&lt;span id=&quot;fact-work-state-verification&quot;&gt;&lt;/span&gt;</p>
-<p>&lt;span id=&quot;fact-work-state-documentation&quot;&gt;&lt;/span&gt;</p>
-<p>&lt;span id=&quot;fact-work-state-blocked&quot;&gt;&lt;/span&gt;</p>
-<p>&lt;span id=&quot;fact-work-state-on-hold&quot;&gt;&lt;/span&gt;</p>
-<p>&lt;span id=&quot;fact-work-state-deferred&quot;&gt;&lt;/span&gt;</p>
-<p>&lt;span id=&quot;fact-work-state-rejected&quot;&gt;&lt;/span&gt;</p>
-<p>&lt;span id=&quot;fact-work-state-superseded&quot;&gt;&lt;/span&gt;</p>
-<p>&lt;span id=&quot;fact-work-state-done&quot;&gt;&lt;/span&gt;</p>
+<table><thead><tr><th>State</th><th>Meaning</th><th>GitHub Project status</th><th>Token</th></tr></thead><tbody>
+<tr><td>Inbox</td><td>Captured work not yet triaged.</td><td>Yes</td><td><code>inbox</code></td></tr>
+<tr><td>Triage</td><td>Work being classified.</td><td>Yes</td><td><code>triage</code></td></tr>
+<tr><td>Proposed</td><td>Work proposed for approval.</td><td>Yes</td><td><code>proposed</code></td></tr>
+<tr><td>Approved</td><td>Accepted work not yet admitted to Ready.</td><td>Yes</td><td><code>approved</code></td></tr>
+<tr><td>Ready</td><td>Executable queue state subject to readiness guards.</td><td>Yes</td><td><code>ready</code></td></tr>
+<tr><td>Active</td><td>Claimed execution state.</td><td>Yes</td><td><code>active</code></td></tr>
+<tr><td>Review</td><td>Internal delivery state for review activity.</td><td>No</td><td><code>review</code></td></tr>
+<tr><td>Verification</td><td>Internal delivery state for verification activity.</td><td>No</td><td><code>verification</code></td></tr>
+<tr><td>Documentation</td><td>Internal delivery state for documentation reconciliation.</td><td>No</td><td><code>documentation</code></td></tr>
+<tr><td>Blocked</td><td>Execution cannot proceed because a blocker is present.</td><td>Yes</td><td><code>blocked</code></td></tr>
+<tr><td>On Hold</td><td>Intentionally paused pending a review trigger.</td><td>Yes</td><td><code>on_hold</code></td></tr>
+<tr><td>Deferred</td><td>Postponed for later reconsideration.</td><td>Yes</td><td><code>deferred</code></td></tr>
+<tr><td>Rejected</td><td>Not accepted for execution in current form.</td><td>Yes</td><td><code>rejected</code></td></tr>
+<tr><td>Superseded</td><td>Replaced by newer authoritative work.</td><td>Yes</td><td><code>superseded</code></td></tr>
+<tr><td>Done</td><td>Required completion gates are satisfied.</td><td>Yes</td><td><code>done</code></td></tr>
+</tbody></table>
+<span id="fact-work-state-inbox"></span>
+<span id="fact-work-state-triage"></span>
+<span id="fact-work-state-proposed"></span>
+<span id="fact-work-state-approved"></span>
+<span id="fact-work-state-ready"></span>
+<span id="fact-work-state-active"></span>
+<span id="fact-work-state-review"></span>
+<span id="fact-work-state-verification"></span>
+<span id="fact-work-state-documentation"></span>
+<span id="fact-work-state-blocked"></span>
+<span id="fact-work-state-on-hold"></span>
+<span id="fact-work-state-deferred"></span>
+<span id="fact-work-state-rejected"></span>
+<span id="fact-work-state-superseded"></span>
+<span id="fact-work-state-done"></span>
 <h2>Transitions</h2>
-<p>Transitions are explicit. A work item **MUST** move only to a destination listed for its current state. On Hold and Deferred also require a Review Trigger.</p>
-<p>| From | Allowed next states | Additional requirement |</p>
-<p>|---|---|---|</p>
-<p>| Active | Ready, Review, Blocked, On Hold, Deferred, Done, Superseded | None |</p>
-<p>| Approved | Ready, Active, On Hold, Deferred, Superseded | None |</p>
-<p>| Blocked | Ready, Active, On Hold, Deferred, Superseded | None |</p>
-<p>| Deferred | Triage, Proposed, Approved, Rejected, Superseded | Review Trigger |</p>
-<p>| Documentation | Done, Active, Blocked, Superseded | None |</p>
-<p>| Done | No transitions | None |</p>
-<p>| Inbox | Triage, Deferred, Rejected, Superseded | None |</p>
-<p>| On Hold | Ready, Active, Deferred, Rejected, Superseded | Review Trigger |</p>
-<p>| Proposed | Approved, Deferred, Rejected, Superseded | None |</p>
-<p>| Ready | Active, On Hold, Deferred, Superseded | None |</p>
-<p>| Rejected | Triage, Superseded | None |</p>
-<p>| Review | Active, Verification, Blocked, On Hold, Superseded | None |</p>
-<p>| Superseded | No transitions | None |</p>
-<p>| Triage | Proposed, Approved, Deferred, Rejected, Superseded | None |</p>
-<p>| Verification | Active, Documentation, Blocked, Superseded | None |</p>
+<p>Transitions are explicit. A work item <strong>MUST</strong> move only to a destination listed for its current state. On Hold and Deferred also require a Review Trigger.</p>
+<table><thead><tr><th>From</th><th>Allowed next states</th><th>Additional requirement</th></tr></thead><tbody>
+<tr><td>Active</td><td>Ready, Review, Blocked, On Hold, Deferred, Done, Superseded</td><td>None</td></tr>
+<tr><td>Approved</td><td>Ready, Active, On Hold, Deferred, Superseded</td><td>None</td></tr>
+<tr><td>Blocked</td><td>Ready, Active, On Hold, Deferred, Superseded</td><td>None</td></tr>
+<tr><td>Deferred</td><td>Triage, Proposed, Approved, Rejected, Superseded</td><td>Review Trigger</td></tr>
+<tr><td>Documentation</td><td>Done, Active, Blocked, Superseded</td><td>None</td></tr>
+<tr><td>Done</td><td>No transitions</td><td>None</td></tr>
+<tr><td>Inbox</td><td>Triage, Deferred, Rejected, Superseded</td><td>None</td></tr>
+<tr><td>On Hold</td><td>Ready, Active, Deferred, Rejected, Superseded</td><td>Review Trigger</td></tr>
+<tr><td>Proposed</td><td>Approved, Deferred, Rejected, Superseded</td><td>None</td></tr>
+<tr><td>Ready</td><td>Active, On Hold, Deferred, Superseded</td><td>None</td></tr>
+<tr><td>Rejected</td><td>Triage, Superseded</td><td>None</td></tr>
+<tr><td>Review</td><td>Active, Verification, Blocked, On Hold, Superseded</td><td>None</td></tr>
+<tr><td>Superseded</td><td>No transitions</td><td>None</td></tr>
+<tr><td>Triage</td><td>Proposed, Approved, Deferred, Rejected, Superseded</td><td>None</td></tr>
+<tr><td>Verification</td><td>Active, Documentation, Blocked, Superseded</td><td>None</td></tr>
+</tbody></table>
 <h2>Readiness and claims</h2>
-<p>Before a work item can enter Ready, it **MUST** satisfy all configured readiness requirements:</p>
+<p>Before a work item can enter Ready, it <strong>MUST</strong> satisfy all configured readiness requirements:</p>
 <ul>
-<li>The source issue contains **Outcome** and **Acceptance criteria**.</li>
-<li>The Project record contains **Record Type**, **Priority**, **Effort**, and **Documentation Impact**.</li>
+<li>The source issue contains <strong>Outcome</strong> and <strong>Acceptance criteria</strong>.</li>
+<li>The Project record contains <strong>Record Type</strong>, <strong>Priority</strong>, <strong>Effort</strong>, and <strong>Documentation Impact</strong>.</li>
 <li>Dependencies are understood.</li>
 </ul>
-<p>Execution claims use the **Execution Owner** field. Claims do not expire automatically.</p>
-<p>At intake, the alias `todo` is normalized to `inbox`.</p>
+<p>Execution claims use the <strong>Execution Owner</strong> field. Claims do not expire automatically.</p>
+<p>At intake, the alias <code>todo</code> is normalized to <code>inbox</code>.</p>
 <h2>Delivery and completion</h2>
 <p>Delivery is tracked separately from the work state. The configured delivery-stage sequence is:</p>
-<p>&lt;span id=&quot;fact-delivery-stage-none&quot;&gt;&lt;/span&gt;`none`, &lt;span id=&quot;fact-delivery-stage-change-created&quot;&gt;&lt;/span&gt;`change_created`, &lt;span id=&quot;fact-delivery-stage-implementing&quot;&gt;&lt;/span&gt;`implementing`, &lt;span id=&quot;fact-delivery-stage-pr-open&quot;&gt;&lt;/span&gt;`pr_open`, &lt;span id=&quot;fact-delivery-stage-review&quot;&gt;&lt;/span&gt;`review`, &lt;span id=&quot;fact-delivery-stage-ci-pending&quot;&gt;&lt;/span&gt;`ci_pending`, &lt;span id=&quot;fact-delivery-stage-ci-failed&quot;&gt;&lt;/span&gt;`ci_failed`, &lt;span id=&quot;fact-delivery-stage-ci-passed&quot;&gt;&lt;/span&gt;`ci_passed`, &lt;span id=&quot;fact-delivery-stage-merged&quot;&gt;&lt;/span&gt;`merged`, &lt;span id=&quot;fact-delivery-stage-documentation&quot;&gt;&lt;/span&gt;`documentation`, &lt;span id=&quot;fact-delivery-stage-commissioning&quot;&gt;&lt;/span&gt;`commissioning`, &lt;span id=&quot;fact-delivery-stage-complete&quot;&gt;&lt;/span&gt;`complete`</p>
-<p>The **Delivery Stage** field stores that stage. **Change ID**, **Complexity**, and **Risk Triggers** connect the work record to repository change governance. The sequence starts its governed change at `change_created` and reaches `complete` when delivery is complete.</p>
-<p>Completion targets `done`. The current configuration does not require the execution claim to be absent after close.</p>
+<p><span id="fact-delivery-stage-none"></span><code>none</code>, <span id="fact-delivery-stage-change-created"></span><code>change_created</code>, <span id="fact-delivery-stage-implementing"></span><code>implementing</code>, <span id="fact-delivery-stage-pr-open"></span><code>pr_open</code>, <span id="fact-delivery-stage-review"></span><code>review</code>, <span id="fact-delivery-stage-ci-pending"></span><code>ci_pending</code>, <span id="fact-delivery-stage-ci-failed"></span><code>ci_failed</code>, <span id="fact-delivery-stage-ci-passed"></span><code>ci_passed</code>, <span id="fact-delivery-stage-merged"></span><code>merged</code>, <span id="fact-delivery-stage-documentation"></span><code>documentation</code>, <span id="fact-delivery-stage-commissioning"></span><code>commissioning</code>, <span id="fact-delivery-stage-complete"></span><code>complete</code></p>
+<p>The <strong>Delivery Stage</strong> field stores that stage. <strong>Change ID</strong>, <strong>Complexity</strong>, and <strong>Risk Triggers</strong> connect the work record to repository change governance. The sequence starts its governed change at <code>change_created</code> and reaches <code>complete</code> when delivery is complete.</p>
+<p>Completion targets <code>done</code>. The current configuration does not require the execution claim to be absent after close.</p>
 <h2>Completion and activation guards</h2>
 <p>Guards reject or qualify transitions when required evidence is missing or inconsistent:</p>
-<p>| Guard | Applies when | Rule | Result | Reason |</p>
-<p>|---|---|---|---|---|</p>
-<p>| `approval-before-active` | `approval_required_and_incomplete` | Reject activation when the record requires approval and approval is incomplete. | `reject` to `active` | `approval_incomplete` |</p>
-<p>| `completion-no-active-claim` | `completion_requires_no_active_claim_and_claim_present` | When configured, reject completion while an execution claim remains. | `reject` to `done` | `active_claim_present` |</p>
-<p>| `completion-documentation-due` | `required_documentation_reconciliation_due` | Required post-merge documentation reconciliation must be completed before Done. | `reject` to `done` | `documentation_reconciliation_due` |</p>
-<p>| `completion-documentation-due-advisory` | `advisory_documentation_reconciliation_due` | Advisory post-merge documentation reconciliation may complete with an explicit advisory reason. | `allow_with_reason` to `done` | `documentation_reconciliation_advisory_due` |</p>
-<p>| `completion-documentation-unrecorded` | `required_documentation_reconciliation_unrecorded` | Required post-merge documentation milestone must be recorded before Done. | `reject` to `done` | `documentation_reconciliation_unrecorded` |</p>
-<p>| `completion-documentation-unrecorded-advisory` | `advisory_documentation_reconciliation_unrecorded` | Advisory documentation reconciliation may complete without a recorded post-merge milestone, with an explicit advisory reason. | `allow_with_reason` to `done` | `documentation_reconciliation_advisory_incomplete` |</p>
-<p>| `completion-documentation-incomplete` | `required_documentation_incomplete` | Required documentation impact must be complete before Done. | `reject` to `done` | `documentation_incomplete` |</p>
-<p>| `completion-documentation-incomplete-advisory` | `advisory_documentation_incomplete` | Advisory documentation may complete while incomplete, with an explicit advisory reason. | `allow_with_reason` to `done` | `documentation_advisory_incomplete` |</p>
+<table><thead><tr><th>Guard</th><th>Applies when</th><th>Rule</th><th>Result</th><th>Reason</th></tr></thead><tbody>
+<tr><td><code>approval-before-active</code></td><td><code>approval_required_and_incomplete</code></td><td>Reject activation when the record requires approval and approval is incomplete.</td><td><code>reject</code> to <code>active</code></td><td><code>approval_incomplete</code></td></tr>
+<tr><td><code>completion-no-active-claim</code></td><td><code>completion_requires_no_active_claim_and_claim_present</code></td><td>When configured, reject completion while an execution claim remains.</td><td><code>reject</code> to <code>done</code></td><td><code>active_claim_present</code></td></tr>
+<tr><td><code>completion-documentation-due</code></td><td><code>required_documentation_reconciliation_due</code></td><td>Required post-merge documentation reconciliation must be completed before Done.</td><td><code>reject</code> to <code>done</code></td><td><code>documentation_reconciliation_due</code></td></tr>
+<tr><td><code>completion-documentation-due-advisory</code></td><td><code>advisory_documentation_reconciliation_due</code></td><td>Advisory post-merge documentation reconciliation may complete with an explicit advisory reason.</td><td><code>allow_with_reason</code> to <code>done</code></td><td><code>documentation_reconciliation_advisory_due</code></td></tr>
+<tr><td><code>completion-documentation-unrecorded</code></td><td><code>required_documentation_reconciliation_unrecorded</code></td><td>Required post-merge documentation milestone must be recorded before Done.</td><td><code>reject</code> to <code>done</code></td><td><code>documentation_reconciliation_unrecorded</code></td></tr>
+<tr><td><code>completion-documentation-unrecorded-advisory</code></td><td><code>advisory_documentation_reconciliation_unrecorded</code></td><td>Advisory documentation reconciliation may complete without a recorded post-merge milestone, with an explicit advisory reason.</td><td><code>allow_with_reason</code> to <code>done</code></td><td><code>documentation_reconciliation_advisory_incomplete</code></td></tr>
+<tr><td><code>completion-documentation-incomplete</code></td><td><code>required_documentation_incomplete</code></td><td>Required documentation impact must be complete before Done.</td><td><code>reject</code> to <code>done</code></td><td><code>documentation_incomplete</code></td></tr>
+<tr><td><code>completion-documentation-incomplete-advisory</code></td><td><code>advisory_documentation_incomplete</code></td><td>Advisory documentation may complete while incomplete, with an explicit advisory reason.</td><td><code>allow_with_reason</code> to <code>done</code></td><td><code>documentation_advisory_incomplete</code></td></tr>
+</tbody></table>
 <h2>Source and authority</h2>
-<p>This page projects `KIS-WORK-WRK-STM-001` version `1.0.0`. The MRD remains authoritative; this generated page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/specification/work-management/002-work-management-domain-model/">Previous</a> <a rel="next" href="/kis-mcp-doc/specification/work-management/004-work-operations/">Next</a></nav></main></body></html>
+<p>This page projects <code>KIS-WORK-WRK-STM-001</code> version <code>1.0.0</code>. The MRD remains authoritative; this generated page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/specification/work-management/002-work-management-domain-model/">Previous</a> <a rel="next" href="/kis-mcp-doc/specification/work-management/004-work-operations/">Next</a></nav></main></body></html>

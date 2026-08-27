@@ -1,29 +1,29 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>kis-op Governance Behavior</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/specification/">Specification</a> / kis-op Governance Specification</div><h1>kis-op Governance Behavior</h1>
-<p>&lt;div id=&quot;enable-section-numbers&quot; /&gt;</p>
+<div id="enable-section-numbers"></div>
 <p><a href="/kis-mcp-doc/specification/governance/008-lifecycle/">Previous: Lifecycle</a> | <a href="/kis-mcp-doc/specification/governance/010-validation-and-enforcement/">Next: Validation and Enforcement</a> | <a href="/kis-mcp-doc/specification/governance/">Index</a></p>
 <p>kis-op applies governance as an ordered workflow from authority resolution through verification and reporting. Blocking failures stop the workflow rather than becoming inferred authority.</p>
 <h2>Applying governance</h2>
 <p>kis-op applies governance through seven ordered phases. It resolves authority and applicable MRDs before mutation, validates blocking conditions before execution, and keeps generated review surfaces downstream of validated sources.</p>
-<p>&lt;span id=&quot;rule-kis-op-gov-001&quot;&gt;&lt;/span&gt;</p>
+<span id="rule-kis-op-gov-001"></span>
 <p>kis-op MUST resolve applicable repository authority and the active governed change scope before proposing or performing repository mutation.</p>
-<p>&lt;span id=&quot;rule-kis-op-gov-002&quot;&gt;&lt;/span&gt;</p>
+<span id="rule-kis-op-gov-002"></span>
 <p>kis-op MUST use the 47-type catalog as a selection vocabulary, not as a checklist requiring one artifact of every type.</p>
-<p>&lt;span id=&quot;rule-kis-op-gov-003&quot;&gt;&lt;/span&gt;</p>
+<span id="rule-kis-op-gov-003"></span>
 <p>kis-op MUST prefer an existing MRD type when it can represent the governed need without semantic distortion and MUST NOT silently invent a new type.</p>
-<p>&lt;span id=&quot;rule-kis-op-gov-004&quot;&gt;&lt;/span&gt;</p>
+<span id="rule-kis-op-gov-004"></span>
 <p>kis-op MUST fail closed on unresolved required authority, ownership, dependency, provenance, or blocking validation failures and MUST report the reason rather than infer authority.</p>
 <h2>Governance application lifecycle</h2>
 <p>The following table shows each phase, the actions kis-op performs, and the condition that stops progress when the phase cannot complete safely:</p>
-<p>| # | Phase | Required actions | Stop when |</p>
-<p>|---:|---|---|---|</p>
-<p>| 1 | `resolve_authority` | load repository authority and active change scope; identify canonical owners relevant to the request | required authority cannot be resolved |</p>
-<p>| 2 | `select_applicable_mrds` | classify the actual governed needs; apply the 47-type applicability contract; select the minimum sufficient MRD set | a required need has no representable type and no governed extension path |</p>
-<p>| 3 | `resolve_relationships` | bind dependencies and typed relationships; detect duplicate ownership and authority conflicts | required dependency or canonical owner is unresolved |</p>
-<p>| 4 | `validate_governance` | run structural and semantic governance validation; surface stable reason codes for blocking failures | blocking governance validation fails |</p>
-<p>| 5 | `execute_bounded_change` | work only inside the admitted change scope; preserve parent KIS trust and Git authority; avoid unrelated documentation or platform expansion | requested mutation exceeds admitted scope or authority |</p>
-<p>| 6 | `generate_review_surface` | generate the HRD specification from validated MRDs; preserve provenance and deterministic source bindings | source validation or deterministic generation fails |</p>
-<p>| 7 | `verify_and_report` | verify generated output is current and untampered; report completion, gaps, deferrals, and diagnostics against the requested scope | phase completes |</p>
+<table><thead><tr><th>#</th><th>Phase</th><th>Required actions</th><th>Stop when</th></tr></thead><tbody>
+<tr><td>1</td><td><code>resolve_authority</code></td><td>load repository authority and active change scope; identify canonical owners relevant to the request</td><td>required authority cannot be resolved</td></tr>
+<tr><td>2</td><td><code>select_applicable_mrds</code></td><td>classify the actual governed needs; apply the 47-type applicability contract; select the minimum sufficient MRD set</td><td>a required need has no representable type and no governed extension path</td></tr>
+<tr><td>3</td><td><code>resolve_relationships</code></td><td>bind dependencies and typed relationships; detect duplicate ownership and authority conflicts</td><td>required dependency or canonical owner is unresolved</td></tr>
+<tr><td>4</td><td><code>validate_governance</code></td><td>run structural and semantic governance validation; surface stable reason codes for blocking failures</td><td>blocking governance validation fails</td></tr>
+<tr><td>5</td><td><code>execute_bounded_change</code></td><td>work only inside the admitted change scope; preserve parent KIS trust and Git authority; avoid unrelated documentation or platform expansion</td><td>requested mutation exceeds admitted scope or authority</td></tr>
+<tr><td>6</td><td><code>generate_review_surface</code></td><td>generate the HRD specification from validated MRDs; preserve provenance and deterministic source bindings</td><td>source validation or deterministic generation fails</td></tr>
+<tr><td>7</td><td><code>verify_and_report</code></td><td>verify generated output is current and untampered; report completion, gaps, deferrals, and diagnostics against the requested scope</td><td>phase completes</td></tr>
+</tbody></table>
 <h2>Required outputs</h2>
 <p>A completed governance application produces the following review and machine-readable outputs:</p>
 <ul>
@@ -34,22 +34,22 @@
 <li>explicit diagnostics, gaps, or deferrals</li>
 </ul>
 <h2>Scope and review boundaries</h2>
-<p>&lt;span id=&quot;rule-kis-op-gov-005&quot;&gt;&lt;/span&gt;</p>
+<span id="rule-kis-op-gov-005"></span>
 <p>kis-op MUST keep generated HRDs downstream of machine-readable authority and MUST direct substantive corrections to the owning MRD or canonical source before regeneration.</p>
-<p>&lt;span id=&quot;rule-kis-op-gov-006&quot;&gt;&lt;/span&gt;</p>
+<span id="rule-kis-op-gov-006"></span>
 <p>kis-op MUST preserve bounded scope and MUST NOT expand a governance-specification task into unrelated Knowledge, UI, discovery, or platform implementation work unless that work is required to generate or validate the requested governance specification.</p>
-<p>&lt;span id=&quot;rule-kis-op-gov-007&quot;&gt;&lt;/span&gt;</p>
+<span id="rule-kis-op-gov-007"></span>
 <p>When governance requires human judgment, kis-op MUST identify the review gate explicitly and MUST NOT misrepresent an advisory or review-based conclusion as deterministic machine enforcement.</p>
 <h2>Requirement traceability</h2>
 <p>The following table preserves the stable rule identifier and enforcement binding for each requirement stated in this chapter:</p>
-<p>| Rule | Enforcement |</p>
-<p>|---|---|</p>
-<p>| `KIS-OP-GOV-001` | `workflow` |</p>
-<p>| `KIS-OP-GOV-002` | `workflow` |</p>
-<p>| `KIS-OP-GOV-003` | `review` |</p>
-<p>| `KIS-OP-GOV-004` | `workflow` |</p>
-<p>| `KIS-OP-GOV-005` | `generator` |</p>
-<p>| `KIS-OP-GOV-006` | `workflow` |</p>
-<p>| `KIS-OP-GOV-007` | `review` |</p>
+<table><thead><tr><th>Rule</th><th>Enforcement</th></tr></thead><tbody>
+<tr><td><code>KIS-OP-GOV-001</code></td><td><code>workflow</code></td></tr>
+<tr><td><code>KIS-OP-GOV-002</code></td><td><code>workflow</code></td></tr>
+<tr><td><code>KIS-OP-GOV-003</code></td><td><code>review</code></td></tr>
+<tr><td><code>KIS-OP-GOV-004</code></td><td><code>workflow</code></td></tr>
+<tr><td><code>KIS-OP-GOV-005</code></td><td><code>generator</code></td></tr>
+<tr><td><code>KIS-OP-GOV-006</code></td><td><code>workflow</code></td></tr>
+<tr><td><code>KIS-OP-GOV-007</code></td><td><code>review</code></td></tr>
+</tbody></table>
 <h2>Source and authority</h2>
-<p>This page projects `KIS-KNOW-WRK-WFL-001` version `1.0.0`. The MRD remains authoritative; this page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/specification/governance/008-lifecycle/">Previous</a> <a rel="next" href="/kis-mcp-doc/specification/governance/010-validation-and-enforcement/">Next</a></nav></main></body></html>
+<p>This page projects <code>KIS-KNOW-WRK-WFL-001</code> version <code>1.0.0</code>. The MRD remains authoritative; this page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/specification/governance/008-lifecycle/">Previous</a> <a rel="next" href="/kis-mcp-doc/specification/governance/010-validation-and-enforcement/">Next</a></nav></main></body></html>

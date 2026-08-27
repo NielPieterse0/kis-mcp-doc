@@ -4,41 +4,41 @@
 <p>Choose the operation that matches the intended lifecycle action; mutation authority is bounded by the command plane.</p>
 <h2>Capture Work</h2>
 <p>Capture one bounded source record into Work without duplicating source identity.</p>
-<p>Implementation surface: `project_management_reconcile`. Effect: `external_or_local_change`.</p>
+<p>Implementation surface: <code>project_management_reconcile</code>. Effect: <code>external_or_local_change</code>.</p>
 <h2>Create Work</h2>
 <p>Create or reconcile one new Work record through the configured provider boundary.</p>
-<p>Implementation surface: `project_management_reconcile`. Effect: `external_or_local_change`.</p>
+<p>Implementation surface: <code>project_management_reconcile</code>. Effect: <code>external_or_local_change</code>.</p>
 <h2>Take Next Work</h2>
 <p>Select the next eligible Ready item and establish its execution claim.</p>
-<p>Implementation surface: `project_management_take_next_work`. Effect: `external_or_local_change`.</p>
+<p>Implementation surface: <code>project_management_take_next_work</code>. Effect: <code>external_or_local_change</code>.</p>
 <h2>Claim Work</h2>
 <p>Establish one execution owner after revision and state guards pass.</p>
-<p>Implementation surface: `project_management_claim_work`. Effect: `external_or_local_change`.</p>
+<p>Implementation surface: <code>project_management_claim_work</code>. Effect: <code>external_or_local_change</code>.</p>
 <h2>Release Work</h2>
 <p>Clear an execution claim through the bounded command plane.</p>
-<p>Implementation surface: `project_management_release_work`. Effect: `external_or_local_change`.</p>
+<p>Implementation surface: <code>project_management_release_work</code>. Effect: <code>external_or_local_change</code>.</p>
 <h2>Hold Work</h2>
 <p>Move work to On Hold only with the required review trigger.</p>
-<p>Implementation surface: `project_management_hold_work`. Effect: `external_or_local_change`.</p>
+<p>Implementation surface: <code>project_management_hold_work</code>. Effect: <code>external_or_local_change</code>.</p>
 <h2>Defer Work</h2>
 <p>Move work to Deferred only with the required review trigger.</p>
-<p>Implementation surface: `project_management_defer_work`. Effect: `external_or_local_change`.</p>
+<p>Implementation surface: <code>project_management_defer_work</code>. Effect: <code>external_or_local_change</code>.</p>
 <h2>Complete Work</h2>
 <p>Complete work only after configured completion and evidence guards pass.</p>
-<p>Implementation surface: `project_management_complete_work`. Effect: `external_or_local_change`.</p>
+<p>Implementation surface: <code>project_management_complete_work</code>. Effect: <code>external_or_local_change</code>.</p>
 <h2>Readiness</h2>
 <p>Evaluate deterministic queue eligibility and readiness evidence.</p>
-<p>Implementation surface: `project_management_next_work`. Effect: `read_only`.</p>
+<p>Implementation surface: <code>project_management_next_work</code>. Effect: <code>read_only</code>.</p>
 <h2>Assignment Packet</h2>
 <p>Bind execution to a generation-specific work packet and reservation fence.</p>
-<p>Implementation surface: `coordinator_work_packet`. Effect: `local_change`.</p>
+<p>Implementation surface: <code>coordinator_work_packet</code>. Effect: <code>local_change</code>.</p>
 <h2>Verification</h2>
 <p>Evaluate repository/source verification evidence for the exact delivery identity.</p>
-<p>Implementation surface: `project_management_merge_readiness`. Effect: `read_only_or_external_evidence`.</p>
+<p>Implementation surface: <code>project_management_merge_readiness</code>. Effect: <code>read_only_or_external_evidence</code>.</p>
 <h2>Commissioning</h2>
 <p>Track post-merge live verification separately from source verification.</p>
-<p>Implementation surface: `issue_419_commissioning`. Effect: `external_or_local_change`.</p>
+<p>Implementation surface: <code>issue_419_commissioning</code>. Effect: <code>external_or_local_change</code>.</p>
 <h2>Authority Revision</h2>
 <p>Retain provider/Git revision evidence used for optimistic concurrency and traceability.</p>
-<p>Implementation surface: `project_management_inventory`. Effect: `read_only`.</p>
+<p>Implementation surface: <code>project_management_inventory</code>. Effect: <code>read_only</code>.</p>
 <p>For operation contracts and typed errors, use the <a href="/kis-mcp-doc/specification/work-management/001-specification/">Work Management Specification</a>.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/docs/work-management/002-work-lifecycle/">Previous</a> <a rel="next" href="/kis-mcp-doc/docs/work-management/004-complete-work/">Next</a></nav></main></body></html>

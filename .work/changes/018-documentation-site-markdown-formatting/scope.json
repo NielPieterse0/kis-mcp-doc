@@ -1,0 +1,25 @@
+{
+  "schema_version": 4,
+  "change_id": "018-documentation-site-markdown-formatting",
+  "status": "active",
+  "branch": "change/018-documentation-site-markdown-formatting",
+  "worktree": null,
+  "base": "main",
+  "outcome": "Correct documentation-site Markdown rendering and presentation across all governed pages without changing canonical documentation semantics.",
+  "owned_paths": [
+    ".work/changes/018-documentation-site-markdown-formatting/**",
+    "src/kis_mcp_doc/documentation_site.py",
+    "tests/test_documentation_site.py",
+    "generated/documentation-site/**",
+    "generated/documentation-search/**",
+    "generated/documentation-release/**"
+  ],
+  "shared_paths": [],
+  "excluded_paths": ["mrd/**", "contracts/**", "publication/**", "generated/governance-spec/**", "generated/work-management-spec/**", "generated/governance-docs/**", "generated/work-management-docs/**", "C:/Projects/kis-mcp/**"],
+  "dependencies": ["016-documentation-publication-hosting-and-release-integration"],
+  "integration_owner": null,
+  "complexity": "medium",
+  "risk_triggers": ["public_contract"],
+  "base_evidence": {"local_sha": "67dc1718edef311e81e1d7e8b4e2d0f1be442b3a", "local_tree": "db2baae6571028f4bb58860cab43829125a3d02e", "upstream_sha": "67dc1718edef311e81e1d7e8b4e2d0f1be442b3a", "upstream_tree": "db2baae6571028f4bb58860cab43829125a3d02e", "upstream_ref": "github:main", "evidence_source": "verified_github_default", "relation": "equal"},
+  "work_management": {"project_id": "kis-mcp", "record_id": "SPEC-018", "source_repository": "NielPieterse0/kis-mcp-doc", "source_number": 35, "source_kind": "issue", "documentation_impact": "in_progress"}
+}

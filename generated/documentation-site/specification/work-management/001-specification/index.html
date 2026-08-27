@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>KIS Work Management Specification</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/specification/">Specification</a> / KIS Work Management Specification</div><h1>KIS Work Management Specification</h1>
-<p>&lt;div id=&quot;enable-section-numbers&quot; /&gt;</p>
+<div id="enable-section-numbers"></div>
 <p>Governed operating specification for work intake, state, selection, delivery, reconciliation, and GitHub Project integration</p>
 <p>Work Management is the governed KIS system for capturing, classifying, selecting, executing, verifying, and closing work across registered projects.</p>
-<p>This publication follows `KIS-DOC-CON-POL-001` as a `human_readable_specification`. MCP 2026 applies only within its bounded protocol domain, Google guidance affects presentation only, and implementation references cannot create or override Work Management facts.</p>
+<p>This publication follows <code>KIS-DOC-CON-POL-001</code> as a <code>human_readable_specification</code>. MCP 2026 applies only within its bounded protocol domain, Google guidance affects presentation only, and implementation references cannot create or override Work Management facts.</p>
 <p>The key words &quot;MUST&quot;, &quot;MUST NOT&quot;, &quot;SHOULD&quot;, &quot;SHOULD NOT&quot;, &quot;MAY&quot;, and &quot;OPTIONAL&quot; are normative when they appear in all capitals.</p>
 <h2>Overview</h2>
 <p>Work Management gives work one shared lifecycle and one explicit authority model. It separates facts that Work Management may change from evidence observed from GitHub, repository change governance, verification, and derived delivery state.</p>
@@ -11,17 +11,19 @@
 <p>The captured live GitHub Project evidence is observed. Inventory is complete, and the configured Project schema is ready with no reported field, option, type, or view drift.</p>
 <h2>Key concepts</h2>
 <ul>
-<li>**Command data** is changed through Work Management operations, such as status, priority, effort, claims, holds, and deferrals.</li>
-<li>**Evidence data** is observed or projected from its owning source, such as GitHub source identity, repository change facts, verification, and delivery state.</li>
-<li>**Handoff data** begins as Work Management planning data and becomes repository-owned evidence when a governed change takes authority for it.</li>
-<li>**Generated documentation** explains and indexes the governed model. It never writes facts back to Work Management or its sources.</li>
+<li><strong>Command data</strong> is changed through Work Management operations, such as status, priority, effort, claims, holds, and deferrals.</li>
+<li><strong>Evidence data</strong> is observed or projected from its owning source, such as GitHub source identity, repository change facts, verification, and delivery state.</li>
+<li><strong>Handoff data</strong> begins as Work Management planning data and becomes repository-owned evidence when a governed change takes authority for it.</li>
+<li><strong>Generated documentation</strong> explains and indexes the governed model. It never writes facts back to Work Management or its sources.</li>
 </ul>
 <h2>How work moves</h2>
-<p>1. Capture work and classify it before it enters the executable queue.</p>
-<p>2. Admit work to Ready only after the required source sections, Project fields, and dependency evidence are present.</p>
-<p>3. Select Ready work deterministically, then establish an execution claim before activation.</p>
-<p>4. Track repository delivery and source verification as evidence without replacing the Work lifecycle state.</p>
-<p>5. After merge, reconcile any required documentation and live-verification obligations before the configured completion gates allow Done.</p>
+<ol>
+<li>Capture work and classify it before it enters the executable queue.</li>
+<li>Admit work to Ready only after the required source sections, Project fields, and dependency evidence are present.</li>
+<li>Select Ready work deterministically, then establish an execution claim before activation.</li>
+<li>Track repository delivery and source verification as evidence without replacing the Work lifecycle state.</li>
+<li>After merge, reconcile any required documentation and live-verification obligations before the configured completion gates allow Done.</li>
+</ol>
 <h2>Detailed specification</h2>
 <ul>
 <li><a href="/kis-mcp-doc/specification/work-management/002-work-management-domain-model/">Work Management domain model</a></li>

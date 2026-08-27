@@ -2,11 +2,13 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Work Management examples</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/docs/">Docs</a> / Work Management Documentation</div><h1>Work Management examples</h1>
 <p>These examples compose canonical operations and states; they do not create new transitions or authority.</p>
 <h2>Example: take and complete ready work</h2>
-<p>1. Confirm the item satisfies Ready metadata and dependency requirements.</p>
-<p>2. Use `take_next_work` or `claim_work` to establish the execution claim.</p>
-<p>3. Perform the governed repository change while Work remains evidence-linked to its delivery stage.</p>
-<p>4. Run source verification for the exact delivery identity.</p>
-<p>5. After merge, complete required documentation reconciliation and any required commissioning.</p>
-<p>6. Use `complete_work` only after the completion guards are satisfied.</p>
+<ol>
+<li>Confirm the item satisfies Ready metadata and dependency requirements.</li>
+<li>Use <code>take_next_work</code> or <code>claim_work</code> to establish the execution claim.</li>
+<li>Perform the governed repository change while Work remains evidence-linked to its delivery stage.</li>
+<li>Run source verification for the exact delivery identity.</li>
+<li>After merge, complete required documentation reconciliation and any required commissioning.</li>
+<li>Use <code>complete_work</code> only after the completion guards are satisfied.</li>
+</ol>
 <p>If a guard rejects a transition, resolve its reason code instead of forcing the state.</p>
 <p>For exact transitions, guards, fields, and operation contracts, use the <a href="/kis-mcp-doc/specification/work-management/001-specification/">Work Management Specification</a>.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/docs/work-management/005-troubleshooting/">Previous</a> </nav></main></body></html>

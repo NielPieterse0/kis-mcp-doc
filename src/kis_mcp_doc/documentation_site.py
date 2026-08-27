@@ -14,6 +14,11 @@ _REGISTRY = "mrd/documentation/04-publication-family-registry.mrd.json"
 _SITE_SOURCE = "src/kis_mcp_doc/documentation_site.py"
 _LINK_RE = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
 _HEADING_RE = re.compile(r"^(#{1,6})\s+(.+)$")
+_ORDERED_LIST_RE = re.compile(r"^\d+\.\s+(.+)$")
+_TABLE_SEPARATOR_RE = re.compile(r"^\s*\|?\s*:?-{3,}:?\s*(?:\|\s*:?-{3,}:?\s*)+\|?\s*$")
+_SAFE_ANCHOR_RE = re.compile(r'^<(span|div) id="([A-Za-z0-9_.:-]+)"\s*(?:></\1>|/>)$')
+_SAFE_INLINE_ANCHOR_RE = re.compile(r'<span id="([A-Za-z0-9_.:-]+)"></span>')
+_CODE_SPAN_RE = re.compile(r"`([^`]+)`")
 
 
 def _load_json(path: Path) -> dict[str, Any]:
@@ -177,44 +182,153 @@ def _rewrite_link(source: Path, target: str, source_to_route: dict[str, str], ro
     return _public_url(route, base_path) + fragment if route else target
 
 
+def _inline_html(text: str, source: Path, source_to_route: dict[str, str], root: Path, base_path: str) -> str:
+    placeholders: dict[str, str] = {}
+
+    def stash(value: str) -> str:
+        token = f"\x00{len(placeholders)}\x00"
+        placeholders[token] = value
+        return token
+
+    def code_replace(match: re.Match[str]) -> str:
+        return stash(f"<code>{html.escape(match.group(1))}</code>")
+
+    protected = _SAFE_INLINE_ANCHOR_RE.sub(lambda match: stash(f'<span id="{html.escape(match.group(1), quote=True)}"></span>'), text)
+    protected = _CODE_SPAN_RE.sub(code_replace, protected)
+    links: list[tuple[str, str, str]] = []
+
+    def link_replace(match: re.Match[str]) -> str:
+        token = f"\x01{len(links)}\x01"
+        links.append((token, match.group(1), match.group(2)))
+        return token
+
+    protected = _LINK_RE.sub(link_replace, protected)
+    rendered = html.escape(protected)
+    rendered = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", rendered)
+    rendered = re.sub(r"(?<!\*)\*([^*]+)\*(?!\*)", r"<em>\1</em>", rendered)
+    for token, label, target in links:
+        href = html.escape(_rewrite_link(source, target, source_to_route, root, base_path), quote=True)
+        rendered = rendered.replace(html.escape(token), f'<a href="{href}">{html.escape(label)}</a>')
+    for token, value in placeholders.items():
+        rendered = rendered.replace(html.escape(token), value)
+    return rendered
+
+
+def _table_cells(raw: str) -> list[str]:
+    value = raw.strip().strip("|")
+    return [cell.strip().replace("\\|", "|") for cell in re.split(r"(?<!\\)\|", value)]
+
+
 def _markdown_html(text: str, source: Path, source_to_route: dict[str, str], root: Path, base_path: str) -> str:
-    lines: list[str] = []
-    in_list = False
-    for raw in text.splitlines():
-        if raw.startswith("<!--"):
+    source_lines = text.splitlines()
+    output: list[str] = []
+    paragraph: list[str] = []
+    list_kind: str | None = None
+    index = 0
+
+    def flush_paragraph() -> None:
+        if paragraph:
+            output.append(f"<p>{_inline_html(' '.join(part.strip() for part in paragraph), source, source_to_route, root, base_path)}</p>")
+            paragraph.clear()
+
+    def close_list() -> None:
+        nonlocal list_kind
+        if list_kind:
+            output.append(f"</{list_kind}>")
+            list_kind = None
+
+    while index < len(source_lines):
+        raw = source_lines[index]
+        stripped = raw.strip()
+        if stripped.startswith("<!--"):
+            flush_paragraph()
+            close_list()
+            while index < len(source_lines) and "-->" not in source_lines[index]:
+                index += 1
+            index += 1
+            continue
+        if stripped.startswith("```"):
+            flush_paragraph()
+            close_list()
+            language = stripped[3:].strip()
+            code_lines: list[str] = []
+            index += 1
+            while index < len(source_lines) and not source_lines[index].strip().startswith("```"):
+                code_lines.append(source_lines[index])
+                index += 1
+            class_name = f' class="language-{html.escape(language, quote=True)}"' if language else ""
+            output.append(f"<pre><code{class_name}>{html.escape(chr(10).join(code_lines))}</code></pre>")
+            index += 1
+            continue
+        safe_anchor = _SAFE_ANCHOR_RE.match(stripped)
+        if safe_anchor:
+            flush_paragraph()
+            close_list()
+            tag, identifier = safe_anchor.groups()
+            output.append(f'<{tag} id="{html.escape(identifier, quote=True)}"></{tag}>')
+            index += 1
             continue
         heading = _HEADING_RE.match(raw)
         if heading:
-            if in_list:
-                lines.append("</ul>")
-                in_list = False
+            flush_paragraph()
+            close_list()
             level = len(heading.group(1))
-            lines.append(f"<h{level}>{html.escape(heading.group(2))}</h{level}>")
+            output.append(f"<h{level}>{_inline_html(heading.group(2), source, source_to_route, root, base_path)}</h{level}>")
+            index += 1
             continue
-        if raw.startswith("- "):
-            if not in_list:
-                lines.append("<ul>")
-                in_list = True
-            body = html.escape(raw[2:])
-            for label, target in _LINK_RE.findall(raw[2:]):
-                escaped = html.escape(f"[{label}]({target})")
-                href = html.escape(_rewrite_link(source, target, source_to_route, root, base_path), quote=True)
-                body = body.replace(escaped, f'<a href="{href}">{html.escape(label)}</a>')
-            lines.append(f"<li>{body}</li>")
+        if stripped in {"---", "***", "___"}:
+            flush_paragraph()
+            close_list()
+            output.append("<hr>")
+            index += 1
             continue
-        if in_list:
-            lines.append("</ul>")
-            in_list = False
-        if raw.strip():
-            body = html.escape(raw)
-            for label, target in _LINK_RE.findall(raw):
-                escaped = html.escape(f"[{label}]({target})")
-                href = html.escape(_rewrite_link(source, target, source_to_route, root, base_path), quote=True)
-                body = body.replace(escaped, f'<a href="{href}">{html.escape(label)}</a>')
-            lines.append(f"<p>{body}</p>")
-    if in_list:
-        lines.append("</ul>")
-    return "\n".join(lines)
+        if stripped.startswith("|") and index + 1 < len(source_lines) and _TABLE_SEPARATOR_RE.match(source_lines[index + 1]):
+            flush_paragraph()
+            close_list()
+            headers = _table_cells(raw)
+            index += 2
+            rows: list[list[str]] = []
+            while index < len(source_lines) and source_lines[index].strip().startswith("|"):
+                rows.append(_table_cells(source_lines[index]))
+                index += 1
+            output.append("<table><thead><tr>" + "".join(f"<th>{_inline_html(cell, source, source_to_route, root, base_path)}</th>" for cell in headers) + "</tr></thead><tbody>")
+            for row in rows:
+                output.append("<tr>" + "".join(f"<td>{_inline_html(cell, source, source_to_route, root, base_path)}</td>" for cell in row) + "</tr>")
+            output.append("</tbody></table>")
+            continue
+        unordered = stripped.startswith("- ") or stripped.startswith("* ")
+        ordered = _ORDERED_LIST_RE.match(stripped)
+        if unordered or ordered:
+            flush_paragraph()
+            kind = "ul" if unordered else "ol"
+            if list_kind != kind:
+                close_list()
+                output.append(f"<{kind}>")
+                list_kind = kind
+            item = stripped[2:] if unordered else ordered.group(1)
+            output.append(f"<li>{_inline_html(item, source, source_to_route, root, base_path)}</li>")
+            index += 1
+            continue
+        if stripped.startswith(">"):
+            flush_paragraph()
+            close_list()
+            quote_lines: list[str] = []
+            while index < len(source_lines) and source_lines[index].strip().startswith(">"):
+                quote_lines.append(source_lines[index].strip()[1:].strip())
+                index += 1
+            output.append(f"<blockquote><p>{_inline_html(' '.join(quote_lines), source, source_to_route, root, base_path)}</p></blockquote>")
+            continue
+        if not stripped:
+            flush_paragraph()
+            close_list()
+            index += 1
+            continue
+        close_list()
+        paragraph.append(raw)
+        index += 1
+    flush_paragraph()
+    close_list()
+    return "\n".join(output)
 
 
 def _page(title: str, body: str, breadcrumb: str, base_path: str, prev_next: str = "") -> bytes:
@@ -271,7 +385,7 @@ def render_documentation_site(root: Path) -> tuple[dict[str, bytes], dict[str, A
         home_sections.append(f'<section><h2><a href="{href}">{surface.title()}</a></h2></section>')
     home_body = f'<h1>{html.escape(config["title"])}</h1><p>{html.escape(config.get("subtitle", ""))}</p>' + "".join(home_sections)
     files["index.html"] = _page(config["title"], home_body, "Home", base_path)
-    files["assets/site.css"] = b"body{font-family:system-ui,sans-serif;max-width:72rem;margin:auto;padding:1rem;line-height:1.55}header{display:flex;justify-content:space-between;border-bottom:1px solid #ccc;padding-bottom:1rem}main{padding-top:1rem}.breadcrumbs,.prev-next{margin:1rem 0;color:#555}pre{overflow:auto;background:#f6f8fa;padding:1rem}nav a{margin-right:.75rem}\n"
+    files["assets/site.css"] = b"body{font-family:system-ui,sans-serif;max-width:72rem;margin:auto;padding:1rem;line-height:1.55}header{display:flex;justify-content:space-between;gap:1rem;border-bottom:1px solid #ccc;padding-bottom:1rem}main{padding-top:1rem}.breadcrumbs,.prev-next{margin:1rem 0;color:#555}nav a{margin-right:.75rem}table{width:100%;border-collapse:collapse;margin:1rem 0;display:block;overflow-x:auto}th,td{border:1px solid #d0d7de;padding:.5rem .75rem;text-align:left;vertical-align:top}th{background:#f6f8fa}pre{overflow:auto;background:#f6f8fa;padding:1rem;border-radius:.25rem}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:#f6f8fa;padding:.1rem .25rem;border-radius:.2rem}pre code{background:transparent;padding:0}blockquote{margin:1rem 0;padding:.25rem 1rem;border-left:.25rem solid #d0d7de;color:#57606a}hr{border:0;border-top:1px solid #d0d7de;margin:2rem 0}li+li{margin-top:.25rem}@media(max-width:48rem){header{display:block}header nav{margin-top:.5rem}}\n"
     files["routes.json"] = (json.dumps(entries, indent=2, ensure_ascii=False, sort_keys=True) + "\n").encode("utf-8")
     search_relative = config.get("search_index")
     if isinstance(search_relative, str):

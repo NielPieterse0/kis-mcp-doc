@@ -1,44 +1,46 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Next-work selection</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/specification/">Specification</a> / KIS Work Management Specification</div><h1>Next-work selection</h1>
-<p>&lt;div id=&quot;enable-section-numbers&quot; /&gt;</p>
+<div id="enable-section-numbers"></div>
 <p><a href="/kis-mcp-doc/specification/work-management/004-work-operations/">Previous: Work operations</a> | <a href="/kis-mcp-doc/specification/work-management/006-authority-and-reconciliation-policy/">Next: Authority and reconciliation policy</a> | <a href="/kis-mcp-doc/specification/work-management/">Index</a></p>
-<p>&lt;span id=&quot;mrd-kis-work-dec-scr-001&quot;&gt;&lt;/span&gt;</p>
+<span id="mrd-kis-work-dec-scr-001"></span>
 <p>Selection is deterministic. Work Management first applies the eligibility rules for the active profile, then ranks only the candidates that remain.</p>
 <h2>Selection procedure</h2>
-<p>1. Keep only candidates whose state is `ready`.</p>
-<p>2. Apply the active profile&#x27;s rules in their declared order. These rules check source shape, open state, project scope, required metadata, claims, approval, dependency evidence, and blockers as applicable to that profile.</p>
-<p>3. Exclude any candidate that fails a rule and return the rule&#x27;s stable reason code.</p>
-<p>4. Rank the remaining candidates by `priority`, `effort`, `created_order`, `record_id`.</p>
-<p>Priority order is `critical`, `high`, `medium`, `low`. Effort order is `tiny`, `small`, `medium`, `large`. Dependency evidence is classified as `unavailable`, `partial`, `observed`.</p>
+<ol>
+<li>Keep only candidates whose state is <code>ready</code>.</li>
+<li>Apply the active profile&#x27;s rules in their declared order. These rules check source shape, open state, project scope, required metadata, claims, approval, dependency evidence, and blockers as applicable to that profile.</li>
+<li>Exclude any candidate that fails a rule and return the rule&#x27;s stable reason code.</li>
+<li>Rank the remaining candidates by <code>priority</code>, <code>effort</code>, <code>created_order</code>, <code>record_id</code>.</li>
+</ol>
+<p>Priority order is <code>critical</code>, <code>high</code>, <code>medium</code>, <code>low</code>. Effort order is <code>tiny</code>, <code>small</code>, <code>medium</code>, <code>large</code>. Dependency evidence is classified as <code>unavailable</code>, <code>partial</code>, <code>observed</code>.</p>
 <h2>Selection inputs</h2>
-<p>| Input | Project field |</p>
-<p>|---|---|</p>
-<p>| Blocked by | Blocked By |</p>
-<p>| Created | Created |</p>
-<p>| Effort | Effort |</p>
-<p>| Execution owner | Execution Owner |</p>
-<p>| Priority | Priority |</p>
-<p>| State | Status |</p>
+<table><thead><tr><th>Input</th><th>Project field</th></tr></thead><tbody>
+<tr><td>Blocked by</td><td>Blocked By</td></tr>
+<tr><td>Created</td><td>Created</td></tr>
+<tr><td>Effort</td><td>Effort</td></tr>
+<tr><td>Execution owner</td><td>Execution Owner</td></tr>
+<tr><td>Priority</td><td>Priority</td></tr>
+<tr><td>State</td><td>Status</td></tr>
+</tbody></table>
 <h2>Selection profiles</h2>
 <p>Profiles reuse the same rule catalog but apply different subsets and preserve profile-specific failure reasons where the source contract requires them.</p>
-<p>| Profile | Rules in order | Reason overrides |</p>
-<p>|---|---|---|</p>
-<p>| Normalized domain | `project_match`, `eligible_state`, `unclaimed`, `approval_complete`, `dependencies_clear` | `dependencies_clear` maps to `dependency_incomplete:{dependency_id}`; `eligible_state` maps to `state_not_executable` |</p>
-<p>| Provider project | `source_issue`, `source_open`, `eligible_state`, `valid_priority`, `valid_effort`, `required_fields`, `unclaimed`, `dependency_evidence`, `dependencies_clear` | `dependencies_clear` maps to `native_dependency_blocking`; `eligible_state` maps to `state_not_ready` |</p>
+<table><thead><tr><th>Profile</th><th>Rules in order</th><th>Reason overrides</th></tr></thead><tbody>
+<tr><td>Normalized domain</td><td><code>project_match</code>, <code>eligible_state</code>, <code>unclaimed</code>, <code>approval_complete</code>, <code>dependencies_clear</code></td><td><code>dependencies_clear</code> maps to <code>dependency_incomplete:{dependency_id}</code>; <code>eligible_state</code> maps to <code>state_not_executable</code></td></tr>
+<tr><td>Provider project</td><td><code>source_issue</code>, <code>source_open</code>, <code>eligible_state</code>, <code>valid_priority</code>, <code>valid_effort</code>, <code>required_fields</code>, <code>unclaimed</code>, <code>dependency_evidence</code>, <code>dependencies_clear</code></td><td><code>dependencies_clear</code> maps to <code>native_dependency_blocking</code>; <code>eligible_state</code> maps to <code>state_not_ready</code></td></tr>
+</tbody></table>
 <h2>Rule catalog</h2>
-<p>| Rule | Kind | Requirement | Failure reason |</p>
-<p>|---|---|---|---|</p>
-<p>| &lt;span id=&quot;fact-selection-rule-sel-001&quot;&gt;&lt;/span&gt;`SEL-001` | `source_issue` | Only issue records are eligible in the provider-backed next-work queue. | `not_issue` |</p>
-<p>| &lt;span id=&quot;fact-selection-rule-sel-002&quot;&gt;&lt;/span&gt;`SEL-002` | `source_open` | Provider-backed source issues must remain open. | `source_not_open` |</p>
-<p>| &lt;span id=&quot;fact-selection-rule-sel-003&quot;&gt;&lt;/span&gt;`SEL-003` | `project_match` | Normalized-domain selection respects an explicit project scope. | `project_mismatch` |</p>
-<p>| &lt;span id=&quot;fact-selection-rule-sel-004&quot;&gt;&lt;/span&gt;`SEL-004` | `eligible_state` | Candidate state must be one of the configured eligible states; domain adapters may preserve their existing equivalent reason code. | `state_not_ready` |</p>
-<p>| &lt;span id=&quot;fact-selection-rule-sel-005&quot;&gt;&lt;/span&gt;`SEL-005` | `valid_priority` | Priority must be present in the canonical priority order. | `missing_or_invalid:{field}` |</p>
-<p>| &lt;span id=&quot;fact-selection-rule-sel-006&quot;&gt;&lt;/span&gt;`SEL-006` | `valid_effort` | Effort must be present in the canonical effort order. | `missing_or_invalid:{field}` |</p>
-<p>| &lt;span id=&quot;fact-selection-rule-sel-007&quot;&gt;&lt;/span&gt;`SEL-007` | `required_fields` | Configured readiness fields must be present before provider-backed selection. | `missing_required:{field}` |</p>
-<p>| &lt;span id=&quot;fact-selection-rule-sel-008&quot;&gt;&lt;/span&gt;`SEL-008` | `unclaimed` | Already claimed work is excluded from next-work selection. | `already_claimed:{owner}` |</p>
-<p>| &lt;span id=&quot;fact-selection-rule-sel-009&quot;&gt;&lt;/span&gt;`SEL-009` | `approval_complete` | Normalized-domain records that require approval must have completed approval. | `approval_incomplete` |</p>
-<p>| &lt;span id=&quot;fact-selection-rule-sel-010&quot;&gt;&lt;/span&gt;`SEL-010` | `dependency_evidence` | Required provider dependency evidence must be observable. | `dependency_evidence_unavailable` |</p>
-<p>| &lt;span id=&quot;fact-selection-rule-sel-011&quot;&gt;&lt;/span&gt;`SEL-011` | `dependencies_clear` | Provider-native blocker evidence must be empty; normalized-domain adapters preserve dependency-specific reason codes. | `native_dependency_blocking` |</p>
-<p>| &lt;span id=&quot;fact-selection-rule-sel-012&quot;&gt;&lt;/span&gt;`SEL-012` | `ranking` | Eligible candidates rank by Priority, Effort, creation order, then stable record identity. | None |</p>
+<table><thead><tr><th>Rule</th><th>Kind</th><th>Requirement</th><th>Failure reason</th></tr></thead><tbody>
+<tr><td><span id="fact-selection-rule-sel-001"></span><code>SEL-001</code></td><td><code>source_issue</code></td><td>Only issue records are eligible in the provider-backed next-work queue.</td><td><code>not_issue</code></td></tr>
+<tr><td><span id="fact-selection-rule-sel-002"></span><code>SEL-002</code></td><td><code>source_open</code></td><td>Provider-backed source issues must remain open.</td><td><code>source_not_open</code></td></tr>
+<tr><td><span id="fact-selection-rule-sel-003"></span><code>SEL-003</code></td><td><code>project_match</code></td><td>Normalized-domain selection respects an explicit project scope.</td><td><code>project_mismatch</code></td></tr>
+<tr><td><span id="fact-selection-rule-sel-004"></span><code>SEL-004</code></td><td><code>eligible_state</code></td><td>Candidate state must be one of the configured eligible states; domain adapters may preserve their existing equivalent reason code.</td><td><code>state_not_ready</code></td></tr>
+<tr><td><span id="fact-selection-rule-sel-005"></span><code>SEL-005</code></td><td><code>valid_priority</code></td><td>Priority must be present in the canonical priority order.</td><td><code>missing_or_invalid:{field}</code></td></tr>
+<tr><td><span id="fact-selection-rule-sel-006"></span><code>SEL-006</code></td><td><code>valid_effort</code></td><td>Effort must be present in the canonical effort order.</td><td><code>missing_or_invalid:{field}</code></td></tr>
+<tr><td><span id="fact-selection-rule-sel-007"></span><code>SEL-007</code></td><td><code>required_fields</code></td><td>Configured readiness fields must be present before provider-backed selection.</td><td><code>missing_required:{field}</code></td></tr>
+<tr><td><span id="fact-selection-rule-sel-008"></span><code>SEL-008</code></td><td><code>unclaimed</code></td><td>Already claimed work is excluded from next-work selection.</td><td><code>already_claimed:{owner}</code></td></tr>
+<tr><td><span id="fact-selection-rule-sel-009"></span><code>SEL-009</code></td><td><code>approval_complete</code></td><td>Normalized-domain records that require approval must have completed approval.</td><td><code>approval_incomplete</code></td></tr>
+<tr><td><span id="fact-selection-rule-sel-010"></span><code>SEL-010</code></td><td><code>dependency_evidence</code></td><td>Required provider dependency evidence must be observable.</td><td><code>dependency_evidence_unavailable</code></td></tr>
+<tr><td><span id="fact-selection-rule-sel-011"></span><code>SEL-011</code></td><td><code>dependencies_clear</code></td><td>Provider-native blocker evidence must be empty; normalized-domain adapters preserve dependency-specific reason codes.</td><td><code>native_dependency_blocking</code></td></tr>
+<tr><td><span id="fact-selection-rule-sel-012"></span><code>SEL-012</code></td><td><code>ranking</code></td><td>Eligible candidates rank by Priority, Effort, creation order, then stable record identity.</td><td>None</td></tr>
+</tbody></table>
 <h2>Source and authority</h2>
-<p>This page projects `KIS-WORK-DEC-SCR-001` version `1.0.0`. The MRD remains authoritative; this generated page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/specification/work-management/004-work-operations/">Previous</a> <a rel="next" href="/kis-mcp-doc/specification/work-management/006-authority-and-reconciliation-policy/">Next</a></nav></main></body></html>
+<p>This page projects <code>KIS-WORK-DEC-SCR-001</code> version <code>1.0.0</code>. The MRD remains authoritative; this generated page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/specification/work-management/004-work-operations/">Previous</a> <a rel="next" href="/kis-mcp-doc/specification/work-management/006-authority-and-reconciliation-policy/">Next</a></nav></main></body></html>
