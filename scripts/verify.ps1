@@ -135,6 +135,16 @@ try {
         throw "Documentation site generated-output verification failed with exit code $LASTEXITCODE"
     }
 
+    & $PythonCommand -m kis_mcp_doc --root . release-validate
+    if ($LASTEXITCODE -ne 0) {
+        throw "Documentation release validation failed with exit code $LASTEXITCODE"
+    }
+
+    & $PythonCommand -m kis_mcp_doc --root . release-check-generated
+    if ($LASTEXITCODE -ne 0) {
+        throw "Documentation release generated-output verification failed with exit code $LASTEXITCODE"
+    }
+
     & git diff --check
     if ($LASTEXITCODE -ne 0) {
         throw "Whitespace verification failed with exit code $LASTEXITCODE"

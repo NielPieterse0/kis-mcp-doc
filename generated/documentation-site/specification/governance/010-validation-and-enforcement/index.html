@@ -1,7 +1,7 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Validation and Enforcement</title><link rel="stylesheet" href="/assets/site.css"></head><body><header><a href="/">KIS Documentation</a><nav><a href="/docs/">Docs</a> <a href="/specification/">Specification</a> <a href="/reference/">Reference</a> <a href="/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/">Home</a> / <a href="/specification/">Specification</a> / kis-op Governance Specification</div><h1>Validation and Enforcement</h1>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Validation and Enforcement</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/specification/">Specification</a> / kis-op Governance Specification</div><h1>Validation and Enforcement</h1>
 <p>&lt;div id=&quot;enable-section-numbers&quot; /&gt;</p>
-<p><a href="/specification/governance/009-kis-op-governance-behavior/">Previous: kis-op Governance Behavior</a> | <a href="/specification/governance/">Index</a></p>
+<p><a href="/kis-mcp-doc/specification/governance/009-kis-op-governance-behavior/">Previous: kis-op Governance Behavior</a> | <a href="/kis-mcp-doc/specification/governance/">Index</a></p>
 <p>Governance validation combines structural checks, deterministic semantic checks, workflow controls, generation checks, and explicit review gates. Blocking failures fail closed and produce diagnosable results.</p>
 <h2>Validation model</h2>
 <p>Validation first establishes that the governance set is structurally valid, then evaluates the cross-record semantics that depend on that structure. A blocking failure prevents the affected governance state from being accepted as valid and produces machine-readable diagnostics.</p>
@@ -82,7 +82,7 @@
 <p>A validation result has one of these statuses: `valid`, `invalid`. It reports these check keys: `classification`, `applicability`, `ownership`, `layering`, `dependencies`, `provenance`, `lifecycle`, `operator_behavior`, `schema`. Machine-readable diagnostics on failure are required.</p>
 <h2>Stable reason codes</h2>
 <p>Validation failures use stable reason codes so callers can diagnose failure without parsing prose. The complete catalog is exact generated reference rather than part of the conceptual flow.</p>
-<p>See the <a href="/specification/governance/022-validation-reason-codes/">validation reason-code reference</a> for the complete list.</p>
+<p>See the <a href="/kis-mcp-doc/specification/governance/022-validation-reason-codes/">validation reason-code reference</a> for the complete list.</p>
 <h2>Requirement traceability</h2>
 <p>The following table preserves the stable rule identifier and enforcement binding for each requirement stated in this chapter:</p>
 <p>| Rule | Enforcement |</p>
@@ -93,4 +93,4 @@
 <p>| `KIS-MRD-VAL-004` | `schema` |</p>
 <p>| `KIS-MRD-VAL-005` | `validator` |</p>
 <h2>Source and authority</h2>
-<p>This page projects `KIS-KNOW-EVL-TST-001` version `2.0.0`. The MRD remains authoritative; this page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/specification/governance/009-kis-op-governance-behavior/">Previous</a> <a rel="next" href="/specification/governance/020-applicability-catalog/">Next</a></nav></main></body></html>
+<p>This page projects `KIS-KNOW-EVL-TST-001` version `2.0.0`. The MRD remains authoritative; this page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/specification/governance/009-kis-op-governance-behavior/">Previous</a> <a rel="next" href="/kis-mcp-doc/specification/governance/020-applicability-catalog/">Next</a></nav></main></body></html>

@@ -1,14 +1,14 @@
 {
-  "bundle_sha256": "7970564de3c30eaff7864d0dfe657ac2cb12690042037bcd94617dca1a81b23b",
+  "bundle_sha256": "311ed41cda5cb6237de3df4e444119f2cd73ec0d41b169d01c13ff691db56a6c",
   "contract": {
     "name": "kis-documentation-site",
     "version": 1
   },
   "files": [
     {
-      "bytes": 589,
+      "bytes": 618,
       "path": "assets/search.js",
-      "sha256": "1130efbeea5b5e46968c2c0c37b3bcc3cb7931599b745a8745ed48c20d085b22"
+      "sha256": "16405e462eada0ec967f9724739657d6167d7bd080448690b8f5761c224e6e12"
     },
     {
       "bytes": 343,
@@ -16,139 +16,139 @@
       "sha256": "531936de31815ddffe4f7f6858e61c01b14d5a84d47ba3ba22083c9fa09e3d7a"
     },
     {
-      "bytes": 1497,
+      "bytes": 1629,
       "path": "docs/governance/002-understand-authority/index.html",
-      "sha256": "a0fa3836350a5725f2946cf40e4bd5dea4e1283209db4f4300c559f63b1b80d9"
+      "sha256": "ebaea650124cfce0303b70dfb900c876960e3e738983f63ab71a52a7cb4da8bb"
     },
     {
-      "bytes": 3020,
+      "bytes": 3152,
       "path": "docs/governance/003-apply-governance/index.html",
-      "sha256": "58673073e149d0ee9cd7bb51d043b7c655e67d3b71244f9d610eacc4032c3151"
+      "sha256": "5265ada7c4ad4e1b7342026a1f957f33dfca7fdca39e83783afe66fa0370c696"
     },
     {
-      "bytes": 1401,
+      "bytes": 1533,
       "path": "docs/governance/004-mrd-lifecycle/index.html",
-      "sha256": "a96b19885de7cd862aada0042622ce99adaaa90627fe50c493ec927280e88be5"
+      "sha256": "6541ca07f1dffc33c0074bc3449c84f8c7b9d1009320a2a16ffdda26ff70951e"
     },
     {
-      "bytes": 2754,
+      "bytes": 2886,
       "path": "docs/governance/005-troubleshooting/index.html",
-      "sha256": "d6466e31d863951dd3575ecf139fc2ca504b9a2e45b861f26c9b3f61a08dc717"
+      "sha256": "056271c01f2f9321fa36c6610f7cd20b4d16a47b7b37ad1ab66a3e9bcd6a1c7a"
     },
     {
-      "bytes": 1542,
+      "bytes": 1662,
       "path": "docs/governance/006-examples/index.html",
-      "sha256": "9f9ea96ebe4a489ca64a29bede7672a317db37899cdb4f0ab14f12a1cdf0046b"
+      "sha256": "4646774585da281d1c99b2d6e56099c1b4ae525a3be5052e0c134fa1fde09468"
     },
     {
-      "bytes": 1569,
+      "bytes": 1749,
       "path": "docs/governance/index.html",
-      "sha256": "b6ff7b278fa622173d10e0b27cf66290a2c11098338f37e02140fcc570ddc00e"
+      "sha256": "68075f44d1ddce52af292228e6f0a2b5b6b49d172ab7cb007e12dad391a9eff2"
     },
     {
-      "bytes": 643,
+      "bytes": 751,
       "path": "docs/index.html",
-      "sha256": "dffc238240ea77b984a89a75a60681ec217a2d27a82bd03f7f353b8bd6808eda"
+      "sha256": "a2b74ad9609c2bbda34ba873b7a3f9134901fbea54243774bd2662008be61bac"
     },
     {
-      "bytes": 2543,
+      "bytes": 2675,
       "path": "docs/work-management/002-work-lifecycle/index.html",
-      "sha256": "1688218f4785319b2002f813a1303f8edcc01a97fbdbe18108d5c82ea107b464"
+      "sha256": "6ac18ce1748c912736d6a0b934da84c04daebd5f33047f4a7006a3eaa96d6678"
     },
     {
-      "bytes": 3725,
+      "bytes": 3857,
       "path": "docs/work-management/003-work-operations/index.html",
-      "sha256": "b3c805ee7b084979e62cbdec021be087fd60eb777054f132462089b61d2b2b46"
+      "sha256": "cebe8b432fb270d7162cf25df2c98d6ce543e820e5d71ba742c699366f2bdef9"
     },
     {
-      "bytes": 1592,
+      "bytes": 1724,
       "path": "docs/work-management/004-complete-work/index.html",
-      "sha256": "6edd061e5dad085a571e920fe094029b185fc344ccf1b4d651ad2a751d303241"
+      "sha256": "f50fc2da5a9f0a04d8882c7611c25a9df93914afa832e71f167507801505ebe1"
     },
     {
-      "bytes": 2844,
+      "bytes": 2976,
       "path": "docs/work-management/005-troubleshooting/index.html",
-      "sha256": "5c96614c6d47c39fca03953488b60e15006bb683e78768ee236253407a34cd9d"
+      "sha256": "51af7713023c5504da1d13845dbaa9e20c67009f8ffa2e897589ddb1e256e95d"
     },
     {
-      "bytes": 1643,
+      "bytes": 1763,
       "path": "docs/work-management/006-examples/index.html",
-      "sha256": "dd2822669fb11d653251d5846570308ff77a2b88cd50447ba3f9094c3ecaeea3"
+      "sha256": "4a1ea7dcc90c6ccc8df141dc868605b1d9a346a94cc0cf6b22e28fa507c6cebd"
     },
     {
-      "bytes": 1586,
+      "bytes": 1766,
       "path": "docs/work-management/index.html",
-      "sha256": "16a75c82523310e9ef73c10d89fc61356c351cf51b20d2dae7650566fa54ead4"
+      "sha256": "2ddb0a9107b919915fb593542005d99f6da488da4991f2b0e7bb50e3e5c69aee"
     },
     {
-      "bytes": 818,
+      "bytes": 938,
       "path": "index.html",
-      "sha256": "dec375fbb0065a0d78c18e304ab23023304928d4233f93b81e547119f461f39e"
+      "sha256": "ab59c32b51449aaf6f1d114c4d50db455d74816c644a16680422a71b0adffd9b"
     },
     {
-      "bytes": 14820,
+      "bytes": 14916,
       "path": "reference/documentation-reference-standard/data/reference-registry/index.html",
-      "sha256": "c6614c4edf7b3576e5f02d3298fab2ab4686454f667f0cc5b92c634caeea51e4"
+      "sha256": "e4533a2c148b7a0b0674cbe5445a39d0919b36de3fec9c5328dc32db173ea48a"
     },
     {
-      "bytes": 5972,
+      "bytes": 6068,
       "path": "reference/documentation-reference-standard/manifest/index.html",
-      "sha256": "4d149275bff63b0aa4a85979683adddae0a5eddb8379ea31b3562d8155dbfac6"
+      "sha256": "e5f0c574a37287327e4be515fa24d8908ec09dadf157039e4ffbcbbd5f225e3d"
     },
     {
-      "bytes": 1497,
+      "bytes": 1593,
       "path": "reference/governance-docs/data/source-traceability/index.html",
-      "sha256": "1305264654a91618ff87ec8fdd82ac012150563a79e00bcd96dc93493a14bb68"
+      "sha256": "95426f58b1f0b3140b7c006f9b7d022b967b5563c3b4f9528c893b0300fdd4f8"
     },
     {
-      "bytes": 5898,
+      "bytes": 5994,
       "path": "reference/governance-docs/manifest/index.html",
-      "sha256": "58cb1a4b809665e554db36db25a5e3b44341a4e258d184cdda663c144a3be49d"
+      "sha256": "33e7036a14d0701c20a9d9b09a42ec3dfa73c0a72d244e3cbe15fed629d9c1f3"
     },
     {
-      "bytes": 6624,
+      "bytes": 6720,
       "path": "reference/governance-spec/data/dependency-map/index.html",
-      "sha256": "8a7b18b43e21d4941f8874c0b8bab166d96f69da81b04a41623c1a24725e0ff4"
+      "sha256": "89f2aae2725bb83cd6bf123de60beac44233c5248787a447e37aba15ae921156"
     },
     {
-      "bytes": 5459,
+      "bytes": 5555,
       "path": "reference/governance-spec/data/mrd-index/index.html",
-      "sha256": "4bffc9aac3256be8e546530600ac512fb241f5a2b1c916e3902357f8000681cf"
+      "sha256": "1232964e921892b15e892cd6967ef76a94ed82529a3591189cb4a8a754c56ae3"
     },
     {
-      "bytes": 50590,
+      "bytes": 50686,
       "path": "reference/governance-spec/data/semantic-coverage/index.html",
-      "sha256": "517e76b6be85a227e37f551140eaf9b2e2ea62e8e17523a8fe37e0295dde170d"
+      "sha256": "cc5b0215f7e078a692a1cd24e3834518488fe8e7e4c096e933eda473526b5eda"
     },
     {
-      "bytes": 13293,
+      "bytes": 13389,
       "path": "reference/governance-spec/manifest/index.html",
-      "sha256": "649f36815fea154a11592190ccdb18010bae1244500ae6c24acc0097107d53a8"
+      "sha256": "eeb1ff80344385603490b96356a539efae8b50615f7c9461981db5d96810bcfa"
     },
     {
-      "bytes": 999,
+      "bytes": 1143,
       "path": "reference/index.html",
-      "sha256": "78c42db3f0748e45e157b07f0e038d2c3743131eea821772e7761394ae6452b4"
+      "sha256": "cd55960d7ad7cc464018c66dcab0968e3a86279b6a8bea4540da15f9abebfb09"
     },
     {
-      "bytes": 1579,
+      "bytes": 1675,
       "path": "reference/work-management-docs/data/source-traceability/index.html",
-      "sha256": "884c8a00b1d914b338b73310534e537e8835bb0c137cbb74e1d934f568215d51"
+      "sha256": "eb352060d38ef11cc51b22cbbbfaa586d4efda7422c848c6c67d4f2903cc9fe6"
     },
     {
-      "bytes": 5419,
+      "bytes": 5515,
       "path": "reference/work-management-docs/manifest/index.html",
-      "sha256": "218e1a0bb67e1713c6fea23b0f5349982c51d9fbed08b289bf8cbf9221ad5656"
+      "sha256": "595cfe4c4060af87e2115d82d9c5f3afb8ee0501085ad2ba51af56267e5b06ba"
     },
     {
-      "bytes": 65316,
+      "bytes": 65412,
       "path": "reference/work-management-spec/data/semantic-coverage/index.html",
-      "sha256": "eb92319fcf08b749f3f9f35e4f0275f8fb7ca5cd77643438f42e249a14db585e"
+      "sha256": "a9fbf097e2d5fb3e9dbd9539b9116baa90dce605355dcc69bb7d948932ad0ce4"
     },
     {
-      "bytes": 8987,
+      "bytes": 9083,
       "path": "reference/work-management-spec/manifest/index.html",
-      "sha256": "0ba0b4ca593f486a7d5ee610869201d425e656786185e9aa8bae1a9177be14fd"
+      "sha256": "1487213b58593d28beac772bbd48255bcd02348517774d084e0b54395908dbf7"
     },
     {
       "bytes": 13095,
@@ -161,154 +161,154 @@
       "sha256": "bcf54c28448365f7a04e0915f5cf1e47411ae6bad960f040e0f2e10f071d7e78"
     },
     {
-      "bytes": 698,
+      "bytes": 794,
       "path": "search/index.html",
-      "sha256": "f9cd1d32ee00aa67434b9b4d3b32b42146324827c8a75ab5e62fb285bee68cac"
+      "sha256": "466f7e474555936e8cc711e7cc51c199a507f311ee353a65dfbfcffc6e55b02f"
     },
     {
-      "bytes": 4954,
+      "bytes": 5074,
       "path": "specification/documentation-reference-standard/001-specification/index.html",
-      "sha256": "39d3f4be70a29e0cc51db9d6734dfd310a613b2f376b2ed0c3525d9a061b6eb5"
+      "sha256": "1e623c9289087e0a899a2f55485aca17b3741729535865f3f60fb6fd08159ea9"
     },
     {
-      "bytes": 3372,
+      "bytes": 3480,
       "path": "specification/documentation-reference-standard/002-reference-catalogue/index.html",
-      "sha256": "f547abfffe7da2c713729bba70c43e477a79d586cf4392fe452bd2238a1252cb"
+      "sha256": "481d20bdf941c116f863a79f34a4daa9479a673e2f1eddd1e3972bf25d95ad19"
     },
     {
-      "bytes": 1391,
+      "bytes": 1547,
       "path": "specification/documentation-reference-standard/index.html",
-      "sha256": "945921efd9b3a501c44c5021c02a106d3aa78fcc7a5beb3cc3caa5ddc73b9f8f"
+      "sha256": "00781eacdb9b2bf98dada7e7a16b2ca2b4a399c0b3c4149ceb9dbdb74e3fcfc2"
     },
     {
-      "bytes": 3970,
+      "bytes": 4258,
       "path": "specification/governance/001-specification/index.html",
-      "sha256": "61393c1b939116420120fefec6085fc754a3f8ea01b2ec32a723581e71c6e1a7"
+      "sha256": "fc1d378f4c41ed68f4af889e07d9e67195b4dd9af5e30e26372fdc31edef7265"
     },
     {
-      "bytes": 7763,
+      "bytes": 7919,
       "path": "specification/governance/002-classification/index.html",
-      "sha256": "d0821d0f7a16ca517d132040ff79e3a284d42a7902755911d87d00ad096e8704"
+      "sha256": "7f13a25cb917c1268c1f459fd7e97aa2692b32df505051131efdddd6d8d9b41a"
     },
     {
-      "bytes": 5012,
+      "bytes": 5180,
       "path": "specification/governance/003-applicability-and-selection/index.html",
-      "sha256": "927a563094b3953a20c53ae44472a5e3eccaf09645961c8c53d02dc9380e6d40"
+      "sha256": "d811fb23e2f66364d6e7f47a39a54c6e744a4afc0c1a7f64e99ff3fe23cdd81e"
     },
     {
-      "bytes": 5273,
+      "bytes": 5441,
       "path": "specification/governance/004-authority-ownership-and-relationships/index.html",
-      "sha256": "1dc5381bc19bad6fc473d89ebb6a30425025d3aa0ace6bda053baf49ba460edb"
+      "sha256": "a54f64d8bf24a4d6b9a3ac1f07bdbec6a7b1d3cb97eedbcc8ad2431623807f83"
     },
     {
-      "bytes": 3499,
+      "bytes": 3655,
       "path": "specification/governance/005-layering/index.html",
-      "sha256": "7f5991b9765557ece18550da603665f78220128afdbc6764249ecf82b49f69b6"
+      "sha256": "b6a3ce175f679c2877dca38c0fbb5c6380dc42b2ae1f642a4aa676b8f90a1943"
     },
     {
-      "bytes": 3354,
+      "bytes": 3510,
       "path": "specification/governance/006-dependency-rules/index.html",
-      "sha256": "f4b42639b1433d055e6c39444764e07c6da571225d0c5fdb30ea648094ee6569"
+      "sha256": "d2517d16b113ce8165b89d7a0e826ae8d5f904c9cdb418e948fd98ebc29ef9cb"
     },
     {
-      "bytes": 5166,
+      "bytes": 5322,
       "path": "specification/governance/007-provenance/index.html",
-      "sha256": "fabd603523ba1eabba8c052671bf9802bb395497390f74fce7d6b5f4dc32f932"
+      "sha256": "020574bd02fa00dcacbfb0883f8831203d49e51e30c7b1bdceef2088bd7a10af"
     },
     {
-      "bytes": 4587,
+      "bytes": 4743,
       "path": "specification/governance/008-lifecycle/index.html",
-      "sha256": "8240363b9f206f394724306acdedcfefbbf82694ba7d87f514a80452459dbc09"
+      "sha256": "ff67d6a9ace6e3f4d4c95170daf52aefccde5006480ce00c2926bbe61956ec8f"
     },
     {
-      "bytes": 6070,
+      "bytes": 6226,
       "path": "specification/governance/009-kis-op-governance-behavior/index.html",
-      "sha256": "33b9ff3919f48798e616b8971979cc46b747791acb13fe3c323a52ed082d196d"
+      "sha256": "d6d522dfb92f971bd41ca4d151f3b867081cf3b5847fc86cfea8d5adf167c117"
     },
     {
-      "bytes": 6393,
+      "bytes": 6549,
       "path": "specification/governance/010-validation-and-enforcement/index.html",
-      "sha256": "529194f6c0ce162a7f0887d854376a0f79ab5eb2dd21a932dedad1bc763ae0a1"
+      "sha256": "6063c19e2e5cf8d97f038656a6e8f0873c1b4b3ce4c8f573e74b9cb5a779d4fd"
     },
     {
-      "bytes": 11079,
+      "bytes": 11223,
       "path": "specification/governance/020-applicability-catalog/index.html",
-      "sha256": "0e541b78774b8e4d6a94d0f57c31c5a579ee8949b2a741c820665176fdeea67b"
+      "sha256": "431a5e517049576e9fd58b7a86423db7136e0a5bae520f8637d8e43f8dd2d90d"
     },
     {
-      "bytes": 3397,
+      "bytes": 3541,
       "path": "specification/governance/021-relationship-vocabulary/index.html",
-      "sha256": "0906d20b904114ba73a20deceda1e6586a918d5c889b0be82ce6d975b314815e"
+      "sha256": "0a923f4d5c3d7667f4d0270cb8f9bb813c8d8f58c018fae957f2d3e8a830d77b"
     },
     {
-      "bytes": 5007,
+      "bytes": 5139,
       "path": "specification/governance/022-validation-reason-codes/index.html",
-      "sha256": "ff762555758ee48fa4ea263cab93c0db8c98b75b65c9d8702537f02d78b5577b"
+      "sha256": "17b24abc43f33b3e4244cd110ecd987f7f4ceebd2544993e10b365bddbc0b9f1"
     },
     {
-      "bytes": 2635,
+      "bytes": 2947,
       "path": "specification/governance/index.html",
-      "sha256": "e915308926bb1ed085400ee304026d429fca23c922ba4a6258dd2438d53e5ea1"
+      "sha256": "5748137f5fb82c7e7a8605c75533621931f4b7d7139f7cae87fd65a3e2be2e5d"
     },
     {
-      "bytes": 866,
+      "bytes": 986,
       "path": "specification/index.html",
-      "sha256": "eff6ac182bf9f1772f1d89ebf95c270fb84e61bc10b153ddc4e547558b2724bf"
+      "sha256": "3511b70b310e1095d8deee65e862f748999c7128d821d89f92270705889a3708"
     },
     {
-      "bytes": 4897,
+      "bytes": 5137,
       "path": "specification/work-management/001-specification/index.html",
-      "sha256": "b691c9207fc3951bbd3aa8eaf8acd3eb917157492ffeb94481618fec7442c638"
+      "sha256": "ba565c17ae55a4209bfda1dd37f9782e0575f5792ac1462cd60b2dbca49737e3"
     },
     {
-      "bytes": 2697,
+      "bytes": 2865,
       "path": "specification/work-management/002-work-management-domain-model/index.html",
-      "sha256": "149372835da168f2125d48e966991adc85cecea80ecf067a4326c060dbcc86f1"
+      "sha256": "622585434d6c9fa316dd7f77cb085ecfa75981acf392c4e3598062b1500e7695"
     },
     {
-      "bytes": 14840,
+      "bytes": 14996,
       "path": "specification/work-management/003-work-lifecycle/index.html",
-      "sha256": "8a4b17235b9a60c7c9adc06ef11da88462a5e914da911b437c9f4f06ab7a7ade"
+      "sha256": "7e1fc7509972440003e2cda65437463293315aacbccaadce30158a39799f3df0"
     },
     {
-      "bytes": 5349,
+      "bytes": 5505,
       "path": "specification/work-management/004-work-operations/index.html",
-      "sha256": "7e48d6da3c574f8ca60941e1613c5eba271347920ec67d5f0efcdf83b0538800"
+      "sha256": "34c56601b479d4567d49e8b2ad156e79c8f2fa3716f23cae1de738bd8a9a0c7d"
     },
     {
-      "bytes": 5948,
+      "bytes": 6104,
       "path": "specification/work-management/005-next-work-selection/index.html",
-      "sha256": "b7ba27dd0ae3f0ed69eb141766fd85a0a686896c4fb42eebd4e2dcc8bc6bef38"
+      "sha256": "5ec9eb9cf0251bebec8e4652349e926b837c0c945f50587adb812f9c1c8a5f7c"
     },
     {
-      "bytes": 3420,
+      "bytes": 3588,
       "path": "specification/work-management/006-authority-and-reconciliation-policy/index.html",
-      "sha256": "dbc03daf376bcb6390891a04efc95e7b270b8b82255c84d8d5179e2fdbe890dd"
+      "sha256": "70974bfd60ea73a11020aeed42ecdbcc07e99e20cc6c20f62c641aa7c5a6c447"
     },
     {
-      "bytes": 6033,
+      "bytes": 6225,
       "path": "specification/work-management/007-provider-and-command-plane-boundary/index.html",
-      "sha256": "d8f81332a457fe3264792f2fefb023a5bb74dd058a8b15e9d5d20dddde79d00e"
+      "sha256": "fda5c5f845d941b7f8701936e2efcf5d0a23abdbbb1c99bccb630d5b5a6e292f"
     },
     {
-      "bytes": 2190,
+      "bytes": 2334,
       "path": "specification/work-management/008-work-management-conformance/index.html",
-      "sha256": "6447097858c18248fa4c781816b21b0de0d9fa22961d8061c9e80552b49cfa3a"
+      "sha256": "e023f2a95d734cdb7deb94b3d7ef6a5277e69b878e39c85bc151579b747aac03"
     },
     {
-      "bytes": 28815,
+      "bytes": 28959,
       "path": "specification/work-management/020-work-field-and-vocabulary-reference/index.html",
-      "sha256": "11b1ba78a78582a5e843cf9077c7f29f5a42bd5bac7339561216dabbc70fd93f"
+      "sha256": "bdc6b5d0fdc83a476aa01c9b36b8a598b210f76347f564cb8363061990bb59a8"
     },
     {
-      "bytes": 15473,
+      "bytes": 15605,
       "path": "specification/work-management/021-work-project-configuration-reference/index.html",
-      "sha256": "528731395f217ae218efd5f4c3d41ef4f3ac4575cea24860d90ba34c859d5dc7"
+      "sha256": "30180afd362402c60ed3e0a613fdcb848c584e64f77a58f4e0239ddd7ef518bd"
     },
     {
-      "bytes": 2678,
+      "bytes": 2942,
       "path": "specification/work-management/index.html",
-      "sha256": "fa5ed61c7b24d9677f8f542df188dbb40b44aaccd32284f628957e53ac9a9863"
+      "sha256": "21b09bd89eb3f7d9b03c4fd508f184b96970c6771e976b2c833b8dca8f3e290c"
     }
   ],
   "generator": {
@@ -587,14 +587,14 @@
       "sha256": "171891c0689908f5b074bd587266a22abf13d44a6aa98d35d08234b6cef1fcc9"
     },
     {
-      "bytes": 252,
+      "bytes": 283,
       "path": "publication/documentation-site.json",
-      "sha256": "11ff45a53f56e66338f8ef782e0a10883bec9f4b4fa92b8e1a79ee8b4d5284f6"
+      "sha256": "73b890fa1ba99bf4fb7fb7e0d6b45596873a50d0895d486a79720c65ed3851e5"
     },
     {
-      "bytes": 15981,
+      "bytes": 17278,
       "path": "src/kis_mcp_doc/documentation_site.py",
-      "sha256": "52aca7fcca938e3c7545b37c3b290f99b8552d649c66a80ed4cba71f22b3516e"
+      "sha256": "97f4b63d0ae40c86797b08ecfb2dd15e37f2a253f51a43889a9a56e8ca17e4b9"
     }
   ],
   "registry_sha256": "eee1014e29668f5bae571d1875d4c1481469efd01ab27d3123dfd6eeb1c67472",

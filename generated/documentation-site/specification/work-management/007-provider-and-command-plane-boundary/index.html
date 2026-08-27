@@ -1,7 +1,7 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Provider and command-plane boundary</title><link rel="stylesheet" href="/assets/site.css"></head><body><header><a href="/">KIS Documentation</a><nav><a href="/docs/">Docs</a> <a href="/specification/">Specification</a> <a href="/reference/">Reference</a> <a href="/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/">Home</a> / <a href="/specification/">Specification</a> / KIS Work Management Specification</div><h1>Provider and command-plane boundary</h1>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Provider and command-plane boundary</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/specification/">Specification</a> / KIS Work Management Specification</div><h1>Provider and command-plane boundary</h1>
 <p>&lt;div id=&quot;enable-section-numbers&quot; /&gt;</p>
-<p><a href="/specification/work-management/006-authority-and-reconciliation-policy/">Previous: Authority and reconciliation policy</a> | <a href="/specification/work-management/008-work-management-conformance/">Next: Work Management conformance</a> | <a href="/specification/work-management/">Index</a></p>
+<p><a href="/kis-mcp-doc/specification/work-management/006-authority-and-reconciliation-policy/">Previous: Authority and reconciliation policy</a> | <a href="/kis-mcp-doc/specification/work-management/008-work-management-conformance/">Next: Work Management conformance</a> | <a href="/kis-mcp-doc/specification/work-management/">Index</a></p>
 <p>&lt;span id=&quot;mrd-kis-work-ctr-svc-001&quot;&gt;&lt;/span&gt;</p>
 <p>The command plane defines the work states and fields that KIS may change. The provider boundary observes and mutates GitHub Project only through the configured read and write models; provider state does not redefine repository-owned facts.</p>
 <h2>Authority and handoff flow</h2>
@@ -34,7 +34,7 @@
 <p>The command plane exposes these work states: `inbox`, `triage`, `proposed`, `approved`, `ready`, `active`, `blocked`, `on_hold`, `deferred`, `rejected`, `superseded`, `done`. Delivery uses `none`, `change_created`, `implementing`, `pr_open`, `review`, `ci_pending`, `ci_failed`, `ci_passed`, `merged`, `documentation`, `commissioning`, `complete`.</p>
 <p>The intake alias `todo` maps to `inbox`.</p>
 <h3>Field authority</h3>
-<p>The provider adapter uses the field authority defined by the Work Management domain model; it does not maintain a second authority table. See the <a href="/specification/work-management/002-work-management-domain-model/">Work Management domain model</a> and <a href="/specification/work-management/020-work-field-and-vocabulary-reference/">field reference</a>.</p>
+<p>The provider adapter uses the field authority defined by the Work Management domain model; it does not maintain a second authority table. See the <a href="/kis-mcp-doc/specification/work-management/002-work-management-domain-model/">Work Management domain model</a> and <a href="/kis-mcp-doc/specification/work-management/020-work-field-and-vocabulary-reference/">field reference</a>.</p>
 <h2>Queue and readiness</h2>
 <p>The executable queue accepts state `ready`. It ranks by `priority`, `effort`, `created_order`, `record_id`, using priority order `critical`, `high`, `medium`, `low` and effort order `tiny`, `small`, `medium`, `large`.</p>
 <p>Queue inputs come from **Status**, **Priority**, **Effort**, **Created**, and **Blocked By**.</p>
@@ -45,7 +45,7 @@
 <li>Dependencies are understood.</li>
 </ul>
 <h2>State transitions</h2>
-<p>The provider-facing command plane conforms to the same transition graph as the <a href="/specification/work-management/003-work-lifecycle/">Work lifecycle</a>. It validates that graph; it does not define an independent lifecycle copy.</p>
+<p>The provider-facing command plane conforms to the same transition graph as the <a href="/kis-mcp-doc/specification/work-management/003-work-lifecycle/">Work lifecycle</a>. It validates that graph; it does not define an independent lifecycle copy.</p>
 <h2>Delivery projection</h2>
 <p>**Delivery Stage** carries the derived delivery stage. **Change ID**, **Complexity**, and **Risk Triggers** are projected from repository change governance. The change-created stage is `change_created` and the complete stage is `complete`.</p>
 <h2>Provider contract</h2>
@@ -53,4 +53,4 @@
 <p>Live Project evidence was observed; inventory is complete; the configured Project schema is ready with no field, option, type, or view drift in the captured evidence.</p>
 <p>Command-plane schema version: `1`.</p>
 <h2>Source and authority</h2>
-<p>This page projects `KIS-WORK-CTR-SVC-001` version `1.0.1`. The MRD remains authoritative; this generated page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/specification/work-management/006-authority-and-reconciliation-policy/">Previous</a> <a rel="next" href="/specification/work-management/008-work-management-conformance/">Next</a></nav></main></body></html>
+<p>This page projects `KIS-WORK-CTR-SVC-001` version `1.0.1`. The MRD remains authoritative; this generated page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/specification/work-management/006-authority-and-reconciliation-policy/">Previous</a> <a rel="next" href="/kis-mcp-doc/specification/work-management/008-work-management-conformance/">Next</a></nav></main></body></html>

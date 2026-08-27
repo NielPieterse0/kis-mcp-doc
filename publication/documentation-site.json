@@ -2,7 +2,8 @@
   "schema_version": 1,
   "title": "KIS Documentation",
   "subtitle": "Governed documentation, specifications, and generated reference",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "status": "draft",
+  "base_path": "/kis-mcp-doc",
   "search_index": "generated/documentation-search/search-index.json"
 }
