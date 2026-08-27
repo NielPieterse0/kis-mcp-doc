@@ -129,6 +129,9 @@ def validate_documentation_site(root: Path) -> dict[str, Any]:
         config = _load_json(root / _CONFIG)
     except Exception as error:
         return {"status": "invalid", "diagnostics": [{"code": "SITE_CONFIG_INVALID", "message": str(error)}]}
+    base_path = config.get("base_path", "")
+    if not isinstance(base_path, str) or (base_path and (not base_path.startswith("/") or base_path.endswith("/") or ".." in base_path)):
+        diagnostics.append({"code": "SITE_BASE_PATH_INVALID", "message": "base_path must be empty or a normalized absolute path prefix without a trailing slash"})
     for key in ("title", "version", "status"):
         if not isinstance(config.get(key), str) or not config[key].strip():
             diagnostics.append({"code": "SITE_CONFIG_INVALID", "message": f"missing non-empty {key}"})
@@ -160,17 +163,21 @@ def validate_documentation_site(root: Path) -> dict[str, Any]:
     return {"status": "invalid" if diagnostics else "valid", "diagnostics": diagnostics}
 
 
-def _rewrite_link(source: Path, target: str, source_to_route: dict[str, str], root: Path) -> str:
+def _public_url(route: str, base_path: str) -> str:
+    return f"{base_path}{route}" if base_path else route
+
+
+def _rewrite_link(source: Path, target: str, source_to_route: dict[str, str], root: Path, base_path: str) -> str:
     resolved = _resolve_link(root, source, target)
     if resolved is None:
         return target
     key = _source_key(resolved, root) if resolved.exists() else ""
     route = source_to_route.get(key)
     fragment = "#" + target.split("#", 1)[1] if "#" in target else ""
-    return route + fragment if route else target
+    return _public_url(route, base_path) + fragment if route else target
 
 
-def _markdown_html(text: str, source: Path, source_to_route: dict[str, str], root: Path) -> str:
+def _markdown_html(text: str, source: Path, source_to_route: dict[str, str], root: Path, base_path: str) -> str:
     lines: list[str] = []
     in_list = False
     for raw in text.splitlines():
@@ -191,7 +198,7 @@ def _markdown_html(text: str, source: Path, source_to_route: dict[str, str], roo
             body = html.escape(raw[2:])
             for label, target in _LINK_RE.findall(raw[2:]):
                 escaped = html.escape(f"[{label}]({target})")
-                href = html.escape(_rewrite_link(source, target, source_to_route, root), quote=True)
+                href = html.escape(_rewrite_link(source, target, source_to_route, root, base_path), quote=True)
                 body = body.replace(escaped, f'<a href="{href}">{html.escape(label)}</a>')
             lines.append(f"<li>{body}</li>")
             continue
@@ -202,7 +209,7 @@ def _markdown_html(text: str, source: Path, source_to_route: dict[str, str], roo
             body = html.escape(raw)
             for label, target in _LINK_RE.findall(raw):
                 escaped = html.escape(f"[{label}]({target})")
-                href = html.escape(_rewrite_link(source, target, source_to_route, root), quote=True)
+                href = html.escape(_rewrite_link(source, target, source_to_route, root, base_path), quote=True)
                 body = body.replace(escaped, f'<a href="{href}">{html.escape(label)}</a>')
             lines.append(f"<p>{body}</p>")
     if in_list:
@@ -210,10 +217,10 @@ def _markdown_html(text: str, source: Path, source_to_route: dict[str, str], roo
     return "\n".join(lines)
 
 
-def _page(title: str, body: str, breadcrumb: str, prev_next: str = "") -> bytes:
+def _page(title: str, body: str, breadcrumb: str, base_path: str, prev_next: str = "") -> bytes:
     return ("<!doctype html>\n<html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">"
-            f"<title>{html.escape(title)}</title><link rel=\"stylesheet\" href=\"/assets/site.css\"></head><body>"
-            "<header><a href=\"/\">KIS Documentation</a><nav><a href=\"/docs/\">Docs</a> <a href=\"/specification/\">Specification</a> <a href=\"/reference/\">Reference</a> <a href=\"/search/\">Search</a></nav></header>"
+            f"<title>{html.escape(title)}</title><link rel=\"stylesheet\" href=\"{_public_url('/assets/site.css', base_path)}\"></head><body>"
+            f"<header><a href=\"{_public_url('/', base_path)}\">KIS Documentation</a><nav><a href=\"{_public_url('/docs/', base_path)}\">Docs</a> <a href=\"{_public_url('/specification/', base_path)}\">Specification</a> <a href=\"{_public_url('/reference/', base_path)}\">Reference</a> <a href=\"{_public_url('/search/', base_path)}\">Search</a></nav></header>"
             f"<main><div class=\"breadcrumbs\">{breadcrumb}</div>{body}{prev_next}</main></body></html>\n").encode("utf-8")
 
 
@@ -227,6 +234,7 @@ def render_documentation_site(root: Path) -> tuple[dict[str, bytes], dict[str, A
     if validation["status"] != "valid":
         raise ValueError("documentation site validation failed: " + "; ".join(item["code"] for item in validation["diagnostics"]))
     config = _load_json(root / _CONFIG)
+    base_path = config.get("base_path", "")
     registry = PublicationFamilyRegistry(root).load()
     entries = route_entries(root)
     source_to_route = {entry["source"]: entry["route"] for entry in entries}
@@ -237,16 +245,17 @@ def render_documentation_site(root: Path) -> tuple[dict[str, bytes], dict[str, A
         ordered = family_entries[family["id"]]
         for index, entry in enumerate(ordered):
             source = root / entry["source"]
-            body = _markdown_html(source.read_text(encoding="utf-8"), source, source_to_route, root)
-            prev_link = f'<a rel="prev" href="{ordered[index-1]["route"]}">Previous</a>' if index else ""
-            next_link = f'<a rel="next" href="{ordered[index+1]["route"]}">Next</a>' if index + 1 < len(ordered) else ""
-            crumb = f'<a href="/">Home</a> / <a href="/{entry["surface"]}/">{entry["surface"].title()}</a> / {html.escape(family["title"])}'
-            files[_route_file(entry["route"])] = _page(entry["title"], body, crumb, f'<nav class="prev-next">{prev_link} {next_link}</nav>')
+            body = _markdown_html(source.read_text(encoding="utf-8"), source, source_to_route, root, base_path)
+            prev_link = f'<a rel="prev" href="{_public_url(ordered[index - 1]["route"], base_path)}">Previous</a>' if index else ""
+            next_link = f'<a rel="next" href="{_public_url(ordered[index + 1]["route"], base_path)}">Next</a>' if index + 1 < len(ordered) else ""
+            surface_url = _public_url(f"/{entry['surface']}/", base_path)
+            crumb = f'<a href="{_public_url("/", base_path)}">Home</a> / <a href="{surface_url}">{entry["surface"].title()}</a> / {html.escape(family["title"])}'
+            files[_route_file(entry["route"])] = _page(entry["title"], body, crumb, base_path, f'<nav class="prev-next">{prev_link} {next_link}</nav>')
     for entry in [item for item in entries if item["surface"] == "reference"]:
         source = root / entry["source"]
         body = f"<h1>{html.escape(entry['title'])}</h1><pre>{html.escape(source.read_text(encoding='utf-8'))}</pre>"
-        crumb = f'<a href="/">Home</a> / <a href="/reference/">Reference</a> / {html.escape(entry["family"])}'
-        files[_route_file(entry["route"])] = _page(entry["title"], body, crumb)
+        crumb = f'<a href="{_public_url("/", base_path)}">Home</a> / <a href="{_public_url("/reference/", base_path)}">Reference</a> / {html.escape(entry["family"])}'
+        files[_route_file(entry["route"])] = _page(entry["title"], body, crumb, base_path)
     for surface in ("docs", "specification", "reference"):
         links = [entry for entry in entries if entry["surface"] == surface and (entry["source"].endswith("000-index.md") or surface == "reference")]
         if surface == "reference":
@@ -254,12 +263,14 @@ def render_documentation_site(root: Path) -> tuple[dict[str, bytes], dict[str, A
             for entry in links:
                 first_by_family.setdefault(entry["family"], entry)
             links = list(first_by_family.values())
-        body = f"<h1>{surface.title()}</h1><ul>" + "".join(f'<li><a href="{item["route"]}">{html.escape(item["title"])}</a></li>' for item in links) + "</ul>"
-        files[_route_file(f"/{surface}/")] = _page(surface.title(), body, '<a href="/">Home</a>')
+        body = f"<h1>{surface.title()}</h1><ul>" + "".join(f'<li><a href="{_public_url(item["route"], base_path)}">{html.escape(item["title"])}</a></li>' for item in links) + "</ul>"
+        files[_route_file(f"/{surface}/")] = _page(surface.title(), body, f'<a href="{_public_url("/", base_path)}">Home</a>', base_path)
     home_sections = []
     for surface in ("docs", "specification", "reference", "search"):
-        home_sections.append(f'<section><h2><a href="/{surface}/">{surface.title()}</a></h2></section>')
-    files["index.html"] = _page(config["title"], f'<h1>{html.escape(config["title"])}</h1><p>{html.escape(config.get("subtitle", ""))}</p>' + "".join(home_sections), "Home")
+        href = _public_url(f"/{surface}/", base_path)
+        home_sections.append(f'<section><h2><a href="{href}">{surface.title()}</a></h2></section>')
+    home_body = f'<h1>{html.escape(config["title"])}</h1><p>{html.escape(config.get("subtitle", ""))}</p>' + "".join(home_sections)
+    files["index.html"] = _page(config["title"], home_body, "Home", base_path)
     files["assets/site.css"] = b"body{font-family:system-ui,sans-serif;max-width:72rem;margin:auto;padding:1rem;line-height:1.55}header{display:flex;justify-content:space-between;border-bottom:1px solid #ccc;padding-bottom:1rem}main{padding-top:1rem}.breadcrumbs,.prev-next{margin:1rem 0;color:#555}pre{overflow:auto;background:#f6f8fa;padding:1rem}nav a{margin-right:.75rem}\n"
     files["routes.json"] = (json.dumps(entries, indent=2, ensure_ascii=False, sort_keys=True) + "\n").encode("utf-8")
     search_relative = config.get("search_index")
@@ -267,11 +278,12 @@ def render_documentation_site(root: Path) -> tuple[dict[str, bytes], dict[str, A
         search_path = root / search_relative
         if not search_path.is_file():
             raise ValueError(f"configured search index does not exist: {search_relative}")
-        search_bytes = search_path.read_bytes()
-        files["search-index.json"] = search_bytes
-        files["assets/search.js"] = b"fetch('/search-index.json').then(r=>r.json()).then(i=>{const f=document.querySelector('#search-form'),q=document.querySelector('#q'),o=document.querySelector('#results');f.addEventListener('submit',e=>{e.preventDefault();const ts=q.value.toLowerCase().split(/\\s+/).filter(Boolean);const rs=i.documents.map(d=>[ts.reduce((s,t)=>s+(d.title_terms[t]||0)*5+(d.terms[t]||0),0),d]).filter(x=>x[0]>0).sort((a,b)=>b[0]-a[0]||a[1].route.localeCompare(b[1].route)).slice(0,i.default_limit);o.innerHTML=rs.map(x=>`<li><a href=\"${x[1].route}\">${x[1].title}</a> - ${x[1].family}</li>`).join('');});});\n"
-        search_body = '<h1>Search</h1><form id="search-form"><label for="q">Search governed documentation</label><input id="q" name="q"><button>Search</button></form><ul id="results"></ul><script src="/assets/search.js"></script>'
-        files["search/index.html"] = _page("Search", search_body, '<a href="/">Home</a> / Search')
+        files["search-index.json"] = search_path.read_bytes()
+        script = "const B=" + json.dumps(base_path) + ";fetch(B+'/search-index.json').then(r=>r.json()).then(i=>{const f=document.querySelector('#search-form'),q=document.querySelector('#q'),o=document.querySelector('#results');f.addEventListener('submit',e=>{e.preventDefault();const ts=q.value.toLowerCase().split(/\\s+/).filter(Boolean);const rs=i.documents.map(d=>[ts.reduce((s,t)=>s+(d.title_terms[t]||0)*5+(d.terms[t]||0),0),d]).filter(x=>x[0]>0).sort((a,b)=>b[0]-a[0]||a[1].route.localeCompare(b[1].route)).slice(0,i.default_limit);o.innerHTML=rs.map(x=>`<li><a href=\"${B}${x[1].route}\">${x[1].title}</a> - ${x[1].family}</li>`).join('');});});\n"
+        files["assets/search.js"] = script.encode("utf-8")
+        script_src = _public_url("/assets/search.js", base_path)
+        search_body = f'<h1>Search</h1><form id="search-form"><label for="q">Search governed documentation</label><input id="q" name="q"><button>Search</button></form><ul id="results"></ul><script src="{script_src}"></script>'
+        files["search/index.html"] = _page("Search", search_body, f'<a href="{_public_url("/", base_path)}">Home</a> / Search', base_path)
     inputs = []
     extra_inputs = [search_relative] if isinstance(search_relative, str) else []
     for relative in [_CONFIG, _REGISTRY, _SITE_SOURCE] + extra_inputs + [entry["source"] for entry in entries]:

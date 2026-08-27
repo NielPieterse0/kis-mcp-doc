@@ -1,0 +1,59 @@
+{
+  "schema_version": 4,
+  "change_id": "016-documentation-publication-hosting-and-release-integration",
+  "status": "active",
+  "branch": "change/016-documentation-publication-hosting-and-release-integration",
+  "worktree": ".work/worktrees/016-documentation-publication-hosting-and-release-integration",
+  "base": "main",
+  "outcome": "Publish the deterministic documentation site through GitHub Pages and attach deterministic documentation assets to repository releases without changing documentation authority.",
+  "owned_paths": [
+    ".work/changes/016-documentation-publication-hosting-and-release-integration/**",
+    "publication/documentation-site.json",
+    "publication/documentation-release.json",
+    "src/kis_mcp_doc/documentation_site.py",
+    "src/kis_mcp_doc/documentation_release.py",
+    "src/kis_mcp_doc/cli.py",
+    "generated/documentation-search/**",
+    "generated/documentation-site/**",
+    "generated/documentation-release/**",
+    ".github/workflows/documentation-pages.yml",
+    ".github/workflows/documentation-release.yml",
+    "tests/test_documentation_release.py",
+    "scripts/verify.ps1"
+  ],
+  "shared_paths": [],
+  "excluded_paths": [
+    "mrd/governance/**",
+    "mrd/work-management/**",
+    "mrd/documentation/**",
+    "contracts/**",
+    "C:/Projects/kis-mcp/**",
+    "C:/Projects/References/**"
+  ],
+  "dependencies": [
+    "015-documentation-search-and-knowledge-discovery"
+  ],
+  "integration_owner": null,
+  "complexity": "large",
+  "risk_triggers": [
+    "public_contract",
+    "external_network"
+  ],
+  "base_evidence": {
+    "local_sha": "8221649e4bbb5836712223c3d5b22845b4769ea0",
+    "local_tree": null,
+    "upstream_sha": "8221649e4bbb5836712223c3d5b22845b4769ea0",
+    "upstream_tree": null,
+    "upstream_ref": "main",
+    "evidence_source": "verified_remote_default",
+    "relation": "equal"
+  },
+  "work_management": {
+    "project_id": "kis-mcp",
+    "record_id": "SPEC-016",
+    "source_repository": "NielPieterse0/kis-mcp-doc",
+    "source_number": 27,
+    "source_kind": "issue",
+    "documentation_impact": "planned"
+  }
+}

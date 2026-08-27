@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "hosting": "github-pages",
+  "site_output": "generated/documentation-site",
+  "base_path": "/kis-mcp-doc",
+  "release_assets": ["generated/documentation-release/documentation-site.zip", "generated/documentation-release/release-metadata.json"]
+}

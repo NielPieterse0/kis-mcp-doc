@@ -1,0 +1,45 @@
+{
+  "bundle_sha256": "05fdff93d2b18f7e352c02831d492a783e34f3e9077bf6aac1ecf3988b8b70e0",
+  "contract": {
+    "name": "kis-documentation-release",
+    "version": 1
+  },
+  "files": [
+    {
+      "bytes": 153051,
+      "path": "documentation-site.zip",
+      "sha256": "44923626c76c5bab2c97a19fcf9e82092d68a1ef4ea8bcfa313dee816a3d2a29"
+    },
+    {
+      "bytes": 436,
+      "path": "release-metadata.json",
+      "sha256": "6e471c198d4d48dad90913284e5641ca3efdbe50b3650bb419b2b2f9209d0d03"
+    }
+  ],
+  "generator": {
+    "algorithm": "documentation-release-v1",
+    "name": "kis-mcp-doc"
+  },
+  "inputs": [
+    {
+      "bytes": 10776,
+      "path": "generated/documentation-search/manifest.json",
+      "sha256": "b2be6eef3917d77a9f625738a75cc5b86c299556633fd4bf16170f9f4ae0fbde"
+    },
+    {
+      "bytes": 22273,
+      "path": "generated/documentation-site/manifest.json",
+      "sha256": "a2e3b6ce71d2bd82ca06ba21bf5341c400bbe991529bbabdef1f45df4e58e7db"
+    },
+    {
+      "bytes": 272,
+      "path": "publication/documentation-release.json",
+      "sha256": "5f46b356bb5ee30b34024a5fe6f66d36441160eb2225db405d9cf9ab26535e68"
+    },
+    {
+      "bytes": 5483,
+      "path": "src/kis_mcp_doc/documentation_release.py",
+      "sha256": "9b3bd442166a79e3ee61b5090cd3c8faeb3853b21270b2ad43a49a950d8eb9ad"
+    }
+  ]
+}

@@ -12,6 +12,7 @@ from .documentation_reference import (
 from .governance import GovernanceRepository
 from .documentation_site import build_documentation_site, validate_documentation_site, verify_documentation_site
 from .documentation_search import build_documentation_search, search_documentation, validate_documentation_search, verify_documentation_search
+from .documentation_release import build_documentation_release, validate_documentation_release, verify_documentation_release
 from .publication_kernel import (
     build_registered_publication,
     validate_registered_publications,
@@ -36,6 +37,12 @@ def main(argv: list[str] | None = None) -> int:
     sub.add_parser("validate")
     sub.add_parser("site-validate")
     sub.add_parser("search-validate")
+    sub.add_parser("release-validate")
+    release_build = sub.add_parser("release-build")
+    release_build.add_argument("--output", type=Path)
+    release_build.add_argument("--replace", action="store_true")
+    release_check = sub.add_parser("release-check-generated")
+    release_check.add_argument("--output", type=Path)
     search_build = sub.add_parser("search-build")
     search_build.add_argument("--output", type=Path)
     search_build.add_argument("--replace", action="store_true")
@@ -80,6 +87,18 @@ def main(argv: list[str] | None = None) -> int:
     root = args.root.resolve()
     repo = _repository(root)
     publication = root / "publication" / "governance-spec.json"
+    if args.command == "release-validate":
+        result = validate_documentation_release(root)
+        print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
+        return 0 if result["status"] == "valid" else 1
+    if args.command == "release-build":
+        manifest = build_documentation_release(root, args.output, replace=args.replace)
+        print(json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True))
+        return 0
+    if args.command == "release-check-generated":
+        result = verify_documentation_release(root, args.output)
+        print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
+        return 0 if result["status"] == "valid" else 1
     if args.command == "search-validate":
         result = validate_documentation_search(root)
         print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
