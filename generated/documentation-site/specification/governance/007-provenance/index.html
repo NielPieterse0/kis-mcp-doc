@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Provenance</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/specification/">Specification</a> / kis-op Governance Specification</div><h1>Provenance</h1>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Provenance</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/specification/">Specification</a> / kis-op Governance Specification</div><aside class="publication-meta"><strong>Version:</strong> 2.0.0. <strong>Status:</strong> draft. <strong>Authority:</strong> generated projection of <code>KIS-KNOW-CON-POL-002</code>; canonical sources remain authoritative.</aside><h1 id="provenance">Provenance</h1>
 <div id="enable-section-numbers"></div>
 <p><a href="/kis-mcp-doc/specification/governance/006-dependency-rules/">Previous: Dependency Rules</a> | <a href="/kis-mcp-doc/specification/governance/008-lifecycle/">Next: Lifecycle</a> | <a href="/kis-mcp-doc/specification/governance/">Index</a></p>
 <p>Provenance identifies the authority, origin, and quality of governed facts. It keeps authored prescription, captured observations, and generated projections distinct.</p>
-<h2>Provenance model</h2>
+<h2 id="provenance-model">Provenance model</h2>
 <p>Record mode expresses both authority and mutability, while fact quality describes how directly a fact is supported by admitted evidence. This separation prevents harvested, inferred, or generated material from silently becoming prescriptive authority.</p>
 <span id="rule-kis-mrd-prov-001"></span>
 <p>Record mode MUST express authority and mutability; KIS does not define a separate generation_mode in the core standard.</p>
@@ -21,30 +21,30 @@
 <p>Author intent, invariants, choices, and contracts; derive implementation observations; capture runtime evidence; evaluate conformance between them.</p>
 <span id="rule-kis-mrd-prov-008"></span>
 <p>A repo_path provenance source MUST carry the SHA-256 of the resolved repository file; a mismatch MUST invalidate provenance.</p>
-<h2>Record modes</h2>
+<h2 id="record-modes">Record modes</h2>
 <p>The following table defines the authority and mutability posture of each record mode:</p>
-<table><thead><tr><th>Record mode</th><th>Meaning</th><th>Mutability</th></tr></thead><tbody>
+<table><caption>Record modes</caption><thead><tr><th scope="col">Record mode</th><th scope="col">Meaning</th><th scope="col">Mutability</th></tr></thead><tbody>
 <tr><td><code>prescriptive</code></td><td>What must be true. Authored, reviewed, and explicitly adopted as governing authority.</td><td><code>versioned</code></td></tr>
 <tr><td><code>descriptive</code></td><td>What happened or is observed. Captured evidence or records.</td><td><code>immutable_after_creation</code></td></tr>
 <tr><td><code>meta</code></td><td>A generated representation, index, or map of other authority.</td><td><code>regenerate_only</code></td></tr>
 </tbody></table>
-<h2>Fact quality</h2>
+<h2 id="fact-quality">Fact quality</h2>
 <p>Fact quality records whether a fact is direct, deterministically derived, or inferred:</p>
-<table><thead><tr><th>Quality</th><th>Meaning</th></tr></thead><tbody>
+<table><caption>Fact quality</caption><thead><tr><th scope="col">Quality</th><th scope="col">Meaning</th></tr></thead><tbody>
 <tr><td><code>direct</code></td><td>Explicitly present in an admitted source.</td></tr>
 <tr><td><code>derived</code></td><td>Deterministic transformation of direct facts.</td></tr>
 <tr><td><code>inferred</code></td><td>Interpretation not directly guaranteed by an admitted source.</td></tr>
 </tbody></table>
-<h2>Provenance source kinds</h2>
+<h2 id="provenance-source-kinds">Provenance source kinds</h2>
 <p>Each provenance source kind has a resolution or fingerprint requirement, as shown in the following table:</p>
-<table><thead><tr><th>Kind</th><th>Resolution requirement</th></tr></thead><tbody>
+<table><caption>Provenance source kinds</caption><thead><tr><th scope="col">Kind</th><th scope="col">Resolution requirement</th></tr></thead><tbody>
 <tr><td><code>operator_direction</code></td><td>stable opaque identity</td></tr>
 <tr><td><code>repo_path</code></td><td>must resolve inside repository and carry the current file SHA-256</td></tr>
 <tr><td><code>external_reference</code></td><td>must carry an immutable SHA-256 fingerprint</td></tr>
 </tbody></table>
-<h2>Requirement traceability</h2>
+<h2 id="requirement-traceability">Requirement traceability</h2>
 <p>The following table preserves the stable rule identifier and enforcement binding for each requirement stated in this chapter:</p>
-<table><thead><tr><th>Rule</th><th>Enforcement</th></tr></thead><tbody>
+<table><caption>Requirement traceability</caption><thead><tr><th scope="col">Rule</th><th scope="col">Enforcement</th></tr></thead><tbody>
 <tr><td><code>KIS-MRD-PROV-001</code></td><td><code>validator</code></td></tr>
 <tr><td><code>KIS-MRD-PROV-002</code></td><td><code>workflow</code></td></tr>
 <tr><td><code>KIS-MRD-PROV-003</code></td><td><code>workflow</code></td></tr>
@@ -54,5 +54,5 @@
 <tr><td><code>KIS-MRD-PROV-007</code></td><td><code>review</code></td></tr>
 <tr><td><code>KIS-MRD-PROV-008</code></td><td><code>validator</code></td></tr>
 </tbody></table>
-<h2>Source and authority</h2>
+<h2 id="source-and-authority">Source and authority</h2>
 <p>This page projects <code>KIS-KNOW-CON-POL-001</code> version <code>1.0.0</code>. The MRD remains authoritative; this page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/specification/governance/006-dependency-rules/">Previous</a> <a rel="next" href="/kis-mcp-doc/specification/governance/008-lifecycle/">Next</a></nav></main></body></html>

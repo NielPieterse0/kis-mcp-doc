@@ -44,9 +44,13 @@ def test_governance_docs_are_deterministic_and_source_derived(tmp_path: Path) ->
     workflow = docs["KIS-KNOW-WRK-WFL-001"]["content"]
     page = (first / "003-apply-governance.md").read_text(encoding="utf-8")
     for phase in workflow["phases"]:
-        assert phase["name"].replace("_", " ").title() in page
+        label = phase["name"].replace("_", " ")
+        label = label[:1].upper() + label[1:]
+        assert f"## {label}" in page
         for action in phase["required_actions"]:
             assert action in page
+    assert not re.search(r"^## \\d+\\.", page, flags=re.MULTILINE)
+    assert "Mrd" not in page
     assert "Governance Specification" in page
 
 

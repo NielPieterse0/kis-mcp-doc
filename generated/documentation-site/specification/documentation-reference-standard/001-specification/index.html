@@ -1,9 +1,10 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Documentation Reference Standard</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/specification/">Specification</a> / Documentation Reference Standard</div><h1>Documentation Reference Standard</h1>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Documentation Reference Standard</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/specification/">Specification</a> / Documentation Reference Standard</div><aside class="publication-meta"><strong>Version:</strong> 1.0.0. <strong>Status:</strong> draft. <strong>Authority:</strong> generated projection of <code>KIS-DOC-CON-POL-001</code>; canonical sources remain authoritative.</aside><h1 id="documentation-reference-standard">Documentation Reference Standard</h1>
 <div id="enable-section-numbers"></div>
 <p>Source roles, authority boundaries, provenance, lifecycle, and permitted use for KIS documentation references</p>
 <p>This specification governs how documentation references can influence KIS documentation. It keeps source authority separate from presentation guidance and implementation evidence.</p>
-<h2>Authority model</h2>
+<p>The key words &quot;MUST&quot;, &quot;MUST NOT&quot;, &quot;REQUIRED&quot;, &quot;SHALL&quot;, &quot;SHALL NOT&quot;, &quot;SHOULD&quot;, &quot;SHOULD NOT&quot;, &quot;RECOMMENDED&quot;, &quot;NOT RECOMMENDED&quot;, &quot;MAY&quot;, and &quot;OPTIONAL&quot; are to be interpreted as described in <a href="https://www.rfc-editor.org/info/bcp14">BCP 14</a>, <a href="https://www.rfc-editor.org/rfc/rfc2119">RFC2119</a>, and <a href="https://www.rfc-editor.org/rfc/rfc8174">RFC8174</a> when, and only when, they appear in all capitals.</p>
+<h2 id="authority-model">Authority model</h2>
 <ul>
 <li><strong><code>canonical_kis</code>:</strong> KIS-specific facts, behavior, policy, configuration, lifecycle, and adopted requirements; may define KIS facts.</li>
 <li><strong><code>normative_external</code>:</strong> The bounded conformance domain owned by the external standard; MUST NOT define KIS facts.</li>
@@ -11,39 +12,39 @@
 <li><strong><code>implementation_reference</code>:</strong> Bounded reusable documentation or engineering patterns; MUST NOT define KIS facts.</li>
 <li><strong><code>inferred_evidence</code>:</strong> Derived evidence requiring verification against an owning source; MUST NOT define KIS facts.</li>
 </ul>
-<h2>Documentation output classes</h2>
-<h3>Human documentation</h3>
+<h2 id="documentation-output-classes">Documentation output classes</h2>
+<h3 id="human-documentation">Human documentation</h3>
 <p>Teach concepts, tasks, workflows, examples, architecture, and operations in reader-oriented prose.</p>
 <p>Canonical KIS facts supply factual content; approved references may inform organization and presentation only.</p>
-<h3>Human-readable specification</h3>
+<h3 id="human-readable-specification">Human-readable specification</h3>
 <p>Explain adopted normative behavior while preserving requirement strength, identifiers, ownership, and traceability.</p>
 <p>Adopted KIS MRDs and applicable normative external standards supply requirements; generated prose remains non-authoritative.</p>
-<h3>Generated reference</h3>
+<h3 id="generated-reference">Generated reference</h3>
 <p>Expose exact tools, schemas, settings, policies, states, relationships, capabilities, permissions, and provenance.</p>
 <p>Only canonical KIS facts or explicitly applicable normative protocol facts may populate factual reference data.</p>
-<h2>Reference registry</h2>
+<h2 id="reference-registry">Reference registry</h2>
 <p>Refresh references only through a governed registry change. Deterministic builds use the pinned registry state and never fetch live sources.</p>
 <p>Metadata and bounded pattern summaries are permitted. Harvesting reusable source content requires source-specific license and attribution review first.</p>
-<h2>Conflict behavior</h2>
+<h2 id="conflict-behavior">Conflict behavior</h2>
 <p>When a reference conflicts with a canonical owner, KIS surfaces the conflict and keeps the canonical owner unchanged. Unsupported authority promotion and active unpinned references fail validation.</p>
-<h2>Requirements</h2>
-<h3>KIS-DOC-REF-001</h3>
+<h2 id="requirements">Requirements</h2>
+<h3 id="kis-doc-ref-001">KIS-DOC-REF-001</h3>
 <p>Every admitted documentation reference MUST declare one source role, bounded permitted uses, provenance, freshness strategy, lifecycle state, and authority limit.</p>
-<h3>KIS-DOC-REF-002</h3>
+<h3 id="kis-doc-ref-002">KIS-DOC-REF-002</h3>
 <p>KIS-owned factual content MUST remain sourced from its current canonical owner; a documentation reference MUST NOT become a second owner.</p>
-<h3>KIS-DOC-REF-003</h3>
+<h3 id="kis-doc-ref-003">KIS-DOC-REF-003</h3>
 <p>MCP 2026-07-28 MUST be treated as normative only within its applicable MCP protocol-conformance domain.</p>
-<h3>KIS-DOC-REF-004</h3>
+<h3 id="kis-doc-ref-004">KIS-DOC-REF-004</h3>
 <p>Google Developer Documentation guidance MUST remain presentation guidance and MUST NOT define KIS runtime or governance semantics.</p>
-<h3>KIS-DOC-REF-005</h3>
+<h3 id="kis-doc-ref-005">KIS-DOC-REF-005</h3>
 <p>Implementation references and inferred evidence MUST NOT populate canonical KIS facts without a separately governed adoption decision.</p>
-<h3>KIS-DOC-REF-006</h3>
+<h3 id="kis-doc-ref-006">KIS-DOC-REF-006</h3>
 <p>Material used by deterministic generation MUST resolve to a reproducible revision or content hash; live moving web content MUST NOT be a silent build input.</p>
-<h3>KIS-DOC-REF-007</h3>
+<h3 id="kis-doc-ref-007">KIS-DOC-REF-007</h3>
 <p>Contradictions with a canonical owner MUST surface as diagnostics and MUST NOT silently change the canonical value.</p>
-<h3>KIS-DOC-REF-008</h3>
+<h3 id="kis-doc-ref-008">KIS-DOC-REF-008</h3>
 <p>Generated documentation MUST remain a deterministic review projection with no write-back authority.</p>
-<h3>KIS-DOC-REF-009</h3>
+<h3 id="kis-doc-ref-009">KIS-DOC-REF-009</h3>
 <p>External content MUST NOT be harvested beyond metadata or bounded evidence until licensing, attribution, and reuse constraints are recorded.</p>
-<h2>Source and authority</h2>
+<h2 id="source-and-authority">Source and authority</h2>
 <p>This page is generated from <code>KIS-DOC-CON-POL-001</code> and <code>KIS-DOC-SEM-REG-001</code>. It has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/specification/documentation-reference-standard/">Previous</a> <a rel="next" href="/kis-mcp-doc/specification/documentation-reference-standard/002-reference-catalogue/">Next</a></nav></main></body></html>

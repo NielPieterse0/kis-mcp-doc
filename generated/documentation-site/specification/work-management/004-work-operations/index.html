@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Work operations</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/specification/">Specification</a> / KIS Work Management Specification</div><h1>Work operations</h1>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Work operations</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/specification/">Specification</a> / KIS Work Management Specification</div><aside class="publication-meta"><strong>Version:</strong> 1.0.0. <strong>Status:</strong> draft. <strong>Authority:</strong> generated projection of <code>KIS-WORK-CON-POL-001</code>; canonical sources remain authoritative.</aside><h1 id="work-operations">Work operations</h1>
 <div id="enable-section-numbers"></div>
 <p><a href="/kis-mcp-doc/specification/work-management/003-work-lifecycle/">Previous: Work lifecycle</a> | <a href="/kis-mcp-doc/specification/work-management/005-next-work-selection/">Next: Next-work selection</a> | <a href="/kis-mcp-doc/specification/work-management/">Index</a></p>
 <span id="mrd-kis-work-wrk-wfl-001"></span>
 <p>Work Management exposes a bounded set of operations for intake, claiming, state changes, verification, and post-merge commissioning. Each operation has a defined effect and implementation surface so callers can distinguish reads from mutations and evidence collection.</p>
-<h2>Mutation safety</h2>
+<h2 id="mutation-safety">Mutation safety</h2>
 <p>External Project mutations require <code>apply=true</code> and an explicit idempotency key.</p>
-<h2>Operations</h2>
-<table><thead><tr><th>Operation</th><th>Purpose</th><th>Effect</th><th>Implementation surface</th></tr></thead><tbody>
+<h2 id="operations">Operations</h2>
+<table><caption>Operations</caption><thead><tr><th scope="col">Operation</th><th scope="col">Purpose</th><th scope="col">Effect</th><th scope="col">Implementation surface</th></tr></thead><tbody>
 <tr><td>Capture work (<code>capture_work</code>)</td><td>Capture one bounded source record into Work without duplicating source identity.</td><td><code>external_or_local_change</code></td><td><code>project_management_reconcile</code></td></tr>
 <tr><td>Create work (<code>create_work</code>)</td><td>Create or reconcile one new Work record through the configured provider boundary.</td><td><code>external_or_local_change</code></td><td><code>project_management_reconcile</code></td></tr>
 <tr><td>Take next work (<code>take_next_work</code>)</td><td>Select the next eligible Ready item and establish its execution claim.</td><td><code>external_or_local_change</code></td><td><code>project_management_take_next_work</code></td></tr>
@@ -22,7 +22,7 @@
 <tr><td>Commissioning (<code>commissioning</code>)</td><td>Track post-merge live verification separately from source verification.</td><td><code>external_or_local_change</code></td><td><code>issue_419_commissioning</code></td></tr>
 <tr><td>Authority revision (<code>authority_revision</code>)</td><td>Retain provider/Git revision evidence used for optimistic concurrency and traceability.</td><td><code>read_only</code></td><td><code>project_management_inventory</code></td></tr>
 </tbody></table>
-<h2>Result envelope</h2>
+<h2 id="result-envelope">Result envelope</h2>
 <p>Operation results use a common envelope so readers and tools can identify when the observation was made, what target was resolved, where the evidence came from, the operation result, and any valid next action.</p>
 <ul>
 <li><code>observed_at</code></li>
@@ -31,7 +31,7 @@
 <li><code>result</code></li>
 <li><code>next_actions</code></li>
 </ul>
-<h2>Typed errors</h2>
+<h2 id="typed-errors">Typed errors</h2>
 <p>Failures use bounded error categories rather than unstructured provider text:</p>
 <ul>
 <li><code>provider_unavailable</code></li>
@@ -43,11 +43,11 @@
 <li><code>invalid_request</code></li>
 <li><code>internal</code></li>
 </ul>
-<h2>Verification domains</h2>
+<h2 id="verification-domains">Verification domains</h2>
 <p>Source verification and live verification are separate evidence domains. A successful repository check does not by itself prove the post-merge runtime surface.</p>
-<table><thead><tr><th>Domain</th><th>Field</th><th>Meaning</th></tr></thead><tbody>
+<table><caption>Verification domains</caption><thead><tr><th scope="col">Domain</th><th scope="col">Field</th><th scope="col">Meaning</th></tr></thead><tbody>
 <tr><td><code>source_verification</code></td><td>Verification</td><td>Repository/source verification evidence tied to the delivery identity.</td></tr>
 <tr><td><code>live_verification</code></td><td>Live Verification</td><td>Post-merge runtime proof tied to the actual exposed capability or runtime path.</td></tr>
 </tbody></table>
-<h2>Source and authority</h2>
+<h2 id="source-and-authority">Source and authority</h2>
 <p>This page projects <code>KIS-WORK-WRK-WFL-001</code> version <code>1.0.0</code>. The MRD remains authoritative; this generated page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/specification/work-management/003-work-lifecycle/">Previous</a> <a rel="next" href="/kis-mcp-doc/specification/work-management/005-next-work-selection/">Next</a></nav></main></body></html>

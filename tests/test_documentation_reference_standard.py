@@ -163,3 +163,26 @@ def test_mrd_provenance_fingerprint_mismatch_fails() -> None:
 
     assert result["status"] == "invalid"
     assert any(item["code"] == "REFERENCE_PROVENANCE_FINGERPRINT_MISMATCH" for item in result["diagnostics"])
+
+
+def test_reference_repository_rejects_repository_source_escape(tmp_path: Path) -> None:
+    root = tmp_path / "repo"
+    import shutil
+    shutil.copytree(ROOT, root, ignore=shutil.ignore_patterns(".git", ".venv", ".work"))
+    outside = root.parent / "outside.txt"
+    outside.write_text("outside\n", encoding="utf-8")
+    policy_path = root / "mrd/documentation/01-reference-standard.mrd.json"
+    policy = json.loads(policy_path.read_text(encoding="utf-8"))
+    policy["_mrd"]["dependencies"].append({"source": "repo:../outside.txt", "relationship": "depends_on"})
+    policy_path.write_text(json.dumps(policy, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    result = DocumentationReferenceRepository(root).validate()
+    assert result["status"] == "invalid"
+    assert "REFERENCE_SOURCE_UNRESOLVED" in {item["code"] for item in result["diagnostics"]}
+
+
+def test_reference_invalid_result_has_failed_check() -> None:
+    from kis_mcp_doc.documentation_reference import _diag, _result
+    checks = {key: "pass" for key in ("schema", "authority", "harvest_binding", "pinning", "lifecycle", "provenance")}
+    result = _result([_diag("REFERENCE_SOURCE_UNRESOLVED", "broken source")], checks)
+    assert result["status"] == "invalid"
+    assert "fail" in result["checks"].values()

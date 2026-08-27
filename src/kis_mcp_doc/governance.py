@@ -10,7 +10,7 @@ from jsonschema.exceptions import SchemaError
 from referencing import Registry, Resource
 from referencing.exceptions import Unresolvable
 
-from .canonical import canonical_hash
+from .canonical import canonical_hash, canonical_source_bytes, resolve_repo_file
 
 
 CONCERNS = (
@@ -35,28 +35,6 @@ CORE_REASON_CODES = frozenset({
     "MRD_RELATIONSHIP_UNKNOWN", "MRD_OPERATOR_BEHAVIOR_INVALID",
     "MRD_ENFORCEMENT_BINDING_INVALID",
 })
-
-
-_CANONICAL_TEXT_SUFFIXES = frozenset({
-    ".bat", ".cfg", ".cmd", ".css", ".html", ".ini", ".js", ".json", ".jsonc",
-    ".jsx", ".md", ".ps1", ".py", ".sh", ".toml", ".ts", ".tsx", ".txt", ".xml",
-    ".yaml", ".yml",
-})
-_CANONICAL_TEXT_NAMES = frozenset({
-    ".gitattributes", ".gitignore", ".nvmrc", "Dockerfile", "Makefile",
-})
-
-
-def canonical_source_bytes(path: Path) -> bytes:
-    path = Path(path)
-    payload = path.read_bytes()
-    if path.suffix.casefold() not in _CANONICAL_TEXT_SUFFIXES and path.name not in _CANONICAL_TEXT_NAMES:
-        return payload
-    try:
-        text = payload.decode("utf-8")
-    except UnicodeDecodeError:
-        return payload
-    return text.replace("\r\n", "\n").replace("\r", "\n").encode("utf-8")
 
 
 class GovernanceRepository:
@@ -433,17 +411,7 @@ class GovernanceRepository:
             ))
 
     def _resolve_repo_file(self, locator: object) -> Path | None:
-        if not isinstance(locator, str) or not locator.startswith("repo:"):
-            return None
-        relative = locator[5:]
-        if not relative:
-            return None
-        candidate = (self.root / relative).resolve()
-        try:
-            candidate.relative_to(self.root)
-        except ValueError:
-            return None
-        return candidate if candidate.is_file() else None
+        return resolve_repo_file(self.root, locator)
 
     @staticmethod
     def _layer_number(value: object) -> int | None:

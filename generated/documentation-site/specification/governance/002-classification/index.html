@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Classification</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/specification/">Specification</a> / kis-op Governance Specification</div><h1>Classification</h1>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Classification</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/specification/">Specification</a> / kis-op Governance Specification</div><aside class="publication-meta"><strong>Version:</strong> 2.0.0. <strong>Status:</strong> draft. <strong>Authority:</strong> generated projection of <code>KIS-KNOW-CON-POL-002</code>; canonical sources remain authoritative.</aside><h1 id="classification">Classification</h1>
 <div id="enable-section-numbers"></div>
 <p><a href="/kis-mcp-doc/specification/governance/001-specification/">Previous: Specification</a> | <a href="/kis-mcp-doc/specification/governance/003-applicability-and-selection/">Next: Applicability and Selection</a> | <a href="/kis-mcp-doc/specification/governance/">Index</a></p>
 <p>KIS MRDs use a functional classification model. Classification describes what an artifact does, independent of where a repository stores or implements it.</p>
-<h2>Classification requirements</h2>
+<h2 id="classification-requirements">Classification requirements</h2>
 <p>The catalog contains 12 functional classes and 47 allowed MRD types. Classification is based on function so that the same governed need keeps the same meaning across repository layouts and technology choices.</p>
 <span id="rule-kis-mrd-class-001"></span>
 <p>Every MRD MUST declare exactly one class and one type from this catalog.</p>
@@ -15,9 +15,9 @@
 <p>Artifacts MUST NOT be created merely to populate unused catalog types; absence of an unused type has no compliance implication.</p>
 <span id="rule-kis-mrd-class-005"></span>
 <p>The catalog MAY be extended by a versioned governance amendment when a genuine artifact need cannot be represented by an existing type.</p>
-<h2>Classes</h2>
+<h2 id="classes">Classes</h2>
 <p>The following table defines the functional classes used to group MRD types:</p>
-<table><thead><tr><th>Class</th><th>Name</th><th>Definition</th></tr></thead><tbody>
+<table><caption>Classes</caption><thead><tr><th scope="col">Class</th><th scope="col">Name</th><th scope="col">Definition</th></tr></thead><tbody>
 <tr><td><code>SEM</code></td><td>Semantics</td><td>Defines canonical meaning, vocabulary, entities, enumerations, ontologies, registries, domains, and assertions.</td></tr>
 <tr><td><code>CON</code></td><td>Constraints</td><td>Restricts permitted meaning or behavior through validation, boundaries, policy, and constraint contracts.</td></tr>
 <tr><td><code>DEC</code></td><td>Decisions</td><td>Determines outcomes through decision tables, trees, and scoring models.</td></tr>
@@ -31,9 +31,9 @@
 <tr><td><code>EVD</code></td><td>Evidence</td><td>Records logs, approvals, lineage, and test-result observations.</td></tr>
 <tr><td><code>META</code></td><td>Derived metadata</td><td>Contains generated indexes, dependency maps, and metadata maps; never primary authority.</td></tr>
 </tbody></table>
-<h2>Type catalog (47 allowed types)</h2>
+<h2 id="type-catalog-47-allowed-types">Type catalog (47 allowed types)</h2>
 <p>The following table lists each governed type and its canonical representation format:</p>
-<table><thead><tr><th>Class</th><th>Type</th><th>Code</th><th>Meaning</th><th>Canonical format</th></tr></thead><tbody>
+<table><caption>Type catalog (47 allowed types)</caption><thead><tr><th scope="col">Class</th><th scope="col">Type</th><th scope="col">Code</th><th scope="col">Meaning</th><th scope="col">Canonical format</th></tr></thead><tbody>
 <tr><td><code>SEM</code></td><td><code>ENT</code></td><td><code>SEM-ENT</code></td><td>Entity definition schema</td><td>JSON Schema</td></tr>
 <tr><td><code>SEM</code></td><td><code>ENUM</code></td><td><code>SEM-ENUM</code></td><td>Enumeration schema</td><td>JSON Schema</td></tr>
 <tr><td><code>SEM</code></td><td><code>ONT</code></td><td><code>SEM-ONT</code></td><td>Ontology</td><td>JSON Schema</td></tr>
@@ -82,14 +82,14 @@
 <tr><td><code>META</code></td><td><code>DEP</code></td><td><code>META-DEP</code></td><td>Dependency map</td><td>JSON</td></tr>
 <tr><td><code>META</code></td><td><code>MAP</code></td><td><code>META-MAP</code></td><td>Metadata map</td><td>JSON</td></tr>
 </tbody></table>
-<h2>Requirement traceability</h2>
+<h2 id="requirement-traceability">Requirement traceability</h2>
 <p>The following table preserves the stable rule identifier and enforcement binding for each requirement stated in this chapter:</p>
-<table><thead><tr><th>Rule</th><th>Enforcement</th></tr></thead><tbody>
+<table><caption>Requirement traceability</caption><thead><tr><th scope="col">Rule</th><th scope="col">Enforcement</th></tr></thead><tbody>
 <tr><td><code>KIS-MRD-CLASS-001</code></td><td><code>validator</code></td></tr>
 <tr><td><code>KIS-MRD-CLASS-002</code></td><td><code>review</code></td></tr>
 <tr><td><code>KIS-MRD-CLASS-003</code></td><td><code>review</code></td></tr>
 <tr><td><code>KIS-MRD-CLASS-004</code></td><td><code>workflow</code></td></tr>
 <tr><td><code>KIS-MRD-CLASS-005</code></td><td><code>workflow</code></td></tr>
 </tbody></table>
-<h2>Source and authority</h2>
+<h2 id="source-and-authority">Source and authority</h2>
 <p>This page projects <code>KIS-KNOW-SEM-REG-001</code> version <code>1.0.0</code>. The MRD remains authoritative; this page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/specification/governance/001-specification/">Previous</a> <a rel="next" href="/kis-mcp-doc/specification/governance/003-applicability-and-selection/">Next</a></nav></main></body></html>

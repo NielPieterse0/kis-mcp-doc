@@ -14,6 +14,11 @@ _CONFIG = "publication/documentation-search.json"
 _SEARCH_SOURCE = "src/kis_mcp_doc/documentation_search.py"
 _SITE_SOURCE = "src/kis_mcp_doc/documentation_site.py"
 _TOKEN_RE = re.compile(r"[A-Za-z0-9][A-Za-z0-9_-]*")
+_SEARCH_CONTRACT = {
+    "version": 2,
+    "title_weight": 5,
+    "ranking": ["matched_terms", "score", "route"],
+}
 
 
 def _load_json(path: Path) -> dict[str, Any]:
@@ -97,8 +102,9 @@ def render_search_index(root: Path) -> tuple[dict[str, bytes], dict[str, Any]]:
         payload = source.read_bytes()
         inputs.append({"path": entry["source"], "sha256": hashlib.sha256(payload).hexdigest(), "bytes": len(payload)})
     index = {
-        "schema_version": 1,
-        "algorithm": "kis-static-search-v1",
+        "schema_version": 2,
+        "algorithm": "kis-static-search-v2",
+        "contract": _SEARCH_CONTRACT,
         "minimum_token_length": minimum,
         "default_limit": config["default_limit"],
         "documents": sorted(records, key=lambda item: item["route"]),
@@ -108,8 +114,8 @@ def render_search_index(root: Path) -> tuple[dict[str, bytes], dict[str, Any]]:
         payload = (root / relative).read_bytes()
         inputs.append({"path": relative, "sha256": hashlib.sha256(payload).hexdigest(), "bytes": len(payload)})
     manifest = {
-        "contract": {"name": "kis-documentation-search", "version": 1},
-        "generator": {"name": "kis-mcp-doc", "algorithm": "documentation-search-v1"},
+        "contract": {"name": "kis-documentation-search", "version": 2},
+        "generator": {"name": "kis-mcp-doc", "algorithm": "documentation-search-v2"},
         "documents": len(records),
         "inputs": sorted(inputs, key=lambda item: item["path"]),
         "files": file_declarations(files),
@@ -137,20 +143,26 @@ def verify_documentation_search(root: Path, output: Path | None = None) -> dict[
     return {"status": "invalid" if diagnostics else "valid", "diagnostics": diagnostics}
 
 
-def search_documentation(root: Path, query: str, *, limit: int | None = None) -> list[dict[str, Any]]:
-    root = Path(root).resolve()
-    config = _load_json(root / _CONFIG)
-    index = _load_json(root / "generated/documentation-search/search-index.json")
-    terms = _tokens(query, config["minimum_token_length"])
+def _rank_search_index(index: dict[str, Any], query: str, limit: int | None = None) -> list[dict[str, Any]]:
+    requested = limit if limit is not None else index["default_limit"]
+    if isinstance(requested, bool) or not isinstance(requested, int) or requested < 1:
+        raise ValueError("search limit must be a positive integer")
+    terms = _tokens(query, index["minimum_token_length"])
     if not terms:
         return []
-    requested = limit if limit is not None else config["default_limit"]
+    title_weight = index.get("contract", {}).get("title_weight", _SEARCH_CONTRACT["title_weight"])
     scored = []
     for document in index.get("documents", []):
         score = sum(document.get("terms", {}).get(term, 0) for term in terms)
-        score += 5 * sum(document.get("title_terms", {}).get(term, 0) for term in terms)
+        score += title_weight * sum(document.get("title_terms", {}).get(term, 0) for term in terms)
         matched = sum(1 for term in terms if document.get("terms", {}).get(term, 0) or document.get("title_terms", {}).get(term, 0))
         if score:
             scored.append((matched, score, document["route"], document))
     scored.sort(key=lambda item: (-item[0], -item[1], item[2]))
     return [{"route": item[3]["route"], "title": item[3]["title"], "family": item[3]["family"], "surface": item[3]["surface"], "excerpt": item[3]["excerpt"], "score": item[1]} for item in scored[:requested]]
+
+
+def search_documentation(root: Path, query: str, *, limit: int | None = None) -> list[dict[str, Any]]:
+    root = Path(root).resolve()
+    index = _load_json(root / "generated/documentation-search/search-index.json")
+    return _rank_search_index(index, query, limit)

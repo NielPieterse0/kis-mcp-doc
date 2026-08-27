@@ -1,5 +1,5 @@
 {
-  "bundle_sha256": "017b3c828c24a8b49c1e6a73e9e5bde22fc583d62c8d70babf16c35f804eae96",
+  "bundle_sha256": "d756be546e539dba9030126d1af54b8d9db596c0f0531d345322205ba4e13b52",
   "contract": {
     "name": "kis-human-documentation-build",
     "version": 1
@@ -17,9 +17,9 @@
       "sha256": "23da8a7492417709bcabb898da54686e91a287af44946b3b35eeba146fab106e"
     },
     {
-      "bytes": 1923,
+      "bytes": 1902,
       "path": "003-apply-governance.md",
-      "sha256": "199da9ddd101b6853125724ada62a77a7450fb5272aebc89008cec2466bac8c0"
+      "sha256": "0b1898e9ac8ab6944510a3923563a6a1b48ad8a03f351ab27dc56ac3fd48d164"
     },
     {
       "bytes": 620,
@@ -64,9 +64,9 @@
         "sha256": "88a80997db6c431473f1fc819e87e1dd084a73597c51de0b951c3dbf981b002c"
       },
       {
-        "bytes": 17941,
+        "bytes": 18062,
         "path": "src/kis_mcp_doc/human_docs.py",
-        "sha256": "36fd13f6695f50f4d190516c33b23bf5b9a00571985634f5c5d155acbc857dce"
+        "sha256": "dbaaccf9ba7060586859dacd5e074bb5b7929ab06a0311b1ae87f361e6a94694"
       },
       {
         "bytes": 6152,

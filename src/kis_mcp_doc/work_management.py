@@ -8,8 +8,10 @@ from pathlib import Path
 from typing import Any
 
 from jsonschema import Draft202012Validator
+from referencing import Registry, Resource
+from referencing.exceptions import Unresolvable
 
-from .governance import canonical_hash, canonical_source_bytes
+from .canonical import canonical_hash, canonical_source_bytes, normative_keywords_statement, resolve_repo_file
 from .publication_kernel import bundle_diagnostics, file_declarations, write_bundle
 
 
@@ -30,6 +32,8 @@ class WorkManagementRepository:
         self.root = Path(root).resolve()
         self.mrd_root = (mrd_root or self.root / "mrd" / "work-management").resolve()
         self.schema_path = self.root / "contracts" / "mrd" / "v1" / "mrd.schema.json"
+        self.content_schema_path = self.root / "contracts" / "work-management" / "v1" / "content.schema.json"
+        self.profile_schema_path = self.root / "contracts" / "work-management" / "v1" / "work-management-mrd.schema.json"
 
     def load(self) -> dict[str, dict[str, Any]]:
         docs: dict[str, dict[str, Any]] = {}
@@ -46,32 +50,43 @@ class WorkManagementRepository:
     def validate(self) -> dict[str, Any]:
         diagnostics: list[dict[str, str]] = []
         try:
-            schema = json.loads(self.schema_path.read_text(encoding="utf-8"))
-            Draft202012Validator.check_schema(schema)
-            validator = Draft202012Validator(schema)
+            core = json.loads(self.schema_path.read_text(encoding="utf-8"))
+            content = json.loads(self.content_schema_path.read_text(encoding="utf-8"))
+            profile = json.loads(self.profile_schema_path.read_text(encoding="utf-8"))
+            for candidate in (core, content, profile):
+                Draft202012Validator.check_schema(candidate)
+            registry = Registry().with_resources(
+                (schema["$id"], Resource.from_contents(schema)) for schema in (core, content, profile)
+            )
+            validator = Draft202012Validator(profile, registry=registry)
             docs = self.load()
         except Exception as error:
             return {"status":"invalid","diagnostics":[{"code":"WORK_MRD_LOAD_INVALID","message":str(error)}]}
         for doc_id, doc in docs.items():
-            for error in sorted(validator.iter_errors(doc), key=lambda e: tuple(str(x) for x in e.absolute_path)):
+            try:
+                errors = sorted(validator.iter_errors(doc), key=lambda e: tuple(str(x) for x in e.absolute_path))
+            except Unresolvable as error:
+                errors = []
+                diagnostics.append({"code":"WORK_MRD_SCHEMA_INVALID","message":f"{doc_id}: unresolved schema reference: {error}"})
+            for error in errors:
                 diagnostics.append({"code":"WORK_MRD_SCHEMA_INVALID","message":f"{doc_id}: {error.message}"})
+        if diagnostics:
+            return {"status":"invalid","diagnostics":diagnostics}
         ids=set(docs)
         for doc_id,doc in docs.items():
             for dep in doc["_mrd"]["dependencies"]:
                 if "mrd_id" in dep and dep["mrd_id"] not in ids:
                     diagnostics.append({"code":"WORK_MRD_DEPENDENCY_UNRESOLVED","message":f"{doc_id}: {dep['mrd_id']}"})
-                if "source" in dep:
-                    rel=dep["source"][5:]
-                    if not (self.root/rel).is_file():
-                        diagnostics.append({"code":"WORK_MRD_SOURCE_UNRESOLVED","message":f"{doc_id}: {rel}"})
+                if "source" in dep and resolve_repo_file(self.root, dep["source"]) is None:
+                    diagnostics.append({"code":"WORK_MRD_SOURCE_UNRESOLVED","message":f"{doc_id}: {dep['source']}"})
             sources=doc["_mrd"]["provenance"]["sources"]
             expected="sha256:"+canonical_hash(sources)
             if doc["_mrd"]["provenance"]["source_fingerprint"] != expected:
                 diagnostics.append({"code":"WORK_MRD_FINGERPRINT_MISMATCH","message":doc_id})
             for source in sources:
                 if source["kind"]=="repo_path":
-                    path=self.root/source["locator"][5:]
-                    if not path.is_file() or hashlib.sha256(canonical_source_bytes(path)).hexdigest()!=source.get("sha256"):
+                    path=resolve_repo_file(self.root, source["locator"])
+                    if path is None or hashlib.sha256(canonical_source_bytes(path)).hexdigest()!=source.get("sha256"):
                         diagnostics.append({"code":"WORK_MRD_SOURCE_HASH_MISMATCH","message":f"{doc_id}: {source['locator']}"})
         return {"status":"invalid" if diagnostics else "valid","diagnostics":diagnostics}
 
@@ -897,7 +912,10 @@ def _work_source_file_declarations(repo: WorkManagementRepository) -> list[dict[
         _PUBLICATION_FAMILY_SCHEMA,
         _WORK_EVIDENCE,
     ):
-        payload = canonical_source_bytes(repo.root / relative)
+        resolved = resolve_repo_file(repo.root, "repo:" + relative)
+        if resolved is None:
+            raise ValueError(f"Work source declaration does not resolve inside repository: {relative}")
+        payload = canonical_source_bytes(resolved)
         declarations.append({"path": relative, "sha256": hashlib.sha256(payload).hexdigest(), "bytes": len(payload)})
     return declarations
 
@@ -908,8 +926,14 @@ def _work_generator_declarations(repo: WorkManagementRepository) -> list[dict[st
         "src/kis_mcp_doc/canonical.py",
         "src/kis_mcp_doc/publication_kernel.py",
         "src/kis_mcp_doc/work_management.py",
+        "contracts/mrd/v1/mrd.schema.json",
+        "contracts/work-management/v1/content.schema.json",
+        "contracts/work-management/v1/work-management-mrd.schema.json",
     ):
-        payload = canonical_source_bytes(repo.root / relative)
+        resolved = resolve_repo_file(repo.root, "repo:" + relative)
+        if resolved is None:
+            raise ValueError(f"Work generator declaration does not resolve inside repository: {relative}")
+        payload = canonical_source_bytes(resolved)
         declarations.append({"path": relative, "sha256": hashlib.sha256(payload).hexdigest()})
     return declarations
 
@@ -986,7 +1010,7 @@ def build_work_management_spec(repo: WorkManagementRepository, output: Path, *, 
             "",
             "This publication follows `KIS-DOC-CON-POL-001` as a `human_readable_specification`. MCP 2026 applies only within its bounded protocol domain, Google guidance affects presentation only, and implementation references cannot create or override Work Management facts.",
             "",
-            'The key words "MUST", "MUST NOT", "SHOULD", "SHOULD NOT", "MAY", and "OPTIONAL" are normative when they appear in all capitals.',
+            normative_keywords_statement(),
             "",
             "## Overview",
             "",

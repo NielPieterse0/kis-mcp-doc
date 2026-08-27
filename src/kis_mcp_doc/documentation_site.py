@@ -50,6 +50,23 @@ def _title_from_markdown(text: str, fallback: str) -> str:
     return fallback
 
 
+def _heading_anchor(value: str) -> str:
+    raw = "".join(character.lower() if character.isalnum() else "-" for character in value)
+    return "-".join(part for part in raw.split("-") if part)
+
+
+def _fragment_ids(text: str) -> set[str]:
+    fragments = set(_SAFE_INLINE_ANCHOR_RE.findall(text))
+    for line in text.splitlines():
+        safe = _SAFE_ANCHOR_RE.match(line.strip())
+        if safe:
+            fragments.add(safe.group(2))
+        heading = _HEADING_RE.match(line)
+        if heading:
+            fragments.add(_heading_anchor(re.sub(r"[`*_]", "", heading.group(2))))
+    return fragments
+
+
 def _route_for(family: dict[str, Any], relative: str) -> str:
     path = Path(relative)
     if path.suffix.lower() == ".md":
@@ -93,6 +110,8 @@ def route_entries(root: Path) -> list[dict[str, str]]:
 
 
 def _resolve_link(root: Path, source: Path, target: str) -> Path | None:
+    if target.startswith("#"):
+        return source.resolve()
     target = target.split("#", 1)[0]
     if not target or "://" in target or target.startswith("mailto:"):
         return None
@@ -103,7 +122,7 @@ def _markdown_graph(root: Path, family: dict[str, Any]) -> tuple[set[str], dict[
     output = (root / family["output"]).resolve()
     pages = {
         path.relative_to(output).as_posix()
-        for path in output.glob("*.md")
+        for path in output.rglob("*.md")
         if path.name != "specification.md"
     }
     graph = {page: set() for page in pages}
@@ -111,6 +130,9 @@ def _markdown_graph(root: Path, family: dict[str, Any]) -> tuple[set[str], dict[
     for page in sorted(pages):
         source = output / page
         text = source.read_text(encoding="utf-8")
+        levels = [len(match.group(1)) for line in text.splitlines() if (match := _HEADING_RE.match(line))]
+        if levels.count(1) != 1 or any(current > previous + 1 for previous, current in zip(levels, levels[1:])):
+            diagnostics.append({"code": "SITE_HEADING_HIERARCHY_INVALID", "message": _source_key(source, root)})
         for _, target in _LINK_RE.findall(text):
             resolved = _resolve_link(root, source, target)
             if resolved is None:
@@ -118,6 +140,12 @@ def _markdown_graph(root: Path, family: dict[str, Any]) -> tuple[set[str], dict[
             if not resolved.is_file():
                 diagnostics.append({"code": "SITE_BROKEN_SOURCE_LINK", "message": f"{_source_key(source, root)} -> {target}"})
                 continue
+            if "#" in target:
+                fragment = target.split("#", 1)[1]
+                if fragment and resolved.suffix.lower() == ".md":
+                    target_text = resolved.read_text(encoding="utf-8")
+                    if fragment not in _fragment_ids(target_text):
+                        diagnostics.append({"code": "SITE_BROKEN_SOURCE_FRAGMENT", "message": f"{_source_key(source, root)} -> {target}"})
             try:
                 linked = resolved.relative_to(output).as_posix()
             except ValueError:
@@ -224,6 +252,7 @@ def _markdown_html(text: str, source: Path, source_to_route: dict[str, str], roo
     output: list[str] = []
     paragraph: list[str] = []
     list_kind: str | None = None
+    last_heading = "Table"
     index = 0
 
     def flush_paragraph() -> None:
@@ -273,7 +302,9 @@ def _markdown_html(text: str, source: Path, source_to_route: dict[str, str], roo
             flush_paragraph()
             close_list()
             level = len(heading.group(1))
-            output.append(f"<h{level}>{_inline_html(heading.group(2), source, source_to_route, root, base_path)}</h{level}>")
+            last_heading = re.sub(r"[`*_]", "", heading.group(2)).strip()
+            identifier = _heading_anchor(last_heading)
+            output.append(f'<h{level} id="{html.escape(identifier, quote=True)}">{_inline_html(heading.group(2), source, source_to_route, root, base_path)}</h{level}>')
             index += 1
             continue
         if stripped in {"---", "***", "___"}:
@@ -291,7 +322,8 @@ def _markdown_html(text: str, source: Path, source_to_route: dict[str, str], roo
             while index < len(source_lines) and source_lines[index].strip().startswith("|"):
                 rows.append(_table_cells(source_lines[index]))
                 index += 1
-            output.append("<table><thead><tr>" + "".join(f"<th>{_inline_html(cell, source, source_to_route, root, base_path)}</th>" for cell in headers) + "</tr></thead><tbody>")
+            caption = html.escape(last_heading)
+            output.append("<table><caption>" + caption + "</caption><thead><tr>" + "".join(f'<th scope="col">{_inline_html(cell, source, source_to_route, root, base_path)}</th>' for cell in headers) + "</tr></thead><tbody>")
             for row in rows:
                 output.append("<tr>" + "".join(f"<td>{_inline_html(cell, source, source_to_route, root, base_path)}</td>" for cell in row) + "</tr>")
             output.append("</tbody></table>")
@@ -342,6 +374,37 @@ def _route_file(route: str) -> str:
     return "index.html" if route == "/" else route.strip("/") + "/index.html"
 
 
+def _publication_meta(root: Path, family: dict[str, Any]) -> str:
+    config = _load_json(root / family["publication_config"])
+    version = html.escape(str(config.get("version", "unknown")))
+    status = html.escape(str(config.get("status", "unknown")))
+    owner = html.escape(str(family.get("semantic_owner", "unknown")))
+    return (f'<aside class="publication-meta"><strong>Version:</strong> {version}. '
+            f'<strong>Status:</strong> {status}. <strong>Authority:</strong> generated projection of '
+            f'<code>{owner}</code>; canonical sources remain authoritative.</aside>')
+
+
+def _browser_search_script(base_path: str) -> str:
+    return (
+        "const B=" + json.dumps(base_path) + ";\n"
+        "const TOKEN_RE=/[A-Za-z0-9][A-Za-z0-9_-]*/g;\n"
+        "function kisRankSearch(i,q,limit=i.default_limit){\n"
+        " if(!Number.isInteger(limit)||limit<1)throw new Error('search limit must be a positive integer');\n"
+        " const ts=(q.match(TOKEN_RE)||[]).map(t=>t.toLowerCase()).filter(t=>t.length>=i.minimum_token_length);\n"
+        " const weight=i.contract.title_weight;\n"
+        " return i.documents.map(d=>{const score=ts.reduce((s,t)=>s+(d.terms[t]||0)+weight*(d.title_terms[t]||0),0);const matched_terms=ts.reduce((n,t)=>n+((d.terms[t]||d.title_terms[t])?1:0),0);return {score,matched_terms,d};})\n"
+        "  .filter(x=>x.score>0).sort((a,b)=>b.matched_terms-a.matched_terms||b.score-a.score||(a.d.route<b.d.route?-1:a.d.route>b.d.route?1:0)).slice(0,limit);\n"
+        "}\n"
+        "globalThis.kisRankSearch=kisRankSearch;\n"
+        "if(typeof document!=='undefined'&&typeof fetch!=='undefined'){fetch(B+'/search-index.json').then(r=>r.json()).then(i=>{\n"
+        " const f=document.querySelector('#search-form'),q=document.querySelector('#q'),o=document.querySelector('#results');\n"
+        " f.addEventListener('submit',e=>{e.preventDefault();const rs=kisRankSearch(i,q.value);o.replaceChildren();\n"
+        "  for(const x of rs){const li=document.createElement('li'),a=document.createElement('a');a.href=B+x.d.route;a.textContent=x.d.title;li.append(a,document.createTextNode(' - '+x.d.family));o.appendChild(li);}\n"
+        " });\n"
+        "});}\n"
+    )
+
+
 def render_documentation_site(root: Path) -> tuple[dict[str, bytes], dict[str, Any]]:
     root = Path(root).resolve()
     validation = validate_documentation_site(root)
@@ -359,15 +422,16 @@ def render_documentation_site(root: Path) -> tuple[dict[str, bytes], dict[str, A
         ordered = family_entries[family["id"]]
         for index, entry in enumerate(ordered):
             source = root / entry["source"]
-            body = _markdown_html(source.read_text(encoding="utf-8"), source, source_to_route, root, base_path)
+            body = _publication_meta(root, family) + _markdown_html(source.read_text(encoding="utf-8"), source, source_to_route, root, base_path)
             prev_link = f'<a rel="prev" href="{_public_url(ordered[index - 1]["route"], base_path)}">Previous</a>' if index else ""
             next_link = f'<a rel="next" href="{_public_url(ordered[index + 1]["route"], base_path)}">Next</a>' if index + 1 < len(ordered) else ""
             surface_url = _public_url(f"/{entry['surface']}/", base_path)
             crumb = f'<a href="{_public_url("/", base_path)}">Home</a> / <a href="{surface_url}">{entry["surface"].title()}</a> / {html.escape(family["title"])}'
             files[_route_file(entry["route"])] = _page(entry["title"], body, crumb, base_path, f'<nav class="prev-next">{prev_link} {next_link}</nav>')
+    family_by_id = {family["id"]: family for family in families}
     for entry in [item for item in entries if item["surface"] == "reference"]:
         source = root / entry["source"]
-        body = f"<h1>{html.escape(entry['title'])}</h1><pre>{html.escape(source.read_text(encoding='utf-8'))}</pre>"
+        body = _publication_meta(root, family_by_id[entry["family"]]) + f"<h1>{html.escape(entry['title'])}</h1><pre>{html.escape(source.read_text(encoding='utf-8'))}</pre>"
         crumb = f'<a href="{_public_url("/", base_path)}">Home</a> / <a href="{_public_url("/reference/", base_path)}">Reference</a> / {html.escape(entry["family"])}'
         files[_route_file(entry["route"])] = _page(entry["title"], body, crumb, base_path)
     for surface in ("docs", "specification", "reference"):
@@ -393,8 +457,7 @@ def render_documentation_site(root: Path) -> tuple[dict[str, bytes], dict[str, A
         if not search_path.is_file():
             raise ValueError(f"configured search index does not exist: {search_relative}")
         files["search-index.json"] = search_path.read_bytes()
-        script = "const B=" + json.dumps(base_path) + ";fetch(B+'/search-index.json').then(r=>r.json()).then(i=>{const f=document.querySelector('#search-form'),q=document.querySelector('#q'),o=document.querySelector('#results');f.addEventListener('submit',e=>{e.preventDefault();const ts=q.value.toLowerCase().split(/\\s+/).filter(Boolean);const rs=i.documents.map(d=>[ts.reduce((s,t)=>s+(d.title_terms[t]||0)*5+(d.terms[t]||0),0),d]).filter(x=>x[0]>0).sort((a,b)=>b[0]-a[0]||a[1].route.localeCompare(b[1].route)).slice(0,i.default_limit);o.innerHTML=rs.map(x=>`<li><a href=\"${B}${x[1].route}\">${x[1].title}</a> - ${x[1].family}</li>`).join('');});});\n"
-        files["assets/search.js"] = script.encode("utf-8")
+        files["assets/search.js"] = _browser_search_script(base_path).encode("utf-8")
         script_src = _public_url("/assets/search.js", base_path)
         search_body = f'<h1>Search</h1><form id="search-form"><label for="q">Search governed documentation</label><input id="q" name="q"><button>Search</button></form><ul id="results"></ul><script src="{script_src}"></script>'
         files["search/index.html"] = _page("Search", search_body, f'<a href="{_public_url("/", base_path)}">Home</a> / Search', base_path)

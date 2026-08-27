@@ -1,5 +1,5 @@
 {
-  "bundle_sha256": "0cc94a71603f82ca00d2680d1dbf73673a29b386b26d601c59eda6ecd2d240cd",
+  "bundle_sha256": "17d4707223b83eb9ec5ef3d2efdb0eeb4afa9aeb7e057f6e545ca572f86218d1",
   "contract": {
     "name": "kis-human-documentation-build",
     "version": 1
@@ -19,7 +19,7 @@
     {
       "bytes": 2757,
       "path": "003-work-operations.md",
-      "sha256": "913b85de3c010ab375c39a5a7cf14b2d78558e25e762471977ed9e4c3c281ca9"
+      "sha256": "975c4b09015c239541adbe48003185cda88f71a0b8d7aeb0a3add12ef467e1cc"
     },
     {
       "bytes": 803,
@@ -64,9 +64,9 @@
         "sha256": "e32eb2e43fbb379eab936b9e8e9a672af7c9eeed3febe89335b384d611c219ab"
       },
       {
-        "bytes": 17941,
+        "bytes": 18062,
         "path": "src/kis_mcp_doc/human_docs.py",
-        "sha256": "36fd13f6695f50f4d190516c33b23bf5b9a00571985634f5c5d155acbc857dce"
+        "sha256": "dbaaccf9ba7060586859dacd5e074bb5b7929ab06a0311b1ae87f361e6a94694"
       },
       {
         "bytes": 6152,

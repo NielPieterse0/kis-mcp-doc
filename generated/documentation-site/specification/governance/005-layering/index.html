@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Layering</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/specification/">Specification</a> / kis-op Governance Specification</div><h1>Layering</h1>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Layering</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/specification/">Specification</a> / kis-op Governance Specification</div><aside class="publication-meta"><strong>Version:</strong> 2.0.0. <strong>Status:</strong> draft. <strong>Authority:</strong> generated projection of <code>KIS-KNOW-CON-POL-002</code>; canonical sources remain authoritative.</aside><h1 id="layering">Layering</h1>
 <div id="enable-section-numbers"></div>
 <p><a href="/kis-mcp-doc/specification/governance/004-authority-ownership-and-relationships/">Previous: Authority, Ownership, and Relationships</a> | <a href="/kis-mcp-doc/specification/governance/006-dependency-rules/">Next: Dependency Rules</a> | <a href="/kis-mcp-doc/specification/governance/">Index</a></p>
 <p>Authority layers constrain the direction of MRD dependencies. They express which governed facts can depend on which other facts, not repository layout or implementation order.</p>
-<h2>Authority model</h2>
+<h2 id="authority-model">Authority model</h2>
 <p>The governance model uses six authority layers from <code>L0</code> through <code>L5</code>. Lower layer numbers have higher authority for dependency direction; the layer does not describe storage location or implementation order.</p>
 <span id="rule-kis-mrd-layer-001"></span>
 <p>An MRD MAY depend only on an MRD in the same layer or a higher-authority layer with a lower layer number.</p>
@@ -11,9 +11,9 @@
 <p>An MRD MUST NOT depend on an MRD in a lower-authority layer with a higher layer number.</p>
 <span id="rule-kis-mrd-layer-003"></span>
 <p>Layer assignment expresses authority ordering, not storage location or implementation order.</p>
-<h2>Authority layers</h2>
+<h2 id="authority-layers">Authority layers</h2>
 <p>The following table defines what each authority layer represents:</p>
-<table><thead><tr><th>Layer</th><th>Name</th><th>Interpretation</th></tr></thead><tbody>
+<table><caption>Authority layers</caption><thead><tr><th scope="col">Layer</th><th scope="col">Name</th><th scope="col">Interpretation</th></tr></thead><tbody>
 <tr><td><code>L0</code></td><td>Foundational semantics</td><td>Defines meaning.</td></tr>
 <tr><td><code>L1</code></td><td>Constraints and governance</td><td>Restricts permitted meaning or behavior.</td></tr>
 <tr><td><code>L2</code></td><td>Decisions and workflows</td><td>Determines behavior.</td></tr>
@@ -21,20 +21,20 @@
 <tr><td><code>L4</code></td><td>Evaluation and agent behavior</td><td>Measures or evaluates behavior.</td></tr>
 <tr><td><code>L5</code></td><td>Evidence and observations</td><td>Records what happened.</td></tr>
 </tbody></table>
-<h2>Direction examples</h2>
+<h2 id="direction-examples">Direction examples</h2>
 <p>The following examples show valid and invalid dependency directions under the authority ordering:</p>
-<table><thead><tr><th>Source</th><th>Target</th><th>Valid</th></tr></thead><tbody>
+<table><caption>Direction examples</caption><thead><tr><th scope="col">Source</th><th scope="col">Target</th><th scope="col">Valid</th></tr></thead><tbody>
 <tr><td><code>L3</code></td><td><code>L2</code></td><td>Yes</td></tr>
 <tr><td><code>L3</code></td><td><code>L0</code></td><td>Yes</td></tr>
 <tr><td><code>L1</code></td><td><code>L3</code></td><td>No</td></tr>
 <tr><td><code>L0</code></td><td><code>L2</code></td><td>No</td></tr>
 </tbody></table>
-<h2>Requirement traceability</h2>
+<h2 id="requirement-traceability">Requirement traceability</h2>
 <p>The following table preserves the stable rule identifier and enforcement binding for each requirement stated in this chapter:</p>
-<table><thead><tr><th>Rule</th><th>Enforcement</th></tr></thead><tbody>
+<table><caption>Requirement traceability</caption><thead><tr><th scope="col">Rule</th><th scope="col">Enforcement</th></tr></thead><tbody>
 <tr><td><code>KIS-MRD-LAYER-001</code></td><td><code>validator</code></td></tr>
 <tr><td><code>KIS-MRD-LAYER-002</code></td><td><code>validator</code></td></tr>
 <tr><td><code>KIS-MRD-LAYER-003</code></td><td><code>review</code></td></tr>
 </tbody></table>
-<h2>Source and authority</h2>
+<h2 id="source-and-authority">Source and authority</h2>
 <p>This page projects <code>KIS-KNOW-SEM-ENUM-001</code> version <code>1.0.0</code>. The MRD remains authoritative; this page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/specification/governance/004-authority-ownership-and-relationships/">Previous</a> <a rel="next" href="/kis-mcp-doc/specification/governance/006-dependency-rules/">Next</a></nav></main></body></html>
