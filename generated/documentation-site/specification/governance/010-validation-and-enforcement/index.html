@@ -1,29 +1,29 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Validation and Enforcement</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/specification/">Specification</a> / kis-op Governance Specification</div><h1>Validation and Enforcement</h1>
-<p>&lt;div id=&quot;enable-section-numbers&quot; /&gt;</p>
+<div id="enable-section-numbers"></div>
 <p><a href="/kis-mcp-doc/specification/governance/009-kis-op-governance-behavior/">Previous: kis-op Governance Behavior</a> | <a href="/kis-mcp-doc/specification/governance/">Index</a></p>
 <p>Governance validation combines structural checks, deterministic semantic checks, workflow controls, generation checks, and explicit review gates. Blocking failures fail closed and produce diagnosable results.</p>
 <h2>Validation model</h2>
 <p>Validation first establishes that the governance set is structurally valid, then evaluates the cross-record semantics that depend on that structure. A blocking failure prevents the affected governance state from being accepted as valid and produces machine-readable diagnostics.</p>
-<p>&lt;span id=&quot;rule-kis-mrd-val-001&quot;&gt;&lt;/span&gt;</p>
+<span id="rule-kis-mrd-val-001"></span>
 <p>Every MRD MUST pass structural, dependency, provenance, and lifecycle validation before it is accepted as valid.</p>
-<p>&lt;span id=&quot;rule-kis-mrd-val-002&quot;&gt;&lt;/span&gt;</p>
+<span id="rule-kis-mrd-val-002"></span>
 <p>Validation failures MUST emit stable reason codes and machine-readable diagnostics.</p>
-<p>&lt;span id=&quot;rule-kis-mrd-val-003&quot;&gt;&lt;/span&gt;</p>
+<span id="rule-kis-mrd-val-003"></span>
 <p>A validation result MUST report classification, layering, dependencies, provenance, lifecycle, and schema check status.</p>
-<p>&lt;span id=&quot;rule-kis-mrd-val-004&quot;&gt;&lt;/span&gt;</p>
+<span id="rule-kis-mrd-val-004"></span>
 <p>Governance MRDs MUST validate through the public composed governance MRD profile, which binds the reusable core envelope to governance content.</p>
-<p>&lt;span id=&quot;rule-kis-mrd-val-005&quot;&gt;&lt;/span&gt;</p>
+<span id="rule-kis-mrd-val-005"></span>
 <p>Any structural schema failure in the governance MRD set MUST short-circuit semantic validation for the entire set, because cross-record semantics are valid only over a structurally valid governance set.</p>
 <h2>Enforcement modes</h2>
 <p>The following table identifies where each kind of governance requirement is enforced and whether failure blocks progress:</p>
-<p>| Mode | Meaning | Blocking |</p>
-<p>|---|---|---|</p>
-<p>| `schema` | JSON Schema rejects structurally invalid authority before semantic checks. | Yes |</p>
-<p>| `validator` | Deterministic semantic validation emits stable machine-readable reason codes. | Yes |</p>
-<p>| `workflow` | KIS/kis-op governed workflow prevents prohibited state transitions or unadmitted mutation. | Yes |</p>
-<p>| `generator` | Deterministic generation and stale-output verification enforce one-way source-to-view behavior. | Yes |</p>
-<p>| `review` | Human or agent review is required where semantic adequacy cannot be proven deterministically. | Yes |</p>
+<table><thead><tr><th>Mode</th><th>Meaning</th><th>Blocking</th></tr></thead><tbody>
+<tr><td><code>schema</code></td><td>JSON Schema rejects structurally invalid authority before semantic checks.</td><td>Yes</td></tr>
+<tr><td><code>validator</code></td><td>Deterministic semantic validation emits stable machine-readable reason codes.</td><td>Yes</td></tr>
+<tr><td><code>workflow</code></td><td>KIS/kis-op governed workflow prevents prohibited state transitions or unadmitted mutation.</td><td>Yes</td></tr>
+<tr><td><code>generator</code></td><td>Deterministic generation and stale-output verification enforce one-way source-to-view behavior.</td><td>Yes</td></tr>
+<tr><td><code>review</code></td><td>Human or agent review is required where semantic adequacy cannot be proven deterministically.</td><td>Yes</td></tr>
+</tbody></table>
 <h2>Validation dimensions</h2>
 <p>Validation covers the following dimensions. Each dimension groups checks that evaluate one governance concern:</p>
 <h3>Structural</h3>
@@ -79,18 +79,18 @@
 <li>generated review surface is downstream of validated authority</li>
 </ul>
 <h2>Validation result</h2>
-<p>A validation result has one of these statuses: `valid`, `invalid`. It reports these check keys: `classification`, `applicability`, `ownership`, `layering`, `dependencies`, `provenance`, `lifecycle`, `operator_behavior`, `schema`. Machine-readable diagnostics on failure are required.</p>
+<p>A validation result has one of these statuses: <code>valid</code>, <code>invalid</code>. It reports these check keys: <code>classification</code>, <code>applicability</code>, <code>ownership</code>, <code>layering</code>, <code>dependencies</code>, <code>provenance</code>, <code>lifecycle</code>, <code>operator_behavior</code>, <code>schema</code>. Machine-readable diagnostics on failure are required.</p>
 <h2>Stable reason codes</h2>
 <p>Validation failures use stable reason codes so callers can diagnose failure without parsing prose. The complete catalog is exact generated reference rather than part of the conceptual flow.</p>
 <p>See the <a href="/kis-mcp-doc/specification/governance/022-validation-reason-codes/">validation reason-code reference</a> for the complete list.</p>
 <h2>Requirement traceability</h2>
 <p>The following table preserves the stable rule identifier and enforcement binding for each requirement stated in this chapter:</p>
-<p>| Rule | Enforcement |</p>
-<p>|---|---|</p>
-<p>| `KIS-MRD-VAL-001` | `validator` |</p>
-<p>| `KIS-MRD-VAL-002` | `validator` |</p>
-<p>| `KIS-MRD-VAL-003` | `validator` |</p>
-<p>| `KIS-MRD-VAL-004` | `schema` |</p>
-<p>| `KIS-MRD-VAL-005` | `validator` |</p>
+<table><thead><tr><th>Rule</th><th>Enforcement</th></tr></thead><tbody>
+<tr><td><code>KIS-MRD-VAL-001</code></td><td><code>validator</code></td></tr>
+<tr><td><code>KIS-MRD-VAL-002</code></td><td><code>validator</code></td></tr>
+<tr><td><code>KIS-MRD-VAL-003</code></td><td><code>validator</code></td></tr>
+<tr><td><code>KIS-MRD-VAL-004</code></td><td><code>schema</code></td></tr>
+<tr><td><code>KIS-MRD-VAL-005</code></td><td><code>validator</code></td></tr>
+</tbody></table>
 <h2>Source and authority</h2>
-<p>This page projects `KIS-KNOW-EVL-TST-001` version `2.0.0`. The MRD remains authoritative; this page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/specification/governance/009-kis-op-governance-behavior/">Previous</a> <a rel="next" href="/kis-mcp-doc/specification/governance/020-applicability-catalog/">Next</a></nav></main></body></html>
+<p>This page projects <code>KIS-KNOW-EVL-TST-001</code> version <code>2.0.0</code>. The MRD remains authoritative; this page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/specification/governance/009-kis-op-governance-behavior/">Previous</a> <a rel="next" href="/kis-mcp-doc/specification/governance/020-applicability-catalog/">Next</a></nav></main></body></html>

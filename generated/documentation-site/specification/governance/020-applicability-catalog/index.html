@@ -1,57 +1,57 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MRD applicability catalog</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/specification/">Specification</a> / kis-op Governance Specification</div><h1>MRD applicability catalog</h1>
-<p>&lt;div id=&quot;enable-section-numbers&quot; /&gt;</p>
+<div id="enable-section-numbers"></div>
 <p><a href="/kis-mcp-doc/specification/governance/003-applicability-and-selection/">Owning specification chapter: Applicability and Selection</a> | <a href="/kis-mcp-doc/specification/governance/">Documentation index</a></p>
-<p>&gt; **Output class:** `generated_reference`. This page is an exact lookup projection of canonical Governance authority. It has no write-back authority.</p>
+<blockquote><p><strong>Output class:</strong> <code>generated_reference</code>. This page is an exact lookup projection of canonical Governance authority. It has no write-back authority.</p></blockquote>
 <p>Use this catalog after the specification&#x27;s minimum-sufficient selection process identifies the governed need. The table does not require one artifact per row.</p>
-<p>| Code | Name | Use when |</p>
-<p>|---|---|---|</p>
-<p>| &lt;span id=&quot;fact-applicability-sem-ent&quot;&gt;&lt;/span&gt;`SEM-ENT` | Entity definition schema | Use when a governed domain needs a canonical entity shape, identity, fields, or structural definition. |</p>
-<p>| &lt;span id=&quot;fact-applicability-sem-enum&quot;&gt;&lt;/span&gt;`SEM-ENUM` | Enumeration schema | Use when a finite controlled vocabulary or closed set of allowed values must be authoritative. |</p>
-<p>| &lt;span id=&quot;fact-applicability-sem-ont&quot;&gt;&lt;/span&gt;`SEM-ONT` | Ontology | Use when governed concepts and their semantic relationships need an explicit ontology. |</p>
-<p>| &lt;span id=&quot;fact-applicability-sem-reg&quot;&gt;&lt;/span&gt;`SEM-REG` | Registry | Use when named governed entries require one authoritative registry with stable identifiers. |</p>
-<p>| &lt;span id=&quot;fact-applicability-sem-dom&quot;&gt;&lt;/span&gt;`SEM-DOM` | Domain definition register | Use when a domain boundary, scope, vocabulary ownership, or domain definition must be registered. |</p>
-<p>| &lt;span id=&quot;fact-applicability-sem-asr&quot;&gt;&lt;/span&gt;`SEM-ASR` | Assertion rules | Use when invariants or semantic assertions must be stated independently of implementation code. |</p>
-<p>| &lt;span id=&quot;fact-applicability-con-vrs&quot;&gt;&lt;/span&gt;`CON-VRS` | Version constraint | Use when allowed, required, minimum, maximum, or compatible versions must be constrained. |</p>
-<p>| &lt;span id=&quot;fact-applicability-con-bnd&quot;&gt;&lt;/span&gt;`CON-BND` | Boundary rule | Use when an authority, security, filesystem, network, module, or responsibility boundary must be constrained. |</p>
-<p>| &lt;span id=&quot;fact-applicability-con-pol&quot;&gt;&lt;/span&gt;`CON-POL` | Policy implementation | Use when durable policy determines what is permitted, prohibited, required, or conditionally allowed. |</p>
-<p>| &lt;span id=&quot;fact-applicability-con-ctr&quot;&gt;&lt;/span&gt;`CON-CTR` | Constraint contract | Use when constraints themselves require a reusable machine-consumable contract. |</p>
-<p>| &lt;span id=&quot;fact-applicability-dec-tab&quot;&gt;&lt;/span&gt;`DEC-TAB` | Decision table | Use when an outcome can be selected deterministically from a finite set of conditions in tabular form. |</p>
-<p>| &lt;span id=&quot;fact-applicability-dec-tre&quot;&gt;&lt;/span&gt;`DEC-TRE` | Decision tree | Use when ordered or branching conditions determine a governed outcome more clearly than a table. |</p>
-<p>| &lt;span id=&quot;fact-applicability-dec-scr&quot;&gt;&lt;/span&gt;`DEC-SCR` | Scoring model | Use when weighted criteria or scores determine a governed classification, threshold, or decision. |</p>
-<p>| &lt;span id=&quot;fact-applicability-wrk-stm&quot;&gt;&lt;/span&gt;`WRK-STM` | State machine | Use when governed state, permitted transitions, and terminal states must be explicit. |</p>
-<p>| &lt;span id=&quot;fact-applicability-wrk-prc&quot;&gt;&lt;/span&gt;`WRK-PRC` | Process definition | Use when a repeatable ordered process with defined inputs, steps, and outputs must be prescribed. |</p>
-<p>| &lt;span id=&quot;fact-applicability-wrk-apr&quot;&gt;&lt;/span&gt;`WRK-APR` | Approval workflow | Use when approval, rejection, escalation, or sign-off flow must be governed. |</p>
-<p>| &lt;span id=&quot;fact-applicability-wrk-ctr&quot;&gt;&lt;/span&gt;`WRK-CTR` | Phase contract | Use when a workflow phase requires explicit entry, exit, handoff, or completion conditions. |</p>
-<p>| &lt;span id=&quot;fact-applicability-wrk-wfl&quot;&gt;&lt;/span&gt;`WRK-WFL` | Workflow definition | Use when several governed steps, roles, decisions, or phases form an end-to-end workflow. |</p>
-<p>| &lt;span id=&quot;fact-applicability-wrk-act&quot;&gt;&lt;/span&gt;`WRK-ACT` | Action or automation workflow | Use when a bounded action or automation sequence must be executable under governance. |</p>
-<p>| &lt;span id=&quot;fact-applicability-cfg-env&quot;&gt;&lt;/span&gt;`CFG-ENV` | Environment config | Use when environment-specific values select allowed behavior without redefining policy. |</p>
-<p>| &lt;span id=&quot;fact-applicability-cfg-flg&quot;&gt;&lt;/span&gt;`CFG-FLG` | Feature flag | Use when a governed feature can be enabled or disabled through an explicit flag. |</p>
-<p>| &lt;span id=&quot;fact-applicability-cfg-prm&quot;&gt;&lt;/span&gt;`CFG-PRM` | Runtime parameter | Use when a runtime parameter selects among already-permitted behaviors or limits. |</p>
-<p>| &lt;span id=&quot;fact-applicability-map-fld&quot;&gt;&lt;/span&gt;`MAP-FLD` | Field mapping | Use when fields in one governed structure translate deterministically to fields in another. |</p>
-<p>| &lt;span id=&quot;fact-applicability-map-fmt&quot;&gt;&lt;/span&gt;`MAP-FMT` | Format translation | Use when one representation or serialization format must translate deterministically to another. |</p>
-<p>| &lt;span id=&quot;fact-applicability-map-mig&quot;&gt;&lt;/span&gt;`MAP-MIG` | Migration map | Use when a versioned structure, identifier, or data model requires an explicit migration mapping. |</p>
-<p>| &lt;span id=&quot;fact-applicability-ctr-api&quot;&gt;&lt;/span&gt;`CTR-API` | API contract | Use when callable request/response behavior requires an explicit API interface contract. |</p>
-<p>| &lt;span id=&quot;fact-applicability-ctr-evt&quot;&gt;&lt;/span&gt;`CTR-EVT` | Event contract | Use when produced or consumed events require stable names, payloads, and delivery semantics. |</p>
-<p>| &lt;span id=&quot;fact-applicability-ctr-svc&quot;&gt;&lt;/span&gt;`CTR-SVC` | Service contract | Use when a service boundary, capability, inputs, outputs, or service-level interface must be contracted. |</p>
-<p>| &lt;span id=&quot;fact-applicability-man-pkg&quot;&gt;&lt;/span&gt;`MAN-PKG` | Package manifest | Use when a package&#x27;s governed identity, contents, dependencies, or distribution metadata must be declared. |</p>
-<p>| &lt;span id=&quot;fact-applicability-man-bom&quot;&gt;&lt;/span&gt;`MAN-BOM` | Bill of materials | Use when constituent components or dependencies must be inventoried as a bill of materials. |</p>
-<p>| &lt;span id=&quot;fact-applicability-man-rel&quot;&gt;&lt;/span&gt;`MAN-REL` | Release manifest | Use when a release needs an authoritative manifest of version, contents, provenance, and release facts. |</p>
-<p>| &lt;span id=&quot;fact-applicability-man-skl&quot;&gt;&lt;/span&gt;`MAN-SKL` | Skill manifest | Use when a reusable skill package needs a governed capability and asset manifest. |</p>
-<p>| &lt;span id=&quot;fact-applicability-man-act&quot;&gt;&lt;/span&gt;`MAN-ACT` | Action manifest | Use when available actions or automations must be inventoried separately from their workflow definitions. |</p>
-<p>| &lt;span id=&quot;fact-applicability-prm-sys&quot;&gt;&lt;/span&gt;`PRM-SYS` | System prompt | Use when durable system-level model instructions are governed as an explicit prompt artifact. |</p>
-<p>| &lt;span id=&quot;fact-applicability-prm-rol&quot;&gt;&lt;/span&gt;`PRM-ROL` | Role prompt | Use when a durable role-specific behavior or responsibility prompt must be governed. |</p>
-<p>| &lt;span id=&quot;fact-applicability-prm-ctx&quot;&gt;&lt;/span&gt;`PRM-CTX` | Context prompt | Use when reusable context assembly or context framing instructions must be governed. |</p>
-<p>| &lt;span id=&quot;fact-applicability-prm-tol&quot;&gt;&lt;/span&gt;`PRM-TOL` | Tool prompt | Use when model-facing instructions for invoking or interpreting a tool must be governed. |</p>
-<p>| &lt;span id=&quot;fact-applicability-evl-tst&quot;&gt;&lt;/span&gt;`EVL-TST` | Test suite | Use when deterministic or machine-evaluable conformance tests define acceptance of governed behavior. |</p>
-<p>| &lt;span id=&quot;fact-applicability-evl-rub&quot;&gt;&lt;/span&gt;`EVL-RUB` | Rubric | Use when qualitative or multi-criterion review requires an explicit scoring or assessment rubric. |</p>
-<p>| &lt;span id=&quot;fact-applicability-evl-ben&quot;&gt;&lt;/span&gt;`EVL-BEN` | Benchmark | Use when comparable performance, quality, or capability measurement requires a stable benchmark. |</p>
-<p>| &lt;span id=&quot;fact-applicability-evd-log&quot;&gt;&lt;/span&gt;`EVD-LOG` | Log | Use when an immutable operational or governance log is itself required evidence. |</p>
-<p>| &lt;span id=&quot;fact-applicability-evd-apr&quot;&gt;&lt;/span&gt;`EVD-APR` | Approval record | Use when an approval decision must be retained as evidence distinct from the approval workflow. |</p>
-<p>| &lt;span id=&quot;fact-applicability-evd-lin&quot;&gt;&lt;/span&gt;`EVD-LIN` | Lineage record | Use when lineage, derivation, handoff, or provenance events must be retained as evidence. |</p>
-<p>| &lt;span id=&quot;fact-applicability-evd-tsr&quot;&gt;&lt;/span&gt;`EVD-TSR` | Test result snapshot | Use when a test or verification result must be retained as an immutable evidence snapshot. |</p>
-<p>| &lt;span id=&quot;fact-applicability-meta-idx&quot;&gt;&lt;/span&gt;`META-IDX` | Index | Generate when consumers need a derived index over governed artifacts; never author it as primary truth. |</p>
-<p>| &lt;span id=&quot;fact-applicability-meta-dep&quot;&gt;&lt;/span&gt;`META-DEP` | Dependency map | Generate when consumers need a derived dependency graph or map; never author it as primary truth. |</p>
-<p>| &lt;span id=&quot;fact-applicability-meta-map&quot;&gt;&lt;/span&gt;`META-MAP` | Metadata map | Generate when consumers need derived metadata joins or lookup maps; never author it as primary truth. |</p>
+<table><thead><tr><th>Code</th><th>Name</th><th>Use when</th></tr></thead><tbody>
+<tr><td><span id="fact-applicability-sem-ent"></span><code>SEM-ENT</code></td><td>Entity definition schema</td><td>Use when a governed domain needs a canonical entity shape, identity, fields, or structural definition.</td></tr>
+<tr><td><span id="fact-applicability-sem-enum"></span><code>SEM-ENUM</code></td><td>Enumeration schema</td><td>Use when a finite controlled vocabulary or closed set of allowed values must be authoritative.</td></tr>
+<tr><td><span id="fact-applicability-sem-ont"></span><code>SEM-ONT</code></td><td>Ontology</td><td>Use when governed concepts and their semantic relationships need an explicit ontology.</td></tr>
+<tr><td><span id="fact-applicability-sem-reg"></span><code>SEM-REG</code></td><td>Registry</td><td>Use when named governed entries require one authoritative registry with stable identifiers.</td></tr>
+<tr><td><span id="fact-applicability-sem-dom"></span><code>SEM-DOM</code></td><td>Domain definition register</td><td>Use when a domain boundary, scope, vocabulary ownership, or domain definition must be registered.</td></tr>
+<tr><td><span id="fact-applicability-sem-asr"></span><code>SEM-ASR</code></td><td>Assertion rules</td><td>Use when invariants or semantic assertions must be stated independently of implementation code.</td></tr>
+<tr><td><span id="fact-applicability-con-vrs"></span><code>CON-VRS</code></td><td>Version constraint</td><td>Use when allowed, required, minimum, maximum, or compatible versions must be constrained.</td></tr>
+<tr><td><span id="fact-applicability-con-bnd"></span><code>CON-BND</code></td><td>Boundary rule</td><td>Use when an authority, security, filesystem, network, module, or responsibility boundary must be constrained.</td></tr>
+<tr><td><span id="fact-applicability-con-pol"></span><code>CON-POL</code></td><td>Policy implementation</td><td>Use when durable policy determines what is permitted, prohibited, required, or conditionally allowed.</td></tr>
+<tr><td><span id="fact-applicability-con-ctr"></span><code>CON-CTR</code></td><td>Constraint contract</td><td>Use when constraints themselves require a reusable machine-consumable contract.</td></tr>
+<tr><td><span id="fact-applicability-dec-tab"></span><code>DEC-TAB</code></td><td>Decision table</td><td>Use when an outcome can be selected deterministically from a finite set of conditions in tabular form.</td></tr>
+<tr><td><span id="fact-applicability-dec-tre"></span><code>DEC-TRE</code></td><td>Decision tree</td><td>Use when ordered or branching conditions determine a governed outcome more clearly than a table.</td></tr>
+<tr><td><span id="fact-applicability-dec-scr"></span><code>DEC-SCR</code></td><td>Scoring model</td><td>Use when weighted criteria or scores determine a governed classification, threshold, or decision.</td></tr>
+<tr><td><span id="fact-applicability-wrk-stm"></span><code>WRK-STM</code></td><td>State machine</td><td>Use when governed state, permitted transitions, and terminal states must be explicit.</td></tr>
+<tr><td><span id="fact-applicability-wrk-prc"></span><code>WRK-PRC</code></td><td>Process definition</td><td>Use when a repeatable ordered process with defined inputs, steps, and outputs must be prescribed.</td></tr>
+<tr><td><span id="fact-applicability-wrk-apr"></span><code>WRK-APR</code></td><td>Approval workflow</td><td>Use when approval, rejection, escalation, or sign-off flow must be governed.</td></tr>
+<tr><td><span id="fact-applicability-wrk-ctr"></span><code>WRK-CTR</code></td><td>Phase contract</td><td>Use when a workflow phase requires explicit entry, exit, handoff, or completion conditions.</td></tr>
+<tr><td><span id="fact-applicability-wrk-wfl"></span><code>WRK-WFL</code></td><td>Workflow definition</td><td>Use when several governed steps, roles, decisions, or phases form an end-to-end workflow.</td></tr>
+<tr><td><span id="fact-applicability-wrk-act"></span><code>WRK-ACT</code></td><td>Action or automation workflow</td><td>Use when a bounded action or automation sequence must be executable under governance.</td></tr>
+<tr><td><span id="fact-applicability-cfg-env"></span><code>CFG-ENV</code></td><td>Environment config</td><td>Use when environment-specific values select allowed behavior without redefining policy.</td></tr>
+<tr><td><span id="fact-applicability-cfg-flg"></span><code>CFG-FLG</code></td><td>Feature flag</td><td>Use when a governed feature can be enabled or disabled through an explicit flag.</td></tr>
+<tr><td><span id="fact-applicability-cfg-prm"></span><code>CFG-PRM</code></td><td>Runtime parameter</td><td>Use when a runtime parameter selects among already-permitted behaviors or limits.</td></tr>
+<tr><td><span id="fact-applicability-map-fld"></span><code>MAP-FLD</code></td><td>Field mapping</td><td>Use when fields in one governed structure translate deterministically to fields in another.</td></tr>
+<tr><td><span id="fact-applicability-map-fmt"></span><code>MAP-FMT</code></td><td>Format translation</td><td>Use when one representation or serialization format must translate deterministically to another.</td></tr>
+<tr><td><span id="fact-applicability-map-mig"></span><code>MAP-MIG</code></td><td>Migration map</td><td>Use when a versioned structure, identifier, or data model requires an explicit migration mapping.</td></tr>
+<tr><td><span id="fact-applicability-ctr-api"></span><code>CTR-API</code></td><td>API contract</td><td>Use when callable request/response behavior requires an explicit API interface contract.</td></tr>
+<tr><td><span id="fact-applicability-ctr-evt"></span><code>CTR-EVT</code></td><td>Event contract</td><td>Use when produced or consumed events require stable names, payloads, and delivery semantics.</td></tr>
+<tr><td><span id="fact-applicability-ctr-svc"></span><code>CTR-SVC</code></td><td>Service contract</td><td>Use when a service boundary, capability, inputs, outputs, or service-level interface must be contracted.</td></tr>
+<tr><td><span id="fact-applicability-man-pkg"></span><code>MAN-PKG</code></td><td>Package manifest</td><td>Use when a package&#x27;s governed identity, contents, dependencies, or distribution metadata must be declared.</td></tr>
+<tr><td><span id="fact-applicability-man-bom"></span><code>MAN-BOM</code></td><td>Bill of materials</td><td>Use when constituent components or dependencies must be inventoried as a bill of materials.</td></tr>
+<tr><td><span id="fact-applicability-man-rel"></span><code>MAN-REL</code></td><td>Release manifest</td><td>Use when a release needs an authoritative manifest of version, contents, provenance, and release facts.</td></tr>
+<tr><td><span id="fact-applicability-man-skl"></span><code>MAN-SKL</code></td><td>Skill manifest</td><td>Use when a reusable skill package needs a governed capability and asset manifest.</td></tr>
+<tr><td><span id="fact-applicability-man-act"></span><code>MAN-ACT</code></td><td>Action manifest</td><td>Use when available actions or automations must be inventoried separately from their workflow definitions.</td></tr>
+<tr><td><span id="fact-applicability-prm-sys"></span><code>PRM-SYS</code></td><td>System prompt</td><td>Use when durable system-level model instructions are governed as an explicit prompt artifact.</td></tr>
+<tr><td><span id="fact-applicability-prm-rol"></span><code>PRM-ROL</code></td><td>Role prompt</td><td>Use when a durable role-specific behavior or responsibility prompt must be governed.</td></tr>
+<tr><td><span id="fact-applicability-prm-ctx"></span><code>PRM-CTX</code></td><td>Context prompt</td><td>Use when reusable context assembly or context framing instructions must be governed.</td></tr>
+<tr><td><span id="fact-applicability-prm-tol"></span><code>PRM-TOL</code></td><td>Tool prompt</td><td>Use when model-facing instructions for invoking or interpreting a tool must be governed.</td></tr>
+<tr><td><span id="fact-applicability-evl-tst"></span><code>EVL-TST</code></td><td>Test suite</td><td>Use when deterministic or machine-evaluable conformance tests define acceptance of governed behavior.</td></tr>
+<tr><td><span id="fact-applicability-evl-rub"></span><code>EVL-RUB</code></td><td>Rubric</td><td>Use when qualitative or multi-criterion review requires an explicit scoring or assessment rubric.</td></tr>
+<tr><td><span id="fact-applicability-evl-ben"></span><code>EVL-BEN</code></td><td>Benchmark</td><td>Use when comparable performance, quality, or capability measurement requires a stable benchmark.</td></tr>
+<tr><td><span id="fact-applicability-evd-log"></span><code>EVD-LOG</code></td><td>Log</td><td>Use when an immutable operational or governance log is itself required evidence.</td></tr>
+<tr><td><span id="fact-applicability-evd-apr"></span><code>EVD-APR</code></td><td>Approval record</td><td>Use when an approval decision must be retained as evidence distinct from the approval workflow.</td></tr>
+<tr><td><span id="fact-applicability-evd-lin"></span><code>EVD-LIN</code></td><td>Lineage record</td><td>Use when lineage, derivation, handoff, or provenance events must be retained as evidence.</td></tr>
+<tr><td><span id="fact-applicability-evd-tsr"></span><code>EVD-TSR</code></td><td>Test result snapshot</td><td>Use when a test or verification result must be retained as an immutable evidence snapshot.</td></tr>
+<tr><td><span id="fact-applicability-meta-idx"></span><code>META-IDX</code></td><td>Index</td><td>Generate when consumers need a derived index over governed artifacts; never author it as primary truth.</td></tr>
+<tr><td><span id="fact-applicability-meta-dep"></span><code>META-DEP</code></td><td>Dependency map</td><td>Generate when consumers need a derived dependency graph or map; never author it as primary truth.</td></tr>
+<tr><td><span id="fact-applicability-meta-map"></span><code>META-MAP</code></td><td>Metadata map</td><td>Generate when consumers need derived metadata joins or lookup maps; never author it as primary truth.</td></tr>
+</tbody></table>
 <h2>Source and authority</h2>
-<p>This reference projects `KIS-KNOW-DEC-TAB-001` version `1.0.0`. The MRD remains authoritative.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/specification/governance/010-validation-and-enforcement/">Previous</a> <a rel="next" href="/kis-mcp-doc/specification/governance/021-relationship-vocabulary/">Next</a></nav></main></body></html>
+<p>This reference projects <code>KIS-KNOW-DEC-TAB-001</code> version <code>1.0.0</code>. The MRD remains authoritative.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/specification/governance/010-validation-and-enforcement/">Previous</a> <a rel="next" href="/kis-mcp-doc/specification/governance/021-relationship-vocabulary/">Next</a></nav></main></body></html>
