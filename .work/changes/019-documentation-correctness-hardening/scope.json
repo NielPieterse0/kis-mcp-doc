@@ -1,0 +1,18 @@
+{
+  "schema_version": 4,
+  "change_id": "019-documentation-correctness-hardening",
+  "status": "complete",
+  "branch": "change/019-documentation-correctness-hardening",
+  "worktree": null,
+  "base": "main",
+  "outcome": "Harden repository-wide documentation correctness and close the audit programme defined by GitHub issue #38 and child issues #39-#44.",
+  "owned_paths": [".work/changes/019-documentation-correctness-hardening/**", "contracts/**", "mrd/**", "publication/**", "src/**", "tests/**", "generated/**"],
+  "shared_paths": ["scripts/verify.ps1"],
+  "excluded_paths": ["C:/Projects/kis-mcp/**"],
+  "dependencies": ["018-documentation-site-markdown-formatting"],
+  "integration_owner": null,
+  "complexity": "large",
+  "risk_triggers": ["public_contract", "schema", "security_boundary"],
+  "base_evidence": {"local_sha": "3563c80c4d06a9d377ae46c1d65ca0fd2406a312", "local_tree": "872ec34be398e3aa99ac65f224aa5a0a849dedcf", "upstream_sha": "3563c80c4d06a9d377ae46c1d65ca0fd2406a312", "upstream_tree": "872ec34be398e3aa99ac65f224aa5a0a849dedcf", "upstream_ref": "github:main", "evidence_source": "reconstructed_from_git_history", "relation": "equal"},
+  "work_management": {"project_id": "kis-mcp", "record_id": "SPEC-019", "source_repository": "NielPieterse0/kis-mcp-doc", "source_number": 38, "source_kind": "issue", "documentation_impact": "complete"}
+}

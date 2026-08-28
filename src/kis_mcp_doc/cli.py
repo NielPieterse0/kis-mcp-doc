@@ -18,6 +18,11 @@ from .publication_kernel import (
     validate_registered_publications,
     verify_registered_publications,
 )
+from .public_repository import (
+    build_public_repository_surfaces,
+    validate_public_repository,
+    verify_public_repository_surfaces,
+)
 from .render import build_governance_spec, verify_governance_spec
 from .work_management import (
     WorkManagementRepository,
@@ -38,6 +43,9 @@ def main(argv: list[str] | None = None) -> int:
     sub.add_parser("site-validate")
     sub.add_parser("search-validate")
     sub.add_parser("release-validate")
+    sub.add_parser("public-validate")
+    sub.add_parser("public-build")
+    sub.add_parser("public-check-generated")
     release_build = sub.add_parser("release-build")
     release_build.add_argument("--output", type=Path)
     release_build.add_argument("--replace", action="store_true")
@@ -87,6 +95,17 @@ def main(argv: list[str] | None = None) -> int:
     root = args.root.resolve()
     repo = _repository(root)
     publication = root / "publication" / "governance-spec.json"
+    if args.command == "public-build":
+        print(json.dumps({"files": build_public_repository_surfaces(root)}, indent=2, sort_keys=True))
+        return 0
+    if args.command == "public-check-generated":
+        result = verify_public_repository_surfaces(root)
+        print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
+        return 0 if result["status"] == "valid" else 1
+    if args.command == "public-validate":
+        result = validate_public_repository(root)
+        print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
+        return 0 if result["status"] == "valid" else 1
     if args.command == "release-validate":
         result = validate_documentation_release(root)
         print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))

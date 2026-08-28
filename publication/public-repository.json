@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "repository": "NielPieterse0/kis-mcp-doc",
+  "project_name": "KIS MCP Documentation",
+  "status": "public documentation engineering and proving ground",
+  "description": "Governed, deterministic documentation generation for KIS Governance and Work Management.",
+  "documentation_url": "https://nielpieterse0.github.io/kis-mcp-doc/",
+  "authority_file": "AGENTS.md",
+  "verification_command": "pwsh -NoProfile -File scripts/verify.ps1",
+  "minimum_powershell_major": 7,
+  "license_notice": "No project-wide open-source license has been granted. Public visibility does not grant reuse, modification, or redistribution rights.",
+  "security_reporting": "Use GitHub private vulnerability reporting when available. Do not disclose vulnerabilities, credentials, tokens, private data, or exploit details in public issues or pull requests.",
+  "generated_files": ["README.md", "CONTRIBUTING.md", "SECURITY.md", ".github/pull_request_template.md"],
+  "repository_controls": {
+    "default_branch": "main",
+    "main_protected": true,
+    "required_check": "verify",
+    "merge_strategy": "merge_commit_only",
+    "delete_branch_on_merge": false,
+    "actions_default_permission": "read",
+    "pages_source": "github_actions"
+  },
+  "reference_repositories": ["NielPieterse0/commodity", "NielPieterse0/chatgpt-skill"]
+}
