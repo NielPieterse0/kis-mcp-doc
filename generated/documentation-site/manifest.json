@@ -1,5 +1,5 @@
 {
-  "bundle_sha256": "902b318eacaa3cff98c19633157abfbff434900ce468bf54f9fbf135e34f5cb4",
+  "bundle_sha256": "e04057fe9002a50cf0ee786c95067214f3e30fdfe6eeff4fabf19da46c5f4e02",
   "contract": {
     "name": "kis-documentation-site",
     "version": 1
@@ -11,9 +11,9 @@
       "sha256": "26cee1c7adb83b1d04a82d6665a1cb219e5004dec6391a11da8d4764904623ef"
     },
     {
-      "bytes": 979,
+      "bytes": 1138,
       "path": "assets/site.css",
-      "sha256": "bb2d87a30eb8f34e5bed2e2b2483dff90818cf4b366095ff270511a112453010"
+      "sha256": "f8447ccf0d4a9f4335e4fd8a1e3af293c9ab4a5a56adc594239f559c8ac406f5"
     },
     {
       "bytes": 1964,
@@ -196,9 +196,9 @@
       "sha256": "8290b4c75c1b880ea75a06e35eed19cdf98140441b3f5050e8a73b786eab1137"
     },
     {
-      "bytes": 6353,
+      "bytes": 8784,
       "path": "specification/governance/004-authority-ownership-and-relationships/index.html",
-      "sha256": "73c06efa7af32cbf6a309821b11cd228f50106ca7004e773b7cfab21f3c7799e"
+      "sha256": "dbeb09ffbf98bcec274d8953d9443ed40e0f28cde8903c8298fd6d232eb844e6"
     },
     {
       "bytes": 4751,
@@ -216,9 +216,9 @@
       "sha256": "cc2d5f64fccd9177badef11eb988d4cf3f16c107b3fb9c3d4536fc1e606aa57f"
     },
     {
-      "bytes": 5524,
+      "bytes": 8177,
       "path": "specification/governance/008-lifecycle/index.html",
-      "sha256": "5e8681ace85400458507d605888c651deae6f76aae65e23b5dee3a06f56726ee"
+      "sha256": "cf0ec9c0a9155b6a37649d0acac4618a3618d451d11a19157b5ec27c054fa9bb"
     },
     {
       "bytes": 7213,
@@ -266,9 +266,9 @@
       "sha256": "50c0ff5c5ef0b611fb3e0ea79eda1e6cbbb035353adb9ca284d0d77169928dfb"
     },
     {
-      "bytes": 16442,
+      "bytes": 29794,
       "path": "specification/work-management/003-work-lifecycle/index.html",
-      "sha256": "f750cae2ac28367ebbf95b26e9588763366c6c5ae92e827454968d5607ef8cad"
+      "sha256": "1c7aa0365c617c1b445f513ecb14f0430a29891ccde89c5c20e349d679b4520c"
     },
     {
       "bytes": 7069,
@@ -286,9 +286,9 @@
       "sha256": "70fc711c574918b6675436f914d838fbe974004bcb93a32834950bdf7ca84760"
     },
     {
-      "bytes": 7636,
+      "bytes": 11975,
       "path": "specification/work-management/007-provider-and-command-plane-boundary/index.html",
-      "sha256": "d9832bac1125ad56147507e180d0ebaf684d12b1d3083619dd64c1508df31512"
+      "sha256": "bae5cdd79b26544389498d9dfb8003b5bae793cab019716a54d80ca9dde40d91"
     },
     {
       "bytes": 2632,
@@ -592,9 +592,9 @@
       "sha256": "73b890fa1ba99bf4fb7fb7e0d6b45596873a50d0895d486a79720c65ed3851e5"
     },
     {
-      "bytes": 26841,
+      "bytes": 35155,
       "path": "src/kis_mcp_doc/documentation_site.py",
-      "sha256": "f653a8c006cf3eaff9c15d1a44a10eac36b446b48e142f9e15d5cff56f2c5a60"
+      "sha256": "df07d6dbce3469d1a9945643431f4d4af26a0d500b0012a75926092e4e190402"
     }
   ],
   "registry_sha256": "eee1014e29668f5bae571d1875d4c1481469efd01ab27d3123dfd6eeb1c67472",

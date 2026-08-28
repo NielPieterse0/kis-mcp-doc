@@ -5,24 +5,7 @@
 <p>MRD lifecycle depends on record mode. Prescriptive authority, descriptive evidence, and generated metadata follow different states and mutability rules.</p>
 <h2 id="lifecycle-diagram">Lifecycle diagram</h2>
 <p>Each record mode is shown as its own canonical state machine. Only transitions declared by the lifecycle MRD are drawn.</p>
-<div class="mermaid">flowchart LR
-  subgraph prescriptive[&quot;prescriptive&quot;]
-    prescriptive_draft[&quot;draft&quot;]
-    prescriptive_active[&quot;active&quot;]
-    prescriptive_superseded[&quot;superseded&quot;]
-    prescriptive_draft --&gt; prescriptive_active
-    prescriptive_active --&gt; prescriptive_superseded
-  end
-  subgraph descriptive[&quot;descriptive&quot;]
-    descriptive_created[&quot;created&quot;]
-    descriptive_retained[&quot;retained&quot;]
-    descriptive_created --&gt; descriptive_retained
-  end
-  subgraph meta[&quot;meta&quot;]
-    meta_generated[&quot;generated&quot;]
-    meta_replaced[&quot;replaced&quot;]
-    meta_generated --&gt; meta_replaced
-  end</div>
+<figure class="mermaid-diagram"><svg xmlns="http://www.w3.org/2000/svg" width="1040" height="496" viewBox="0 0 1040 496" role="img" aria-labelledby="flowchart-c806a91dce65-title flowchart-c806a91dce65-desc"><title id="flowchart-c806a91dce65-title">Flowchart diagram</title><desc id="flowchart-c806a91dce65-desc">Nodes: draft; active; superseded; created; retained; generated; replaced. Directed relationships: draft to active; active to superseded; created to retained; generated to replaced.</desc><defs><marker id="arrow-c806a91dce65" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#57606a"/></marker></defs><rect x="26" y="30" width="988" height="114" rx="8" fill="none" stroke="#8c959f" stroke-dasharray="5 4"/><text x="38" y="54" font-family="system-ui,sans-serif" font-size="14" font-weight="600">prescriptive</text><rect x="26" y="182" width="652" height="114" rx="8" fill="none" stroke="#8c959f" stroke-dasharray="5 4"/><text x="38" y="206" font-family="system-ui,sans-serif" font-size="14" font-weight="600">descriptive</text><rect x="26" y="334" width="652" height="114" rx="8" fill="none" stroke="#8c959f" stroke-dasharray="5 4"/><text x="38" y="358" font-family="system-ui,sans-serif" font-size="14" font-weight="600">meta</text><line x1="324" y1="106" x2="380" y2="106" stroke="#57606a" stroke-width="1.5" marker-end="url(#arrow-c806a91dce65)"/><line x1="660" y1="106" x2="716" y2="106" stroke="#57606a" stroke-width="1.5" marker-end="url(#arrow-c806a91dce65)"/><line x1="324" y1="258" x2="380" y2="258" stroke="#57606a" stroke-width="1.5" marker-end="url(#arrow-c806a91dce65)"/><line x1="324" y1="410" x2="380" y2="410" stroke="#57606a" stroke-width="1.5" marker-end="url(#arrow-c806a91dce65)"/><rect x="44" y="82" width="280" height="48" rx="6" fill="#f6f8fa" stroke="#57606a"/><text x="184" y="111" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#24292f"><tspan x="184" dy="0">draft</tspan></text><rect x="380" y="82" width="280" height="48" rx="6" fill="#f6f8fa" stroke="#57606a"/><text x="520" y="111" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#24292f"><tspan x="520" dy="0">active</tspan></text><rect x="716" y="82" width="280" height="48" rx="6" fill="#f6f8fa" stroke="#57606a"/><text x="856" y="111" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#24292f"><tspan x="856" dy="0">superseded</tspan></text><rect x="44" y="234" width="280" height="48" rx="6" fill="#f6f8fa" stroke="#57606a"/><text x="184" y="263" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#24292f"><tspan x="184" dy="0">created</tspan></text><rect x="380" y="234" width="280" height="48" rx="6" fill="#f6f8fa" stroke="#57606a"/><text x="520" y="263" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#24292f"><tspan x="520" dy="0">retained</tspan></text><rect x="44" y="386" width="280" height="48" rx="6" fill="#f6f8fa" stroke="#57606a"/><text x="184" y="415" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#24292f"><tspan x="184" dy="0">generated</tspan></text><rect x="380" y="386" width="280" height="48" rx="6" fill="#f6f8fa" stroke="#57606a"/><text x="520" y="415" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#24292f"><tspan x="520" dy="0">replaced</tspan></text></svg><figcaption>Flowchart rendered deterministically from the governed Mermaid source.</figcaption></figure>
 <h2 id="state-machines">State machines</h2>
 <p>Each record mode has its own state machine. Prescriptive MRDs move from draft authority to active authority and then supersession; descriptive evidence and generated metadata use lifecycles that match their different mutability rules.</p>
 <p>The following table shows the allowed states and transitions for each record mode:</p>
@@ -55,4 +38,4 @@
 <tr><td><code>KIS-MRD-LIFE-006</code></td><td><code>review</code></td></tr>
 </tbody></table>
 <h2 id="source-and-authority">Source and authority</h2>
-<p>This page projects <code>KIS-KNOW-WRK-STM-001</code> version <code>1.0.0</code>. The MRD remains authoritative; this page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/specification/governance/007-provenance/">Previous</a> <a rel="next" href="/kis-mcp-doc/specification/governance/009-kis-op-governance-behavior/">Next</a></nav></main><script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.17.2/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,securityLevel:'strict'});</script></body></html>
+<p>This page projects <code>KIS-KNOW-WRK-STM-001</code> version <code>1.0.0</code>. The MRD remains authoritative; this page has no write-back authority.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/specification/governance/007-provenance/">Previous</a> <a rel="next" href="/kis-mcp-doc/specification/governance/009-kis-op-governance-behavior/">Next</a></nav></main></body></html>
