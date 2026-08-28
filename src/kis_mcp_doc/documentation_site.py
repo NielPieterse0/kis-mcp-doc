@@ -1,8 +1,11 @@
 from __future__ import annotations
 
+import hashlib
 import html
 import json
+import math
 import re
+import textwrap
 from pathlib import Path
 from typing import Any
 
@@ -247,6 +250,167 @@ def _table_cells(raw: str) -> list[str]:
     return [cell.strip().replace("\\|", "|") for cell in re.split(r"(?<!\\)\|", value)]
 
 
+def _mermaid_flowchart_svg(source: str) -> str:
+    lines = [line.strip() for line in source.splitlines() if line.strip()]
+    if not lines:
+        raise ValueError("unsupported Mermaid diagram: empty source")
+    header = re.fullmatch(r"flowchart\s+(LR|TD)", lines[0])
+    if not header:
+        raise ValueError("unsupported Mermaid diagram: only flowchart LR/TD is supported")
+
+    direction = header.group(1)
+    nodes: dict[str, str] = {}
+    groups: dict[str, list[str]] = {}
+    group_labels: dict[str, str] = {}
+    group_order: list[str] = []
+    node_group: dict[str, str | None] = {}
+    edges: list[tuple[str, str, str | None]] = []
+    current_group: str | None = None
+    node_re = re.compile(r'^([A-Za-z0-9_]+)\["(.*)"\]$')
+    group_re = re.compile(r'^subgraph\s+([A-Za-z0-9_]+)\["(.*)"\]$')
+    edge_re = re.compile(r'^([A-Za-z0-9_]+)(?:\["([^"]*)"\])?\s*-->\s*(?:\|"([^"]*)"\|\s*)?([A-Za-z0-9_]+)(?:\["([^"]*)"\])?$')
+
+    for line in lines[1:]:
+        if line == "end":
+            current_group = None
+            continue
+        group_match = group_re.fullmatch(line)
+        if group_match:
+            current_group = group_match.group(1)
+            if current_group in groups:
+                raise ValueError(f"unsupported Mermaid diagram: duplicate subgraph {current_group}")
+            groups[current_group] = []
+            group_labels[current_group] = group_match.group(2)
+            group_order.append(current_group)
+            continue
+        node_match = node_re.fullmatch(line)
+        if node_match:
+            node_id, label = node_match.groups()
+            nodes[node_id] = label
+            node_group[node_id] = current_group
+            if current_group is not None:
+                groups[current_group].append(node_id)
+            continue
+        edge_match = edge_re.fullmatch(line)
+        if edge_match:
+            source_id, source_label, edge_label, target_id, target_label = edge_match.groups()
+            for node_id, label in ((source_id, source_label), (target_id, target_label)):
+                if label is not None:
+                    nodes[node_id] = label
+                    if node_id not in node_group:
+                        node_group[node_id] = current_group
+                        if current_group is not None:
+                            groups[current_group].append(node_id)
+            edges.append((source_id, target_id, edge_label))
+            continue
+        raise ValueError(f"unsupported Mermaid diagram syntax: {line}")
+
+    for source_id, target_id, _ in edges:
+        for node_id in (source_id, target_id):
+            if node_id not in nodes:
+                nodes[node_id] = node_id
+                node_group[node_id] = None
+
+    ungrouped = [node_id for node_id in nodes if node_group.get(node_id) is None]
+    sections: list[tuple[str | None, str | None, list[str]]] = []
+    if ungrouped:
+        sections.append((None, None, ungrouped))
+    sections.extend((group_id, group_labels[group_id], groups[group_id]) for group_id in group_order)
+
+    wrapped_labels = {
+        node_id: textwrap.wrap(label, width=32, break_long_words=True, break_on_hyphens=False) or [label]
+        for node_id, label in nodes.items()
+    }
+    node_width = 280
+    line_height = 18
+    max_label_lines = max((len(lines) for lines in wrapped_labels.values()), default=1)
+    node_height = 30 + line_height * max_label_lines
+    gap_x = 56
+    gap_y = 48
+    margin = 44
+    columns = 4 if direction == "LR" else 3
+    positions: dict[str, tuple[int, int]] = {}
+    section_boxes: list[tuple[str, int, int, int, int]] = []
+    y_cursor = margin
+    max_width = 0
+
+    for group_id, label, section_nodes in sections:
+        if not section_nodes:
+            continue
+        section_columns = min(columns, max(1, len(section_nodes)))
+        rows = (len(section_nodes) + section_columns - 1) // section_columns
+        header_height = 38 if group_id is not None else 0
+        section_width = section_columns * node_width + (section_columns - 1) * gap_x
+        section_height = header_height + rows * node_height + max(0, rows - 1) * gap_y
+        x_origin = margin
+        if group_id is not None:
+            section_boxes.append((label or group_id, x_origin - 18, y_cursor - 14, section_width + 36, section_height + 28))
+        for idx, node_id in enumerate(section_nodes):
+            row = idx // section_columns
+            col = idx % section_columns
+            x = x_origin + col * (node_width + gap_x)
+            y = y_cursor + header_height + row * (node_height + gap_y)
+            positions[node_id] = (x, y)
+        y_cursor += section_height + gap_y + (18 if group_id is not None else 0)
+        max_width = max(max_width, section_width + margin * 2)
+
+    def edge_boundary(cx: float, cy: float, toward_x: float, toward_y: float) -> tuple[float, float]:
+        dx = toward_x - cx
+        dy = toward_y - cy
+        if dx == 0 and dy == 0:
+            return cx, cy
+        scale_x = math.inf if dx == 0 else (node_width / 2) / abs(dx)
+        scale_y = math.inf if dy == 0 else (node_height / 2) / abs(dy)
+        scale = min(scale_x, scale_y)
+        return cx + dx * scale, cy + dy * scale
+
+    height = max(y_cursor + margin - gap_y, 180)
+    width = max(max_width, 460)
+    diagram_key = hashlib.sha256(source.encode("utf-8")).hexdigest()[:12]
+    title_id = f"flowchart-{diagram_key}-title"
+    desc_id = f"flowchart-{diagram_key}-desc"
+    arrow_id = f"arrow-{diagram_key}"
+    node_summary = "; ".join(nodes.values())
+    relationship_summary = "; ".join(
+        f"{nodes[source_id]} to {nodes[target_id]}" + (f" ({edge_label})" if edge_label else "")
+        for source_id, target_id, edge_label in edges
+    )
+    description = f"Nodes: {node_summary}. Directed relationships: {relationship_summary}."
+    parts = [
+        f'<figure class="mermaid-diagram"><svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="{title_id} {desc_id}">',
+        f'<title id="{title_id}">Flowchart diagram</title><desc id="{desc_id}">{html.escape(description)}</desc>',
+        f'<defs><marker id="{arrow_id}" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#57606a"/></marker></defs>',
+    ]
+    for label, x, y, box_width, box_height in section_boxes:
+        parts.append(f'<rect x="{x}" y="{y}" width="{box_width}" height="{box_height}" rx="8" fill="none" stroke="#8c959f" stroke-dasharray="5 4"/>')
+        parts.append(f'<text x="{x + 12}" y="{y + 24}" font-family="system-ui,sans-serif" font-size="14" font-weight="600">{html.escape(label)}</text>')
+    for source_id, target_id, edge_label in edges:
+        if source_id not in positions or target_id not in positions:
+            raise ValueError("unsupported Mermaid diagram: edge references an unpositioned node")
+        sx, sy = positions[source_id]
+        tx, ty = positions[target_id]
+        scx, scy = sx + node_width / 2, sy + node_height / 2
+        tcx, tcy = tx + node_width / 2, ty + node_height / 2
+        x1, y1 = edge_boundary(scx, scy, tcx, tcy)
+        x2, y2 = edge_boundary(tcx, tcy, scx, scy)
+        parts.append(f'<line x1="{x1:g}" y1="{y1:g}" x2="{x2:g}" y2="{y2:g}" stroke="#57606a" stroke-width="1.5" marker-end="url(#{arrow_id})"/>')
+        if edge_label:
+            mx, my = (x1 + x2) / 2, (y1 + y2) / 2 - 7
+            parts.append(f'<text x="{mx:g}" y="{my:g}" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#24292f">{html.escape(edge_label)}</text>')
+    for node_id, label in nodes.items():
+        x, y = positions[node_id]
+        parts.append(f'<rect x="{x}" y="{y}" width="{node_width}" height="{node_height}" rx="6" fill="#f6f8fa" stroke="#57606a"/>')
+        lines = wrapped_labels[node_id]
+        first_y = y + node_height / 2 - ((len(lines) - 1) * line_height) / 2 + 5
+        parts.append(f'<text x="{x + node_width / 2:g}" y="{first_y:g}" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#24292f">')
+        for line_index, line in enumerate(lines):
+            dy = "0" if line_index == 0 else str(line_height)
+            parts.append(f'<tspan x="{x + node_width / 2:g}" dy="{dy}">{html.escape(line)}</tspan>')
+        parts.append('</text>')
+    parts.append('</svg><figcaption>Flowchart rendered deterministically from the governed Mermaid source.</figcaption></figure>')
+    return "".join(parts)
+
+
 def _markdown_html(text: str, source: Path, source_to_route: dict[str, str], root: Path, base_path: str) -> str:
     source_lines = text.splitlines()
     output: list[str] = []
@@ -285,8 +449,11 @@ def _markdown_html(text: str, source: Path, source_to_route: dict[str, str], roo
             while index < len(source_lines) and not source_lines[index].strip().startswith("```"):
                 code_lines.append(source_lines[index])
                 index += 1
-            class_name = f' class="language-{html.escape(language, quote=True)}"' if language else ""
-            output.append(f"<pre><code{class_name}>{html.escape(chr(10).join(code_lines))}</code></pre>")
+            if language.lower() == "mermaid":
+                output.append(_mermaid_flowchart_svg(chr(10).join(code_lines)))
+            else:
+                class_name = f' class="language-{html.escape(language, quote=True)}"' if language else ""
+                output.append(f"<pre><code{class_name}>{html.escape(chr(10).join(code_lines))}</code></pre>")
             index += 1
             continue
         safe_anchor = _SAFE_ANCHOR_RE.match(stripped)
@@ -449,7 +616,7 @@ def render_documentation_site(root: Path) -> tuple[dict[str, bytes], dict[str, A
         home_sections.append(f'<section><h2><a href="{href}">{surface.title()}</a></h2></section>')
     home_body = f'<h1>{html.escape(config["title"])}</h1><p>{html.escape(config.get("subtitle", ""))}</p>' + "".join(home_sections)
     files["index.html"] = _page(config["title"], home_body, "Home", base_path)
-    files["assets/site.css"] = b"body{font-family:system-ui,sans-serif;max-width:72rem;margin:auto;padding:1rem;line-height:1.55}header{display:flex;justify-content:space-between;gap:1rem;border-bottom:1px solid #ccc;padding-bottom:1rem}main{padding-top:1rem}.breadcrumbs,.prev-next{margin:1rem 0;color:#555}nav a{margin-right:.75rem}table{width:100%;border-collapse:collapse;margin:1rem 0;display:block;overflow-x:auto}th,td{border:1px solid #d0d7de;padding:.5rem .75rem;text-align:left;vertical-align:top}th{background:#f6f8fa}pre{overflow:auto;background:#f6f8fa;padding:1rem;border-radius:.25rem}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:#f6f8fa;padding:.1rem .25rem;border-radius:.2rem}pre code{background:transparent;padding:0}blockquote{margin:1rem 0;padding:.25rem 1rem;border-left:.25rem solid #d0d7de;color:#57606a}hr{border:0;border-top:1px solid #d0d7de;margin:2rem 0}li+li{margin-top:.25rem}@media(max-width:48rem){header{display:block}header nav{margin-top:.5rem}}\n"
+    files["assets/site.css"] = b"body{font-family:system-ui,sans-serif;max-width:72rem;margin:auto;padding:1rem;line-height:1.55}header{display:flex;justify-content:space-between;gap:1rem;border-bottom:1px solid #ccc;padding-bottom:1rem}main{padding-top:1rem}.breadcrumbs,.prev-next{margin:1rem 0;color:#555}nav a{margin-right:.75rem}table{width:100%;border-collapse:collapse;margin:1rem 0;display:block;overflow-x:auto}th,td{border:1px solid #d0d7de;padding:.5rem .75rem;text-align:left;vertical-align:top}th{background:#f6f8fa}pre{overflow:auto;background:#f6f8fa;padding:1rem;border-radius:.25rem}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:#f6f8fa;padding:.1rem .25rem;border-radius:.2rem}pre code{background:transparent;padding:0}blockquote{margin:1rem 0;padding:.25rem 1rem;border-left:.25rem solid #d0d7de;color:#57606a}hr{border:0;border-top:1px solid #d0d7de;margin:2rem 0}li+li{margin-top:.25rem}.mermaid-diagram{overflow-x:auto;margin:1rem 0}.mermaid-diagram svg{display:block}.mermaid-diagram figcaption{color:#57606a;font-size:.875rem;margin-top:.5rem}@media(max-width:48rem){header{display:block}header nav{margin-top:.5rem}}\n"
     files["routes.json"] = (json.dumps(entries, indent=2, ensure_ascii=False, sort_keys=True) + "\n").encode("utf-8")
     search_relative = config.get("search_index")
     if isinstance(search_relative, str):

@@ -4,6 +4,8 @@ import json
 import shutil
 from pathlib import Path
 
+import pytest
+
 from kis_mcp_doc.documentation_site import _markdown_html, build_documentation_site, route_entries, validate_documentation_site, verify_documentation_site
 
 ROOT = Path(__file__).parents[1]
@@ -38,6 +40,7 @@ def test_site_build_has_entry_points_navigation_and_breadcrumbs(tmp_path: Path) 
     css = (output / "assets/site.css").read_text(encoding="utf-8")
     assert "table{width:100%" in css
     assert "blockquote{" in css
+    assert ".mermaid-diagram{overflow-x:auto" in css
 
 
 def test_site_detects_broken_source_link_and_orphan(tmp_path: Path) -> None:
@@ -141,3 +144,44 @@ def test_site_validates_same_page_fragments(tmp_path: Path) -> None:
     index.write_text(index.read_text(encoding="utf-8") + "\n[Broken](#missing-fragment)\n", encoding="utf-8")
     codes = {item["code"] for item in validate_documentation_site(root)["diagnostics"]}
     assert "SITE_BROKEN_SOURCE_FRAGMENT" in codes
+
+
+def test_markdown_renderer_emits_self_contained_mermaid_svg() -> None:
+    source = ROOT / "generated/governance-spec/008-lifecycle.md"
+    markdown = """```mermaid\nflowchart LR\n  draft[\"draft\"]\n  active[\"active\"]\n  draft --> active\n```\n"""
+    rendered = _markdown_html(markdown, source, {}, ROOT, "/kis-mcp-doc")
+    assert '<figure class="mermaid-diagram">' in rendered
+    assert '<svg ' in rendered
+    assert '<title id="flowchart-' in rendered
+    assert '<desc id="flowchart-' in rendered
+    assert 'draft to active' in rendered
+    assert 'aria-labelledby="flowchart-' in rendered
+    assert 'draft' in rendered and 'active' in rendered
+    assert 'language-mermaid' not in rendered
+    assert 'cdn.jsdelivr.net' not in rendered
+
+
+def test_site_mermaid_pages_have_no_external_runtime_dependency(tmp_path: Path) -> None:
+    output = tmp_path / "site"
+    build_documentation_site(ROOT, output)
+    page = (output / "specification/governance/008-lifecycle/index.html").read_text(encoding="utf-8")
+    assert 'class="mermaid-diagram"' in page
+    assert '<svg ' in page
+    assert 'cdn.jsdelivr.net' not in page
+    assert 'mermaid.initialize' not in page
+
+
+def test_markdown_renderer_wraps_long_labels_and_terminates_edges_at_nodes() -> None:
+    source = ROOT / "generated/governance-spec/004-authority-ownership-and-relationships.md"
+    markdown = """```mermaid\nflowchart LR\n  source[\"short source\"]\n  source --> target[\"Conflict posture: surface_diagnostic_and_resolve_against_current_owner\"]\n```\n"""
+    rendered = _markdown_html(markdown, source, {}, ROOT, "/kis-mcp-doc")
+    assert rendered.count("<tspan") >= 3
+    assert 'marker-end="url(#arrow-' in rendered
+    assert 'x2="365"' not in rendered
+
+
+def test_markdown_renderer_rejects_unsupported_mermaid_syntax() -> None:
+    source = ROOT / "generated/governance-spec/008-lifecycle.md"
+    markdown = """```mermaid\nsequenceDiagram\n  A->>B: hello\n```\n"""
+    with pytest.raises(ValueError, match="unsupported Mermaid diagram"):
+        _markdown_html(markdown, source, {}, ROOT, "/kis-mcp-doc")
