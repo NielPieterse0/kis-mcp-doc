@@ -1,0 +1,18 @@
+{
+  "schema_version": 4,
+  "change_id": "020-public-repository-readiness",
+  "status": "active",
+  "branch": "change/020-public-repository-readiness",
+  "worktree": ".work/worktrees/020-public-repository-readiness",
+  "base": "main",
+  "outcome": "Bring kis-mcp-doc to an explicitly verified public-repository posture equivalent to or stronger than the commodity and ChatGPT-skill reference repositories while preserving its machine-readable documentation authority model.",
+  "owned_paths": [".work/changes/019-documentation-correctness-hardening/**", ".work/changes/020-public-repository-readiness/**", "publication/public-repository.json", "src/kis_mcp_doc/public_repository.py", "src/kis_mcp_doc/cli.py", "tests/test_public_repository.py", "tests/test_windows_runtime_policy.py", "scripts/verify.ps1", "README.md", "CONTRIBUTING.md", "SECURITY.md", ".github/CODEOWNERS", ".github/pull_request_template.md", ".github/dependabot.yml", ".github/workflows/work-management.yml"],
+  "shared_paths": ["AGENTS.md"],
+  "excluded_paths": ["mrd/governance/**", "mrd/work-management/**", "generated/**", "C:/Projects/kis-mcp/**"],
+  "dependencies": ["019-documentation-correctness-hardening"],
+  "integration_owner": null,
+  "complexity": "medium",
+  "risk_triggers": ["public_contract", "security_boundary", "ci"],
+  "base_evidence": {"local_sha": "3a922cc6b40c2e909284fcc4a6b16787ba7136bb", "local_tree": "f8548826487092f90bac20061cba4d4e54ffa6ef", "upstream_sha": "3a922cc6b40c2e909284fcc4a6b16787ba7136bb", "upstream_tree": "f8548826487092f90bac20061cba4d4e54ffa6ef", "upstream_ref": "github:main", "evidence_source": "verified_github_default", "relation": "equal"},
+  "work_management": {"project_id": "kis-mcp", "record_id": "TASK-003", "source_repository": "NielPieterse0/kis-mcp-doc", "source_number": 3, "source_kind": "issue", "documentation_impact": "planned"}
+}

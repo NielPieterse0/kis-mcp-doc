@@ -5,6 +5,10 @@ param(
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 
+if ($PSVersionTable.PSVersion.Major -lt 7) {
+    throw 'POWERSHELL_VERSION_UNSUPPORTED: canonical verification requires PowerShell 7 or later.'
+}
+
 $RepositoryRoot = Split-Path -Parent $PSScriptRoot
 $LockPath = Join-Path $RepositoryRoot 'uv.lock'
 
@@ -26,12 +30,20 @@ $AllowedGeneratedMarkdownPrefixes = @(
     $PublicationRegistry.content.families |
         ForEach-Object { ($_.output.TrimEnd('/') + '/').Replace('\', '/') }
 )
+$PublicRepositoryPath = Join-Path $RepositoryRoot 'publication\public-repository.json'
+$PublicRepository = Get-Content -LiteralPath $PublicRepositoryPath -Raw | ConvertFrom-Json
+$AllowedGeneratedMarkdownFiles = @(
+    $PublicRepository.generated_files |
+        Where-Object { $_.EndsWith('.md') } |
+        ForEach-Object { $_.Replace('\', '/') }
+)
 $TrackedMarkdown = @(& git -C $RepositoryRoot ls-files '*.md')
 $UnexpectedMarkdown = @(
     $TrackedMarkdown | Where-Object {
         $Path = $_
         $AllowedGenerated = @($AllowedGeneratedMarkdownPrefixes | Where-Object { $Path.StartsWith($_) }).Count -gt 0
-        $Path -ne 'AGENTS.md' -and -not $AllowedGenerated
+        $AllowedPublicSurface = $AllowedGeneratedMarkdownFiles -contains $Path
+        $Path -ne 'AGENTS.md' -and -not $AllowedGenerated -and -not $AllowedPublicSurface
     }
 )
 if ($UnexpectedMarkdown.Count -gt 0) {
@@ -73,6 +85,16 @@ try {
     & $PythonCommand -m pytest -q
     if ($LASTEXITCODE -ne 0) {
         throw "Test verification failed with exit code $LASTEXITCODE"
+    }
+
+    & $PythonCommand -m kis_mcp_doc --root . public-validate
+    if ($LASTEXITCODE -ne 0) {
+        throw "Public repository hygiene validation failed with exit code $LASTEXITCODE"
+    }
+
+    & $PythonCommand -m kis_mcp_doc --root . public-check-generated
+    if ($LASTEXITCODE -ne 0) {
+        throw "Public repository generated-surface verification failed with exit code $LASTEXITCODE"
     }
 
     & $PythonCommand -m kis_mcp_doc --root . validate

@@ -34,6 +34,8 @@ def test_preflight_rejects_uv_managed_python_and_requires_signature():
 
 def test_canonical_verification_disables_uv_python_management():
     text = VERIFY.read_text(encoding="utf-8-sig")
+    assert "POWERSHELL_VERSION_UNSUPPORTED" in text
+    assert "$PSVersionTable.PSVersion.Major -lt 7" in text
     assert "runtime-preflight.ps1" in text
     assert "$env:UV_PYTHON" in text
     assert "--no-managed-python" in text
