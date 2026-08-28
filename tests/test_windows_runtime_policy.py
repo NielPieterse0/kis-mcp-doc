@@ -5,6 +5,9 @@ ROOT = Path(__file__).resolve().parents[1]
 POLICY = ROOT / "tooling" / "windows-runtime.json"
 VERIFY = ROOT / "scripts" / "verify.ps1"
 PREFLIGHT = ROOT / "scripts" / "runtime-preflight.ps1"
+CONFIGURE_REPOSITORY = ROOT / "scripts" / "configure-repository.ps1"
+EDITORCONFIG = ROOT / ".editorconfig"
+GITATTRIBUTES = ROOT / ".gitattributes"
 
 
 def test_windows_runtime_policy_is_fail_closed_and_portable():
@@ -41,3 +44,19 @@ def test_canonical_verification_disables_uv_python_management():
     assert "--no-managed-python" in text
     assert "--no-python-downloads" in text
     assert ".venv\\Scripts\\python.exe" in text
+
+
+def test_repository_line_endings_are_enforced_like_parent_kis():
+    configure = CONFIGURE_REPOSITORY.read_text(encoding="utf-8-sig")
+    verify = VERIFY.read_text(encoding="utf-8-sig")
+    editorconfig = EDITORCONFIG.read_text(encoding="utf-8-sig")
+    gitattributes = GITATTRIBUTES.read_text(encoding="utf-8-sig")
+
+    assert "git config --local core.autocrlf false" in configure
+    assert "git config --local core.eol lf" in configure
+    assert "git config --local core.safecrlf true" in configure
+    assert "configure-repository.ps1" in verify
+    assert "end_of_line = lf" in editorconfig
+    assert "[*.{bat,cmd}]" in editorconfig
+    assert "end_of_line = crlf" in editorconfig
+    assert "* text=auto eol=lf" in gitattributes

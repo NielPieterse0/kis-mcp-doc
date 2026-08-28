@@ -1,15 +1,15 @@
 {
-  "bundle_sha256": "6254e6cdda425cb60ba59dcab5d66a142a044f3c53d8657ca2f0d823f979a66d",
+  "bundle_sha256": "7eb4db4dc74974d987535169d097a780dde94bbaac8bd580d2d1e4843dfd0e42",
   "contract": {
     "name": "kis-documentation-search",
     "version": 2
   },
-  "documents": 52,
+  "documents": 63,
   "files": [
     {
-      "bytes": 269333,
+      "bytes": 321754,
       "path": "search-index.json",
-      "sha256": "cf2cf91b7f79d8b6b6b0652f8e3f1ef613b8202e0eb865f8d26db047d95859db"
+      "sha256": "b341d6f60e17dad9838335d99942a4853fe234952d7c0a6f407fd26aebe69ee5"
     }
   ],
   "generator": {
@@ -40,7 +40,7 @@
     {
       "bytes": 4077,
       "path": "generated/documentation-reference-standard/manifest.json",
-      "sha256": "d38184bd63600c59deb54c3cc3e9b979558e39ec60fef787801e3a45d984535c"
+      "sha256": "b4d869145caf208c94bfc7608b6c66ac30069bed2e099086cf7585a2184baeec"
     },
     {
       "bytes": 718,
@@ -80,7 +80,7 @@
     {
       "bytes": 4089,
       "path": "generated/governance-docs/manifest.json",
-      "sha256": "e69178e7835d0d9b4238379686e67ced11401553b5e72201175b71c25cfacff5"
+      "sha256": "4f023933183067e092f828e4995c2033b9231559a1f66a66fc4296271f009661"
     },
     {
       "bytes": 1187,
@@ -170,7 +170,62 @@
     {
       "bytes": 9604,
       "path": "generated/governance-spec/manifest.json",
-      "sha256": "74ae80c93b584fc14f93926f769975a5427dfb2eed50904a4bb0edc340a33f1b"
+      "sha256": "6224e1ad1349846972c56d749794ee6e9523790a7b7cad0ec43e323dfd90c8ae"
+    },
+    {
+      "bytes": 752,
+      "path": "generated/repository-docs/000-index.md",
+      "sha256": "101f1a813d0cb2a31389a033319fad32168fb57090e978cedfb4b01ffa87b5e0"
+    },
+    {
+      "bytes": 907,
+      "path": "generated/repository-docs/001-architecture-and-authority.md",
+      "sha256": "5de5809aa2c3d59b06d90a15fe23e6dd3816296f479e8867dc9a5451e8763cb2"
+    },
+    {
+      "bytes": 1051,
+      "path": "generated/repository-docs/002-repository-map.md",
+      "sha256": "3636736188129290f1a923180673a67c2d2a941b574462a58d74088a9dc2cae3"
+    },
+    {
+      "bytes": 1176,
+      "path": "generated/repository-docs/003-publication-and-generated-documentation.md",
+      "sha256": "76d54dc6bdcb1f8156ed640132e9b5b43f6647e71fa81f996774a1c38880699b"
+    },
+    {
+      "bytes": 830,
+      "path": "generated/repository-docs/004-verification-and-operations.md",
+      "sha256": "faf4d1c5555342c4f917b40dde3f4d8b3744b0263a04c8b4f9a81a350573e09f"
+    },
+    {
+      "bytes": 1004,
+      "path": "generated/repository-docs/005-artefact-metadata-and-relationships.md",
+      "sha256": "d0956d3f8c8f8af488805469b79e3fac617ffed8890d7bb1e2a802ab257d7c2c"
+    },
+    {
+      "bytes": 1029,
+      "path": "generated/repository-docs/006-coverage-and-freshness.md",
+      "sha256": "1c53d276282ee88da0100c14aa463f0b468c96d81bdbf55c4686549d2c010835"
+    },
+    {
+      "bytes": 180223,
+      "path": "generated/repository-docs/data/artefact-inventory.json",
+      "sha256": "24bdc569261f6aa45b14d3fe0e33e0438918bc7d68c47db07eba3c27fe7384bf"
+    },
+    {
+      "bytes": 248,
+      "path": "generated/repository-docs/data/coverage-report.json",
+      "sha256": "e0a3ac8ec35a83e0e9674e493fabaae39848a6a64e2c4a06d9e6f100c6bdb3ac"
+    },
+    {
+      "bytes": 30693,
+      "path": "generated/repository-docs/data/relationship-graph.json",
+      "sha256": "911ab5eec4a24522b3d76ae14b84120c26d76ea045609aac2287754eea959485"
+    },
+    {
+      "bytes": 18622,
+      "path": "generated/repository-docs/manifest.json",
+      "sha256": "48ab82d2a9635bb5f4ba1daa05cd8b059c9ffa0573d0266cf543dcab67898fe1"
     },
     {
       "bytes": 708,
@@ -210,7 +265,7 @@
     {
       "bytes": 3705,
       "path": "generated/work-management-docs/manifest.json",
-      "sha256": "3c9586d3f244db702d03db98a19493c30f2d283e48d743fbdbd49a59b88135df"
+      "sha256": "fcdab990fbd5d67a2f091b843613dbab34c040200b80936471f008d88999dab3"
     },
     {
       "bytes": 1323,
@@ -275,7 +330,7 @@
     {
       "bytes": 6879,
       "path": "generated/work-management-spec/manifest.json",
-      "sha256": "be311fd4128ef41e66300a269a7963def1faa4ebb9681a1e5907b2abe70866f4"
+      "sha256": "ad001e0748db8b4326926144479c4514b632111c1c8bc581144ab880f4865023"
     },
     {
       "bytes": 160,

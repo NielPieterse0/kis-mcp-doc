@@ -1,0 +1,56 @@
+{
+  "schema_version": 4,
+  "change_id": "021-current-state-kis-mcp-doc-human-documentation",
+  "status": "active",
+  "branch": "change/021-current-state-kis-mcp-doc-human-documentation",
+  "worktree": ".work/worktrees/021-current-state-kis-mcp-doc-human-documentation",
+  "base": "main",
+  "outcome": "Implement the complete current-state kis-mcp-doc human documentation programme and deterministic artefact metadata/relationship graph.",
+  "owned_paths": [
+    ".work/changes/021-current-state-kis-mcp-doc-human-documentation/**",
+    "mrd/documentation/**",
+    "contracts/documentation/**",
+    "publication/**",
+    "src/kis_mcp_doc/**",
+    "tests/**",
+    "generated/**",
+    ".editorconfig",
+    "scripts/configure-repository.ps1",
+    "scripts/verify.ps1"
+  ],
+  "shared_paths": [],
+  "excluded_paths": [
+    "mrd/work-management/**",
+    "contracts/work-management/**",
+    "C:/Projects/kis-mcp/**"
+  ],
+  "dependencies": [
+    "020-public-repository-readiness"
+  ],
+  "integration_owner": null,
+  "complexity": "large",
+  "risk_triggers": [
+    "public_contract",
+    "schema",
+    "governance",
+    "ci"
+  ],
+  "base_evidence": {
+    "local_sha": "164765b4d2de113173033efae54b36d8716c8e8f",
+    "local_tree": "39f0672f01421de1a8d4bbd5931f1805e9968c04",
+    "upstream_sha": "164765b4d2de113173033efae54b36d8716c8e8f",
+    "upstream_tree": "39f0672f01421de1a8d4bbd5931f1805e9968c04",
+    "upstream_ref": "github:main",
+    "evidence_source": "verified_local_tracking_equal",
+    "relation": "equal"
+  },
+  "work_management": {
+    "project_id": "kis-mcp-doc",
+    "record_id": "WORK-51",
+    "source_repository": "NielPieterse0/kis-mcp-doc",
+    "source_number": 51,
+    "source_kind": "issue",
+    "documentation_impact": "in_progress",
+    "capture_status": "active_claimed"
+  }
+}

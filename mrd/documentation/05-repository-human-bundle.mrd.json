@@ -1,0 +1,142 @@
+{
+  "_mrd": {
+    "schema_version": 1,
+    "id": "KIS-DOC-CON-POL-003",
+    "title": "Current-State Repository Human Bundle",
+    "module": "documentation",
+    "class": "CON",
+    "type": "POL",
+    "layer": "L1",
+    "record_mode": "prescriptive",
+    "status": "active",
+    "version": "1.0.0",
+    "dependencies": [
+      {
+        "mrd_id": "KIS-DOC-CON-POL-001",
+        "relationship": "depends_on"
+      },
+      {
+        "mrd_id": "KIS-DOC-CON-POL-002",
+        "relationship": "depends_on"
+      },
+      {
+        "mrd_id": "KIS-DOC-SEM-REG-002",
+        "relationship": "governs"
+      }
+    ],
+    "provenance": {
+      "sources": [
+        {
+          "source_id": "GH-ISSUE-51",
+          "kind": "operator_approved_work_item",
+          "role": "programme_basis",
+          "locator": "github:NielPieterse0/kis-mcp-doc#51",
+          "revision": "2026-08-28",
+          "sha256": null
+        },
+        {
+          "source_id": "OPERATOR-DESIGN-2026-08-28",
+          "kind": "operator_direction",
+          "role": "approved_architecture_basis",
+          "locator": "chat:2026-08-28-kis-mcp-doc-human-documentation-programme",
+          "revision": "2026-08-28",
+          "sha256": null
+        }
+      ],
+      "source_fingerprint": "sha256:acdcc94e14b2bdd63720500110df0ea37cdf6a66f779051fcd55d8b44f988f46",
+      "fact_quality": "direct"
+    },
+    "supersedes": [],
+    "superseded_by": null
+  },
+  "content": {
+    "concern": "current_state_repository_human_bundle",
+    "purpose": "Generate a complete current-state human projection of kis-mcp-doc and a deterministic artefact metadata and relationship graph without creating another authority.",
+    "authority": {
+      "write_back": false,
+      "canonical_sources_remain_authoritative": true,
+      "exact_git_revision_binding": "external_git_manifest",
+      "work_management_consolidated": false
+    },
+    "metadata_envelope": [
+      "identity",
+      "title",
+      "artefact_kind",
+      "repository",
+      "canonical_path",
+      "source_of_truth",
+      "status",
+      "record_mode",
+      "editability",
+      "logical_version",
+      "exact_git_revision",
+      "content_hash",
+      "source_fingerprint",
+      "baseline_release_identity",
+      "owner",
+      "authority",
+      "governing_artefact",
+      "provenance",
+      "sources",
+      "related_artefacts",
+      "dependencies",
+      "generated_from",
+      "validation_relationships",
+      "implementation_relationships",
+      "publication_relationships",
+      "supersedes",
+      "superseded_by",
+      "migration_trace",
+      "summary",
+      "scope_in",
+      "scope_out",
+      "keywords",
+      "change_classification",
+      "impact_relationships",
+      "freshness"
+    ],
+    "relationship_policy": {
+      "typed": true,
+      "authority_separate_from_dependency": true,
+      "observed_and_derived_distinguished": true,
+      "unsupported_inference_forbidden": true
+    },
+    "requirements": [
+      {
+        "rule_id": "KIS-DOC-REP-001",
+        "statement": "The repository human bundle MUST be generated from current repository machine and executable sources and MUST NOT become write-back authority.",
+        "enforcement": "generator"
+      },
+      {
+        "rule_id": "KIS-DOC-REP-002",
+        "statement": "Work Management MUST remain a separately presented publication family and MUST NOT be consolidated into the kis-mcp-doc repository human bundle.",
+        "enforcement": "validator"
+      },
+      {
+        "rule_id": "KIS-DOC-REP-003",
+        "statement": "Artefact metadata MUST preserve stable repository identity, canonical path, authority direction, content identity, provenance, and freshness evidence where those facts are available.",
+        "enforcement": "generator"
+      },
+      {
+        "rule_id": "KIS-DOC-REP-004",
+        "statement": "Typed relationships MUST distinguish source-declared observations from relationships derived by deterministic repository policy.",
+        "enforcement": "generator"
+      },
+      {
+        "rule_id": "KIS-DOC-REP-005",
+        "statement": "Exact containing Git revision MUST be bound through external Git or publication evidence when embedding it would create circular tracked-content identity.",
+        "enforcement": "review"
+      },
+      {
+        "rule_id": "KIS-DOC-REP-006",
+        "statement": "Publication, search, site, and release surfaces MUST consume the repository bundle through the canonical publication-family registry.",
+        "enforcement": "validator"
+      },
+      {
+        "rule_id": "KIS-DOC-REP-007",
+        "statement": "Verification MUST detect source, inventory, relationship, generated-file, site, search, and release drift before completion.",
+        "enforcement": "generator"
+      }
+    ]
+  }
+}

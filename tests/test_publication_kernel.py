@@ -32,6 +32,7 @@ def test_registry_discovers_all_governed_publication_families_and_output_classes
         "documentation-reference-standard",
         "governance-docs",
         "work-management-docs",
+        "repository-docs",
     ]
     assert families[0]["output_classes"] == ["human_readable_specification", "generated_reference"]
     assert families[1]["output_classes"] == ["human_readable_specification", "generated_reference"]
@@ -198,6 +199,7 @@ def test_registered_publication_verification_covers_every_family() -> None:
         "documentation-reference-standard",
         "governance-docs",
         "work-management-docs",
+        "repository-docs",
     }
     assert all(item["status"] == "valid" for item in result["families"].values())
 

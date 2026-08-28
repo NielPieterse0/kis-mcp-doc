@@ -54,9 +54,9 @@
         "sha256": "da30a9f44828194a6b0b1e382c39936ae3d07705521dd6c07af60286b5133dc1"
       },
       {
-        "bytes": 6560,
+        "bytes": 7805,
         "path": "mrd/documentation/04-publication-family-registry.mrd.json",
-        "sha256": "171891c0689908f5b074bd587266a22abf13d44a6aa98d35d08234b6cef1fcc9"
+        "sha256": "a576864ab24624ae55d71b7a53cf99f956e5f83c1464986b0355eb3679cf58dc"
       },
       {
         "bytes": 444,
@@ -69,9 +69,9 @@
         "sha256": "dbaaccf9ba7060586859dacd5e074bb5b7929ab06a0311b1ae87f361e6a94694"
       },
       {
-        "bytes": 6152,
+        "bytes": 6755,
         "path": "src/kis_mcp_doc/publication_adapters.py",
-        "sha256": "276df0de30dc879204ebffcf0eaf14f6ce2f1c6c24e5318562bd5cd9534822a0"
+        "sha256": "fffd0959e5e095a166a175928759ec3d40e4b97e832a1a54b3f13cf3404f9729"
       },
       {
         "bytes": 33211,

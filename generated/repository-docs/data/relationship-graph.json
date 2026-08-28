@@ -1,0 +1,854 @@
+{
+  "relationships": [
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": ".editorconfig",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": ".gitattributes",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": ".github/CODEOWNERS",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": ".github/dependabot.yml",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": ".github/pull_request_template.md",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": ".github/workflows/documentation-pages.yml",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": ".github/workflows/documentation-release.yml",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": ".github/workflows/work-management.yml",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": ".gitignore",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "CONTRIBUTING.md",
+      "target": "publication/public-repository.json",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "README.md",
+      "target": "publication/public-repository.json",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "SECURITY.md",
+      "target": "publication/public-repository.json",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "mrd/documentation/01-reference-standard.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/documentation/01-reference-standard.mrd.json",
+      "target": "mrd/governance/01-classification.mrd.json",
+      "type": "depends_on"
+    },
+    {
+      "evidence": "mrd/documentation/01-reference-standard.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/documentation/01-reference-standard.mrd.json",
+      "target": "mrd/governance/08-ownership.mrd.json",
+      "type": "depends_on"
+    },
+    {
+      "evidence": "mrd/documentation/01-reference-standard.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/documentation/01-reference-standard.mrd.json",
+      "target": "mrd/documentation/02-reference-registry.mrd.json",
+      "type": "governs"
+    },
+    {
+      "evidence": "mrd/documentation/01-reference-standard.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/documentation/01-reference-standard.mrd.json",
+      "target": "publication/harvest-sources.json",
+      "type": "references"
+    },
+    {
+      "evidence": "mrd/documentation/02-reference-registry.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/documentation/02-reference-registry.mrd.json",
+      "target": "mrd/documentation/01-reference-standard.mrd.json",
+      "type": "depends_on"
+    },
+    {
+      "evidence": "mrd/documentation/02-reference-registry.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/documentation/02-reference-registry.mrd.json",
+      "target": "publication/harvest-sources.json",
+      "type": "references"
+    },
+    {
+      "evidence": "mrd/documentation/03-publication-architecture.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/documentation/03-publication-architecture.mrd.json",
+      "target": "mrd/documentation/01-reference-standard.mrd.json",
+      "type": "depends_on"
+    },
+    {
+      "evidence": "mrd/documentation/03-publication-architecture.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/documentation/03-publication-architecture.mrd.json",
+      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "type": "governs"
+    },
+    {
+      "evidence": "mrd/documentation/03-publication-architecture.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/documentation/03-publication-architecture.mrd.json",
+      "target": "contracts/publication/family/v1/registry.schema.json",
+      "type": "references"
+    },
+    {
+      "evidence": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "target": "mrd/documentation/03-publication-architecture.mrd.json",
+      "type": "depends_on"
+    },
+    {
+      "evidence": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "target": "contracts/publication/family/v1/registry.schema.json",
+      "type": "validated_by"
+    },
+    {
+      "evidence": "mrd/documentation/05-repository-human-bundle.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/documentation/05-repository-human-bundle.mrd.json",
+      "target": "mrd/documentation/01-reference-standard.mrd.json",
+      "type": "depends_on"
+    },
+    {
+      "evidence": "mrd/documentation/05-repository-human-bundle.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/documentation/05-repository-human-bundle.mrd.json",
+      "target": "mrd/documentation/03-publication-architecture.mrd.json",
+      "type": "depends_on"
+    },
+    {
+      "evidence": "mrd/documentation/05-repository-human-bundle.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/documentation/05-repository-human-bundle.mrd.json",
+      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "type": "governs"
+    },
+    {
+      "evidence": "mrd/governance/02-layering.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/governance/02-layering.mrd.json",
+      "target": "mrd/governance/01-classification.mrd.json",
+      "type": "depends_on"
+    },
+    {
+      "evidence": "mrd/governance/03-dependencies.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/governance/03-dependencies.mrd.json",
+      "target": "mrd/governance/01-classification.mrd.json",
+      "type": "depends_on"
+    },
+    {
+      "evidence": "mrd/governance/03-dependencies.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/governance/03-dependencies.mrd.json",
+      "target": "mrd/governance/02-layering.mrd.json",
+      "type": "depends_on"
+    },
+    {
+      "evidence": "mrd/governance/04-provenance.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/governance/04-provenance.mrd.json",
+      "target": "mrd/governance/01-classification.mrd.json",
+      "type": "depends_on"
+    },
+    {
+      "evidence": "mrd/governance/05-lifecycle.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/governance/05-lifecycle.mrd.json",
+      "target": "mrd/governance/04-provenance.mrd.json",
+      "type": "depends_on"
+    },
+    {
+      "evidence": "mrd/governance/06-validation.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/governance/06-validation.mrd.json",
+      "target": "mrd/governance/01-classification.mrd.json",
+      "type": "depends_on"
+    },
+    {
+      "evidence": "mrd/governance/06-validation.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/governance/06-validation.mrd.json",
+      "target": "mrd/governance/02-layering.mrd.json",
+      "type": "depends_on"
+    },
+    {
+      "evidence": "mrd/governance/06-validation.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/governance/06-validation.mrd.json",
+      "target": "mrd/governance/03-dependencies.mrd.json",
+      "type": "depends_on"
+    },
+    {
+      "evidence": "mrd/governance/06-validation.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/governance/06-validation.mrd.json",
+      "target": "mrd/governance/04-provenance.mrd.json",
+      "type": "depends_on"
+    },
+    {
+      "evidence": "mrd/governance/06-validation.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/governance/06-validation.mrd.json",
+      "target": "mrd/governance/05-lifecycle.mrd.json",
+      "type": "depends_on"
+    },
+    {
+      "evidence": "mrd/governance/06-validation.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/governance/06-validation.mrd.json",
+      "target": "mrd/governance/07-applicability.mrd.json",
+      "type": "depends_on"
+    },
+    {
+      "evidence": "mrd/governance/06-validation.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/governance/06-validation.mrd.json",
+      "target": "mrd/governance/08-ownership.mrd.json",
+      "type": "depends_on"
+    },
+    {
+      "evidence": "mrd/governance/06-validation.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/governance/06-validation.mrd.json",
+      "target": "mrd/governance/09-kis-op-behavior.mrd.json",
+      "type": "depends_on"
+    },
+    {
+      "evidence": "mrd/governance/06-validation.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/governance/06-validation.mrd.json",
+      "target": "contracts/governance/v1/content.schema.json",
+      "type": "validated_by"
+    },
+    {
+      "evidence": "mrd/governance/06-validation.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/governance/06-validation.mrd.json",
+      "target": "contracts/governance/v1/governance-mrd.schema.json",
+      "type": "validated_by"
+    },
+    {
+      "evidence": "mrd/governance/06-validation.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/governance/06-validation.mrd.json",
+      "target": "contracts/mrd/v1/mrd.schema.json",
+      "type": "validated_by"
+    },
+    {
+      "evidence": "mrd/governance/07-applicability.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/governance/07-applicability.mrd.json",
+      "target": "mrd/governance/01-classification.mrd.json",
+      "type": "depends_on"
+    },
+    {
+      "evidence": "mrd/governance/08-ownership.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/governance/08-ownership.mrd.json",
+      "target": "mrd/governance/01-classification.mrd.json",
+      "type": "depends_on"
+    },
+    {
+      "evidence": "mrd/governance/09-kis-op-behavior.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/governance/09-kis-op-behavior.mrd.json",
+      "target": "mrd/governance/01-classification.mrd.json",
+      "type": "depends_on"
+    },
+    {
+      "evidence": "mrd/governance/09-kis-op-behavior.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/governance/09-kis-op-behavior.mrd.json",
+      "target": "mrd/governance/02-layering.mrd.json",
+      "type": "depends_on"
+    },
+    {
+      "evidence": "mrd/governance/09-kis-op-behavior.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/governance/09-kis-op-behavior.mrd.json",
+      "target": "mrd/governance/03-dependencies.mrd.json",
+      "type": "depends_on"
+    },
+    {
+      "evidence": "mrd/governance/09-kis-op-behavior.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/governance/09-kis-op-behavior.mrd.json",
+      "target": "mrd/governance/04-provenance.mrd.json",
+      "type": "depends_on"
+    },
+    {
+      "evidence": "mrd/governance/09-kis-op-behavior.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/governance/09-kis-op-behavior.mrd.json",
+      "target": "mrd/governance/05-lifecycle.mrd.json",
+      "type": "depends_on"
+    },
+    {
+      "evidence": "mrd/governance/09-kis-op-behavior.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/governance/09-kis-op-behavior.mrd.json",
+      "target": "mrd/governance/07-applicability.mrd.json",
+      "type": "depends_on"
+    },
+    {
+      "evidence": "mrd/governance/09-kis-op-behavior.mrd.json",
+      "fact_quality": "observed",
+      "intent": "declared_mrd_dependency",
+      "source": "mrd/governance/09-kis-op-behavior.mrd.json",
+      "target": "mrd/governance/08-ownership.mrd.json",
+      "type": "depends_on"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "publication/documentation-reference-standard.json",
+      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "fact_quality": "observed",
+      "intent": "documentation-reference-standard",
+      "source": "publication/documentation-reference-standard.json",
+      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "type": "registered_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "publication/documentation-release.json",
+      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "publication/documentation-search.json",
+      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "publication/documentation-site.json",
+      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "publication/governance-docs.json",
+      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "fact_quality": "observed",
+      "intent": "governance-docs",
+      "source": "publication/governance-docs.json",
+      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "type": "registered_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "publication/governance-spec.json",
+      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "fact_quality": "observed",
+      "intent": "governance-spec",
+      "source": "publication/governance-spec.json",
+      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "type": "registered_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "publication/harvest-sources.json",
+      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "publication/public-repository.json",
+      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "publication/repository-docs.json",
+      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "fact_quality": "observed",
+      "intent": "repository-docs",
+      "source": "publication/repository-docs.json",
+      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "type": "registered_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "publication/work-management-docs.json",
+      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "fact_quality": "observed",
+      "intent": "work-management-docs",
+      "source": "publication/work-management-docs.json",
+      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "type": "registered_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "publication/work-management-spec.json",
+      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "fact_quality": "observed",
+      "intent": "work-management-spec",
+      "source": "publication/work-management-spec.json",
+      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "type": "registered_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "pyproject.toml",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "scripts/configure-repository.ps1",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "scripts/runtime-preflight.ps1",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "scripts/verify.ps1",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "src/kis_mcp_doc/__init__.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "src/kis_mcp_doc/__main__.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "src/kis_mcp_doc/canonical.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "src/kis_mcp_doc/cli.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "src/kis_mcp_doc/documentation_reference.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "src/kis_mcp_doc/documentation_release.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "src/kis_mcp_doc/documentation_search.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "src/kis_mcp_doc/documentation_site.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "src/kis_mcp_doc/governance.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "src/kis_mcp_doc/harvest.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "src/kis_mcp_doc/human_docs.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "src/kis_mcp_doc/litho.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "src/kis_mcp_doc/public_repository.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "src/kis_mcp_doc/publication_adapters.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "src/kis_mcp_doc/publication_kernel.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "src/kis_mcp_doc/render.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "src/kis_mcp_doc/repository_docs.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "src/kis_mcp_doc/work_management.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "tests/test_docs_backend.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "tests/test_documentation_reference_standard.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "tests/test_documentation_release.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "tests/test_documentation_search.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "tests/test_documentation_site.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "tests/test_governance_renderer.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "tests/test_governance_validator.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "tests/test_human_docs.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "tests/test_public_repository.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "tests/test_publication_hardening.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "tests/test_publication_kernel.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "tests/test_repository_docs.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "tests/test_windows_runtime_policy.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "tests/test_work_management_spec.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "tooling/windows-runtime.json",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "uv.lock",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    }
+  ],
+  "repository": "NielPieterse0/kis-mcp-doc",
+  "schema_version": 1
+}
