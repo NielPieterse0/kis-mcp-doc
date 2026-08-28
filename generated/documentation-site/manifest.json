@@ -592,9 +592,9 @@
       "sha256": "73b890fa1ba99bf4fb7fb7e0d6b45596873a50d0895d486a79720c65ed3851e5"
     },
     {
-      "bytes": 27347,
+      "bytes": 26841,
       "path": "src/kis_mcp_doc/documentation_site.py",
-      "sha256": "305711b6292bd5dd5319b7dfc497c5297b7cfefbb8ce3e2aca382a90ebc5cbd4"
+      "sha256": "f653a8c006cf3eaff9c15d1a44a10eac36b446b48e142f9e15d5cff56f2c5a60"
     }
   ],
   "registry_sha256": "eee1014e29668f5bae571d1875d4c1481469efd01ab27d3123dfd6eeb1c67472",
