@@ -24,6 +24,10 @@ def test_release_validation_and_archive_are_deterministic(tmp_path: Path) -> Non
         names = archive.namelist()
         assert "index.html" in names
         assert "search/index.html" in names
+        assert "docs/repository/index.html" in names
+        assert not any(name.startswith("docs/work-management/") for name in names)
+        assert not any(name.startswith("specification/work-management/") for name in names)
+        assert not any(name.startswith("reference/work-management-") for name in names)
         assert names == sorted(names)
 
 
@@ -72,6 +76,16 @@ def test_release_cli_and_workflows_are_wired(tmp_path: Path) -> None:
     assert main(["--root", str(ROOT), "release-check-generated", "--output", str(output)]) == 0
     pages = (ROOT / ".github/workflows/documentation-pages.yml").read_text(encoding="utf-8")
     release = (ROOT / ".github/workflows/documentation-release.yml").read_text(encoding="utf-8")
+    canonical_ci = (ROOT / ".github/workflows/work-management.yml").read_text(encoding="utf-8")
+    verify_script = (ROOT / "scripts/verify.ps1").read_text(encoding="utf-8")
     assert "actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9" in pages
     assert "actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128" in pages
     assert "gh release upload" in release
+    assert "pwsh -NoProfile -File scripts/verify.ps1 -SkipDependencySync" in canonical_ci
+    for command in (
+        "publications-check-generated",
+        "search-check-generated",
+        "site-check-generated",
+        "release-check-generated",
+    ):
+        assert command in verify_script

@@ -18,7 +18,9 @@ def test_search_validation_and_index_cover_site_routes(tmp_path: Path) -> None:
     index = json.loads((output / "search-index.json").read_text(encoding="utf-8"))
     assert manifest["documents"] == len(index["documents"])
     assert any(item["route"] == "/docs/governance/" for item in index["documents"])
+    assert any(item["route"] == "/docs/repository/" for item in index["documents"])
     assert any(item["route"].startswith("/reference/governance-spec/") for item in index["documents"])
+    assert not any(item["family"].startswith("work-management") for item in index["documents"])
 
 
 def test_search_ranking_is_stable_and_prefers_title_matches() -> None:

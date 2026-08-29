@@ -1482,7 +1482,7 @@
       "baseline_release_identity": null,
       "canonical_path": "contracts/publication/family/v1/registry.schema.json",
       "change_classification": null,
-      "content_hash": "sha256:526acd37af7fa91a96fa4a2b0a7af0594299167c915190fd0c0364805ce4f58e",
+      "content_hash": "sha256:11f60fefd296feec3bb8fc93263b811f79f91608905b7ca561a734695e9d02f7",
       "dependencies": [],
       "editability": "source_editable",
       "exact_git_revision": null,
@@ -1882,7 +1882,7 @@
       "baseline_release_identity": null,
       "canonical_path": "mrd/documentation/03-publication-architecture.mrd.json",
       "change_classification": null,
-      "content_hash": "sha256:e266a4a60b6037129a106f5f7f977161cd01d69983560a8de790d7d9d6cf9c71",
+      "content_hash": "sha256:1c8e33a0b678a4d5f60376be751ece6f08f0589fb85a1867d5d9697d16a6238e",
       "dependencies": [
         {
           "intent": "declared_mrd_dependency",
@@ -1915,7 +1915,7 @@
         "json",
         "machine_readable_record"
       ],
-      "logical_version": "1.0.0",
+      "logical_version": "1.1.0",
       "migration_trace": [],
       "owner": "mrd/documentation/03-publication-architecture.mrd.json",
       "provenance": {
@@ -1944,7 +1944,7 @@
       "repository": "NielPieterse0/kis-mcp-doc",
       "scope_in": [],
       "scope_out": [],
-      "source_fingerprint": "sha256:5b6189c2fe6ee2fdb487108a9deb1201a7030fa3f5f9aeab5f655cd1136c0a25",
+      "source_fingerprint": "sha256:a5ecc9059da979aaf907c08c950ed81c034491a092a30211c061a3c35c0fe4cc",
       "source_of_truth": "mrd/documentation/03-publication-architecture.mrd.json",
       "sources": [
         "mrd/documentation/03-publication-architecture.mrd.json"
@@ -1962,7 +1962,7 @@
       "baseline_release_identity": null,
       "canonical_path": "mrd/documentation/04-publication-family-registry.mrd.json",
       "change_classification": null,
-      "content_hash": "sha256:a576864ab24624ae55d71b7a53cf99f956e5f83c1464986b0355eb3679cf58dc",
+      "content_hash": "sha256:281cd30a08af7cf3e15665b2372e6a06555b042d195d252064dde85e13c1b858",
       "dependencies": [
         {
           "intent": "declared_mrd_dependency",
@@ -1990,7 +1990,7 @@
         "json",
         "machine_readable_record"
       ],
-      "logical_version": "1.2.0",
+      "logical_version": "1.3.0",
       "migration_trace": [],
       "owner": "mrd/documentation/04-publication-family-registry.mrd.json",
       "provenance": {
@@ -2014,7 +2014,7 @@
       "repository": "NielPieterse0/kis-mcp-doc",
       "scope_in": [],
       "scope_out": [],
-      "source_fingerprint": "sha256:ba5a3b1046888ae7160443417909229408904d5091fed50fa1480a279cea7822",
+      "source_fingerprint": "sha256:df4635e2f7df977a14a3327c162b533859cd671b21c3df6d817a2342203e9e87",
       "source_of_truth": "mrd/documentation/04-publication-family-registry.mrd.json",
       "sources": [
         "mrd/documentation/04-publication-family-registry.mrd.json"
@@ -2032,7 +2032,7 @@
       "baseline_release_identity": null,
       "canonical_path": "mrd/documentation/05-repository-human-bundle.mrd.json",
       "change_classification": null,
-      "content_hash": "sha256:7a7ee0d2ec9907af7bd3dc92d86b8630ee51d55afd56b985af1ad71f1cf93ac6",
+      "content_hash": "sha256:d793fb1ff25c548f9a0a9ffa220cc3f7d3eb361601ddca38cbde9abb84829d56",
       "dependencies": [
         {
           "intent": "declared_mrd_dependency",
@@ -2065,7 +2065,7 @@
         "json",
         "machine_readable_record"
       ],
-      "logical_version": "1.0.0",
+      "logical_version": "1.1.0",
       "migration_trace": [],
       "owner": "mrd/documentation/05-repository-human-bundle.mrd.json",
       "provenance": {
@@ -2094,7 +2094,7 @@
       "repository": "NielPieterse0/kis-mcp-doc",
       "scope_in": [],
       "scope_out": [],
-      "source_fingerprint": "sha256:acdcc94e14b2bdd63720500110df0ea37cdf6a66f779051fcd55d8b44f988f46",
+      "source_fingerprint": "sha256:fa04d53b9413ff91f05c117773763a8727850241d1cfae4a28e9f7aa8ca6b023",
       "source_of_truth": "mrd/documentation/05-repository-human-bundle.mrd.json",
       "sources": [
         "mrd/documentation/05-repository-human-bundle.mrd.json"
@@ -4064,7 +4064,7 @@
       "baseline_release_identity": null,
       "canonical_path": "src/kis_mcp_doc/documentation_site.py",
       "change_classification": null,
-      "content_hash": "sha256:df07d6dbce3469d1a9945643431f4d4af26a0d500b0012a75926092e4e190402",
+      "content_hash": "sha256:edc2f72c9c43bd3bfcd2ec0a360ef6aa4842ec8052bb41ebcee5e9202684510e",
       "dependencies": [],
       "editability": "source_editable",
       "exact_git_revision": null,
@@ -4550,7 +4550,7 @@
       "baseline_release_identity": null,
       "canonical_path": "src/kis_mcp_doc/repository_docs.py",
       "change_classification": null,
-      "content_hash": "sha256:d79013ddcb8d39b6e4097518410b7c0fcd4f2b9878e5b06e1d2e710bcecef5ff",
+      "content_hash": "sha256:a8deb1dcd30fa5a6b998aff6cac0fd49186f545911a62e5ada4ca9cdd2682f05",
       "dependencies": [],
       "editability": "source_editable",
       "exact_git_revision": null,
@@ -4766,7 +4766,7 @@
       "baseline_release_identity": null,
       "canonical_path": "tests/test_documentation_release.py",
       "change_classification": null,
-      "content_hash": "sha256:e96a2b8b76e91368acf86006757a7a722141b4d3b1181bb454f46d544a5526ee",
+      "content_hash": "sha256:573fb65066567d97b1fc0d017436509766d201f651d7d43913720f6d0eecb20f",
       "dependencies": [],
       "editability": "source_editable",
       "exact_git_revision": null,
@@ -4820,7 +4820,7 @@
       "baseline_release_identity": null,
       "canonical_path": "tests/test_documentation_search.py",
       "change_classification": null,
-      "content_hash": "sha256:71bdd21a35aacd07360a02167a90254754d54d27e3766f185f7d7163593d7903",
+      "content_hash": "sha256:f806301341ec633639bc314391d82f3f24991a2553875ebace30df8177163e7b",
       "dependencies": [],
       "editability": "source_editable",
       "exact_git_revision": null,
@@ -4874,7 +4874,7 @@
       "baseline_release_identity": null,
       "canonical_path": "tests/test_documentation_site.py",
       "change_classification": null,
-      "content_hash": "sha256:8f45ab14936ba6e3c6770c57cde63dffbfaed907b096a9368486181e3813eb4a",
+      "content_hash": "sha256:505c44da9d3548e431d2820b3e7dafe29f4a6fbd214feca1af766e98122e8f9f",
       "dependencies": [],
       "editability": "source_editable",
       "exact_git_revision": null,
@@ -5198,7 +5198,7 @@
       "baseline_release_identity": null,
       "canonical_path": "tests/test_publication_kernel.py",
       "change_classification": null,
-      "content_hash": "sha256:84e4c787c5549585d1b6de29ac7e1733798e8dcd352404a3c723d4d7986e4c13",
+      "content_hash": "sha256:e5f6afacc68b39408a52aa96b7b7759f417bdaf0372dda20de096dfe839ab33d",
       "dependencies": [],
       "editability": "source_editable",
       "exact_git_revision": null,
@@ -5252,7 +5252,7 @@
       "baseline_release_identity": null,
       "canonical_path": "tests/test_repository_docs.py",
       "change_classification": null,
-      "content_hash": "sha256:09ba980c8551c4c880190c7edee2327b9f5706915df18ba40b517c9ca35d302a",
+      "content_hash": "sha256:e0a75a9ce278b19f7529f6f34b317109393c55700c75b2a382e31ee54c5c14a9",
       "dependencies": [],
       "editability": "source_editable",
       "exact_git_revision": null,

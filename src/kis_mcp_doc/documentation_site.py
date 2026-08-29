@@ -42,6 +42,10 @@ def _domain(family_id: str) -> str:
     return family_id
 
 
+def _site_families(registry: dict[str, Any]) -> list[dict[str, Any]]:
+    return [family for family in registry["content"]["families"] if family["publish_to_site"]]
+
+
 def _source_key(path: Path, root: Path) -> str:
     return path.relative_to(root).as_posix()
 
@@ -96,7 +100,7 @@ def route_entries(root: Path) -> list[dict[str, str]]:
     if registry.validate()["status"] != "valid":
         raise ValueError("publication family registry is invalid")
     entries: list[dict[str, str]] = []
-    for family in registry.load()["content"]["families"]:
+    for family in _site_families(registry.load()):
         output = root / family["output"]
         for path in _source_files(root, family):
             relative = path.relative_to(output).as_posix()
@@ -179,7 +183,7 @@ def validate_documentation_site(root: Path) -> dict[str, Any]:
         routes = [entry["route"] for entry in entries]
         if len(routes) != len(set(routes)):
             diagnostics.append({"code": "SITE_DUPLICATE_ROUTE", "message": "multiple governed sources resolve to the same site route"})
-        for family in registry.load()["content"]["families"]:
+        for family in _site_families(registry.load()):
             pages, graph, link_diags = _markdown_graph(root, family)
             diagnostics.extend(link_diags)
             if pages:
@@ -583,7 +587,7 @@ def render_documentation_site(root: Path) -> tuple[dict[str, bytes], dict[str, A
     entries = route_entries(root)
     source_to_route = {entry["source"]: entry["route"] for entry in entries}
     files: dict[str, bytes] = {}
-    families = registry["content"]["families"]
+    families = _site_families(registry)
     family_entries = {family["id"]: [entry for entry in entries if entry["family"] == family["id"] and entry["surface"] != "reference"] for family in families}
     for family in families:
         ordered = family_entries[family["id"]]

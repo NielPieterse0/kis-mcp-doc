@@ -1,15 +1,16 @@
 {
   "schema_version": 4,
   "change_id": "021-current-state-kis-mcp-doc-human-documentation",
-  "status": "complete",
-  "branch": "change/021-current-state-kis-mcp-doc-human-documentation",
-  "worktree": null,
+  "status": "active",
+  "branch": "maintenance/change-021-pages-drift-closeout",
+  "worktree": "C:/Projects/kis-mcp-doc/.work/worktrees/021f-closeout-drift-correction",
   "base": "main",
   "outcome": "Implement the complete current-state kis-mcp-doc human documentation programme and deterministic artefact metadata/relationship graph.",
   "owned_paths": [
     ".work/changes/021-current-state-kis-mcp-doc-human-documentation/**",
     "mrd/documentation/**",
     "contracts/documentation/**",
+    "contracts/publication/**",
     "publication/**",
     "src/kis_mcp_doc/**",
     "tests/**",
@@ -46,11 +47,11 @@
   },
   "work_management": {
     "project_id": "kis-mcp-doc",
-    "record_id": "TASK-51",
+    "record_id": "TASK-59",
     "source_repository": "NielPieterse0/kis-mcp-doc",
-    "source_number": 51,
+    "source_number": 59,
     "source_kind": "issue",
-    "documentation_impact": "post_merge_complete",
-    "capture_status": "complete"
+    "documentation_impact": "pre_merge_complete",
+    "capture_status": "active_claimed"
   }
 }

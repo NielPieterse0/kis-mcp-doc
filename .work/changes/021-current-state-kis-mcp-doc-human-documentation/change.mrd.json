@@ -8,8 +8,8 @@
     "type": "WFL",
     "layer": "L3",
     "record_mode": "descriptive",
-    "status": "complete",
-    "version": "1.0.0",
+    "status": "active",
+    "version": "1.1.0",
     "dependencies": [
       {
         "source": "repo:.work/changes/020-public-repository-readiness/change.mrd.json",
@@ -41,9 +41,17 @@
           "locator": "project-sources:SVX-LIB-STD-001/002/003",
           "revision": "2026-08-28",
           "sha256": null
+        },
+        {
+          "source_id": "GH-ISSUE-59",
+          "kind": "operator_approved_work_item",
+          "role": "closeout_defect_correction",
+          "locator": "github:NielPieterse0/kis-mcp-doc#59",
+          "revision": "2026-08-29",
+          "sha256": null
         }
       ],
-      "source_fingerprint": "sha256:6ad4367a7aaac1e6f9d73e95bb141a9645704299603ba16756dbcd743109115a",
+      "source_fingerprint": "sha256:b50ce82db0de7f0254be5add94ad6e794b7e33931d612fa28a401656bba2a5ea",
       "fact_quality": "direct"
     },
     "supersedes": [],
@@ -53,10 +61,10 @@
     "change_id": "021-current-state-kis-mcp-doc-human-documentation",
     "work_item": {
       "repository": "NielPieterse0/kis-mcp-doc",
-      "issue": 51,
+      "issue": 59,
       "project": "kis-mcp-doc",
-      "record_id": "TASK-51",
-      "project_capture": "complete"
+      "record_id": "TASK-59",
+      "project_capture": "active_claimed"
     },
     "outcome": "Implement a complete, current, deterministic human projection of kis-mcp-doc machine/executable truth plus an extensible artefact metadata and relationship graph for agents, drift detection, and future impact assessment.",
     "programme_principles": [
@@ -135,12 +143,12 @@
       "Typed relationship and authority direction enables downstream reconciliation and stale-artifact detection."
     ],
     "requirements": [
-      "R1: Work Management MUST remain separately presented and outside the kis-mcp-doc repository HRD consolidation scope.",
+      "R1: Work Management MUST remain a separately governed standalone family outside the kis-mcp-doc repository HRD consolidation and MUST NOT be published into the kis-mcp-doc reader-facing Pages, public search, or Pages release surfaces.",
       "R2: The future kis-mcp-doc human bundle MUST completely reflect human-relevant current repository truth at the exact represented revision.",
       "R3: The future artefact inventory MUST expose the approved metadata envelope from existing machine truth and support typed graph traversal.",
       "R4: Authority/canonical ownership MUST remain distinct from dependency and relationship semantics.",
       "R5: Exact Git/GitHub identity, hashes, source fingerprints and manifests MUST support deterministic lineage and stale/drift evaluation.",
-      "R6: Future completion gates MUST prevent human documentation from silently lagging human-relevant governed repository changes.",
+      "R6: Completion gates and CI MUST prevent human documentation from silently lagging human-relevant governed repository changes by validating both publication semantics and exact generated publication/search/site/release bytes.",
       "R7: The graph and impact relationships SHOULD provide a reusable deterministic substrate for future Change Ready AI impact assessment, without requiring that AI feature in this programme.",
       "R8: Implementation MUST preserve the five approved programme slices and close only after repository coverage, generation, publication integration, and human-verifiability checks pass."
     ],
@@ -149,12 +157,13 @@
       "Slice B: generate the complete current-state kis-mcp-doc human specification/documentation bundle.",
       "Slice C: enforce deterministic lineage, freshness and drift controls.",
       "Slice D: integrate the repository bundle with site, search and publication/release surfaces.",
-      "Slice E: perform repository coverage and human-verifiability closeout audit."
+      "Slice E: perform repository coverage and human-verifiability closeout audit.",
+      "Slice F: correct the post-closeout Pages publication boundary defect and harden semantic/generated drift enforcement."
     ],
     "verification_criteria": [
       "V1: Change 021 scope and MRD validate as a complete governed implementation record.",
-      "V2: Parent issue #51 exists with child issues #52-#56 linked as GitHub sub-issues and Work Management capture/claim is reconciled.",
-      "V3: The repository-docs family deterministically generates a human bundle, artefact inventory, relationship graph, coverage report, manifest, site routes, search index, and release package.",
+      "V2: Parent issue #51 exists with child issues #52-#56 and corrective child #59 linked as GitHub sub-issues, with the active Work Management correction captured and claimed.",
+      "V3: The repository-docs family deterministically generates a human bundle, artefact inventory, relationship graph, coverage report, manifest, site routes, search index, and release package; Work Management remains independently generated but is absent from the kis-mcp-doc public site/search/release surfaces.",
       "V4: Work Management domain authority remains excluded from repository HRD consolidation.",
       "V5: Focused tests, full repository verification, specialist reviews, exact-head CI, merge, and post-merge documentation reconciliation complete before Done."
     ],
@@ -193,6 +202,13 @@
         "issue": 56,
         "record_id": "SLICE-025",
         "text": "Repository coverage audit and human-verifiability closeout."
+      },
+      {
+        "id": "T6",
+        "status": "implemented",
+        "issue": 59,
+        "record_id": "TASK-59",
+        "text": "Closeout drift correction, explicit Pages publication boundary, and CI-enforced documentation drift invariant."
       }
     ],
     "risks": [
@@ -206,7 +222,7 @@
       "Introducing bidirectional HRD-MRD authority binding."
     ],
     "closeout": {
-      "state": "complete",
+      "state": "pre_merge_complete",
       "verification": [
         "Focused repository-documentation and publication-kernel verification passed 30/30 after the CI-only transient packaging metadata defect was corrected.",
         "Full scripts/verify.ps1 passed locally with exit code 0 on the exact source tree committed as 85a1c2e3eb47587be9d9b4ecbb8fa359d7475c9e.",
@@ -214,10 +230,19 @@
         "PR-context verify run 33223410287 job 99022097064 passed on exact implementation head 85a1c2e3eb47587be9d9b4ecbb8fa359d7475c9e.",
         "Work Management merge readiness returned ready with no blockers or advisories for PR #57 at the same exact head.",
         "PR #57 merged through the registered KIS merge path; GitHub main and local main were reconciled to merge commit bae8a96ff1ced95efd867ab4b806c723e31e0b67.",
-        "Post-merge documentation reconciliation event doc-021-current-state-kis-mcp-doc-human-documentation-pr-57 identified this scope and change record as the required closeout updates."
+        "Post-merge documentation reconciliation event doc-021-current-state-kis-mcp-doc-human-documentation-pr-57 identified this scope and change record as the required closeout updates.",
+        "Post-closeout live Pages audit on 2026-08-29 found Work Management still published because site routing consumed every registered family; issue #59 records the correction and invalidates the prior no-unresolved-items closeout claim until remediation completes.",
+        "Change 021F TDD reproduced the public-boundary defect: focused site/search/release tests failed because Work Management remained present in routes, search documents, and the Pages release archive.",
+        "After correction, the affected publication suite passed 65/65 across documentation site, search, release, repository docs, publication kernel, and publication hardening.",
+        "Direct generated-artifact inspection found 42 public routes, 42 public search documents, and zero Work Management entries in routes, search, or the 52-file Pages archive while standalone Work Management specification and documentation bundles remained present.",
+        "Canonical scripts/verify.ps1 passed after the final architecture, registry, CI-locking, tests, and regenerated-output updates; all tests plus governance, all six standalone publication families, generated-output, search, site, release, public-repository, and whitespace gates were valid.",
+        "The required pull-request verify workflow is regression-locked to scripts/verify.ps1, and that script is regression-locked to registered-publication, search, site, and release generated-output checks.",
+        "Requirement audit re-read live parent issue #51 and corrective issue #59 and found R1-R8/V1-V4 locally satisfied; V5 remains intentionally open for exact-head CI, merge, live Pages deployment, and post-merge documentation reconciliation."
       ],
       "reviews": [
-        "The bounded code-quality review returned no findings after the CI fix."
+        "The bounded code-quality review returned no findings after the CI fix.",
+        "Correction specialist code-quality and documentation review agents returned EvidenceError and were not counted as passes.",
+        "Manual bounded diff review found missing MRD provenance/version updates and stale child-issue wording; both were corrected, fingerprints were recomputed, outputs regenerated, and canonical verification rerun successfully."
       ],
       "publication": {
         "status": "merged",
@@ -229,7 +254,20 @@
         "head": "85a1c2e3eb47587be9d9b4ecbb8fa359d7475c9e",
         "main": "bae8a96ff1ced95efd867ab4b806c723e31e0b67"
       },
-      "unresolved": []
+      "unresolved": [
+        "Await exact-head pull-request CI for the corrective commit.",
+        "Await merge, exact-main GitHub Pages deployment, live Pages verification, and post-merge Change 021 documentation reconciliation."
+      ],
+      "remediation": {
+        "issue": 59,
+        "branch": "maintenance/change-021-pages-drift-closeout",
+        "reason": "reader-facing Pages composition violated the intended Work Management boundary and the prior closeout did not test that semantic invariant",
+        "local_state": "pre_merge_complete",
+        "public_routes": 42,
+        "public_search_documents": 42,
+        "work_management_public_entries": 0,
+        "standalone_work_management_generated": true
+      }
     }
   }
 }

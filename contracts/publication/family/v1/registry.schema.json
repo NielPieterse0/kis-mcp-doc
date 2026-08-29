@@ -38,6 +38,7 @@
               "publication_config",
               "output",
               "output_classes",
+              "publish_to_site",
               "adapter",
               "legacy_commands"
             ],
@@ -77,6 +78,9 @@
                     "generated_reference"
                   ]
                 }
+              },
+              "publish_to_site": {
+                "type": "boolean"
               },
               "adapter": {
                 "$ref": "#/$defs/adapter"

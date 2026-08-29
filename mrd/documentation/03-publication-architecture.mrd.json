@@ -9,7 +9,7 @@
     "layer": "L1",
     "record_mode": "prescriptive",
     "status": "active",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "dependencies": [
       {
         "mrd_id": "KIS-DOC-CON-POL-001",
@@ -41,9 +41,17 @@
           "locator": "github:NielPieterse0/kis-mcp-doc#18",
           "revision": "2026-08-26",
           "sha256": null
+        },
+        {
+          "source_id": "GH-ISSUE-59",
+          "kind": "operator_approved_work_item",
+          "role": "site_publication_boundary_correction",
+          "locator": "github:NielPieterse0/kis-mcp-doc#59",
+          "revision": "2026-08-29",
+          "sha256": null
         }
       ],
-      "source_fingerprint": "sha256:5b6189c2fe6ee2fdb487108a9deb1201a7030fa3f5f9aeab5f655cd1136c0a25",
+      "source_fingerprint": "sha256:a5ecc9059da979aaf907c08c950ed81c034491a092a30211c061a3c35c0fe4cc",
       "fact_quality": "direct"
     },
     "supersedes": [],
@@ -123,6 +131,11 @@
       {
         "rule_id": "KIS-DOC-PUB-009",
         "statement": "Every registered publication adapter MUST conform to the versioned adapter protocol for invocation shape and validation or verification result envelopes.",
+        "enforcement": "validator"
+      },
+      {
+        "rule_id": "KIS-DOC-PUB-010",
+        "statement": "Every registered publication family MUST explicitly declare whether it is eligible for the reader-facing documentation site; site routes, public search, and the GitHub Pages release MUST derive family membership only from that governed registry decision and MUST NOT infer public visibility by registration alone.",
         "enforcement": "validator"
       }
     ]

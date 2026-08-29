@@ -9,7 +9,7 @@
     "layer": "L1",
     "record_mode": "prescriptive",
     "status": "active",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "dependencies": [
       {
         "mrd_id": "KIS-DOC-CON-POL-002",
@@ -61,16 +61,24 @@
           "locator": "github:NielPieterse0/kis-mcp-doc#51",
           "revision": "2026-08-28",
           "sha256": null
+        },
+        {
+          "source_id": "GH-ISSUE-59",
+          "kind": "operator_approved_work_item",
+          "role": "site_publication_boundary_correction",
+          "locator": "github:NielPieterse0/kis-mcp-doc#59",
+          "revision": "2026-08-29",
+          "sha256": null
         }
       ],
-      "source_fingerprint": "sha256:ba5a3b1046888ae7160443417909229408904d5091fed50fa1480a279cea7822",
+      "source_fingerprint": "sha256:df4635e2f7df977a14a3327c162b533859cd671b21c3df6d817a2342203e9e87",
       "fact_quality": "direct"
     },
     "supersedes": [],
     "superseded_by": null
   },
   "content": {
-    "registry_version": "1.2.0",
+    "registry_version": "1.3.0",
     "adapter_protocol_version": 1,
     "families": [
       {
@@ -84,6 +92,7 @@
           "human_readable_specification",
           "generated_reference"
         ],
+        "publish_to_site": true,
         "adapter": {
           "validate": "kis_mcp_doc.publication_adapters:validate_governance",
           "build": "kis_mcp_doc.publication_adapters:build_governance",
@@ -106,6 +115,7 @@
           "human_readable_specification",
           "generated_reference"
         ],
+        "publish_to_site": false,
         "adapter": {
           "validate": "kis_mcp_doc.publication_adapters:validate_work_management",
           "build": "kis_mcp_doc.publication_adapters:build_work_management",
@@ -128,6 +138,7 @@
           "human_readable_specification",
           "generated_reference"
         ],
+        "publish_to_site": true,
         "adapter": {
           "validate": "kis_mcp_doc.publication_adapters:validate_documentation_reference",
           "build": "kis_mcp_doc.publication_adapters:build_documentation_reference",
@@ -149,6 +160,7 @@
         "output_classes": [
           "human_documentation"
         ],
+        "publish_to_site": true,
         "adapter": {
           "validate": "kis_mcp_doc.publication_adapters:validate_governance_docs",
           "build": "kis_mcp_doc.publication_adapters:build_governance_docs",
@@ -170,6 +182,7 @@
         "output_classes": [
           "human_documentation"
         ],
+        "publish_to_site": false,
         "adapter": {
           "validate": "kis_mcp_doc.publication_adapters:validate_work_management_docs",
           "build": "kis_mcp_doc.publication_adapters:build_work_management_docs",
@@ -191,6 +204,7 @@
         "output_classes": [
           "human_documentation"
         ],
+        "publish_to_site": true,
         "adapter": {
           "validate": "kis_mcp_doc.publication_adapters:validate_repository_human_docs",
           "build": "kis_mcp_doc.publication_adapters:build_repository_human_docs",

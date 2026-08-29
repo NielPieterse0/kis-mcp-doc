@@ -38,7 +38,20 @@ def test_registry_discovers_all_governed_publication_families_and_output_classes
     assert families[1]["output_classes"] == ["human_readable_specification", "generated_reference"]
     assert families[3]["output_classes"] == ["human_documentation"]
     assert families[4]["output_classes"] == ["human_documentation"]
+    assert [family["publish_to_site"] for family in families] == [True, False, True, True, False, True]
     assert registry.load()["content"]["adapter_protocol_version"] == 1
+
+
+def test_registry_requires_explicit_site_publication_decision(tmp_path: Path) -> None:
+    root = tmp_path / "repo"
+    import shutil
+    shutil.copytree(ROOT, root, ignore=shutil.ignore_patterns('.git', '.venv', '.work'))
+    path = root / "mrd/documentation/04-publication-family-registry.mrd.json"
+    doc = json.loads(path.read_text(encoding="utf-8"))
+    del doc["content"]["families"][0]["publish_to_site"]
+    path.write_text(json.dumps(doc, indent=2) + "\n", encoding="utf-8")
+    codes = {item["code"] for item in PublicationFamilyRegistry(root).validate()["diagnostics"]}
+    assert "PUBLICATION_FAMILY_REGISTRY_SCHEMA_INVALID" in codes
 
 
 def test_registry_rejects_adapter_protocol_version_drift(tmp_path: Path) -> None:

@@ -9,7 +9,7 @@
     "layer": "L1",
     "record_mode": "prescriptive",
     "status": "active",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "dependencies": [
       {
         "mrd_id": "KIS-DOC-CON-POL-001",
@@ -41,9 +41,17 @@
           "locator": "chat:2026-08-28-kis-mcp-doc-human-documentation-programme",
           "revision": "2026-08-28",
           "sha256": null
+        },
+        {
+          "source_id": "GH-ISSUE-59",
+          "kind": "operator_approved_work_item",
+          "role": "site_publication_boundary_correction",
+          "locator": "github:NielPieterse0/kis-mcp-doc#59",
+          "revision": "2026-08-29",
+          "sha256": null
         }
       ],
-      "source_fingerprint": "sha256:acdcc94e14b2bdd63720500110df0ea37cdf6a66f779051fcd55d8b44f988f46",
+      "source_fingerprint": "sha256:fa04d53b9413ff91f05c117773763a8727850241d1cfae4a28e9f7aa8ca6b023",
       "fact_quality": "direct"
     },
     "supersedes": [],
@@ -109,7 +117,7 @@
       },
       {
         "rule_id": "KIS-DOC-REP-002",
-        "statement": "Work Management MUST remain a separately presented publication family and MUST NOT be consolidated into the kis-mcp-doc repository human bundle.",
+        "statement": "Work Management MUST remain a separately governed standalone publication family, MUST NOT be consolidated into the kis-mcp-doc repository human bundle, and MUST NOT be published into the kis-mcp-doc reader-facing GitHub Pages site, public search index, or Pages release archive.",
         "enforcement": "validator"
       },
       {
@@ -129,7 +137,7 @@
       },
       {
         "rule_id": "KIS-DOC-REP-006",
-        "statement": "Publication, search, site, and release surfaces MUST consume the repository bundle through the canonical publication-family registry.",
+        "statement": "Publication, search, site, and release surfaces MUST consume the repository bundle through the canonical publication-family registry, and every registered family MUST explicitly declare whether it is published to the kis-mcp-doc Pages portal so that site exposure cannot be inferred or silently expanded.",
         "enforcement": "validator"
       },
       {
