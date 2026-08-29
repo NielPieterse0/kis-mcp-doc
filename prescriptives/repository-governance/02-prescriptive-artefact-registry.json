@@ -1,0 +1,1955 @@
+{
+  "schema_version": 1,
+  "id": "KIS-REPO-REG-001",
+  "title": "Prescriptive Artefact and Fact Ownership Registry",
+  "status": "active",
+  "record_mode": "prescriptive",
+  "version": "1.0.0",
+  "authority_rule": "This registry resolves ownership and location but does not become a second owner of indexed facts.",
+  "entries": [
+    {
+      "identity": "repo:.github/CODEOWNERS",
+      "title": "Repository code ownership routing",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "repository_prescriptive",
+      "canonical_path": ".github/CODEOWNERS",
+      "authoritative_owner": "KIS-REPO-CODEOWNERS-001",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "current",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": ".github/CODEOWNERS"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-REPO-CODEOWNERS-001"
+      ]
+    },
+    {
+      "identity": "repo:AGENTS.md",
+      "title": "Repository operating authority",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "repository_prescriptive",
+      "canonical_path": "AGENTS.md",
+      "authoritative_owner": "KIS-REPO-AUTH-001",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "current",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "AGENTS.md"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-REPO-AUTH-001"
+      ]
+    },
+    {
+      "identity": "repo:contracts/documentation/harvest/v1/registry.schema.json",
+      "title": "KIS Documentation Harvest Source Registry",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "contract",
+      "canonical_path": "contracts/documentation/harvest/v1/registry.schema.json",
+      "authoritative_owner": "KIS-ARTEFACT-35B7573BFC08",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "current",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "contracts/documentation/harvest/v1/registry.schema.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-ARTEFACT-35B7573BFC08"
+      ]
+    },
+    {
+      "identity": "repo:contracts/documentation/litho/v1/package.schema.json",
+      "title": "Litho Evidence Package",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "contract",
+      "canonical_path": "contracts/documentation/litho/v1/package.schema.json",
+      "authoritative_owner": "KIS-ARTEFACT-6FF4143C27F0",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "current",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "contracts/documentation/litho/v1/package.schema.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-ARTEFACT-6FF4143C27F0"
+      ]
+    },
+    {
+      "identity": "repo:contracts/documentation/reference/v1/manifest.schema.json",
+      "title": "KIS Documentation Reference Standard Build Manifest",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "contract",
+      "canonical_path": "contracts/documentation/reference/v1/manifest.schema.json",
+      "authoritative_owner": "KIS-ARTEFACT-15F00E8306A5",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "current",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "contracts/documentation/reference/v1/manifest.schema.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-ARTEFACT-15F00E8306A5"
+      ]
+    },
+    {
+      "identity": "repo:contracts/documentation/reference/v1/publication.schema.json",
+      "title": "KIS Documentation Reference Standard Publication",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "contract",
+      "canonical_path": "contracts/documentation/reference/v1/publication.schema.json",
+      "authoritative_owner": "KIS-ARTEFACT-40814EE0F90F",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "current",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "contracts/documentation/reference/v1/publication.schema.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-ARTEFACT-40814EE0F90F"
+      ]
+    },
+    {
+      "identity": "repo:contracts/documentation/reference/v1/registry.schema.json",
+      "title": "KIS Documentation Reference Registry Content",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "contract",
+      "canonical_path": "contracts/documentation/reference/v1/registry.schema.json",
+      "authoritative_owner": "KIS-ARTEFACT-193E98BE6ACF",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "current",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "contracts/documentation/reference/v1/registry.schema.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-ARTEFACT-193E98BE6ACF"
+      ]
+    },
+    {
+      "identity": "repo:contracts/documentation/reference/v1/standard.schema.json",
+      "title": "KIS Documentation Reference Standard Content",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "contract",
+      "canonical_path": "contracts/documentation/reference/v1/standard.schema.json",
+      "authoritative_owner": "KIS-ARTEFACT-0F5A542EA043",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "current",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "contracts/documentation/reference/v1/standard.schema.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-ARTEFACT-0F5A542EA043"
+      ]
+    },
+    {
+      "identity": "repo:contracts/governance/v1/content.schema.json",
+      "title": "KIS Core Governance MRD Content",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "contract",
+      "canonical_path": "contracts/governance/v1/content.schema.json",
+      "authoritative_owner": "KIS-ARTEFACT-FE95044DE068",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "current",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "contracts/governance/v1/content.schema.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-ARTEFACT-FE95044DE068"
+      ]
+    },
+    {
+      "identity": "repo:contracts/governance/v1/governance-mrd.schema.json",
+      "title": "KIS Governance MRD Profile",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "contract",
+      "canonical_path": "contracts/governance/v1/governance-mrd.schema.json",
+      "authoritative_owner": "KIS-ARTEFACT-E5C13CC1D1E5",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "current",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "contracts/governance/v1/governance-mrd.schema.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-ARTEFACT-E5C13CC1D1E5"
+      ]
+    },
+    {
+      "identity": "repo:contracts/mrd/v1/mrd.schema.json",
+      "title": "KIS MRD Core Envelope",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "contract",
+      "canonical_path": "contracts/mrd/v1/mrd.schema.json",
+      "authoritative_owner": "KIS-ARTEFACT-6BA0FAF92E79",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "current",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "contracts/mrd/v1/mrd.schema.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-ARTEFACT-6BA0FAF92E79"
+      ]
+    },
+    {
+      "identity": "repo:contracts/publication/family/v1/registry.schema.json",
+      "title": "KIS publication family registry",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "contract",
+      "canonical_path": "contracts/publication/family/v1/registry.schema.json",
+      "authoritative_owner": "KIS-ARTEFACT-3516B699A1DB",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "current",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "contracts/publication/family/v1/registry.schema.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-ARTEFACT-3516B699A1DB"
+      ]
+    },
+    {
+      "identity": "repo:contracts/publication/v1/governance-spec.schema.json",
+      "title": "KIS Governance Specification Publication Configuration",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "contract",
+      "canonical_path": "contracts/publication/v1/governance-spec.schema.json",
+      "authoritative_owner": "KIS-ARTEFACT-242877B4ABE4",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "current",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "contracts/publication/v1/governance-spec.schema.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-ARTEFACT-242877B4ABE4"
+      ]
+    },
+    {
+      "identity": "repo:contracts/publication/v1/manifest.schema.json",
+      "title": "KIS Governance Specification Build Manifest",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "contract",
+      "canonical_path": "contracts/publication/v1/manifest.schema.json",
+      "authoritative_owner": "KIS-ARTEFACT-9218B5C703C3",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "current",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "contracts/publication/v1/manifest.schema.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-ARTEFACT-9218B5C703C3"
+      ]
+    },
+    {
+      "identity": "repo:contracts/publication/v2/governance-spec.schema.json",
+      "title": "KIS Governance Specification Publication Configuration v2",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "contract",
+      "canonical_path": "contracts/publication/v2/governance-spec.schema.json",
+      "authoritative_owner": "KIS-ARTEFACT-44A2FF065041",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "current",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "contracts/publication/v2/governance-spec.schema.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-ARTEFACT-44A2FF065041"
+      ]
+    },
+    {
+      "identity": "repo:contracts/publication/v2/manifest.schema.json",
+      "title": "KIS Governance Specification Build Manifest v2",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "contract",
+      "canonical_path": "contracts/publication/v2/manifest.schema.json",
+      "authoritative_owner": "KIS-ARTEFACT-1F85EE47E58E",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "current",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "contracts/publication/v2/manifest.schema.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-ARTEFACT-1F85EE47E58E"
+      ]
+    },
+    {
+      "identity": "repo:contracts/work-management/v1/content.schema.json",
+      "title": "KIS Work Management MRD Content",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "contract",
+      "canonical_path": "contracts/work-management/v1/content.schema.json",
+      "authoritative_owner": "KIS-ARTEFACT-23A51C514472",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "current",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "contracts/work-management/v1/content.schema.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-ARTEFACT-23A51C514472"
+      ]
+    },
+    {
+      "identity": "repo:contracts/work-management/v1/work-management-mrd.schema.json",
+      "title": "KIS Work Management MRD Profile",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "contract",
+      "canonical_path": "contracts/work-management/v1/work-management-mrd.schema.json",
+      "authoritative_owner": "KIS-ARTEFACT-7F4E0C3A648F",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "current",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "contracts/work-management/v1/work-management-mrd.schema.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-ARTEFACT-7F4E0C3A648F"
+      ]
+    },
+    {
+      "identity": "repo:prescriptives/documentation/01-reference-standard.mrd.json",
+      "title": "Documentation Reference Standard",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "mrd",
+      "canonical_path": "prescriptives/documentation/01-reference-standard.mrd.json",
+      "authoritative_owner": "KIS-DOC-CON-POL-001",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "active",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "prescriptives/documentation/01-reference-standard.mrd.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-DOC-CON-POL-001"
+      ]
+    },
+    {
+      "identity": "repo:prescriptives/documentation/02-reference-registry.mrd.json",
+      "title": "Documentation Reference Registry",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "mrd",
+      "canonical_path": "prescriptives/documentation/02-reference-registry.mrd.json",
+      "authoritative_owner": "KIS-DOC-SEM-REG-001",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "active",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "prescriptives/documentation/02-reference-registry.mrd.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-DOC-SEM-REG-001"
+      ]
+    },
+    {
+      "identity": "repo:prescriptives/documentation/03-publication-architecture.mrd.json",
+      "title": "Documentation Publication Architecture",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "mrd",
+      "canonical_path": "prescriptives/documentation/03-publication-architecture.mrd.json",
+      "authoritative_owner": "KIS-DOC-CON-POL-002",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "active",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "prescriptives/documentation/03-publication-architecture.mrd.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-DOC-CON-POL-002"
+      ]
+    },
+    {
+      "identity": "repo:prescriptives/documentation/04-publication-family-registry.mrd.json",
+      "title": "Publication Family Registry",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "mrd",
+      "canonical_path": "prescriptives/documentation/04-publication-family-registry.mrd.json",
+      "authoritative_owner": "KIS-DOC-SEM-REG-002",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "active",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "prescriptives/documentation/04-publication-family-registry.mrd.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-DOC-SEM-REG-002"
+      ]
+    },
+    {
+      "identity": "repo:prescriptives/documentation/05-repository-human-bundle.mrd.json",
+      "title": "Current-State Repository Human Bundle",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "mrd",
+      "canonical_path": "prescriptives/documentation/05-repository-human-bundle.mrd.json",
+      "authoritative_owner": "KIS-DOC-CON-POL-003",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "active",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "prescriptives/documentation/05-repository-human-bundle.mrd.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-DOC-CON-POL-003"
+      ]
+    },
+    {
+      "identity": "repo:prescriptives/governance/01-classification.mrd.json",
+      "title": "MRD Classification",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "mrd",
+      "canonical_path": "prescriptives/governance/01-classification.mrd.json",
+      "authoritative_owner": "KIS-KNOW-SEM-REG-001",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "active",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "prescriptives/governance/01-classification.mrd.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-KNOW-SEM-REG-001"
+      ]
+    },
+    {
+      "identity": "repo:prescriptives/governance/02-layering.mrd.json",
+      "title": "MRD Authority Layers",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "mrd",
+      "canonical_path": "prescriptives/governance/02-layering.mrd.json",
+      "authoritative_owner": "KIS-KNOW-SEM-ENUM-001",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "active",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "prescriptives/governance/02-layering.mrd.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-KNOW-SEM-ENUM-001"
+      ]
+    },
+    {
+      "identity": "repo:prescriptives/governance/03-dependencies.mrd.json",
+      "title": "MRD Dependency Contract",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "mrd",
+      "canonical_path": "prescriptives/governance/03-dependencies.mrd.json",
+      "authoritative_owner": "KIS-KNOW-CON-CTR-001",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "active",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "prescriptives/governance/03-dependencies.mrd.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-KNOW-CON-CTR-001"
+      ]
+    },
+    {
+      "identity": "repo:prescriptives/governance/04-provenance.mrd.json",
+      "title": "MRD Provenance and Authority Policy",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "mrd",
+      "canonical_path": "prescriptives/governance/04-provenance.mrd.json",
+      "authoritative_owner": "KIS-KNOW-CON-POL-001",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "active",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "prescriptives/governance/04-provenance.mrd.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-KNOW-CON-POL-001"
+      ]
+    },
+    {
+      "identity": "repo:prescriptives/governance/05-lifecycle.mrd.json",
+      "title": "MRD Lifecycle",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "mrd",
+      "canonical_path": "prescriptives/governance/05-lifecycle.mrd.json",
+      "authoritative_owner": "KIS-KNOW-WRK-STM-001",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "active",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "prescriptives/governance/05-lifecycle.mrd.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-KNOW-WRK-STM-001"
+      ]
+    },
+    {
+      "identity": "repo:prescriptives/governance/06-validation.mrd.json",
+      "title": "MRD Validation and Enforcement",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "mrd",
+      "canonical_path": "prescriptives/governance/06-validation.mrd.json",
+      "authoritative_owner": "KIS-KNOW-EVL-TST-001",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "active",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "prescriptives/governance/06-validation.mrd.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-KNOW-EVL-TST-001"
+      ]
+    },
+    {
+      "identity": "repo:prescriptives/governance/07-applicability.mrd.json",
+      "title": "MRD Applicability and Selection",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "mrd",
+      "canonical_path": "prescriptives/governance/07-applicability.mrd.json",
+      "authoritative_owner": "KIS-KNOW-DEC-TAB-001",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "active",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "prescriptives/governance/07-applicability.mrd.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-KNOW-DEC-TAB-001"
+      ]
+    },
+    {
+      "identity": "repo:prescriptives/governance/08-ownership.mrd.json",
+      "title": "MRD Authority Ownership and Relationships",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "mrd",
+      "canonical_path": "prescriptives/governance/08-ownership.mrd.json",
+      "authoritative_owner": "KIS-KNOW-CON-POL-002",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "active",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "prescriptives/governance/08-ownership.mrd.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-KNOW-CON-POL-002"
+      ]
+    },
+    {
+      "identity": "repo:prescriptives/governance/09-kis-op-behavior.mrd.json",
+      "title": "kis-op Governance Application Workflow",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "mrd",
+      "canonical_path": "prescriptives/governance/09-kis-op-behavior.mrd.json",
+      "authoritative_owner": "KIS-KNOW-WRK-WFL-001",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "active",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "prescriptives/governance/09-kis-op-behavior.mrd.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-KNOW-WRK-WFL-001"
+      ]
+    },
+    {
+      "identity": "repo:prescriptives/repository-governance/01-repository-governance.json",
+      "title": "Repository Governance",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "repository_prescriptive",
+      "canonical_path": "prescriptives/repository-governance/01-repository-governance.json",
+      "authoritative_owner": "KIS-REPO-GOV-001",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "active",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "prescriptives/repository-governance/01-repository-governance.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-REPO-GOV-001"
+      ]
+    },
+    {
+      "identity": "repo:prescriptives/repository-governance/02-prescriptive-artefact-registry.json",
+      "title": "02-prescriptive-artefact-registry.json",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "repository_prescriptive",
+      "canonical_path": "prescriptives/repository-governance/02-prescriptive-artefact-registry.json",
+      "authoritative_owner": "KIS-ARTEFACT-0590640FE35A",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "current",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "prescriptives/repository-governance/02-prescriptive-artefact-registry.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-ARTEFACT-0590640FE35A"
+      ]
+    },
+    {
+      "identity": "repo:prescriptives/repository-governance/03-directory-grammar.json",
+      "title": "Repository Directory Grammar",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "repository_prescriptive",
+      "canonical_path": "prescriptives/repository-governance/03-directory-grammar.json",
+      "authoritative_owner": "KIS-REPO-DIR-001",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "active",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "prescriptives/repository-governance/03-directory-grammar.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-REPO-DIR-001"
+      ]
+    },
+    {
+      "identity": "repo:prescriptives/repository-governance/04-enforcement-register.json",
+      "title": "Repository Governance Enforcement Register",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "repository_prescriptive",
+      "canonical_path": "prescriptives/repository-governance/04-enforcement-register.json",
+      "authoritative_owner": "KIS-REPO-ENF-001",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "active",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "prescriptives/repository-governance/04-enforcement-register.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-REPO-ENF-001"
+      ]
+    },
+    {
+      "identity": "repo:prescriptives/work-management/01-reg.mrd.json",
+      "title": "Work Management domain model",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "mrd",
+      "canonical_path": "prescriptives/work-management/01-reg.mrd.json",
+      "authoritative_owner": "KIS-WORK-SEM-REG-001",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "active",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "prescriptives/work-management/01-reg.mrd.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-WORK-SEM-REG-001"
+      ]
+    },
+    {
+      "identity": "repo:prescriptives/work-management/02-stm.mrd.json",
+      "title": "Work lifecycle",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "mrd",
+      "canonical_path": "prescriptives/work-management/02-stm.mrd.json",
+      "authoritative_owner": "KIS-WORK-WRK-STM-001",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "active",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "prescriptives/work-management/02-stm.mrd.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-WORK-WRK-STM-001"
+      ]
+    },
+    {
+      "identity": "repo:prescriptives/work-management/03-wfl.mrd.json",
+      "title": "Work operations",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "mrd",
+      "canonical_path": "prescriptives/work-management/03-wfl.mrd.json",
+      "authoritative_owner": "KIS-WORK-WRK-WFL-001",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "active",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "prescriptives/work-management/03-wfl.mrd.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-WORK-WRK-WFL-001"
+      ]
+    },
+    {
+      "identity": "repo:prescriptives/work-management/04-scr.mrd.json",
+      "title": "Next-work selection",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "mrd",
+      "canonical_path": "prescriptives/work-management/04-scr.mrd.json",
+      "authoritative_owner": "KIS-WORK-DEC-SCR-001",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "active",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "prescriptives/work-management/04-scr.mrd.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-WORK-DEC-SCR-001"
+      ]
+    },
+    {
+      "identity": "repo:prescriptives/work-management/05-pol.mrd.json",
+      "title": "Authority and reconciliation policy",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "mrd",
+      "canonical_path": "prescriptives/work-management/05-pol.mrd.json",
+      "authoritative_owner": "KIS-WORK-CON-POL-001",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "active",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "prescriptives/work-management/05-pol.mrd.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-WORK-CON-POL-001"
+      ]
+    },
+    {
+      "identity": "repo:prescriptives/work-management/06-svc.mrd.json",
+      "title": "Provider and command-plane boundary",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "mrd",
+      "canonical_path": "prescriptives/work-management/06-svc.mrd.json",
+      "authoritative_owner": "KIS-WORK-CTR-SVC-001",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "active",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "prescriptives/work-management/06-svc.mrd.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-WORK-CTR-SVC-001"
+      ]
+    },
+    {
+      "identity": "repo:prescriptives/work-management/07-tst.mrd.json",
+      "title": "Work Management conformance",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "mrd",
+      "canonical_path": "prescriptives/work-management/07-tst.mrd.json",
+      "authoritative_owner": "KIS-WORK-EVL-TST-001",
+      "governing_artefact": "prescriptives/repository-governance/01-repository-governance.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "active",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "prescriptives/work-management/07-tst.mrd.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-WORK-EVL-TST-001"
+      ]
+    },
+    {
+      "identity": "repo:publication/documentation-reference-standard.json",
+      "title": "Documentation Reference Standard",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "repository_prescriptive",
+      "canonical_path": "publication/documentation-reference-standard.json",
+      "authoritative_owner": "KIS-ARTEFACT-BD35CB6A03EB",
+      "governing_artefact": "prescriptives/documentation/04-publication-family-registry.mrd.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "draft",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "publication/documentation-reference-standard.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-ARTEFACT-BD35CB6A03EB"
+      ]
+    },
+    {
+      "identity": "repo:publication/documentation-release.json",
+      "title": "documentation-release.json",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "repository_prescriptive",
+      "canonical_path": "publication/documentation-release.json",
+      "authoritative_owner": "KIS-ARTEFACT-7A99A9536156",
+      "governing_artefact": "prescriptives/documentation/04-publication-family-registry.mrd.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "current",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "publication/documentation-release.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-ARTEFACT-7A99A9536156"
+      ]
+    },
+    {
+      "identity": "repo:publication/documentation-search.json",
+      "title": "KIS Documentation Search",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "repository_prescriptive",
+      "canonical_path": "publication/documentation-search.json",
+      "authoritative_owner": "KIS-ARTEFACT-E513ADFAB38C",
+      "governing_artefact": "prescriptives/documentation/04-publication-family-registry.mrd.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "draft",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "publication/documentation-search.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-ARTEFACT-E513ADFAB38C"
+      ]
+    },
+    {
+      "identity": "repo:publication/documentation-site.json",
+      "title": "KIS Documentation",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "repository_prescriptive",
+      "canonical_path": "publication/documentation-site.json",
+      "authoritative_owner": "KIS-ARTEFACT-DD0FB9CC78E3",
+      "governing_artefact": "prescriptives/documentation/04-publication-family-registry.mrd.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "draft",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "publication/documentation-site.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-ARTEFACT-DD0FB9CC78E3"
+      ]
+    },
+    {
+      "identity": "repo:publication/governance-docs.json",
+      "title": "Governance Documentation",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "repository_prescriptive",
+      "canonical_path": "publication/governance-docs.json",
+      "authoritative_owner": "KIS-ARTEFACT-A4F6B5608162",
+      "governing_artefact": "prescriptives/documentation/04-publication-family-registry.mrd.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "draft",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "publication/governance-docs.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-ARTEFACT-A4F6B5608162"
+      ]
+    },
+    {
+      "identity": "repo:publication/governance-spec.json",
+      "title": "kis-op Governance Specification",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "repository_prescriptive",
+      "canonical_path": "publication/governance-spec.json",
+      "authoritative_owner": "KIS-ARTEFACT-1B00F13100CC",
+      "governing_artefact": "prescriptives/documentation/04-publication-family-registry.mrd.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "draft",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "publication/governance-spec.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-ARTEFACT-1B00F13100CC"
+      ]
+    },
+    {
+      "identity": "repo:publication/harvest-sources.json",
+      "title": "harvest-sources.json",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "repository_prescriptive",
+      "canonical_path": "publication/harvest-sources.json",
+      "authoritative_owner": "KIS-ARTEFACT-20570445FA25",
+      "governing_artefact": "prescriptives/documentation/04-publication-family-registry.mrd.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "current",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "publication/harvest-sources.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-ARTEFACT-20570445FA25"
+      ]
+    },
+    {
+      "identity": "repo:publication/public-repository.json",
+      "title": "public-repository.json",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "repository_prescriptive",
+      "canonical_path": "publication/public-repository.json",
+      "authoritative_owner": "KIS-ARTEFACT-2A6E1268A98C",
+      "governing_artefact": "prescriptives/documentation/04-publication-family-registry.mrd.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "public documentation engineering and proving ground",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "publication/public-repository.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-ARTEFACT-2A6E1268A98C"
+      ]
+    },
+    {
+      "identity": "repo:publication/repository-docs.json",
+      "title": "kis-mcp-doc Repository Documentation",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "repository_prescriptive",
+      "canonical_path": "publication/repository-docs.json",
+      "authoritative_owner": "KIS-ARTEFACT-5E194E102820",
+      "governing_artefact": "prescriptives/documentation/04-publication-family-registry.mrd.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "active",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "publication/repository-docs.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-ARTEFACT-5E194E102820"
+      ]
+    },
+    {
+      "identity": "repo:publication/work-management-docs.json",
+      "title": "Work Management Documentation",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "repository_prescriptive",
+      "canonical_path": "publication/work-management-docs.json",
+      "authoritative_owner": "KIS-ARTEFACT-9DF70B862D6D",
+      "governing_artefact": "prescriptives/documentation/04-publication-family-registry.mrd.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "draft",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "publication/work-management-docs.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-ARTEFACT-9DF70B862D6D"
+      ]
+    },
+    {
+      "identity": "repo:publication/work-management-spec.json",
+      "title": "KIS Work Management Specification",
+      "purpose": "Canonical prescriptive repository artefact registered for authority resolution.",
+      "semantic_role": "prescriptive",
+      "artefact_kind": "repository_prescriptive",
+      "canonical_path": "publication/work-management-spec.json",
+      "authoritative_owner": "KIS-ARTEFACT-06270600EA77",
+      "governing_artefact": "prescriptives/documentation/04-publication-family-registry.mrd.json",
+      "scope_in": [
+        "facts intentionally owned by this artefact"
+      ],
+      "scope_out": [
+        "facts owned by other registered prescriptives"
+      ],
+      "status": "draft",
+      "record_mode": "prescriptive",
+      "editability": "source_editable",
+      "provenance": {
+        "kind": "repository_source",
+        "source": "publication/work-management-spec.json"
+      },
+      "relationships": {
+        "implements": [],
+        "verified_by": [
+          "src/kis_mcp_doc/repository_governance.py"
+        ],
+        "derived_to": [],
+        "evidenced_by": [
+          "scripts/verify.ps1"
+        ]
+      },
+      "fact_ids": [
+        "KIS-ARTEFACT-06270600EA77"
+      ]
+    }
+  ]
+}

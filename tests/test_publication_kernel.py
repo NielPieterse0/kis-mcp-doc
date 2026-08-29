@@ -46,7 +46,7 @@ def test_registry_requires_explicit_site_publication_decision(tmp_path: Path) ->
     root = tmp_path / "repo"
     import shutil
     shutil.copytree(ROOT, root, ignore=shutil.ignore_patterns('.git', '.venv', '.work'))
-    path = root / "mrd/documentation/04-publication-family-registry.mrd.json"
+    path = root / "prescriptives/documentation/04-publication-family-registry.mrd.json"
     doc = json.loads(path.read_text(encoding="utf-8"))
     del doc["content"]["families"][0]["publish_to_site"]
     path.write_text(json.dumps(doc, indent=2) + "\n", encoding="utf-8")
@@ -58,7 +58,7 @@ def test_registry_rejects_adapter_protocol_version_drift(tmp_path: Path) -> None
     root = tmp_path / "repo"
     import shutil
     shutil.copytree(ROOT, root, ignore=shutil.ignore_patterns('.git', '.venv', '.work'))
-    path = root / "mrd/documentation/04-publication-family-registry.mrd.json"
+    path = root / "prescriptives/documentation/04-publication-family-registry.mrd.json"
     doc = json.loads(path.read_text(encoding="utf-8"))
     doc["content"]["adapter_protocol_version"] = 2
     path.write_text(json.dumps(doc, indent=2) + "\n", encoding="utf-8")
@@ -71,7 +71,7 @@ def test_registry_rejects_duplicate_output_and_unsupported_output_class(tmp_path
     root = tmp_path / "repo"
     import shutil
     shutil.copytree(ROOT, root, ignore=shutil.ignore_patterns('.git', '.venv', '.work'))
-    path = root / "mrd/documentation/04-publication-family-registry.mrd.json"
+    path = root / "prescriptives/documentation/04-publication-family-registry.mrd.json"
     doc = json.loads(path.read_text(encoding="utf-8"))
     doc["content"]["families"][0]["output_classes"] = ["generated_reference"]
     doc["content"]["families"][1]["id"] = doc["content"]["families"][0]["id"]
@@ -99,7 +99,7 @@ def test_registry_rejects_traversal_in_registered_paths(
     root = tmp_path / "repo"
     import shutil
     shutil.copytree(ROOT, root, ignore=shutil.ignore_patterns('.git', '.venv', '.work'))
-    path = root / "mrd/documentation/04-publication-family-registry.mrd.json"
+    path = root / "prescriptives/documentation/04-publication-family-registry.mrd.json"
     doc = json.loads(path.read_text(encoding="utf-8"))
     doc["content"]["families"][0][field] = value
     path.write_text(json.dumps(doc, indent=2) + "\n", encoding="utf-8")
@@ -112,7 +112,7 @@ def test_family_adapter_rejects_registered_output_class_drift(tmp_path: Path) ->
     root = tmp_path / "repo"
     import shutil
     shutil.copytree(ROOT, root, ignore=shutil.ignore_patterns('.git', '.venv', '.work'))
-    path = root / "mrd/documentation/04-publication-family-registry.mrd.json"
+    path = root / "prescriptives/documentation/04-publication-family-registry.mrd.json"
     doc = json.loads(path.read_text(encoding="utf-8"))
     doc["content"]["families"][0]["output_classes"] = ["generated_reference"]
     path.write_text(json.dumps(doc, indent=2) + "\n", encoding="utf-8")

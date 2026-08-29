@@ -21,7 +21,7 @@ The repository keeps canonical facts in MRDs, contracts, schemas, configuration,
 
 ## Repository structure
 
-`mrd/` contains canonical machine-readable domain records. `contracts/` contains schemas and contracts. `publication/` contains publication configuration. `src/` contains deterministic generators and validators. `generated/` contains derived publication output. `tests/` and `scripts/` contain verification controls.
+`prescriptives/` contains canonical machine-readable domain records. `contracts/` contains schemas and contracts. `publication/` contains publication configuration. `src/` contains deterministic generators and validators. `generated/` contains derived publication output. `tests/` and `scripts/` contain verification controls.
 
 ## Verify locally
 

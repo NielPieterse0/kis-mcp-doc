@@ -1,0 +1,80 @@
+{
+  "schema_version": 4,
+  "change_id": "022-repository-governance-prescriptives-directory-grammar",
+  "status": "active",
+  "branch": "change/022-repository-governance-prescriptives-directory-grammar",
+  "worktree": ".work/worktrees/022-repository-governance-prescriptives-directory-grammar",
+  "base": "main",
+  "outcome": "Establish a repository-wide governance coordinate system for prescriptive authority, implementation, derived/generated artefacts, verification/evidence, fact ownership, and a mechanically enforceable directory grammar.",
+  "owned_paths": [
+    ".work/changes/022-repository-governance-prescriptives-directory-grammar/**",
+    "AGENTS.md",
+    ".github/CODEOWNERS",
+    "contracts/**",
+    "prescriptives/**",
+    "publication/**",
+    "src/**",
+    "scripts/verify.ps1",
+    "tests/**",
+    "generated/**",
+    "README.md",
+    "CONTRIBUTING.md",
+    "SECURITY.md",
+    ".github/pull_request_template.md"
+  ],
+  "shared_paths": [],
+  "excluded_paths": [
+    ".work/changes/001-*/**",
+    ".work/changes/002-*/**",
+    ".work/changes/003-*/**",
+    ".work/changes/004-*/**",
+    ".work/changes/005-*/**",
+    ".work/changes/006-*/**",
+    ".work/changes/007-*/**",
+    ".work/changes/008-*/**",
+    ".work/changes/009-*/**",
+    ".work/changes/010-*/**",
+    ".work/changes/011-*/**",
+    ".work/changes/012-*/**",
+    ".work/changes/013-*/**",
+    ".work/changes/014-*/**",
+    ".work/changes/015-*/**",
+    ".work/changes/016-*/**",
+    ".work/changes/017-*/**",
+    ".work/changes/018-*/**",
+    ".work/changes/019-*/**",
+    ".work/changes/020-*/**",
+    ".work/changes/021-*/**",
+    "C:/Projects/kis-mcp/**"
+  ],
+  "dependencies": [
+    "021-current-state-kis-mcp-doc-human-documentation"
+  ],
+  "integration_owner": null,
+  "complexity": "large",
+  "risk_triggers": [
+    "public_contract",
+    "schema",
+    "governance",
+    "ci"
+  ],
+  "base_evidence": {
+    "local_sha": "02b0ba39890bb369e6613529f594669baabcd2a0",
+    "local_tree": "62d0227a48ad3c57a40d1d9f3fd4afd2cb71bde9",
+    "upstream_sha": "02b0ba39890bb369e6613529f594669baabcd2a0",
+    "upstream_tree": "62d0227a48ad3c57a40d1d9f3fd4afd2cb71bde9",
+    "upstream_ref": "github:main",
+    "evidence_source": "verified_local_tracking_equal",
+    "relation": "equal"
+  },
+  "work_management": {
+    "project_id": "kis-mcp-doc",
+    "record_id": "WORK-62",
+    "source_repository": "NielPieterse0/kis-mcp-doc",
+    "source_number": 62,
+    "source_kind": "issue",
+    "documentation_impact": "required",
+    "capture_status": "captured"
+  },
+  "implementation_authorization": "Operator explicitly authorized full implementation on 2026-08-29."
+}

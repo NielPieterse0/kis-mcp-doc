@@ -85,7 +85,7 @@
         "id": "governance-spec",
         "title": "kis-op Governance Specification",
         "semantic_owner": "KIS-KNOW-CON-POL-002",
-        "mrd_root": "mrd/governance",
+        "mrd_root": "prescriptives/governance",
         "publication_config": "publication/governance-spec.json",
         "output": "generated/governance-spec",
         "output_classes": [
@@ -108,7 +108,7 @@
         "id": "work-management-spec",
         "title": "KIS Work Management Specification",
         "semantic_owner": "KIS-WORK-CON-POL-001",
-        "mrd_root": "mrd/work-management",
+        "mrd_root": "prescriptives/work-management",
         "publication_config": "publication/work-management-spec.json",
         "output": "generated/work-management-spec",
         "output_classes": [
@@ -131,7 +131,7 @@
         "id": "documentation-reference-standard",
         "title": "Documentation Reference Standard",
         "semantic_owner": "KIS-DOC-CON-POL-001",
-        "mrd_root": "mrd/documentation",
+        "mrd_root": "prescriptives/documentation",
         "publication_config": "publication/documentation-reference-standard.json",
         "output": "generated/documentation-reference-standard",
         "output_classes": [
@@ -154,7 +154,7 @@
         "id": "governance-docs",
         "title": "Governance Documentation",
         "semantic_owner": "KIS-KNOW-CON-POL-002",
-        "mrd_root": "mrd/governance",
+        "mrd_root": "prescriptives/governance",
         "publication_config": "publication/governance-docs.json",
         "output": "generated/governance-docs",
         "output_classes": [
@@ -176,7 +176,7 @@
         "id": "work-management-docs",
         "title": "Work Management Documentation",
         "semantic_owner": "KIS-WORK-CON-POL-001",
-        "mrd_root": "mrd/work-management",
+        "mrd_root": "prescriptives/work-management",
         "publication_config": "publication/work-management-docs.json",
         "output": "generated/work-management-docs",
         "output_classes": [
@@ -198,7 +198,7 @@
         "id": "repository-docs",
         "title": "kis-mcp-doc Repository Documentation",
         "semantic_owner": "KIS-DOC-CON-POL-003",
-        "mrd_root": "mrd/documentation",
+        "mrd_root": "prescriptives/documentation",
         "publication_config": "publication/repository-docs.json",
         "output": "generated/repository-docs",
         "output_classes": [

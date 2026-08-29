@@ -16,11 +16,11 @@ from .publication_kernel import bundle_diagnostics, file_declarations, write_bun
 
 
 _WORK_PUBLICATION = "publication/work-management-spec.json"
-_DOCUMENTATION_POLICY = "mrd/documentation/01-reference-standard.mrd.json"
-_DOCUMENTATION_REGISTRY = "mrd/documentation/02-reference-registry.mrd.json"
+_DOCUMENTATION_POLICY = "prescriptives/documentation/01-reference-standard.mrd.json"
+_DOCUMENTATION_REGISTRY = "prescriptives/documentation/02-reference-registry.mrd.json"
 _DOCUMENTATION_PUBLICATION = "publication/documentation-reference-standard.json"
-_PUBLICATION_ARCHITECTURE = "mrd/documentation/03-publication-architecture.mrd.json"
-_PUBLICATION_FAMILY_REGISTRY = "mrd/documentation/04-publication-family-registry.mrd.json"
+_PUBLICATION_ARCHITECTURE = "prescriptives/documentation/03-publication-architecture.mrd.json"
+_PUBLICATION_FAMILY_REGISTRY = "prescriptives/documentation/04-publication-family-registry.mrd.json"
 _PUBLICATION_FAMILY_SCHEMA = "contracts/publication/family/v1/registry.schema.json"
 _WORK_EVIDENCE = "evidence/work-management/canonical-snapshot.json"
 _DOCUMENTATION_OUTPUT_CLASS = "human_readable_specification"
@@ -30,7 +30,7 @@ _REFERENCE_OUTPUT_CLASS = "generated_reference"
 class WorkManagementRepository:
     def __init__(self, root: Path, mrd_root: Path | None = None) -> None:
         self.root = Path(root).resolve()
-        self.mrd_root = (mrd_root or self.root / "mrd" / "work-management").resolve()
+        self.mrd_root = (mrd_root or self.root / "prescriptives" / "work-management").resolve()
         self.schema_path = self.root / "contracts" / "mrd" / "v1" / "mrd.schema.json"
         self.content_schema_path = self.root / "contracts" / "work-management" / "v1" / "content.schema.json"
         self.profile_schema_path = self.root / "contracts" / "work-management" / "v1" / "work-management-mrd.schema.json"
@@ -858,7 +858,7 @@ def _load_work_publication(repo: WorkManagementRepository) -> dict[str, Any]:
     }
     if set(config) != required:
         raise ValueError("Work Management publication configuration has an unexpected field set")
-    if config["schema_version"] != 1 or config["source_glob"] != "mrd/work-management/*.mrd.json":
+    if config["schema_version"] != 1 or config["source_glob"] != "prescriptives/work-management/*.mrd.json":
         raise ValueError("Work Management publication configuration has an invalid source contract")
     if config["output_dir"] != "generated/work-management-spec" or config["status"] not in {"draft", "stabilized", "superseded"}:
         raise ValueError("Work Management publication configuration has invalid publication metadata")

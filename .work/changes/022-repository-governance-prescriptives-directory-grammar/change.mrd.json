@@ -1,0 +1,437 @@
+{
+  "_mrd": {
+    "schema_version": 1,
+    "id": "KIS-CHG022-WRK-WFL-001",
+    "title": "Repository Governance, Prescriptives and Directory Grammar",
+    "module": "change-022",
+    "class": "WRK",
+    "type": "WFL",
+    "layer": "L3",
+    "record_mode": "descriptive",
+    "status": "active",
+    "version": "0.1.0",
+    "dependencies": [
+      {
+        "source": "repo:.work/changes/021-current-state-kis-mcp-doc-human-documentation/change.mrd.json",
+        "relationship": "depends_on"
+      },
+      {
+        "source": "repo:AGENTS.md",
+        "relationship": "governed_by"
+      }
+    ],
+    "provenance": {
+      "sources": [
+        {
+          "source_id": "GH-ISSUE-62",
+          "kind": "operator_direction",
+          "role": "accepted_work_item",
+          "locator": "github:NielPieterse0/kis-mcp-doc#62",
+          "revision": "2026-08-29",
+          "sha256": null
+        },
+        {
+          "source_id": "OPERATOR-DESIGN-2026-08-29-REPOSITORY-GOVERNANCE",
+          "kind": "operator_direction",
+          "role": "approved_architecture_basis",
+          "locator": "chat:2026-08-29-repository-governance-prescriptives-directory-grammar",
+          "revision": "2026-08-29",
+          "sha256": null
+        },
+        {
+          "source_id": "APP-DEV-CORE-OPERATING-MODEL-1.5.0",
+          "kind": "external_reference",
+          "role": "reference_evidence",
+          "locator": "operator-upload:operating-model.md",
+          "revision": "1.5.0;2026-07-13",
+          "sha256": "c3eda14a17428ca88140f1a5f2dbdfefb959f49382c5d766dbdbe554692ff6e5"
+        }
+      ],
+      "source_fingerprint": "sha256:dc6099edee77f5456da87a390495aa2d513c8794aa94e7d772c1aec3b126b4f4",
+      "fact_quality": "direct"
+    },
+    "supersedes": [],
+    "superseded_by": null
+  },
+  "content": {
+    "change_id": "022-repository-governance-prescriptives-directory-grammar",
+    "work_item": {
+      "repository": "NielPieterse0/kis-mcp-doc",
+      "issue": 62,
+      "project": "kis-mcp-doc",
+      "record_id": "WORK-62",
+      "sub_issues": [
+        63,
+        64,
+        65,
+        66,
+        67
+      ],
+      "project_capture": "captured"
+    },
+    "outcome": "Implement an explicit repository-governance coordinate system so every persistent governed artefact is classified by semantic role, traced to one authoritative fact owner, placed in a legal repository slot, and linked to implementation, verification, derived outputs, and evidence.",
+    "preparation_boundary": [
+      "This record captures the complete operator-approved design discussion before implementation.",
+      "Only .work/changes/022-repository-governance-prescriptives-directory-grammar/** is owned by this preparation.",
+      "Creating Change 022, its issue hierarchy, Work Management records, branch and isolated worktree does not authorize repository restructuring, authority migration, folder renames, validator changes, generated-output changes, or other implementation.",
+      "Implementation begins only after a later explicit execution instruction and must expand scope before touching any currently excluded path."
+    ],
+    "problem": [
+      "The repository already contains strong governance concepts, including one governed fact having one canonical owner, but those concepts are distributed across AGENTS.md, MRDs, contracts, publication definitions, schemas, configuration, implementation, tests and generated documentation.",
+      "The current top-level taxonomy mixes representation, responsibility and authority concepts. In particular, the name mrd/ describes machine-readable representation but does not by itself explain the semantic authority of its contents or distinguish them from contracts, schemas, publication definitions and configuration.",
+      "The repository has no single explicit directory grammar that defines every current persistent slot and rejects arbitrary structural growth.",
+      "Rules can otherwise become duplicated prose, implicit implementation assumptions, or validators that have not proven they can detect the defect they claim to control."
+    ],
+    "repository_governance_model": {
+      "definition": "Repository Governance is the prescriptive domain that defines the repository coordinate system: semantic artefact roles, authority and ownership, legal structural slots, repository-wide rules, rule lifecycle, and enforcement/evidence expectations.",
+      "roles": [
+        {
+          "role": "prescriptive",
+          "question": "What should be true?",
+          "definition": "Intentional authoritative input such as requirements, rules, policies, contracts, specifications, ownership/authority declarations and constraints."
+        },
+        {
+          "role": "implementation",
+          "question": "What makes it true?",
+          "definition": "Executable code, configuration, controls and mechanisms that implement or enforce prescriptions."
+        },
+        {
+          "role": "derived_generated",
+          "question": "What results from it?",
+          "definition": "Reproducible outputs and projections produced from governed inputs and implementation; generated outputs do not silently become write-back authority."
+        },
+        {
+          "role": "verification",
+          "question": "What checks it?",
+          "definition": "Executable checks that consume prescriptions and inspect implementation or derived state for compliance."
+        },
+        {
+          "role": "evidence",
+          "question": "What proves it?",
+          "definition": "Bounded results or observations produced by verification, CI, review or other accepted proof mechanisms."
+        }
+      ],
+      "relationship_rule": "Semantic role is distinct from physical location. Classification says what an artefact does in governance; directory grammar says where that artefact may legally live."
+    },
+    "prescriptive_model": {
+      "definition": "A prescriptive artefact intentionally states a requirement, constraint, rule, policy, contract, specification, authority assignment or other input describing what should be true.",
+      "location_rule": "Prescriptive is a semantic classification, not a requirement that every prescriptive file physically reside beneath prescriptives/. A file with a stronger required or conventional location, such as repository-root AGENTS.md or platform-controlled .github/**, may remain there while being registered as prescriptive.",
+      "canonical_domain": "A prescriptives/** domain is intended as the normal canonical home for prescriptive artefacts that do not have a stronger placement requirement. Its internal taxonomy must be added progressively from current justified needs rather than pre-built speculatively.",
+      "self_governance": "The definition and governance of prescriptive artefacts is itself a prescriptive and must be registered rather than hidden as an implicit recursive exception.",
+      "mrd_rule": "Do not cosmetically rename mrd/ first. Classify each current MRD and adjacent artefact by semantic role and authority, then decide the correct governed location and name."
+    },
+    "authority_and_ownership": [
+      "Every governed fact has exactly one canonical authoritative owner.",
+      "A non-owning artefact may point to, summarize for a bounded audience, specialize a narrower scope, or deterministically project the owning fact; it must not independently redefine current truth.",
+      "Repository-wide rules belong to Repository Governance rather than being accidentally owned by a domain specification merely because that specification applies the rule.",
+      "Examples include the one-authoritative-owner rule itself, directory placement law, rule-enforcement expectations, and repository-wide authority/relationship semantics.",
+      "Authority/canonical ownership remains distinct from dependency, reference, implementation, validation, publication and generation relationships."
+    ],
+    "prescriptive_registry": {
+      "purpose": "Provide a committed, machine-readable inventory of prescriptive artefacts and governed fact ownership regardless of physical file location.",
+      "minimum_fields": [
+        "stable identity",
+        "title / definition / purpose",
+        "semantic role",
+        "artefact kind / class / type",
+        "canonical repository path",
+        "authoritative owner / fact owner",
+        "governing artefact",
+        "scope in / scope out / boundaries",
+        "status",
+        "record mode",
+        "editability",
+        "provenance / sources",
+        "related artefacts with typed intent",
+        "implementation relationships",
+        "verification relationships",
+        "derived/generated relationships",
+        "evidence relationships"
+      ],
+      "rule": "The registry records and resolves authority; it does not become a second owner of the facts it indexes."
+    },
+    "directory_grammar": {
+      "purpose": "Define what the repository currently is: its persistent topology, legal slots, artefact classes, boundaries and allowed relationships.",
+      "slot_definition": [
+        "path or structural pattern",
+        "purpose",
+        "permitted artefact types",
+        "prohibited artefact types",
+        "semantic role or allowed roles",
+        "authority and ownership constraints",
+        "dependency/reference rules where applicable",
+        "editability and generation status",
+        "lifecycle / retention semantics",
+        "verification mechanism"
+      ],
+      "placement_rule": "No persistent governed top-level directory, governed subdirectory, or new artefact class may be introduced unless it has a legal slot in the current repository grammar. Unknown governed structure is invalid by default.",
+      "progressive_rule": "Define and enforce the structure that exists and is justified now. New slots are added only when a concrete need arrives; the model must not create speculative hierarchy merely to anticipate possible future work.",
+      "ephemeral_exception": "A single explicitly governed disposable workspace namespace may be defined if justified. The design discussion used .zzz only as an example, not an approved name. Such a namespace must never be canonical, authoritative, published, required for correctness, or used as a backdoor for permanent repository structure; promotion to persistent structure requires a grammar amendment first."
+    },
+    "rule_model": {
+      "definition": "A repository rule is a prescriptive statement whose authority, applicability and enforcement strength are explicit.",
+      "minimum_fields": [
+        "stable rule identity",
+        "statement",
+        "rationale / triggering defect / obligation",
+        "scope / applicability",
+        "authoritative owner",
+        "implementation or enforcement mapping",
+        "verification mapping",
+        "evidence expectation"
+      ],
+      "enforcement_rule": "An enforceable rule should have deterministic CLI/CI/GATE verification where practical. A rule that remains review-based must be explicitly classified as such rather than presented as machine-enforced.",
+      "negative_fixture_rule": "Every deterministic validator or CI rule should have a failing/negative fixture that proves the control detects the prohibited condition, in addition to passing coverage.",
+      "canonical_verification_rule": "New governance checks integrate with the existing canonical verification path rather than creating parallel verification entry points."
+    },
+    "current_repository_mapping_basis": [
+      {
+        "path": "AGENTS.md",
+        "initial_role": "prescriptive",
+        "note": "Repository operating authority; special root location may remain canonical."
+      },
+      {
+        "path": "contracts/**",
+        "initial_role": "mixed_prescriptive_contract",
+        "note": "Review whether each contract owns a prescription or implements/validates another owner."
+      },
+      {
+        "path": "mrd/**",
+        "initial_role": "mixed_to_classify",
+        "note": "Machine-readable representation is not sufficient semantic classification."
+      },
+      {
+        "path": "schemas/**",
+        "initial_role": "prescriptive_or_enforcement",
+        "note": "Classify each schema by whether it owns allowed structure or implements validation of another prescription."
+      },
+      {
+        "path": "publication/**",
+        "initial_role": "prescriptive",
+        "note": "Publication definitions generally state intended publication behavior; confirm per artefact."
+      },
+      {
+        "path": "config/**",
+        "initial_role": "prescriptive_or_implementation",
+        "note": "Classify whether a value is authoritative intent or executable configuration implementing another prescription."
+      },
+      {
+        "path": "src/**",
+        "initial_role": "implementation",
+        "note": "Executable implementation of governed behavior."
+      },
+      {
+        "path": "scripts/**",
+        "initial_role": "implementation_or_verification",
+        "note": "Classify by mechanism purpose; scripts may enforce or verify."
+      },
+      {
+        "path": "tests/**",
+        "initial_role": "verification",
+        "note": "Executable checks; test results are evidence, not the test source itself."
+      },
+      {
+        "path": "docs/**",
+        "initial_role": "source_or_descriptive_to_classify",
+        "note": "Authored documentation must not become an untracked second authority."
+      },
+      {
+        "path": "generated/**",
+        "initial_role": "derived_generated",
+        "note": "Generated projections remain non-writeback outputs."
+      },
+      {
+        "path": ".github/**",
+        "initial_role": "implementation_or_enforcement",
+        "note": "Platform-required controls may have fixed physical location."
+      },
+      {
+        "path": ".work/**",
+        "initial_role": "change_record_and_evidence",
+        "note": "Governed change intent/evidence and lifecycle records; not general repository authority."
+      }
+    ],
+    "reference_basis": {
+      "app_dev_core_operating_model": {
+        "document": "App-Dev Core Operating Model",
+        "version": "1.5.0",
+        "date": "2026-07-13",
+        "authority": "reference_evidence_only",
+        "useful_patterns": [
+          "placement law and explicit directory grammar",
+          "fact-ownership register and one-owner rule",
+          "executable enforcement rather than decorative MUST language",
+          "failing fixture per deterministic rule",
+          "enforcement register with rule identity/class/mechanism",
+          "prohibited slots as explicit grammar",
+          "growth adds rows, not layers / define the coordinate system first"
+        ],
+        "adoption_rule": "Evaluate and adapt useful patterns to current kis-mcp-doc/KIS authority. Do not copy the Operating Model wholesale or grant it authority by reference."
+      }
+    },
+    "decisions": [
+      "D1: Repository Governance is a first-class prescriptive domain above individual domain specifications for repository-wide rules.",
+      "D2: Use semantic roles Prescriptive, Implementation, Derived/Generated, Verification and Evidence as the repository-wide classification coordinate system.",
+      "D3: Keep semantic classification independent from physical placement.",
+      "D4: Establish prescriptives/** as the normal home for prescriptive artefacts without stronger location requirements, while allowing registered prescriptives such as AGENTS.md to remain in required/conventional locations.",
+      "D5: Establish one canonical fact owner and a machine-readable Prescriptive Artefact / Fact Ownership Registry.",
+      "D6: Establish a repository Directory Grammar and reject unknown persistent governed structure by default.",
+      "D7: Add structure progressively from concrete current needs; do not pre-build speculative subfolders.",
+      "D8: Do not rename mrd/ until current artefacts have been semantically classified.",
+      "D9: Treat verification source and produced evidence as related but distinct roles.",
+      "D10: Require effective enforcement and negative fixtures for deterministic controls where feasible.",
+      "D11: Use the supplied App-Dev Core Operating Model as non-authoritative reference evidence only.",
+      "D12: After classification confirmed all 21 current mrd/** records are prescriptive, migrate them by semantic domain to prescriptives/** and remove the representation-first mrd/ top-level directory.",
+      "D13: Reuse .work as the bounded existing KIS workspace namespace rather than creating a speculative .zzz or parallel temporary hierarchy.",
+      "D14: Keep contracts, publication configuration, implementation, verification, evidence and generated outputs in their function-specific conventional locations while registering their semantic roles independently."
+    ],
+    "requirements": [
+      "R1: The repository MUST define the semantic roles Prescriptive, Implementation, Derived/Generated, Verification and Evidence and their authority relationships.",
+      "R2: Repository-wide governance rules MUST have one canonical owner under Repository Governance rather than being independently restated across domain artefacts.",
+      "R3: A prescriptive artefact MUST be classifiable independently of its physical path, and prescriptives with stronger ecosystem/conventional location requirements MAY remain outside prescriptives/** while being registered.",
+      "R4: The repository MUST provide one machine-readable registry resolving prescriptive artefact identity, canonical path, authoritative owner, scope/boundaries and typed governance relationships.",
+      "R5: Every governed fact MUST have exactly one canonical authoritative owner; non-owning artefacts MUST point, specialize or derive rather than redefine current truth.",
+      "R6: The repository MUST define a current-state Directory Grammar covering every persistent governed top-level slot and governed structural class.",
+      "R7: Unknown persistent governed directories and artefact classes MUST be invalid unless the grammar is amended first.",
+      "R8: Any reserved ephemeral namespace MUST be explicitly bounded as disposable and non-authoritative and MUST NOT become a route around the directory grammar.",
+      "R9: New repository structure MUST be added progressively from demonstrated need; speculative empty hierarchy is out of scope unless a current requirement justifies it.",
+      "R10: Existing mrd/**, contracts/**, schemas/**, publication/**, config/** and other current artefact families MUST be classified before structural migration or renaming decisions are made.",
+      "R11: Enforceable repository rules MUST identify authoritative owner, enforcement/implementation, verification and expected evidence; review-only rules MUST be explicitly distinguishable.",
+      "R12: Every deterministic rule validator MUST include at least one failing/negative fixture proving the prohibited state is detected.",
+      "R13: Derived/generated outputs MUST remain non-writeback projections and MUST NOT become independent prescriptive owners through this migration.",
+      "R14: Implementation MUST preserve parent KIS authority and Work Management semantics and MUST not promote the external Operating Model from reference evidence to authority.",
+      "R15: This preparation phase MUST modify no tracked implementation/governance/publication/generated path outside the Change 022 record."
+    ],
+    "implementation_slices": [
+      {
+        "id": "022A",
+        "issue": 63,
+        "title": "Repository governance model and artefact-role taxonomy",
+        "purpose": "Define the coordinate system, classification semantics, boundaries and current artefact-role map."
+      },
+      {
+        "id": "022B",
+        "issue": 64,
+        "title": "Prescriptive authority consolidation and ownership registry",
+        "purpose": "Establish the prescriptive domain/registry and consolidate current repository-wide authoritative facts without duplication."
+      },
+      {
+        "id": "022C",
+        "issue": 65,
+        "title": "Repository directory grammar and structural remediation",
+        "purpose": "Define legal slots for the current tree, then perform only justified moves/renames after classification."
+      },
+      {
+        "id": "022D",
+        "issue": 66,
+        "title": "Governance enforcement and negative fixtures",
+        "purpose": "Integrate deterministic structure/ownership/rule checks and negative fixtures into canonical verification."
+      },
+      {
+        "id": "022E",
+        "issue": 67,
+        "title": "Repository governance reconciliation and closeout",
+        "purpose": "Reconcile AGENTS, metadata/relationships, human projections and verification; remove stale duplicate authority and record deferred work."
+      }
+    ],
+    "tasks": [
+      {
+        "id": "T0",
+        "status": "done",
+        "issue": 62,
+        "text": "Capture the complete operator design discussion as Change 022 parent work and Work Management record."
+      },
+      {
+        "id": "T1",
+        "status": "done",
+        "issue": 63,
+        "text": "Define repository governance and artefact-role taxonomy."
+      },
+      {
+        "id": "T2",
+        "status": "done",
+        "issue": 64,
+        "text": "Implement prescriptive authority consolidation and ownership registry."
+      },
+      {
+        "id": "T3",
+        "status": "done",
+        "issue": 65,
+        "text": "Define directory grammar and perform justified structural remediation."
+      },
+      {
+        "id": "T4",
+        "status": "done",
+        "issue": 66,
+        "text": "Implement governance enforcement and negative fixtures."
+      },
+      {
+        "id": "T5",
+        "status": "active",
+        "issue": 67,
+        "text": "Reconcile repository authority/generated views and close out the programme."
+      }
+    ],
+    "preparation_acceptance": [
+      "Change 022 has a schema-v4 scope and descriptive change MRD in an isolated worktree.",
+      "GitHub parent issue #62 contains the agreed repository-governance intent and has child issues #63-#67 as actual sub-issues.",
+      "Issues #62-#67 are captured in the kis-mcp-doc Work Management project.",
+      "The record captures Prescriptive / Implementation / Derived-Generated / Verification / Evidence, one-owner governance, prescriptive registry, directory grammar, no-random-folders rule, bounded ephemeral exception, progressive growth, mrd/ review, enforcement mappings and negative fixtures.",
+      "The supplied App-Dev Core Operating Model is recorded as reference evidence only with its immutable upload hash.",
+      "No implementation path outside the Change 022 record is modified during preparation."
+    ],
+    "future_acceptance": [
+      "The repository can deterministically answer what should be true, what makes it true, what results from it, what checks it, and what evidence proves it.",
+      "Every governed fact has one resolvable canonical owner and every prescriptive artefact has a resolvable canonical location even when that location is outside prescriptives/**.",
+      "Every current persistent governed structural slot is represented in the Directory Grammar and unknown governed structure fails verification.",
+      "Repository-wide rules are centralized under Repository Governance and are not duplicated as independent authority in domain documents.",
+      "The final structure is derived from current justified content, not speculative folder design.",
+      "Generated documentation, site, search, releases and artefact metadata reflect the new governance model without acquiring write-back authority.",
+      "Focused tests, canonical scripts/verify.ps1, specialist review, exact-head CI, merge and post-merge documentation reconciliation pass before programme completion."
+    ],
+    "risks": [
+      "Over-centralization could move ecosystem-required or operationally useful files merely for aesthetic consistency; semantic role must remain separate from physical placement.",
+      "A prescriptives folder could become another ambiguous bucket if its internal domains and legal slots are not governed by the same directory grammar.",
+      "A registry could become a second source of truth if it restates owned facts instead of recording identity/ownership/relationships.",
+      "Renaming mrd/ before classifying its content could preserve the same conceptual ambiguity under a longer name.",
+      "Over-enforcement could convert useful guidance into brittle gates; enforcement class and machine-verifiability must be explicit.",
+      "A reserved temporary namespace could become an entropy sink unless it is disposable, non-authoritative and prevented from satisfying persistent dependencies."
+    ],
+    "out_of_scope_for_preparation": [
+      "Moving or renaming mrd/**, contracts/**, publication/**, schemas/**, config/** or any other current repository structure.",
+      "Creating the future prescriptives/** hierarchy or registry outside this Change 022 record.",
+      "Editing AGENTS.md or changing existing repository authority.",
+      "Changing validators, schemas, publication logic, generated outputs, tests, CI or scripts.",
+      "Selecting a final name for a reserved ephemeral workspace namespace.",
+      "Copying App-Dev Core rules wholesale or changing parent KIS governance/Work Management semantics."
+    ],
+    "closeout": {
+      "state": "implementation_verified_pending_provider_delivery",
+      "verification": [
+        "Focused repository-governance tests pass 8/8, including a Git-backed untracked-directory mutation proving the no-random-folders gate covers non-ignored untracked persistent structure.",
+        "Full Python regression suite passes 190/190 after the final hardening fixture.",
+        "Canonical pwsh -File scripts/verify.ps1 passes after deterministic regeneration of registered publications, search, site, release, and public surfaces.",
+        "git diff --cached --check passes after LF normalization."
+      ],
+      "reviews": [
+        "Architecture specialist route previously returned zero findings before the final hardening delta.",
+        "Final architecture/code-quality/test-quality specialist routes failed or returned invalid contracts; required exact-diff manual fallback completed with the untracked-file loophole fixed and no remaining actionable findings."
+      ],
+      "publication": "pending exact commit publication and pull-request provider evidence",
+      "merge": null,
+      "unresolved": [
+        "Exact-head GitHub Actions evidence, merge, post-merge documentation reconciliation, Work Management completion, and default-branch synchronization remain provider-delivery steps."
+      ]
+    },
+    "implementation_authorization": "Operator explicitly authorized complete implementation on 2026-08-29 after preparation was complete.",
+    "implementation_results": {
+      "classification": "All 21 existing MRD records were inspected and confirmed prescriptive before structural migration.",
+      "structure": "The representation-first mrd/ top-level directory was removed; those records now live under prescriptives/documentation, prescriptives/governance, and prescriptives/work-management.",
+      "repository_governance": "prescriptives/repository-governance now owns semantic roles, repository-wide structural law, prescriptive registration, canonical fact ownership, and enforcement mapping.",
+      "directory_grammar": "The current persistent top-level structure and justified closed subdomains are explicitly enumerated; unknown persistent governed structure fails closed.",
+      "workspace": ".work is retained as the existing reserved KIS change/work namespace and explicitly classified disposable/non-authoritative; no speculative .zzz namespace was introduced.",
+      "enforcement": "repository-governance-validate is integrated into scripts/verify.ps1 and backed by six named mutation/negative fixtures.",
+      "derived_state": "All registered publication families, repository human documentation, search, site, release, and public repository surfaces are regenerated from the migrated canonical paths."
+    }
+  }
+}

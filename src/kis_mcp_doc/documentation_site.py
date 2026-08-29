@@ -13,7 +13,7 @@ from .canonical import canonical_hash
 from .publication_kernel import PublicationFamilyRegistry, bundle_diagnostics, bundle_manifest_fields, file_declarations, write_bundle
 
 _CONFIG = "publication/documentation-site.json"
-_REGISTRY = "mrd/documentation/04-publication-family-registry.mrd.json"
+_REGISTRY = "prescriptives/documentation/04-publication-family-registry.mrd.json"
 _SITE_SOURCE = "src/kis_mcp_doc/documentation_site.py"
 _LINK_RE = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
 _HEADING_RE = re.compile(r"^(#{1,6})\s+(.+)$")

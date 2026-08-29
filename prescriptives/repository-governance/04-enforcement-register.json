@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "id": "KIS-REPO-ENF-001",
+  "title": "Repository Governance Enforcement Register",
+  "status": "active",
+  "record_mode": "prescriptive",
+  "version": "1.0.0",
+  "entries": [
+    {
+      "rule_id": "KIS-REPO-GOV-001",
+      "class": "deterministic",
+      "mechanism": "repository-governance validator role coverage",
+      "verification": "kis-doc repository-governance-validate",
+      "negative_fixture": "test_rejects_unclassified_persistent_artefact"
+    },
+    {
+      "rule_id": "KIS-REPO-GOV-002",
+      "class": "deterministic",
+      "mechanism": "registry coverage and unique fact-owner validation",
+      "verification": "kis-doc repository-governance-validate",
+      "negative_fixture": "test_rejects_duplicate_fact_owner"
+    },
+    {
+      "rule_id": "KIS-REPO-GOV-003",
+      "class": "deterministic",
+      "mechanism": "directory grammar validation",
+      "verification": "kis-doc repository-governance-validate",
+      "negative_fixture": "test_rejects_unknown_top_level_directory"
+    },
+    {
+      "rule_id": "KIS-REPO-GOV-004",
+      "class": "deterministic",
+      "mechanism": "closed top-level and prescriptive-domain validation",
+      "verification": "kis-doc repository-governance-validate",
+      "negative_fixture": "test_rejects_unknown_prescriptive_domain"
+    },
+    {
+      "rule_id": "KIS-REPO-GOV-005",
+      "class": "deterministic",
+      "mechanism": "registered publication exact-output verification",
+      "verification": "kis-doc publications-check-generated",
+      "negative_fixture": "test_generated_role_is_non_authoritative"
+    },
+    {
+      "rule_id": "KIS-REPO-GOV-006",
+      "class": "deterministic",
+      "mechanism": "enforcement-register fixture validation",
+      "verification": "kis-doc repository-governance-validate",
+      "negative_fixture": "test_rejects_missing_negative_fixture"
+    },
+    {
+      "rule_id": "KIS-REPO-GOV-007",
+      "class": "review",
+      "mechanism": "governed change review",
+      "verification": "specialist architecture review",
+      "negative_fixture": null
+    },
+    {
+      "rule_id": "KIS-REPO-GOV-008",
+      "class": "review",
+      "mechanism": "change-scope and authority review",
+      "verification": "specialist governance review",
+      "negative_fixture": null
+    }
+  ]
+}

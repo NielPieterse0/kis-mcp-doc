@@ -10,7 +10,7 @@
   "subtitle": "Governance contract for MRD selection, authority, lifecycle, enforcement, and kis-op behavior",
   "version": "2.0.0",
   "status": "draft",
-  "source_glob": "mrd/governance/*.mrd.json",
+  "source_glob": "prescriptives/governance/*.mrd.json",
   "output_file": "specification.md",
   "generator": {
     "name": "kis-mcp-doc",

@@ -12,8 +12,8 @@ from .publication_kernel import (
     write_bundle,
 )
 
-_POLICY = "mrd/documentation/01-reference-standard.mrd.json"
-_REGISTRY = "mrd/documentation/04-publication-family-registry.mrd.json"
+_POLICY = "prescriptives/documentation/01-reference-standard.mrd.json"
+_REGISTRY = "prescriptives/documentation/04-publication-family-registry.mrd.json"
 _GENERATOR = "src/kis_mcp_doc/human_docs.py"
 _ADAPTERS = "src/kis_mcp_doc/publication_adapters.py"
 _OUTPUT_CLASS = "human_documentation"

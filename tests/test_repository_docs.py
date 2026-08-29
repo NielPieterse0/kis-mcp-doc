@@ -27,7 +27,7 @@ def test_repository_model_exposes_metadata_and_typed_relationships() -> None:
     assert agents["content_hash"].startswith("sha256:")
     assert agents["editability"] == "source_editable"
     assert not any(item["canonical_path"].startswith(".work/") for item in model["artefacts"])
-    assert not any(item["canonical_path"].startswith("mrd/work-management/") for item in model["artefacts"])
+    assert not any(item["canonical_path"].startswith("prescriptives/work-management/") for item in model["artefacts"])
     assert not any(item["canonical_path"].startswith("contracts/work-management/") for item in model["artefacts"])
     assert not any(item["canonical_path"].startswith("generated/") and item["artefact_kind"] != "generated_publication_family" for item in model["artefacts"])
     declared = [item for item in model["relationships"] if item["intent"] == "declared_mrd_dependency"]

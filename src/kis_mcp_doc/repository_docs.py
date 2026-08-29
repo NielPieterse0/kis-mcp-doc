@@ -13,15 +13,15 @@ from .publication_kernel import (
     write_bundle,
 )
 
-_POLICY = "mrd/documentation/05-repository-human-bundle.mrd.json"
-_REGISTRY = "mrd/documentation/04-publication-family-registry.mrd.json"
+_POLICY = "prescriptives/documentation/05-repository-human-bundle.mrd.json"
+_REGISTRY = "prescriptives/documentation/04-publication-family-registry.mrd.json"
 _CONFIG = "publication/repository-docs.json"
 _GENERATOR = "src/kis_mcp_doc/repository_docs.py"
 _OUTPUT_CLASS = "human_documentation"
 _EXCLUDED_PARTS = {".git", ".work", ".venv", ".temp", ".pytest_cache", ".ruff_cache", "__pycache__", "generated"}
 _EXCLUDED_PART_SUFFIXES = (".egg-info",)
 _EXCLUDED_PREFIXES = (
-    "mrd/work-management/",
+    "prescriptives/work-management/",
     "contracts/work-management/",
     "evidence/work-management/",
 )
@@ -61,7 +61,7 @@ def _artifact_kind(relative: str) -> str:
     path = Path(relative)
     if relative == "AGENTS.md":
         return "repository_authority"
-    if relative.startswith("mrd/"):
+    if relative.startswith("prescriptives/"):
         return "machine_readable_record"
     if relative.startswith("contracts/"):
         return "contract_or_schema"
@@ -84,7 +84,7 @@ def _authority(relative: str, kind: str) -> tuple[str, str, str]:
     if relative == "AGENTS.md":
         return "AGENTS.md", "repository", "self"
     if kind == "machine_readable_record":
-        return relative, "mrd", "self"
+        return relative, "prescriptive_record", "self"
     if kind == "contract_or_schema":
         return relative, "contract", "self"
     if kind in {"implementation", "verification", "automation", "build_or_runtime_configuration"}:
@@ -335,7 +335,7 @@ def _pages(root: Path, config: dict[str, Any], model: dict[str, Any]) -> dict[st
         "",
         "## Main areas",
         "",
-        "- `mrd/`: governed machine-readable domain authority.",
+        "- `prescriptives/`: governed prescriptive authority, organized by current justified domain.",
         "- `contracts/`: schemas and machine-enforceable contracts.",
         "- `src/kis_mcp_doc/`: generators, validators, publication, site, search, release, and repository behavior.",
         "- `publication/`: publication-family and delivery configuration.",

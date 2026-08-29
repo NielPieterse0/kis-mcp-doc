@@ -80,11 +80,11 @@
       },
       {
         "path": "src/kis_mcp_doc/publication_kernel.py",
-        "sha256": "4d52bd6ede3033ee2f6cd33b284870ef616325aea108db8bb14ca056adb66707"
+        "sha256": "1de22b1ddddffe3f55833ee0853efc21a7b50a6b153960386af2529a2ca6ee2d"
       },
       {
         "path": "src/kis_mcp_doc/work_management.py",
-        "sha256": "7a6439ba05ee41f853f09f8f4abbb97587cf8af07b1fb8cc00984c338e1d1ee4"
+        "sha256": "08fcaa7c2eadd6ab5231b266deff2c220b5b7835d07bc605e8ee0991f4030b87"
       },
       {
         "path": "contracts/mrd/v1/mrd.schema.json",
@@ -105,60 +105,60 @@
     "mrds": [
       {
         "id": "KIS-WORK-SEM-REG-001",
-        "path": "mrd/work-management/01-reg.mrd.json",
+        "path": "prescriptives/work-management/01-reg.mrd.json",
         "sha256": "54f93adedfa74ccd8411a4c38bde91851ba1eddb1869ecf9301263f935336603",
         "version": "1.0.0"
       },
       {
         "id": "KIS-WORK-WRK-STM-001",
-        "path": "mrd/work-management/02-stm.mrd.json",
+        "path": "prescriptives/work-management/02-stm.mrd.json",
         "sha256": "60b2622666654ea2b0332c4720fe0bc70a902cab7ded3ba955737727f8b8d9a1",
         "version": "1.0.0"
       },
       {
         "id": "KIS-WORK-WRK-WFL-001",
-        "path": "mrd/work-management/03-wfl.mrd.json",
+        "path": "prescriptives/work-management/03-wfl.mrd.json",
         "sha256": "ad5cbeb8e675aa1edbcd670db83ebe4b59f3d6e09407a5ec62b81285156c9367",
         "version": "1.0.0"
       },
       {
         "id": "KIS-WORK-DEC-SCR-001",
-        "path": "mrd/work-management/04-scr.mrd.json",
+        "path": "prescriptives/work-management/04-scr.mrd.json",
         "sha256": "934dc44aa1c173b09cb0e9185678a53703b4740dc7d6a5163b2853caf83b6b4e",
         "version": "1.0.0"
       },
       {
         "id": "KIS-WORK-CON-POL-001",
-        "path": "mrd/work-management/05-pol.mrd.json",
+        "path": "prescriptives/work-management/05-pol.mrd.json",
         "sha256": "d83e7341af76952a3ca66c75bca0ec5407156d24237601677d8e71346b98d85f",
         "version": "1.0.0"
       },
       {
         "id": "KIS-WORK-CTR-SVC-001",
-        "path": "mrd/work-management/06-svc.mrd.json",
+        "path": "prescriptives/work-management/06-svc.mrd.json",
         "sha256": "948f9370ec4c751085131bda230d469c23c2ec379a8004cfbfb92b01d4a1d1d5",
         "version": "1.0.1"
       },
       {
         "id": "KIS-WORK-EVL-TST-001",
-        "path": "mrd/work-management/07-tst.mrd.json",
+        "path": "prescriptives/work-management/07-tst.mrd.json",
         "sha256": "db8f93cd8aa889d29ed95a97375e78aa38a4a277ae3cd8e3f1bb1feb7302d894",
         "version": "1.0.0"
       }
     ],
     "publication": {
       "path": "publication/work-management-spec.json",
-      "sha256": "57861fedc63a3f1d2ff0ba31b977bcf6e6b563c1b9af674bd805d4158eaad40f"
+      "sha256": "229a925ba854fcfa137e712bedafaabac381a1c116172b67bb08ab05bb094c6c"
     },
     "source_files": [
       {
         "bytes": 5712,
-        "path": "mrd/documentation/01-reference-standard.mrd.json",
+        "path": "prescriptives/documentation/01-reference-standard.mrd.json",
         "sha256": "da30a9f44828194a6b0b1e382c39936ae3d07705521dd6c07af60286b5133dc1"
       },
       {
         "bytes": 8944,
-        "path": "mrd/documentation/02-reference-registry.mrd.json",
+        "path": "prescriptives/documentation/02-reference-registry.mrd.json",
         "sha256": "5a1f98e9fb937df209e303abc6fa3af3fd73c922a868e76519939d6dd42ec24c"
       },
       {
@@ -168,18 +168,18 @@
       },
       {
         "bytes": 6090,
-        "path": "mrd/documentation/03-publication-architecture.mrd.json",
+        "path": "prescriptives/documentation/03-publication-architecture.mrd.json",
         "sha256": "1c8e33a0b678a4d5f60376be751ece6f08f0589fb85a1867d5d9697d16a6238e"
       },
       {
-        "bytes": 8292,
-        "path": "mrd/documentation/04-publication-family-registry.mrd.json",
-        "sha256": "281cd30a08af7cf3e15665b2372e6a06555b042d195d252064dde85e13c1b858"
+        "bytes": 8352,
+        "path": "prescriptives/documentation/04-publication-family-registry.mrd.json",
+        "sha256": "a776f01949729f07e1ed3581467c01d7fc84c34e232df7bf1cfee5d458a62836"
       },
       {
-        "bytes": 3776,
+        "bytes": 3786,
         "path": "contracts/publication/family/v1/registry.schema.json",
-        "sha256": "11f60fefd296feec3bb8fc93263b811f79f91608905b7ca561a734695e9d02f7"
+        "sha256": "1332b6ea1eb0eefc65bb720c8c815d2a08745c822d7471f76607b5e3ddec6932"
       },
       {
         "bytes": 85543,
@@ -187,7 +187,7 @@
         "sha256": "343154fdc443d75d03b14feb9471331fe5c25c9f9bdfe7d38c8b179a1731d79d"
       }
     ],
-    "source_set_sha256": "43470929a16053378938ebf19ea5c4a6251d0cd7a0e77cc863ad527ffec14caa"
+    "source_set_sha256": "c499ce674c4f78552f29eb7871a412290d6ba121b057a19f2d5a139e55791b8e"
   },
   "specification": {
     "layout_profile": "mcp-spec",

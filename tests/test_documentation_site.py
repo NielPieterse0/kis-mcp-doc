@@ -70,7 +70,7 @@ def test_site_exact_verification_detects_tamper(tmp_path: Path) -> None:
 def test_site_verification_detects_publication_boundary_change_without_regeneration(tmp_path: Path) -> None:
     root = tmp_path / "repo"
     shutil.copytree(ROOT, root, ignore=shutil.ignore_patterns('.git', '.venv', '.work'))
-    registry_path = root / "mrd/documentation/04-publication-family-registry.mrd.json"
+    registry_path = root / "prescriptives/documentation/04-publication-family-registry.mrd.json"
     registry = json.loads(registry_path.read_text(encoding="utf-8"))
     repository_docs = next(family for family in registry["content"]["families"] if family["id"] == "repository-docs")
     repository_docs["publish_to_site"] = False
@@ -84,7 +84,7 @@ def test_site_manifest_inputs_bind_only_site_published_families(tmp_path: Path) 
     output = tmp_path / "site"
     manifest = build_documentation_site(ROOT, output)
     inputs = {item["path"] for item in manifest["inputs"]}
-    assert "mrd/documentation/04-publication-family-registry.mrd.json" in inputs
+    assert "prescriptives/documentation/04-publication-family-registry.mrd.json" in inputs
     assert "generated/governance-docs/000-index.md" in inputs
     assert "generated/repository-docs/000-index.md" in inputs
     assert "generated/work-management-docs/000-index.md" not in inputs

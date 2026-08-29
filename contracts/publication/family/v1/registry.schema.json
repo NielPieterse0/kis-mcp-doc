@@ -57,7 +57,7 @@
               },
               "mrd_root": {
                 "type": "string",
-                "pattern": "^mrd/(?:[A-Za-z0-9][A-Za-z0-9._-]*/)*[A-Za-z0-9][A-Za-z0-9._-]*$"
+                "pattern": "^prescriptives/(?:[A-Za-z0-9][A-Za-z0-9._-]*/)*[A-Za-z0-9][A-Za-z0-9._-]*$"
               },
               "publication_config": {
                 "type": "string",

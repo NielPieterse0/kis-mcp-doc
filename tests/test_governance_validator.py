@@ -11,7 +11,7 @@ from kis_mcp_doc.governance import GovernanceRepository
 
 
 ROOT = Path(__file__).resolve().parents[1]
-MRD_ROOT = ROOT / "mrd" / "governance"
+MRD_ROOT = ROOT / "prescriptives" / "governance"
 
 
 def repository() -> GovernanceRepository:

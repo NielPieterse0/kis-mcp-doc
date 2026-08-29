@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def copied_work_repository(tmp_path):
     root = tmp_path / "repo"
-    for name in ("contracts", "mrd", "publication", "evidence", "src"):
+    for name in ("contracts", "prescriptives", "publication", "evidence", "src"):
         shutil.copytree(ROOT / name, root / name)
     return root, WorkManagementRepository(root)
 
@@ -57,10 +57,10 @@ def test_work_management_publication_consumes_documentation_reference_profile(tm
     source_paths={item["path"] for item in manifest["inputs"]["source_files"]}
     assert source_paths == {
         "contracts/publication/family/v1/registry.schema.json",
-        "mrd/documentation/01-reference-standard.mrd.json",
-        "mrd/documentation/02-reference-registry.mrd.json",
-        "mrd/documentation/03-publication-architecture.mrd.json",
-        "mrd/documentation/04-publication-family-registry.mrd.json",
+        "prescriptives/documentation/01-reference-standard.mrd.json",
+        "prescriptives/documentation/02-reference-registry.mrd.json",
+        "prescriptives/documentation/03-publication-architecture.mrd.json",
+        "prescriptives/documentation/04-publication-family-registry.mrd.json",
         "publication/documentation-reference-standard.json",
         "evidence/work-management/canonical-snapshot.json",
     }
@@ -69,7 +69,7 @@ def test_work_management_publication_consumes_documentation_reference_profile(tm
 
 def test_work_management_publication_rejects_external_authority_promotion(tmp_path):
     root,repo=copied_work_repository(tmp_path)
-    registry_path=root/"mrd/documentation/02-reference-registry.mrd.json"
+    registry_path=root/"prescriptives/documentation/02-reference-registry.mrd.json"
     registry=json.loads(registry_path.read_text(encoding="utf-8"))
     registry["content"]["references"][0]["may_define_kis_facts"]=True
     registry_path.write_text(json.dumps(registry,indent=2,sort_keys=True)+"\n",encoding="utf-8")
@@ -316,7 +316,7 @@ def test_work_management_rejects_repository_source_escape(tmp_path):
     root, repo = copied_work_repository(tmp_path)
     outside = root.parent / "outside.txt"
     outside.write_text("outside\n", encoding="utf-8")
-    path = next((root / "mrd/work-management").glob("*.mrd.json"))
+    path = next((root / "prescriptives/work-management").glob("*.mrd.json"))
     document = json.loads(path.read_text(encoding="utf-8"))
     document["_mrd"]["dependencies"].append({"source": "repo:../outside.txt", "relationship": "depends_on"})
     path.write_text(json.dumps(document, indent=2, sort_keys=True) + "\n", encoding="utf-8")
@@ -327,7 +327,7 @@ def test_work_management_rejects_repository_source_escape(tmp_path):
 
 def test_work_management_domain_profile_rejects_empty_content(tmp_path):
     root, repo = copied_work_repository(tmp_path)
-    path = next((root / "mrd/work-management").glob("*.mrd.json"))
+    path = next((root / "prescriptives/work-management").glob("*.mrd.json"))
     document = json.loads(path.read_text(encoding="utf-8"))
     document["content"] = {}
     path.write_text(json.dumps(document, indent=2, sort_keys=True) + "\n", encoding="utf-8")

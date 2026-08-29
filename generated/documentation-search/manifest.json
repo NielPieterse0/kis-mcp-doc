@@ -1,5 +1,5 @@
 {
-  "bundle_sha256": "32d8408ee6e73b7bb585b4d285810c33ec2139661f90e49772d62159eb338c98",
+  "bundle_sha256": "f72974fe9e3753a5df9e0696e15bf7ef0f9b2a5f73f4dcbb3f55f3adf199f527",
   "contract": {
     "name": "kis-documentation-search",
     "version": 2
@@ -7,9 +7,9 @@
   "documents": 42,
   "files": [
     {
-      "bytes": 201383,
+      "bytes": 203547,
       "path": "search-index.json",
-      "sha256": "b5fb559e3d2a0109ac4b0fe794296bc53b50c463492e87be2d38fcd53e3f23cb"
+      "sha256": "1f00ca78d9e92327b3f10709aaa19c5265bef999f407bb8b4be16bbb322eebc3"
     }
   ],
   "generator": {
@@ -38,9 +38,9 @@
       "sha256": "0daffac7e07d744a752affde559c65708568fd2ce6fc95d7672185717145d3cc"
     },
     {
-      "bytes": 4077,
+      "bytes": 4117,
       "path": "generated/documentation-reference-standard/manifest.json",
-      "sha256": "ee04c95329d02c74325505e5b24b365ac38dd6206c325f026840beee701276af"
+      "sha256": "ab5667009b64c85cf2b810d934044159f52301e3ca591ab7d47e33b6893b24dd"
     },
     {
       "bytes": 718,
@@ -78,9 +78,9 @@
       "sha256": "98220bc89ab63ac9d4ea7179ce6f7e9baf860d96ef6df4f3bea817e24431e860"
     },
     {
-      "bytes": 4089,
+      "bytes": 4199,
       "path": "generated/governance-docs/manifest.json",
-      "sha256": "eba94a128efed08eb22d231798b60280a4d97b31a758754ca4faff1cb6b27452"
+      "sha256": "6cd5ccf36b3024a0c80c1e9d9bcb89b2498451b3ce38d7d7fc929c02b0ea08d5"
     },
     {
       "bytes": 1187,
@@ -158,9 +158,9 @@
       "sha256": "a77894b53ad748e33cfeebf03b8ad458acc214dd3ba596ea03e53171fc982531"
     },
     {
-      "bytes": 3188,
+      "bytes": 3278,
       "path": "generated/governance-spec/data/mrd-index.json",
-      "sha256": "591543630492d656a7f5b8906d060e4f19dd055ba2149044d4657b0af9731534"
+      "sha256": "7caa2a73f024626b5531eacf4d686f789908590744b8b52372a9d8073c8cddd1"
     },
     {
       "bytes": 33783,
@@ -168,9 +168,9 @@
       "sha256": "4c5c054ce93aecf528f8106cf1be2a74982ebcfd58f64433e75a638428d3f55d"
     },
     {
-      "bytes": 9604,
+      "bytes": 9734,
       "path": "generated/governance-spec/manifest.json",
-      "sha256": "5c7afc926b52dbd4b053f9d7bdc849a87c78f963e36536a0408b9320f1058de6"
+      "sha256": "642c2c98401baad99ed057da02fcb79b434d9c5fd3265ed15c99c211d8bd22ac"
     },
     {
       "bytes": 752,
@@ -183,9 +183,9 @@
       "sha256": "5de5809aa2c3d59b06d90a15fe23e6dd3816296f479e8867dc9a5451e8763cb2"
     },
     {
-      "bytes": 1051,
+      "bytes": 1089,
       "path": "generated/repository-docs/002-repository-map.md",
-      "sha256": "3636736188129290f1a923180673a67c2d2a941b574462a58d74088a9dc2cae3"
+      "sha256": "ce84e355148456410d433d4687a58f3945277ca0f36a98df5214b7b88857f6c6"
     },
     {
       "bytes": 1393,
@@ -203,29 +203,29 @@
       "sha256": "d0956d3f8c8f8af488805469b79e3fac617ffed8890d7bb1e2a802ab257d7c2c"
     },
     {
-      "bytes": 1029,
+      "bytes": 1030,
       "path": "generated/repository-docs/006-coverage-and-freshness.md",
-      "sha256": "1c53d276282ee88da0100c14aa463f0b468c96d81bdbf55c4686549d2c010835"
+      "sha256": "52de98ab51d3e1ceb92a1dc0225231241d94fbc419e443b1923af881423b3a41"
     },
     {
-      "bytes": 180223,
+      "bytes": 192837,
       "path": "generated/repository-docs/data/artefact-inventory.json",
-      "sha256": "9608b383a5706871c3622e9e978e580491c184f8934588f046b0cb808a44d95b"
+      "sha256": "3f29ae01f9ae0fce2dfe5e45f22e86f8441cbfb43d10b5564f1e01a30325a28e"
     },
     {
-      "bytes": 248,
+      "bytes": 249,
       "path": "generated/repository-docs/data/coverage-report.json",
-      "sha256": "e0a3ac8ec35a83e0e9674e493fabaae39848a6a64e2c4a06d9e6f100c6bdb3ac"
+      "sha256": "90b77d836f8968d0c74f2618acc71b66439c280228662f77a41da66bb0c4b32c"
     },
     {
-      "bytes": 30693,
+      "bytes": 32564,
       "path": "generated/repository-docs/data/relationship-graph.json",
-      "sha256": "911ab5eec4a24522b3d76ae14b84120c26d76ea045609aac2287754eea959485"
+      "sha256": "100314ac11234b474bc5e2dc40c389670a4fdf443572f15bd422ec070708b359"
     },
     {
-      "bytes": 18624,
+      "bytes": 19975,
       "path": "generated/repository-docs/manifest.json",
-      "sha256": "6a81205d712dc08e4205106fcc20a5b69f30955473db768baa75ebedea5af6f6"
+      "sha256": "a7e01d6e8e359cf4e6569af19f32c7add4e50a572b48d05f0437b952b3ab97b9"
     },
     {
       "bytes": 160,
@@ -238,9 +238,9 @@
       "sha256": "2fb5f35dffa256406d0d77a59f48698e06f11fe0a91ea76fc78d2f2df1d44ecd"
     },
     {
-      "bytes": 35301,
+      "bytes": 35311,
       "path": "src/kis_mcp_doc/documentation_site.py",
-      "sha256": "edc2f72c9c43bd3bfcd2ec0a360ef6aa4842ec8052bb41ebcee5e9202684510e"
+      "sha256": "b325795c93c34dcf0b6e337c65b10bfb753762c34777b252b94cf13d21d3cfd5"
     }
   ]
 }

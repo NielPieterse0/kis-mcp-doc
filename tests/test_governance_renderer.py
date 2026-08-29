@@ -13,15 +13,15 @@ from kis_mcp_doc.render import build_governance_spec, verify_governance_spec
 
 
 ROOT = Path(__file__).resolve().parents[1]
-MRD_ROOT = ROOT / "mrd" / "governance"
+MRD_ROOT = ROOT / "prescriptives" / "governance"
 PUBLICATION = ROOT / "publication" / "governance-spec.json"
 
 
 def copied_repository(tmp_path: Path) -> tuple[Path, GovernanceRepository, Path]:
     root = tmp_path / "repo"
-    for name in ("contracts", "mrd", "publication", "src"):
+    for name in ("contracts", "prescriptives", "publication", "src"):
         shutil.copytree(ROOT / name, root / name)
-    return root, GovernanceRepository(root, root / "mrd" / "governance"), root / "publication" / "governance-spec.json"
+    return root, GovernanceRepository(root, root / "prescriptives" / "governance"), root / "publication" / "governance-spec.json"
 
 
 def test_render_is_byte_deterministic(tmp_path: Path) -> None:
@@ -43,7 +43,7 @@ def test_repository_text_line_endings_do_not_change_bundle(tmp_path: Path) -> No
     paths = (
         root / "src" / "kis_mcp_doc" / "render.py",
         root / "contracts" / "mrd" / "v1" / "mrd.schema.json",
-        root / "mrd" / "governance" / "01-classification.mrd.json",
+        root / "prescriptives" / "governance" / "01-classification.mrd.json",
         publication,
         root / "publication" / "harvest-sources.json",
     )
@@ -232,10 +232,10 @@ def test_manifest_binds_canonical_repo_dependencies(tmp_path: Path) -> None:
         "contracts/governance/v1/content.schema.json",
         "contracts/governance/v1/governance-mrd.schema.json",
         "contracts/publication/family/v1/registry.schema.json",
-        "mrd/documentation/01-reference-standard.mrd.json",
-        "mrd/documentation/02-reference-registry.mrd.json",
-        "mrd/documentation/03-publication-architecture.mrd.json",
-        "mrd/documentation/04-publication-family-registry.mrd.json",
+        "prescriptives/documentation/01-reference-standard.mrd.json",
+        "prescriptives/documentation/02-reference-registry.mrd.json",
+        "prescriptives/documentation/03-publication-architecture.mrd.json",
+        "prescriptives/documentation/04-publication-family-registry.mrd.json",
         "publication/documentation-reference-standard.json",
     }
 
@@ -252,12 +252,12 @@ def test_governance_publication_consumes_documentation_reference_profile(tmp_pat
         "registry_mrd": "KIS-DOC-SEM-REG-001",
     }
     assert "`KIS-DOC-CON-POL-001`" in (output / "001-specification.md").read_text(encoding="utf-8")
-    assert any(item["path"] == "mrd/documentation/01-reference-standard.mrd.json" for item in manifest["inputs"]["source_files"])
+    assert any(item["path"] == "prescriptives/documentation/01-reference-standard.mrd.json" for item in manifest["inputs"]["source_files"])
 
 
 def test_governance_publication_rejects_external_authority_promotion(tmp_path: Path) -> None:
     root, repo, publication = copied_repository(tmp_path)
-    registry_path = root / "mrd" / "documentation" / "02-reference-registry.mrd.json"
+    registry_path = root / "prescriptives" / "documentation" / "02-reference-registry.mrd.json"
     registry = json.loads(registry_path.read_text(encoding="utf-8"))
     registry["content"]["references"][1]["may_define_kis_facts"] = True
     registry_path.write_text(json.dumps(registry, indent=2, sort_keys=True) + "\n", encoding="utf-8")
@@ -490,7 +490,7 @@ def test_verifier_detects_mrd_drift_without_rebuild(tmp_path: Path) -> None:
     output = tmp_path / "build"
     build_governance_spec(repo, publication, output)
 
-    path = root / "mrd" / "governance" / "01-classification.mrd.json"
+    path = root / "prescriptives" / "governance" / "01-classification.mrd.json"
     document = json.loads(path.read_text(encoding="utf-8"))
     document["content"]["purpose"] += " Changed after build."
     path.write_text(json.dumps(document, indent=2, sort_keys=True) + "\n", encoding="utf-8")

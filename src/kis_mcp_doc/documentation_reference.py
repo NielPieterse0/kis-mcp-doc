@@ -13,16 +13,16 @@ from .harvest import load_harvest_registry
 from .publication_kernel import exact_bundle_diagnostics, file_declarations, write_bundle
 
 
-_POLICY_PATH = "mrd/documentation/01-reference-standard.mrd.json"
-_REGISTRY_PATH = "mrd/documentation/02-reference-registry.mrd.json"
+_POLICY_PATH = "prescriptives/documentation/01-reference-standard.mrd.json"
+_REGISTRY_PATH = "prescriptives/documentation/02-reference-registry.mrd.json"
 _CORE_SCHEMA = "contracts/mrd/v1/mrd.schema.json"
 _POLICY_SCHEMA = "contracts/documentation/reference/v1/standard.schema.json"
 _REGISTRY_SCHEMA = "contracts/documentation/reference/v1/registry.schema.json"
 _PUBLICATION_SCHEMA = "contracts/documentation/reference/v1/publication.schema.json"
 _MANIFEST_SCHEMA = "contracts/documentation/reference/v1/manifest.schema.json"
 _PUBLICATION = "publication/documentation-reference-standard.json"
-_PUBLICATION_ARCHITECTURE = "mrd/documentation/03-publication-architecture.mrd.json"
-_PUBLICATION_FAMILY_REGISTRY = "mrd/documentation/04-publication-family-registry.mrd.json"
+_PUBLICATION_ARCHITECTURE = "prescriptives/documentation/03-publication-architecture.mrd.json"
+_PUBLICATION_FAMILY_REGISTRY = "prescriptives/documentation/04-publication-family-registry.mrd.json"
 _PUBLICATION_FAMILY_SCHEMA = "contracts/publication/family/v1/registry.schema.json"
 
 _EXPECTED_REFERENCES = {
@@ -85,7 +85,7 @@ class DocumentationReferenceRepository:
 
         registry_content = registry.get("content", {})
         known_mrd_ids = set(documents)
-        for path in self.root.glob("mrd/**/*.mrd.json"):
+        for path in self.root.glob("prescriptives/**/*.mrd.json"):
             try:
                 candidate = json.loads(path.read_text(encoding="utf-8"))
             except (OSError, UnicodeError, json.JSONDecodeError):

@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def test_human_readable_specifications_share_normative_reference_pattern(tmp_path: Path) -> None:
     expected = normative_keywords_statement()
     gov = tmp_path / "gov"
-    build_governance_spec(GovernanceRepository(ROOT, ROOT / "mrd/governance"), ROOT / "publication/governance-spec.json", gov)
+    build_governance_spec(GovernanceRepository(ROOT, ROOT / "prescriptives/governance"), ROOT / "publication/governance-spec.json", gov)
     work = tmp_path / "work"; build_work_management_spec(WorkManagementRepository(ROOT), work)
     refs = tmp_path / "refs"; build_documentation_reference_standard(DocumentationReferenceRepository(ROOT), refs)
     for output in (gov, work, refs):

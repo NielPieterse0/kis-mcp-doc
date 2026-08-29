@@ -26,7 +26,7 @@ if ($env:KIS_EXACT_SHA) {
     }
 }
 
-$PublicationRegistryPath = Join-Path $RepositoryRoot 'mrd\documentation\04-publication-family-registry.mrd.json'
+$PublicationRegistryPath = Join-Path $RepositoryRoot 'prescriptives\documentation\04-publication-family-registry.mrd.json'
 $PublicationRegistry = Get-Content -LiteralPath $PublicationRegistryPath -Raw | ConvertFrom-Json
 $AllowedGeneratedMarkdownPrefixes = @(
     $PublicationRegistry.content.families |
@@ -97,6 +97,11 @@ try {
     & $PythonCommand -m kis_mcp_doc --root . public-check-generated
     if ($LASTEXITCODE -ne 0) {
         throw "Public repository generated-surface verification failed with exit code $LASTEXITCODE"
+    }
+
+    & $PythonCommand -m kis_mcp_doc --root . repository-governance-validate
+    if ($LASTEXITCODE -ne 0) {
+        throw "Repository governance validation failed with exit code $LASTEXITCODE"
     }
 
     & $PythonCommand -m kis_mcp_doc --root . validate

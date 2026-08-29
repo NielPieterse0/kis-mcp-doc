@@ -50,23 +50,23 @@
     "source_files": [
       {
         "bytes": 5712,
-        "path": "mrd/documentation/01-reference-standard.mrd.json",
+        "path": "prescriptives/documentation/01-reference-standard.mrd.json",
         "sha256": "da30a9f44828194a6b0b1e382c39936ae3d07705521dd6c07af60286b5133dc1"
       },
       {
-        "bytes": 8292,
-        "path": "mrd/documentation/04-publication-family-registry.mrd.json",
-        "sha256": "281cd30a08af7cf3e15665b2372e6a06555b042d195d252064dde85e13c1b858"
+        "bytes": 8352,
+        "path": "prescriptives/documentation/04-publication-family-registry.mrd.json",
+        "sha256": "a776f01949729f07e1ed3581467c01d7fc84c34e232df7bf1cfee5d458a62836"
       },
       {
-        "bytes": 406,
+        "bytes": 416,
         "path": "publication/governance-docs.json",
-        "sha256": "88a80997db6c431473f1fc819e87e1dd084a73597c51de0b951c3dbf981b002c"
+        "sha256": "24fe96b29905d231dde9352a39d185415fff1f02c01c9536e90b0a26f3a63479"
       },
       {
-        "bytes": 18062,
+        "bytes": 18082,
         "path": "src/kis_mcp_doc/human_docs.py",
-        "sha256": "dbaaccf9ba7060586859dacd5e074bb5b7929ab06a0311b1ae87f361e6a94694"
+        "sha256": "fdb2c9e3999ab8948dd97622fa8bfc779a55d5eb9760ac9d00c36b45434c6d7e"
       },
       {
         "bytes": 6755,
@@ -75,47 +75,47 @@
       },
       {
         "bytes": 12471,
-        "path": "mrd/governance/01-classification.mrd.json",
+        "path": "prescriptives/governance/01-classification.mrd.json",
         "sha256": "848951c422a256b44f1b85a82c4ab39d3d05c4c877b77e2608bc5bee373587ec"
       },
       {
         "bytes": 2988,
-        "path": "mrd/governance/02-layering.mrd.json",
+        "path": "prescriptives/governance/02-layering.mrd.json",
         "sha256": "866fa74d0c5b4101a48924e0f244a77ce1c7e595dc9e1210fe364036bfb2036e"
       },
       {
         "bytes": 2615,
-        "path": "mrd/governance/03-dependencies.mrd.json",
+        "path": "prescriptives/governance/03-dependencies.mrd.json",
         "sha256": "dd0176b040a40e55fdf68d35cab88908dd4bed20151a1cee0ea3eb3a329f7a8c"
       },
       {
         "bytes": 4438,
-        "path": "mrd/governance/04-provenance.mrd.json",
+        "path": "prescriptives/governance/04-provenance.mrd.json",
         "sha256": "0ef650015753adb96d7fdc850d5dd2d0c55dba54fedebb5f6b6d34d0edbe2093"
       },
       {
         "bytes": 3244,
-        "path": "mrd/governance/05-lifecycle.mrd.json",
+        "path": "prescriptives/governance/05-lifecycle.mrd.json",
         "sha256": "6f3a17f123a882d3c112f1de2f03d6f3e3e13b7dfed7112684d0142a11c9ae7e"
       },
       {
         "bytes": 7981,
-        "path": "mrd/governance/06-validation.mrd.json",
+        "path": "prescriptives/governance/06-validation.mrd.json",
         "sha256": "7760bc372bd223d31a9019f2133f99e81aa73bc50101383e18ef6ce1057bf3e4"
       },
       {
         "bytes": 15162,
-        "path": "mrd/governance/07-applicability.mrd.json",
+        "path": "prescriptives/governance/07-applicability.mrd.json",
         "sha256": "921432f1e483dbb1cee5860d5570cf75f8a1faa2ce097e8c10008e51e135645f"
       },
       {
         "bytes": 5229,
-        "path": "mrd/governance/08-ownership.mrd.json",
+        "path": "prescriptives/governance/08-ownership.mrd.json",
         "sha256": "59344ac7e280bf7ea51307a03972a7b93b4d4cd64e3d0378fe4f6ba1fe32de76"
       },
       {
         "bytes": 6534,
-        "path": "mrd/governance/09-kis-op-behavior.mrd.json",
+        "path": "prescriptives/governance/09-kis-op-behavior.mrd.json",
         "sha256": "5e9ba131e1c5f37f7e2e934ab0f2b3e8e03a61617cda5ef054ec7c81015f564d"
       }
     ]
