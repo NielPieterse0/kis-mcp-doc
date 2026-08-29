@@ -8,7 +8,7 @@
     "type": "WFL",
     "layer": "L3",
     "record_mode": "descriptive",
-    "status": "active",
+    "status": "complete",
     "version": "1.0.0",
     "dependencies": [
       {
@@ -55,8 +55,8 @@
       "repository": "NielPieterse0/kis-mcp-doc",
       "issue": 51,
       "project": "kis-mcp-doc",
-      "record_id": "WORK-51",
-      "project_capture": "active_claimed"
+      "record_id": "TASK-51",
+      "project_capture": "complete"
     },
     "outcome": "Implement a complete, current, deterministic human projection of kis-mcp-doc machine/executable truth plus an extensible artefact metadata and relationship graph for agents, drift detection, and future impact assessment.",
     "programme_principles": [
@@ -152,7 +152,7 @@
       "Slice E: perform repository coverage and human-verifiability closeout audit."
     ],
     "verification_criteria": [
-      "V1: Change 021 scope and MRD validate as an active governed implementation record.",
+      "V1: Change 021 scope and MRD validate as a complete governed implementation record.",
       "V2: Parent issue #51 exists with child issues #52-#56 linked as GitHub sub-issues and Work Management capture/claim is reconciled.",
       "V3: The repository-docs family deterministically generates a human bundle, artefact inventory, relationship graph, coverage report, manifest, site routes, search index, and release package.",
       "V4: Work Management domain authority remains excluded from repository HRD consolidation.",
@@ -161,35 +161,35 @@
     "tasks": [
       {
         "id": "T1",
-        "status": "implemented",
+        "status": "done",
         "issue": 52,
         "record_id": "SLICE-021",
         "text": "Repository artefact metadata and relationship graph."
       },
       {
         "id": "T2",
-        "status": "implemented",
+        "status": "done",
         "issue": 53,
         "record_id": "SLICE-022",
         "text": "Complete current-state kis-mcp-doc human specification bundle."
       },
       {
         "id": "T3",
-        "status": "implemented",
+        "status": "done",
         "issue": 54,
         "record_id": "SLICE-023",
         "text": "Deterministic lineage, freshness and drift enforcement."
       },
       {
         "id": "T4",
-        "status": "implemented",
+        "status": "done",
         "issue": 55,
         "record_id": "SLICE-024",
         "text": "Repository documentation site, search and publication integration."
       },
       {
         "id": "T5",
-        "status": "implemented",
+        "status": "done",
         "issue": 56,
         "record_id": "SLICE-025",
         "text": "Repository coverage audit and human-verifiability closeout."
@@ -206,20 +206,28 @@
       "Introducing bidirectional HRD-MRD authority binding."
     ],
     "closeout": {
-      "state": "verification_pending",
+      "state": "complete",
       "verification": [
-        "Issue #51 was reconciled into the configured kis-mcp-doc Project and claimed by kis-op.",
-        "Repository-docs implementation, deterministic inventory/graph generation, and publication integration are implemented locally; final verification/review/PR evidence is pending."
+        "Focused repository-documentation and publication-kernel verification passed 30/30 after the CI-only transient packaging metadata defect was corrected.",
+        "Full scripts/verify.ps1 passed locally with exit code 0 on the exact source tree committed as 85a1c2e3eb47587be9d9b4ecbb8fa359d7475c9e.",
+        "Code-quality review of the CI fix returned no actionable findings and confirmed the .egg-info/.ruff_cache exclusions remain narrow while real Python source remains included.",
+        "PR-context verify run 33223410287 job 99022097064 passed on exact implementation head 85a1c2e3eb47587be9d9b4ecbb8fa359d7475c9e.",
+        "Work Management merge readiness returned ready with no blockers or advisories for PR #57 at the same exact head.",
+        "PR #57 merged through the registered KIS merge path; GitHub main and local main were reconciled to merge commit bae8a96ff1ced95efd867ab4b806c723e31e0b67.",
+        "Post-merge documentation reconciliation event doc-021-current-state-kis-mcp-doc-human-documentation-pr-57 identified this scope and change record as the required closeout updates."
+      ],
+      "reviews": [
+        "The bounded code-quality review returned no findings after the CI fix."
       ],
       "publication": {
-        "status": "not_started",
+        "status": "merged",
         "issue": 51,
-        "pull_request": null
+        "pull_request": 57
       },
       "merge": {
-        "status": "not_started",
-        "head": null,
-        "main": "164765b4d2de113173033efae54b36d8716c8e8f"
+        "status": "merged",
+        "head": "85a1c2e3eb47587be9d9b4ecbb8fa359d7475c9e",
+        "main": "bae8a96ff1ced95efd867ab4b806c723e31e0b67"
       },
       "unresolved": []
     }

@@ -1,9 +1,9 @@
 {
   "schema_version": 4,
   "change_id": "021-current-state-kis-mcp-doc-human-documentation",
-  "status": "active",
+  "status": "complete",
   "branch": "change/021-current-state-kis-mcp-doc-human-documentation",
-  "worktree": ".work/worktrees/021-current-state-kis-mcp-doc-human-documentation",
+  "worktree": null,
   "base": "main",
   "outcome": "Implement the complete current-state kis-mcp-doc human documentation programme and deterministic artefact metadata/relationship graph.",
   "owned_paths": [
@@ -46,11 +46,11 @@
   },
   "work_management": {
     "project_id": "kis-mcp-doc",
-    "record_id": "WORK-51",
+    "record_id": "TASK-51",
     "source_repository": "NielPieterse0/kis-mcp-doc",
     "source_number": 51,
     "source_kind": "issue",
-    "documentation_impact": "in_progress",
-    "capture_status": "active_claimed"
+    "documentation_impact": "post_merge_complete",
+    "capture_status": "complete"
   }
 }
