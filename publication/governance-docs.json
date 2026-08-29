@@ -4,7 +4,7 @@
   "subtitle": "Practical guidance for applying KIS governance",
   "version": "1.0.0",
   "status": "draft",
-  "source_glob": "mrd/governance/*.mrd.json",
+  "source_glob": "prescriptives/governance/*.mrd.json",
   "specification": "generated/governance-spec/001-specification.md",
   "documentation_reference": {
     "output_class": "human_documentation",

@@ -14,7 +14,7 @@ from kis_mcp_doc.render import build_governance_spec, verify_governance_spec
 
 
 ROOT = Path(__file__).resolve().parents[1]
-MRD_ROOT = ROOT / "mrd" / "governance"
+MRD_ROOT = ROOT / "prescriptives" / "governance"
 PUBLICATION = ROOT / "publication" / "governance-spec.json"
 
 
@@ -181,7 +181,7 @@ def test_litho_structured_assertion_surfaces_canonical_contradiction(tmp_path: P
     assertion = {
         "id": "claim-type-count",
         "source_path": "2.Architecture.md",
-        "canonical_source": "repo:mrd/governance/01-classification.mrd.json",
+        "canonical_source": "repo:prescriptives/governance/01-classification.mrd.json",
         "json_pointer": "/content/catalog_policy/expected_type_count",
         "observed_value": 48,
     }
@@ -196,7 +196,7 @@ def test_litho_structured_assertion_surfaces_canonical_contradiction(tmp_path: P
         "code": "EXTERNAL_EVIDENCE_CONTRADICTS_CANONICAL",
         "assertion_id": "claim-type-count",
         "source_path": "2.Architecture.md",
-        "canonical_source": "repo:mrd/governance/01-classification.mrd.json",
+        "canonical_source": "repo:prescriptives/governance/01-classification.mrd.json",
         "json_pointer": "/content/catalog_policy/expected_type_count",
         "observed_value": 48,
         "canonical_value": 47,
@@ -207,7 +207,7 @@ def test_litho_contradiction_is_preserved_in_published_evidence(tmp_path: Path) 
     assertion = {
         "id": "claim-type-count",
         "source_path": "2.Architecture.md",
-        "canonical_source": "repo:mrd/governance/01-classification.mrd.json",
+        "canonical_source": "repo:prescriptives/governance/01-classification.mrd.json",
         "json_pointer": "/content/catalog_policy/expected_type_count",
         "observed_value": 48,
     }
@@ -223,5 +223,5 @@ def test_litho_contradiction_is_preserved_in_published_evidence(tmp_path: Path) 
     assert "EXTERNAL_EVIDENCE_CONTRADICTS_CANONICAL" in page
     assert evidence["diagnostics"][0]["canonical_value"] == 47
     canonical = manifest["inputs"]["external_evidence"][0]["canonical_sources"][0]
-    assert canonical["path"] == "mrd/governance/01-classification.mrd.json"
+    assert canonical["path"] == "prescriptives/governance/01-classification.mrd.json"
     assert len(canonical["sha256"]) == 64

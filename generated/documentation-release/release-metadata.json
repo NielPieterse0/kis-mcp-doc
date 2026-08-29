@@ -1,10 +1,10 @@
 {
-  "archive_bytes": 135829,
-  "archive_sha256": "af61d859b271399a0af55f4e4688269b3aa04edac6bc5b9c1a37c091af005a06",
+  "archive_bytes": 137334,
+  "archive_sha256": "efaa50e2280c7f281e7e7901a72f7fe9bf52ad00077e993e1f94d6911d837e54",
   "base_path": "/kis-mcp-doc",
   "hosting": "github-pages",
   "schema_version": 1,
-  "search_bundle_sha256": "32d8408ee6e73b7bb585b4d285810c33ec2139661f90e49772d62159eb338c98",
-  "site_bundle_sha256": "cec509847b4fc25733cec633ed1e238149e03244f15e5dcf20f07060c2152f44",
+  "search_bundle_sha256": "b83aa218a52d854bbdfb3fda9b514c815c383926cd011cb445a39b3cadd9a516",
+  "site_bundle_sha256": "24e75a878878cfb37e9a8c58270191177dbfe1761feb4b8a0c748d56434f0610",
   "site_output": "generated/documentation-site"
 }

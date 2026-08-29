@@ -12,16 +12,16 @@ Use the repository by authority and responsibility instead of treating every fil
 | `contract_or_schema` | 14 |
 | `generated_publication_family` | 6 |
 | `human_surface` | 3 |
-| `implementation` | 18 |
-| `machine_readable_record` | 14 |
+| `implementation` | 19 |
+| `machine_readable_record` | 18 |
 | `publication_configuration` | 11 |
 | `repository_artifact` | 3 |
 | `repository_authority` | 1 |
-| `verification` | 14 |
+| `verification` | 15 |
 
 ## Main areas
 
-- `mrd/`: governed machine-readable domain authority.
+- `prescriptives/`: governed prescriptive authority, organized by current justified domain.
 - `contracts/`: schemas and machine-enforceable contracts.
 - `src/kis_mcp_doc/`: generators, validators, publication, site, search, release, and repository behavior.
 - `publication/`: publication-family and delivery configuration.

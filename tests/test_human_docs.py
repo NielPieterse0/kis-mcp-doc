@@ -40,7 +40,7 @@ def test_governance_docs_are_deterministic_and_source_derived(tmp_path: Path) ->
     assert {p.relative_to(first).as_posix(): p.read_bytes() for p in first.rglob("*") if p.is_file()} == {
         p.relative_to(second).as_posix(): p.read_bytes() for p in second.rglob("*") if p.is_file()
     }
-    docs = GovernanceRepository(ROOT, ROOT / "mrd/governance").load()
+    docs = GovernanceRepository(ROOT, ROOT / "prescriptives/governance").load()
     workflow = docs["KIS-KNOW-WRK-WFL-001"]["content"]
     page = (first / "003-apply-governance.md").read_text(encoding="utf-8")
     for phase in workflow["phases"]:

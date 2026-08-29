@@ -171,7 +171,7 @@ def test_reference_repository_rejects_repository_source_escape(tmp_path: Path) -
     shutil.copytree(ROOT, root, ignore=shutil.ignore_patterns(".git", ".venv", ".work"))
     outside = root.parent / "outside.txt"
     outside.write_text("outside\n", encoding="utf-8")
-    policy_path = root / "mrd/documentation/01-reference-standard.mrd.json"
+    policy_path = root / "prescriptives/documentation/01-reference-standard.mrd.json"
     policy = json.loads(policy_path.read_text(encoding="utf-8"))
     policy["_mrd"]["dependencies"].append({"source": "repo:../outside.txt", "relationship": "depends_on"})
     policy_path.write_text(json.dumps(policy, indent=2, sort_keys=True) + "\n", encoding="utf-8")

@@ -97,315 +97,315 @@
       "type": "governed_by"
     },
     {
-      "evidence": "mrd/documentation/01-reference-standard.mrd.json",
+      "evidence": "prescriptives/documentation/01-reference-standard.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/documentation/01-reference-standard.mrd.json",
-      "target": "mrd/governance/01-classification.mrd.json",
+      "source": "prescriptives/documentation/01-reference-standard.mrd.json",
+      "target": "prescriptives/governance/01-classification.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "mrd/documentation/01-reference-standard.mrd.json",
+      "evidence": "prescriptives/documentation/01-reference-standard.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/documentation/01-reference-standard.mrd.json",
-      "target": "mrd/governance/08-ownership.mrd.json",
+      "source": "prescriptives/documentation/01-reference-standard.mrd.json",
+      "target": "prescriptives/governance/08-ownership.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "mrd/documentation/01-reference-standard.mrd.json",
+      "evidence": "prescriptives/documentation/01-reference-standard.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/documentation/01-reference-standard.mrd.json",
-      "target": "mrd/documentation/02-reference-registry.mrd.json",
+      "source": "prescriptives/documentation/01-reference-standard.mrd.json",
+      "target": "prescriptives/documentation/02-reference-registry.mrd.json",
       "type": "governs"
     },
     {
-      "evidence": "mrd/documentation/01-reference-standard.mrd.json",
+      "evidence": "prescriptives/documentation/01-reference-standard.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/documentation/01-reference-standard.mrd.json",
+      "source": "prescriptives/documentation/01-reference-standard.mrd.json",
       "target": "publication/harvest-sources.json",
       "type": "references"
     },
     {
-      "evidence": "mrd/documentation/02-reference-registry.mrd.json",
+      "evidence": "prescriptives/documentation/02-reference-registry.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/documentation/02-reference-registry.mrd.json",
-      "target": "mrd/documentation/01-reference-standard.mrd.json",
+      "source": "prescriptives/documentation/02-reference-registry.mrd.json",
+      "target": "prescriptives/documentation/01-reference-standard.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "mrd/documentation/02-reference-registry.mrd.json",
+      "evidence": "prescriptives/documentation/02-reference-registry.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/documentation/02-reference-registry.mrd.json",
+      "source": "prescriptives/documentation/02-reference-registry.mrd.json",
       "target": "publication/harvest-sources.json",
       "type": "references"
     },
     {
-      "evidence": "mrd/documentation/03-publication-architecture.mrd.json",
+      "evidence": "prescriptives/documentation/03-publication-architecture.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/documentation/03-publication-architecture.mrd.json",
-      "target": "mrd/documentation/01-reference-standard.mrd.json",
+      "source": "prescriptives/documentation/03-publication-architecture.mrd.json",
+      "target": "prescriptives/documentation/01-reference-standard.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "mrd/documentation/03-publication-architecture.mrd.json",
+      "evidence": "prescriptives/documentation/03-publication-architecture.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/documentation/03-publication-architecture.mrd.json",
-      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "source": "prescriptives/documentation/03-publication-architecture.mrd.json",
+      "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "type": "governs"
     },
     {
-      "evidence": "mrd/documentation/03-publication-architecture.mrd.json",
+      "evidence": "prescriptives/documentation/03-publication-architecture.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/documentation/03-publication-architecture.mrd.json",
+      "source": "prescriptives/documentation/03-publication-architecture.mrd.json",
       "target": "contracts/publication/family/v1/registry.schema.json",
       "type": "references"
     },
     {
-      "evidence": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "evidence": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/documentation/04-publication-family-registry.mrd.json",
-      "target": "mrd/documentation/03-publication-architecture.mrd.json",
+      "source": "prescriptives/documentation/04-publication-family-registry.mrd.json",
+      "target": "prescriptives/documentation/03-publication-architecture.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "evidence": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "source": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "target": "contracts/publication/family/v1/registry.schema.json",
       "type": "validated_by"
     },
     {
-      "evidence": "mrd/documentation/05-repository-human-bundle.mrd.json",
+      "evidence": "prescriptives/documentation/05-repository-human-bundle.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/documentation/05-repository-human-bundle.mrd.json",
-      "target": "mrd/documentation/01-reference-standard.mrd.json",
+      "source": "prescriptives/documentation/05-repository-human-bundle.mrd.json",
+      "target": "prescriptives/documentation/01-reference-standard.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "mrd/documentation/05-repository-human-bundle.mrd.json",
+      "evidence": "prescriptives/documentation/05-repository-human-bundle.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/documentation/05-repository-human-bundle.mrd.json",
-      "target": "mrd/documentation/03-publication-architecture.mrd.json",
+      "source": "prescriptives/documentation/05-repository-human-bundle.mrd.json",
+      "target": "prescriptives/documentation/03-publication-architecture.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "mrd/documentation/05-repository-human-bundle.mrd.json",
+      "evidence": "prescriptives/documentation/05-repository-human-bundle.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/documentation/05-repository-human-bundle.mrd.json",
-      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "source": "prescriptives/documentation/05-repository-human-bundle.mrd.json",
+      "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "type": "governs"
     },
     {
-      "evidence": "mrd/governance/02-layering.mrd.json",
+      "evidence": "prescriptives/governance/02-layering.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/governance/02-layering.mrd.json",
-      "target": "mrd/governance/01-classification.mrd.json",
+      "source": "prescriptives/governance/02-layering.mrd.json",
+      "target": "prescriptives/governance/01-classification.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "mrd/governance/03-dependencies.mrd.json",
+      "evidence": "prescriptives/governance/03-dependencies.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/governance/03-dependencies.mrd.json",
-      "target": "mrd/governance/01-classification.mrd.json",
+      "source": "prescriptives/governance/03-dependencies.mrd.json",
+      "target": "prescriptives/governance/01-classification.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "mrd/governance/03-dependencies.mrd.json",
+      "evidence": "prescriptives/governance/03-dependencies.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/governance/03-dependencies.mrd.json",
-      "target": "mrd/governance/02-layering.mrd.json",
+      "source": "prescriptives/governance/03-dependencies.mrd.json",
+      "target": "prescriptives/governance/02-layering.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "mrd/governance/04-provenance.mrd.json",
+      "evidence": "prescriptives/governance/04-provenance.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/governance/04-provenance.mrd.json",
-      "target": "mrd/governance/01-classification.mrd.json",
+      "source": "prescriptives/governance/04-provenance.mrd.json",
+      "target": "prescriptives/governance/01-classification.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "mrd/governance/05-lifecycle.mrd.json",
+      "evidence": "prescriptives/governance/05-lifecycle.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/governance/05-lifecycle.mrd.json",
-      "target": "mrd/governance/04-provenance.mrd.json",
+      "source": "prescriptives/governance/05-lifecycle.mrd.json",
+      "target": "prescriptives/governance/04-provenance.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "mrd/governance/06-validation.mrd.json",
+      "evidence": "prescriptives/governance/06-validation.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/governance/06-validation.mrd.json",
-      "target": "mrd/governance/01-classification.mrd.json",
+      "source": "prescriptives/governance/06-validation.mrd.json",
+      "target": "prescriptives/governance/01-classification.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "mrd/governance/06-validation.mrd.json",
+      "evidence": "prescriptives/governance/06-validation.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/governance/06-validation.mrd.json",
-      "target": "mrd/governance/02-layering.mrd.json",
+      "source": "prescriptives/governance/06-validation.mrd.json",
+      "target": "prescriptives/governance/02-layering.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "mrd/governance/06-validation.mrd.json",
+      "evidence": "prescriptives/governance/06-validation.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/governance/06-validation.mrd.json",
-      "target": "mrd/governance/03-dependencies.mrd.json",
+      "source": "prescriptives/governance/06-validation.mrd.json",
+      "target": "prescriptives/governance/03-dependencies.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "mrd/governance/06-validation.mrd.json",
+      "evidence": "prescriptives/governance/06-validation.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/governance/06-validation.mrd.json",
-      "target": "mrd/governance/04-provenance.mrd.json",
+      "source": "prescriptives/governance/06-validation.mrd.json",
+      "target": "prescriptives/governance/04-provenance.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "mrd/governance/06-validation.mrd.json",
+      "evidence": "prescriptives/governance/06-validation.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/governance/06-validation.mrd.json",
-      "target": "mrd/governance/05-lifecycle.mrd.json",
+      "source": "prescriptives/governance/06-validation.mrd.json",
+      "target": "prescriptives/governance/05-lifecycle.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "mrd/governance/06-validation.mrd.json",
+      "evidence": "prescriptives/governance/06-validation.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/governance/06-validation.mrd.json",
-      "target": "mrd/governance/07-applicability.mrd.json",
+      "source": "prescriptives/governance/06-validation.mrd.json",
+      "target": "prescriptives/governance/07-applicability.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "mrd/governance/06-validation.mrd.json",
+      "evidence": "prescriptives/governance/06-validation.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/governance/06-validation.mrd.json",
-      "target": "mrd/governance/08-ownership.mrd.json",
+      "source": "prescriptives/governance/06-validation.mrd.json",
+      "target": "prescriptives/governance/08-ownership.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "mrd/governance/06-validation.mrd.json",
+      "evidence": "prescriptives/governance/06-validation.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/governance/06-validation.mrd.json",
-      "target": "mrd/governance/09-kis-op-behavior.mrd.json",
+      "source": "prescriptives/governance/06-validation.mrd.json",
+      "target": "prescriptives/governance/09-kis-op-behavior.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "mrd/governance/06-validation.mrd.json",
+      "evidence": "prescriptives/governance/06-validation.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/governance/06-validation.mrd.json",
+      "source": "prescriptives/governance/06-validation.mrd.json",
       "target": "contracts/governance/v1/content.schema.json",
       "type": "validated_by"
     },
     {
-      "evidence": "mrd/governance/06-validation.mrd.json",
+      "evidence": "prescriptives/governance/06-validation.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/governance/06-validation.mrd.json",
+      "source": "prescriptives/governance/06-validation.mrd.json",
       "target": "contracts/governance/v1/governance-mrd.schema.json",
       "type": "validated_by"
     },
     {
-      "evidence": "mrd/governance/06-validation.mrd.json",
+      "evidence": "prescriptives/governance/06-validation.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/governance/06-validation.mrd.json",
+      "source": "prescriptives/governance/06-validation.mrd.json",
       "target": "contracts/mrd/v1/mrd.schema.json",
       "type": "validated_by"
     },
     {
-      "evidence": "mrd/governance/07-applicability.mrd.json",
+      "evidence": "prescriptives/governance/07-applicability.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/governance/07-applicability.mrd.json",
-      "target": "mrd/governance/01-classification.mrd.json",
+      "source": "prescriptives/governance/07-applicability.mrd.json",
+      "target": "prescriptives/governance/01-classification.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "mrd/governance/08-ownership.mrd.json",
+      "evidence": "prescriptives/governance/08-ownership.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/governance/08-ownership.mrd.json",
-      "target": "mrd/governance/01-classification.mrd.json",
+      "source": "prescriptives/governance/08-ownership.mrd.json",
+      "target": "prescriptives/governance/01-classification.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "mrd/governance/09-kis-op-behavior.mrd.json",
+      "evidence": "prescriptives/governance/09-kis-op-behavior.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/governance/09-kis-op-behavior.mrd.json",
-      "target": "mrd/governance/01-classification.mrd.json",
+      "source": "prescriptives/governance/09-kis-op-behavior.mrd.json",
+      "target": "prescriptives/governance/01-classification.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "mrd/governance/09-kis-op-behavior.mrd.json",
+      "evidence": "prescriptives/governance/09-kis-op-behavior.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/governance/09-kis-op-behavior.mrd.json",
-      "target": "mrd/governance/02-layering.mrd.json",
+      "source": "prescriptives/governance/09-kis-op-behavior.mrd.json",
+      "target": "prescriptives/governance/02-layering.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "mrd/governance/09-kis-op-behavior.mrd.json",
+      "evidence": "prescriptives/governance/09-kis-op-behavior.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/governance/09-kis-op-behavior.mrd.json",
-      "target": "mrd/governance/03-dependencies.mrd.json",
+      "source": "prescriptives/governance/09-kis-op-behavior.mrd.json",
+      "target": "prescriptives/governance/03-dependencies.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "mrd/governance/09-kis-op-behavior.mrd.json",
+      "evidence": "prescriptives/governance/09-kis-op-behavior.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/governance/09-kis-op-behavior.mrd.json",
-      "target": "mrd/governance/04-provenance.mrd.json",
+      "source": "prescriptives/governance/09-kis-op-behavior.mrd.json",
+      "target": "prescriptives/governance/04-provenance.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "mrd/governance/09-kis-op-behavior.mrd.json",
+      "evidence": "prescriptives/governance/09-kis-op-behavior.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/governance/09-kis-op-behavior.mrd.json",
-      "target": "mrd/governance/05-lifecycle.mrd.json",
+      "source": "prescriptives/governance/09-kis-op-behavior.mrd.json",
+      "target": "prescriptives/governance/05-lifecycle.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "mrd/governance/09-kis-op-behavior.mrd.json",
+      "evidence": "prescriptives/governance/09-kis-op-behavior.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/governance/09-kis-op-behavior.mrd.json",
-      "target": "mrd/governance/07-applicability.mrd.json",
+      "source": "prescriptives/governance/09-kis-op-behavior.mrd.json",
+      "target": "prescriptives/governance/07-applicability.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "mrd/governance/09-kis-op-behavior.mrd.json",
+      "evidence": "prescriptives/governance/09-kis-op-behavior.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "mrd/governance/09-kis-op-behavior.mrd.json",
-      "target": "mrd/governance/08-ownership.mrd.json",
+      "source": "prescriptives/governance/09-kis-op-behavior.mrd.json",
+      "target": "prescriptives/governance/08-ownership.mrd.json",
       "type": "depends_on"
     },
     {
@@ -413,15 +413,15 @@
       "fact_quality": "derived_from_path_policy",
       "intent": "authority_direction",
       "source": "publication/documentation-reference-standard.json",
-      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "type": "governed_by"
     },
     {
-      "evidence": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "evidence": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "fact_quality": "observed",
       "intent": "documentation-reference-standard",
       "source": "publication/documentation-reference-standard.json",
-      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "type": "registered_by"
     },
     {
@@ -429,7 +429,7 @@
       "fact_quality": "derived_from_path_policy",
       "intent": "authority_direction",
       "source": "publication/documentation-release.json",
-      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "type": "governed_by"
     },
     {
@@ -437,7 +437,7 @@
       "fact_quality": "derived_from_path_policy",
       "intent": "authority_direction",
       "source": "publication/documentation-search.json",
-      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "type": "governed_by"
     },
     {
@@ -445,7 +445,7 @@
       "fact_quality": "derived_from_path_policy",
       "intent": "authority_direction",
       "source": "publication/documentation-site.json",
-      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "type": "governed_by"
     },
     {
@@ -453,15 +453,15 @@
       "fact_quality": "derived_from_path_policy",
       "intent": "authority_direction",
       "source": "publication/governance-docs.json",
-      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "type": "governed_by"
     },
     {
-      "evidence": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "evidence": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "fact_quality": "observed",
       "intent": "governance-docs",
       "source": "publication/governance-docs.json",
-      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "type": "registered_by"
     },
     {
@@ -469,15 +469,15 @@
       "fact_quality": "derived_from_path_policy",
       "intent": "authority_direction",
       "source": "publication/governance-spec.json",
-      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "type": "governed_by"
     },
     {
-      "evidence": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "evidence": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "fact_quality": "observed",
       "intent": "governance-spec",
       "source": "publication/governance-spec.json",
-      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "type": "registered_by"
     },
     {
@@ -485,7 +485,7 @@
       "fact_quality": "derived_from_path_policy",
       "intent": "authority_direction",
       "source": "publication/harvest-sources.json",
-      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "type": "governed_by"
     },
     {
@@ -493,7 +493,7 @@
       "fact_quality": "derived_from_path_policy",
       "intent": "authority_direction",
       "source": "publication/public-repository.json",
-      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "type": "governed_by"
     },
     {
@@ -501,15 +501,15 @@
       "fact_quality": "derived_from_path_policy",
       "intent": "authority_direction",
       "source": "publication/repository-docs.json",
-      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "type": "governed_by"
     },
     {
-      "evidence": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "evidence": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "fact_quality": "observed",
       "intent": "repository-docs",
       "source": "publication/repository-docs.json",
-      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "type": "registered_by"
     },
     {
@@ -517,15 +517,15 @@
       "fact_quality": "derived_from_path_policy",
       "intent": "authority_direction",
       "source": "publication/work-management-docs.json",
-      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "type": "governed_by"
     },
     {
-      "evidence": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "evidence": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "fact_quality": "observed",
       "intent": "work-management-docs",
       "source": "publication/work-management-docs.json",
-      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "type": "registered_by"
     },
     {
@@ -533,15 +533,15 @@
       "fact_quality": "derived_from_path_policy",
       "intent": "authority_direction",
       "source": "publication/work-management-spec.json",
-      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "type": "governed_by"
     },
     {
-      "evidence": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "evidence": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "fact_quality": "observed",
       "intent": "work-management-spec",
       "source": "publication/work-management-spec.json",
-      "target": "mrd/documentation/04-publication-family-registry.mrd.json",
+      "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "type": "registered_by"
     },
     {
@@ -716,6 +716,14 @@
       "evidence": "repository classification policy",
       "fact_quality": "derived_from_path_policy",
       "intent": "authority_direction",
+      "source": "src/kis_mcp_doc/repository_governance.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
       "source": "src/kis_mcp_doc/work_management.py",
       "target": "AGENTS.md",
       "type": "governed_by"
@@ -813,6 +821,14 @@
       "fact_quality": "derived_from_path_policy",
       "intent": "authority_direction",
       "source": "tests/test_repository_docs.py",
+      "target": "AGENTS.md",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "tests/test_repository_governance.py",
       "target": "AGENTS.md",
       "type": "governed_by"
     },

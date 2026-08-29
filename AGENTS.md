@@ -22,17 +22,23 @@ The immediate product mandate is the generated `kis-op` Governance Specification
 
 ## Repository posture
 
-This repository is code-first and MRD-first.
+This repository is code-first and prescriptive-source-first. File format does not determine authority.
 
 `AGENTS.md` is the only hand-authored Markdown file permitted in this repository. The current bootstrap edit is the explicit grace-period exception that establishes this rule.
 
 Do not create or maintain hand-authored `README.md`, `SPEC.md`, `docs/**/*.md`, runbooks, architecture prose, decision records, plans, or other durable Markdown truth. If a human-readable Markdown view is needed, define the source model and generator, then generate the view.
 
-All other durable knowledge must be represented as governed machine-readable records and executable artefacts: MRDs, JSON/YAML data where approved, JSON Schemas, contracts, source/configuration, tests, generators, manifests, hashes, indexes, and generated build output.
+Canonical prescriptive records live under `prescriptives/` by justified semantic domain. Their representation may be MRD JSON, another governed machine-readable form, a contract, or repository operating authority. Do not create representation-first top-level directories merely because artefacts share a file format.
+
+All other durable knowledge must be represented as governed machine-readable records and executable artefacts: prescriptive records, JSON/YAML data where approved, JSON Schemas, contracts, source/configuration, tests, generators, manifests, hashes, indexes, and generated build output.
 
 Generated Markdown is allowed only as an explicitly derived output. It must be reproducible, provenance-bearing, stale-detectable, and never edited as authority.
 
 Temporary analysis belongs in KIS-approved temporary/change state, not as new durable repository documentation.
+
+Repository-wide semantic roles, prescriptive ownership, structural placement law, and enforcement mappings are governed by `prescriptives/repository-governance/`. Every persistent governed artefact must resolve to one primary role: prescriptive, implementation, derived/generated, verification, or evidence. Every prescriptive artefact and governed fact must resolve to one canonical owner.
+
+The Directory Grammar is closed by default. Do not create arbitrary persistent top-level directories or new prescriptive domains. Amend the grammar first when a demonstrated need justifies a new structural class. `.work/` is the reserved KIS work/change namespace; it is disposable/non-authoritative and cannot be used to route around canonical placement rules. Generated outputs remain one-way projections and never become write-back authority.
 
 Until this workspace has an independently verified Git identity and KIS project binding, do not pretend that Git revision, remote identity, branch, or PR evidence exists. Establish those through the KIS bootstrap/governance route before normal implementation slices.
 

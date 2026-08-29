@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "id": "KIS-REPO-GOV-001",
+  "title": "Repository Governance",
+  "status": "active",
+  "record_mode": "prescriptive",
+  "version": "1.0.0",
+  "purpose": "Own repository-wide semantic roles, structural law, fact ownership, and enforceability expectations.",
+  "semantic_roles": [
+    {
+      "role": "prescriptive",
+      "question": "What should be true?",
+      "authority": "may_own_governed_facts"
+    },
+    {
+      "role": "implementation",
+      "question": "What makes it true?",
+      "authority": "implements_prescriptions"
+    },
+    {
+      "role": "derived_generated",
+      "question": "What results from it?",
+      "authority": "projection_only_no_writeback"
+    },
+    {
+      "role": "verification",
+      "question": "What checks it?",
+      "authority": "checks_prescriptions_and_state"
+    },
+    {
+      "role": "evidence",
+      "question": "What proves it?",
+      "authority": "records_bounded_results"
+    }
+  ],
+  "classification_rules": [
+    {
+      "pattern": "AGENTS.md",
+      "role": "prescriptive"
+    },
+    {
+      "pattern": "prescriptives/**",
+      "role": "prescriptive"
+    },
+    {
+      "pattern": "contracts/**",
+      "role": "prescriptive"
+    },
+    {
+      "pattern": "publication/**",
+      "role": "prescriptive"
+    },
+    {
+      "pattern": ".github/CODEOWNERS",
+      "role": "prescriptive"
+    },
+    {
+      "pattern": "generated/**",
+      "role": "derived_generated"
+    },
+    {
+      "pattern": "README.md",
+      "role": "derived_generated"
+    },
+    {
+      "pattern": "CONTRIBUTING.md",
+      "role": "derived_generated"
+    },
+    {
+      "pattern": "SECURITY.md",
+      "role": "derived_generated"
+    },
+    {
+      "pattern": ".github/pull_request_template.md",
+      "role": "derived_generated"
+    },
+    {
+      "pattern": "evidence/**",
+      "role": "evidence"
+    },
+    {
+      "pattern": "tests/**",
+      "role": "verification"
+    },
+    {
+      "pattern": "scripts/verify.ps1",
+      "role": "verification"
+    },
+    {
+      "pattern": "scripts/runtime-preflight.ps1",
+      "role": "verification"
+    },
+    {
+      "pattern": ".github/workflows/**",
+      "role": "verification"
+    },
+    {
+      "pattern": "src/**",
+      "role": "implementation"
+    },
+    {
+      "pattern": "scripts/**",
+      "role": "implementation"
+    },
+    {
+      "pattern": "tooling/**",
+      "role": "implementation"
+    },
+    {
+      "pattern": ".github/**",
+      "role": "implementation"
+    },
+    {
+      "pattern": "pyproject.toml",
+      "role": "implementation"
+    },
+    {
+      "pattern": "uv.lock",
+      "role": "implementation"
+    },
+    {
+      "pattern": ".editorconfig",
+      "role": "implementation"
+    },
+    {
+      "pattern": ".gitattributes",
+      "role": "implementation"
+    },
+    {
+      "pattern": ".gitignore",
+      "role": "implementation"
+    },
+    {
+      "pattern": ".work/changes/**",
+      "role": "evidence"
+    }
+  ],
+  "rules": [
+    {
+      "rule_id": "KIS-REPO-GOV-001",
+      "statement": "Every persistent governed artefact MUST resolve to one primary semantic role.",
+      "enforcement": "validator"
+    },
+    {
+      "rule_id": "KIS-REPO-GOV-002",
+      "statement": "Every prescriptive artefact and governed fact MUST resolve to exactly one canonical owner.",
+      "enforcement": "validator"
+    },
+    {
+      "rule_id": "KIS-REPO-GOV-003",
+      "statement": "Every persistent governed directory MUST occupy a legal Directory Grammar slot.",
+      "enforcement": "validator"
+    },
+    {
+      "rule_id": "KIS-REPO-GOV-004",
+      "statement": "Unknown persistent governed top-level directories and prescriptive domains MUST fail closed.",
+      "enforcement": "validator"
+    },
+    {
+      "rule_id": "KIS-REPO-GOV-005",
+      "statement": "Generated outputs MUST remain projection-only and MUST NOT become write-back authority.",
+      "enforcement": "generator"
+    },
+    {
+      "rule_id": "KIS-REPO-GOV-006",
+      "statement": "Each deterministic repository-governance rule MUST name a negative fixture proving prohibited state is detected.",
+      "enforcement": "validator"
+    },
+    {
+      "rule_id": "KIS-REPO-GOV-007",
+      "statement": "Repository structure MUST grow by amending legal slots for demonstrated needs, not by creating speculative hierarchy.",
+      "enforcement": "review"
+    },
+    {
+      "rule_id": "KIS-REPO-GOV-008",
+      "statement": ".work is the reserved KIS work/change namespace; it MUST NOT become canonical product authority or a route around persistent placement law.",
+      "enforcement": "review"
+    }
+  ],
+  "authority": {
+    "canonical_owner": "KIS-REPO-GOV-001",
+    "parent_authority": "C:/Projects/kis-mcp/AGENTS.md",
+    "external_reference_posture": "evidence_only"
+  }
+}

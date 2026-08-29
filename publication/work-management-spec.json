@@ -6,7 +6,7 @@
     "policy_mrd": "KIS-DOC-CON-POL-001",
     "registry_mrd": "KIS-DOC-SEM-REG-001"
   },
-  "source_glob": "mrd/work-management/*.mrd.json",
+  "source_glob": "prescriptives/work-management/*.mrd.json",
   "status": "draft",
   "subtitle": "Governed operating specification for work intake, state, selection, delivery, reconciliation, and GitHub Project integration",
   "title": "KIS Work Management Specification",

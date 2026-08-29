@@ -10,6 +10,7 @@ from .documentation_reference import (
     verify_documentation_reference_standard,
 )
 from .governance import GovernanceRepository
+from .repository_governance import RepositoryGovernanceRepository
 from .documentation_site import build_documentation_site, validate_documentation_site, verify_documentation_site
 from .documentation_search import build_documentation_search, search_documentation, validate_documentation_search, verify_documentation_search
 from .documentation_release import build_documentation_release, validate_documentation_release, verify_documentation_release
@@ -32,7 +33,7 @@ from .work_management import (
 
 
 def _repository(root: Path) -> GovernanceRepository:
-    return GovernanceRepository(root, root / "mrd" / "governance")
+    return GovernanceRepository(root, root / "prescriptives" / "governance")
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -40,6 +41,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--root", type=Path, default=Path.cwd())
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("validate")
+    sub.add_parser("repository-governance-validate")
     sub.add_parser("site-validate")
     sub.add_parser("search-validate")
     sub.add_parser("release-validate")
@@ -95,6 +97,10 @@ def main(argv: list[str] | None = None) -> int:
     root = args.root.resolve()
     repo = _repository(root)
     publication = root / "publication" / "governance-spec.json"
+    if args.command == "repository-governance-validate":
+        result = RepositoryGovernanceRepository(root).validate()
+        print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
+        return 0 if result["status"] == "valid" else 1
     if args.command == "public-build":
         print(json.dumps({"files": build_public_repository_surfaces(root)}, indent=2, sort_keys=True))
         return 0

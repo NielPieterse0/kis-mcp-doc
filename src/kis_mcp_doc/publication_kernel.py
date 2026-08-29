@@ -15,11 +15,11 @@ from jsonschema import Draft202012Validator
 
 from .canonical import canonical_hash
 
-_ARCHITECTURE_PATH = "mrd/documentation/03-publication-architecture.mrd.json"
-_REGISTRY_PATH = "mrd/documentation/04-publication-family-registry.mrd.json"
+_ARCHITECTURE_PATH = "prescriptives/documentation/03-publication-architecture.mrd.json"
+_REGISTRY_PATH = "prescriptives/documentation/04-publication-family-registry.mrd.json"
 _REGISTRY_SCHEMA = "contracts/publication/family/v1/registry.schema.json"
 _CORE_MRD_SCHEMA = "contracts/mrd/v1/mrd.schema.json"
-_DOCUMENTATION_POLICY = "mrd/documentation/01-reference-standard.mrd.json"
+_DOCUMENTATION_POLICY = "prescriptives/documentation/01-reference-standard.mrd.json"
 
 
 def _json_bytes(value: object) -> bytes:
@@ -298,7 +298,7 @@ class PublicationFamilyRegistry:
             governed_output_classes = set()
 
         known_mrd_ids: set[str] = set()
-        for path in self.root.glob("mrd/**/*.mrd.json"):
+        for path in self.root.glob("prescriptives/**/*.mrd.json"):
             try:
                 doc = json.loads(path.read_text(encoding="utf-8"))
             except (OSError, UnicodeError, json.JSONDecodeError):
@@ -334,7 +334,7 @@ class PublicationFamilyRegistry:
                 diagnostics.append(_diag("PUBLICATION_FAMILY_SEMANTIC_OWNER_UNRESOLVED", f"semantic owner does not resolve: {semantic_owner}"))
             mrd_root = family.get("mrd_root")
             try:
-                mrd_path = _registered_path(mrd_root, "mrd") if isinstance(mrd_root, str) else None
+                mrd_path = _registered_path(mrd_root, "prescriptives") if isinstance(mrd_root, str) else None
             except ValueError as error:
                 diagnostics.append(_diag("PUBLICATION_FAMILY_MRD_ROOT_INVALID", str(error)))
                 mrd_path = None
