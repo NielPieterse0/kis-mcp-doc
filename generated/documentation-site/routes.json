@@ -362,5 +362,82 @@
     "source": "generated/work-management-docs/manifest.json",
     "surface": "reference",
     "title": "Manifest"
+  },
+  {
+    "family": "repository-docs",
+    "route": "/docs/repository/",
+    "source": "generated/repository-docs/000-index.md",
+    "surface": "docs",
+    "title": "kis-mcp-doc Repository Documentation"
+  },
+  {
+    "family": "repository-docs",
+    "route": "/docs/repository/001-architecture-and-authority/",
+    "source": "generated/repository-docs/001-architecture-and-authority.md",
+    "surface": "docs",
+    "title": "Architecture and authority"
+  },
+  {
+    "family": "repository-docs",
+    "route": "/docs/repository/002-repository-map/",
+    "source": "generated/repository-docs/002-repository-map.md",
+    "surface": "docs",
+    "title": "Repository map"
+  },
+  {
+    "family": "repository-docs",
+    "route": "/docs/repository/003-publication-and-generated-documentation/",
+    "source": "generated/repository-docs/003-publication-and-generated-documentation.md",
+    "surface": "docs",
+    "title": "Publication and generated documentation"
+  },
+  {
+    "family": "repository-docs",
+    "route": "/docs/repository/004-verification-and-operations/",
+    "source": "generated/repository-docs/004-verification-and-operations.md",
+    "surface": "docs",
+    "title": "Verification and operations"
+  },
+  {
+    "family": "repository-docs",
+    "route": "/docs/repository/005-artefact-metadata-and-relationships/",
+    "source": "generated/repository-docs/005-artefact-metadata-and-relationships.md",
+    "surface": "docs",
+    "title": "Artefact metadata and relationships"
+  },
+  {
+    "family": "repository-docs",
+    "route": "/docs/repository/006-coverage-and-freshness/",
+    "source": "generated/repository-docs/006-coverage-and-freshness.md",
+    "surface": "docs",
+    "title": "Coverage and freshness"
+  },
+  {
+    "family": "repository-docs",
+    "route": "/reference/repository-docs/data/artefact-inventory/",
+    "source": "generated/repository-docs/data/artefact-inventory.json",
+    "surface": "reference",
+    "title": "Artefact Inventory"
+  },
+  {
+    "family": "repository-docs",
+    "route": "/reference/repository-docs/data/coverage-report/",
+    "source": "generated/repository-docs/data/coverage-report.json",
+    "surface": "reference",
+    "title": "Coverage Report"
+  },
+  {
+    "family": "repository-docs",
+    "route": "/reference/repository-docs/data/relationship-graph/",
+    "source": "generated/repository-docs/data/relationship-graph.json",
+    "surface": "reference",
+    "title": "Relationship Graph"
+  },
+  {
+    "family": "repository-docs",
+    "route": "/reference/repository-docs/manifest/",
+    "source": "generated/repository-docs/manifest.json",
+    "surface": "reference",
+    "title": "Manifest"
   }
 ]

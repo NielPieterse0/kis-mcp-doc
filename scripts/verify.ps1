@@ -5,6 +5,8 @@ param(
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 
+& (Join-Path $PSScriptRoot 'configure-repository.ps1')
+
 if ($PSVersionTable.PSVersion.Major -lt 7) {
     throw 'POWERSHELL_VERSION_UNSUPPORTED: canonical verification requires PowerShell 7 or later.'
 }

@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "title": "kis-mcp-doc Repository Documentation",
+  "subtitle": "Current architecture, authority, publication, verification, and artefact relationships",
+  "version": "1.0.0",
+  "status": "active",
+  "documentation_reference": {
+    "profile": "KIS-DOC-CON-POL-001",
+    "output_class": "human_documentation"
+  }
+}

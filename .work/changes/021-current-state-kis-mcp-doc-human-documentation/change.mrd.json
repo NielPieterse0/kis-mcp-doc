@@ -1,0 +1,227 @@
+{
+  "_mrd": {
+    "schema_version": 1,
+    "id": "KIS-CHG021-WRK-WFL-001",
+    "title": "Complete Current-State kis-mcp-doc Human Documentation Programme",
+    "module": "change-021",
+    "class": "WRK",
+    "type": "WFL",
+    "layer": "L3",
+    "record_mode": "descriptive",
+    "status": "active",
+    "version": "1.0.0",
+    "dependencies": [
+      {
+        "source": "repo:.work/changes/020-public-repository-readiness/change.mrd.json",
+        "relationship": "depends_on"
+      }
+    ],
+    "provenance": {
+      "sources": [
+        {
+          "source_id": "GH-ISSUE-51",
+          "kind": "operator_approved_work_item",
+          "role": "programme_basis",
+          "locator": "github:NielPieterse0/kis-mcp-doc#51",
+          "revision": "2026-08-28",
+          "sha256": null
+        },
+        {
+          "source_id": "OPERATOR-DESIGN-2026-08-28",
+          "kind": "operator_direction",
+          "role": "approved_architecture_basis",
+          "locator": "chat:2026-08-28-kis-mcp-doc-human-documentation-programme",
+          "revision": "2026-08-28",
+          "sha256": null
+        },
+        {
+          "source_id": "SVX-METADATA-PATTERNS",
+          "kind": "reference_corpus",
+          "role": "metadata_design_evidence",
+          "locator": "project-sources:SVX-LIB-STD-001/002/003",
+          "revision": "2026-08-28",
+          "sha256": null
+        }
+      ],
+      "source_fingerprint": "sha256:6ad4367a7aaac1e6f9d73e95bb141a9645704299603ba16756dbcd743109115a",
+      "fact_quality": "direct"
+    },
+    "supersedes": [],
+    "superseded_by": null
+  },
+  "content": {
+    "change_id": "021-current-state-kis-mcp-doc-human-documentation",
+    "work_item": {
+      "repository": "NielPieterse0/kis-mcp-doc",
+      "issue": 51,
+      "project": "kis-mcp-doc",
+      "record_id": "WORK-51",
+      "project_capture": "active_claimed"
+    },
+    "outcome": "Implement a complete, current, deterministic human projection of kis-mcp-doc machine/executable truth plus an extensible artefact metadata and relationship graph for agents, drift detection, and future impact assessment.",
+    "programme_principles": [
+      "Work Management remains a separate parent-KIS-facing documentation/specification family and is not redesigned by this programme.",
+      "Governance, Documentation Reference Standard, repository/MRD architecture, publication, site, search, release, verification and public-repository operation belong to the kis-mcp-doc human bundle.",
+      "The bundle describes current repository state at a revision; it is not a progressive history of Changes 001-020.",
+      "MRDs, code, schemas, contracts, configuration, policies, hooks, Actions, tests, verification, manifests, lockfiles and governed provider/repository state remain authoritative.",
+      "Human documentation is a deterministic non-writeback projection and must be understandable without reading the underlying machine artefacts.",
+      "No HRD-MRD co-authority binding is introduced; useful binding concepts are represented as lineage and typed relationships."
+    ],
+    "classification": {
+      "complexity": "large",
+      "risk_triggers": [
+        "public_contract",
+        "schema",
+        "governance",
+        "ci"
+      ],
+      "reason": "Large governed Knowledge/Docs change spanning repository metadata, generated human documentation, publication/search/site/release integration, deterministic drift controls, and CI-visible generated outputs."
+    },
+    "authority_model": [
+      "Existing canonical machine-readable and executable repository sources retain authority.",
+      "Generated human documentation MUST NOT become write-back authority.",
+      "Typed graph relationships express lineage, dependency, implementation, validation, publication and authority direction without creating HRD co-authority.",
+      "Exact Git/GitHub revision identity is evidence for an artefact instance, not a replacement for semantic ownership."
+    ],
+    "metadata_envelope": [
+      "identity",
+      "title",
+      "artefact kind / class / type",
+      "repository",
+      "canonical path",
+      "source of truth",
+      "status",
+      "record mode",
+      "editability",
+      "logical version",
+      "exact Git revision",
+      "content hash",
+      "source fingerprint",
+      "baseline/release identity",
+      "owner",
+      "authority / canonical owner",
+      "governing artefact",
+      "provenance",
+      "sources",
+      "related artefacts + typed intent",
+      "referenced artefacts + typed intent",
+      "dependencies",
+      "generated-from relationships",
+      "validation relationships",
+      "implementation relationships",
+      "publication relationships",
+      "supersedes",
+      "superseded by",
+      "migration trace",
+      "summary",
+      "scope in",
+      "scope out",
+      "keywords",
+      "change classification",
+      "impact relationships",
+      "freshness / drift evidence"
+    ],
+    "metadata_policy": [
+      "The initial envelope is approved as useful rather than over-specified.",
+      "Populate fields from existing truth where available; do not fabricate values merely to fill the envelope.",
+      "The model MUST permit additive extension as new agent, graph, freshness, impact, validation or publication use cases are discovered.",
+      "Machine metadata is optimized for stable identity, discovery and graph traversal; it need not be aesthetically human-readable.",
+      "Human renderers translate machine identifiers and relationships into explanatory prose where useful."
+    ],
+    "lineage_model": [
+      "Use stable logical artefact identity plus exact repository/path/revision/content identity.",
+      "Use content hashes, source fingerprints and manifests for deterministic lineage and freshness.",
+      "Do not embed a final containing Git commit or self blob hash where that creates circular identity; bind committed artefacts through manifests/Git and expose exact source commits in post-commit Pages/release artefacts.",
+      "Typed relationship and authority direction enables downstream reconciliation and stale-artifact detection."
+    ],
+    "requirements": [
+      "R1: Work Management MUST remain separately presented and outside the kis-mcp-doc repository HRD consolidation scope.",
+      "R2: The future kis-mcp-doc human bundle MUST completely reflect human-relevant current repository truth at the exact represented revision.",
+      "R3: The future artefact inventory MUST expose the approved metadata envelope from existing machine truth and support typed graph traversal.",
+      "R4: Authority/canonical ownership MUST remain distinct from dependency and relationship semantics.",
+      "R5: Exact Git/GitHub identity, hashes, source fingerprints and manifests MUST support deterministic lineage and stale/drift evaluation.",
+      "R6: Future completion gates MUST prevent human documentation from silently lagging human-relevant governed repository changes.",
+      "R7: The graph and impact relationships SHOULD provide a reusable deterministic substrate for future Change Ready AI impact assessment, without requiring that AI feature in this programme.",
+      "R8: Implementation MUST preserve the five approved programme slices and close only after repository coverage, generation, publication integration, and human-verifiability checks pass."
+    ],
+    "implementation_plan": [
+      "Slice A: establish repository artefact metadata and relationship graph.",
+      "Slice B: generate the complete current-state kis-mcp-doc human specification/documentation bundle.",
+      "Slice C: enforce deterministic lineage, freshness and drift controls.",
+      "Slice D: integrate the repository bundle with site, search and publication/release surfaces.",
+      "Slice E: perform repository coverage and human-verifiability closeout audit."
+    ],
+    "verification_criteria": [
+      "V1: Change 021 scope and MRD validate as an active governed implementation record.",
+      "V2: Parent issue #51 exists with child issues #52-#56 linked as GitHub sub-issues and Work Management capture/claim is reconciled.",
+      "V3: The repository-docs family deterministically generates a human bundle, artefact inventory, relationship graph, coverage report, manifest, site routes, search index, and release package.",
+      "V4: Work Management domain authority remains excluded from repository HRD consolidation.",
+      "V5: Focused tests, full repository verification, specialist reviews, exact-head CI, merge, and post-merge documentation reconciliation complete before Done."
+    ],
+    "tasks": [
+      {
+        "id": "T1",
+        "status": "implemented",
+        "issue": 52,
+        "record_id": "SLICE-021",
+        "text": "Repository artefact metadata and relationship graph."
+      },
+      {
+        "id": "T2",
+        "status": "implemented",
+        "issue": 53,
+        "record_id": "SLICE-022",
+        "text": "Complete current-state kis-mcp-doc human specification bundle."
+      },
+      {
+        "id": "T3",
+        "status": "implemented",
+        "issue": 54,
+        "record_id": "SLICE-023",
+        "text": "Deterministic lineage, freshness and drift enforcement."
+      },
+      {
+        "id": "T4",
+        "status": "implemented",
+        "issue": 55,
+        "record_id": "SLICE-024",
+        "text": "Repository documentation site, search and publication integration."
+      },
+      {
+        "id": "T5",
+        "status": "implemented",
+        "issue": 56,
+        "record_id": "SLICE-025",
+        "text": "Repository coverage audit and human-verifiability closeout."
+      }
+    ],
+    "risks": [
+      "A consolidated human bundle could accidentally be treated as authority; one-way machine-to-human projection and deterministic generation must remain explicit.",
+      "An over-eager graph harvester could infer relationships not supported by canonical evidence; first implementation must distinguish observed facts from derived relationships.",
+      "Git commit identity can create circularity if embedded before the containing commit exists; use manifest/Git binding and post-commit publication metadata."
+    ],
+    "explicit_exclusions": [
+      "Redesigning or consolidating the Work Management HRD/specification family.",
+      "Creating a Change 001-020 retrospective human history.",
+      "Introducing bidirectional HRD-MRD authority binding."
+    ],
+    "closeout": {
+      "state": "verification_pending",
+      "verification": [
+        "Issue #51 was reconciled into the configured kis-mcp-doc Project and claimed by kis-op.",
+        "Repository-docs implementation, deterministic inventory/graph generation, and publication integration are implemented locally; final verification/review/PR evidence is pending."
+      ],
+      "publication": {
+        "status": "not_started",
+        "issue": 51,
+        "pull_request": null
+      },
+      "merge": {
+        "status": "not_started",
+        "head": null,
+        "main": "164765b4d2de113173033efae54b36d8716c8e8f"
+      },
+      "unresolved": []
+    }
+  }
+}

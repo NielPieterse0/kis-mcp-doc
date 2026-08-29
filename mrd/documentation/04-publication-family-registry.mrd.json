@@ -9,7 +9,7 @@
     "layer": "L1",
     "record_mode": "prescriptive",
     "status": "active",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "dependencies": [
       {
         "mrd_id": "KIS-DOC-CON-POL-002",
@@ -53,16 +53,24 @@
           "locator": "github:NielPieterse0/kis-mcp-doc#22",
           "revision": "2026-08-26",
           "sha256": null
+        },
+        {
+          "source_id": "GH-ISSUE-51",
+          "kind": "operator_approved_work_item",
+          "role": "repository_human_bundle_adoption",
+          "locator": "github:NielPieterse0/kis-mcp-doc#51",
+          "revision": "2026-08-28",
+          "sha256": null
         }
       ],
-      "source_fingerprint": "sha256:fa01de8f4d733421a5488fd76a5c01a3eff6de215e8ce0a1393b427740178a81",
+      "source_fingerprint": "sha256:ba5a3b1046888ae7160443417909229408904d5091fed50fa1480a279cea7822",
       "fact_quality": "direct"
     },
     "supersedes": [],
     "superseded_by": null
   },
   "content": {
-    "registry_version": "1.1.0",
+    "registry_version": "1.2.0",
     "adapter_protocol_version": 1,
     "families": [
       {
@@ -138,7 +146,9 @@
         "mrd_root": "mrd/governance",
         "publication_config": "publication/governance-docs.json",
         "output": "generated/governance-docs",
-        "output_classes": ["human_documentation"],
+        "output_classes": [
+          "human_documentation"
+        ],
         "adapter": {
           "validate": "kis_mcp_doc.publication_adapters:validate_governance_docs",
           "build": "kis_mcp_doc.publication_adapters:build_governance_docs",
@@ -157,7 +167,9 @@
         "mrd_root": "mrd/work-management",
         "publication_config": "publication/work-management-docs.json",
         "output": "generated/work-management-docs",
-        "output_classes": ["human_documentation"],
+        "output_classes": [
+          "human_documentation"
+        ],
         "adapter": {
           "validate": "kis_mcp_doc.publication_adapters:validate_work_management_docs",
           "build": "kis_mcp_doc.publication_adapters:build_work_management_docs",
@@ -167,6 +179,27 @@
           "validate": "publications-validate --family work-management-docs",
           "build": "publications-build --family work-management-docs",
           "verify": "publications-check-generated --family work-management-docs"
+        }
+      },
+      {
+        "id": "repository-docs",
+        "title": "kis-mcp-doc Repository Documentation",
+        "semantic_owner": "KIS-DOC-CON-POL-003",
+        "mrd_root": "mrd/documentation",
+        "publication_config": "publication/repository-docs.json",
+        "output": "generated/repository-docs",
+        "output_classes": [
+          "human_documentation"
+        ],
+        "adapter": {
+          "validate": "kis_mcp_doc.publication_adapters:validate_repository_human_docs",
+          "build": "kis_mcp_doc.publication_adapters:build_repository_human_docs",
+          "verify": "kis_mcp_doc.publication_adapters:verify_repository_human_docs"
+        },
+        "legacy_commands": {
+          "validate": "publications-validate --family repository-docs",
+          "build": "publications-build --family repository-docs",
+          "verify": "publications-check-generated --family repository-docs"
         }
       }
     ]

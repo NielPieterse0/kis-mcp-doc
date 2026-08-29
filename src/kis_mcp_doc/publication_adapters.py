@@ -11,6 +11,7 @@ from .documentation_reference import (
 )
 from .governance import GovernanceRepository
 from .human_docs import build_human_docs_family, validate_human_docs_family, verify_human_docs_family
+from .repository_docs import build_repository_docs, validate_repository_docs, verify_repository_docs
 from .render import build_governance_spec, validate_governance_publication, verify_governance_spec
 from .work_management import (
     WorkManagementRepository,
@@ -143,3 +144,15 @@ def build_work_management_docs(root: Path, family: dict[str, Any], *, output: Pa
 
 def verify_work_management_docs(root: Path, family: dict[str, Any]) -> dict[str, Any]:
     return verify_human_docs_family(root, family, "work-management")
+
+
+def validate_repository_human_docs(root: Path, family: dict[str, Any]) -> dict[str, Any]:
+    return validate_repository_docs(root, family)
+
+
+def build_repository_human_docs(root: Path, family: dict[str, Any], *, output: Path | None = None, replace: bool = False) -> dict[str, Any]:
+    return build_repository_docs(root, family, output=output, replace=replace)
+
+
+def verify_repository_human_docs(root: Path, family: dict[str, Any]) -> dict[str, Any]:
+    return verify_repository_docs(root, family)
