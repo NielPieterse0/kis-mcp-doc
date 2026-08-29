@@ -1,5 +1,5 @@
 {
-  "bundle_sha256": "7eb4db4dc74974d987535169d097a780dde94bbaac8bd580d2d1e4843dfd0e42",
+  "bundle_sha256": "3b9a98af8bc3f752a497c30f4ddcd89555c49495f74a369f9158fd40844f92b2",
   "contract": {
     "name": "kis-documentation-search",
     "version": 2
@@ -9,7 +9,7 @@
     {
       "bytes": 321754,
       "path": "search-index.json",
-      "sha256": "b341d6f60e17dad9838335d99942a4853fe234952d7c0a6f407fd26aebe69ee5"
+      "sha256": "87e63d3069a873ef8ae9f33e77f1ac5c892a9dc2bfa1f6757c7ed8fcd8434fd2"
     }
   ],
   "generator": {
@@ -210,7 +210,7 @@
     {
       "bytes": 180223,
       "path": "generated/repository-docs/data/artefact-inventory.json",
-      "sha256": "24bdc569261f6aa45b14d3fe0e33e0438918bc7d68c47db07eba3c27fe7384bf"
+      "sha256": "7f704dad2bdb8c5a47bc1cd9686c0e67543535948dea46e31afe26b530610f2d"
     },
     {
       "bytes": 248,
@@ -225,7 +225,7 @@
     {
       "bytes": 18622,
       "path": "generated/repository-docs/manifest.json",
-      "sha256": "48ab82d2a9635bb5f4ba1daa05cd8b059c9ffa0573d0266cf543dcab67898fe1"
+      "sha256": "dea7680b5677944eef403e163598f412f622178f22475ac9b8a1646f995a19d6"
     },
     {
       "bytes": 708,

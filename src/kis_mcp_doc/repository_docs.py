@@ -18,7 +18,8 @@ _REGISTRY = "mrd/documentation/04-publication-family-registry.mrd.json"
 _CONFIG = "publication/repository-docs.json"
 _GENERATOR = "src/kis_mcp_doc/repository_docs.py"
 _OUTPUT_CLASS = "human_documentation"
-_EXCLUDED_PARTS = {".git", ".work", ".venv", ".temp", ".pytest_cache", "__pycache__", "generated"}
+_EXCLUDED_PARTS = {".git", ".work", ".venv", ".temp", ".pytest_cache", ".ruff_cache", "__pycache__", "generated"}
+_EXCLUDED_PART_SUFFIXES = (".egg-info",)
 _EXCLUDED_PREFIXES = (
     "mrd/work-management/",
     "contracts/work-management/",
@@ -41,6 +42,8 @@ def _is_repository_source(path: Path, root: Path) -> bool:
     relative = path.relative_to(root)
     normalized = relative.as_posix()
     if any(part in _EXCLUDED_PARTS for part in relative.parts):
+        return False
+    if any(part.endswith(_EXCLUDED_PART_SUFFIXES) for part in relative.parts):
         return False
     if any(normalized.startswith(prefix) for prefix in _EXCLUDED_PREFIXES):
         return False

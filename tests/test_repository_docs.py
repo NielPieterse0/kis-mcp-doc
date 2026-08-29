@@ -5,6 +5,7 @@ from pathlib import Path
 
 from kis_mcp_doc.publication_kernel import PublicationFamilyRegistry
 from kis_mcp_doc.repository_docs import (
+    _is_repository_source,
     build_repository_docs,
     repository_model,
     validate_repository_docs,
@@ -35,6 +36,17 @@ def test_repository_model_exposes_metadata_and_typed_relationships() -> None:
     derived = [item for item in model["relationships"] if item["intent"] == "authority_direction"]
     assert derived
     assert all(item["fact_quality"] == "derived_from_path_policy" for item in derived)
+
+
+def test_repository_source_filter_excludes_transient_packaging_metadata(tmp_path: Path) -> None:
+    metadata = tmp_path / "src" / "kis_mcp_doc.egg-info" / "PKG-INFO"
+    metadata.parent.mkdir(parents=True)
+    metadata.write_text("transient build metadata\n", encoding="utf-8")
+    source = tmp_path / "src" / "kis_mcp_doc" / "module.py"
+    source.parent.mkdir(parents=True)
+    source.write_text("value = 1\n", encoding="utf-8")
+    assert _is_repository_source(metadata, tmp_path) is False
+    assert _is_repository_source(source, tmp_path) is True
 
 
 def test_repository_docs_build_is_deterministic_and_complete(tmp_path: Path) -> None:
