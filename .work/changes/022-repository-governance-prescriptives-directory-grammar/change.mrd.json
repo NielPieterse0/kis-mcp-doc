@@ -416,7 +416,7 @@
       "reviews": [
         "Architecture specialist route previously returned zero findings before the final hardening delta.",
         "Final architecture/code-quality/test-quality specialist routes failed or returned invalid contracts; required exact-diff manual fallback completed with the untracked-file loophole fixed and no remaining actionable findings.",
-        "The first exact-head GitHub run exposed two provider-only conditions: transient editable-package *.egg-info metadata and a prohibited PR issue-closing keyword. The PR body was corrected and the validator was hardened to consume the Directory Grammar transient exclusions; local canonical verification then passed again."
+        "The first exact-head GitHub run exposed transient editable-package *.egg-info metadata and a prohibited PR issue-closing keyword; both were corrected. The second exact-head run proved the transient exclusion but exposed a Windows portability defect in the new fixture because editable installation had already created the *.egg-info directory; the fixture now tolerates the pre-existing transient directory. Local canonical verification passes after both provider findings."
       ],
       "publication": "pending exact commit publication and pull-request provider evidence",
       "merge": null,

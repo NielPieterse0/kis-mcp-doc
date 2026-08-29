@@ -69,7 +69,7 @@ def test_transient_egg_info_is_not_governed_structure(tmp_path: Path) -> None:
     subprocess.run(["git", "init"], cwd=root, check=True, capture_output=True)
     subprocess.run(["git", "add", "."], cwd=root, check=True, capture_output=True)
     transient = root / "src" / "kis_mcp_doc.egg-info" / "top_level.txt"
-    transient.parent.mkdir()
+    transient.parent.mkdir(exist_ok=True)
     transient.write_text("kis_mcp_doc\n", encoding="utf-8")
     result = RepositoryGovernanceRepository(root).validate()
     assert result["status"] == "valid", result["diagnostics"]
