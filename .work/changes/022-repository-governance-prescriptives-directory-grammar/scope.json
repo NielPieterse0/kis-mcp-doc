@@ -1,9 +1,9 @@
 {
   "schema_version": 4,
   "change_id": "022-repository-governance-prescriptives-directory-grammar",
-  "status": "active",
+  "status": "complete",
   "branch": "change/022-repository-governance-prescriptives-directory-grammar",
-  "worktree": ".work/worktrees/022-repository-governance-prescriptives-directory-grammar",
+  "worktree": null,
   "base": "main",
   "outcome": "Establish a repository-wide governance coordinate system for prescriptive authority, implementation, derived/generated artefacts, verification/evidence, fact ownership, and a mechanically enforceable directory grammar.",
   "owned_paths": [
@@ -73,7 +73,7 @@
     "source_repository": "NielPieterse0/kis-mcp-doc",
     "source_number": 62,
     "source_kind": "issue",
-    "documentation_impact": "pre_merge_complete",
+    "documentation_impact": "post_merge_complete",
     "capture_status": "captured"
   },
   "implementation_authorization": "Operator explicitly authorized full implementation on 2026-08-29."

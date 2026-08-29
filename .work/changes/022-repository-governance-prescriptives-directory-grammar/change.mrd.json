@@ -8,8 +8,8 @@
     "type": "WFL",
     "layer": "L3",
     "record_mode": "descriptive",
-    "status": "active",
-    "version": "0.1.0",
+    "status": "complete",
+    "version": "1.0.0",
     "dependencies": [
       {
         "source": "repo:.work/changes/021-current-state-kis-mcp-doc-human-documentation/change.mrd.json",
@@ -67,7 +67,7 @@
         66,
         67
       ],
-      "project_capture": "post_merge_documentation"
+      "project_capture": "complete"
     },
     "outcome": "Implement an explicit repository-governance coordinate system so every persistent governed artefact is classified by semantic role, traced to one authoritative fact owner, placed in a legal repository slot, and linked to implementation, verification, derived outputs, and evidence.",
     "preparation_boundary": [
@@ -367,7 +367,7 @@
       },
       {
         "id": "T5",
-        "status": "active",
+        "status": "done",
         "issue": 67,
         "text": "Reconcile repository authority/generated views and close out the programme."
       }
@@ -406,7 +406,7 @@
       "Copying App-Dev Core rules wholesale or changing parent KIS governance/Work Management semantics."
     ],
     "closeout": {
-      "state": "post_merge_documentation_reconciliation",
+      "state": "complete",
       "verification": [
         "Focused repository-governance tests pass 9/9, including Git-backed mutations proving both non-ignored untracked persistent structure is rejected and transient *.egg-info metadata is excluded according to the Directory Grammar.",
         "Full Python regression suite passes 191/191 after the provider-specific transient-state hardening fixture.",
@@ -415,12 +415,15 @@
         "GitHub Actions Canonical Verification run 33237569253 job 99061125169 passed on exact PR #68 head 8b28d9a661eabe9778b15c98f5948ad87fcd1c88.",
         "Work Management merge readiness returned ready with no blockers or advisories for PR #68 at the same exact head.",
         "PR #68 merged through the registered KIS exact-head merge path; GitHub main and local tracking were reconciled to merge commit 4427d54c9c7f56dd0277c02f67df44073fa3b559.",
-        "Post-merge documentation reconciliation event doc-022-repository-governance-prescriptives-directory-grammar-pr-68 identified the Change 022 MRD and scope as the required closeout updates."
+        "Post-merge documentation reconciliation event doc-022-repository-governance-prescriptives-directory-grammar-pr-68 identified the Change 022 MRD and scope as the required closeout updates.",
+        "Post-merge documentation reconciliation event doc-022-repository-governance-prescriptives-directory-grammar-pr-68 completed against immutable closeout revision a5577560a2eac38eea3204a36d0d59eed7366e40.",
+        "Work Management completion guards succeeded for parent #62 and slices #63-#67; the Project now reports all six records Done at Delivery Stage Complete, and all six source issues are closed as completed."
       ],
       "reviews": [
         "Architecture specialist route previously returned zero findings before the final hardening delta.",
         "Final architecture/code-quality/test-quality specialist routes failed or returned invalid contracts; required exact-diff manual fallback completed with the untracked-file loophole fixed and no remaining actionable findings.",
-        "The first exact-head GitHub run exposed transient editable-package *.egg-info metadata and a prohibited PR issue-closing keyword; both were corrected. The second exact-head run proved the transient exclusion but exposed a Windows portability defect in the new fixture because editable installation had already created the *.egg-info directory; the fixture now tolerates the pre-existing transient directory. Local canonical verification passes after both provider findings."
+        "The first exact-head GitHub run exposed transient editable-package *.egg-info metadata and a prohibited PR issue-closing keyword; both were corrected. The second exact-head run proved the transient exclusion but exposed a Windows portability defect in the new fixture because editable installation had already created the *.egg-info directory; the fixture now tolerates the pre-existing transient directory. Local canonical verification passes after both provider findings.",
+        "Final bounded documentation review of the closeout delta returned no findings and confirmed consistency with PR #68, merge 4427d54c9c7f56dd0277c02f67df44073fa3b559, documentation revision a5577560a2eac38eea3204a36d0d59eed7366e40, and Work Management #62-#67 completion evidence."
       ],
       "publication": {
         "status": "merged",
@@ -432,10 +435,7 @@
         "head": "8b28d9a661eabe9778b15c98f5948ad87fcd1c88",
         "main": "4427d54c9c7f56dd0277c02f67df44073fa3b559"
       },
-      "unresolved": [
-        "Complete the post-merge documentation reconciliation against the committed closeout revision.",
-        "Complete Work Management items #62-#67 after the documentation milestone is satisfied."
-      ]
+      "unresolved": []
     },
     "implementation_authorization": "Operator explicitly authorized complete implementation on 2026-08-29 after preparation was complete.",
     "implementation_results": {
