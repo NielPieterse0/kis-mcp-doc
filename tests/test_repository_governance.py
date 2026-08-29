@@ -63,6 +63,17 @@ def test_rejects_untracked_unknown_directory_in_git_repo(tmp_path: Path) -> None
     rogue.write_text("persistent\n", encoding="utf-8")
     result = RepositoryGovernanceRepository(root).validate()
     assert "REPOSITORY_DIRECTORY_UNKNOWN" in _codes(result)
+
+def test_transient_egg_info_is_not_governed_structure(tmp_path: Path) -> None:
+    root = _copy_repo(tmp_path)
+    subprocess.run(["git", "init"], cwd=root, check=True, capture_output=True)
+    subprocess.run(["git", "add", "."], cwd=root, check=True, capture_output=True)
+    transient = root / "src" / "kis_mcp_doc.egg-info" / "top_level.txt"
+    transient.parent.mkdir()
+    transient.write_text("kis_mcp_doc\n", encoding="utf-8")
+    result = RepositoryGovernanceRepository(root).validate()
+    assert result["status"] == "valid", result["diagnostics"]
+
 def test_rejects_unknown_prescriptive_domain(tmp_path: Path) -> None:
     root = _copy_repo(tmp_path)
     rogue = root / "prescriptives" / "random-domain" / "rule.json"

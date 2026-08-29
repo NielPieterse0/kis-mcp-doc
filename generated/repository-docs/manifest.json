@@ -1,5 +1,5 @@
 {
-  "bundle_sha256": "50f67001bcb46229cb470dbc99a315fa410c2985ce5c54be73535baa00aee004",
+  "bundle_sha256": "4f0a814aa0dae20bd300f930fd4508cb94fd12dabf8d02b4bb553f97eddf8f38",
   "contract": {
     "name": "kis-repository-human-documentation",
     "version": 1
@@ -56,7 +56,7 @@
     {
       "bytes": 192837,
       "path": "data/artefact-inventory.json",
-      "sha256": "3f29ae01f9ae0fce2dfe5e45f22e86f8441cbfb43d10b5564f1e01a30325a28e"
+      "sha256": "6aaf84b99cd28647894967801454949e780a74b163f7af25b988930ba7789ede"
     },
     {
       "bytes": 249,
@@ -461,9 +461,9 @@
         "sha256": "74ee8e6940d4029827c7d289861577e3c3333e053ccd264c6ad61067be9df8fb"
       },
       {
-        "bytes": 9986,
+        "bytes": 10433,
         "path": "src/kis_mcp_doc/repository_governance.py",
-        "sha256": "fe67c631d09737bd6b9c6c55bde9d1053de2b6550b1588390fe0fe92bdd7dcc1"
+        "sha256": "cefeb521edfd7b6c0d2ecd55f050d9a8dace9141a8c41e69ee3aba60c9de3eff"
       },
       {
         "bytes": 57828,
@@ -531,9 +531,9 @@
         "sha256": "dcdd9d8b0d78f57a8822e02909a6b5b7fd7587d6752fb93e0488cf9f2ef7b3f1"
       },
       {
-        "bytes": 4659,
+        "bytes": 5216,
         "path": "tests/test_repository_governance.py",
-        "sha256": "e236a215ab5ee9f3ab5dff8bac4933065affa21c8392d9e1cce8cb24dc9a68a0"
+        "sha256": "d5132283ac30ecc85b56975b26ca9dfab2efed440e7442362e2afc571d748ab3"
       },
       {
         "bytes": 2649,
@@ -558,5 +558,5 @@
     ]
   },
   "output_class": "human_documentation",
-  "source_fingerprint": "sha256:ff276a8254a01008822caf7bf986fe25df8b2f685e0f54d09fc4848df18b685b"
+  "source_fingerprint": "sha256:003e2b7d09a03763c61fac0b2f7584d3fc000a981ca65dbc85cc266cc936b42e"
 }

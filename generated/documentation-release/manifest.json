@@ -1,19 +1,19 @@
 {
-  "bundle_sha256": "bdb2b0d8ddb3ae0994142853a2402a96b9c1767751b7fa11cca3ce6bf23f8317",
+  "bundle_sha256": "6eb3f442df4bc9e1f097f5809386993ff23a8292646ec9f3ca84a07bd47b833e",
   "contract": {
     "name": "kis-documentation-release",
     "version": 1
   },
   "files": [
     {
-      "bytes": 137343,
+      "bytes": 137336,
       "path": "documentation-site.zip",
-      "sha256": "3d66a2931ea2ebd03830f26f5424d3736ad9d446e2576a18fb1cce9f2ab88cb7"
+      "sha256": "33a36034a0bd8fd83331af43d9a1b2d0583fb3bb40d1de104d905d72a35eafd1"
     },
     {
       "bytes": 436,
       "path": "release-metadata.json",
-      "sha256": "6daaa3bf1c914bbfb6de503897e35dd7d224423bcca81279a443df48ff1bf72e"
+      "sha256": "ed5bf1b2ae9b22748045e8a666f6a9ae5ed2dd149011cc6482116c93fc3bad02"
     }
   ],
   "generator": {
@@ -24,12 +24,12 @@
     {
       "bytes": 8840,
       "path": "generated/documentation-search/manifest.json",
-      "sha256": "a3e09db2fb213f90c05ac2377d2ddc85fa7d997db26192570b4d7cf1248044f4"
+      "sha256": "fdc186abf75432c48ed9566e7a2b623ce077cef0cbfb2865b67e0ed97ba358b4"
     },
     {
       "bytes": 18344,
       "path": "generated/documentation-site/manifest.json",
-      "sha256": "6f897789fe0f58a81728f77143c0f6f4d292582b2a5e84e37b4a039a40e849f2"
+      "sha256": "72ec606c04b88567778644d3c7d3bc17638e6e355273180ecdf29b75112b0c98"
     },
     {
       "bytes": 272,

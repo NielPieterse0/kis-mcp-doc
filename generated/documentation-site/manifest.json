@@ -1,5 +1,5 @@
 {
-  "bundle_sha256": "dfc3b30299df367cbfeaf02eb75ec9b98c8b6c544b916b0dba310170e35930a4",
+  "bundle_sha256": "0c068deee4fbfe0bc8454df61e738236f7bd2ae44a2ea3712fd56a80441735e0",
   "contract": {
     "name": "kis-documentation-site",
     "version": 1
@@ -138,7 +138,7 @@
     {
       "bytes": 263073,
       "path": "reference/repository-docs/data/artefact-inventory/index.html",
-      "sha256": "99d392cf16e98d6471911f998c30f10232ef084d862238eee75b8fe0401fcac5"
+      "sha256": "31e04551a08f5254f30e367f983b3a927fe037d8283c9b33926d8e26d855df82"
     },
     {
       "bytes": 1249,
@@ -151,9 +151,9 @@
       "sha256": "13344af99bbafde0d6f5b2517563a4f1f8cf7f0f4d02a1109ff377ed9512023a"
     },
     {
-      "bytes": 26471,
+      "bytes": 26472,
       "path": "reference/repository-docs/manifest/index.html",
-      "sha256": "c45a7991161e2a7498148dfad104215c8aafe4e3efcf3fa12891bfc580067656"
+      "sha256": "a53718de29d2fc8e83a1bc55cfbbc51d0b0a38fc2eb1338fa5a3059d2e3e6e52"
     },
     {
       "bytes": 10291,
@@ -161,9 +161,9 @@
       "sha256": "1cb743e630fd392ed5df49581a70f0523a162a451420704de8cb5227a1a15300"
     },
     {
-      "bytes": 203547,
+      "bytes": 203548,
       "path": "search-index.json",
-      "sha256": "1f00ca78d9e92327b3f10709aaa19c5265bef999f407bb8b4be16bbb322eebc3"
+      "sha256": "ba5783f352cf314f0dcbe1182040a13fa63c08ef0b99706d3fb911b1f0c90236"
     },
     {
       "bytes": 794,
@@ -292,9 +292,9 @@
       "sha256": "ab5667009b64c85cf2b810d934044159f52301e3ca591ab7d47e33b6893b24dd"
     },
     {
-      "bytes": 203547,
+      "bytes": 203548,
       "path": "generated/documentation-search/search-index.json",
-      "sha256": "1f00ca78d9e92327b3f10709aaa19c5265bef999f407bb8b4be16bbb322eebc3"
+      "sha256": "ba5783f352cf314f0dcbe1182040a13fa63c08ef0b99706d3fb911b1f0c90236"
     },
     {
       "bytes": 718,
@@ -464,7 +464,7 @@
     {
       "bytes": 192837,
       "path": "generated/repository-docs/data/artefact-inventory.json",
-      "sha256": "3f29ae01f9ae0fce2dfe5e45f22e86f8441cbfb43d10b5564f1e01a30325a28e"
+      "sha256": "6aaf84b99cd28647894967801454949e780a74b163f7af25b988930ba7789ede"
     },
     {
       "bytes": 249,
@@ -477,9 +477,9 @@
       "sha256": "100314ac11234b474bc5e2dc40c389670a4fdf443572f15bd422ec070708b359"
     },
     {
-      "bytes": 19975,
+      "bytes": 19976,
       "path": "generated/repository-docs/manifest.json",
-      "sha256": "a7e01d6e8e359cf4e6569af19f32c7add4e50a572b48d05f0437b952b3ab97b9"
+      "sha256": "824c704b42f8f1a1731444a94931938d14c99fe6bf1529a61a3e9c03d1097bde"
     },
     {
       "bytes": 8352,

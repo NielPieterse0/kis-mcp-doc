@@ -43,6 +43,18 @@ def _match(path: str, pattern: str) -> bool:
     return fnmatch.fnmatchcase(path, pattern)
 
 
+def _is_transient(path: str, grammar: dict[str, Any]) -> bool:
+    parts = path.split("/")
+    for pattern in grammar.get("transient_non_governed", []):
+        pattern = str(pattern)
+        if "/" in pattern:
+            if _match(path, pattern):
+                return True
+        elif any(fnmatch.fnmatchcase(part, pattern) for part in parts):
+            return True
+    return False
+
+
 class RepositoryGovernanceRepository:
     def __init__(self, root: Path) -> None:
         self.root = Path(root).resolve()
@@ -61,7 +73,7 @@ class RepositoryGovernanceRepository:
             registry = _load(self.root / _REGISTRY)
             grammar = _load(self.root / _GRAMMAR)
             enforcement = _load(self.root / _ENFORCEMENT)
-            files = _tracked_files(self.root)
+            files = [path for path in _tracked_files(self.root) if not _is_transient(path, grammar)]
         except (OSError, ValueError, json.JSONDecodeError) as error:
             return self._result([self._diag("REPOSITORY_GOVERNANCE_LOAD_FAILED", str(error), "repository-governance")])
 
