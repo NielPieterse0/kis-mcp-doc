@@ -227,9 +227,9 @@
         "sha256": "fb9f3210b022d8def12a92bfccc1cb45e5ccf1146fa9d59168baf3f630ded153"
       },
       {
-        "bytes": 3657,
+        "bytes": 3776,
         "path": "contracts/publication/family/v1/registry.schema.json",
-        "sha256": "526acd37af7fa91a96fa4a2b0a7af0594299167c915190fd0c0364805ce4f58e"
+        "sha256": "11f60fefd296feec3bb8fc93263b811f79f91608905b7ca561a734695e9d02f7"
       },
       {
         "bytes": 5712,
@@ -242,14 +242,14 @@
         "sha256": "5a1f98e9fb937df209e303abc6fa3af3fd73c922a868e76519939d6dd42ec24c"
       },
       {
-        "bytes": 5375,
+        "bytes": 6090,
         "path": "mrd/documentation/03-publication-architecture.mrd.json",
-        "sha256": "e266a4a60b6037129a106f5f7f977161cd01d69983560a8de790d7d9d6cf9c71"
+        "sha256": "1c8e33a0b678a4d5f60376be751ece6f08f0589fb85a1867d5d9697d16a6238e"
       },
       {
-        "bytes": 7805,
+        "bytes": 8292,
         "path": "mrd/documentation/04-publication-family-registry.mrd.json",
-        "sha256": "a576864ab24624ae55d71b7a53cf99f956e5f83c1464986b0355eb3679cf58dc"
+        "sha256": "281cd30a08af7cf3e15665b2372e6a06555b042d195d252064dde85e13c1b858"
       },
       {
         "bytes": 403,

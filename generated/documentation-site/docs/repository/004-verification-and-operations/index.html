@@ -3,6 +3,7 @@
 <p>Use executable evidence to decide whether repository documentation and generated surfaces are current.</p>
 <h2 id="canonical-verification">Canonical verification</h2>
 <p>Run <code>pwsh -File scripts/verify.ps1</code> for the repository-wide gate. It runs tests, governance and publication validation, generated-output checks, search/site/release checks, public-repository hygiene, and whitespace verification.</p>
+<p>The gate verifies both semantics and bytes: publication-family validation requires an explicit Pages decision, regression tests enforce the public-family boundary, and generated-output checks reconstruct publication, search, site, and release artefacts and fail on any stale or mismatched tracked output.</p>
 <h2 id="development-rule">Development rule</h2>
 <p>During implementation, run focused affected checks. Before publication, the governed change workflow performs its required scope and verification checks; the pull request owns full exact-head provider verification.</p>
 <h2 id="runtime-safety">Runtime safety</h2>

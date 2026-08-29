@@ -15,9 +15,9 @@ def test_site_validation_and_registry_derived_routes_are_complete() -> None:
     assert validate_documentation_site(ROOT) == {"status": "valid", "diagnostics": []}
     entries = route_entries(ROOT)
     assert any(item["route"] == "/docs/governance/" for item in entries)
-    assert any(item["route"] == "/docs/work-management/" for item in entries)
+    assert any(item["route"] == "/docs/repository/" for item in entries)
     assert any(item["route"] == "/specification/governance/" for item in entries)
-    assert any(item["route"] == "/specification/work-management/" for item in entries)
+    assert not any(item["family"].startswith("work-management") for item in entries)
     assert all(item["family"] for item in entries)
     assert len({item["route"] for item in entries}) == len(entries)
 
@@ -28,7 +28,12 @@ def test_site_build_has_entry_points_navigation_and_breadcrumbs(tmp_path: Path) 
     assert manifest["contract"] == {"name": "kis-documentation-site", "version": 1}
     assert (output / "index.html").is_file()
     assert (output / "docs/governance/index.html").is_file()
+    assert (output / "docs/repository/index.html").is_file()
     assert (output / "specification/governance/index.html").is_file()
+    assert not (output / "docs/work-management").exists()
+    assert not (output / "specification/work-management").exists()
+    assert not (output / "reference/work-management-docs").exists()
+    assert not (output / "reference/work-management-spec").exists()
     page = (output / "docs/governance/index.html").read_text(encoding="utf-8")
     assert "breadcrumbs" in page
     assert "rel=\"next\"" in page
@@ -62,13 +67,28 @@ def test_site_exact_verification_detects_tamper(tmp_path: Path) -> None:
     assert "SITE_GENERATED_FILE_CONTENT_MISMATCH" in codes
 
 
-def test_site_manifest_inputs_bind_registered_publications(tmp_path: Path) -> None:
+def test_site_verification_detects_publication_boundary_change_without_regeneration(tmp_path: Path) -> None:
+    root = tmp_path / "repo"
+    shutil.copytree(ROOT, root, ignore=shutil.ignore_patterns('.git', '.venv', '.work'))
+    registry_path = root / "mrd/documentation/04-publication-family-registry.mrd.json"
+    registry = json.loads(registry_path.read_text(encoding="utf-8"))
+    repository_docs = next(family for family in registry["content"]["families"] if family["id"] == "repository-docs")
+    repository_docs["publish_to_site"] = False
+    registry_path.write_text(json.dumps(registry, indent=2) + "\n", encoding="utf-8")
+    result = verify_documentation_site(root)
+    assert result["status"] == "invalid"
+    assert any(item["code"].startswith("SITE_GENERATED_") for item in result["diagnostics"])
+
+
+def test_site_manifest_inputs_bind_only_site_published_families(tmp_path: Path) -> None:
     output = tmp_path / "site"
     manifest = build_documentation_site(ROOT, output)
     inputs = {item["path"] for item in manifest["inputs"]}
     assert "mrd/documentation/04-publication-family-registry.mrd.json" in inputs
     assert "generated/governance-docs/000-index.md" in inputs
-    assert "generated/work-management-spec/000-index.md" in inputs
+    assert "generated/repository-docs/000-index.md" in inputs
+    assert "generated/work-management-docs/000-index.md" not in inputs
+    assert "generated/work-management-spec/000-index.md" not in inputs
 
 
 def test_markdown_renderer_preserves_expected_document_formatting() -> None:

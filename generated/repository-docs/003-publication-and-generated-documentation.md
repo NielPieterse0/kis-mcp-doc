@@ -5,15 +5,15 @@ The publication registry is the single family inventory for generated specificat
 
 ## Registered families
 
-| Family | Output | Classes |
-|---|---|---|
-| `governance-spec` | `generated/governance-spec` | human_readable_specification, generated_reference |
-| `work-management-spec` | `generated/work-management-spec` | human_readable_specification, generated_reference |
-| `documentation-reference-standard` | `generated/documentation-reference-standard` | human_readable_specification, generated_reference |
-| `governance-docs` | `generated/governance-docs` | human_documentation |
-| `work-management-docs` | `generated/work-management-docs` | human_documentation |
-| `repository-docs` | `generated/repository-docs` | human_documentation |
+| Family | Output | Classes | Published to Pages |
+|---|---|---|---|
+| `governance-spec` | `generated/governance-spec` | human_readable_specification, generated_reference | Yes |
+| `work-management-spec` | `generated/work-management-spec` | human_readable_specification, generated_reference | No — standalone family |
+| `documentation-reference-standard` | `generated/documentation-reference-standard` | human_readable_specification, generated_reference | Yes |
+| `governance-docs` | `generated/governance-docs` | human_documentation | Yes |
+| `work-management-docs` | `generated/work-management-docs` | human_documentation | No — standalone family |
+| `repository-docs` | `generated/repository-docs` | human_documentation | Yes |
 
-The shared publication kernel validates family registration, dispatches adapters, writes complete bundles atomically, and compares exact generated inventories and bytes for drift.
+The shared publication kernel validates every registered family, dispatches adapters, writes complete bundles atomically, and compares exact generated inventories and bytes for drift.
 
-The documentation site and static search derive routes from this same registry. The release package then bundles the verified site for GitHub Pages.
+The `publish_to_site` decision is explicit for every family. The documentation site, public search index, and GitHub Pages release include only families marked `true`; standalone families remain generated and verified but are not reader-facing Pages content.

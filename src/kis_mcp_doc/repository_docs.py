@@ -345,20 +345,23 @@ def _pages(root: Path, config: dict[str, Any], model: dict[str, Any]) -> dict[st
     ]
     publication = _header("Publication and generated documentation", "The publication registry is the single family inventory for generated specifications and human documentation.")
     registry = _load_json(root / _REGISTRY)
-    publication += ["## Registered families", "", "| Family | Output | Classes |", "|---|---|---|"]
+    publication += ["## Registered families", "", "| Family | Output | Classes | Published to Pages |", "|---|---|---|---|"]
     for family in registry["content"]["families"]:
-        publication.append(f"| `{family['id']}` | `{family['output']}` | {', '.join(family['output_classes'])} |")
+        pages = "Yes" if family["publish_to_site"] else "No — standalone family"
+        publication.append(f"| `{family['id']}` | `{family['output']}` | {', '.join(family['output_classes'])} | {pages} |")
     publication += [
         "",
-        "The shared publication kernel validates family registration, dispatches adapters, writes complete bundles atomically, and compares exact generated inventories and bytes for drift.",
+        "The shared publication kernel validates every registered family, dispatches adapters, writes complete bundles atomically, and compares exact generated inventories and bytes for drift.",
         "",
-        "The documentation site and static search derive routes from this same registry. The release package then bundles the verified site for GitHub Pages.",
+        "The `publish_to_site` decision is explicit for every family. The documentation site, public search index, and GitHub Pages release include only families marked `true`; standalone families remain generated and verified but are not reader-facing Pages content.",
     ]
     verification = _header("Verification and operations", "Use executable evidence to decide whether repository documentation and generated surfaces are current.")
     verification += [
         "## Canonical verification",
         "",
         "Run `pwsh -File scripts/verify.ps1` for the repository-wide gate. It runs tests, governance and publication validation, generated-output checks, search/site/release checks, public-repository hygiene, and whitespace verification.",
+        "",
+        "The gate verifies both semantics and bytes: publication-family validation requires an explicit Pages decision, regression tests enforce the public-family boundary, and generated-output checks reconstruct publication, search, site, and release artefacts and fail on any stale or mismatched tracked output.",
         "",
         "## Development rule",
         "",

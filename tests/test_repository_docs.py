@@ -64,6 +64,13 @@ def test_repository_docs_build_is_deterministic_and_complete(tmp_path: Path) -> 
     assert inventory["revision_binding"]["mode"] == "external_git_manifest"
     assert graph["relationships"]
     assert coverage["source_files"] > 0
+    publication_page = (first / "003-publication-and-generated-documentation.md").read_text(encoding="utf-8")
+    verification_page = (first / "004-verification-and-operations.md").read_text(encoding="utf-8")
+    assert "Published to Pages" in publication_page
+    assert "`work-management-docs`" in publication_page
+    assert "No — standalone family" in publication_page
+    assert "semantics and bytes" in verification_page
+    assert "generated-output checks reconstruct publication, search, site, and release artefacts" in verification_page
     assert (first / "006-coverage-and-freshness.md").is_file()
 
 
