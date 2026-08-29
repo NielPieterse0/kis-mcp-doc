@@ -59,7 +59,7 @@
       "repository": "NielPieterse0/kis-mcp-doc",
       "issue": 62,
       "project": "kis-mcp-doc",
-      "record_id": "WORK-62",
+      "record_id": "TASK-62",
       "sub_issues": [
         63,
         64,
@@ -67,7 +67,7 @@
         66,
         67
       ],
-      "project_capture": "captured"
+      "project_capture": "post_merge_documentation"
     },
     "outcome": "Implement an explicit repository-governance coordinate system so every persistent governed artefact is classified by semantic role, traced to one authoritative fact owner, placed in a legal repository slot, and linked to implementation, verification, derived outputs, and evidence.",
     "preparation_boundary": [
@@ -406,22 +406,35 @@
       "Copying App-Dev Core rules wholesale or changing parent KIS governance/Work Management semantics."
     ],
     "closeout": {
-      "state": "implementation_verified_pending_provider_delivery",
+      "state": "post_merge_documentation_reconciliation",
       "verification": [
         "Focused repository-governance tests pass 9/9, including Git-backed mutations proving both non-ignored untracked persistent structure is rejected and transient *.egg-info metadata is excluded according to the Directory Grammar.",
         "Full Python regression suite passes 191/191 after the provider-specific transient-state hardening fixture.",
         "Canonical pwsh -File scripts/verify.ps1 passes after deterministic regeneration of registered publications, search, site, release, and public surfaces.",
-        "git diff --cached --check passes after LF normalization."
+        "git diff --cached --check passes after LF normalization.",
+        "GitHub Actions Canonical Verification run 33237569253 job 99061125169 passed on exact PR #68 head 8b28d9a661eabe9778b15c98f5948ad87fcd1c88.",
+        "Work Management merge readiness returned ready with no blockers or advisories for PR #68 at the same exact head.",
+        "PR #68 merged through the registered KIS exact-head merge path; GitHub main and local tracking were reconciled to merge commit 4427d54c9c7f56dd0277c02f67df44073fa3b559.",
+        "Post-merge documentation reconciliation event doc-022-repository-governance-prescriptives-directory-grammar-pr-68 identified the Change 022 MRD and scope as the required closeout updates."
       ],
       "reviews": [
         "Architecture specialist route previously returned zero findings before the final hardening delta.",
         "Final architecture/code-quality/test-quality specialist routes failed or returned invalid contracts; required exact-diff manual fallback completed with the untracked-file loophole fixed and no remaining actionable findings.",
         "The first exact-head GitHub run exposed transient editable-package *.egg-info metadata and a prohibited PR issue-closing keyword; both were corrected. The second exact-head run proved the transient exclusion but exposed a Windows portability defect in the new fixture because editable installation had already created the *.egg-info directory; the fixture now tolerates the pre-existing transient directory. Local canonical verification passes after both provider findings."
       ],
-      "publication": "pending exact commit publication and pull-request provider evidence",
-      "merge": null,
+      "publication": {
+        "status": "merged",
+        "issue": 62,
+        "pull_request": 68
+      },
+      "merge": {
+        "status": "merged",
+        "head": "8b28d9a661eabe9778b15c98f5948ad87fcd1c88",
+        "main": "4427d54c9c7f56dd0277c02f67df44073fa3b559"
+      },
       "unresolved": [
-        "Exact-head GitHub Actions evidence, merge, post-merge documentation reconciliation, Work Management completion, and default-branch synchronization remain provider-delivery steps."
+        "Complete the post-merge documentation reconciliation against the committed closeout revision.",
+        "Complete Work Management items #62-#67 after the documentation milestone is satisfied."
       ]
     },
     "implementation_authorization": "Operator explicitly authorized complete implementation on 2026-08-29 after preparation was complete.",

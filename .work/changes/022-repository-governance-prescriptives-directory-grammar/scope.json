@@ -69,11 +69,11 @@
   },
   "work_management": {
     "project_id": "kis-mcp-doc",
-    "record_id": "WORK-62",
+    "record_id": "TASK-62",
     "source_repository": "NielPieterse0/kis-mcp-doc",
     "source_number": 62,
     "source_kind": "issue",
-    "documentation_impact": "required",
+    "documentation_impact": "pre_merge_complete",
     "capture_status": "captured"
   },
   "implementation_authorization": "Operator explicitly authorized full implementation on 2026-08-29."
