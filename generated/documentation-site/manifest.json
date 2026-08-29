@@ -1,5 +1,5 @@
 {
-  "bundle_sha256": "24e75a878878cfb37e9a8c58270191177dbfe1761feb4b8a0c748d56434f0610",
+  "bundle_sha256": "680d6186ebf2cfefc123dd60665c46476952cee0a8f12bb4f2779b81871d4d3f",
   "contract": {
     "name": "kis-documentation-site",
     "version": 1
@@ -138,7 +138,7 @@
     {
       "bytes": 263073,
       "path": "reference/repository-docs/data/artefact-inventory/index.html",
-      "sha256": "a54df439f8a9a0084f762b376a7a84ab8de5de0b741b26539184a406c8bed6a7"
+      "sha256": "677c9409d0e9591417db56cab1a44798cf1e29a9fcc59dc7cb0a4762374ea561"
     },
     {
       "bytes": 1249,
@@ -153,7 +153,7 @@
     {
       "bytes": 26472,
       "path": "reference/repository-docs/manifest/index.html",
-      "sha256": "186db411e5d25c109444d3004ef667220ecd0c96af76c16b770ae95de7acb257"
+      "sha256": "293991ae0ea847d60051f480f154c85181a6caf76455a3d100ebc6905228a281"
     },
     {
       "bytes": 10291,
@@ -163,7 +163,7 @@
     {
       "bytes": 203529,
       "path": "search-index.json",
-      "sha256": "12ce3f8b92a3e966adb1cfd3930f1968bc167a7291ec3edc22a9523bd62c51c1"
+      "sha256": "540627e3d5bea2a50ec11f7c368920a2ff5a1821d72eee00c27f2678dde2c3dd"
     },
     {
       "bytes": 794,
@@ -294,7 +294,7 @@
     {
       "bytes": 203529,
       "path": "generated/documentation-search/search-index.json",
-      "sha256": "12ce3f8b92a3e966adb1cfd3930f1968bc167a7291ec3edc22a9523bd62c51c1"
+      "sha256": "540627e3d5bea2a50ec11f7c368920a2ff5a1821d72eee00c27f2678dde2c3dd"
     },
     {
       "bytes": 718,
@@ -464,7 +464,7 @@
     {
       "bytes": 192837,
       "path": "generated/repository-docs/data/artefact-inventory.json",
-      "sha256": "49b04e1b49ad6d36528777695a91cc932ff46b68c78e885c6b3fb72178d17ece"
+      "sha256": "8795c64cd6e8ea9757f24a7ebacb680569b2d2d22a356513e54daa0ce3a0655d"
     },
     {
       "bytes": 249,
@@ -479,7 +479,7 @@
     {
       "bytes": 19976,
       "path": "generated/repository-docs/manifest.json",
-      "sha256": "78def023daee82e4aa8c80ba438235740075704228fa4a499488171c3ed56e95"
+      "sha256": "e54008cb741fea07b225b2c68c1adb66ba5059f4bdd5eae43986440bb6968324"
     },
     {
       "bytes": 8352,
