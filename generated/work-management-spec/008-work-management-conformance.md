@@ -5,7 +5,7 @@
 
 [Previous: Provider and command-plane boundary](007-provider-and-command-plane-boundary.md) | [Index](000-index.md)
 
-<span id="mrd-kis-work-evl-tst-001"></span>
+<span id="mrd-urn-uuid-68adde2d-be01-5184-8193-9ebb62f8d434"></span>
 
 A Work Management implementation conforms to this specification only when its source MRDs, dependencies, evidence, generated views, and lifecycle behavior pass the checks below. These checks keep human-readable documentation aligned with machine-readable authority.
 
@@ -21,4 +21,4 @@ A Work Management implementation conforms to this specification only when its so
 
 ## Source and authority
 
-This page projects `KIS-WORK-EVL-TST-001` version `1.0.0`. The MRD remains authoritative; this generated page has no write-back authority.
+This page projects `urn:uuid:68adde2d-be01-5184-8193-9ebb62f8d434` version `1.0.0`. The MRD remains authoritative; this generated page has no write-back authority.

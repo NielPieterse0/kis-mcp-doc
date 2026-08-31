@@ -5,342 +5,342 @@
       "id": "change_created",
       "kind": "delivery_stage",
       "page": "003-work-lifecycle.md",
-      "source_mrd": "KIS-WORK-WRK-STM-001"
+      "source_mrd": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"
     },
     {
       "anchor": "fact-delivery-stage-ci-failed",
       "id": "ci_failed",
       "kind": "delivery_stage",
       "page": "003-work-lifecycle.md",
-      "source_mrd": "KIS-WORK-WRK-STM-001"
+      "source_mrd": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"
     },
     {
       "anchor": "fact-delivery-stage-ci-passed",
       "id": "ci_passed",
       "kind": "delivery_stage",
       "page": "003-work-lifecycle.md",
-      "source_mrd": "KIS-WORK-WRK-STM-001"
+      "source_mrd": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"
     },
     {
       "anchor": "fact-delivery-stage-ci-pending",
       "id": "ci_pending",
       "kind": "delivery_stage",
       "page": "003-work-lifecycle.md",
-      "source_mrd": "KIS-WORK-WRK-STM-001"
+      "source_mrd": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"
     },
     {
       "anchor": "fact-delivery-stage-commissioning",
       "id": "commissioning",
       "kind": "delivery_stage",
       "page": "003-work-lifecycle.md",
-      "source_mrd": "KIS-WORK-WRK-STM-001"
+      "source_mrd": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"
     },
     {
       "anchor": "fact-delivery-stage-complete",
       "id": "complete",
       "kind": "delivery_stage",
       "page": "003-work-lifecycle.md",
-      "source_mrd": "KIS-WORK-WRK-STM-001"
+      "source_mrd": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"
     },
     {
       "anchor": "fact-delivery-stage-documentation",
       "id": "documentation",
       "kind": "delivery_stage",
       "page": "003-work-lifecycle.md",
-      "source_mrd": "KIS-WORK-WRK-STM-001"
+      "source_mrd": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"
     },
     {
       "anchor": "fact-delivery-stage-implementing",
       "id": "implementing",
       "kind": "delivery_stage",
       "page": "003-work-lifecycle.md",
-      "source_mrd": "KIS-WORK-WRK-STM-001"
+      "source_mrd": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"
     },
     {
       "anchor": "fact-delivery-stage-merged",
       "id": "merged",
       "kind": "delivery_stage",
       "page": "003-work-lifecycle.md",
-      "source_mrd": "KIS-WORK-WRK-STM-001"
+      "source_mrd": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"
     },
     {
       "anchor": "fact-delivery-stage-none",
       "id": "none",
       "kind": "delivery_stage",
       "page": "003-work-lifecycle.md",
-      "source_mrd": "KIS-WORK-WRK-STM-001"
+      "source_mrd": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"
     },
     {
       "anchor": "fact-delivery-stage-pr-open",
       "id": "pr_open",
       "kind": "delivery_stage",
       "page": "003-work-lifecycle.md",
-      "source_mrd": "KIS-WORK-WRK-STM-001"
+      "source_mrd": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"
     },
     {
       "anchor": "fact-delivery-stage-review",
       "id": "review",
       "kind": "delivery_stage",
       "page": "003-work-lifecycle.md",
-      "source_mrd": "KIS-WORK-WRK-STM-001"
+      "source_mrd": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"
     },
     {
       "anchor": "fact-field-authority-revision",
       "id": "authority_revision",
       "kind": "field",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-field-blocked-by",
       "id": "blocked_by",
       "kind": "field",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-field-change-id",
       "id": "change_id",
       "kind": "field",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-field-commissioning-key",
       "id": "commissioning_key",
       "kind": "field",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-field-complexity",
       "id": "complexity",
       "kind": "field",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-field-confidence",
       "id": "confidence",
       "kind": "field",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-field-created",
       "id": "created",
       "kind": "field",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-field-delivery-stage",
       "id": "delivery_stage",
       "kind": "field",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-field-disposition",
       "id": "disposition",
       "kind": "field",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-field-documentation-impact",
       "id": "documentation_impact",
       "kind": "field",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-field-effort",
       "id": "effort",
       "kind": "field",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-field-execution-owner",
       "id": "execution_owner",
       "kind": "field",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-field-external-link",
       "id": "external_link",
       "kind": "field",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-field-iteration",
       "id": "iteration",
       "kind": "field",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-field-live-verification",
       "id": "live_verification",
       "kind": "field",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-field-live-verification-evidence",
       "id": "live_verification_evidence",
       "kind": "field",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-field-module",
       "id": "module",
       "kind": "field",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-field-origin",
       "id": "origin",
       "kind": "field",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-field-priority",
       "id": "priority",
       "kind": "field",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-field-project-id",
       "id": "project_id",
       "kind": "field",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-field-record-type",
       "id": "record_type",
       "kind": "field",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-field-repository",
       "id": "repository",
       "kind": "field",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-field-review-trigger",
       "id": "review_trigger",
       "kind": "field",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-field-risk-triggers",
       "id": "risk_triggers",
       "kind": "field",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-field-severity",
       "id": "severity",
       "kind": "field",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-field-source-review",
       "id": "source_review",
       "kind": "field",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-field-status",
       "id": "status",
       "kind": "field",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-field-target-date",
       "id": "target_date",
       "kind": "field",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-field-verification",
       "id": "verification",
       "kind": "field",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
-      "anchor": "mrd-kis-work-con-pol-001",
-      "id": "KIS-WORK-CON-POL-001",
+      "anchor": "mrd-urn-uuid-0c96b519-06db-5616-95be-888c29f2da5c",
+      "id": "urn:uuid:0c96b519-06db-5616-95be-888c29f2da5c",
       "kind": "mrd",
-      "page": "006-authority-and-reconciliation-policy.md",
-      "source_mrd": "KIS-WORK-CON-POL-001",
+      "page": "005-next-work-selection.md",
+      "source_mrd": "urn:uuid:0c96b519-06db-5616-95be-888c29f2da5c",
       "source_version": "1.0.0"
     },
     {
-      "anchor": "mrd-kis-work-ctr-svc-001",
-      "id": "KIS-WORK-CTR-SVC-001",
+      "anchor": "mrd-urn-uuid-2f2b1233-37fe-580c-bc75-26a38e9aa7fe",
+      "id": "urn:uuid:2f2b1233-37fe-580c-bc75-26a38e9aa7fe",
       "kind": "mrd",
       "page": "007-provider-and-command-plane-boundary.md",
-      "source_mrd": "KIS-WORK-CTR-SVC-001",
+      "source_mrd": "urn:uuid:2f2b1233-37fe-580c-bc75-26a38e9aa7fe",
       "source_version": "1.0.1"
     },
     {
-      "anchor": "mrd-kis-work-dec-scr-001",
-      "id": "KIS-WORK-DEC-SCR-001",
-      "kind": "mrd",
-      "page": "005-next-work-selection.md",
-      "source_mrd": "KIS-WORK-DEC-SCR-001",
-      "source_version": "1.0.0"
-    },
-    {
-      "anchor": "mrd-kis-work-evl-tst-001",
-      "id": "KIS-WORK-EVL-TST-001",
-      "kind": "mrd",
-      "page": "008-work-management-conformance.md",
-      "source_mrd": "KIS-WORK-EVL-TST-001",
-      "source_version": "1.0.0"
-    },
-    {
-      "anchor": "mrd-kis-work-sem-reg-001",
-      "id": "KIS-WORK-SEM-REG-001",
-      "kind": "mrd",
-      "page": "002-work-management-domain-model.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001",
-      "source_version": "1.0.0"
-    },
-    {
-      "anchor": "mrd-kis-work-wrk-stm-001",
-      "id": "KIS-WORK-WRK-STM-001",
-      "kind": "mrd",
-      "page": "003-work-lifecycle.md",
-      "source_mrd": "KIS-WORK-WRK-STM-001",
-      "source_version": "1.0.0"
-    },
-    {
-      "anchor": "mrd-kis-work-wrk-wfl-001",
-      "id": "KIS-WORK-WRK-WFL-001",
+      "anchor": "mrd-urn-uuid-3bab4e5b-4c6d-5c21-811c-a7f6cb02ac93",
+      "id": "urn:uuid:3bab4e5b-4c6d-5c21-811c-a7f6cb02ac93",
       "kind": "mrd",
       "page": "004-work-operations.md",
-      "source_mrd": "KIS-WORK-WRK-WFL-001",
+      "source_mrd": "urn:uuid:3bab4e5b-4c6d-5c21-811c-a7f6cb02ac93",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "mrd-urn-uuid-68adde2d-be01-5184-8193-9ebb62f8d434",
+      "id": "urn:uuid:68adde2d-be01-5184-8193-9ebb62f8d434",
+      "kind": "mrd",
+      "page": "008-work-management-conformance.md",
+      "source_mrd": "urn:uuid:68adde2d-be01-5184-8193-9ebb62f8d434",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "mrd-urn-uuid-7f58b5b4-9808-5c06-bbed-75a8526685f3",
+      "id": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3",
+      "kind": "mrd",
+      "page": "003-work-lifecycle.md",
+      "source_mrd": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "mrd-urn-uuid-a0e914e6-64b0-561f-ad39-393287ce71c5",
+      "id": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5",
+      "kind": "mrd",
+      "page": "002-work-management-domain-model.md",
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5",
+      "source_version": "1.0.0"
+    },
+    {
+      "anchor": "mrd-urn-uuid-c589700c-9c38-5e30-be4c-659084060fa0",
+      "id": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0",
+      "kind": "mrd",
+      "page": "006-authority-and-reconciliation-policy.md",
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0",
       "source_version": "1.0.0"
     },
     {
@@ -348,1050 +348,1050 @@
       "id": "Authority Revision",
       "kind": "project_field",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-field-blocked-by",
       "id": "Blocked By",
       "kind": "project_field",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-field-change-id",
       "id": "Change ID",
       "kind": "project_field",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-field-commissioning-key",
       "id": "Commissioning Key",
       "kind": "project_field",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-field-complexity",
       "id": "Complexity",
       "kind": "project_field",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-field-confidence",
       "id": "Confidence",
       "kind": "project_field",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-field-delivery-stage",
       "id": "Delivery Stage",
       "kind": "project_field",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-field-disposition",
       "id": "Disposition",
       "kind": "project_field",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-field-documentation-impact",
       "id": "Documentation Impact",
       "kind": "project_field",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-field-effort",
       "id": "Effort",
       "kind": "project_field",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-field-execution-owner",
       "id": "Execution Owner",
       "kind": "project_field",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-field-external-link",
       "id": "External Link",
       "kind": "project_field",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-field-iteration",
       "id": "Iteration",
       "kind": "project_field",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-field-live-verification",
       "id": "Live Verification",
       "kind": "project_field",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-field-live-verification-evidence",
       "id": "Live Verification Evidence",
       "kind": "project_field",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-field-module",
       "id": "Module",
       "kind": "project_field",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-field-origin",
       "id": "Origin",
       "kind": "project_field",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-field-priority",
       "id": "Priority",
       "kind": "project_field",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-field-project-id",
       "id": "Project ID",
       "kind": "project_field",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-field-record-type",
       "id": "Record Type",
       "kind": "project_field",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-field-repository",
       "id": "Repository",
       "kind": "project_field",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-field-review-trigger",
       "id": "Review Trigger",
       "kind": "project_field",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-field-risk-triggers",
       "id": "Risk Triggers",
       "kind": "project_field",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-field-severity",
       "id": "Severity",
       "kind": "project_field",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-field-source-review",
       "id": "Source Review",
       "kind": "project_field",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-field-status",
       "id": "Status",
       "kind": "project_field",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-field-target-date",
       "id": "Target Date",
       "kind": "project_field",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-field-verification",
       "id": "Verification",
       "kind": "project_field",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-view-01-inbox",
       "id": "01 Inbox",
       "kind": "project_view",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-view-02-programme-table",
       "id": "02 Programme Table",
       "kind": "project_view",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-view-03-delivery-board",
       "id": "03 Delivery Board",
       "kind": "project_view",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-view-04-roadmap",
       "id": "04 Roadmap",
       "kind": "project_view",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-view-05-specification-slices",
       "id": "05 Specification Slices",
       "kind": "project_view",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-view-06-decisions",
       "id": "06 Decisions",
       "kind": "project_view",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-view-07-assumptions-and-risks",
       "id": "07 Assumptions and Risks",
       "kind": "project_view",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-view-08-holds-and-deferred",
       "id": "08 Holds and Deferred",
       "kind": "project_view",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-view-09-reviews-and-findings",
       "id": "09 Reviews and Findings",
       "kind": "project_view",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-view-10-verification",
       "id": "10 Verification",
       "kind": "project_view",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-view-11-documentation-and-closeout",
       "id": "11 Documentation and Closeout",
       "kind": "project_view",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-project-view-12-completed",
       "id": "12 Completed",
       "kind": "project_view",
       "page": "021-work-project-configuration-reference.md",
-      "source_mrd": "KIS-WORK-CON-POL-001"
+      "source_mrd": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
     },
     {
       "anchor": "fact-selection-rule-sel-001",
       "id": "SEL-001",
       "kind": "selection_rule",
       "page": "005-next-work-selection.md",
-      "source_mrd": "KIS-WORK-DEC-SCR-001"
+      "source_mrd": "urn:uuid:0c96b519-06db-5616-95be-888c29f2da5c"
     },
     {
       "anchor": "fact-selection-rule-sel-002",
       "id": "SEL-002",
       "kind": "selection_rule",
       "page": "005-next-work-selection.md",
-      "source_mrd": "KIS-WORK-DEC-SCR-001"
+      "source_mrd": "urn:uuid:0c96b519-06db-5616-95be-888c29f2da5c"
     },
     {
       "anchor": "fact-selection-rule-sel-003",
       "id": "SEL-003",
       "kind": "selection_rule",
       "page": "005-next-work-selection.md",
-      "source_mrd": "KIS-WORK-DEC-SCR-001"
+      "source_mrd": "urn:uuid:0c96b519-06db-5616-95be-888c29f2da5c"
     },
     {
       "anchor": "fact-selection-rule-sel-004",
       "id": "SEL-004",
       "kind": "selection_rule",
       "page": "005-next-work-selection.md",
-      "source_mrd": "KIS-WORK-DEC-SCR-001"
+      "source_mrd": "urn:uuid:0c96b519-06db-5616-95be-888c29f2da5c"
     },
     {
       "anchor": "fact-selection-rule-sel-005",
       "id": "SEL-005",
       "kind": "selection_rule",
       "page": "005-next-work-selection.md",
-      "source_mrd": "KIS-WORK-DEC-SCR-001"
+      "source_mrd": "urn:uuid:0c96b519-06db-5616-95be-888c29f2da5c"
     },
     {
       "anchor": "fact-selection-rule-sel-006",
       "id": "SEL-006",
       "kind": "selection_rule",
       "page": "005-next-work-selection.md",
-      "source_mrd": "KIS-WORK-DEC-SCR-001"
+      "source_mrd": "urn:uuid:0c96b519-06db-5616-95be-888c29f2da5c"
     },
     {
       "anchor": "fact-selection-rule-sel-007",
       "id": "SEL-007",
       "kind": "selection_rule",
       "page": "005-next-work-selection.md",
-      "source_mrd": "KIS-WORK-DEC-SCR-001"
+      "source_mrd": "urn:uuid:0c96b519-06db-5616-95be-888c29f2da5c"
     },
     {
       "anchor": "fact-selection-rule-sel-008",
       "id": "SEL-008",
       "kind": "selection_rule",
       "page": "005-next-work-selection.md",
-      "source_mrd": "KIS-WORK-DEC-SCR-001"
+      "source_mrd": "urn:uuid:0c96b519-06db-5616-95be-888c29f2da5c"
     },
     {
       "anchor": "fact-selection-rule-sel-009",
       "id": "SEL-009",
       "kind": "selection_rule",
       "page": "005-next-work-selection.md",
-      "source_mrd": "KIS-WORK-DEC-SCR-001"
+      "source_mrd": "urn:uuid:0c96b519-06db-5616-95be-888c29f2da5c"
     },
     {
       "anchor": "fact-selection-rule-sel-010",
       "id": "SEL-010",
       "kind": "selection_rule",
       "page": "005-next-work-selection.md",
-      "source_mrd": "KIS-WORK-DEC-SCR-001"
+      "source_mrd": "urn:uuid:0c96b519-06db-5616-95be-888c29f2da5c"
     },
     {
       "anchor": "fact-selection-rule-sel-011",
       "id": "SEL-011",
       "kind": "selection_rule",
       "page": "005-next-work-selection.md",
-      "source_mrd": "KIS-WORK-DEC-SCR-001"
+      "source_mrd": "urn:uuid:0c96b519-06db-5616-95be-888c29f2da5c"
     },
     {
       "anchor": "fact-selection-rule-sel-012",
       "id": "SEL-012",
       "kind": "selection_rule",
       "page": "005-next-work-selection.md",
-      "source_mrd": "KIS-WORK-DEC-SCR-001"
+      "source_mrd": "urn:uuid:0c96b519-06db-5616-95be-888c29f2da5c"
     },
     {
       "anchor": "fact-vocabulary-complexity-large",
       "id": "complexity:large",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-complexity-medium",
       "id": "complexity:medium",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-complexity-small",
       "id": "complexity:small",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-confidence-high",
       "id": "confidence:high",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-confidence-low",
       "id": "confidence:low",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-confidence-medium",
       "id": "confidence:medium",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-delivery-stage-change-created",
       "id": "delivery_stage:change_created",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-delivery-stage-ci-failed",
       "id": "delivery_stage:ci_failed",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-delivery-stage-ci-passed",
       "id": "delivery_stage:ci_passed",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-delivery-stage-ci-pending",
       "id": "delivery_stage:ci_pending",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-delivery-stage-commissioning",
       "id": "delivery_stage:commissioning",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-delivery-stage-complete",
       "id": "delivery_stage:complete",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-delivery-stage-documentation",
       "id": "delivery_stage:documentation",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-delivery-stage-implementing",
       "id": "delivery_stage:implementing",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-delivery-stage-merged",
       "id": "delivery_stage:merged",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-delivery-stage-none",
       "id": "delivery_stage:none",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-delivery-stage-pr-open",
       "id": "delivery_stage:pr_open",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-delivery-stage-review",
       "id": "delivery_stage:review",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-disposition-accepted",
       "id": "disposition:accepted",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-disposition-deferred",
       "id": "disposition:deferred",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-disposition-mitigated",
       "id": "disposition:mitigated",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-disposition-open",
       "id": "disposition:open",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-disposition-rejected",
       "id": "disposition:rejected",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-disposition-superseded",
       "id": "disposition:superseded",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-documentation-impact-in-progress",
       "id": "documentation_impact:in_progress",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-documentation-impact-none",
       "id": "documentation_impact:none",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-documentation-impact-not-assessed",
       "id": "documentation_impact:not_assessed",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-documentation-impact-planned",
       "id": "documentation_impact:planned",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-documentation-impact-post-merge-complete",
       "id": "documentation_impact:post_merge_complete",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-documentation-impact-pre-merge-complete",
       "id": "documentation_impact:pre_merge_complete",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-effort-large",
       "id": "effort:large",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-effort-medium",
       "id": "effort:medium",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-effort-small",
       "id": "effort:small",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-effort-tiny",
       "id": "effort:tiny",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-live-verification-blocked",
       "id": "live_verification:blocked",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-live-verification-failed",
       "id": "live_verification:failed",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-live-verification-not-assessed",
       "id": "live_verification:not_assessed",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-live-verification-not-required",
       "id": "live_verification:not_required",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-live-verification-passed",
       "id": "live_verification:passed",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-live-verification-pending",
       "id": "live_verification:pending",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-origin-implementation",
       "id": "origin:implementation",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-origin-operator",
       "id": "origin:operator",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-origin-research",
       "id": "origin:research",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-origin-review",
       "id": "origin:review",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-origin-verification",
       "id": "origin:verification",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-priority-critical",
       "id": "priority:critical",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-priority-high",
       "id": "priority:high",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-priority-low",
       "id": "priority:low",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-priority-medium",
       "id": "priority:medium",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-record-type-approval",
       "id": "record_type:approval",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-record-type-assumption",
       "id": "record_type:assumption",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-record-type-decision",
       "id": "record_type:decision",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-record-type-defect",
       "id": "record_type:defect",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-record-type-finding",
       "id": "record_type:finding",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-record-type-hold",
       "id": "record_type:hold",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-record-type-idea",
       "id": "record_type:idea",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-record-type-research",
       "id": "record_type:research",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-record-type-review-run",
       "id": "record_type:review_run",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-record-type-risk",
       "id": "record_type:risk",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-record-type-security-finding",
       "id": "record_type:security_finding",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-record-type-specification-slice",
       "id": "record_type:specification_slice",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-record-type-task",
       "id": "record_type:task",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-severity-critical",
       "id": "severity:critical",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-severity-high",
       "id": "severity:high",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-severity-low",
       "id": "severity:low",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-severity-medium",
       "id": "severity:medium",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-status-active",
       "id": "status:active",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-status-approved",
       "id": "status:approved",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-status-blocked",
       "id": "status:blocked",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-status-deferred",
       "id": "status:deferred",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-status-done",
       "id": "status:done",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-status-inbox",
       "id": "status:inbox",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-status-on-hold",
       "id": "status:on_hold",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-status-proposed",
       "id": "status:proposed",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-status-ready",
       "id": "status:ready",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-status-rejected",
       "id": "status:rejected",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-status-superseded",
       "id": "status:superseded",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-status-triage",
       "id": "status:triage",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-verification-blocked",
       "id": "verification:blocked",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-verification-failed",
       "id": "verification:failed",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-verification-not-run",
       "id": "verification:not_run",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-verification-passed",
       "id": "verification:passed",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-vocabulary-verification-pending",
       "id": "verification:pending",
       "kind": "vocabulary_value",
       "page": "020-work-field-and-vocabulary-reference.md",
-      "source_mrd": "KIS-WORK-SEM-REG-001"
+      "source_mrd": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
     },
     {
       "anchor": "fact-work-state-active",
       "id": "active",
       "kind": "work_state",
       "page": "003-work-lifecycle.md",
-      "source_mrd": "KIS-WORK-WRK-STM-001"
+      "source_mrd": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"
     },
     {
       "anchor": "fact-work-state-approved",
       "id": "approved",
       "kind": "work_state",
       "page": "003-work-lifecycle.md",
-      "source_mrd": "KIS-WORK-WRK-STM-001"
+      "source_mrd": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"
     },
     {
       "anchor": "fact-work-state-blocked",
       "id": "blocked",
       "kind": "work_state",
       "page": "003-work-lifecycle.md",
-      "source_mrd": "KIS-WORK-WRK-STM-001"
+      "source_mrd": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"
     },
     {
       "anchor": "fact-work-state-deferred",
       "id": "deferred",
       "kind": "work_state",
       "page": "003-work-lifecycle.md",
-      "source_mrd": "KIS-WORK-WRK-STM-001"
+      "source_mrd": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"
     },
     {
       "anchor": "fact-work-state-documentation",
       "id": "documentation",
       "kind": "work_state",
       "page": "003-work-lifecycle.md",
-      "source_mrd": "KIS-WORK-WRK-STM-001"
+      "source_mrd": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"
     },
     {
       "anchor": "fact-work-state-done",
       "id": "done",
       "kind": "work_state",
       "page": "003-work-lifecycle.md",
-      "source_mrd": "KIS-WORK-WRK-STM-001"
+      "source_mrd": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"
     },
     {
       "anchor": "fact-work-state-inbox",
       "id": "inbox",
       "kind": "work_state",
       "page": "003-work-lifecycle.md",
-      "source_mrd": "KIS-WORK-WRK-STM-001"
+      "source_mrd": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"
     },
     {
       "anchor": "fact-work-state-on-hold",
       "id": "on_hold",
       "kind": "work_state",
       "page": "003-work-lifecycle.md",
-      "source_mrd": "KIS-WORK-WRK-STM-001"
+      "source_mrd": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"
     },
     {
       "anchor": "fact-work-state-proposed",
       "id": "proposed",
       "kind": "work_state",
       "page": "003-work-lifecycle.md",
-      "source_mrd": "KIS-WORK-WRK-STM-001"
+      "source_mrd": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"
     },
     {
       "anchor": "fact-work-state-ready",
       "id": "ready",
       "kind": "work_state",
       "page": "003-work-lifecycle.md",
-      "source_mrd": "KIS-WORK-WRK-STM-001"
+      "source_mrd": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"
     },
     {
       "anchor": "fact-work-state-rejected",
       "id": "rejected",
       "kind": "work_state",
       "page": "003-work-lifecycle.md",
-      "source_mrd": "KIS-WORK-WRK-STM-001"
+      "source_mrd": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"
     },
     {
       "anchor": "fact-work-state-review",
       "id": "review",
       "kind": "work_state",
       "page": "003-work-lifecycle.md",
-      "source_mrd": "KIS-WORK-WRK-STM-001"
+      "source_mrd": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"
     },
     {
       "anchor": "fact-work-state-superseded",
       "id": "superseded",
       "kind": "work_state",
       "page": "003-work-lifecycle.md",
-      "source_mrd": "KIS-WORK-WRK-STM-001"
+      "source_mrd": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"
     },
     {
       "anchor": "fact-work-state-triage",
       "id": "triage",
       "kind": "work_state",
       "page": "003-work-lifecycle.md",
-      "source_mrd": "KIS-WORK-WRK-STM-001"
+      "source_mrd": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"
     },
     {
       "anchor": "fact-work-state-verification",
       "id": "verification",
       "kind": "work_state",
       "page": "003-work-lifecycle.md",
-      "source_mrd": "KIS-WORK-WRK-STM-001"
+      "source_mrd": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"
     }
   ],
   "family": "work-management-spec",

@@ -1,0 +1,41 @@
+{
+  "output_class": "human_documentation",
+  "topics": [
+    {
+      "page": "002-classify-and-select.md",
+      "source_mrds": [
+        "urn:uuid:8cf956d6-521a-5515-8ce1-d48ab5855617",
+        "urn:uuid:6673613f-70e0-5004-aba9-103da53e5040"
+      ]
+    },
+    {
+      "page": "003-authority-and-relationships.md",
+      "source_mrds": [
+        "urn:uuid:9a543068-203b-5a7a-8cdb-805517ca3487",
+        "urn:uuid:7eab1930-3cdf-58ee-8a6e-9d9519a17fba",
+        "urn:uuid:8a9346a9-0c83-5fa4-a91d-2de6ca3d57a9"
+      ]
+    },
+    {
+      "page": "004-provenance-and-lifecycle.md",
+      "source_mrds": [
+        "urn:uuid:a1d99a79-5c7c-56b4-9fda-6c56f54e7ee8",
+        "urn:uuid:ddc10bf4-e6ea-5b3a-958e-464af2fa9fd1"
+      ]
+    },
+    {
+      "page": "005-conformance.md",
+      "source_mrds": [
+        "urn:uuid:361b074c-ddf6-5dcf-9031-dbb4ed306abf"
+      ]
+    },
+    {
+      "page": "006-examples.md",
+      "source_mrds": [
+        "urn:uuid:8cf956d6-521a-5515-8ce1-d48ab5855617",
+        "urn:uuid:a1d99a79-5c7c-56b4-9fda-6c56f54e7ee8",
+        "urn:uuid:361b074c-ddf6-5dcf-9031-dbb4ed306abf"
+      ]
+    }
+  ]
+}

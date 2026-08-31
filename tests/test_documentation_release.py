@@ -62,10 +62,10 @@ def test_site_uses_github_pages_base_path(tmp_path: Path) -> None:
     output = tmp_path / "site"
     build_documentation_site(ROOT, output)
     home = (output / "index.html").read_text(encoding="utf-8")
-    docs = (output / "docs/governance/index.html").read_text(encoding="utf-8")
+    docs = (output / "docs/mrd-specification/index.html").read_text(encoding="utf-8")
     script = (output / "assets/search.js").read_text(encoding="utf-8")
     assert 'href="/kis-mcp-doc/docs/"' in home
-    assert 'href="/kis-mcp-doc/specification/governance/001-specification/"' in docs
+    assert 'href="/kis-mcp-doc/specification/mrd-specification/001-specification/"' in docs
     assert 'const B="/kis-mcp-doc"' in script
 
 

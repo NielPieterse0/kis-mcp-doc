@@ -1,0 +1,97 @@
+{
+  "_mrd_projection": {
+    "class": "META",
+    "record_mode": "meta",
+    "type": "IDX"
+  },
+  "records": [
+    {
+      "class": "EVL",
+      "id": "urn:uuid:361b074c-ddf6-5dcf-9031-dbb4ed306abf",
+      "layer": "L4",
+      "path": "prescriptives/mrd-specification/06-validation.mrd.json",
+      "record_mode": "prescriptive",
+      "sha256": "fc1c329337d002402292762179a693ba0146d79a06f15196411853827427e327",
+      "status": "active",
+      "type": "TST",
+      "version": "2.0.0"
+    },
+    {
+      "class": "DEC",
+      "id": "urn:uuid:6673613f-70e0-5004-aba9-103da53e5040",
+      "layer": "L2",
+      "path": "prescriptives/mrd-specification/07-applicability.mrd.json",
+      "record_mode": "prescriptive",
+      "sha256": "103a9eea15e5fc1a2d01c60e62ea8f7c755b052c79d3eff05b4787ba5c9303bd",
+      "status": "active",
+      "type": "TAB",
+      "version": "1.0.0"
+    },
+    {
+      "class": "CON",
+      "id": "urn:uuid:7eab1930-3cdf-58ee-8a6e-9d9519a17fba",
+      "layer": "L1",
+      "path": "prescriptives/mrd-specification/03-dependencies.mrd.json",
+      "record_mode": "prescriptive",
+      "sha256": "95f726547b3085fd546a401065821dd5c1f43ad426d08f6035cfd9469aae0603",
+      "status": "active",
+      "type": "CTR",
+      "version": "1.0.0"
+    },
+    {
+      "class": "SEM",
+      "id": "urn:uuid:8a9346a9-0c83-5fa4-a91d-2de6ca3d57a9",
+      "layer": "L0",
+      "path": "prescriptives/mrd-specification/02-layering.mrd.json",
+      "record_mode": "prescriptive",
+      "sha256": "12d60810dc02408b16568aa412fb3bd37314144abad1b8bea47f77ec1c5abda9",
+      "status": "active",
+      "type": "ENUM",
+      "version": "1.0.0"
+    },
+    {
+      "class": "SEM",
+      "id": "urn:uuid:8cf956d6-521a-5515-8ce1-d48ab5855617",
+      "layer": "L0",
+      "path": "prescriptives/mrd-specification/01-classification.mrd.json",
+      "record_mode": "prescriptive",
+      "sha256": "89b8c68739fea9e28fbd221fceef6cca05b18e3d180b70f5d80558e6fcd5f06c",
+      "status": "active",
+      "type": "REG",
+      "version": "1.0.0"
+    },
+    {
+      "class": "CON",
+      "id": "urn:uuid:9a543068-203b-5a7a-8cdb-805517ca3487",
+      "layer": "L1",
+      "path": "prescriptives/mrd-specification/08-ownership.mrd.json",
+      "record_mode": "prescriptive",
+      "sha256": "14724b1703435fbc5ead2d74417b0a6d57c7713b4ad3d10cef805828c999a5cc",
+      "status": "active",
+      "type": "POL",
+      "version": "1.0.0"
+    },
+    {
+      "class": "CON",
+      "id": "urn:uuid:a1d99a79-5c7c-56b4-9fda-6c56f54e7ee8",
+      "layer": "L1",
+      "path": "prescriptives/mrd-specification/04-provenance.mrd.json",
+      "record_mode": "prescriptive",
+      "sha256": "076b602c2cdffd178548b2b1b7e217a3057babf617ffa8c0eebdb98278b9eb6c",
+      "status": "active",
+      "type": "POL",
+      "version": "1.0.0"
+    },
+    {
+      "class": "WRK",
+      "id": "urn:uuid:ddc10bf4-e6ea-5b3a-958e-464af2fa9fd1",
+      "layer": "L2",
+      "path": "prescriptives/mrd-specification/05-lifecycle.mrd.json",
+      "record_mode": "prescriptive",
+      "sha256": "3abdeb79e9d2e3c4ef0af1a66b333325769c676af0615bfd9723711c77cf8074",
+      "status": "active",
+      "type": "STM",
+      "version": "1.0.0"
+    }
+  ]
+}

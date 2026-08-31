@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Any
 
 from .canonical import canonical_hash
+from .repository_governance import RepositoryGovernanceRepository, enforcement_projection
 from .publication_kernel import (
     bundle_manifest_fields,
     exact_bundle_diagnostics,
@@ -15,6 +16,7 @@ from .publication_kernel import (
 
 _POLICY = "prescriptives/documentation/05-repository-human-bundle.mrd.json"
 _REGISTRY = "prescriptives/documentation/04-publication-family-registry.mrd.json"
+_GOVERNANCE_REGISTRY = "prescriptives/governance/02-prescriptive-artefact-registry.json"
 _CONFIG = "publication/repository-docs.json"
 _GENERATOR = "src/kis_mcp_doc/repository_docs.py"
 _OUTPUT_CLASS = "human_documentation"
@@ -226,6 +228,8 @@ def _publication_relationships(root: Path, records: dict[str, dict[str, Any]]) -
                 "baseline_release_identity": None,
                 "owner": family.get("semantic_owner"),
                 "authority": "generated_projection",
+                "semantic_role": "derived_generated",
+                "governance_slot": "generated",
                 "governing_artefact": _REGISTRY,
                 "provenance": {"kind": "publication_registry_declaration", "observed": True},
                 "sources": [config, _REGISTRY],
@@ -249,13 +253,40 @@ def _publication_relationships(root: Path, records: dict[str, dict[str, Any]]) -
     return relations, generated
 
 
+def _governance_registry_relationships(root: Path, records: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
+    registry = _load_json(root / _GOVERNANCE_REGISTRY)
+    relations: list[dict[str, Any]] = []
+    for entry in registry.get("entries", []):
+        source = entry.get("canonical_path")
+        if source not in records:
+            continue
+        for relationship_type, targets in entry.get("relationships", {}).items():
+            for target in targets:
+                if target in records:
+                    relations.append({
+                        "source": source,
+                        "target": target,
+                        "type": relationship_type,
+                        "intent": "governed_repository_relationship",
+                        "evidence": _GOVERNANCE_REGISTRY,
+                        "fact_quality": "declared",
+                    })
+    return relations
+
+
 def repository_model(root: Path) -> dict[str, Any]:
     root = Path(root).resolve()
     records = {
         path.relative_to(root).as_posix(): _artifact_record(root, path)
         for path in _repository_sources(root)
     }
+    governance_repository = RepositoryGovernanceRepository(root)
+    for relative, record in records.items():
+        slots = governance_repository.slot_matches(relative)
+        record["semantic_role"] = governance_repository.role_for(relative)
+        record["governance_slot"] = slots[0]["slot_id"] if len(slots) == 1 else None
     relations = _mrd_relationships(root, records)
+    relations.extend(_governance_registry_relationships(root, records))
     publication_relations, generated = _publication_relationships(root, records)
     relations.extend(publication_relations)
     for relative, record in records.items():
@@ -313,6 +344,10 @@ def _pages(root: Path, config: dict[str, Any], model: dict[str, Any]) -> dict[st
         "- [Verification and operations](004-verification-and-operations.md)",
         "- [Artefact metadata and relationships](005-artefact-metadata-and-relationships.md)",
         "- [Coverage and freshness](006-coverage-and-freshness.md)",
+        "- [Repository Governance](007-repository-governance.md)",
+        "- [Directory Grammar](008-directory-grammar.md)",
+        "- [Rule assurance and enforcement](009-rule-assurance-and-enforcement.md)",
+        "- [Prescriptive coverage](010-prescriptive-coverage.md)",
     ]
     authority = _header("Architecture and authority", "Understand where repository truth lives and how generated documentation relates to it.")
     authority += [
@@ -397,6 +432,62 @@ def _pages(root: Path, config: dict[str, Any], model: dict[str, Any]) -> dict[st
         "",
         "Historical `.work` records, temporary/runtime state, virtual environments, caches, and generated outputs are not re-ingested as current repository source authority. Work Management remains a separate publication family.",
     ]
+    governance_source = _load_json(root / "prescriptives/governance/01-repository-governance.json")
+    grammar_source = _load_json(root / "prescriptives/governance/03-directory-grammar.json")
+    prescriptive_registry = _load_json(root / "prescriptives/governance/02-prescriptive-artefact-registry.json")
+    governance_page = _header("Repository Governance", "Canonical repository-wide authority is projected here without write-back authority.")
+    governance_page += [
+        "Repository Governance is distinct from the MRD Specification. Governance controls repository-wide authority, ownership, placement, assurance, evidence precedence, change application, and verification policy; the MRD Specification defines what a conforming MRD is.", "",
+        "## Governed construct vocabulary", "", "| Construct | Normative | Meaning |", "|---|---|---|",
+    ]
+    for item in governance_source["governed_vocabulary"]["constructs"]:
+        governance_page.append(f"| `{item['name']}` | {'Yes' if item['normative'] else 'No'} | {item['meaning']} |")
+    governance_page += ["", "## Relationship law", "", "| Relationship | From | To | Authority effect |", "|---|---|---|---|"]
+    for item in governance_source["governed_vocabulary"]["relationships"]:
+        governance_page.append(f"| `{item['name']}` | {', '.join(item['from'])} | {', '.join(item['to'])} | `{item['authority_effect']}` |")
+    governance_page += ["", "## Conformance evidence precedence", "", "Normative ownership and observed implementation state are separate planes. Lower-precedence evidence cannot override fresher higher-precedence conformance evidence.", "", "| Rank | Evidence class | Examples |", "|---:|---|---|"]
+    for item in governance_source["evidence_model"]["conformance_evidence_precedence"]:
+        governance_page.append(f"| {item['rank']} | `{item['class']}` | {', '.join(item['examples'])} |")
+    governance_page += ["", "## Validation policy", "", governance_source["validation_policy"]["review_policy"], "", "Validation order: " + " -> ".join(f"`{x}`" for x in governance_source["validation_policy"]["order"]) + ".", ""]
+    governance_page += ["## Governed rules", "", "| Rule | Scope | Origin | Method | Failure code |", "|---|---|---|---|---|"]
+    for rule in governance_source["rules"]:
+        governance_page.append(f"| `{rule['rule_id']}` | {', '.join(rule['scope']['applies_to'])} | `{rule['rationale']['origin']['id']}` | `{rule['verification']['method']}` | `{rule['verification']['failure_code']}` |")
+    governance_page.append("")
+
+    grammar_page = _header("Repository Structure Definition and Directory Grammar", "This generated structure definition projects the canonical Directory Grammar. Every persistent governed artefact has exactly one legal slot; unknown or ambiguous placement fails closed.")
+    grammar_page += [grammar_source["placement_law"], "", "## Slot contracts", "", "| Slot | Patterns | Purpose | Permitted / prohibited types | Roles | Authority | Relationships | Editability / lifecycle | Verification | Origin |", "|---|---|---|---|---|---|---|---|---|---|"]
+    for slot in grammar_source["slots"]:
+        authority_text = ", ".join(f"{k}={v}" for k, v in sorted(slot["authority_constraints"].items()))
+        grammar_page.append(
+            f"| `{slot['slot_id']}` | {'; '.join(f'`{x}`' for x in slot['patterns'])} | {slot['purpose']} | "
+            f"{', '.join(slot['permitted_artefact_types'])} / {', '.join(slot['prohibited_artefact_types']) or 'none'} | "
+            f"{', '.join(slot['allowed_semantic_roles'])} | {authority_text} | {', '.join(slot['allowed_relationships'])} | "
+            f"`{slot['editability']}` / `{slot['lifecycle']}` / `{slot['retention']}` | `{slot['verification']['entry_point']}` | `{slot['origin']['id']}` |"
+        )
+    grammar_page += ["", "## Relationship contracts", "", "| Registry key | Semantic relationship | Direction | Source roles | Target roles |", "|---|---|---|---|---|"]
+    for relationship in grammar_source.get("relationship_contracts", []):
+        grammar_page.append(
+            f"| `{relationship['registry_key']}` | `{relationship['semantic_relationship']}` | `{relationship['direction']}` | "
+            f"{', '.join(f'`{role}`' for role in relationship['source_roles'])} | {', '.join(f'`{role}`' for role in relationship['target_roles'])} |"
+        )
+    grammar_page += ["", "## Reserved workspace", "", "`.work` is disposable/non-product authority. It is not published, cannot be required as product input, and cannot be promoted into persistent product structure without amending the Directory Grammar first.", ""]
+
+    assurance_page = _header("Rule assurance and enforcement", "Every mandatory Repository Governance rule closes the loop from authority through implementation, verification, fixture, evidence, and residual review where justified.")
+    assurance_page += ["| Rule | Implementation | Validator / execution | Negative fixture | Evidence | Residual review |", "|---|---|---|---|---|---|"]
+    for rule in governance_source["rules"]:
+        v = rule["verification"]; residual = v["residual_review"]
+        review = "None" if residual is None else f"{residual['reviewer_capability']}: {residual['bounded_question']} — {residual['justification']}"
+        assurance_page.append(f"| `{rule['rule_id']}` | {', '.join(x['artifact'] + '::' + x['control'] for x in rule['implementation'])} | `{v['validator']}` via `{v['execution_point']}` | `{v['negative_fixture']}` | `{rule['evidence']['location']}` at `{rule['evidence']['evaluated_revision']}` | {review} |")
+    assurance_page += ["", "The machine-readable [enforcement register](data/enforcement-register.json) is generated from the canonical rules above. It is not independently authored authority.", ""]
+
+    coverage_page = _header("Prescriptive coverage", "Every registered prescriptive artefact has a governed human-projection disposition.")
+    coverage_page += ["| Identity | Canonical path | Owner | Projection disposition | Projection route |", "|---|---|---|---|---|"]
+    for entry in prescriptive_registry["entries"]:
+        projection = entry["human_projection"]
+        route = projection.get("location") or projection.get("reason", "")
+        coverage_page.append(f"| `{entry['identity']}` | `{entry['canonical_path']}` | `{entry['authoritative_owner']}` | `{projection['disposition']}` | `{route}` |")
+    coverage_page.append("")
+
     return {
         "000-index.md": ("\n".join(index) + "\n").encode("utf-8"),
         "001-architecture-and-authority.md": ("\n".join(authority) + "\n").encode("utf-8"),
@@ -405,6 +496,10 @@ def _pages(root: Path, config: dict[str, Any], model: dict[str, Any]) -> dict[st
         "004-verification-and-operations.md": ("\n".join(verification) + "\n").encode("utf-8"),
         "005-artefact-metadata-and-relationships.md": ("\n".join(metadata) + "\n").encode("utf-8"),
         "006-coverage-and-freshness.md": ("\n".join(freshness) + "\n").encode("utf-8"),
+        "007-repository-governance.md": ("\n".join(governance_page) + "\n").encode("utf-8"),
+        "008-directory-grammar.md": ("\n".join(grammar_page) + "\n").encode("utf-8"),
+        "009-rule-assurance-and-enforcement.md": ("\n".join(assurance_page) + "\n").encode("utf-8"),
+        "010-prescriptive-coverage.md": ("\n".join(coverage_page) + "\n").encode("utf-8"),
     }
 
 
@@ -441,6 +536,13 @@ def _expected_bundle(root: Path, family: dict[str, Any]) -> tuple[dict[str, byte
         "excluded_source_classes": ["historical_change_records", "runtime_state", "generated_outputs", "work_management_human_consolidation"],
     }
     files["data/coverage-report.json"] = _json_bytes(coverage)
+    governance_source = _load_json(root / "prescriptives/governance/01-repository-governance.json")
+    grammar_source = _load_json(root / "prescriptives/governance/03-directory-grammar.json")
+    prescriptive_registry = _load_json(root / "prescriptives/governance/02-prescriptive-artefact-registry.json")
+    files["data/governance-rules.json"] = _json_bytes({"schema_version": 1, "authority": "derived_non_authoritative", "generated_from": "prescriptives/governance/01-repository-governance.json", "rules": governance_source["rules"]})
+    files["data/enforcement-register.json"] = _json_bytes(enforcement_projection(governance_source))
+    files["data/directory-grammar.json"] = _json_bytes({"schema_version": 1, "authority": "derived_non_authoritative", "generated_from": "prescriptives/governance/03-directory-grammar.json", "slots": grammar_source["slots"], "placement_law": grammar_source["placement_law"]})
+    files["data/prescriptive-coverage.json"] = _json_bytes({"schema_version": 1, "authority": "derived_non_authoritative", "generated_from": "prescriptives/governance/02-prescriptive-artefact-registry.json", "entries": [{"identity": x["identity"], "canonical_path": x["canonical_path"], "authoritative_owner": x["authoritative_owner"], "human_projection": x["human_projection"]} for x in prescriptive_registry["entries"]]})
     manifest = {
         "contract": {"name": "kis-repository-human-documentation", "version": 1},
         "family_id": family["id"],
@@ -458,8 +560,8 @@ def _expected_bundle(root: Path, family: dict[str, Any]) -> tuple[dict[str, byte
 def validate_repository_docs(root: Path, family: dict[str, Any]) -> dict[str, Any]:
     try:
         policy = _load_json(Path(root) / _POLICY)
-        if policy.get("_mrd", {}).get("id") != "KIS-DOC-CON-POL-003":
-            raise ValueError("repository human bundle policy must be KIS-DOC-CON-POL-003")
+        if policy.get("_mrd", {}).get("id") != "urn:uuid:0e84ae43-f74a-5065-a5e2-b21e105376b8":
+            raise ValueError("repository human bundle policy must be urn:uuid:0e84ae43-f74a-5065-a5e2-b21e105376b8")
         _expected_bundle(Path(root), family)
     except (KeyError, OSError, ValueError, json.JSONDecodeError) as error:
         return {"status": "invalid", "diagnostics": [{"code": "REPOSITORY_DOCUMENTATION_INVALID", "message": str(error)}]}

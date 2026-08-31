@@ -38,7 +38,7 @@
       ]
     },
     "source_glob": {
-      "const": "prescriptives/governance/*.mrd.json"
+      "const": "prescriptives/mrd-specification/*.mrd.json"
     },
     "output_file": {
       "const": "specification.md"

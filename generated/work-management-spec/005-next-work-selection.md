@@ -5,7 +5,7 @@
 
 [Previous: Work operations](004-work-operations.md) | [Next: Authority and reconciliation policy](006-authority-and-reconciliation-policy.md) | [Index](000-index.md)
 
-<span id="mrd-kis-work-dec-scr-001"></span>
+<span id="mrd-urn-uuid-0c96b519-06db-5616-95be-888c29f2da5c"></span>
 
 Selection is deterministic. Work Management first applies the eligibility rules for the active profile, then ranks only the candidates that remain.
 
@@ -58,4 +58,4 @@ Profiles reuse the same rule catalog but apply different subsets and preserve pr
 
 ## Source and authority
 
-This page projects `KIS-WORK-DEC-SCR-001` version `1.0.0`. The MRD remains authoritative; this generated page has no write-back authority.
+This page projects `urn:uuid:0c96b519-06db-5616-95be-888c29f2da5c` version `1.0.0`. The MRD remains authoritative; this generated page has no write-back authority.

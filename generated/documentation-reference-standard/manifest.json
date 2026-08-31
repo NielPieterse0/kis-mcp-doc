@@ -1,5 +1,5 @@
 {
-  "bundle_sha256": "8c8a3376ec0c220e32ad067740fe684c19a1ac1523e2a3d60fba621f82f69220",
+  "bundle_sha256": "9d37caa8a70d2d8f23b2ba7af22a842db806c50c8b4605a1fa6c4963dda97e79",
   "contract": {
     "name": "documentation-reference-standard-build",
     "version": 1
@@ -11,9 +11,9 @@
       "sha256": "73c7320926d381dd89a99a55eaeb9b92617a49da32e406359c2db468fbdd28ee"
     },
     {
-      "bytes": 4298,
+      "bytes": 4350,
       "path": "001-specification.md",
-      "sha256": "90d2d8b22199c340ca403154db30a182a84f61963f394e9724bc4896b736170c"
+      "sha256": "c66dbc2af076b54e0a1f5b2ab289f62c1dcca7a0b2cad8deee88e46c4e65f24c"
     },
     {
       "bytes": 2573,
@@ -26,17 +26,17 @@
       "sha256": "0daffac7e07d744a752affde559c65708568fd2ce6fc95d7672185717145d3cc"
     }
   ],
-  "input_set_sha256": "dd2c5ede98bb1c17bac7a0f3703de85a3b1055e2ccc07fbb30e8c03b90b7ca83",
+  "input_set_sha256": "e09e2b083e8b4364b25022df996ca71e2904363b0fb07831a92b6817f438bd60",
   "inputs": [
     {
-      "bytes": 5712,
+      "bytes": 7101,
       "path": "prescriptives/documentation/01-reference-standard.mrd.json",
-      "sha256": "da30a9f44828194a6b0b1e382c39936ae3d07705521dd6c07af60286b5133dc1"
+      "sha256": "57942a97a33bf6bc3a81b29471610d6d0cdc5dd446f8dbc067e42d369d938172"
     },
     {
-      "bytes": 8944,
+      "bytes": 12699,
       "path": "prescriptives/documentation/02-reference-registry.mrd.json",
-      "sha256": "5a1f98e9fb937df209e303abc6fa3af3fd73c922a868e76519939d6dd42ec24c"
+      "sha256": "77becf70f6760588c6bf14b37eaba870cd2fe8a3a2bfb6a8dddb4643a9f9daa7"
     },
     {
       "bytes": 403,
@@ -44,14 +44,14 @@
       "sha256": "35f4170ba7e70cabc664b6f880f41af40a897909c982c4cdc30cb03d5f412fdd"
     },
     {
-      "bytes": 6090,
+      "bytes": 6735,
       "path": "prescriptives/documentation/03-publication-architecture.mrd.json",
-      "sha256": "1c8e33a0b678a4d5f60376be751ece6f08f0589fb85a1867d5d9697d16a6238e"
+      "sha256": "a276f953f834b2763cacc8f02e87744ab3863068d246dbcc48f6f7a03ccbe2fa"
     },
     {
-      "bytes": 8352,
+      "bytes": 9133,
       "path": "prescriptives/documentation/04-publication-family-registry.mrd.json",
-      "sha256": "a776f01949729f07e1ed3581467c01d7fc84c34e232df7bf1cfee5d458a62836"
+      "sha256": "6b6dc4f9ed3744a2974abe14d3afcac2ece6ec5850978c73f1c48fcd0a42ae5f"
     },
     {
       "bytes": 3786,
@@ -59,9 +59,9 @@
       "sha256": "1332b6ea1eb0eefc65bb720c8c815d2a08745c822d7471f76607b5e3ddec6932"
     },
     {
-      "bytes": 5511,
+      "bytes": 6880,
       "path": "contracts/mrd/v1/mrd.schema.json",
-      "sha256": "fb9f3210b022d8def12a92bfccc1cb45e5ccf1146fa9d59168baf3f630ded153"
+      "sha256": "d62b96346af11caaef6c04fe6c5b2fa2313e409bb621e8019f5025ad7258125a"
     },
     {
       "bytes": 1686,
@@ -94,14 +94,14 @@
       "sha256": "3846d0758e8a11589b1038615150c4c3a2bb446fa72cd0b51013d4615c4763cf"
     },
     {
-      "bytes": 20626,
+      "bytes": 20730,
       "path": "src/kis_mcp_doc/publication_kernel.py",
-      "sha256": "1de22b1ddddffe3f55833ee0853efc21a7b50a6b153960386af2529a2ca6ee2d"
+      "sha256": "66e01002a1c1a0c5f495e1c11f12583f7f9b948034c09f2a4aa15031f1551946"
     },
     {
-      "bytes": 21051,
+      "bytes": 21207,
       "path": "src/kis_mcp_doc/documentation_reference.py",
-      "sha256": "4efe8c0c0d9d3de134f8c171cb59f8785d600751cbc49ee249e6eecfd473f4e9"
+      "sha256": "f7638307bdea566f6daf37a57fcb2349598381bd7899d9e3fd43598d6642e4ca"
     }
   ],
   "specification": {

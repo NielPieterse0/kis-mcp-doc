@@ -7,7 +7,7 @@
         "source": "repo:evidence/work-management/canonical-snapshot.json"
       }
     ],
-    "id": "KIS-WORK-SEM-REG-001",
+    "id": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5",
     "layer": "L1",
     "module": "work-management",
     "provenance": {
@@ -31,7 +31,19 @@
     "supersedes": [],
     "title": "Work Management domain model",
     "type": "REG",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "legacy_ids": [
+      "KIS-WORK-SEM-REG-001"
+    ],
+    "repository": "NielPieterse0/kis-mcp-doc",
+    "canonical_path": "prescriptives/work-management/01-reg.mrd.json",
+    "revision_binding": {
+      "mode": "external_git_provider_evidence",
+      "repository": "NielPieterse0/kis-mcp-doc",
+      "git_revision": null,
+      "change_identity_source": "github_issue_and_pull_request",
+      "reason": "Tracked content cannot embed its own containing commit without circular identity."
+    }
   },
   "content": {
     "fields": [

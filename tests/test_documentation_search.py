@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import json
 import shutil
@@ -17,9 +17,9 @@ def test_search_validation_and_index_cover_site_routes(tmp_path: Path) -> None:
     manifest = build_documentation_search(ROOT, output)
     index = json.loads((output / "search-index.json").read_text(encoding="utf-8"))
     assert manifest["documents"] == len(index["documents"])
-    assert any(item["route"] == "/docs/governance/" for item in index["documents"])
+    assert any(item["route"] == "/docs/mrd-specification/" for item in index["documents"])
     assert any(item["route"] == "/docs/repository/" for item in index["documents"])
-    assert any(item["route"].startswith("/reference/governance-spec/") for item in index["documents"])
+    assert any(item["route"].startswith("/reference/mrd-specification/") for item in index["documents"])
     assert not any(item["family"].startswith("work-management") for item in index["documents"])
 
 
@@ -27,7 +27,7 @@ def test_search_ranking_is_stable_and_prefers_title_matches() -> None:
     results = search_documentation(ROOT, "governance authority", limit=5)
     assert results
     assert results == search_documentation(ROOT, "governance authority", limit=5)
-    assert any(item["family"] in {"governance-docs", "governance-spec"} for item in results)
+    assert any(item["family"] in {"mrd-specification-docs", "mrd-specification"} for item in results)
 
 
 def test_search_exact_verification_detects_tamper(tmp_path: Path) -> None:

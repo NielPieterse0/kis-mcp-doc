@@ -51,8 +51,8 @@ def test_work_management_publication_consumes_documentation_reference_profile(tm
     config=json.loads((ROOT/"publication/work-management-spec.json").read_text(encoding="utf-8"))
     assert config["documentation_reference"] == {
         "output_class": "human_readable_specification",
-        "policy_mrd": "KIS-DOC-CON-POL-001",
-        "registry_mrd": "KIS-DOC-SEM-REG-001",
+        "policy_mrd": "urn:uuid:ae7e7dc1-2b8b-5988-845d-24df49dcfe0a",
+        "registry_mrd": "urn:uuid:d6110859-d683-5aab-86ff-ceecd899e38d",
     }
     source_paths={item["path"] for item in manifest["inputs"]["source_files"]}
     assert source_paths == {
@@ -64,7 +64,7 @@ def test_work_management_publication_consumes_documentation_reference_profile(tm
         "publication/documentation-reference-standard.json",
         "evidence/work-management/canonical-snapshot.json",
     }
-    assert "`KIS-DOC-CON-POL-001`" in (out/"001-specification.md").read_text(encoding="utf-8")
+    assert "`urn:uuid:ae7e7dc1-2b8b-5988-845d-24df49dcfe0a`" in (out/"001-specification.md").read_text(encoding="utf-8")
 
 
 def test_work_management_publication_rejects_external_authority_promotion(tmp_path):
@@ -154,32 +154,32 @@ def test_generated_spec_preserves_reference_facts(tmp_path):
     docs=repo.load()
 
     domain=(out/"020-work-field-and-vocabulary-reference.md").read_text(encoding="utf-8")
-    for field in docs["KIS-WORK-SEM-REG-001"]["content"]["fields"]:
+    for field in docs["urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"]["content"]["fields"]:
         assert field["name"] in domain
         assert f"`{field['id']}`" in domain
-    for vocabulary in docs["KIS-WORK-SEM-REG-001"]["content"]["vocabularies"]:
+    for vocabulary in docs["urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"]["content"]["vocabularies"]:
         for value in vocabulary["values"]:
             assert value["label"] in domain
             assert f"`{value['token']}`" in domain
 
     lifecycle=(out/"003-work-lifecycle.md").read_text(encoding="utf-8")
-    for guard in docs["KIS-WORK-WRK-STM-001"]["content"]["guards"]:
+    for guard in docs["urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"]["content"]["guards"]:
         assert f"`{guard['id']}`" in lifecycle
         assert f"`{guard['reason_code']}`" in lifecycle
 
     operations=(out/"004-work-operations.md").read_text(encoding="utf-8")
-    for operation in docs["KIS-WORK-WRK-WFL-001"]["content"]["operations"]:
+    for operation in docs["urn:uuid:3bab4e5b-4c6d-5c21-811c-a7f6cb02ac93"]["content"]["operations"]:
         assert f"`{operation['id']}`" in operations
         assert f"`{operation['implementation_surface']}`" in operations
 
     selection=(out/"005-next-work-selection.md").read_text(encoding="utf-8")
-    for rule in docs["KIS-WORK-DEC-SCR-001"]["content"]["rules"]:
+    for rule in docs["urn:uuid:0c96b519-06db-5616-95be-888c29f2da5c"]["content"]["rules"]:
         assert f"`{rule['id']}`" in selection
         if rule["reason_code"] is not None:
             assert f"`{rule['reason_code']}`" in selection
 
     authority=(out/"021-work-project-configuration-reference.md").read_text(encoding="utf-8")
-    policy=docs["KIS-WORK-CON-POL-001"]["content"]
+    policy=docs["urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"]["content"]
     for field in policy["github_project_schema"]["fields"]:
         assert field["name"] in authority
     for view in policy["github_project_schema"]["views"]:
@@ -238,7 +238,7 @@ def test_work_diagrams_preserve_independent_status_and_delivery_dimensions(tmp_p
     repo = WorkManagementRepository(ROOT)
     build_work_management_spec(repo, output)
     docs = repo.load()
-    lifecycle = docs["KIS-WORK-WRK-STM-001"]["content"]
+    lifecycle = docs["urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"]["content"]
     page = (output / "003-work-lifecycle.md").read_text(encoding="utf-8")
     assert "Work Status and Delivery Stage are separate dimensions" in page
     assert 'subgraph work_status["Work Status"]' in page
@@ -264,7 +264,7 @@ def test_work_diagrams_preserve_independent_status_and_delivery_dimensions(tmp_p
     assert actual_stage_edges == expected_stage_edges
     provider = (output / "007-provider-and-command-plane-boundary.md").read_text(encoding="utf-8")
     assert "## Authority and handoff flow" in provider
-    authority = docs["KIS-WORK-CTR-SVC-001"]["content"]["command_plane"]["field_authority"]
+    authority = docs["urn:uuid:2f2b1233-37fe-580c-bc75-26a38e9aa7fe"]["content"]["command_plane"]["field_authority"]
     grouped = {}
     for field, contract in authority.items():
         grouped.setdefault((contract["authority"], contract["direction"]), []).append(field)
@@ -282,7 +282,7 @@ def test_work_semantic_coverage_resolves_declared_facts(tmp_path):
     assert len(keys) == len(set(keys))
     docs = repo.load()
     assert {entry["id"] for entry in entries if entry["kind"] == "mrd"} == set(docs)
-    lifecycle = docs["KIS-WORK-WRK-STM-001"]["content"]
+    lifecycle = docs["urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"]["content"]
     assert {entry["id"] for entry in entries if entry["kind"] == "work_state"} == {
         state["token"] for state in lifecycle["states"]
     }

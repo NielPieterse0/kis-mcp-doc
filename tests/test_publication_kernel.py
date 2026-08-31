@@ -27,10 +27,10 @@ def test_registry_discovers_all_governed_publication_families_and_output_classes
     assert registry.validate() == {"status": "valid", "diagnostics": []}
     families = registry.load()["content"]["families"]
     assert [family["id"] for family in families] == [
-        "governance-spec",
+        "mrd-specification",
         "work-management-spec",
         "documentation-reference-standard",
-        "governance-docs",
+        "mrd-specification-docs",
         "work-management-docs",
         "repository-docs",
     ]
@@ -116,11 +116,11 @@ def test_family_adapter_rejects_registered_output_class_drift(tmp_path: Path) ->
     doc = json.loads(path.read_text(encoding="utf-8"))
     doc["content"]["families"][0]["output_classes"] = ["generated_reference"]
     path.write_text(json.dumps(doc, indent=2) + "\n", encoding="utf-8")
-    result = validate_registered_publications(root, family_ids=["governance-spec"])
+    result = validate_registered_publications(root, family_ids=["mrd-specification"])
     assert result["status"] == "invalid"
     assert any(
         item["code"] == "PUBLICATION_FAMILY_OUTPUT_CLASS_MISMATCH"
-        for item in result["families"]["governance-spec"]["diagnostics"]
+        for item in result["families"]["mrd-specification"]["diagnostics"]
     )
 
 
@@ -128,15 +128,15 @@ def test_registered_validation_rejects_invalid_publication_config(tmp_path: Path
     root = tmp_path / "repo"
     import shutil
     shutil.copytree(ROOT, root, ignore=shutil.ignore_patterns('.git', '.venv', '.work'))
-    publication = root / "publication/governance-spec.json"
+    publication = root / "publication/mrd-specification.json"
     config = json.loads(publication.read_text(encoding="utf-8"))
     config["status"] = "invalid-status"
     publication.write_text(json.dumps(config, indent=2) + "\n", encoding="utf-8")
-    result = validate_registered_publications(root, family_ids=["governance-spec"])
+    result = validate_registered_publications(root, family_ids=["mrd-specification"])
     assert result["status"] == "invalid"
     assert any(
         item["code"] == "PUBLICATION_CONFIG_INVALID"
-        for item in result["families"]["governance-spec"]["diagnostics"]
+        for item in result["families"]["mrd-specification"]["diagnostics"]
     )
 
 
@@ -207,10 +207,10 @@ def test_registered_publication_verification_covers_every_family() -> None:
     result = verify_registered_publications(ROOT)
     assert result["status"] == "valid"
     assert set(result["families"]) == {
-        "governance-spec",
+        "mrd-specification",
         "work-management-spec",
         "documentation-reference-standard",
-        "governance-docs",
+        "mrd-specification-docs",
         "work-management-docs",
         "repository-docs",
     }
@@ -222,11 +222,11 @@ def test_registered_phase_rejects_invalid_adapter_result(monkeypatch) -> None:
         return {"unexpected": True}
 
     monkeypatch.setattr(publication_adapters, "validate_governance", invalid_result)
-    result = validate_registered_publications(ROOT, family_ids=["governance-spec"])
+    result = validate_registered_publications(ROOT, family_ids=["mrd-specification"])
     assert result["status"] == "invalid"
-    assert result["families"]["governance-spec"]["diagnostics"] == [{
+    assert result["families"]["mrd-specification"]["diagnostics"] == [{
         "code": "PUBLICATION_FAMILY_ADAPTER_RESULT_INVALID",
-        "message": "governance-spec.validate must return status and diagnostics",
+        "message": "mrd-specification.validate must return status and diagnostics",
     }]
 
 

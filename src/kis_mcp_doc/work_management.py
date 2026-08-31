@@ -174,21 +174,21 @@ def _work_semantic_coverage(docs: list[dict[str, Any]]) -> dict[str, Any]:
     for doc in docs:
         doc_id = doc["_mrd"]["id"]
         entries.append({"kind":"mrd","id":doc_id,"source_mrd":doc_id,"source_version":doc["_mrd"]["version"],"page":pages[doc_id],"anchor":f"mrd-{_anchor_token(doc_id)}"})
-    domain = by_id["KIS-WORK-SEM-REG-001"]
+    domain = by_id["urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"]
     for field in domain["content"]["fields"]:
         entries.append({"kind":"field","id":field["id"],"source_mrd":domain["_mrd"]["id"],"page":"020-work-field-and-vocabulary-reference.md","anchor":f"fact-field-{_anchor_token(field['id'])}"})
     for vocabulary in domain["content"]["vocabularies"]:
         for value in vocabulary["values"]:
             entries.append({"kind":"vocabulary_value","id":f"{vocabulary['id']}:{value['token']}","source_mrd":domain["_mrd"]["id"],"page":"020-work-field-and-vocabulary-reference.md","anchor":f"fact-vocabulary-{_anchor_token(vocabulary['id'])}-{_anchor_token(value['token'])}"})
-    lifecycle = by_id["KIS-WORK-WRK-STM-001"]
+    lifecycle = by_id["urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"]
     for state in lifecycle["content"]["states"]:
         entries.append({"kind":"work_state","id":state["token"],"source_mrd":lifecycle["_mrd"]["id"],"page":pages[lifecycle["_mrd"]["id"]],"anchor":f"fact-work-state-{_anchor_token(state['token'])}"})
     for stage in lifecycle["content"]["delivery"]["stages"]:
         entries.append({"kind":"delivery_stage","id":stage,"source_mrd":lifecycle["_mrd"]["id"],"page":pages[lifecycle["_mrd"]["id"]],"anchor":f"fact-delivery-stage-{_anchor_token(stage)}"})
-    selection = by_id["KIS-WORK-DEC-SCR-001"]
+    selection = by_id["urn:uuid:0c96b519-06db-5616-95be-888c29f2da5c"]
     for rule in selection["content"]["rules"]:
         entries.append({"kind":"selection_rule","id":rule["id"],"source_mrd":selection["_mrd"]["id"],"page":pages[selection["_mrd"]["id"]],"anchor":f"fact-selection-rule-{_anchor_token(rule['id'])}"})
-    authority = by_id["KIS-WORK-CON-POL-001"]
+    authority = by_id["urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"]
     for field in authority["content"]["github_project_schema"]["fields"]:
         entries.append({"kind":"project_field","id":field["name"],"source_mrd":authority["_mrd"]["id"],"page":"021-work-project-configuration-reference.md","anchor":f"fact-project-field-{_anchor_token(field['name'])}"})
     for view in authority["content"]["github_project_schema"]["views"]:
@@ -783,13 +783,13 @@ def render_document(
     following: tuple[str, dict[str, Any]] | None = None,
 ) -> str:
     renderers = {
-        "KIS-WORK-SEM-REG-001": _render_domain_model,
-        "KIS-WORK-WRK-STM-001": _render_lifecycle,
-        "KIS-WORK-WRK-WFL-001": _render_operations,
-        "KIS-WORK-DEC-SCR-001": _render_selection,
-        "KIS-WORK-CON-POL-001": _render_authority_policy,
-        "KIS-WORK-CTR-SVC-001": _render_provider_boundary,
-        "KIS-WORK-EVL-TST-001": _render_conformance,
+        "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5": _render_domain_model,
+        "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3": _render_lifecycle,
+        "urn:uuid:3bab4e5b-4c6d-5c21-811c-a7f6cb02ac93": _render_operations,
+        "urn:uuid:0c96b519-06db-5616-95be-888c29f2da5c": _render_selection,
+        "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0": _render_authority_policy,
+        "urn:uuid:2f2b1233-37fe-580c-bc75-26a38e9aa7fe": _render_provider_boundary,
+        "urn:uuid:68adde2d-be01-5184-8193-9ebb62f8d434": _render_conformance,
     }
     lines = [
         "<!-- GENERATED — DO NOT EDIT -->",
@@ -810,8 +810,8 @@ def render_document(
 
 def _work_reference_pages(docs: list[dict[str, Any]]) -> dict[str, str]:
     by_id = {doc["_mrd"]["id"]: doc for doc in docs}
-    domain = by_id["KIS-WORK-SEM-REG-001"]
-    authority = by_id["KIS-WORK-CON-POL-001"]
+    domain = by_id["urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"]
+    authority = by_id["urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"]
 
     lines = [
         "<!-- GENERATED — DO NOT EDIT -->",
@@ -881,8 +881,8 @@ def _validate_documentation_reference_binding(root: Path, config: dict[str, Any]
     binding = config.get("documentation_reference")
     expected = {
         "output_class": _DOCUMENTATION_OUTPUT_CLASS,
-        "policy_mrd": "KIS-DOC-CON-POL-001",
-        "registry_mrd": "KIS-DOC-SEM-REG-001",
+        "policy_mrd": "urn:uuid:ae7e7dc1-2b8b-5988-845d-24df49dcfe0a",
+        "registry_mrd": "urn:uuid:d6110859-d683-5aab-86ff-ceecd899e38d",
     }
     if binding != expected:
         raise ValueError(f"publication documentation_reference must equal {expected}")
@@ -1008,7 +1008,7 @@ def build_work_management_spec(repo: WorkManagementRepository, output: Path, *, 
             "",
             "Work Management is the governed KIS system for capturing, classifying, selecting, executing, verifying, and closing work across registered projects.",
             "",
-            "This publication follows `KIS-DOC-CON-POL-001` as a `human_readable_specification`. MCP 2026 applies only within its bounded protocol domain, Google guidance affects presentation only, and implementation references cannot create or override Work Management facts.",
+            "This publication follows `urn:uuid:ae7e7dc1-2b8b-5988-845d-24df49dcfe0a` as a `human_readable_specification`. MCP 2026 applies only within its bounded protocol domain, Google guidance affects presentation only, and implementation references cannot create or override Work Management facts.",
             "",
             normative_keywords_statement(),
             "",

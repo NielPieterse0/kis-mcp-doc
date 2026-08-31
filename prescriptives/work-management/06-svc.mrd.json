@@ -3,11 +3,11 @@
     "class": "CTR",
     "dependencies": [
       {
-        "mrd_id": "KIS-WORK-CON-POL-001",
+        "mrd_id": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0",
         "relationship": "depends_on"
       },
       {
-        "mrd_id": "KIS-WORK-WRK-WFL-001",
+        "mrd_id": "urn:uuid:3bab4e5b-4c6d-5c21-811c-a7f6cb02ac93",
         "relationship": "depends_on"
       },
       {
@@ -15,7 +15,7 @@
         "source": "repo:evidence/work-management/canonical-snapshot.json"
       }
     ],
-    "id": "KIS-WORK-CTR-SVC-001",
+    "id": "urn:uuid:2f2b1233-37fe-580c-bc75-26a38e9aa7fe",
     "layer": "L3",
     "module": "work-management",
     "provenance": {
@@ -39,7 +39,19 @@
     "supersedes": [],
     "title": "Provider and command-plane boundary",
     "type": "SVC",
-    "version": "1.0.1"
+    "version": "1.0.1",
+    "legacy_ids": [
+      "KIS-WORK-CTR-SVC-001"
+    ],
+    "repository": "NielPieterse0/kis-mcp-doc",
+    "canonical_path": "prescriptives/work-management/06-svc.mrd.json",
+    "revision_binding": {
+      "mode": "external_git_provider_evidence",
+      "repository": "NielPieterse0/kis-mcp-doc",
+      "git_revision": null,
+      "change_identity_source": "github_issue_and_pull_request",
+      "reason": "Tracked content cannot embed its own containing commit without circular identity."
+    }
   },
   "content": {
     "command_plane": {

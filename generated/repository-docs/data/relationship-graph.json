@@ -17,12 +17,36 @@
       "type": "governed_by"
     },
     {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": ".github/CODEOWNERS",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
       "evidence": "repository classification policy",
       "fact_quality": "derived_from_path_policy",
       "intent": "authority_direction",
       "source": ".github/CODEOWNERS",
       "target": "AGENTS.md",
       "type": "governed_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": ".github/CODEOWNERS",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": ".github/CODEOWNERS",
+      "target": "scripts/verify.ps1",
+      "type": "verified_by"
     },
     {
       "evidence": "repository classification policy",
@@ -73,6 +97,30 @@
       "type": "governed_by"
     },
     {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "AGENTS.md",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "AGENTS.md",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "AGENTS.md",
+      "target": "scripts/verify.ps1",
+      "type": "verified_by"
+    },
+    {
       "evidence": "repository classification policy",
       "fact_quality": "derived_from_path_policy",
       "intent": "authority_direction",
@@ -97,11 +145,371 @@
       "type": "governed_by"
     },
     {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/documentation/harvest/v1/registry.schema.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/documentation/harvest/v1/registry.schema.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/documentation/harvest/v1/registry.schema.json",
+      "target": "scripts/verify.ps1",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/documentation/litho/v1/package.schema.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/documentation/litho/v1/package.schema.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/documentation/litho/v1/package.schema.json",
+      "target": "scripts/verify.ps1",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/documentation/reference/v1/manifest.schema.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/documentation/reference/v1/manifest.schema.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/documentation/reference/v1/manifest.schema.json",
+      "target": "scripts/verify.ps1",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/documentation/reference/v1/publication.schema.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/documentation/reference/v1/publication.schema.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/documentation/reference/v1/publication.schema.json",
+      "target": "scripts/verify.ps1",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/documentation/reference/v1/registry.schema.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/documentation/reference/v1/registry.schema.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/documentation/reference/v1/registry.schema.json",
+      "target": "scripts/verify.ps1",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/documentation/reference/v1/standard.schema.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/documentation/reference/v1/standard.schema.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/documentation/reference/v1/standard.schema.json",
+      "target": "scripts/verify.ps1",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/governance/v1/governed-rule.schema.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/governance/v1/governed-rule.schema.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/governance/v1/governed-rule.schema.json",
+      "target": "src/kis_mcp_doc/repository_governance.py",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/mrd-specification/v1/content.schema.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/mrd-specification/v1/content.schema.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/mrd-specification/v1/content.schema.json",
+      "target": "src/kis_mcp_doc/governance.py",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/mrd-specification/v1/governance-mrd.schema.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/mrd-specification/v1/governance-mrd.schema.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/mrd-specification/v1/governance-mrd.schema.json",
+      "target": "src/kis_mcp_doc/governance.py",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/mrd/v1/mrd.schema.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/mrd/v1/mrd.schema.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/mrd/v1/mrd.schema.json",
+      "target": "scripts/verify.ps1",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/publication/family/v1/registry.schema.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/publication/family/v1/registry.schema.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/publication/family/v1/registry.schema.json",
+      "target": "scripts/verify.ps1",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/publication/v1/governance-spec.schema.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/publication/v1/governance-spec.schema.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/publication/v1/governance-spec.schema.json",
+      "target": "scripts/verify.ps1",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/publication/v1/manifest.schema.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/publication/v1/manifest.schema.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/publication/v1/manifest.schema.json",
+      "target": "scripts/verify.ps1",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/publication/v2/governance-spec.schema.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/publication/v2/governance-spec.schema.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/publication/v2/governance-spec.schema.json",
+      "target": "scripts/verify.ps1",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/publication/v2/manifest.schema.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/publication/v2/manifest.schema.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "contracts/publication/v2/manifest.schema.json",
+      "target": "scripts/verify.ps1",
+      "type": "verified_by"
+    },
+    {
       "evidence": "prescriptives/documentation/01-reference-standard.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
       "source": "prescriptives/documentation/01-reference-standard.mrd.json",
-      "target": "prescriptives/governance/01-classification.mrd.json",
+      "target": "prescriptives/mrd-specification/01-classification.mrd.json",
       "type": "depends_on"
     },
     {
@@ -109,8 +517,16 @@
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
       "source": "prescriptives/documentation/01-reference-standard.mrd.json",
-      "target": "prescriptives/governance/08-ownership.mrd.json",
+      "target": "prescriptives/mrd-specification/08-ownership.mrd.json",
       "type": "depends_on"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/documentation/01-reference-standard.mrd.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
     },
     {
       "evidence": "prescriptives/documentation/01-reference-standard.mrd.json",
@@ -121,6 +537,14 @@
       "type": "governs"
     },
     {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/documentation/01-reference-standard.mrd.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
       "evidence": "prescriptives/documentation/01-reference-standard.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
@@ -129,12 +553,36 @@
       "type": "references"
     },
     {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/documentation/01-reference-standard.mrd.json",
+      "target": "scripts/verify.ps1",
+      "type": "verified_by"
+    },
+    {
       "evidence": "prescriptives/documentation/02-reference-registry.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
       "source": "prescriptives/documentation/02-reference-registry.mrd.json",
       "target": "prescriptives/documentation/01-reference-standard.mrd.json",
       "type": "depends_on"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/documentation/02-reference-registry.mrd.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/documentation/02-reference-registry.mrd.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
     },
     {
       "evidence": "prescriptives/documentation/02-reference-registry.mrd.json",
@@ -145,6 +593,14 @@
       "type": "references"
     },
     {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/documentation/02-reference-registry.mrd.json",
+      "target": "scripts/verify.ps1",
+      "type": "verified_by"
+    },
+    {
       "evidence": "prescriptives/documentation/03-publication-architecture.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
@@ -153,12 +609,28 @@
       "type": "depends_on"
     },
     {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/documentation/03-publication-architecture.mrd.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
       "evidence": "prescriptives/documentation/03-publication-architecture.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
       "source": "prescriptives/documentation/03-publication-architecture.mrd.json",
       "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "type": "governs"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/documentation/03-publication-architecture.mrd.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
     },
     {
       "evidence": "prescriptives/documentation/03-publication-architecture.mrd.json",
@@ -169,6 +641,14 @@
       "type": "references"
     },
     {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/documentation/03-publication-architecture.mrd.json",
+      "target": "scripts/verify.ps1",
+      "type": "verified_by"
+    },
+    {
       "evidence": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
@@ -177,12 +657,36 @@
       "type": "depends_on"
     },
     {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/documentation/04-publication-family-registry.mrd.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/documentation/04-publication-family-registry.mrd.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
       "evidence": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
       "source": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "target": "contracts/publication/family/v1/registry.schema.json",
       "type": "validated_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/documentation/04-publication-family-registry.mrd.json",
+      "target": "scripts/verify.ps1",
+      "type": "verified_by"
     },
     {
       "evidence": "prescriptives/documentation/05-repository-human-bundle.mrd.json",
@@ -201,6 +705,14 @@
       "type": "depends_on"
     },
     {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/documentation/05-repository-human-bundle.mrd.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
       "evidence": "prescriptives/documentation/05-repository-human-bundle.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
@@ -209,204 +721,428 @@
       "type": "governs"
     },
     {
-      "evidence": "prescriptives/governance/02-layering.mrd.json",
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/documentation/05-repository-human-bundle.mrd.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/documentation/05-repository-human-bundle.mrd.json",
+      "target": "scripts/verify.ps1",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/governance/01-repository-governance.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/governance/01-repository-governance.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/governance/01-repository-governance.json",
+      "target": "src/kis_mcp_doc/repository_governance.py",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "target": "src/kis_mcp_doc/repository_governance.py",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/governance/03-directory-grammar.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/governance/03-directory-grammar.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/governance/03-directory-grammar.json",
+      "target": "src/kis_mcp_doc/repository_governance.py",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/mrd-specification/01-classification.mrd.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/mrd-specification/01-classification.mrd.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/mrd-specification/01-classification.mrd.json",
+      "target": "src/kis_mcp_doc/governance.py",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/mrd-specification/02-layering.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "prescriptives/governance/02-layering.mrd.json",
-      "target": "prescriptives/governance/01-classification.mrd.json",
+      "source": "prescriptives/mrd-specification/02-layering.mrd.json",
+      "target": "prescriptives/mrd-specification/01-classification.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "prescriptives/governance/03-dependencies.mrd.json",
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/mrd-specification/02-layering.mrd.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/mrd-specification/02-layering.mrd.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/mrd-specification/02-layering.mrd.json",
+      "target": "src/kis_mcp_doc/governance.py",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/mrd-specification/03-dependencies.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "prescriptives/governance/03-dependencies.mrd.json",
-      "target": "prescriptives/governance/01-classification.mrd.json",
+      "source": "prescriptives/mrd-specification/03-dependencies.mrd.json",
+      "target": "prescriptives/mrd-specification/01-classification.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "prescriptives/governance/03-dependencies.mrd.json",
+      "evidence": "prescriptives/mrd-specification/03-dependencies.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "prescriptives/governance/03-dependencies.mrd.json",
-      "target": "prescriptives/governance/02-layering.mrd.json",
+      "source": "prescriptives/mrd-specification/03-dependencies.mrd.json",
+      "target": "prescriptives/mrd-specification/02-layering.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "prescriptives/governance/04-provenance.mrd.json",
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/mrd-specification/03-dependencies.mrd.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/mrd-specification/03-dependencies.mrd.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/mrd-specification/03-dependencies.mrd.json",
+      "target": "src/kis_mcp_doc/governance.py",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/mrd-specification/04-provenance.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "prescriptives/governance/04-provenance.mrd.json",
-      "target": "prescriptives/governance/01-classification.mrd.json",
+      "source": "prescriptives/mrd-specification/04-provenance.mrd.json",
+      "target": "prescriptives/mrd-specification/01-classification.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "prescriptives/governance/05-lifecycle.mrd.json",
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/mrd-specification/04-provenance.mrd.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/mrd-specification/04-provenance.mrd.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/mrd-specification/04-provenance.mrd.json",
+      "target": "src/kis_mcp_doc/governance.py",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/mrd-specification/05-lifecycle.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "prescriptives/governance/05-lifecycle.mrd.json",
-      "target": "prescriptives/governance/04-provenance.mrd.json",
+      "source": "prescriptives/mrd-specification/05-lifecycle.mrd.json",
+      "target": "prescriptives/mrd-specification/04-provenance.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "prescriptives/governance/06-validation.mrd.json",
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/mrd-specification/05-lifecycle.mrd.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/mrd-specification/05-lifecycle.mrd.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/mrd-specification/05-lifecycle.mrd.json",
+      "target": "src/kis_mcp_doc/governance.py",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/mrd-specification/06-validation.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "prescriptives/governance/06-validation.mrd.json",
-      "target": "prescriptives/governance/01-classification.mrd.json",
+      "source": "prescriptives/mrd-specification/06-validation.mrd.json",
+      "target": "prescriptives/mrd-specification/01-classification.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "prescriptives/governance/06-validation.mrd.json",
+      "evidence": "prescriptives/mrd-specification/06-validation.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "prescriptives/governance/06-validation.mrd.json",
-      "target": "prescriptives/governance/02-layering.mrd.json",
+      "source": "prescriptives/mrd-specification/06-validation.mrd.json",
+      "target": "prescriptives/mrd-specification/02-layering.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "prescriptives/governance/06-validation.mrd.json",
+      "evidence": "prescriptives/mrd-specification/06-validation.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "prescriptives/governance/06-validation.mrd.json",
-      "target": "prescriptives/governance/03-dependencies.mrd.json",
+      "source": "prescriptives/mrd-specification/06-validation.mrd.json",
+      "target": "prescriptives/mrd-specification/03-dependencies.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "prescriptives/governance/06-validation.mrd.json",
+      "evidence": "prescriptives/mrd-specification/06-validation.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "prescriptives/governance/06-validation.mrd.json",
-      "target": "prescriptives/governance/04-provenance.mrd.json",
+      "source": "prescriptives/mrd-specification/06-validation.mrd.json",
+      "target": "prescriptives/mrd-specification/04-provenance.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "prescriptives/governance/06-validation.mrd.json",
+      "evidence": "prescriptives/mrd-specification/06-validation.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "prescriptives/governance/06-validation.mrd.json",
-      "target": "prescriptives/governance/05-lifecycle.mrd.json",
+      "source": "prescriptives/mrd-specification/06-validation.mrd.json",
+      "target": "prescriptives/mrd-specification/05-lifecycle.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "prescriptives/governance/06-validation.mrd.json",
+      "evidence": "prescriptives/mrd-specification/06-validation.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "prescriptives/governance/06-validation.mrd.json",
-      "target": "prescriptives/governance/07-applicability.mrd.json",
+      "source": "prescriptives/mrd-specification/06-validation.mrd.json",
+      "target": "prescriptives/mrd-specification/07-applicability.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "prescriptives/governance/06-validation.mrd.json",
+      "evidence": "prescriptives/mrd-specification/06-validation.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "prescriptives/governance/06-validation.mrd.json",
-      "target": "prescriptives/governance/08-ownership.mrd.json",
+      "source": "prescriptives/mrd-specification/06-validation.mrd.json",
+      "target": "prescriptives/mrd-specification/08-ownership.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "prescriptives/governance/06-validation.mrd.json",
-      "fact_quality": "observed",
-      "intent": "declared_mrd_dependency",
-      "source": "prescriptives/governance/06-validation.mrd.json",
-      "target": "prescriptives/governance/09-kis-op-behavior.mrd.json",
-      "type": "depends_on"
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/mrd-specification/06-validation.mrd.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
     },
     {
-      "evidence": "prescriptives/governance/06-validation.mrd.json",
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/mrd-specification/06-validation.mrd.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/mrd-specification/06-validation.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "prescriptives/governance/06-validation.mrd.json",
-      "target": "contracts/governance/v1/content.schema.json",
+      "source": "prescriptives/mrd-specification/06-validation.mrd.json",
+      "target": "contracts/mrd-specification/v1/content.schema.json",
       "type": "validated_by"
     },
     {
-      "evidence": "prescriptives/governance/06-validation.mrd.json",
+      "evidence": "prescriptives/mrd-specification/06-validation.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "prescriptives/governance/06-validation.mrd.json",
-      "target": "contracts/governance/v1/governance-mrd.schema.json",
+      "source": "prescriptives/mrd-specification/06-validation.mrd.json",
+      "target": "contracts/mrd-specification/v1/governance-mrd.schema.json",
       "type": "validated_by"
     },
     {
-      "evidence": "prescriptives/governance/06-validation.mrd.json",
+      "evidence": "prescriptives/mrd-specification/06-validation.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "prescriptives/governance/06-validation.mrd.json",
+      "source": "prescriptives/mrd-specification/06-validation.mrd.json",
       "target": "contracts/mrd/v1/mrd.schema.json",
       "type": "validated_by"
     },
     {
-      "evidence": "prescriptives/governance/07-applicability.mrd.json",
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/mrd-specification/06-validation.mrd.json",
+      "target": "src/kis_mcp_doc/governance.py",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/mrd-specification/07-applicability.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "prescriptives/governance/07-applicability.mrd.json",
-      "target": "prescriptives/governance/01-classification.mrd.json",
+      "source": "prescriptives/mrd-specification/07-applicability.mrd.json",
+      "target": "prescriptives/mrd-specification/01-classification.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "prescriptives/governance/08-ownership.mrd.json",
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/mrd-specification/07-applicability.mrd.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/mrd-specification/07-applicability.mrd.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/mrd-specification/07-applicability.mrd.json",
+      "target": "src/kis_mcp_doc/governance.py",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/mrd-specification/08-ownership.mrd.json",
       "fact_quality": "observed",
       "intent": "declared_mrd_dependency",
-      "source": "prescriptives/governance/08-ownership.mrd.json",
-      "target": "prescriptives/governance/01-classification.mrd.json",
+      "source": "prescriptives/mrd-specification/08-ownership.mrd.json",
+      "target": "prescriptives/mrd-specification/01-classification.mrd.json",
       "type": "depends_on"
     },
     {
-      "evidence": "prescriptives/governance/09-kis-op-behavior.mrd.json",
-      "fact_quality": "observed",
-      "intent": "declared_mrd_dependency",
-      "source": "prescriptives/governance/09-kis-op-behavior.mrd.json",
-      "target": "prescriptives/governance/01-classification.mrd.json",
-      "type": "depends_on"
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/mrd-specification/08-ownership.mrd.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
     },
     {
-      "evidence": "prescriptives/governance/09-kis-op-behavior.mrd.json",
-      "fact_quality": "observed",
-      "intent": "declared_mrd_dependency",
-      "source": "prescriptives/governance/09-kis-op-behavior.mrd.json",
-      "target": "prescriptives/governance/02-layering.mrd.json",
-      "type": "depends_on"
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/mrd-specification/08-ownership.mrd.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
     },
     {
-      "evidence": "prescriptives/governance/09-kis-op-behavior.mrd.json",
-      "fact_quality": "observed",
-      "intent": "declared_mrd_dependency",
-      "source": "prescriptives/governance/09-kis-op-behavior.mrd.json",
-      "target": "prescriptives/governance/03-dependencies.mrd.json",
-      "type": "depends_on"
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "prescriptives/mrd-specification/08-ownership.mrd.json",
+      "target": "src/kis_mcp_doc/governance.py",
+      "type": "verified_by"
     },
     {
-      "evidence": "prescriptives/governance/09-kis-op-behavior.mrd.json",
-      "fact_quality": "observed",
-      "intent": "declared_mrd_dependency",
-      "source": "prescriptives/governance/09-kis-op-behavior.mrd.json",
-      "target": "prescriptives/governance/04-provenance.mrd.json",
-      "type": "depends_on"
-    },
-    {
-      "evidence": "prescriptives/governance/09-kis-op-behavior.mrd.json",
-      "fact_quality": "observed",
-      "intent": "declared_mrd_dependency",
-      "source": "prescriptives/governance/09-kis-op-behavior.mrd.json",
-      "target": "prescriptives/governance/05-lifecycle.mrd.json",
-      "type": "depends_on"
-    },
-    {
-      "evidence": "prescriptives/governance/09-kis-op-behavior.mrd.json",
-      "fact_quality": "observed",
-      "intent": "declared_mrd_dependency",
-      "source": "prescriptives/governance/09-kis-op-behavior.mrd.json",
-      "target": "prescriptives/governance/07-applicability.mrd.json",
-      "type": "depends_on"
-    },
-    {
-      "evidence": "prescriptives/governance/09-kis-op-behavior.mrd.json",
-      "fact_quality": "observed",
-      "intent": "declared_mrd_dependency",
-      "source": "prescriptives/governance/09-kis-op-behavior.mrd.json",
-      "target": "prescriptives/governance/08-ownership.mrd.json",
-      "type": "depends_on"
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/documentation-reference-standard.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
     },
     {
       "evidence": "repository classification policy",
@@ -415,6 +1151,14 @@
       "source": "publication/documentation-reference-standard.json",
       "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "type": "governed_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/documentation-reference-standard.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
     },
     {
       "evidence": "prescriptives/documentation/04-publication-family-registry.mrd.json",
@@ -425,12 +1169,52 @@
       "type": "registered_by"
     },
     {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/documentation-reference-standard.json",
+      "target": "scripts/verify.ps1",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/documentation-release.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
       "evidence": "repository classification policy",
       "fact_quality": "derived_from_path_policy",
       "intent": "authority_direction",
       "source": "publication/documentation-release.json",
       "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "type": "governed_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/documentation-release.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/documentation-release.json",
+      "target": "scripts/verify.ps1",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/documentation-search.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
     },
     {
       "evidence": "repository classification policy",
@@ -441,6 +1225,30 @@
       "type": "governed_by"
     },
     {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/documentation-search.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/documentation-search.json",
+      "target": "scripts/verify.ps1",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/documentation-site.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
       "evidence": "repository classification policy",
       "fact_quality": "derived_from_path_policy",
       "intent": "authority_direction",
@@ -449,36 +1257,28 @@
       "type": "governed_by"
     },
     {
-      "evidence": "repository classification policy",
-      "fact_quality": "derived_from_path_policy",
-      "intent": "authority_direction",
-      "source": "publication/governance-docs.json",
-      "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
-      "type": "governed_by"
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/documentation-site.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
     },
     {
-      "evidence": "prescriptives/documentation/04-publication-family-registry.mrd.json",
-      "fact_quality": "observed",
-      "intent": "governance-docs",
-      "source": "publication/governance-docs.json",
-      "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
-      "type": "registered_by"
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/documentation-site.json",
+      "target": "scripts/verify.ps1",
+      "type": "verified_by"
     },
     {
-      "evidence": "repository classification policy",
-      "fact_quality": "derived_from_path_policy",
-      "intent": "authority_direction",
-      "source": "publication/governance-spec.json",
-      "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
-      "type": "governed_by"
-    },
-    {
-      "evidence": "prescriptives/documentation/04-publication-family-registry.mrd.json",
-      "fact_quality": "observed",
-      "intent": "governance-spec",
-      "source": "publication/governance-spec.json",
-      "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
-      "type": "registered_by"
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/harvest-sources.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
     },
     {
       "evidence": "repository classification policy",
@@ -489,6 +1289,110 @@
       "type": "governed_by"
     },
     {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/harvest-sources.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/harvest-sources.json",
+      "target": "scripts/verify.ps1",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/mrd-specification-docs.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "publication/mrd-specification-docs.json",
+      "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/mrd-specification-docs.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/documentation/04-publication-family-registry.mrd.json",
+      "fact_quality": "observed",
+      "intent": "mrd-specification-docs",
+      "source": "publication/mrd-specification-docs.json",
+      "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
+      "type": "registered_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/mrd-specification-docs.json",
+      "target": "scripts/verify.ps1",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/mrd-specification.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
+      "evidence": "repository classification policy",
+      "fact_quality": "derived_from_path_policy",
+      "intent": "authority_direction",
+      "source": "publication/mrd-specification.json",
+      "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
+      "type": "governed_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/mrd-specification.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/documentation/04-publication-family-registry.mrd.json",
+      "fact_quality": "observed",
+      "intent": "mrd-specification",
+      "source": "publication/mrd-specification.json",
+      "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
+      "type": "registered_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/mrd-specification.json",
+      "target": "scripts/verify.ps1",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/public-repository.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
       "evidence": "repository classification policy",
       "fact_quality": "derived_from_path_policy",
       "intent": "authority_direction",
@@ -497,12 +1401,44 @@
       "type": "governed_by"
     },
     {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/public-repository.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/public-repository.json",
+      "target": "scripts/verify.ps1",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/repository-docs.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
       "evidence": "repository classification policy",
       "fact_quality": "derived_from_path_policy",
       "intent": "authority_direction",
       "source": "publication/repository-docs.json",
       "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "type": "governed_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/repository-docs.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
     },
     {
       "evidence": "prescriptives/documentation/04-publication-family-registry.mrd.json",
@@ -513,12 +1449,36 @@
       "type": "registered_by"
     },
     {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/repository-docs.json",
+      "target": "scripts/verify.ps1",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/work-management-docs.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
       "evidence": "repository classification policy",
       "fact_quality": "derived_from_path_policy",
       "intent": "authority_direction",
       "source": "publication/work-management-docs.json",
       "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "type": "governed_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/work-management-docs.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
     },
     {
       "evidence": "prescriptives/documentation/04-publication-family-registry.mrd.json",
@@ -529,6 +1489,22 @@
       "type": "registered_by"
     },
     {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/work-management-docs.json",
+      "target": "scripts/verify.ps1",
+      "type": "verified_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/work-management-spec.json",
+      "target": "scripts/verify.ps1",
+      "type": "evidence_emitted_by"
+    },
+    {
       "evidence": "repository classification policy",
       "fact_quality": "derived_from_path_policy",
       "intent": "authority_direction",
@@ -537,12 +1513,28 @@
       "type": "governed_by"
     },
     {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/work-management-spec.json",
+      "target": "src/kis_mcp_doc/repository_docs.py",
+      "type": "projected_by"
+    },
+    {
       "evidence": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "fact_quality": "observed",
       "intent": "work-management-spec",
       "source": "publication/work-management-spec.json",
       "target": "prescriptives/documentation/04-publication-family-registry.mrd.json",
       "type": "registered_by"
+    },
+    {
+      "evidence": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "fact_quality": "declared",
+      "intent": "governed_repository_relationship",
+      "source": "publication/work-management-spec.json",
+      "target": "scripts/verify.ps1",
+      "type": "verified_by"
     },
     {
       "evidence": "repository classification policy",

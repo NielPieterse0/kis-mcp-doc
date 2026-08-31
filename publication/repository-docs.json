@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "status": "active",
   "documentation_reference": {
-    "profile": "KIS-DOC-CON-POL-001",
+    "profile": "urn:uuid:ae7e7dc1-2b8b-5988-845d-24df49dcfe0a",
     "output_class": "human_documentation"
   }
 }

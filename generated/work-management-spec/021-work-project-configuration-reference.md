@@ -147,4 +147,4 @@ Evidence collection is bounded to `1048576` bytes per file and `4194304` bytes i
 
 ## Source and authority
 
-This page projects `KIS-WORK-CON-POL-001` version `1.0.0`. The MRD remains authoritative; this generated page has no write-back authority.
+This page projects `urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0` version `1.0.0`. The MRD remains authoritative; this generated page has no write-back authority.

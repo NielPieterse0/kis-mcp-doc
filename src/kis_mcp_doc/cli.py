@@ -33,7 +33,7 @@ from .work_management import (
 
 
 def _repository(root: Path) -> GovernanceRepository:
-    return GovernanceRepository(root, root / "prescriptives" / "governance")
+    return GovernanceRepository(root, root / "prescriptives" / "mrd-specification")
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -96,7 +96,7 @@ def main(argv: list[str] | None = None) -> int:
 
     root = args.root.resolve()
     repo = _repository(root)
-    publication = root / "publication" / "governance-spec.json"
+    publication = root / "publication" / "mrd-specification.json"
     if args.command == "repository-governance-validate":
         result = RepositoryGovernanceRepository(root).validate()
         print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
@@ -207,7 +207,7 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
         return 0 if result["status"] == "valid" else 1
 
-    output = args.output or (root / "generated" / "governance-spec")
+    output = args.output or (root / "generated" / "mrd-specification")
     if args.command == "build":
         manifest = build_governance_spec(
             repo,

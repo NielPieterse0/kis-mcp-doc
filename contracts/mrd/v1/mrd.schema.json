@@ -34,7 +34,11 @@
         "dependencies",
         "provenance",
         "supersedes",
-        "superseded_by"
+        "superseded_by",
+        "legacy_ids",
+        "repository",
+        "canonical_path",
+        "revision_binding"
       ],
       "properties": {
         "schema_version": {
@@ -42,7 +46,7 @@
         },
         "id": {
           "type": "string",
-          "pattern": "^KIS-[A-Z0-9]+-[A-Z]{3,4}-[A-Z]{3,4}-[0-9]{3}$"
+          "pattern": "^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
         },
         "title": {
           "type": "string",
@@ -97,6 +101,53 @@
             "string",
             "null"
           ]
+        },
+        "legacy_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "repository": {
+          "const": "NielPieterse0/kis-mcp-doc"
+        },
+        "canonical_path": {
+          "type": "string",
+          "pattern": "^prescriptives/.+\\.mrd\\.json$"
+        },
+        "revision_binding": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "mode",
+            "repository",
+            "git_revision",
+            "change_identity_source",
+            "reason"
+          ],
+          "properties": {
+            "mode": {
+              "const": "external_git_provider_evidence"
+            },
+            "repository": {
+              "const": "NielPieterse0/kis-mcp-doc"
+            },
+            "git_revision": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "change_identity_source": {
+              "const": "github_issue_and_pull_request"
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
         }
       }
     },

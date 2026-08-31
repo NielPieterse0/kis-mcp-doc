@@ -1,7 +1,7 @@
 {
   "_mrd": {
     "schema_version": 1,
-    "id": "KIS-DOC-CON-POL-002",
+    "id": "urn:uuid:4a75d1ce-f376-510f-93bf-7f076841d7a4",
     "title": "Documentation Publication Architecture",
     "module": "documentation",
     "class": "CON",
@@ -12,11 +12,11 @@
     "version": "1.1.0",
     "dependencies": [
       {
-        "mrd_id": "KIS-DOC-CON-POL-001",
+        "mrd_id": "urn:uuid:ae7e7dc1-2b8b-5988-845d-24df49dcfe0a",
         "relationship": "depends_on"
       },
       {
-        "mrd_id": "KIS-DOC-SEM-REG-002",
+        "mrd_id": "urn:uuid:175c6e08-4ec3-5112-b34d-546b821fc252",
         "relationship": "governs"
       },
       {
@@ -55,12 +55,24 @@
       "fact_quality": "direct"
     },
     "supersedes": [],
-    "superseded_by": null
+    "superseded_by": null,
+    "legacy_ids": [
+      "KIS-DOC-CON-POL-002"
+    ],
+    "repository": "NielPieterse0/kis-mcp-doc",
+    "canonical_path": "prescriptives/documentation/03-publication-architecture.mrd.json",
+    "revision_binding": {
+      "mode": "external_git_provider_evidence",
+      "repository": "NielPieterse0/kis-mcp-doc",
+      "git_revision": null,
+      "change_identity_source": "github_issue_and_pull_request",
+      "reason": "Tracked content cannot embed its own containing commit without circular identity."
+    }
   },
   "content": {
     "concern": "documentation_publication_architecture",
     "purpose": "Define one shared deterministic publication mechanism while keeping semantic validation, rendering, canonical fact interpretation, and family-specific manifest meaning in the owning documentation family.",
-    "registry_owner": "KIS-DOC-SEM-REG-002",
+    "registry_owner": "urn:uuid:175c6e08-4ec3-5112-b34d-546b821fc252",
     "adapter_protocol": {
       "version": 1,
       "validate": "adapter(root, family) returns an object with status and diagnostics",
@@ -100,7 +112,7 @@
       },
       {
         "rule_id": "KIS-DOC-PUB-003",
-        "statement": "Publication-family discovery MUST use KIS-DOC-SEM-REG-002 as its canonical registry and MUST NOT maintain a second hard-coded family inventory.",
+        "statement": "Publication-family discovery MUST use urn:uuid:175c6e08-4ec3-5112-b34d-546b821fc252 as its canonical registry and MUST NOT maintain a second hard-coded family inventory.",
         "enforcement": "validator"
       },
       {

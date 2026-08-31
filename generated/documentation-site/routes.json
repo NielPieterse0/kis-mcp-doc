@@ -1,127 +1,120 @@
 [
   {
-    "family": "governance-spec",
-    "route": "/specification/governance/",
-    "source": "generated/governance-spec/000-index.md",
+    "family": "mrd-specification",
+    "route": "/specification/mrd-specification/",
+    "source": "generated/mrd-specification/000-index.md",
     "surface": "specification",
-    "title": "kis-op Governance Specification — documentation index"
+    "title": "KIS MRD Specification — documentation index"
   },
   {
-    "family": "governance-spec",
-    "route": "/specification/governance/001-specification/",
-    "source": "generated/governance-spec/001-specification.md",
+    "family": "mrd-specification",
+    "route": "/specification/mrd-specification/001-specification/",
+    "source": "generated/mrd-specification/001-specification.md",
     "surface": "specification",
-    "title": "kis-op Governance Specification"
+    "title": "KIS MRD Specification"
   },
   {
-    "family": "governance-spec",
-    "route": "/specification/governance/002-classification/",
-    "source": "generated/governance-spec/002-classification.md",
+    "family": "mrd-specification",
+    "route": "/specification/mrd-specification/002-classification/",
+    "source": "generated/mrd-specification/002-classification.md",
     "surface": "specification",
     "title": "Classification"
   },
   {
-    "family": "governance-spec",
-    "route": "/specification/governance/003-applicability-and-selection/",
-    "source": "generated/governance-spec/003-applicability-and-selection.md",
+    "family": "mrd-specification",
+    "route": "/specification/mrd-specification/003-applicability-and-selection/",
+    "source": "generated/mrd-specification/003-applicability-and-selection.md",
     "surface": "specification",
     "title": "Applicability and Selection"
   },
   {
-    "family": "governance-spec",
-    "route": "/specification/governance/004-authority-ownership-and-relationships/",
-    "source": "generated/governance-spec/004-authority-ownership-and-relationships.md",
+    "family": "mrd-specification",
+    "route": "/specification/mrd-specification/004-authority-ownership-and-relationships/",
+    "source": "generated/mrd-specification/004-authority-ownership-and-relationships.md",
     "surface": "specification",
     "title": "Authority, Ownership, and Relationships"
   },
   {
-    "family": "governance-spec",
-    "route": "/specification/governance/005-layering/",
-    "source": "generated/governance-spec/005-layering.md",
+    "family": "mrd-specification",
+    "route": "/specification/mrd-specification/005-layering/",
+    "source": "generated/mrd-specification/005-layering.md",
     "surface": "specification",
     "title": "Layering"
   },
   {
-    "family": "governance-spec",
-    "route": "/specification/governance/006-dependency-rules/",
-    "source": "generated/governance-spec/006-dependency-rules.md",
+    "family": "mrd-specification",
+    "route": "/specification/mrd-specification/006-dependency-rules/",
+    "source": "generated/mrd-specification/006-dependency-rules.md",
     "surface": "specification",
     "title": "Dependency Rules"
   },
   {
-    "family": "governance-spec",
-    "route": "/specification/governance/007-provenance/",
-    "source": "generated/governance-spec/007-provenance.md",
+    "family": "mrd-specification",
+    "route": "/specification/mrd-specification/007-provenance/",
+    "source": "generated/mrd-specification/007-provenance.md",
     "surface": "specification",
     "title": "Provenance"
   },
   {
-    "family": "governance-spec",
-    "route": "/specification/governance/008-lifecycle/",
-    "source": "generated/governance-spec/008-lifecycle.md",
+    "family": "mrd-specification",
+    "route": "/specification/mrd-specification/008-lifecycle/",
+    "source": "generated/mrd-specification/008-lifecycle.md",
     "surface": "specification",
     "title": "Lifecycle"
   },
   {
-    "family": "governance-spec",
-    "route": "/specification/governance/009-kis-op-governance-behavior/",
-    "source": "generated/governance-spec/009-kis-op-governance-behavior.md",
-    "surface": "specification",
-    "title": "kis-op Governance Behavior"
-  },
-  {
-    "family": "governance-spec",
-    "route": "/specification/governance/010-validation-and-enforcement/",
-    "source": "generated/governance-spec/010-validation-and-enforcement.md",
+    "family": "mrd-specification",
+    "route": "/specification/mrd-specification/009-validation-and-enforcement/",
+    "source": "generated/mrd-specification/009-validation-and-enforcement.md",
     "surface": "specification",
     "title": "Validation and Enforcement"
   },
   {
-    "family": "governance-spec",
-    "route": "/specification/governance/020-applicability-catalog/",
-    "source": "generated/governance-spec/020-applicability-catalog.md",
+    "family": "mrd-specification",
+    "route": "/specification/mrd-specification/020-applicability-catalog/",
+    "source": "generated/mrd-specification/020-applicability-catalog.md",
     "surface": "specification",
     "title": "MRD applicability catalog"
   },
   {
-    "family": "governance-spec",
-    "route": "/specification/governance/021-relationship-vocabulary/",
-    "source": "generated/governance-spec/021-relationship-vocabulary.md",
+    "family": "mrd-specification",
+    "route": "/specification/mrd-specification/021-relationship-vocabulary/",
+    "source": "generated/mrd-specification/021-relationship-vocabulary.md",
     "surface": "specification",
     "title": "Governed relationship vocabulary"
   },
   {
-    "family": "governance-spec",
-    "route": "/specification/governance/022-validation-reason-codes/",
-    "source": "generated/governance-spec/022-validation-reason-codes.md",
+    "family": "mrd-specification",
+    "route": "/specification/mrd-specification/022-validation-reason-codes/",
+    "source": "generated/mrd-specification/022-validation-reason-codes.md",
     "surface": "specification",
     "title": "Validation reason codes"
   },
   {
-    "family": "governance-spec",
-    "route": "/reference/governance-spec/data/dependency-map/",
-    "source": "generated/governance-spec/data/dependency-map.json",
+    "family": "mrd-specification",
+    "route": "/reference/mrd-specification/data/dependency-map/",
+    "source": "generated/mrd-specification/data/dependency-map.json",
     "surface": "reference",
     "title": "Dependency Map"
   },
   {
-    "family": "governance-spec",
-    "route": "/reference/governance-spec/data/mrd-index/",
-    "source": "generated/governance-spec/data/mrd-index.json",
+    "family": "mrd-specification",
+    "route": "/reference/mrd-specification/data/mrd-index/",
+    "source": "generated/mrd-specification/data/mrd-index.json",
     "surface": "reference",
     "title": "Mrd Index"
   },
   {
-    "family": "governance-spec",
-    "route": "/reference/governance-spec/data/semantic-coverage/",
-    "source": "generated/governance-spec/data/semantic-coverage.json",
+    "family": "mrd-specification",
+    "route": "/reference/mrd-specification/data/semantic-coverage/",
+    "source": "generated/mrd-specification/data/semantic-coverage.json",
     "surface": "reference",
     "title": "Semantic Coverage"
   },
   {
-    "family": "governance-spec",
-    "route": "/reference/governance-spec/manifest/",
-    "source": "generated/governance-spec/manifest.json",
+    "family": "mrd-specification",
+    "route": "/reference/mrd-specification/manifest/",
+    "source": "generated/mrd-specification/manifest.json",
     "surface": "reference",
     "title": "Manifest"
   },
@@ -161,58 +154,58 @@
     "title": "Manifest"
   },
   {
-    "family": "governance-docs",
-    "route": "/docs/governance/",
-    "source": "generated/governance-docs/000-index.md",
+    "family": "mrd-specification-docs",
+    "route": "/docs/mrd-specification/",
+    "source": "generated/mrd-specification-docs/000-index.md",
     "surface": "docs",
-    "title": "Governance Documentation"
+    "title": "MRD Specification Documentation"
   },
   {
-    "family": "governance-docs",
-    "route": "/docs/governance/002-understand-authority/",
-    "source": "generated/governance-docs/002-understand-authority.md",
+    "family": "mrd-specification-docs",
+    "route": "/docs/mrd-specification/002-classify-and-select/",
+    "source": "generated/mrd-specification-docs/002-classify-and-select.md",
     "surface": "docs",
-    "title": "Understand authority and ownership"
+    "title": "Classify and select MRDs"
   },
   {
-    "family": "governance-docs",
-    "route": "/docs/governance/003-apply-governance/",
-    "source": "generated/governance-docs/003-apply-governance.md",
+    "family": "mrd-specification-docs",
+    "route": "/docs/mrd-specification/003-authority-and-relationships/",
+    "source": "generated/mrd-specification-docs/003-authority-and-relationships.md",
     "surface": "docs",
-    "title": "Apply governance to a change"
+    "title": "Model authority and relationships"
   },
   {
-    "family": "governance-docs",
-    "route": "/docs/governance/004-mrd-lifecycle/",
-    "source": "generated/governance-docs/004-mrd-lifecycle.md",
+    "family": "mrd-specification-docs",
+    "route": "/docs/mrd-specification/004-provenance-and-lifecycle/",
+    "source": "generated/mrd-specification-docs/004-provenance-and-lifecycle.md",
     "surface": "docs",
-    "title": "Understand MRD lifecycle"
+    "title": "Represent provenance and lifecycle"
   },
   {
-    "family": "governance-docs",
-    "route": "/docs/governance/005-troubleshooting/",
-    "source": "generated/governance-docs/005-troubleshooting.md",
+    "family": "mrd-specification-docs",
+    "route": "/docs/mrd-specification/005-conformance/",
+    "source": "generated/mrd-specification-docs/005-conformance.md",
     "surface": "docs",
-    "title": "Troubleshoot governance failures"
+    "title": "Validate MRD conformance"
   },
   {
-    "family": "governance-docs",
-    "route": "/docs/governance/006-examples/",
-    "source": "generated/governance-docs/006-examples.md",
+    "family": "mrd-specification-docs",
+    "route": "/docs/mrd-specification/006-examples/",
+    "source": "generated/mrd-specification-docs/006-examples.md",
     "surface": "docs",
-    "title": "Governance examples"
+    "title": "MRD examples"
   },
   {
-    "family": "governance-docs",
-    "route": "/reference/governance-docs/data/source-traceability/",
-    "source": "generated/governance-docs/data/source-traceability.json",
+    "family": "mrd-specification-docs",
+    "route": "/reference/mrd-specification-docs/data/source-traceability/",
+    "source": "generated/mrd-specification-docs/data/source-traceability.json",
     "surface": "reference",
     "title": "Source Traceability"
   },
   {
-    "family": "governance-docs",
-    "route": "/reference/governance-docs/manifest/",
-    "source": "generated/governance-docs/manifest.json",
+    "family": "mrd-specification-docs",
+    "route": "/reference/mrd-specification-docs/manifest/",
+    "source": "generated/mrd-specification-docs/manifest.json",
     "surface": "reference",
     "title": "Manifest"
   },
@@ -267,6 +260,34 @@
   },
   {
     "family": "repository-docs",
+    "route": "/docs/repository/007-repository-governance/",
+    "source": "generated/repository-docs/007-repository-governance.md",
+    "surface": "docs",
+    "title": "Repository Governance"
+  },
+  {
+    "family": "repository-docs",
+    "route": "/docs/repository/008-directory-grammar/",
+    "source": "generated/repository-docs/008-directory-grammar.md",
+    "surface": "docs",
+    "title": "Repository Structure Definition and Directory Grammar"
+  },
+  {
+    "family": "repository-docs",
+    "route": "/docs/repository/009-rule-assurance-and-enforcement/",
+    "source": "generated/repository-docs/009-rule-assurance-and-enforcement.md",
+    "surface": "docs",
+    "title": "Rule assurance and enforcement"
+  },
+  {
+    "family": "repository-docs",
+    "route": "/docs/repository/010-prescriptive-coverage/",
+    "source": "generated/repository-docs/010-prescriptive-coverage.md",
+    "surface": "docs",
+    "title": "Prescriptive coverage"
+  },
+  {
+    "family": "repository-docs",
     "route": "/reference/repository-docs/data/artefact-inventory/",
     "source": "generated/repository-docs/data/artefact-inventory.json",
     "surface": "reference",
@@ -278,6 +299,34 @@
     "source": "generated/repository-docs/data/coverage-report.json",
     "surface": "reference",
     "title": "Coverage Report"
+  },
+  {
+    "family": "repository-docs",
+    "route": "/reference/repository-docs/data/directory-grammar/",
+    "source": "generated/repository-docs/data/directory-grammar.json",
+    "surface": "reference",
+    "title": "Directory Grammar"
+  },
+  {
+    "family": "repository-docs",
+    "route": "/reference/repository-docs/data/enforcement-register/",
+    "source": "generated/repository-docs/data/enforcement-register.json",
+    "surface": "reference",
+    "title": "Enforcement Register"
+  },
+  {
+    "family": "repository-docs",
+    "route": "/reference/repository-docs/data/governance-rules/",
+    "source": "generated/repository-docs/data/governance-rules.json",
+    "surface": "reference",
+    "title": "Governance Rules"
+  },
+  {
+    "family": "repository-docs",
+    "route": "/reference/repository-docs/data/prescriptive-coverage/",
+    "source": "generated/repository-docs/data/prescriptive-coverage.json",
+    "surface": "reference",
+    "title": "Prescriptive Coverage"
   },
   {
     "family": "repository-docs",

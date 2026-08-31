@@ -1,0 +1,141 @@
+{
+  "_mrd": {
+    "schema_version": 1,
+    "id": "urn:uuid:a1d99a79-5c7c-56b4-9fda-6c56f54e7ee8",
+    "title": "MRD Provenance and Authority Policy",
+    "module": "governance",
+    "class": "CON",
+    "type": "POL",
+    "layer": "L1",
+    "record_mode": "prescriptive",
+    "status": "active",
+    "version": "1.0.0",
+    "dependencies": [
+      {
+        "mrd_id": "urn:uuid:8cf956d6-521a-5515-8ce1-d48ab5855617",
+        "relationship": "depends_on"
+      }
+    ],
+    "provenance": {
+      "sources": [
+        {
+          "source_id": "KIS-OPERATOR-DIRECTION-2026-08-21",
+          "kind": "operator_direction",
+          "role": "normative_adoption_basis",
+          "locator": "conversation:2026-08-21",
+          "revision": "final-refinement",
+          "sha256": null
+        }
+      ],
+      "source_fingerprint": "sha256:b248f91fed0826406bd86e06b64af7c136cfe50e5928620ab8d6417867ec4972",
+      "fact_quality": "direct"
+    },
+    "supersedes": [],
+    "superseded_by": null,
+    "legacy_ids": [
+      "KIS-KNOW-CON-POL-001"
+    ],
+    "repository": "NielPieterse0/kis-mcp-doc",
+    "canonical_path": "prescriptives/mrd-specification/04-provenance.mrd.json",
+    "revision_binding": {
+      "mode": "external_git_provider_evidence",
+      "repository": "NielPieterse0/kis-mcp-doc",
+      "git_revision": null,
+      "change_identity_source": "github_issue_and_pull_request",
+      "reason": "Tracked content cannot embed its own containing commit without circular identity."
+    }
+  },
+  "content": {
+    "concern": "provenance",
+    "section_order": 6,
+    "heading": "Provenance",
+    "purpose": "Preserve authority direction and distinguish authored prescription from derived implementation views and captured evidence.",
+    "record_modes": [
+      {
+        "mode": "prescriptive",
+        "meaning": "What must be true. Authored, reviewed, and explicitly adopted as governing authority.",
+        "mutability": "versioned"
+      },
+      {
+        "mode": "descriptive",
+        "meaning": "What happened or is observed. Captured evidence or records.",
+        "mutability": "immutable_after_creation"
+      },
+      {
+        "mode": "meta",
+        "meaning": "A generated representation, index, or map of other authority.",
+        "mutability": "regenerate_only"
+      }
+    ],
+    "fact_qualities": [
+      {
+        "quality": "direct",
+        "meaning": "Explicitly present in an admitted source."
+      },
+      {
+        "quality": "derived",
+        "meaning": "Deterministic transformation of direct facts."
+      },
+      {
+        "quality": "inferred",
+        "meaning": "Interpretation not directly guaranteed by an admitted source."
+      }
+    ],
+    "source_kinds": [
+      {
+        "kind": "operator_direction",
+        "resolution": "stable opaque identity"
+      },
+      {
+        "kind": "repo_path",
+        "resolution": "must resolve inside repository and carry the current file SHA-256"
+      },
+      {
+        "kind": "external_reference",
+        "resolution": "must carry an immutable SHA-256 fingerprint"
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "KIS-MRD-PROV-001",
+        "statement": "Record mode MUST express authority and mutability; KIS does not define a separate generation_mode in the core standard.",
+        "enforcement": "validator"
+      },
+      {
+        "rule_id": "KIS-MRD-PROV-002",
+        "statement": "Code harvesting MAY produce candidate or meta/descriptive MRDs but MUST NOT automatically create prescriptive authority.",
+        "enforcement": "workflow"
+      },
+      {
+        "rule_id": "KIS-MRD-PROV-003",
+        "statement": "A harvested candidate becomes prescriptive only through explicit adoption or review; after adoption, implementation MUST conform to the prescriptive MRD.",
+        "enforcement": "workflow"
+      },
+      {
+        "rule_id": "KIS-MRD-PROV-004",
+        "statement": "Inferred facts MUST NOT become normative automatically and MUST NOT appear as active prescriptive facts.",
+        "enforcement": "validator"
+      },
+      {
+        "rule_id": "KIS-MRD-PROV-005",
+        "statement": "Generated human-readable documents and META projections MUST NOT write back authority into their sources.",
+        "enforcement": "generator"
+      },
+      {
+        "rule_id": "KIS-MRD-PROV-006",
+        "statement": "The provenance source fingerprint MUST deterministically identify the declared provenance source set.",
+        "enforcement": "validator"
+      },
+      {
+        "rule_id": "KIS-MRD-PROV-007",
+        "statement": "Author intent, invariants, choices, and contracts; derive implementation observations; capture runtime evidence; evaluate conformance between them.",
+        "enforcement": "review"
+      },
+      {
+        "rule_id": "KIS-MRD-PROV-008",
+        "statement": "A repo_path provenance source MUST carry the SHA-256 of the resolved repository file; a mismatch MUST invalidate provenance.",
+        "enforcement": "validator"
+      }
+    ]
+  }
+}

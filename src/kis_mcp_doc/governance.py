@@ -15,15 +15,15 @@ from .canonical import canonical_hash, canonical_source_bytes, resolve_repo_file
 
 CONCERNS = (
     "classification", "applicability", "ownership", "layering", "dependencies",
-    "provenance", "lifecycle", "operator_behavior", "validation",
+    "provenance", "lifecycle", "validation",
 )
 CHECK_NAMES = (
     "classification", "applicability", "ownership", "layering", "dependencies",
-    "provenance", "lifecycle", "operator_behavior", "schema",
+    "provenance", "lifecycle", "schema",
 )
 CORE_REASON_CODES = frozenset({
     "MRD_SCHEMA_INVALID", "MRD_RULE_ID_DUPLICATE", "MRD_GOVERNANCE_CONCERN_MISSING",
-    "MRD_GOVERNANCE_CONCERN_DUPLICATE", "MRD_ID_CLASS_TYPE_MISMATCH", "MRD_CLASS_UNKNOWN",
+    "MRD_GOVERNANCE_CONCERN_DUPLICATE", "MRD_IDENTITY_INVALID", "MRD_CLASS_UNKNOWN",
     "MRD_TYPE_INVALID", "MRD_CATALOG_COUNT_MISMATCH", "MRD_LAYER_INVALID",
     "MRD_DEPENDENCY_UNRESOLVED", "MRD_DEPENDENCY_LAYER_VIOLATION", "MRD_DEPENDENCY_CYCLE",
     "MRD_DEPENDENCY_DUPLICATE", "MRD_SOURCE_UNRESOLVED", "MRD_SOURCE_FINGERPRINT_MISMATCH",
@@ -32,8 +32,7 @@ CORE_REASON_CODES = frozenset({
     "MRD_SUPERSESSION_UNRESOLVED", "MRD_CLASS_CATALOG_MISMATCH", "MRD_LAYER_CATALOG_MISMATCH",
     "MRD_RECORD_MODE_CATALOG_MISMATCH", "MRD_META_FACT_QUALITY_INVALID",
     "MRD_VALIDATION_CONTRACT_MISMATCH", "MRD_APPLICABILITY_CATALOG_MISMATCH",
-    "MRD_RELATIONSHIP_UNKNOWN", "MRD_OPERATOR_BEHAVIOR_INVALID",
-    "MRD_ENFORCEMENT_BINDING_INVALID",
+    "MRD_RELATIONSHIP_UNKNOWN", "MRD_ENFORCEMENT_BINDING_INVALID",
 })
 
 
@@ -42,8 +41,8 @@ class GovernanceRepository:
         self.root = Path(root).resolve()
         self.mrd_root = Path(mrd_root).resolve()
         self.schema_path = self.root / "contracts" / "mrd" / "v1" / "mrd.schema.json"
-        self.content_schema_path = self.root / "contracts" / "governance" / "v1" / "content.schema.json"
-        self.profile_schema_path = self.root / "contracts" / "governance" / "v1" / "governance-mrd.schema.json"
+        self.content_schema_path = self.root / "contracts" / "mrd-specification" / "v1" / "content.schema.json"
+        self.profile_schema_path = self.root / "contracts" / "mrd-specification" / "v1" / "governance-mrd.schema.json"
 
     def load(self) -> dict[str, dict[str, Any]]:
         documents: dict[str, dict[str, Any]] = {}
@@ -80,7 +79,6 @@ class GovernanceRepository:
         self._validate_dependencies(documents, concerns, diagnostics)
         self._validate_provenance(documents, concerns, diagnostics)
         self._validate_lifecycle(documents, concerns, diagnostics)
-        self._validate_operator_behavior(concerns, diagnostics)
         return self._result(diagnostics)
 
     def _concern_owners(self, documents: dict[str, dict[str, Any]], diagnostics: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
@@ -205,9 +203,12 @@ class GovernanceRepository:
                 diagnostics.append(self._diagnostic("classification", "MRD_CLASS_UNKNOWN", f"unknown MRD class {cls!r}", f"{doc_id}._mrd.class", doc_id))
             if (cls, typ) not in pairs:
                 diagnostics.append(self._diagnostic("classification", "MRD_TYPE_INVALID", f"invalid class/type pair {cls}-{typ}", f"{doc_id}._mrd.type", doc_id))
-            parts = doc_id.split("-")
-            if len(parts) < 5 or parts[-3] != cls or parts[-2] != typ:
-                diagnostics.append(self._diagnostic("classification", "MRD_ID_CLASS_TYPE_MISMATCH", f"id {doc_id} does not encode class/type {cls}-{typ}", f"{doc_id}._mrd.id", doc_id))
+            legacy_ids = envelope.get("legacy_ids", [])
+            if doc_id in legacy_ids or len(set(legacy_ids)) != len(legacy_ids):
+                diagnostics.append(self._diagnostic("classification", "MRD_IDENTITY_INVALID", f"MRD identity aliases are invalid for {doc_id}", f"{doc_id}._mrd.legacy_ids", doc_id))
+            expected_path = self._document_path_for_id(doc_id)
+            if expected_path is not None and envelope.get("canonical_path") != expected_path:
+                diagnostics.append(self._diagnostic("classification", "MRD_IDENTITY_INVALID", f"canonical_path does not match the repository location for {doc_id}", f"{doc_id}._mrd.canonical_path", doc_id))
 
     def _validate_applicability(self, concerns: dict[str, dict[str, Any]], diagnostics: list[dict[str, Any]]) -> None:
         classification = concerns.get("classification")
@@ -409,6 +410,16 @@ class GovernanceRepository:
                 "kis-op governance phases must match the prescribed seven-phase application workflow",
                 f"{owner['_mrd']['id']}.content.phases", owner["_mrd"]["id"],
             ))
+
+    def _document_path_for_id(self, doc_id: str) -> str | None:
+        for path in sorted(self.mrd_root.glob("*.mrd.json")):
+            try:
+                candidate = json.loads(path.read_text(encoding="utf-8"))
+            except (OSError, UnicodeError, json.JSONDecodeError):
+                continue
+            if candidate.get("_mrd", {}).get("id") == doc_id:
+                return path.relative_to(self.root).as_posix()
+        return None
 
     def _resolve_repo_file(self, locator: object) -> Path | None:
         return resolve_repo_file(self.root, locator)

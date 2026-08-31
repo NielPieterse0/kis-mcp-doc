@@ -4,34 +4,34 @@
     {
       "page": "002-work-lifecycle.md",
       "source_mrds": [
-        "KIS-WORK-WRK-STM-001"
+        "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"
       ]
     },
     {
       "page": "003-work-operations.md",
       "source_mrds": [
-        "KIS-WORK-WRK-WFL-001"
+        "urn:uuid:3bab4e5b-4c6d-5c21-811c-a7f6cb02ac93"
       ]
     },
     {
       "page": "004-complete-work.md",
       "source_mrds": [
-        "KIS-WORK-WRK-STM-001"
+        "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"
       ]
     },
     {
       "page": "005-troubleshooting.md",
       "source_mrds": [
-        "KIS-WORK-WRK-STM-001",
-        "KIS-WORK-WRK-WFL-001",
-        "KIS-WORK-CTR-SVC-001"
+        "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3",
+        "urn:uuid:3bab4e5b-4c6d-5c21-811c-a7f6cb02ac93",
+        "urn:uuid:2f2b1233-37fe-580c-bc75-26a38e9aa7fe"
       ]
     },
     {
       "page": "006-examples.md",
       "source_mrds": [
-        "KIS-WORK-WRK-STM-001",
-        "KIS-WORK-WRK-WFL-001"
+        "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3",
+        "urn:uuid:3bab4e5b-4c6d-5c21-811c-a7f6cb02ac93"
       ]
     }
   ]

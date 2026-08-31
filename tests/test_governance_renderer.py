@@ -13,15 +13,15 @@ from kis_mcp_doc.render import build_governance_spec, verify_governance_spec
 
 
 ROOT = Path(__file__).resolve().parents[1]
-MRD_ROOT = ROOT / "prescriptives" / "governance"
-PUBLICATION = ROOT / "publication" / "governance-spec.json"
+MRD_ROOT = ROOT / "prescriptives" / "mrd-specification"
+PUBLICATION = ROOT / "publication" / "mrd-specification.json"
 
 
 def copied_repository(tmp_path: Path) -> tuple[Path, GovernanceRepository, Path]:
     root = tmp_path / "repo"
     for name in ("contracts", "prescriptives", "publication", "src"):
         shutil.copytree(ROOT / name, root / name)
-    return root, GovernanceRepository(root, root / "prescriptives" / "governance"), root / "publication" / "governance-spec.json"
+    return root, GovernanceRepository(root, root / "prescriptives" / "mrd-specification"), root / "publication" / "mrd-specification.json"
 
 
 def test_render_is_byte_deterministic(tmp_path: Path) -> None:
@@ -43,7 +43,7 @@ def test_repository_text_line_endings_do_not_change_bundle(tmp_path: Path) -> No
     paths = (
         root / "src" / "kis_mcp_doc" / "render.py",
         root / "contracts" / "mrd" / "v1" / "mrd.schema.json",
-        root / "prescriptives" / "governance" / "01-classification.mrd.json",
+        root / "prescriptives" / "mrd-specification" / "01-classification.mrd.json",
         publication,
         root / "publication" / "harvest-sources.json",
     )
@@ -95,8 +95,7 @@ def test_rendered_spec_decomposes_normative_sections_into_mcp_style_pages(tmp_pa
         "006-dependency-rules.md": "# Dependency Rules",
         "007-provenance.md": "# Provenance",
         "008-lifecycle.md": "# Lifecycle",
-        "009-kis-op-governance-behavior.md": "# kis-op Governance Behavior",
-        "010-validation-and-enforcement.md": "# Validation and Enforcement",
+        "009-validation-and-enforcement.md": "# Validation and Enforcement",
     }
     for page, heading in expected.items():
         assert heading in (output / page).read_text(encoding="utf-8")
@@ -104,25 +103,21 @@ def test_rendered_spec_decomposes_normative_sections_into_mcp_style_pages(tmp_pa
 
     classification = (output / "002-classification.md").read_text(encoding="utf-8")
     applicability = (output / "003-applicability-and-selection.md").read_text(encoding="utf-8")
-    behavior = (output / "009-kis-op-governance-behavior.md").read_text(encoding="utf-8")
-    validation = (output / "010-validation-and-enforcement.md").read_text(encoding="utf-8")
+    validation = (output / "009-validation-and-enforcement.md").read_text(encoding="utf-8")
     assert "## Type catalog (47 allowed types)" in classification
     assert "SEM-DOM" in classification
     assert "## Selecting governance artifacts" in applicability
     assert applicability.index("## Selecting governance artifacts") < applicability.index("## Applicability reference")
     assert "A repository or change MUST NOT instantiate all 47 MRD types by default" in applicability
     assert "020-applicability-catalog.md" in applicability
-    assert "## Governance application lifecycle" in behavior
-    assert "kis-op applies governance through seven ordered phases" in behavior
     assert "## Validation model" in validation
     assert validation.index("## Validation model") < validation.index("## Enforcement modes")
-    assert "### Operator behavior" in validation
     assert "Operator_Behavior" not in validation
     assert "## Requirement traceability" in validation
     assert "| Rule | Enforcement |" in validation
     assert "| Rule | Requirement | Enforcement |" not in validation
     assert "## Normative rules" not in validation
-    assert "# kis-op Governance Specification" in root
+    assert "# KIS MRD Specification" in root
     assert "## Overview" in root
     assert "## Detailed specification" in root
     assert "GENERATED — DO NOT EDIT" in root
@@ -229,8 +224,8 @@ def test_manifest_binds_canonical_repo_dependencies(tmp_path: Path) -> None:
     source_paths = {item["path"] for item in manifest["inputs"]["source_files"]}
     assert source_paths == {
         "contracts/mrd/v1/mrd.schema.json",
-        "contracts/governance/v1/content.schema.json",
-        "contracts/governance/v1/governance-mrd.schema.json",
+        "contracts/mrd-specification/v1/content.schema.json",
+        "contracts/mrd-specification/v1/governance-mrd.schema.json",
         "contracts/publication/family/v1/registry.schema.json",
         "prescriptives/documentation/01-reference-standard.mrd.json",
         "prescriptives/documentation/02-reference-registry.mrd.json",
@@ -248,10 +243,10 @@ def test_governance_publication_consumes_documentation_reference_profile(tmp_pat
 
     assert config["documentation_reference"] == {
         "output_class": "human_readable_specification",
-        "policy_mrd": "KIS-DOC-CON-POL-001",
-        "registry_mrd": "KIS-DOC-SEM-REG-001",
+        "policy_mrd": "urn:uuid:ae7e7dc1-2b8b-5988-845d-24df49dcfe0a",
+        "registry_mrd": "urn:uuid:d6110859-d683-5aab-86ff-ceecd899e38d",
     }
-    assert "`KIS-DOC-CON-POL-001`" in (output / "001-specification.md").read_text(encoding="utf-8")
+    assert "`urn:uuid:ae7e7dc1-2b8b-5988-845d-24df49dcfe0a`" in (output / "001-specification.md").read_text(encoding="utf-8")
     assert any(item["path"] == "prescriptives/documentation/01-reference-standard.mrd.json" for item in manifest["inputs"]["source_files"])
 
 
@@ -490,7 +485,7 @@ def test_verifier_detects_mrd_drift_without_rebuild(tmp_path: Path) -> None:
     output = tmp_path / "build"
     build_governance_spec(repo, publication, output)
 
-    path = root / "prescriptives" / "governance" / "01-classification.mrd.json"
+    path = root / "prescriptives" / "mrd-specification" / "01-classification.mrd.json"
     document = json.loads(path.read_text(encoding="utf-8"))
     document["content"]["purpose"] += " Changed after build."
     path.write_text(json.dumps(document, indent=2, sort_keys=True) + "\n", encoding="utf-8")
@@ -519,7 +514,7 @@ def test_governance_diagrams_are_derived_from_canonical_mrds(tmp_path: Path) -> 
     output = tmp_path / "build"
     build_governance_spec(repo, PUBLICATION, output)
     documents = repo.load()
-    lifecycle = documents["KIS-KNOW-WRK-STM-001"]["content"]
+    lifecycle = documents["urn:uuid:ddc10bf4-e6ea-5b3a-958e-464af2fa9fd1"]["content"]
     page = (output / "008-lifecycle.md").read_text(encoding="utf-8")
     assert "```mermaid" in page
     expected_edges = {
@@ -535,7 +530,7 @@ def test_governance_diagrams_are_derived_from_canonical_mrds(tmp_path: Path) -> 
         )
     }
     assert actual_edges == expected_edges
-    ownership = documents["KIS-KNOW-CON-POL-002"]["content"]["ownership_contract"]
+    ownership = documents["urn:uuid:9a543068-203b-5a7a-8cdb-805517ca3487"]["content"]["ownership_contract"]
     ownership_page = (output / "004-authority-ownership-and-relationships.md").read_text(encoding="utf-8")
     assert f'Canonical owner count: {ownership["canonical_owner_count"]}' in ownership_page
     assert ownership["non_owner_posture"] in ownership_page

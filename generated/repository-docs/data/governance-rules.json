@@ -1,0 +1,1223 @@
+{
+  "authority": "derived_non_authoritative",
+  "generated_from": "prescriptives/governance/01-repository-governance.json",
+  "rules": [
+    {
+      "applicability": "repository_wide",
+      "authoritative_owner": "governance:repository",
+      "construct": "rule",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "lifecycle": {
+        "status": "active",
+        "superseded_by": null,
+        "supersedes": []
+      },
+      "rationale": {
+        "origin": {
+          "id": "#72",
+          "kind": "github_issue",
+          "locator": "github:NielPieterse0/kis-mcp-doc#72"
+        },
+        "summary": "Closes repository governance defect #72."
+      },
+      "rule_id": "KIS-REPO-GOV-001",
+      "scope": {
+        "applies_to": [
+          "persistent repository artefacts"
+        ],
+        "excludes": []
+      },
+      "statement": "Every persistent governed artefact MUST resolve to exactly one primary semantic role.",
+      "verification": {
+        "entry_point": "kis-doc repository-governance-validate",
+        "execution_point": "scripts/verify.ps1",
+        "expected_result": "valid",
+        "failure_code": "REPOSITORY_ROLE_RESOLUTION_INVALID",
+        "method": "deterministic",
+        "negative_fixture": "test_rejects_ambiguous_semantic_role",
+        "residual_review": null,
+        "validator": "src/kis_mcp_doc/repository_governance.py"
+      }
+    },
+    {
+      "applicability": "repository_wide",
+      "authoritative_owner": "governance:repository",
+      "construct": "rule",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "lifecycle": {
+        "status": "active",
+        "superseded_by": null,
+        "supersedes": []
+      },
+      "rationale": {
+        "origin": {
+          "id": "#80",
+          "kind": "github_issue",
+          "locator": "github:NielPieterse0/kis-mcp-doc#80"
+        },
+        "summary": "Closes repository governance defect #80."
+      },
+      "rule_id": "KIS-REPO-GOV-002",
+      "scope": {
+        "applies_to": [
+          "prescriptive artefacts",
+          "governed facts"
+        ],
+        "excludes": []
+      },
+      "statement": "Every prescriptive artefact and governed fact MUST resolve to exactly one canonical authoritative owner.",
+      "verification": {
+        "entry_point": "kis-doc repository-governance-validate",
+        "execution_point": "scripts/verify.ps1",
+        "expected_result": "valid",
+        "failure_code": "PRESCRIPTIVE_FACT_OWNER_DUPLICATE",
+        "method": "deterministic",
+        "negative_fixture": "test_rejects_duplicate_fact_owner",
+        "residual_review": null,
+        "validator": "src/kis_mcp_doc/repository_governance.py"
+      }
+    },
+    {
+      "applicability": "repository_wide",
+      "authoritative_owner": "governance:repository",
+      "construct": "rule",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "lifecycle": {
+        "status": "active",
+        "superseded_by": null,
+        "supersedes": []
+      },
+      "rationale": {
+        "origin": {
+          "id": "#74",
+          "kind": "github_issue",
+          "locator": "github:NielPieterse0/kis-mcp-doc#74"
+        },
+        "summary": "Closes repository governance defect #74."
+      },
+      "rule_id": "KIS-REPO-GOV-003",
+      "scope": {
+        "applies_to": [
+          "persistent repository artefacts"
+        ],
+        "excludes": []
+      },
+      "statement": "Every persistent governed artefact MUST resolve to exactly one legal Directory Grammar slot.",
+      "verification": {
+        "entry_point": "kis-doc repository-governance-validate",
+        "execution_point": "scripts/verify.ps1",
+        "expected_result": "valid",
+        "failure_code": "REPOSITORY_SLOT_RESOLUTION_INVALID",
+        "method": "deterministic",
+        "negative_fixture": "test_rejects_ambiguous_or_missing_slot",
+        "residual_review": null,
+        "validator": "src/kis_mcp_doc/repository_governance.py"
+      }
+    },
+    {
+      "applicability": "repository_wide",
+      "authoritative_owner": "governance:repository",
+      "construct": "rule",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "lifecycle": {
+        "status": "active",
+        "superseded_by": null,
+        "supersedes": []
+      },
+      "rationale": {
+        "origin": {
+          "id": "#74",
+          "kind": "github_issue",
+          "locator": "github:NielPieterse0/kis-mcp-doc#74"
+        },
+        "summary": "Closes repository governance defect #74."
+      },
+      "rule_id": "KIS-REPO-GOV-004",
+      "scope": {
+        "applies_to": [
+          "repository structure"
+        ],
+        "excludes": []
+      },
+      "statement": "Unknown persistent governed top-level directories, governed subdirectories, and artefact classes MUST fail closed.",
+      "verification": {
+        "entry_point": "kis-doc repository-governance-validate",
+        "execution_point": "scripts/verify.ps1",
+        "expected_result": "valid",
+        "failure_code": "REPOSITORY_DIRECTORY_UNKNOWN",
+        "method": "deterministic",
+        "negative_fixture": "test_rejects_unknown_top_level_directory",
+        "residual_review": null,
+        "validator": "src/kis_mcp_doc/repository_governance.py"
+      }
+    },
+    {
+      "applicability": "repository_wide",
+      "authoritative_owner": "governance:repository",
+      "construct": "rule",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "lifecycle": {
+        "status": "active",
+        "superseded_by": null,
+        "supersedes": []
+      },
+      "rationale": {
+        "origin": {
+          "id": "#77",
+          "kind": "github_issue",
+          "locator": "github:NielPieterse0/kis-mcp-doc#77"
+        },
+        "summary": "Closes repository governance defect #77."
+      },
+      "rule_id": "KIS-REPO-GOV-005",
+      "scope": {
+        "applies_to": [
+          "generated outputs"
+        ],
+        "excludes": []
+      },
+      "statement": "Generated outputs MUST remain projection-only and MUST NOT become write-back or normative authority.",
+      "verification": {
+        "entry_point": "kis-doc repository-governance-validate",
+        "execution_point": "scripts/verify.ps1",
+        "expected_result": "valid",
+        "failure_code": "GENERATED_AUTHORITY_PROHIBITED",
+        "method": "deterministic",
+        "negative_fixture": "test_generated_role_is_non_authoritative",
+        "residual_review": null,
+        "validator": "src/kis_mcp_doc/repository_governance.py"
+      }
+    },
+    {
+      "applicability": "repository_wide",
+      "authoritative_owner": "governance:repository",
+      "construct": "rule",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "lifecycle": {
+        "status": "active",
+        "superseded_by": null,
+        "supersedes": []
+      },
+      "rationale": {
+        "origin": {
+          "id": "#76",
+          "kind": "github_issue",
+          "locator": "github:NielPieterse0/kis-mcp-doc#76"
+        },
+        "summary": "Closes repository governance defect #76."
+      },
+      "rule_id": "KIS-REPO-GOV-006",
+      "scope": {
+        "applies_to": [
+          "deterministic governed rules"
+        ],
+        "excludes": []
+      },
+      "statement": "Every deterministic governed rule MUST name a unique failing fixture that demonstrates detection of its prohibited state.",
+      "verification": {
+        "entry_point": "kis-doc repository-governance-validate",
+        "execution_point": "scripts/verify.ps1",
+        "expected_result": "valid",
+        "failure_code": "REPOSITORY_NEGATIVE_FIXTURE_MISSING",
+        "method": "deterministic",
+        "negative_fixture": "test_rejects_missing_or_reused_negative_fixture",
+        "residual_review": null,
+        "validator": "src/kis_mcp_doc/repository_governance.py"
+      }
+    },
+    {
+      "applicability": "repository_wide",
+      "authoritative_owner": "governance:repository",
+      "construct": "rule",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "lifecycle": {
+        "status": "active",
+        "superseded_by": null,
+        "supersedes": []
+      },
+      "rationale": {
+        "origin": {
+          "id": "#72",
+          "kind": "github_issue",
+          "locator": "github:NielPieterse0/kis-mcp-doc#72"
+        },
+        "summary": "Closes repository governance defect #72."
+      },
+      "rule_id": "KIS-REPO-GOV-007",
+      "scope": {
+        "applies_to": [
+          "directory grammar slots"
+        ],
+        "excludes": []
+      },
+      "statement": "Every new persistent grammar slot MUST cite a concrete issue or governed change that demonstrates the need before the slot can become active.",
+      "verification": {
+        "entry_point": "kis-doc repository-governance-validate",
+        "execution_point": "scripts/verify.ps1",
+        "expected_result": "valid",
+        "failure_code": "REPOSITORY_SLOT_ORIGIN_MISSING",
+        "method": "deterministic_plus_residual_review",
+        "negative_fixture": "test_rejects_slot_without_demonstrated_need",
+        "residual_review": {
+          "bounded_question": "Does the cited issue/change demonstrate a current persistent structural need rather than speculative hierarchy?",
+          "evidence_location": "change review evidence",
+          "justification": "Mechanical validation can prove the source exists and is typed, but only bounded governance review can judge whether the cited need is substantively justified.",
+          "result_contract": [
+            "accepted",
+            "rejected"
+          ],
+          "reviewer_capability": "repository-governance-architecture"
+        },
+        "validator": "src/kis_mcp_doc/repository_governance.py"
+      }
+    },
+    {
+      "applicability": "repository_wide",
+      "authoritative_owner": "governance:repository",
+      "construct": "rule",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "lifecycle": {
+        "status": "active",
+        "superseded_by": null,
+        "supersedes": []
+      },
+      "rationale": {
+        "origin": {
+          "id": "#72",
+          "kind": "github_issue",
+          "locator": "github:NielPieterse0/kis-mcp-doc#72"
+        },
+        "summary": "Closes repository governance defect #72."
+      },
+      "rule_id": "KIS-REPO-GOV-008",
+      "scope": {
+        "applies_to": [
+          ".work"
+        ],
+        "excludes": []
+      },
+      "statement": ".work MUST remain the reserved disposable KIS change/work namespace and MUST NOT become canonical product authority, published content, or required product input.",
+      "verification": {
+        "entry_point": "kis-doc repository-governance-validate",
+        "execution_point": "scripts/verify.ps1",
+        "expected_result": "valid",
+        "failure_code": "REPOSITORY_WORKSPACE_POLICY_INVALID",
+        "method": "deterministic",
+        "negative_fixture": "test_rejects_authoritative_work_workspace",
+        "residual_review": null,
+        "validator": "src/kis_mcp_doc/repository_governance.py"
+      }
+    },
+    {
+      "applicability": "repository_wide",
+      "authoritative_owner": "governance:repository",
+      "construct": "rule",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "lifecycle": {
+        "status": "active",
+        "superseded_by": null,
+        "supersedes": []
+      },
+      "rationale": {
+        "origin": {
+          "id": "#70",
+          "kind": "github_issue",
+          "locator": "github:NielPieterse0/kis-mcp-doc#70"
+        },
+        "summary": "Closes repository governance defect #70."
+      },
+      "rule_id": "KIS-REPO-GOV-009",
+      "scope": {
+        "applies_to": [
+          "validation policy"
+        ],
+        "excludes": []
+      },
+      "statement": "Human review MUST NOT be the primary validation method when deterministic or bounded machine validation is feasible.",
+      "verification": {
+        "entry_point": "kis-doc repository-governance-validate",
+        "execution_point": "scripts/verify.ps1",
+        "expected_result": "valid",
+        "failure_code": "REPOSITORY_REVIEW_POLICY_INVALID",
+        "method": "deterministic",
+        "negative_fixture": "test_rejects_unjustified_human_review",
+        "residual_review": null,
+        "validator": "src/kis_mcp_doc/repository_governance.py"
+      }
+    },
+    {
+      "applicability": "repository_wide",
+      "authoritative_owner": "governance:repository",
+      "construct": "rule",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "lifecycle": {
+        "status": "active",
+        "superseded_by": null,
+        "supersedes": []
+      },
+      "rationale": {
+        "origin": {
+          "id": "#79",
+          "kind": "github_issue",
+          "locator": "github:NielPieterse0/kis-mcp-doc#79"
+        },
+        "summary": "Closes repository governance defect #79."
+      },
+      "rule_id": "KIS-REPO-GOV-010",
+      "scope": {
+        "applies_to": [
+          "prescriptives/governance",
+          "prescriptives/mrd-specification"
+        ],
+        "excludes": []
+      },
+      "statement": "Repository-wide Governance and the MRD Specification MUST have distinct canonical domains and MUST NOT own each other's normative concerns.",
+      "verification": {
+        "entry_point": "kis-doc repository-governance-validate",
+        "execution_point": "scripts/verify.ps1",
+        "expected_result": "valid",
+        "failure_code": "REPOSITORY_GOVERNANCE_BOUNDARY_INVALID",
+        "method": "deterministic",
+        "negative_fixture": "test_rejects_governance_mrd_specification_overlap",
+        "residual_review": null,
+        "validator": "src/kis_mcp_doc/repository_governance.py"
+      }
+    },
+    {
+      "applicability": "repository_wide",
+      "authoritative_owner": "governance:repository",
+      "construct": "rule",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "lifecycle": {
+        "status": "active",
+        "superseded_by": null,
+        "supersedes": []
+      },
+      "rationale": {
+        "origin": {
+          "id": "#82",
+          "kind": "github_issue",
+          "locator": "github:NielPieterse0/kis-mcp-doc#82"
+        },
+        "summary": "Closes repository governance defect #82."
+      },
+      "rule_id": "KIS-REPO-GOV-011",
+      "scope": {
+        "applies_to": [
+          "conformance evidence"
+        ],
+        "excludes": []
+      },
+      "statement": "Conformance claims MUST follow the governed evidence precedence and MUST reject stale or lower-precedence evidence that conflicts with fresher higher-precedence evidence.",
+      "verification": {
+        "entry_point": "kis-doc repository-governance-validate",
+        "execution_point": "scripts/verify.ps1",
+        "expected_result": "valid",
+        "failure_code": "REPOSITORY_EVIDENCE_PRECEDENCE_INVALID",
+        "method": "deterministic",
+        "negative_fixture": "test_rejects_invalid_evidence_precedence",
+        "residual_review": null,
+        "validator": "src/kis_mcp_doc/repository_governance.py"
+      }
+    },
+    {
+      "applicability": "repository_wide",
+      "authoritative_owner": "governance:repository",
+      "construct": "rule",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "lifecycle": {
+        "status": "active",
+        "superseded_by": null,
+        "supersedes": []
+      },
+      "rationale": {
+        "origin": {
+          "id": "#83",
+          "kind": "github_issue",
+          "locator": "github:NielPieterse0/kis-mcp-doc#83"
+        },
+        "summary": "Closes repository governance defect #83."
+      },
+      "rule_id": "KIS-REPO-GOV-012",
+      "scope": {
+        "applies_to": [
+          "rule enforcement projection"
+        ],
+        "excludes": []
+      },
+      "statement": "The enforcement register MUST be a deterministic non-authoritative projection of canonical governed rules and MUST NOT be independently authored.",
+      "verification": {
+        "entry_point": "kis-doc repository-governance-validate",
+        "execution_point": "scripts/verify.ps1",
+        "expected_result": "valid",
+        "failure_code": "REPOSITORY_ENFORCEMENT_PROJECTION_INVALID",
+        "method": "deterministic",
+        "negative_fixture": "test_rejects_authored_enforcement_register",
+        "residual_review": null,
+        "validator": "src/kis_mcp_doc/repository_governance.py"
+      }
+    },
+    {
+      "applicability": "repository_wide",
+      "authoritative_owner": "governance:repository",
+      "construct": "rule",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "lifecycle": {
+        "status": "active",
+        "superseded_by": null,
+        "supersedes": []
+      },
+      "rationale": {
+        "origin": {
+          "id": "#78",
+          "kind": "github_issue",
+          "locator": "github:NielPieterse0/kis-mcp-doc#78"
+        },
+        "summary": "Closes repository governance defect #78."
+      },
+      "rule_id": "KIS-REPO-GOV-013",
+      "scope": {
+        "applies_to": [
+          "prescriptive registry"
+        ],
+        "excludes": []
+      },
+      "statement": "Every registered prescriptive artefact MUST have a deterministic human projection route or an explicit governed non-publication reason.",
+      "verification": {
+        "entry_point": "kis-doc repository-governance-validate",
+        "execution_point": "scripts/verify.ps1",
+        "expected_result": "valid",
+        "failure_code": "PRESCRIPTIVE_HUMAN_PROJECTION_MISSING",
+        "method": "deterministic",
+        "negative_fixture": "test_rejects_prescriptive_without_projection_disposition",
+        "residual_review": null,
+        "validator": "src/kis_mcp_doc/repository_governance.py"
+      }
+    },
+    {
+      "applicability": "repository_wide",
+      "authoritative_owner": "governance:repository",
+      "construct": "rule",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "lifecycle": {
+        "status": "active",
+        "superseded_by": null,
+        "supersedes": []
+      },
+      "rationale": {
+        "origin": {
+          "id": "#81",
+          "kind": "github_issue",
+          "locator": "github:NielPieterse0/kis-mcp-doc#81"
+        },
+        "summary": "Closes repository governance defect #81."
+      },
+      "rule_id": "KIS-REPO-GOV-014",
+      "scope": {
+        "applies_to": [
+          "MRD identity metadata"
+        ],
+        "excludes": []
+      },
+      "statement": "MRD stable identity MUST be opaque to classification and location, while classification, canonical path, lifecycle, exact Git revision, and GitHub change provenance remain separate metadata.",
+      "verification": {
+        "entry_point": "kis-doc repository-governance-validate",
+        "execution_point": "scripts/verify.ps1",
+        "expected_result": "valid",
+        "failure_code": "MRD_IDENTITY_METADATA_INVALID",
+        "method": "deterministic",
+        "negative_fixture": "test_rejects_semantically_encoded_mrd_identity",
+        "residual_review": null,
+        "validator": "src/kis_mcp_doc/repository_governance.py"
+      }
+    },
+    {
+      "applicability": "repository_wide",
+      "authoritative_owner": "governance:repository",
+      "construct": "rule",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "lifecycle": {
+        "status": "active",
+        "superseded_by": null,
+        "supersedes": []
+      },
+      "rationale": {
+        "origin": {
+          "id": "#86",
+          "kind": "github_issue",
+          "locator": "github:NielPieterse0/kis-mcp-doc#86"
+        },
+        "summary": "Closes repository governance defect #86."
+      },
+      "rule_id": "KIS-REPO-GOV-015",
+      "scope": {
+        "applies_to": [
+          "repository governance model and governed repository state"
+        ],
+        "excludes": []
+      },
+      "statement": "Every mandatory Repository Governance rule MUST resolve its implementation, validator, execution point, failure code, and evidence location to concrete repository artefacts.",
+      "verification": {
+        "entry_point": "kis-doc repository-governance-validate",
+        "execution_point": "scripts/verify.ps1",
+        "expected_result": "valid",
+        "failure_code": "REPOSITORY_RULE_ASSURANCE_REFERENCE_INVALID",
+        "method": "deterministic",
+        "negative_fixture": "test_rejects_unresolved_rule_assurance_reference",
+        "residual_review": null,
+        "validator": "src/kis_mcp_doc/repository_governance.py"
+      }
+    },
+    {
+      "applicability": "repository_wide",
+      "authoritative_owner": "governance:repository",
+      "construct": "rule",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "lifecycle": {
+        "status": "active",
+        "superseded_by": null,
+        "supersedes": []
+      },
+      "rationale": {
+        "origin": {
+          "id": "#75",
+          "kind": "github_issue",
+          "locator": "github:NielPieterse0/kis-mcp-doc#75"
+        },
+        "summary": "Closes repository governance defect #75."
+      },
+      "rule_id": "KIS-REPO-GOV-016",
+      "scope": {
+        "applies_to": [
+          "repository governance model and governed repository state"
+        ],
+        "excludes": []
+      },
+      "statement": "Every registered repository relationship MUST use a governed relationship contract with a legal direction, target role, target slot, and slot capability.",
+      "verification": {
+        "entry_point": "kis-doc repository-governance-validate",
+        "execution_point": "scripts/verify.ps1",
+        "expected_result": "valid",
+        "failure_code": "REPOSITORY_RELATIONSHIP_INVALID",
+        "method": "deterministic",
+        "negative_fixture": "test_rejects_illegal_relationship_direction",
+        "residual_review": null,
+        "validator": "src/kis_mcp_doc/repository_governance.py"
+      }
+    },
+    {
+      "applicability": "repository_wide",
+      "authoritative_owner": "governance:repository",
+      "construct": "rule",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "lifecycle": {
+        "status": "active",
+        "superseded_by": null,
+        "supersedes": []
+      },
+      "rationale": {
+        "origin": {
+          "id": "#86",
+          "kind": "github_issue",
+          "locator": "github:NielPieterse0/kis-mcp-doc#86"
+        },
+        "summary": "Closes repository governance defect #86."
+      },
+      "rule_id": "KIS-REPO-GOV-017",
+      "scope": {
+        "applies_to": [
+          "repository governance model and governed repository state"
+        ],
+        "excludes": []
+      },
+      "statement": "A non-owning prescriptive artefact MUST NOT independently restate a canonical repository-wide governed rule as normative authority.",
+      "verification": {
+        "entry_point": "kis-doc repository-governance-validate",
+        "execution_point": "scripts/verify.ps1",
+        "expected_result": "valid",
+        "failure_code": "REPOSITORY_NORMATIVE_RESTATEMENT_PROHIBITED",
+        "method": "deterministic_plus_residual_review",
+        "negative_fixture": "test_rejects_normative_rule_restatement",
+        "residual_review": {
+          "bounded_question": "Does a changed non-owning prescriptive artefact create a second normative statement materially equivalent to a canonical Repository Governance rule?",
+          "evidence_location": "change review evidence",
+          "justification": "Mechanical validation detects rule-ID reuse and normalized exact restatement; bounded semantic review is required only for materially equivalent paraphrases that cannot be decided reliably by deterministic text matching.",
+          "result_contract": [
+            "no_duplicate_authority",
+            "duplicate_authority_found"
+          ],
+          "reviewer_capability": "repository-governance-architecture"
+        },
+        "validator": "src/kis_mcp_doc/repository_governance.py"
+      }
+    },
+    {
+      "applicability": "repository_wide",
+      "authoritative_owner": "governance:repository",
+      "construct": "rule",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "lifecycle": {
+        "status": "active",
+        "superseded_by": null,
+        "supersedes": []
+      },
+      "rationale": {
+        "origin": {
+          "id": "#88",
+          "kind": "github_issue",
+          "locator": "github:NielPieterse0/kis-mcp-doc#88"
+        },
+        "summary": "Closes repository governance defect #88."
+      },
+      "rule_id": "KIS-REPO-GOV-018",
+      "scope": {
+        "applies_to": [
+          "repository governance model and governed repository state"
+        ],
+        "excludes": []
+      },
+      "statement": "Governed vocabulary relationships and rule lifecycle transitions MUST use the canonical vocabulary and resolve supersession references without self-reference or dangling targets.",
+      "verification": {
+        "entry_point": "kis-doc repository-governance-validate",
+        "execution_point": "scripts/verify.ps1",
+        "expected_result": "valid",
+        "failure_code": "REPOSITORY_GOVERNANCE_VOCABULARY_INVALID",
+        "method": "deterministic",
+        "negative_fixture": "test_rejects_invalid_governance_lifecycle",
+        "residual_review": null,
+        "validator": "src/kis_mcp_doc/repository_governance.py"
+      }
+    },
+    {
+      "applicability": "repository_wide",
+      "authoritative_owner": "governance:repository",
+      "construct": "rule",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "lifecycle": {
+        "status": "active",
+        "superseded_by": null,
+        "supersedes": []
+      },
+      "rationale": {
+        "origin": {
+          "id": "#87",
+          "kind": "github_issue",
+          "locator": "github:NielPieterse0/kis-mcp-doc#87"
+        },
+        "summary": "Closes repository governance defect #87."
+      },
+      "rule_id": "KIS-REPO-GOV-019",
+      "scope": {
+        "applies_to": [
+          "repository governance model and governed repository state"
+        ],
+        "excludes": []
+      },
+      "statement": "Every canonical governed rule MUST conform to the governed-rule schema, including stable identity, rationale origin, scope, ownership, implementation, verification, evidence, and lifecycle fields.",
+      "verification": {
+        "entry_point": "kis-doc repository-governance-validate",
+        "execution_point": "scripts/verify.ps1",
+        "expected_result": "valid",
+        "failure_code": "REPOSITORY_RULE_SCHEMA_INVALID",
+        "method": "deterministic",
+        "negative_fixture": "test_rejects_incomplete_rule_contract",
+        "residual_review": null,
+        "validator": "src/kis_mcp_doc/repository_governance.py"
+      }
+    },
+    {
+      "applicability": "repository_wide",
+      "authoritative_owner": "governance:repository",
+      "construct": "rule",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "lifecycle": {
+        "status": "active",
+        "superseded_by": null,
+        "supersedes": []
+      },
+      "rationale": {
+        "origin": {
+          "id": "#74",
+          "kind": "github_issue",
+          "locator": "github:NielPieterse0/kis-mcp-doc#74"
+        },
+        "summary": "Closes repository governance defect #74."
+      },
+      "rule_id": "KIS-REPO-GOV-020",
+      "scope": {
+        "applies_to": [
+          "repository governance model and governed repository state"
+        ],
+        "excludes": []
+      },
+      "statement": "High-risk authority artefact classes MUST be explicitly prohibited from generated, verification, evidence, implementation, and change-record slots in addition to positive allow-list enforcement.",
+      "verification": {
+        "entry_point": "kis-doc repository-governance-validate",
+        "execution_point": "scripts/verify.ps1",
+        "expected_result": "valid",
+        "failure_code": "REPOSITORY_SLOT_ARTEFACT_PROHIBITED",
+        "method": "deterministic",
+        "negative_fixture": "test_rejects_explicitly_prohibited_artefact_type",
+        "residual_review": null,
+        "validator": "src/kis_mcp_doc/repository_governance.py"
+      }
+    },
+    {
+      "applicability": "repository_wide",
+      "authoritative_owner": "governance:repository",
+      "construct": "rule",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "lifecycle": {
+        "status": "active",
+        "superseded_by": null,
+        "supersedes": []
+      },
+      "rationale": {
+        "origin": {
+          "id": "#73",
+          "kind": "github_issue",
+          "locator": "github:NielPieterse0/kis-mcp-doc#73"
+        },
+        "summary": "Closes repository governance defect #73."
+      },
+      "rule_id": "KIS-REPO-GOV-021",
+      "scope": {
+        "applies_to": [
+          "repository governance model and governed repository state"
+        ],
+        "excludes": []
+      },
+      "statement": "Every active Directory Grammar slot MUST contain the complete governed slot contract: purpose, permitted and prohibited types, roles, authority constraints, relationships, editability, generation status, lifecycle, retention, verification, and origin.",
+      "verification": {
+        "entry_point": "kis-doc repository-governance-validate",
+        "execution_point": "scripts/verify.ps1",
+        "expected_result": "valid",
+        "failure_code": "REPOSITORY_SLOT_CONTRACT_INVALID",
+        "method": "deterministic",
+        "negative_fixture": "test_rejects_incomplete_slot_contract",
+        "residual_review": null,
+        "validator": "src/kis_mcp_doc/repository_governance.py"
+      }
+    },
+    {
+      "applicability": "repository_wide",
+      "authoritative_owner": "governance:repository",
+      "construct": "rule",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "lifecycle": {
+        "status": "active",
+        "superseded_by": null,
+        "supersedes": []
+      },
+      "rationale": {
+        "origin": {
+          "id": "#84",
+          "kind": "github_issue",
+          "locator": "github:NielPieterse0/kis-mcp-doc#84"
+        },
+        "summary": "Closes repository governance defect #84."
+      },
+      "rule_id": "KIS-REPO-GOV-022",
+      "scope": {
+        "applies_to": [
+          "repository governance model and governed repository state"
+        ],
+        "excludes": []
+      },
+      "statement": "Every governed rule MUST state its applicability scope and MUST cite the defect, obligation, or governed change that explains why the rule exists.",
+      "verification": {
+        "entry_point": "kis-doc repository-governance-validate",
+        "execution_point": "scripts/verify.ps1",
+        "expected_result": "valid",
+        "failure_code": "REPOSITORY_RULE_SCHEMA_INVALID",
+        "method": "deterministic",
+        "negative_fixture": "test_rejects_rule_without_scope_or_rationale",
+        "residual_review": null,
+        "validator": "src/kis_mcp_doc/repository_governance.py"
+      }
+    },
+    {
+      "applicability": "repository_wide",
+      "authoritative_owner": "governance:repository",
+      "construct": "rule",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "lifecycle": {
+        "status": "active",
+        "superseded_by": null,
+        "supersedes": []
+      },
+      "rationale": {
+        "origin": {
+          "id": "#85",
+          "kind": "github_issue",
+          "locator": "github:NielPieterse0/kis-mcp-doc#85"
+        },
+        "summary": "Closes repository governance defect #85."
+      },
+      "rule_id": "KIS-REPO-GOV-023",
+      "scope": {
+        "applies_to": [
+          "repository governance model and governed repository state"
+        ],
+        "excludes": []
+      },
+      "statement": "Residual human review MUST be explicitly justified, capability-bounded, question-bounded, evidence-located, and result-contracted after deterministic validation has done all feasible work.",
+      "verification": {
+        "entry_point": "kis-doc repository-governance-validate",
+        "execution_point": "scripts/verify.ps1",
+        "expected_result": "valid",
+        "failure_code": "REPOSITORY_REVIEW_POLICY_INVALID",
+        "method": "deterministic",
+        "negative_fixture": "test_rejects_unbounded_residual_review",
+        "residual_review": null,
+        "validator": "src/kis_mcp_doc/repository_governance.py"
+      }
+    }
+  ],
+  "schema_version": 1
+}

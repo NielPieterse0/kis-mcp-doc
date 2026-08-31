@@ -5,7 +5,7 @@
 
 [Previous: Work lifecycle](003-work-lifecycle.md) | [Next: Next-work selection](005-next-work-selection.md) | [Index](000-index.md)
 
-<span id="mrd-kis-work-wrk-wfl-001"></span>
+<span id="mrd-urn-uuid-3bab4e5b-4c6d-5c21-811c-a7f6cb02ac93"></span>
 
 Work Management exposes a bounded set of operations for intake, claiming, state changes, verification, and post-merge commissioning. Each operation has a defined effect and implementation surface so callers can distinguish reads from mutations and evidence collection.
 
@@ -65,4 +65,4 @@ Source verification and live verification are separate evidence domains. A succe
 
 ## Source and authority
 
-This page projects `KIS-WORK-WRK-WFL-001` version `1.0.0`. The MRD remains authoritative; this generated page has no write-back authority.
+This page projects `urn:uuid:3bab4e5b-4c6d-5c21-811c-a7f6cb02ac93` version `1.0.0`. The MRD remains authoritative; this generated page has no write-back authority.

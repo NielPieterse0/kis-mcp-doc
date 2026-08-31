@@ -5,7 +5,7 @@
 
 [Previous: Next-work selection](005-next-work-selection.md) | [Next: Provider and command-plane boundary](007-provider-and-command-plane-boundary.md) | [Index](000-index.md)
 
-<span id="mrd-kis-work-con-pol-001"></span>
+<span id="mrd-urn-uuid-c589700c-9c38-5e30-be4c-659084060fa0"></span>
 
 Authority determines which system may change a fact. Reconciliation compares observed provider state with those owners and surfaces drift rather than choosing a new truth. Generated documentation remains downstream of every canonical source.
 
@@ -34,4 +34,4 @@ The complete change-classification tables, GitHub Project schema, views, binding
 
 ## Source and authority
 
-This page projects `KIS-WORK-CON-POL-001` version `1.0.0`. The MRD remains authoritative; this generated page has no write-back authority.
+This page projects `urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0` version `1.0.0`. The MRD remains authoritative; this generated page has no write-back authority.
