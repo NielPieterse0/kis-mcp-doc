@@ -260,4 +260,4 @@ Post-merge live runtime verification state, distinct from repository/source Veri
 
 ## Source and authority
 
-This page projects `KIS-WORK-SEM-REG-001` version `1.0.0`. The MRD remains authoritative; this generated page has no write-back authority.
+This page projects `urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5` version `1.0.0`. The MRD remains authoritative; this generated page has no write-back authority.

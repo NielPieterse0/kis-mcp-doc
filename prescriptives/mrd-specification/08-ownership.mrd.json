@@ -1,0 +1,152 @@
+{
+  "_mrd": {
+    "schema_version": 1,
+    "id": "urn:uuid:9a543068-203b-5a7a-8cdb-805517ca3487",
+    "title": "MRD Authority Ownership and Relationships",
+    "module": "governance",
+    "class": "CON",
+    "type": "POL",
+    "layer": "L1",
+    "record_mode": "prescriptive",
+    "status": "active",
+    "version": "1.0.0",
+    "dependencies": [
+      {
+        "mrd_id": "urn:uuid:8cf956d6-521a-5515-8ce1-d48ab5855617",
+        "relationship": "depends_on"
+      }
+    ],
+    "provenance": {
+      "sources": [
+        {
+          "source_id": "KIS-OPERATOR-DIRECTION-2026-08-22",
+          "kind": "operator_direction",
+          "role": "normative_adoption_basis",
+          "locator": "conversation:2026-08-22",
+          "revision": "kis-op-governance-spec-confirmed",
+          "sha256": null
+        }
+      ],
+      "source_fingerprint": "sha256:ffed1126193c500164a143af783ea6427e7e8b081d6aba0544a4d19b7ce980cd",
+      "fact_quality": "direct"
+    },
+    "supersedes": [],
+    "superseded_by": null,
+    "legacy_ids": [
+      "KIS-KNOW-CON-POL-002"
+    ],
+    "repository": "NielPieterse0/kis-mcp-doc",
+    "canonical_path": "prescriptives/mrd-specification/08-ownership.mrd.json",
+    "revision_binding": {
+      "mode": "external_git_provider_evidence",
+      "repository": "NielPieterse0/kis-mcp-doc",
+      "git_revision": null,
+      "change_identity_source": "github_issue_and_pull_request",
+      "reason": "Tracked content cannot embed its own containing commit without circular identity."
+    }
+  },
+  "content": {
+    "concern": "ownership",
+    "section_order": 3,
+    "heading": "Authority, Ownership, and Relationships",
+    "purpose": "Ensure every governed fact has one canonical owner and every non-owning artifact preserves authority through explicit typed relationships instead of restating truth.",
+    "ownership_contract": {
+      "canonical_owner_count": 1,
+      "non_owner_posture": "reference_not_restate",
+      "derived_posture": "projection_only",
+      "conflict_posture": "surface_diagnostic_and_resolve_against_current_owner"
+    },
+    "owner_kinds": [
+      {
+        "kind": "prescriptive_mrd",
+        "meaning": "Machine-readable governance or product authority intentionally adopted as the canonical owner."
+      },
+      {
+        "kind": "executable_repo_source",
+        "meaning": "Code, configuration, schema, contract, or test that canonically owns an executable fact under repository authority routing."
+      },
+      {
+        "kind": "parent_governance_source",
+        "meaning": "A higher-authority KIS source that remains canonical until a governed adoption changes ownership."
+      }
+    ],
+    "relationship_catalog": [
+      {
+        "code": "depends_on",
+        "meaning": "The source requires the target authority to be valid or interpretable."
+      },
+      {
+        "code": "validated_by",
+        "meaning": "The source is structurally or semantically checked by the target contract or validator."
+      },
+      {
+        "code": "governs",
+        "meaning": "The source prescribes requirements for the target."
+      },
+      {
+        "code": "constrains",
+        "meaning": "The source restricts permitted values or behavior of the target."
+      },
+      {
+        "code": "selects",
+        "meaning": "The source chooses among behaviors already permitted by the target authority."
+      },
+      {
+        "code": "maps_to",
+        "meaning": "The source translates deterministically to the target representation."
+      },
+      {
+        "code": "implements",
+        "meaning": "The source is an implementation of target authority."
+      },
+      {
+        "code": "evidences",
+        "meaning": "The source records evidence about the target without becoming its authority."
+      },
+      {
+        "code": "projects",
+        "meaning": "The source is a generated view of the target and has no write-back authority."
+      },
+      {
+        "code": "references",
+        "meaning": "The source points to the target owner without restating the governed fact as new authority."
+      },
+      {
+        "code": "supersedes",
+        "meaning": "The source replaces the target while preserving lineage."
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "KIS-MRD-OWN-001",
+        "statement": "Every governed fact MUST have exactly one current canonical owner.",
+        "enforcement": "review"
+      },
+      {
+        "rule_id": "KIS-MRD-OWN-002",
+        "statement": "A non-owning MRD or repository artifact MAY summarize or project an owned fact for its audience but MUST reference the canonical owner and MUST NOT redefine the fact as independent authority.",
+        "enforcement": "review"
+      },
+      {
+        "rule_id": "KIS-MRD-OWN-003",
+        "statement": "Generated HRDs, indexes, dependency maps, and other META projections MUST remain downstream of their canonical sources and MUST NOT become write-back authority.",
+        "enforcement": "generator"
+      },
+      {
+        "rule_id": "KIS-MRD-OWN-004",
+        "statement": "Relationships between governed artifacts MUST use the governed relationship vocabulary; ad hoc relationship labels MUST NOT silently create new semantics.",
+        "enforcement": "validator"
+      },
+      {
+        "rule_id": "KIS-MRD-OWN-005",
+        "statement": "When two sources appear to own the same current fact, kis-op MUST surface the conflict and resolve ownership through the applicable authority order before accepting dependent work.",
+        "enforcement": "workflow"
+      },
+      {
+        "rule_id": "KIS-MRD-OWN-006",
+        "statement": "Supersession MUST preserve the previous owner's stable identity and lineage while making the replacement unambiguous.",
+        "enforcement": "validator"
+      }
+    ]
+  }
+}

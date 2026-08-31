@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Represent provenance and lifecycle</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/docs/">Docs</a> / MRD Specification Documentation</div><aside class="publication-meta"><strong>Version:</strong> 1.0.0. <strong>Status:</strong> draft. <strong>Authority:</strong> generated projection of <code>urn:uuid:9a543068-203b-5a7a-8cdb-805517ca3487</code>; canonical sources remain authoritative.</aside><h1 id="represent-provenance-and-lifecycle">Represent provenance and lifecycle</h1>
+<p>Preserve authority direction and distinguish authored prescription from derived implementation views and captured evidence.</p>
+<h2 id="record-modes">Record modes</h2>
+<ul>
+<li><code>prescriptive</code> ? What must be true. Authored, reviewed, and explicitly adopted as governing authority.</li>
+<li><code>descriptive</code> ? What happened or is observed. Captured evidence or records.</li>
+<li><code>meta</code> ? A generated representation, index, or map of other authority.</li>
+</ul>
+<h2 id="lifecycle-by-record-mode">Lifecycle by record mode</h2>
+<h3 id="prescriptive">Prescriptive</h3>
+<p>States: <code>draft</code>, <code>active</code>, <code>superseded</code>.</p>
+<p>Transitions: <code>draft</code> ? <code>active</code>, <code>active</code> ? <code>superseded</code>.</p>
+<h3 id="descriptive">Descriptive</h3>
+<p>States: <code>created</code>, <code>retained</code>.</p>
+<p>Transitions: <code>created</code> ? <code>retained</code>.</p>
+<h3 id="meta">Meta</h3>
+<p>States: <code>generated</code>, <code>replaced</code>.</p>
+<p>Transitions: <code>generated</code> ? <code>replaced</code>.</p>
+<p>Use the <a href="/kis-mcp-doc/specification/mrd-specification/001-specification/">MRD Specification</a> for provenance source, fact-quality, and lifecycle constraints.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/docs/mrd-specification/003-authority-and-relationships/">Previous</a> <a rel="next" href="/kis-mcp-doc/docs/mrd-specification/005-conformance/">Next</a></nav></main></body></html>

@@ -264,10 +264,10 @@ class PublicationFamilyRegistry:
             diagnostics.append(_diag("PUBLICATION_FAMILY_REGISTRY_SCHEMA_INVALID", str(error)))
             architecture = {}
 
-        if architecture.get("_mrd", {}).get("id") != "KIS-DOC-CON-POL-002":
-            diagnostics.append(_diag("PUBLICATION_ARCHITECTURE_ID_INVALID", "publication architecture MRD must be KIS-DOC-CON-POL-002"))
-        if registry.get("_mrd", {}).get("id") != "KIS-DOC-SEM-REG-002":
-            diagnostics.append(_diag("PUBLICATION_FAMILY_REGISTRY_ID_INVALID", "publication family registry MRD must be KIS-DOC-SEM-REG-002"))
+        if architecture.get("_mrd", {}).get("id") != "urn:uuid:4a75d1ce-f376-510f-93bf-7f076841d7a4":
+            diagnostics.append(_diag("PUBLICATION_ARCHITECTURE_ID_INVALID", "publication architecture MRD must be urn:uuid:4a75d1ce-f376-510f-93bf-7f076841d7a4"))
+        if registry.get("_mrd", {}).get("id") != "urn:uuid:175c6e08-4ec3-5112-b34d-546b821fc252":
+            diagnostics.append(_diag("PUBLICATION_FAMILY_REGISTRY_ID_INVALID", "publication family registry MRD must be urn:uuid:175c6e08-4ec3-5112-b34d-546b821fc252"))
         architecture_protocol = architecture.get("content", {}).get("adapter_protocol", {}).get("version")
         registry_protocol = registry.get("content", {}).get("adapter_protocol_version")
         if architecture_protocol != 1 or registry_protocol != architecture_protocol:

@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def test_human_readable_specifications_share_normative_reference_pattern(tmp_path: Path) -> None:
     expected = normative_keywords_statement()
     gov = tmp_path / "gov"
-    build_governance_spec(GovernanceRepository(ROOT, ROOT / "prescriptives/governance"), ROOT / "publication/governance-spec.json", gov)
+    build_governance_spec(GovernanceRepository(ROOT, ROOT / "prescriptives/mrd-specification"), ROOT / "publication/mrd-specification.json", gov)
     work = tmp_path / "work"; build_work_management_spec(WorkManagementRepository(ROOT), work)
     refs = tmp_path / "refs"; build_documentation_reference_standard(DocumentationReferenceRepository(ROOT), refs)
     for output in (gov, work, refs):
@@ -30,7 +30,7 @@ def test_human_readable_specifications_share_normative_reference_pattern(tmp_pat
 
 def test_generated_human_docs_enforce_deterministic_heading_style(tmp_path: Path) -> None:
     registry = PublicationFamilyRegistry(ROOT)
-    for family_id, kind in (("governance-docs", "governance"), ("work-management-docs", "work-management")):
+    for family_id, kind in (("mrd-specification-docs", "mrd-specification"), ("work-management-docs", "work-management")):
         output = tmp_path / family_id
         build_human_docs_family(ROOT, registry.family(family_id), kind, output=output)
         for page in output.glob("*.md"):

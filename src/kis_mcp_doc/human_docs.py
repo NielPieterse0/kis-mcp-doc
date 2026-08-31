@@ -84,107 +84,102 @@ def _spec_link(config: dict[str, Any]) -> str:
     return f"../{spec.parent.name}/{spec.name}"
 
 
-def _governance_pages(config: dict[str, Any], docs: dict[str, dict[str, Any]]) -> tuple[dict[str, bytes], dict[str, Any]]:
-    ownership = docs["KIS-KNOW-CON-POL-002"]["content"]
-    lifecycle = docs["KIS-KNOW-WRK-STM-001"]["content"]
-    workflow = docs["KIS-KNOW-WRK-WFL-001"]["content"]
-    validation = docs["KIS-KNOW-EVL-TST-001"]["content"]
+def _mrd_specification_pages(config: dict[str, Any], docs: dict[str, dict[str, Any]]) -> tuple[dict[str, bytes], dict[str, Any]]:
+    by_concern = {doc["content"]["concern"]: doc for doc in docs.values()}
+    classification = by_concern["classification"]
+    applicability = by_concern["applicability"]
+    ownership = by_concern["ownership"]
+    provenance = by_concern["provenance"]
+    lifecycle = by_concern["lifecycle"]
+    validation = by_concern["validation"]
     spec = _spec_link(config)
     overview = _header(config["title"], config["subtitle"])
     overview += [
-        "Use these pages when you need to apply governance, not when you need the normative contract.",
-        "The generated documentation explains canonical Governance MRDs without becoming a second authority.",
+        "Use these pages to understand and author conforming MRDs. Repository-wide Governance remains a separate authority and is documented in the Repository Documentation bundle.",
         "",
-        "## Start here",
-        "",
-        "- [Understand authority and ownership](002-understand-authority.md)",
-        "- [Apply governance to a change](003-apply-governance.md)",
-        "- [Understand MRD lifecycle](004-mrd-lifecycle.md)",
-        "- [Troubleshoot governance failures](005-troubleshooting.md)",
-        "- [Governance examples](006-examples.md)",
-        f"- [Governance Specification]({spec}) for normative rules and exact reference material",
+        "## Start here", "",
+        "- [Classify and select MRDs](002-classify-and-select.md)",
+        "- [Model authority and relationships](003-authority-and-relationships.md)",
+        "- [Represent provenance and lifecycle](004-provenance-and-lifecycle.md)",
+        "- [Validate MRD conformance](005-conformance.md)",
+        "- [MRD examples](006-examples.md)",
+        f"- [MRD Specification]({spec}) for normative requirements and exact reference material",
     ]
-    authority = _header("Understand authority and ownership", ownership["purpose"])
-    contract = ownership["ownership_contract"]
+    classify = _header("Classify and select MRDs", classification["content"]["purpose"])
+    classify += [
+        f"The MRD catalog contains **{classification['content']['catalog_policy']['expected_class_count']}** functional classes and **{classification['content']['catalog_policy']['expected_type_count']}** types.", "",
+        "Choose the minimum sufficient type set for the governed need. Classification describes what an MRD does, not where the repository stores it.", "",
+        "## Selection order", "",
+    ]
+    classify += [f"{i}. {step}." for i, step in enumerate(applicability["content"]["selection_contract"]["selection_order"], start=1)]
+    classify += ["", f"Use the [MRD Specification]({spec}) for the complete applicability catalog."]
+
+    authority = _header("Model authority and relationships", ownership["content"]["purpose"])
+    contract = ownership["content"]["ownership_contract"]
     authority += [
-        "A governed fact has one current canonical owner. Other artifacts may explain or project that fact, but they do not become another owner.",
-        "",
-        "## Working rule",
-        "",
-        f"- Canonical owner count: **{contract['canonical_owner_count']}**.",
+        "MRDs represent ownership and typed relationships without making repository-wide Governance part of the MRD format itself.", "",
+        f"- Canonical owner count represented by the MRD model: **{contract['canonical_owner_count']}**.",
         f"- Non-owner posture: `{contract['non_owner_posture']}`.",
-        f"- Derived posture: `{contract['derived_posture']}`.",
-        f"- Conflict posture: `{contract['conflict_posture']}`.",
-        "",
-        f"For the complete relationship vocabulary and normative requirements, see the [Governance Specification]({spec}).",
+        f"- Derived posture: `{contract['derived_posture']}`.", "",
+        "## Relationship vocabulary", "",
     ]
-    applying = _header("Apply governance to a change", workflow["purpose"])
-    applying += ["Follow the canonical phases in order. A phase can stop the change when its declared stop condition is met.", ""]
-    for phase in sorted(workflow["phases"], key=lambda item: item["order"]):
-        applying += [f"## {_sentence_case_label(phase['name'])}", ""]
-        applying += [f"- {action}." for action in phase["required_actions"]]
-        if phase["stop_when"]:
-            applying += ["", "Stop here when:"] + [f"- {condition}." for condition in phase["stop_when"]]
-        applying += [""]
-    applying += [f"Use the [Governance Specification]({spec}) when you need exact MUST/SHOULD/MAY requirements or rule identifiers."]
+    authority += [f"- `{item['code']}` ? {item['meaning']}" for item in ownership["content"]["relationship_catalog"]]
+    authority += ["", f"Use the [MRD Specification]({spec}) for exact dependency and layering constraints."]
 
-    life = _header("Understand MRD lifecycle", lifecycle["purpose"])
-    life += ["The lifecycle depends on the MRD record mode.", ""]
-    for machine in lifecycle["lifecycles"]:
-        transitions = ", ".join(f"`{item['from']}` → `{item['to']}`" for item in machine["transitions"])
-        life += [f"## {machine['record_mode'].title()}", "", f"States: {', '.join(f'`{state}`' for state in machine['states'])}.", "", f"Allowed transitions: {transitions}.", ""]
-    life += [f"See the [Governance Specification]({spec}) for lifecycle requirements and lineage rules."]
+    lineage = _header("Represent provenance and lifecycle", provenance["content"]["purpose"])
+    lineage += ["## Record modes", ""]
+    lineage += [f"- `{item['mode']}` ? {item['meaning']}" for item in provenance["content"]["record_modes"]]
+    lineage += ["", "## Lifecycle by record mode", ""]
+    for machine in lifecycle["content"]["lifecycles"]:
+        transitions = ", ".join(f"`{x['from']}` ? `{x['to']}`" for x in machine["transitions"])
+        lineage += [f"### {machine['record_mode'].title()}", "", f"States: {', '.join(f'`{x}`' for x in machine['states'])}.", "", f"Transitions: {transitions}.", ""]
+    lineage += [f"Use the [MRD Specification]({spec}) for provenance source, fact-quality, and lifecycle constraints."]
 
-    trouble = _header("Troubleshoot governance failures", "Use canonical stop conditions and validation evidence to decide what must be fixed before work continues.")
-    trouble += ["## Common blocking situations", ""]
-    stops = [condition for phase in workflow["phases"] for condition in phase["stop_when"]]
-    trouble += [f"- {condition}." for condition in stops]
-    trouble += ["", "## Validation evidence", "", "Validation uses stable reason codes. Do not infer past a blocking diagnostic.", ""]
-    trouble += [f"- `{code}`" for code in validation["reason_codes"]]
-    trouble += ["", f"Use the [Governance Specification]({spec}) to resolve a reason code against its normative validation contract."]
+    conformance = _header("Validate MRD conformance", validation["content"]["purpose"])
+    conformance += [
+        "MRD conformance validation checks the MRD model and its declared relationships. Repository Governance separately governs when and how repository changes are admitted, reviewed, and evidenced.", "",
+        "## Conformance checks", "",
+    ]
+    conformance += [f"- `{name}`" for name in validation["content"]["result_contract"]["checks"]]
+    conformance += ["", "## Stable failure codes", ""]
+    conformance += [f"- `{code}`" for code in validation["content"]["reason_codes"]]
+    conformance += ["", f"Use the [MRD Specification]({spec}) for the exact result contract and enforcement bindings."]
 
-    examples = _header("Governance examples", "These examples illustrate the canonical workflow; they do not add governance semantics.")
+    examples = _header("MRD examples", "These examples explain the MRD model without adding normative authority.")
     examples += [
-        "## Example: govern a repository change",
-        "",
-        "1. Resolve repository authority and the active change scope.",
-        "2. Select only the MRDs required by the governed needs.",
-        "3. Resolve dependencies, ownership, and typed relationships.",
-        "4. Run structural and semantic governance validation.",
-        "5. Execute only inside the admitted scope.",
-        "6. Generate the review surface from validated authority.",
-        "7. Verify generated output and report remaining gaps or diagnostics.",
-        "",
-        "If any canonical phase declares a blocking stop condition, stop the example at that phase rather than inferring authority.",
-        "",
-        f"For exact requirements behind each phase, use the [Governance Specification]({spec}).",
+        "## Example: define a governed fact in an MRD", "",
+        "1. Identify the governed need and select the minimum sufficient MRD class and type.",
+        "2. Assign the stable opaque MRD identity separately from class, type, layer, path, and Git revision.",
+        "3. Declare typed dependencies and provenance sources.",
+        "4. Use the record-mode lifecycle vocabulary for status and supersession.",
+        "5. Run MRD conformance validation and resolve stable reason codes before publication.", "",
+        f"For exact requirements, use the [MRD Specification]({spec}).",
     ]
     files = {
         "000-index.md": ("\n".join(overview) + "\n").encode(),
-        "002-understand-authority.md": ("\n".join(authority) + "\n").encode(),
-        "003-apply-governance.md": ("\n".join(applying) + "\n").encode(),
-        "004-mrd-lifecycle.md": ("\n".join(life) + "\n").encode(),
-        "005-troubleshooting.md": ("\n".join(trouble) + "\n").encode(),
+        "002-classify-and-select.md": ("\n".join(classify) + "\n").encode(),
+        "003-authority-and-relationships.md": ("\n".join(authority) + "\n").encode(),
+        "004-provenance-and-lifecycle.md": ("\n".join(lineage) + "\n").encode(),
+        "005-conformance.md": ("\n".join(conformance) + "\n").encode(),
         "006-examples.md": ("\n".join(examples) + "\n").encode(),
     }
     traceability = {
         "output_class": _OUTPUT_CLASS,
         "topics": [
-            {"page": "002-understand-authority.md", "source_mrds": ["KIS-KNOW-CON-POL-002"]},
-            {"page": "003-apply-governance.md", "source_mrds": ["KIS-KNOW-WRK-WFL-001"]},
-            {"page": "004-mrd-lifecycle.md", "source_mrds": ["KIS-KNOW-WRK-STM-001"]},
-            {"page": "005-troubleshooting.md", "source_mrds": ["KIS-KNOW-WRK-WFL-001", "KIS-KNOW-EVL-TST-001"]},
-            {"page": "006-examples.md", "source_mrds": ["KIS-KNOW-WRK-WFL-001"]},
+            {"page": "002-classify-and-select.md", "source_mrds": [classification["_mrd"]["id"], applicability["_mrd"]["id"]]},
+            {"page": "003-authority-and-relationships.md", "source_mrds": [ownership["_mrd"]["id"], by_concern["dependencies"]["_mrd"]["id"], by_concern["layering"]["_mrd"]["id"]]},
+            {"page": "004-provenance-and-lifecycle.md", "source_mrds": [provenance["_mrd"]["id"], lifecycle["_mrd"]["id"]]},
+            {"page": "005-conformance.md", "source_mrds": [validation["_mrd"]["id"]]},
+            {"page": "006-examples.md", "source_mrds": [classification["_mrd"]["id"], provenance["_mrd"]["id"], validation["_mrd"]["id"]]},
         ],
     }
     files["data/source-traceability.json"] = _json_bytes(traceability)
     return files, traceability
 
-
 def _work_pages(config: dict[str, Any], docs: dict[str, dict[str, Any]]) -> tuple[dict[str, bytes], dict[str, Any]]:
-    lifecycle = docs["KIS-WORK-WRK-STM-001"]["content"]
-    operations = docs["KIS-WORK-WRK-WFL-001"]["content"]
-    boundary = docs["KIS-WORK-CTR-SVC-001"]["content"]
+    lifecycle = docs["urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"]["content"]
+    operations = docs["urn:uuid:3bab4e5b-4c6d-5c21-811c-a7f6cb02ac93"]["content"]
+    boundary = docs["urn:uuid:2f2b1233-37fe-580c-bc75-26a38e9aa7fe"]["content"]
     spec = _spec_link(config)
     overview = _header(config["title"], config["subtitle"])
     overview += [
@@ -265,11 +260,11 @@ def _work_pages(config: dict[str, Any], docs: dict[str, dict[str, Any]]) -> tupl
     traceability = {
         "output_class": _OUTPUT_CLASS,
         "topics": [
-            {"page": "002-work-lifecycle.md", "source_mrds": ["KIS-WORK-WRK-STM-001"]},
-            {"page": "003-work-operations.md", "source_mrds": ["KIS-WORK-WRK-WFL-001"]},
-            {"page": "004-complete-work.md", "source_mrds": ["KIS-WORK-WRK-STM-001"]},
-            {"page": "005-troubleshooting.md", "source_mrds": ["KIS-WORK-WRK-STM-001", "KIS-WORK-WRK-WFL-001", "KIS-WORK-CTR-SVC-001"]},
-            {"page": "006-examples.md", "source_mrds": ["KIS-WORK-WRK-STM-001", "KIS-WORK-WRK-WFL-001"]},
+            {"page": "002-work-lifecycle.md", "source_mrds": ["urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"]},
+            {"page": "003-work-operations.md", "source_mrds": ["urn:uuid:3bab4e5b-4c6d-5c21-811c-a7f6cb02ac93"]},
+            {"page": "004-complete-work.md", "source_mrds": ["urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"]},
+            {"page": "005-troubleshooting.md", "source_mrds": ["urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3", "urn:uuid:3bab4e5b-4c6d-5c21-811c-a7f6cb02ac93", "urn:uuid:2f2b1233-37fe-580c-bc75-26a38e9aa7fe"]},
+            {"page": "006-examples.md", "source_mrds": ["urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3", "urn:uuid:3bab4e5b-4c6d-5c21-811c-a7f6cb02ac93"]},
         ],
     }
     files["data/source-traceability.json"] = _json_bytes(traceability)
@@ -279,8 +274,8 @@ def _work_pages(config: dict[str, Any], docs: dict[str, dict[str, Any]]) -> tupl
 def _expected_bundle(root: Path, family: dict[str, Any], kind: str) -> tuple[dict[str, bytes], dict[str, Any]]:
     config = _config(root, family)
     documents = _docs(root, family)
-    if kind == "governance":
-        files, traceability = _governance_pages(config, documents)
+    if kind == "mrd-specification":
+        files, traceability = _mrd_specification_pages(config, documents)
     elif kind == "work-management":
         files, traceability = _work_pages(config, documents)
     else:

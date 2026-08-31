@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Repository Governance</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/docs/">Docs</a> / kis-mcp-doc Repository Documentation</div><aside class="publication-meta"><strong>Version:</strong> 1.0.0. <strong>Status:</strong> active. <strong>Authority:</strong> generated projection of <code>urn:uuid:0e84ae43-f74a-5065-a5e2-b21e105376b8</code>; canonical sources remain authoritative.</aside><h1 id="repository-governance">Repository Governance</h1>
+<p>Canonical repository-wide authority is projected here without write-back authority.</p>
+<p>Repository Governance is distinct from the MRD Specification. Governance controls repository-wide authority, ownership, placement, assurance, evidence precedence, change application, and verification policy; the MRD Specification defines what a conforming MRD is.</p>
+<h2 id="governed-construct-vocabulary">Governed construct vocabulary</h2>
+<table><caption>Governed construct vocabulary</caption><thead><tr><th scope="col">Construct</th><th scope="col">Normative</th><th scope="col">Meaning</th></tr></thead><tbody>
+<tr><td><code>principle</code></td><td>Yes</td><td>Stable repository-wide invariant that constrains subordinate policy and rules.</td></tr>
+<tr><td><code>policy</code></td><td>Yes</td><td>Authoritative decision framework that governs a defined scope.</td></tr>
+<tr><td><code>rule</code></td><td>Yes</td><td>Testable mandatory statement with a stable identity and assurance contract.</td></tr>
+<tr><td><code>requirement</code></td><td>Yes</td><td>Domain-scoped mandatory statement governed by its specification owner and assurance contract.</td></tr>
+<tr><td><code>implementation</code></td><td>No</td><td>Executable mechanism that makes a prescription true.</td></tr>
+<tr><td><code>verification</code></td><td>No</td><td>Executable or bounded check that evaluates a prescription against state.</td></tr>
+<tr><td><code>evidence</code></td><td>No</td><td>Revision-bound result emitted by verification or an accepted evidence source.</td></tr>
+<tr><td><code>projection</code></td><td>No</td><td>Derived human or machine view that cannot write back authority.</td></tr>
+</tbody></table>
+<h2 id="relationship-law">Relationship law</h2>
+<table><caption>Relationship law</caption><thead><tr><th scope="col">Relationship</th><th scope="col">From</th><th scope="col">To</th><th scope="col">Authority effect</th></tr></thead><tbody>
+<tr><td><code>specializes</code></td><td>policy, rule, requirement</td><td>principle, policy, rule, requirement</td><td><code>subordinate_no_override</code></td></tr>
+<tr><td><code>references</code></td><td>principle, policy, rule, requirement, implementation, verification, evidence, projection</td><td>principle, policy, rule, requirement, implementation, verification, evidence, projection</td><td><code>none</code></td></tr>
+<tr><td><code>implements</code></td><td>implementation</td><td>rule, requirement, policy</td><td><code>none</code></td></tr>
+<tr><td><code>verifies</code></td><td>verification</td><td>rule, requirement, implementation</td><td><code>none</code></td></tr>
+<tr><td><code>evidences</code></td><td>evidence</td><td>verification, rule, requirement, implementation</td><td><code>none</code></td></tr>
+<tr><td><code>projects</code></td><td>projection</td><td>principle, policy, rule, requirement, implementation, verification, evidence</td><td><code>none</code></td></tr>
+<tr><td><code>supersedes</code></td><td>principle, policy, rule, requirement</td><td>principle, policy, rule, requirement</td><td><code>lifecycle_only</code></td></tr>
+</tbody></table>
+<h2 id="conformance-evidence-precedence">Conformance evidence precedence</h2>
+<p>Normative ownership and observed implementation state are separate planes. Lower-precedence evidence cannot override fresher higher-precedence conformance evidence.</p>
+<table><caption>Conformance evidence precedence</caption><thead><tr><th scope="col">Rank</th><th scope="col">Evidence class</th><th scope="col">Examples</th></tr></thead><tbody>
+<tr><td>1</td><td><code>executable_state</code></td><td>implementation, configuration</td></tr>
+<tr><td>2</td><td><code>deterministic_verification</code></td><td>validators, tests, local canonical verification</td></tr>
+<tr><td>3</td><td><code>provider_ci</code></td><td>GitHub Actions exact-head checks</td></tr>
+<tr><td>4</td><td><code>release_checks</code></td><td>release/package verification</td></tr>
+<tr><td>5</td><td><code>specification_status</code></td><td>declared implementation status in specification metadata</td></tr>
+<tr><td>6</td><td><code>human_narrative</code></td><td>review notes, documentation prose, status summaries</td></tr>
+</tbody></table>
+<h2 id="validation-policy">Validation policy</h2>
+<p>Human review MUST be used only when deterministic or bounded machine validation is infeasible or disproportionate for the residual question.</p>
+<p>Validation order: <code>schema</code> -&gt; <code>deterministic_validator</code> -&gt; <code>workflow_gate</code> -&gt; <code>generated_exactness</code> -&gt; <code>bounded_semantic_review</code> -&gt; <code>human_review</code>.</p>
+<h2 id="governed-rules">Governed rules</h2>
+<table><caption>Governed rules</caption><thead><tr><th scope="col">Rule</th><th scope="col">Scope</th><th scope="col">Origin</th><th scope="col">Method</th><th scope="col">Failure code</th></tr></thead><tbody>
+<tr><td><code>KIS-REPO-GOV-001</code></td><td>persistent repository artefacts</td><td><code>#72</code></td><td><code>deterministic</code></td><td><code>REPOSITORY_ROLE_RESOLUTION_INVALID</code></td></tr>
+<tr><td><code>KIS-REPO-GOV-002</code></td><td>prescriptive artefacts, governed facts</td><td><code>#80</code></td><td><code>deterministic</code></td><td><code>PRESCRIPTIVE_FACT_OWNER_DUPLICATE</code></td></tr>
+<tr><td><code>KIS-REPO-GOV-003</code></td><td>persistent repository artefacts</td><td><code>#74</code></td><td><code>deterministic</code></td><td><code>REPOSITORY_SLOT_RESOLUTION_INVALID</code></td></tr>
+<tr><td><code>KIS-REPO-GOV-004</code></td><td>repository structure</td><td><code>#74</code></td><td><code>deterministic</code></td><td><code>REPOSITORY_DIRECTORY_UNKNOWN</code></td></tr>
+<tr><td><code>KIS-REPO-GOV-005</code></td><td>generated outputs</td><td><code>#77</code></td><td><code>deterministic</code></td><td><code>GENERATED_AUTHORITY_PROHIBITED</code></td></tr>
+<tr><td><code>KIS-REPO-GOV-006</code></td><td>deterministic governed rules</td><td><code>#76</code></td><td><code>deterministic</code></td><td><code>REPOSITORY_NEGATIVE_FIXTURE_MISSING</code></td></tr>
+<tr><td><code>KIS-REPO-GOV-007</code></td><td>directory grammar slots</td><td><code>#72</code></td><td><code>deterministic_plus_residual_review</code></td><td><code>REPOSITORY_SLOT_ORIGIN_MISSING</code></td></tr>
+<tr><td><code>KIS-REPO-GOV-008</code></td><td>.work</td><td><code>#72</code></td><td><code>deterministic</code></td><td><code>REPOSITORY_WORKSPACE_POLICY_INVALID</code></td></tr>
+<tr><td><code>KIS-REPO-GOV-009</code></td><td>validation policy</td><td><code>#70</code></td><td><code>deterministic</code></td><td><code>REPOSITORY_REVIEW_POLICY_INVALID</code></td></tr>
+<tr><td><code>KIS-REPO-GOV-010</code></td><td>prescriptives/governance, prescriptives/mrd-specification</td><td><code>#79</code></td><td><code>deterministic</code></td><td><code>REPOSITORY_GOVERNANCE_BOUNDARY_INVALID</code></td></tr>
+<tr><td><code>KIS-REPO-GOV-011</code></td><td>conformance evidence</td><td><code>#82</code></td><td><code>deterministic</code></td><td><code>REPOSITORY_EVIDENCE_PRECEDENCE_INVALID</code></td></tr>
+<tr><td><code>KIS-REPO-GOV-012</code></td><td>rule enforcement projection</td><td><code>#83</code></td><td><code>deterministic</code></td><td><code>REPOSITORY_ENFORCEMENT_PROJECTION_INVALID</code></td></tr>
+<tr><td><code>KIS-REPO-GOV-013</code></td><td>prescriptive registry</td><td><code>#78</code></td><td><code>deterministic</code></td><td><code>PRESCRIPTIVE_HUMAN_PROJECTION_MISSING</code></td></tr>
+<tr><td><code>KIS-REPO-GOV-014</code></td><td>MRD identity metadata</td><td><code>#81</code></td><td><code>deterministic</code></td><td><code>MRD_IDENTITY_METADATA_INVALID</code></td></tr>
+<tr><td><code>KIS-REPO-GOV-015</code></td><td>repository governance model and governed repository state</td><td><code>#86</code></td><td><code>deterministic</code></td><td><code>REPOSITORY_RULE_ASSURANCE_REFERENCE_INVALID</code></td></tr>
+<tr><td><code>KIS-REPO-GOV-016</code></td><td>repository governance model and governed repository state</td><td><code>#75</code></td><td><code>deterministic</code></td><td><code>REPOSITORY_RELATIONSHIP_INVALID</code></td></tr>
+<tr><td><code>KIS-REPO-GOV-017</code></td><td>repository governance model and governed repository state</td><td><code>#86</code></td><td><code>deterministic_plus_residual_review</code></td><td><code>REPOSITORY_NORMATIVE_RESTATEMENT_PROHIBITED</code></td></tr>
+<tr><td><code>KIS-REPO-GOV-018</code></td><td>repository governance model and governed repository state</td><td><code>#88</code></td><td><code>deterministic</code></td><td><code>REPOSITORY_GOVERNANCE_VOCABULARY_INVALID</code></td></tr>
+<tr><td><code>KIS-REPO-GOV-019</code></td><td>repository governance model and governed repository state</td><td><code>#87</code></td><td><code>deterministic</code></td><td><code>REPOSITORY_RULE_SCHEMA_INVALID</code></td></tr>
+<tr><td><code>KIS-REPO-GOV-020</code></td><td>repository governance model and governed repository state</td><td><code>#74</code></td><td><code>deterministic</code></td><td><code>REPOSITORY_SLOT_ARTEFACT_PROHIBITED</code></td></tr>
+<tr><td><code>KIS-REPO-GOV-021</code></td><td>repository governance model and governed repository state</td><td><code>#73</code></td><td><code>deterministic</code></td><td><code>REPOSITORY_SLOT_CONTRACT_INVALID</code></td></tr>
+<tr><td><code>KIS-REPO-GOV-022</code></td><td>repository governance model and governed repository state</td><td><code>#84</code></td><td><code>deterministic</code></td><td><code>REPOSITORY_RULE_SCHEMA_INVALID</code></td></tr>
+<tr><td><code>KIS-REPO-GOV-023</code></td><td>repository governance model and governed repository state</td><td><code>#85</code></td><td><code>deterministic</code></td><td><code>REPOSITORY_REVIEW_POLICY_INVALID</code></td></tr>
+</tbody></table><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/docs/repository/006-coverage-and-freshness/">Previous</a> <a rel="next" href="/kis-mcp-doc/docs/repository/008-directory-grammar/">Next</a></nav></main></body></html>

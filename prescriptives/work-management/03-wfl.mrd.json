@@ -3,7 +3,7 @@
     "class": "WRK",
     "dependencies": [
       {
-        "mrd_id": "KIS-WORK-WRK-STM-001",
+        "mrd_id": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3",
         "relationship": "depends_on"
       },
       {
@@ -11,7 +11,7 @@
         "source": "repo:evidence/work-management/canonical-snapshot.json"
       }
     ],
-    "id": "KIS-WORK-WRK-WFL-001",
+    "id": "urn:uuid:3bab4e5b-4c6d-5c21-811c-a7f6cb02ac93",
     "layer": "L3",
     "module": "work-management",
     "provenance": {
@@ -35,7 +35,19 @@
     "supersedes": [],
     "title": "Work operations",
     "type": "WFL",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "legacy_ids": [
+      "KIS-WORK-WRK-WFL-001"
+    ],
+    "repository": "NielPieterse0/kis-mcp-doc",
+    "canonical_path": "prescriptives/work-management/03-wfl.mrd.json",
+    "revision_binding": {
+      "mode": "external_git_provider_evidence",
+      "repository": "NielPieterse0/kis-mcp-doc",
+      "git_revision": null,
+      "change_identity_source": "github_issue_and_pull_request",
+      "reason": "Tracked content cannot embed its own containing commit without circular identity."
+    }
   },
   "content": {
     "mutation_rule": "External Project mutations require apply=true and an explicit idempotency key.",

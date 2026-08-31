@@ -1,15 +1,15 @@
 {
-  "bundle_sha256": "bcbda61d6e7ee711e15c114725d3a3442df49de2b092e5418c37a05ae2f53c70",
+  "bundle_sha256": "189c5466baacd4a25a6f73159f5f70164733f3576acbb3343d34136a9273e330",
   "contract": {
     "name": "kis-documentation-search",
     "version": 2
   },
-  "documents": 42,
+  "documents": 49,
   "files": [
     {
-      "bytes": 203529,
+      "bytes": 249871,
       "path": "search-index.json",
-      "sha256": "540627e3d5bea2a50ec11f7c368920a2ff5a1821d72eee00c27f2678dde2c3dd"
+      "sha256": "b8403e267551f446ac0c1e4b030614774d37ae82ca65b4705692c894b3908316"
     }
   ],
   "generator": {
@@ -23,9 +23,9 @@
       "sha256": "73c7320926d381dd89a99a55eaeb9b92617a49da32e406359c2db468fbdd28ee"
     },
     {
-      "bytes": 4298,
+      "bytes": 4350,
       "path": "generated/documentation-reference-standard/001-specification.md",
-      "sha256": "90d2d8b22199c340ca403154db30a182a84f61963f394e9724bc4896b736170c"
+      "sha256": "c66dbc2af076b54e0a1f5b2ab289f62c1dcca7a0b2cad8deee88e46c4e65f24c"
     },
     {
       "bytes": 2573,
@@ -38,144 +38,139 @@
       "sha256": "0daffac7e07d744a752affde559c65708568fd2ce6fc95d7672185717145d3cc"
     },
     {
-      "bytes": 4117,
+      "bytes": 4118,
       "path": "generated/documentation-reference-standard/manifest.json",
-      "sha256": "ab5667009b64c85cf2b810d934044159f52301e3ca591ab7d47e33b6893b24dd"
+      "sha256": "b3c4dbf9b3fd57546968a773b8aee8ceb66675d3180a7de012e9d1e76c81a0fe"
     },
     {
-      "bytes": 718,
-      "path": "generated/governance-docs/000-index.md",
-      "sha256": "b7d8ff6a01ae892fa3ef8d5fb660fcc82a23864305858c69af1b83512635e2d9"
+      "bytes": 728,
+      "path": "generated/mrd-specification-docs/000-index.md",
+      "sha256": "103ffdf25aa3990529c9f5f29f2b7c7d9c1118eb4b77d37e179225d9831a6a24"
     },
     {
-      "bytes": 734,
-      "path": "generated/governance-docs/002-understand-authority.md",
-      "sha256": "23da8a7492417709bcabb898da54686e91a287af44946b3b35eeba146fab106e"
+      "bytes": 1006,
+      "path": "generated/mrd-specification-docs/002-classify-and-select.md",
+      "sha256": "a9d45093d44d425269c29345733253b8860752494539904feb5725d40526edbc"
     },
     {
-      "bytes": 1902,
-      "path": "generated/governance-docs/003-apply-governance.md",
-      "sha256": "0b1898e9ac8ab6944510a3923563a6a1b48ad8a03f351ab27dc56ac3fd48d164"
+      "bytes": 1612,
+      "path": "generated/mrd-specification-docs/003-authority-and-relationships.md",
+      "sha256": "d7243050c692fd1a18072685cd0e2f9fbbc5afeaedacb8289c5a80fadca3a462"
     },
     {
-      "bytes": 620,
-      "path": "generated/governance-docs/004-mrd-lifecycle.md",
-      "sha256": "64e5119d478cbd0574ac9bad62623f6bf52e61833028de6a2ab4f4626cd34b9f"
+      "bytes": 926,
+      "path": "generated/mrd-specification-docs/004-provenance-and-lifecycle.md",
+      "sha256": "28f49818ba71bfc8e6d03631adbcb435cfbdda86383d308fda7537e698128be1"
     },
     {
-      "bytes": 1737,
-      "path": "generated/governance-docs/005-troubleshooting.md",
-      "sha256": "09c1b9fbc342eefe4f5756825234e5c84b4a474eacadbf6fd56574bf2bcbc01c"
-    },
-    {
-      "bytes": 832,
-      "path": "generated/governance-docs/006-examples.md",
-      "sha256": "b3158b673ce25a2ef061370d602e7fefafbc3d81c03e5ac263f7126f66f3eacd"
+      "bytes": 1576,
+      "path": "generated/mrd-specification-docs/005-conformance.md",
+      "sha256": "735086a454a156e66f18f9cfeddf6505d3eb65ed978c09c1d5b2bfca6e51a96c"
     },
     {
       "bytes": 666,
-      "path": "generated/governance-docs/data/source-traceability.json",
-      "sha256": "98220bc89ab63ac9d4ea7179ce6f7e9baf860d96ef6df4f3bea817e24431e860"
+      "path": "generated/mrd-specification-docs/006-examples.md",
+      "sha256": "9bef0a58e32c016ba9f31dd1fc5dc61f77feb5c977b760a2f9c4f2d0a079f7e5"
     },
     {
-      "bytes": 4199,
-      "path": "generated/governance-docs/manifest.json",
-      "sha256": "6cd5ccf36b3024a0c80c1e9d9bcb89b2498451b3ce38d7d7fc929c02b0ea08d5"
+      "bytes": 1118,
+      "path": "generated/mrd-specification-docs/data/source-traceability.json",
+      "sha256": "e8352d805dc86ce1ac9daa17eeb5b18b788a2847e0c78f7899479fc7eca8b61b"
     },
     {
-      "bytes": 1187,
-      "path": "generated/governance-spec/000-index.md",
-      "sha256": "b7f5e7732c82f3941d7cd5b751ebcf9710eba3a290071cbf504aaf367dcd02f0"
+      "bytes": 4091,
+      "path": "generated/mrd-specification-docs/manifest.json",
+      "sha256": "4e64b4ab9b5ca7155c06626026fc9de99b78e9028d9f86e2a2ae0f317b17c94c"
     },
     {
-      "bytes": 2575,
-      "path": "generated/governance-spec/001-specification.md",
-      "sha256": "b6fd4781328cb317ed85a9fddff9cefcc14eaa521afe6a8d87abc862ade00581"
+      "bytes": 1111,
+      "path": "generated/mrd-specification/000-index.md",
+      "sha256": "eb32e053c3d2162f6103bb5cc1cb96d3d5579ae2dc19220e3143861930f46447"
     },
     {
-      "bytes": 6179,
-      "path": "generated/governance-spec/002-classification.md",
-      "sha256": "8106c7869f6812169a2cdf624490aa1b3cefca530d4715d326dc076d125dc1eb"
+      "bytes": 2565,
+      "path": "generated/mrd-specification/001-specification.md",
+      "sha256": "05763a2ff47a5b5fd2379954d93b688f5e6335ff0e7f6890043c4fd5b0d7228f"
     },
     {
-      "bytes": 3714,
-      "path": "generated/governance-spec/003-applicability-and-selection.md",
-      "sha256": "958266b8c26302d6b4aa3e5ad213e47b95b9c5d50235e8f3249cede17c8d6b88"
+      "bytes": 6204,
+      "path": "generated/mrd-specification/002-classification.md",
+      "sha256": "4abcf39dcd72c889c271543e6fa5c6853dbb4ef39c685eda3e736f4635541784"
     },
     {
-      "bytes": 3858,
-      "path": "generated/governance-spec/004-authority-ownership-and-relationships.md",
-      "sha256": "ade31d51ad798e8bc5980eba165eac08b98015d4d30b4273bdaf19157bab4c12"
+      "bytes": 3739,
+      "path": "generated/mrd-specification/003-applicability-and-selection.md",
+      "sha256": "411794d2b393cad8b8c394a2b62b80103f1d48e014a417cdf79f039396176b0b"
     },
     {
-      "bytes": 2335,
-      "path": "generated/governance-spec/005-layering.md",
-      "sha256": "60943494fc182a291a196e2e4e41cb58a58acafae58a168918b34bcfb204f075"
+      "bytes": 3883,
+      "path": "generated/mrd-specification/004-authority-ownership-and-relationships.md",
+      "sha256": "b5b4a23bef3eb85f0c24e27e92a93c479855c496654a2ee81d5e341c1a789902"
     },
     {
-      "bytes": 2171,
-      "path": "generated/governance-spec/006-dependency-rules.md",
-      "sha256": "7d87e8f23047d3879cb1230ef4350ecb962b907b368a9d2148321322812e95b2"
+      "bytes": 2359,
+      "path": "generated/mrd-specification/005-layering.md",
+      "sha256": "2508e76b1c5c4029cff77778ffc2afc5ed088979a88e8743ffd972670c8a33da"
     },
     {
-      "bytes": 3801,
-      "path": "generated/governance-spec/007-provenance.md",
-      "sha256": "80a9718779474d144203b90633f85eb560aa535fb21ebd556232742dfa1e39b4"
+      "bytes": 2221,
+      "path": "generated/mrd-specification/006-dependency-rules.md",
+      "sha256": "9c597fc693d6a5efa4fa5afe70a013c43094fda075b87061bfdad8dfc05716d4"
     },
     {
-      "bytes": 3124,
-      "path": "generated/governance-spec/008-lifecycle.md",
-      "sha256": "559b1aea3d3c7cb3be546a12ca2c07fc8ffaae188a176c4ef93f41c2f81df352"
+      "bytes": 3826,
+      "path": "generated/mrd-specification/007-provenance.md",
+      "sha256": "e93a11074f36fb31f68bd0a35d3343dded440e68b8dac169134e3ac4e35dc0e7"
     },
     {
-      "bytes": 4722,
-      "path": "generated/governance-spec/009-kis-op-governance-behavior.md",
-      "sha256": "4fbdc6d977f92c520ba78bdfd9134579b2db56aecb64105a1da381114d3795da"
+      "bytes": 3149,
+      "path": "generated/mrd-specification/008-lifecycle.md",
+      "sha256": "01f3f71bc9b9fb189aefde0b3b113290c7afc75736af5e5ac921c17071d91688"
     },
     {
-      "bytes": 4838,
-      "path": "generated/governance-spec/010-validation-and-enforcement.md",
-      "sha256": "7ddb872cc4f2ac4cc3fe6537cbe76c0d44ccafc482e33b54b6bbe87711645a1a"
+      "bytes": 4659,
+      "path": "generated/mrd-specification/009-validation-and-enforcement.md",
+      "sha256": "6a243588534f7c38a245bb9cfa5024005b141c393e9ae52d0e35297912ba8a4b"
     },
     {
-      "bytes": 8822,
-      "path": "generated/governance-spec/020-applicability-catalog.md",
-      "sha256": "687491d5dc476c001165377e213ebbe7923f75246186ad55c0ce7fdcaffdd4c0"
+      "bytes": 8847,
+      "path": "generated/mrd-specification/020-applicability-catalog.md",
+      "sha256": "01b9e3dbb8c218dca8ee070692f44cb0b2b776192f8ee75df9c39b8e5f3af46e"
     },
     {
-      "bytes": 2192,
-      "path": "generated/governance-spec/021-relationship-vocabulary.md",
-      "sha256": "59a88fb9f30b4075d94eb7be6eff8b88acaf034a12612d9d4480e740f7d67785"
+      "bytes": 2217,
+      "path": "generated/mrd-specification/021-relationship-vocabulary.md",
+      "sha256": "6ad6d8d7bb2a3f96672f865a5fd9786c68063b5f381ac4c467e7d1aa20f4c418"
     },
     {
-      "bytes": 3316,
-      "path": "generated/governance-spec/022-validation-reason-codes.md",
-      "sha256": "3d3a189e39bde7d8647485cba8ec818b6e5c983814b7d7e3619664064ca91b58"
+      "bytes": 3235,
+      "path": "generated/mrd-specification/022-validation-reason-codes.md",
+      "sha256": "5c84d4fddb823f773f786f83f394aeed1f53895cb060ec63cc8f3ccd2e140786"
     },
     {
-      "bytes": 3963,
-      "path": "generated/governance-spec/data/dependency-map.json",
-      "sha256": "a77894b53ad748e33cfeebf03b8ad458acc214dd3ba596ea03e53171fc982531"
+      "bytes": 3548,
+      "path": "generated/mrd-specification/data/dependency-map.json",
+      "sha256": "3c047878c4c9c5183502cb75b90d701c68fb387e9d693a9f8a0f283fe0b1e7c7"
     },
     {
-      "bytes": 3278,
-      "path": "generated/governance-spec/data/mrd-index.json",
-      "sha256": "7caa2a73f024626b5531eacf4d686f789908590744b8b52372a9d8073c8cddd1"
+      "bytes": 3178,
+      "path": "generated/mrd-specification/data/mrd-index.json",
+      "sha256": "226bd74a03dad43b1f7f5ace9614b4039266d1baee37ea38e20307a7809ff3d8"
     },
     {
-      "bytes": 33783,
-      "path": "generated/governance-spec/data/semantic-coverage.json",
-      "sha256": "4c5c054ce93aecf528f8106cf1be2a74982ebcfd58f64433e75a638428d3f55d"
+      "bytes": 35001,
+      "path": "generated/mrd-specification/data/semantic-coverage.json",
+      "sha256": "59421eb57127533be29e7d0092d3ea6143b85667448a0afd63ada68b5da89850"
     },
     {
-      "bytes": 9734,
-      "path": "generated/governance-spec/manifest.json",
-      "sha256": "642c2c98401baad99ed057da02fcb79b434d9c5fd3265ed15c99c211d8bd22ac"
+      "bytes": 9553,
+      "path": "generated/mrd-specification/manifest.json",
+      "sha256": "ab7bf178afe469cd73d0f9325cce6065d2f134e016c3917727aa6ef3f189a3fb"
     },
     {
-      "bytes": 752,
+      "bytes": 986,
       "path": "generated/repository-docs/000-index.md",
-      "sha256": "101f1a813d0cb2a31389a033319fad32168fb57090e978cedfb4b01ffa87b5e0"
+      "sha256": "a030fee17aee5bec4c7b813f77be6c8967a20d6f2390c44283796481f3b80acb"
     },
     {
       "bytes": 907,
@@ -185,12 +180,12 @@
     {
       "bytes": 1089,
       "path": "generated/repository-docs/002-repository-map.md",
-      "sha256": "ce84e355148456410d433d4687a58f3945277ca0f36a98df5214b7b88857f6c6"
+      "sha256": "d6f63ea6e51ee79c41ab2329880526557a94223150ee3c1efde21591ff27f483"
     },
     {
-      "bytes": 1393,
+      "bytes": 1411,
       "path": "generated/repository-docs/003-publication-and-generated-documentation.md",
-      "sha256": "fd5f5f4422a64e6cf1222b271c7ca0b0f5e8ee23adab561ca7d92067bc80a673"
+      "sha256": "cdb054b60fd8f08efca0509a3ccc36bdf1b8b8b37d1bef8b46730c9498506b7c"
     },
     {
       "bytes": 1136,
@@ -205,27 +200,67 @@
     {
       "bytes": 1030,
       "path": "generated/repository-docs/006-coverage-and-freshness.md",
-      "sha256": "52de98ab51d3e1ceb92a1dc0225231241d94fbc419e443b1923af881423b3a41"
+      "sha256": "7645bbdd513f889b8bbce268ff6b986e8d12ce6a55edb1bb517017d7389452c8"
     },
     {
-      "bytes": 192837,
+      "bytes": 6237,
+      "path": "generated/repository-docs/007-repository-governance.md",
+      "sha256": "5ed2ce8ec80ddcc7df8089ca56892b0873a17e33a5ae5cf32b753487b1a47332"
+    },
+    {
+      "bytes": 8416,
+      "path": "generated/repository-docs/008-directory-grammar.md",
+      "sha256": "883a00dd75da296ba74769494925d70a8bbb1989d0d1dbaa943e18838c21f324"
+    },
+    {
+      "bytes": 8138,
+      "path": "generated/repository-docs/009-rule-assurance-and-enforcement.md",
+      "sha256": "e8ab062c3eef6e31015b669c42c5f73cf659b825d7c7a4f831610450bb5d57cf"
+    },
+    {
+      "bytes": 12564,
+      "path": "generated/repository-docs/010-prescriptive-coverage.md",
+      "sha256": "ac33ca63cddcd1b651c771613fa42f3ee998a626250e6a770d2d2ab967b98d69"
+    },
+    {
+      "bytes": 218433,
       "path": "generated/repository-docs/data/artefact-inventory.json",
-      "sha256": "8795c64cd6e8ea9757f24a7ebacb680569b2d2d22a356513e54daa0ce3a0655d"
+      "sha256": "3a80ca5d9fda2d989ea050e2ccb1c20cb347d96f63c04476b63dbd6bd55d42e3"
     },
     {
       "bytes": 249,
       "path": "generated/repository-docs/data/coverage-report.json",
-      "sha256": "90b77d836f8968d0c74f2618acc71b66439c280228662f77a41da66bb0c4b32c"
+      "sha256": "87d075c33f6ca630ffc4cad72b1450db69a250e2df6e55934957e340100276f9"
     },
     {
-      "bytes": 32564,
+      "bytes": 21711,
+      "path": "generated/repository-docs/data/directory-grammar.json",
+      "sha256": "964c0b4af2f23d222a1da4506e83381fd45dad5386627b1cac8c293dfd4994b1"
+    },
+    {
+      "bytes": 24788,
+      "path": "generated/repository-docs/data/enforcement-register.json",
+      "sha256": "8246b827e2c4a323efa361ec36d806710835da98f4b432c195ab5bbacad191e7"
+    },
+    {
+      "bytes": 42647,
+      "path": "generated/repository-docs/data/governance-rules.json",
+      "sha256": "b369ffc9933611e06836a487e5706e157c37bf8ae3b03b4c05704119c0be0767"
+    },
+    {
+      "bytes": 22666,
+      "path": "generated/repository-docs/data/prescriptive-coverage.json",
+      "sha256": "9a5d1fb08460e2fae454718882b419754947c76046b12a15ac6e6afa9f00e106"
+    },
+    {
+      "bytes": 73604,
       "path": "generated/repository-docs/data/relationship-graph.json",
-      "sha256": "100314ac11234b474bc5e2dc40c389670a4fdf443572f15bd422ec070708b359"
+      "sha256": "a290da064962d3463afef0872f5b6bc28191b057376c88f4c1c6b3f239bbdb66"
     },
     {
-      "bytes": 19976,
+      "bytes": 21129,
       "path": "generated/repository-docs/manifest.json",
-      "sha256": "e54008cb741fea07b225b2c68c1adb66ba5059f4bdd5eae43986440bb6968324"
+      "sha256": "58219ba491d1ba3dd8bc922f2ba8238b2169cb4b8fefb1b25aa59a0b02fd16b8"
     },
     {
       "bytes": 160,

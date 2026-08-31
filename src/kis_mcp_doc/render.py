@@ -244,8 +244,8 @@ def _validate_documentation_reference_binding(root: Path, config: dict[str, Any]
     binding = config.get("documentation_reference")
     expected = {
         "output_class": _DOCUMENTATION_OUTPUT_CLASS,
-        "policy_mrd": "KIS-DOC-CON-POL-001",
-        "registry_mrd": "KIS-DOC-SEM-REG-001",
+        "policy_mrd": "urn:uuid:ae7e7dc1-2b8b-5988-845d-24df49dcfe0a",
+        "registry_mrd": "urn:uuid:d6110859-d683-5aab-86ff-ceecd899e38d",
     }
     if binding != expected:
         raise ValueError(f"publication documentation_reference must equal {expected}")
@@ -586,7 +586,7 @@ def _render_specification_root(config: dict[str, Any], documents: list[dict[str,
         "",
         "This specification defines the generated human-review contract for KIS governance. The validated MRDs and canonical repository sources are authoritative; this corpus is a deterministic projection for review and navigation.",
         "",
-        "The publication follows `KIS-DOC-CON-POL-001` as a `human_readable_specification`. MCP 2026 applies only within its bounded protocol domain, Google guidance affects presentation only, and implementation references cannot create or override KIS governance facts.",
+        "The publication follows `urn:uuid:ae7e7dc1-2b8b-5988-845d-24df49dcfe0a` as a `human_readable_specification`. MCP 2026 applies only within its bounded protocol domain, Google guidance affects presentation only, and implementation references cannot create or override KIS governance facts.",
         "",
         normative_keywords_statement(),
         "",
@@ -828,7 +828,7 @@ def _governance_semantic_coverage(documents: list[dict[str, Any]]) -> dict[str, 
         entries.append({"kind":"reference_fact","id":f"relationship:{item['code']}","source_mrd":by_concern["ownership"]["_mrd"]["id"],"page":"021-relationship-vocabulary.md","anchor":f"fact-relationship-{_heading_anchor(item['code'])}"})
     for code in by_concern["validation"]["content"]["reason_codes"]:
         entries.append({"kind":"reference_fact","id":f"reason:{code}","source_mrd":by_concern["validation"]["_mrd"]["id"],"page":"022-validation-reason-codes.md","anchor":f"fact-reason-{_heading_anchor(code)}"})
-    return {"schema_version":1,"family":"governance-spec","entries":sorted(entries,key=lambda item:(item["kind"],item["id"]))}
+    return {"schema_version":1,"family":"mrd-specification","entries":sorted(entries,key=lambda item:(item["kind"],item["id"]))}
 
 
 def _validate_governance_semantic_coverage(files: dict[str, bytes], coverage: dict[str, Any]) -> None:

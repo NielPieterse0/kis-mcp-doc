@@ -87,4 +87,4 @@ External content MUST NOT be harvested beyond metadata or bounded evidence until
 
 ## Source and authority
 
-This page is generated from `KIS-DOC-CON-POL-001` and `KIS-DOC-SEM-REG-001`. It has no write-back authority.
+This page is generated from `urn:uuid:ae7e7dc1-2b8b-5988-845d-24df49dcfe0a` and `urn:uuid:d6110859-d683-5aab-86ff-ceecd899e38d`. It has no write-back authority.

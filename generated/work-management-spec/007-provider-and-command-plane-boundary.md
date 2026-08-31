@@ -5,7 +5,7 @@
 
 [Previous: Authority and reconciliation policy](006-authority-and-reconciliation-policy.md) | [Next: Work Management conformance](008-work-management-conformance.md) | [Index](000-index.md)
 
-<span id="mrd-kis-work-ctr-svc-001"></span>
+<span id="mrd-urn-uuid-2f2b1233-37fe-580c-bc75-26a38e9aa7fe"></span>
 
 The command plane defines the work states and fields that KIS may change. The provider boundary observes and mutates GitHub Project only through the configured read and write models; provider state does not redefine repository-owned facts.
 
@@ -79,4 +79,4 @@ Command-plane schema version: `1`.
 
 ## Source and authority
 
-This page projects `KIS-WORK-CTR-SVC-001` version `1.0.1`. The MRD remains authoritative; this generated page has no write-back authority.
+This page projects `urn:uuid:2f2b1233-37fe-580c-bc75-26a38e9aa7fe` version `1.0.1`. The MRD remains authoritative; this generated page has no write-back authority.

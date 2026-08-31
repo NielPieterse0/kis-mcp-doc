@@ -1,0 +1,253 @@
+{
+  "_mrd": {
+    "schema_version": 1,
+    "id": "urn:uuid:361b074c-ddf6-5dcf-9031-dbb4ed306abf",
+    "title": "MRD Validation and Enforcement",
+    "module": "governance",
+    "class": "EVL",
+    "type": "TST",
+    "layer": "L4",
+    "record_mode": "prescriptive",
+    "status": "active",
+    "version": "2.0.0",
+    "dependencies": [
+      {
+        "mrd_id": "urn:uuid:8cf956d6-521a-5515-8ce1-d48ab5855617",
+        "relationship": "depends_on"
+      },
+      {
+        "mrd_id": "urn:uuid:8a9346a9-0c83-5fa4-a91d-2de6ca3d57a9",
+        "relationship": "depends_on"
+      },
+      {
+        "mrd_id": "urn:uuid:7eab1930-3cdf-58ee-8a6e-9d9519a17fba",
+        "relationship": "depends_on"
+      },
+      {
+        "mrd_id": "urn:uuid:a1d99a79-5c7c-56b4-9fda-6c56f54e7ee8",
+        "relationship": "depends_on"
+      },
+      {
+        "mrd_id": "urn:uuid:ddc10bf4-e6ea-5b3a-958e-464af2fa9fd1",
+        "relationship": "depends_on"
+      },
+      {
+        "source": "repo:contracts/mrd/v1/mrd.schema.json",
+        "relationship": "validated_by"
+      },
+      {
+        "source": "repo:contracts/mrd-specification/v1/content.schema.json",
+        "relationship": "validated_by"
+      },
+      {
+        "source": "repo:contracts/mrd-specification/v1/governance-mrd.schema.json",
+        "relationship": "validated_by"
+      },
+      {
+        "mrd_id": "urn:uuid:6673613f-70e0-5004-aba9-103da53e5040",
+        "relationship": "depends_on"
+      },
+      {
+        "mrd_id": "urn:uuid:9a543068-203b-5a7a-8cdb-805517ca3487",
+        "relationship": "depends_on"
+      }
+    ],
+    "provenance": {
+      "sources": [
+        {
+          "source_id": "KIS-OPERATOR-DIRECTION-2026-08-21",
+          "kind": "operator_direction",
+          "role": "normative_adoption_basis",
+          "locator": "conversation:2026-08-21",
+          "revision": "final-refinement",
+          "sha256": null
+        }
+      ],
+      "source_fingerprint": "sha256:b248f91fed0826406bd86e06b64af7c136cfe50e5928620ab8d6417867ec4972",
+      "fact_quality": "direct"
+    },
+    "supersedes": [],
+    "superseded_by": null,
+    "legacy_ids": [
+      "KIS-KNOW-EVL-TST-001"
+    ],
+    "repository": "NielPieterse0/kis-mcp-doc",
+    "canonical_path": "prescriptives/mrd-specification/06-validation.mrd.json",
+    "revision_binding": {
+      "mode": "external_git_provider_evidence",
+      "repository": "NielPieterse0/kis-mcp-doc",
+      "git_revision": null,
+      "change_identity_source": "github_issue_and_pull_request",
+      "reason": "Tracked content cannot embed its own containing commit without circular identity."
+    }
+  },
+  "content": {
+    "concern": "validation",
+    "section_order": 8,
+    "heading": "Validation and Enforcement",
+    "purpose": "Define MRD structural and semantic conformance checks, stable result semantics, and blocking failure codes.",
+    "dimensions": [
+      {
+        "name": "structural",
+        "checks": [
+          "required fields present",
+          "identifier shape",
+          "schema-compatible envelope and payload",
+          "exactly one owner for each governance concern",
+          "public composed governance MRD profile"
+        ]
+      },
+      {
+        "name": "applicability",
+        "checks": [
+          "all 47 catalog types have one selection trigger",
+          "applicability catalog matches classification catalog exactly",
+          "minimum-sufficient selection is prescribed",
+          "extension path remains versioned"
+        ]
+      },
+      {
+        "name": "ownership",
+        "checks": [
+          "one canonical owner is prescribed for each governed fact",
+          "dependency relationship labels use the governed relationship vocabulary",
+          "generated projections remain non-authoritative"
+        ]
+      },
+      {
+        "name": "dependency",
+        "checks": [
+          "all targets resolve",
+          "layer direction valid",
+          "no cycles",
+          "no duplicate edges",
+          "stable dependency identities"
+        ]
+      },
+      {
+        "name": "provenance",
+        "checks": [
+          "source kinds valid",
+          "repo sources resolve",
+          "external references are fingerprinted",
+          "source fingerprint matches source set",
+          "no inferred normative facts"
+        ]
+      },
+      {
+        "name": "lifecycle",
+        "checks": [
+          "record mode recognized",
+          "status valid for mode",
+          "active authority resolves",
+          "EVD descriptive posture",
+          "META meta posture",
+          "supersession targets resolve"
+        ]
+      }
+    ],
+    "result_contract": {
+      "status_values": [
+        "valid",
+        "invalid"
+      ],
+      "checks": [
+        "classification",
+        "applicability",
+        "ownership",
+        "layering",
+        "dependencies",
+        "provenance",
+        "lifecycle",
+        "schema"
+      ],
+      "diagnostics_required_on_failure": true
+    },
+    "reason_codes": [
+      "MRD_SCHEMA_INVALID",
+      "MRD_RULE_ID_DUPLICATE",
+      "MRD_GOVERNANCE_CONCERN_MISSING",
+      "MRD_GOVERNANCE_CONCERN_DUPLICATE",
+      "MRD_IDENTITY_INVALID",
+      "MRD_CLASS_UNKNOWN",
+      "MRD_TYPE_INVALID",
+      "MRD_CATALOG_COUNT_MISMATCH",
+      "MRD_LAYER_INVALID",
+      "MRD_DEPENDENCY_UNRESOLVED",
+      "MRD_DEPENDENCY_LAYER_VIOLATION",
+      "MRD_DEPENDENCY_CYCLE",
+      "MRD_DEPENDENCY_DUPLICATE",
+      "MRD_SOURCE_UNRESOLVED",
+      "MRD_SOURCE_FINGERPRINT_MISMATCH",
+      "MRD_SOURCE_HASH_MISMATCH",
+      "MRD_NORMATIVE_INFERENCE_PROHIBITED",
+      "MRD_RECORD_MODE_INVALID",
+      "MRD_STATUS_INVALID",
+      "MRD_EVD_RECORD_MODE_INVALID",
+      "MRD_META_RECORD_MODE_INVALID",
+      "MRD_SUPERSESSION_UNRESOLVED",
+      "MRD_CLASS_CATALOG_MISMATCH",
+      "MRD_LAYER_CATALOG_MISMATCH",
+      "MRD_RECORD_MODE_CATALOG_MISMATCH",
+      "MRD_META_FACT_QUALITY_INVALID",
+      "MRD_VALIDATION_CONTRACT_MISMATCH",
+      "MRD_APPLICABILITY_CATALOG_MISMATCH",
+      "MRD_RELATIONSHIP_UNKNOWN",
+      "MRD_ENFORCEMENT_BINDING_INVALID"
+    ],
+    "rules": [
+      {
+        "rule_id": "KIS-MRD-VAL-001",
+        "statement": "Every MRD MUST pass structural, dependency, provenance, and lifecycle validation before it is accepted as valid.",
+        "enforcement": "validator"
+      },
+      {
+        "rule_id": "KIS-MRD-VAL-002",
+        "statement": "Validation failures MUST emit stable reason codes and machine-readable diagnostics.",
+        "enforcement": "validator"
+      },
+      {
+        "rule_id": "KIS-MRD-VAL-003",
+        "statement": "A validation result MUST report classification, layering, dependencies, provenance, lifecycle, and schema check status.",
+        "enforcement": "validator"
+      },
+      {
+        "rule_id": "KIS-MRD-VAL-004",
+        "statement": "MRD Specification records MUST validate through the public composed governance MRD profile, which binds the reusable core envelope to MRD Specification content.",
+        "enforcement": "schema"
+      },
+      {
+        "rule_id": "KIS-MRD-VAL-005",
+        "statement": "Any structural schema failure in the MRD Specification set MUST short-circuit semantic validation for the entire set, because cross-record semantics are valid only over a structurally valid governance set.",
+        "enforcement": "validator"
+      }
+    ],
+    "enforcement_modes": [
+      {
+        "mode": "schema",
+        "meaning": "JSON Schema rejects structurally invalid authority before semantic checks.",
+        "blocking": true
+      },
+      {
+        "mode": "validator",
+        "meaning": "Deterministic semantic validation emits stable machine-readable reason codes.",
+        "blocking": true
+      },
+      {
+        "mode": "workflow",
+        "meaning": "KIS/kis-op governed workflow prevents prohibited state transitions or unadmitted mutation.",
+        "blocking": true
+      },
+      {
+        "mode": "generator",
+        "meaning": "Deterministic generation and stale-output verification enforce one-way source-to-view behavior.",
+        "blocking": true
+      },
+      {
+        "mode": "review",
+        "meaning": "Human or agent review is required where semantic adequacy cannot be proven deterministically.",
+        "blocking": true
+      }
+    ]
+  }
+}

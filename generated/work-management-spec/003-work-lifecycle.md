@@ -5,7 +5,7 @@
 
 [Previous: Work Management domain model](002-work-management-domain-model.md) | [Next: Work operations](004-work-operations.md) | [Index](000-index.md)
 
-<span id="mrd-kis-work-wrk-stm-001"></span>
+<span id="mrd-urn-uuid-7f58b5b4-9808-5c06-bbed-75a8526685f3"></span>
 
 A work item moves through explicit states. Project-visible states describe the shared work queue, while internal states such as Review, Verification, and Documentation describe delivery activity without creating new GitHub Project status values.
 
@@ -215,4 +215,4 @@ Guards reject or qualify transitions when required evidence is missing or incons
 
 ## Source and authority
 
-This page projects `KIS-WORK-WRK-STM-001` version `1.0.0`. The MRD remains authoritative; this generated page has no write-back authority.
+This page projects `urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3` version `1.0.0`. The MRD remains authoritative; this generated page has no write-back authority.

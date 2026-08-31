@@ -13,3 +13,7 @@ This bundle explains the current kis-mcp-doc repository from its governed machin
 - [Verification and operations](004-verification-and-operations.md)
 - [Artefact metadata and relationships](005-artefact-metadata-and-relationships.md)
 - [Coverage and freshness](006-coverage-and-freshness.md)
+- [Repository Governance](007-repository-governance.md)
+- [Directory Grammar](008-directory-grammar.md)
+- [Rule assurance and enforcement](009-rule-assurance-and-enforcement.md)
+- [Prescriptive coverage](010-prescriptive-coverage.md)

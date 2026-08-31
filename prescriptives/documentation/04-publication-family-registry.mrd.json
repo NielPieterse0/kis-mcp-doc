@@ -1,7 +1,7 @@
 {
   "_mrd": {
     "schema_version": 1,
-    "id": "KIS-DOC-SEM-REG-002",
+    "id": "urn:uuid:175c6e08-4ec3-5112-b34d-546b821fc252",
     "title": "Publication Family Registry",
     "module": "documentation",
     "class": "SEM",
@@ -12,7 +12,7 @@
     "version": "1.3.0",
     "dependencies": [
       {
-        "mrd_id": "KIS-DOC-CON-POL-002",
+        "mrd_id": "urn:uuid:4a75d1ce-f376-510f-93bf-7f076841d7a4",
         "relationship": "depends_on"
       },
       {
@@ -75,19 +75,31 @@
       "fact_quality": "direct"
     },
     "supersedes": [],
-    "superseded_by": null
+    "superseded_by": null,
+    "legacy_ids": [
+      "KIS-DOC-SEM-REG-002"
+    ],
+    "repository": "NielPieterse0/kis-mcp-doc",
+    "canonical_path": "prescriptives/documentation/04-publication-family-registry.mrd.json",
+    "revision_binding": {
+      "mode": "external_git_provider_evidence",
+      "repository": "NielPieterse0/kis-mcp-doc",
+      "git_revision": null,
+      "change_identity_source": "github_issue_and_pull_request",
+      "reason": "Tracked content cannot embed its own containing commit without circular identity."
+    }
   },
   "content": {
     "registry_version": "1.3.0",
     "adapter_protocol_version": 1,
     "families": [
       {
-        "id": "governance-spec",
-        "title": "kis-op Governance Specification",
-        "semantic_owner": "KIS-KNOW-CON-POL-002",
-        "mrd_root": "prescriptives/governance",
-        "publication_config": "publication/governance-spec.json",
-        "output": "generated/governance-spec",
+        "id": "mrd-specification",
+        "title": "KIS MRD Specification",
+        "semantic_owner": "urn:uuid:9a543068-203b-5a7a-8cdb-805517ca3487",
+        "mrd_root": "prescriptives/mrd-specification",
+        "publication_config": "publication/mrd-specification.json",
+        "output": "generated/mrd-specification",
         "output_classes": [
           "human_readable_specification",
           "generated_reference"
@@ -107,7 +119,7 @@
       {
         "id": "work-management-spec",
         "title": "KIS Work Management Specification",
-        "semantic_owner": "KIS-WORK-CON-POL-001",
+        "semantic_owner": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0",
         "mrd_root": "prescriptives/work-management",
         "publication_config": "publication/work-management-spec.json",
         "output": "generated/work-management-spec",
@@ -130,7 +142,7 @@
       {
         "id": "documentation-reference-standard",
         "title": "Documentation Reference Standard",
-        "semantic_owner": "KIS-DOC-CON-POL-001",
+        "semantic_owner": "urn:uuid:ae7e7dc1-2b8b-5988-845d-24df49dcfe0a",
         "mrd_root": "prescriptives/documentation",
         "publication_config": "publication/documentation-reference-standard.json",
         "output": "generated/documentation-reference-standard",
@@ -151,12 +163,12 @@
         }
       },
       {
-        "id": "governance-docs",
-        "title": "Governance Documentation",
-        "semantic_owner": "KIS-KNOW-CON-POL-002",
-        "mrd_root": "prescriptives/governance",
-        "publication_config": "publication/governance-docs.json",
-        "output": "generated/governance-docs",
+        "id": "mrd-specification-docs",
+        "title": "MRD Specification Documentation",
+        "semantic_owner": "urn:uuid:9a543068-203b-5a7a-8cdb-805517ca3487",
+        "mrd_root": "prescriptives/mrd-specification",
+        "publication_config": "publication/mrd-specification-docs.json",
+        "output": "generated/mrd-specification-docs",
         "output_classes": [
           "human_documentation"
         ],
@@ -167,15 +179,15 @@
           "verify": "kis_mcp_doc.publication_adapters:verify_governance_docs"
         },
         "legacy_commands": {
-          "validate": "publications-validate --family governance-docs",
-          "build": "publications-build --family governance-docs",
-          "verify": "publications-check-generated --family governance-docs"
+          "validate": "publications-validate --family mrd-specification-docs",
+          "build": "publications-build --family mrd-specification-docs",
+          "verify": "publications-check-generated --family mrd-specification-docs"
         }
       },
       {
         "id": "work-management-docs",
         "title": "Work Management Documentation",
-        "semantic_owner": "KIS-WORK-CON-POL-001",
+        "semantic_owner": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0",
         "mrd_root": "prescriptives/work-management",
         "publication_config": "publication/work-management-docs.json",
         "output": "generated/work-management-docs",
@@ -197,7 +209,7 @@
       {
         "id": "repository-docs",
         "title": "kis-mcp-doc Repository Documentation",
-        "semantic_owner": "KIS-DOC-CON-POL-003",
+        "semantic_owner": "urn:uuid:0e84ae43-f74a-5065-a5e2-b21e105376b8",
         "mrd_root": "prescriptives/documentation",
         "publication_config": "publication/repository-docs.json",
         "output": "generated/repository-docs",

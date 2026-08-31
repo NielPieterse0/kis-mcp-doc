@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Enforcement Register</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/reference/">Reference</a> / repository-docs</div><aside class="publication-meta"><strong>Version:</strong> 1.0.0. <strong>Status:</strong> active. <strong>Authority:</strong> generated projection of <code>urn:uuid:0e84ae43-f74a-5065-a5e2-b21e105376b8</code>; canonical sources remain authoritative.</aside><h1>Enforcement Register</h1><pre>{
+  &quot;authority&quot;: &quot;derived_non_authoritative&quot;,
+  &quot;entries&quot;: [
+    {
+      &quot;authoritative_owner&quot;: &quot;governance:repository&quot;,
+      &quot;entry_point&quot;: &quot;kis-doc repository-governance-validate&quot;,
+      &quot;evidence&quot;: {
+        &quot;conformance_states&quot;: [
+          &quot;valid&quot;,
+          &quot;invalid&quot;
+        ],
+        &quot;evaluated_revision&quot;: &quot;git_head&quot;,
+        &quot;input_provenance&quot;: &quot;canonical_repository_state&quot;,
+        &quot;location&quot;: &quot;scripts/verify.ps1::repository-governance-validate&quot;,
+        &quot;type&quot;: &quot;verification_result&quot;
+      },
+      &quot;execution_point&quot;: &quot;scripts/verify.ps1&quot;,
+      &quot;expected_result&quot;: &quot;valid&quot;,
+      &quot;failure_code&quot;: &quot;REPOSITORY_ROLE_RESOLUTION_INVALID&quot;,
+      &quot;implementation&quot;: [
+        {
+          &quot;artifact&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;,
+          &quot;control&quot;: &quot;RepositoryGovernanceRepository.validate&quot;
+        }
+      ],
+      &quot;method&quot;: &quot;deterministic&quot;,
+      &quot;negative_fixture&quot;: &quot;test_rejects_ambiguous_semantic_role&quot;,
+      &quot;residual_review&quot;: null,
+      &quot;rule_id&quot;: &quot;KIS-REPO-GOV-001&quot;,
+      &quot;validator&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;
+    },
+    {
+      &quot;authoritative_owner&quot;: &quot;governance:repository&quot;,
+      &quot;entry_point&quot;: &quot;kis-doc repository-governance-validate&quot;,
+      &quot;evidence&quot;: {
+        &quot;conformance_states&quot;: [
+          &quot;valid&quot;,
+          &quot;invalid&quot;
+        ],
+        &quot;evaluated_revision&quot;: &quot;git_head&quot;,
+        &quot;input_provenance&quot;: &quot;canonical_repository_state&quot;,
+        &quot;location&quot;: &quot;scripts/verify.ps1::repository-governance-validate&quot;,
+        &quot;type&quot;: &quot;verification_result&quot;
+      },
+      &quot;execution_point&quot;: &quot;scripts/verify.ps1&quot;,
+      &quot;expected_result&quot;: &quot;valid&quot;,
+      &quot;failure_code&quot;: &quot;PRESCRIPTIVE_FACT_OWNER_DUPLICATE&quot;,
+      &quot;implementation&quot;: [
+        {
+          &quot;artifact&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;,
+          &quot;control&quot;: &quot;RepositoryGovernanceRepository.validate&quot;
+        }
+      ],
+      &quot;method&quot;: &quot;deterministic&quot;,
+      &quot;negative_fixture&quot;: &quot;test_rejects_duplicate_fact_owner&quot;,
+      &quot;residual_review&quot;: null,
+      &quot;rule_id&quot;: &quot;KIS-REPO-GOV-002&quot;,
+      &quot;validator&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;
+    },
+    {
+      &quot;authoritative_owner&quot;: &quot;governance:repository&quot;,
+      &quot;entry_point&quot;: &quot;kis-doc repository-governance-validate&quot;,
+      &quot;evidence&quot;: {
+        &quot;conformance_states&quot;: [
+          &quot;valid&quot;,
+          &quot;invalid&quot;
+        ],
+        &quot;evaluated_revision&quot;: &quot;git_head&quot;,
+        &quot;input_provenance&quot;: &quot;canonical_repository_state&quot;,
+        &quot;location&quot;: &quot;scripts/verify.ps1::repository-governance-validate&quot;,
+        &quot;type&quot;: &quot;verification_result&quot;
+      },
+      &quot;execution_point&quot;: &quot;scripts/verify.ps1&quot;,
+      &quot;expected_result&quot;: &quot;valid&quot;,
+      &quot;failure_code&quot;: &quot;REPOSITORY_SLOT_RESOLUTION_INVALID&quot;,
+      &quot;implementation&quot;: [
+        {
+          &quot;artifact&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;,
+          &quot;control&quot;: &quot;RepositoryGovernanceRepository.validate&quot;
+        }
+      ],
+      &quot;method&quot;: &quot;deterministic&quot;,
+      &quot;negative_fixture&quot;: &quot;test_rejects_ambiguous_or_missing_slot&quot;,
+      &quot;residual_review&quot;: null,
+      &quot;rule_id&quot;: &quot;KIS-REPO-GOV-003&quot;,
+      &quot;validator&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;
+    },
+    {
+      &quot;authoritative_owner&quot;: &quot;governance:repository&quot;,
+      &quot;entry_point&quot;: &quot;kis-doc repository-governance-validate&quot;,
+      &quot;evidence&quot;: {
+        &quot;conformance_states&quot;: [
+          &quot;valid&quot;,
+          &quot;invalid&quot;
+        ],
+        &quot;evaluated_revision&quot;: &quot;git_head&quot;,
+        &quot;input_provenance&quot;: &quot;canonical_repository_state&quot;,
+        &quot;location&quot;: &quot;scripts/verify.ps1::repository-governance-validate&quot;,
+        &quot;type&quot;: &quot;verification_result&quot;
+      },
+      &quot;execution_point&quot;: &quot;scripts/verify.ps1&quot;,
+      &quot;expected_result&quot;: &quot;valid&quot;,
+      &quot;failure_code&quot;: &quot;REPOSITORY_DIRECTORY_UNKNOWN&quot;,
+      &quot;implementation&quot;: [
+        {
+          &quot;artifact&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;,
+          &quot;control&quot;: &quot;RepositoryGovernanceRepository.validate&quot;
+        }
+      ],
+      &quot;method&quot;: &quot;deterministic&quot;,
+      &quot;negative_fixture&quot;: &quot;test_rejects_unknown_top_level_directory&quot;,
+      &quot;residual_review&quot;: null,
+      &quot;rule_id&quot;: &quot;KIS-REPO-GOV-004&quot;,
+      &quot;validator&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;
+    },
+    {
+      &quot;authoritative_owner&quot;: &quot;governance:repository&quot;,
+      &quot;entry_point&quot;: &quot;kis-doc repository-governance-validate&quot;,
+      &quot;evidence&quot;: {
+        &quot;conformance_states&quot;: [
+          &quot;valid&quot;,
+          &quot;invalid&quot;
+        ],
+        &quot;evaluated_revision&quot;: &quot;git_head&quot;,
+        &quot;input_provenance&quot;: &quot;canonical_repository_state&quot;,
+        &quot;location&quot;: &quot;scripts/verify.ps1::repository-governance-validate&quot;,
+        &quot;type&quot;: &quot;verification_result&quot;
+      },
+      &quot;execution_point&quot;: &quot;scripts/verify.ps1&quot;,
+      &quot;expected_result&quot;: &quot;valid&quot;,
+      &quot;failure_code&quot;: &quot;GENERATED_AUTHORITY_PROHIBITED&quot;,
+      &quot;implementation&quot;: [
+        {
+          &quot;artifact&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;,
+          &quot;control&quot;: &quot;RepositoryGovernanceRepository.validate&quot;
+        }
+      ],
+      &quot;method&quot;: &quot;deterministic&quot;,
+      &quot;negative_fixture&quot;: &quot;test_generated_role_is_non_authoritative&quot;,
+      &quot;residual_review&quot;: null,
+      &quot;rule_id&quot;: &quot;KIS-REPO-GOV-005&quot;,
+      &quot;validator&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;
+    },
+    {
+      &quot;authoritative_owner&quot;: &quot;governance:repository&quot;,
+      &quot;entry_point&quot;: &quot;kis-doc repository-governance-validate&quot;,
+      &quot;evidence&quot;: {
+        &quot;conformance_states&quot;: [
+          &quot;valid&quot;,
+          &quot;invalid&quot;
+        ],
+        &quot;evaluated_revision&quot;: &quot;git_head&quot;,
+        &quot;input_provenance&quot;: &quot;canonical_repository_state&quot;,
+        &quot;location&quot;: &quot;scripts/verify.ps1::repository-governance-validate&quot;,
+        &quot;type&quot;: &quot;verification_result&quot;
+      },
+      &quot;execution_point&quot;: &quot;scripts/verify.ps1&quot;,
+      &quot;expected_result&quot;: &quot;valid&quot;,
+      &quot;failure_code&quot;: &quot;REPOSITORY_NEGATIVE_FIXTURE_MISSING&quot;,
+      &quot;implementation&quot;: [
+        {
+          &quot;artifact&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;,
+          &quot;control&quot;: &quot;RepositoryGovernanceRepository.validate&quot;
+        }
+      ],
+      &quot;method&quot;: &quot;deterministic&quot;,
+      &quot;negative_fixture&quot;: &quot;test_rejects_missing_or_reused_negative_fixture&quot;,
+      &quot;residual_review&quot;: null,
+      &quot;rule_id&quot;: &quot;KIS-REPO-GOV-006&quot;,
+      &quot;validator&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;
+    },
+    {
+      &quot;authoritative_owner&quot;: &quot;governance:repository&quot;,
+      &quot;entry_point&quot;: &quot;kis-doc repository-governance-validate&quot;,
+      &quot;evidence&quot;: {
+        &quot;conformance_states&quot;: [
+          &quot;valid&quot;,
+          &quot;invalid&quot;
+        ],
+        &quot;evaluated_revision&quot;: &quot;git_head&quot;,
+        &quot;input_provenance&quot;: &quot;canonical_repository_state&quot;,
+        &quot;location&quot;: &quot;scripts/verify.ps1::repository-governance-validate&quot;,
+        &quot;type&quot;: &quot;verification_result&quot;
+      },
+      &quot;execution_point&quot;: &quot;scripts/verify.ps1&quot;,
+      &quot;expected_result&quot;: &quot;valid&quot;,
+      &quot;failure_code&quot;: &quot;REPOSITORY_SLOT_ORIGIN_MISSING&quot;,
+      &quot;implementation&quot;: [
+        {
+          &quot;artifact&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;,
+          &quot;control&quot;: &quot;RepositoryGovernanceRepository.validate&quot;
+        }
+      ],
+      &quot;method&quot;: &quot;deterministic_plus_residual_review&quot;,
+      &quot;negative_fixture&quot;: &quot;test_rejects_slot_without_demonstrated_need&quot;,
+      &quot;residual_review&quot;: {
+        &quot;bounded_question&quot;: &quot;Does the cited issue/change demonstrate a current persistent structural need rather than speculative hierarchy?&quot;,
+        &quot;evidence_location&quot;: &quot;change review evidence&quot;,
+        &quot;justification&quot;: &quot;Mechanical validation can prove the source exists and is typed, but only bounded governance review can judge whether the cited need is substantively justified.&quot;,
+        &quot;result_contract&quot;: [
+          &quot;accepted&quot;,
+          &quot;rejected&quot;
+        ],
+        &quot;reviewer_capability&quot;: &quot;repository-governance-architecture&quot;
+      },
+      &quot;rule_id&quot;: &quot;KIS-REPO-GOV-007&quot;,
+      &quot;validator&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;
+    },
+    {
+      &quot;authoritative_owner&quot;: &quot;governance:repository&quot;,
+      &quot;entry_point&quot;: &quot;kis-doc repository-governance-validate&quot;,
+      &quot;evidence&quot;: {
+        &quot;conformance_states&quot;: [
+          &quot;valid&quot;,
+          &quot;invalid&quot;
+        ],
+        &quot;evaluated_revision&quot;: &quot;git_head&quot;,
+        &quot;input_provenance&quot;: &quot;canonical_repository_state&quot;,
+        &quot;location&quot;: &quot;scripts/verify.ps1::repository-governance-validate&quot;,
+        &quot;type&quot;: &quot;verification_result&quot;
+      },
+      &quot;execution_point&quot;: &quot;scripts/verify.ps1&quot;,
+      &quot;expected_result&quot;: &quot;valid&quot;,
+      &quot;failure_code&quot;: &quot;REPOSITORY_WORKSPACE_POLICY_INVALID&quot;,
+      &quot;implementation&quot;: [
+        {
+          &quot;artifact&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;,
+          &quot;control&quot;: &quot;RepositoryGovernanceRepository.validate&quot;
+        }
+      ],
+      &quot;method&quot;: &quot;deterministic&quot;,
+      &quot;negative_fixture&quot;: &quot;test_rejects_authoritative_work_workspace&quot;,
+      &quot;residual_review&quot;: null,
+      &quot;rule_id&quot;: &quot;KIS-REPO-GOV-008&quot;,
+      &quot;validator&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;
+    },
+    {
+      &quot;authoritative_owner&quot;: &quot;governance:repository&quot;,
+      &quot;entry_point&quot;: &quot;kis-doc repository-governance-validate&quot;,
+      &quot;evidence&quot;: {
+        &quot;conformance_states&quot;: [
+          &quot;valid&quot;,
+          &quot;invalid&quot;
+        ],
+        &quot;evaluated_revision&quot;: &quot;git_head&quot;,
+        &quot;input_provenance&quot;: &quot;canonical_repository_state&quot;,
+        &quot;location&quot;: &quot;scripts/verify.ps1::repository-governance-validate&quot;,
+        &quot;type&quot;: &quot;verification_result&quot;
+      },
+      &quot;execution_point&quot;: &quot;scripts/verify.ps1&quot;,
+      &quot;expected_result&quot;: &quot;valid&quot;,
+      &quot;failure_code&quot;: &quot;REPOSITORY_REVIEW_POLICY_INVALID&quot;,
+      &quot;implementation&quot;: [
+        {
+          &quot;artifact&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;,
+          &quot;control&quot;: &quot;RepositoryGovernanceRepository.validate&quot;
+        }
+      ],
+      &quot;method&quot;: &quot;deterministic&quot;,
+      &quot;negative_fixture&quot;: &quot;test_rejects_unjustified_human_review&quot;,
+      &quot;residual_review&quot;: null,
+      &quot;rule_id&quot;: &quot;KIS-REPO-GOV-009&quot;,
+      &quot;validator&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;
+    },
+    {
+      &quot;authoritative_owner&quot;: &quot;governance:repository&quot;,
+      &quot;entry_point&quot;: &quot;kis-doc repository-governance-validate&quot;,
+      &quot;evidence&quot;: {
+        &quot;conformance_states&quot;: [
+          &quot;valid&quot;,
+          &quot;invalid&quot;
+        ],
+        &quot;evaluated_revision&quot;: &quot;git_head&quot;,
+        &quot;input_provenance&quot;: &quot;canonical_repository_state&quot;,
+        &quot;location&quot;: &quot;scripts/verify.ps1::repository-governance-validate&quot;,
+        &quot;type&quot;: &quot;verification_result&quot;
+      },
+      &quot;execution_point&quot;: &quot;scripts/verify.ps1&quot;,
+      &quot;expected_result&quot;: &quot;valid&quot;,
+      &quot;failure_code&quot;: &quot;REPOSITORY_GOVERNANCE_BOUNDARY_INVALID&quot;,
+      &quot;implementation&quot;: [
+        {
+          &quot;artifact&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;,
+          &quot;control&quot;: &quot;RepositoryGovernanceRepository.validate&quot;
+        }
+      ],
+      &quot;method&quot;: &quot;deterministic&quot;,
+      &quot;negative_fixture&quot;: &quot;test_rejects_governance_mrd_specification_overlap&quot;,
+      &quot;residual_review&quot;: null,
+      &quot;rule_id&quot;: &quot;KIS-REPO-GOV-010&quot;,
+      &quot;validator&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;
+    },
+    {
+      &quot;authoritative_owner&quot;: &quot;governance:repository&quot;,
+      &quot;entry_point&quot;: &quot;kis-doc repository-governance-validate&quot;,
+      &quot;evidence&quot;: {
+        &quot;conformance_states&quot;: [
+          &quot;valid&quot;,
+          &quot;invalid&quot;
+        ],
+        &quot;evaluated_revision&quot;: &quot;git_head&quot;,
+        &quot;input_provenance&quot;: &quot;canonical_repository_state&quot;,
+        &quot;location&quot;: &quot;scripts/verify.ps1::repository-governance-validate&quot;,
+        &quot;type&quot;: &quot;verification_result&quot;
+      },
+      &quot;execution_point&quot;: &quot;scripts/verify.ps1&quot;,
+      &quot;expected_result&quot;: &quot;valid&quot;,
+      &quot;failure_code&quot;: &quot;REPOSITORY_EVIDENCE_PRECEDENCE_INVALID&quot;,
+      &quot;implementation&quot;: [
+        {
+          &quot;artifact&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;,
+          &quot;control&quot;: &quot;RepositoryGovernanceRepository.validate&quot;
+        }
+      ],
+      &quot;method&quot;: &quot;deterministic&quot;,
+      &quot;negative_fixture&quot;: &quot;test_rejects_invalid_evidence_precedence&quot;,
+      &quot;residual_review&quot;: null,
+      &quot;rule_id&quot;: &quot;KIS-REPO-GOV-011&quot;,
+      &quot;validator&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;
+    },
+    {
+      &quot;authoritative_owner&quot;: &quot;governance:repository&quot;,
+      &quot;entry_point&quot;: &quot;kis-doc repository-governance-validate&quot;,
+      &quot;evidence&quot;: {
+        &quot;conformance_states&quot;: [
+          &quot;valid&quot;,
+          &quot;invalid&quot;
+        ],
+        &quot;evaluated_revision&quot;: &quot;git_head&quot;,
+        &quot;input_provenance&quot;: &quot;canonical_repository_state&quot;,
+        &quot;location&quot;: &quot;scripts/verify.ps1::repository-governance-validate&quot;,
+        &quot;type&quot;: &quot;verification_result&quot;
+      },
+      &quot;execution_point&quot;: &quot;scripts/verify.ps1&quot;,
+      &quot;expected_result&quot;: &quot;valid&quot;,
+      &quot;failure_code&quot;: &quot;REPOSITORY_ENFORCEMENT_PROJECTION_INVALID&quot;,
+      &quot;implementation&quot;: [
+        {
+          &quot;artifact&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;,
+          &quot;control&quot;: &quot;RepositoryGovernanceRepository.validate&quot;
+        }
+      ],
+      &quot;method&quot;: &quot;deterministic&quot;,
+      &quot;negative_fixture&quot;: &quot;test_rejects_authored_enforcement_register&quot;,
+      &quot;residual_review&quot;: null,
+      &quot;rule_id&quot;: &quot;KIS-REPO-GOV-012&quot;,
+      &quot;validator&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;
+    },
+    {
+      &quot;authoritative_owner&quot;: &quot;governance:repository&quot;,
+      &quot;entry_point&quot;: &quot;kis-doc repository-governance-validate&quot;,
+      &quot;evidence&quot;: {
+        &quot;conformance_states&quot;: [
+          &quot;valid&quot;,
+          &quot;invalid&quot;
+        ],
+        &quot;evaluated_revision&quot;: &quot;git_head&quot;,
+        &quot;input_provenance&quot;: &quot;canonical_repository_state&quot;,
+        &quot;location&quot;: &quot;scripts/verify.ps1::repository-governance-validate&quot;,
+        &quot;type&quot;: &quot;verification_result&quot;
+      },
+      &quot;execution_point&quot;: &quot;scripts/verify.ps1&quot;,
+      &quot;expected_result&quot;: &quot;valid&quot;,
+      &quot;failure_code&quot;: &quot;PRESCRIPTIVE_HUMAN_PROJECTION_MISSING&quot;,
+      &quot;implementation&quot;: [
+        {
+          &quot;artifact&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;,
+          &quot;control&quot;: &quot;RepositoryGovernanceRepository.validate&quot;
+        }
+      ],
+      &quot;method&quot;: &quot;deterministic&quot;,
+      &quot;negative_fixture&quot;: &quot;test_rejects_prescriptive_without_projection_disposition&quot;,
+      &quot;residual_review&quot;: null,
+      &quot;rule_id&quot;: &quot;KIS-REPO-GOV-013&quot;,
+      &quot;validator&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;
+    },
+    {
+      &quot;authoritative_owner&quot;: &quot;governance:repository&quot;,
+      &quot;entry_point&quot;: &quot;kis-doc repository-governance-validate&quot;,
+      &quot;evidence&quot;: {
+        &quot;conformance_states&quot;: [
+          &quot;valid&quot;,
+          &quot;invalid&quot;
+        ],
+        &quot;evaluated_revision&quot;: &quot;git_head&quot;,
+        &quot;input_provenance&quot;: &quot;canonical_repository_state&quot;,
+        &quot;location&quot;: &quot;scripts/verify.ps1::repository-governance-validate&quot;,
+        &quot;type&quot;: &quot;verification_result&quot;
+      },
+      &quot;execution_point&quot;: &quot;scripts/verify.ps1&quot;,
+      &quot;expected_result&quot;: &quot;valid&quot;,
+      &quot;failure_code&quot;: &quot;MRD_IDENTITY_METADATA_INVALID&quot;,
+      &quot;implementation&quot;: [
+        {
+          &quot;artifact&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;,
+          &quot;control&quot;: &quot;RepositoryGovernanceRepository.validate&quot;
+        }
+      ],
+      &quot;method&quot;: &quot;deterministic&quot;,
+      &quot;negative_fixture&quot;: &quot;test_rejects_semantically_encoded_mrd_identity&quot;,
+      &quot;residual_review&quot;: null,
+      &quot;rule_id&quot;: &quot;KIS-REPO-GOV-014&quot;,
+      &quot;validator&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;
+    },
+    {
+      &quot;authoritative_owner&quot;: &quot;governance:repository&quot;,
+      &quot;entry_point&quot;: &quot;kis-doc repository-governance-validate&quot;,
+      &quot;evidence&quot;: {
+        &quot;conformance_states&quot;: [
+          &quot;valid&quot;,
+          &quot;invalid&quot;
+        ],
+        &quot;evaluated_revision&quot;: &quot;git_head&quot;,
+        &quot;input_provenance&quot;: &quot;canonical_repository_state&quot;,
+        &quot;location&quot;: &quot;scripts/verify.ps1::repository-governance-validate&quot;,
+        &quot;type&quot;: &quot;verification_result&quot;
+      },
+      &quot;execution_point&quot;: &quot;scripts/verify.ps1&quot;,
+      &quot;expected_result&quot;: &quot;valid&quot;,
+      &quot;failure_code&quot;: &quot;REPOSITORY_RULE_ASSURANCE_REFERENCE_INVALID&quot;,
+      &quot;implementation&quot;: [
+        {
+          &quot;artifact&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;,
+          &quot;control&quot;: &quot;RepositoryGovernanceRepository.validate&quot;
+        }
+      ],
+      &quot;method&quot;: &quot;deterministic&quot;,
+      &quot;negative_fixture&quot;: &quot;test_rejects_unresolved_rule_assurance_reference&quot;,
+      &quot;residual_review&quot;: null,
+      &quot;rule_id&quot;: &quot;KIS-REPO-GOV-015&quot;,
+      &quot;validator&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;
+    },
+    {
+      &quot;authoritative_owner&quot;: &quot;governance:repository&quot;,
+      &quot;entry_point&quot;: &quot;kis-doc repository-governance-validate&quot;,
+      &quot;evidence&quot;: {
+        &quot;conformance_states&quot;: [
+          &quot;valid&quot;,
+          &quot;invalid&quot;
+        ],
+        &quot;evaluated_revision&quot;: &quot;git_head&quot;,
+        &quot;input_provenance&quot;: &quot;canonical_repository_state&quot;,
+        &quot;location&quot;: &quot;scripts/verify.ps1::repository-governance-validate&quot;,
+        &quot;type&quot;: &quot;verification_result&quot;
+      },
+      &quot;execution_point&quot;: &quot;scripts/verify.ps1&quot;,
+      &quot;expected_result&quot;: &quot;valid&quot;,
+      &quot;failure_code&quot;: &quot;REPOSITORY_RELATIONSHIP_INVALID&quot;,
+      &quot;implementation&quot;: [
+        {
+          &quot;artifact&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;,
+          &quot;control&quot;: &quot;RepositoryGovernanceRepository.validate&quot;
+        }
+      ],
+      &quot;method&quot;: &quot;deterministic&quot;,
+      &quot;negative_fixture&quot;: &quot;test_rejects_illegal_relationship_direction&quot;,
+      &quot;residual_review&quot;: null,
+      &quot;rule_id&quot;: &quot;KIS-REPO-GOV-016&quot;,
+      &quot;validator&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;
+    },
+    {
+      &quot;authoritative_owner&quot;: &quot;governance:repository&quot;,
+      &quot;entry_point&quot;: &quot;kis-doc repository-governance-validate&quot;,
+      &quot;evidence&quot;: {
+        &quot;conformance_states&quot;: [
+          &quot;valid&quot;,
+          &quot;invalid&quot;
+        ],
+        &quot;evaluated_revision&quot;: &quot;git_head&quot;,
+        &quot;input_provenance&quot;: &quot;canonical_repository_state&quot;,
+        &quot;location&quot;: &quot;scripts/verify.ps1::repository-governance-validate&quot;,
+        &quot;type&quot;: &quot;verification_result&quot;
+      },
+      &quot;execution_point&quot;: &quot;scripts/verify.ps1&quot;,
+      &quot;expected_result&quot;: &quot;valid&quot;,
+      &quot;failure_code&quot;: &quot;REPOSITORY_NORMATIVE_RESTATEMENT_PROHIBITED&quot;,
+      &quot;implementation&quot;: [
+        {
+          &quot;artifact&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;,
+          &quot;control&quot;: &quot;RepositoryGovernanceRepository.validate&quot;
+        }
+      ],
+      &quot;method&quot;: &quot;deterministic_plus_residual_review&quot;,
+      &quot;negative_fixture&quot;: &quot;test_rejects_normative_rule_restatement&quot;,
+      &quot;residual_review&quot;: {
+        &quot;bounded_question&quot;: &quot;Does a changed non-owning prescriptive artefact create a second normative statement materially equivalent to a canonical Repository Governance rule?&quot;,
+        &quot;evidence_location&quot;: &quot;change review evidence&quot;,
+        &quot;justification&quot;: &quot;Mechanical validation detects rule-ID reuse and normalized exact restatement; bounded semantic review is required only for materially equivalent paraphrases that cannot be decided reliably by deterministic text matching.&quot;,
+        &quot;result_contract&quot;: [
+          &quot;no_duplicate_authority&quot;,
+          &quot;duplicate_authority_found&quot;
+        ],
+        &quot;reviewer_capability&quot;: &quot;repository-governance-architecture&quot;
+      },
+      &quot;rule_id&quot;: &quot;KIS-REPO-GOV-017&quot;,
+      &quot;validator&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;
+    },
+    {
+      &quot;authoritative_owner&quot;: &quot;governance:repository&quot;,
+      &quot;entry_point&quot;: &quot;kis-doc repository-governance-validate&quot;,
+      &quot;evidence&quot;: {
+        &quot;conformance_states&quot;: [
+          &quot;valid&quot;,
+          &quot;invalid&quot;
+        ],
+        &quot;evaluated_revision&quot;: &quot;git_head&quot;,
+        &quot;input_provenance&quot;: &quot;canonical_repository_state&quot;,
+        &quot;location&quot;: &quot;scripts/verify.ps1::repository-governance-validate&quot;,
+        &quot;type&quot;: &quot;verification_result&quot;
+      },
+      &quot;execution_point&quot;: &quot;scripts/verify.ps1&quot;,
+      &quot;expected_result&quot;: &quot;valid&quot;,
+      &quot;failure_code&quot;: &quot;REPOSITORY_GOVERNANCE_VOCABULARY_INVALID&quot;,
+      &quot;implementation&quot;: [
+        {
+          &quot;artifact&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;,
+          &quot;control&quot;: &quot;RepositoryGovernanceRepository.validate&quot;
+        }
+      ],
+      &quot;method&quot;: &quot;deterministic&quot;,
+      &quot;negative_fixture&quot;: &quot;test_rejects_invalid_governance_lifecycle&quot;,
+      &quot;residual_review&quot;: null,
+      &quot;rule_id&quot;: &quot;KIS-REPO-GOV-018&quot;,
+      &quot;validator&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;
+    },
+    {
+      &quot;authoritative_owner&quot;: &quot;governance:repository&quot;,
+      &quot;entry_point&quot;: &quot;kis-doc repository-governance-validate&quot;,
+      &quot;evidence&quot;: {
+        &quot;conformance_states&quot;: [
+          &quot;valid&quot;,
+          &quot;invalid&quot;
+        ],
+        &quot;evaluated_revision&quot;: &quot;git_head&quot;,
+        &quot;input_provenance&quot;: &quot;canonical_repository_state&quot;,
+        &quot;location&quot;: &quot;scripts/verify.ps1::repository-governance-validate&quot;,
+        &quot;type&quot;: &quot;verification_result&quot;
+      },
+      &quot;execution_point&quot;: &quot;scripts/verify.ps1&quot;,
+      &quot;expected_result&quot;: &quot;valid&quot;,
+      &quot;failure_code&quot;: &quot;REPOSITORY_RULE_SCHEMA_INVALID&quot;,
+      &quot;implementation&quot;: [
+        {
+          &quot;artifact&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;,
+          &quot;control&quot;: &quot;RepositoryGovernanceRepository.validate&quot;
+        }
+      ],
+      &quot;method&quot;: &quot;deterministic&quot;,
+      &quot;negative_fixture&quot;: &quot;test_rejects_incomplete_rule_contract&quot;,
+      &quot;residual_review&quot;: null,
+      &quot;rule_id&quot;: &quot;KIS-REPO-GOV-019&quot;,
+      &quot;validator&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;
+    },
+    {
+      &quot;authoritative_owner&quot;: &quot;governance:repository&quot;,
+      &quot;entry_point&quot;: &quot;kis-doc repository-governance-validate&quot;,
+      &quot;evidence&quot;: {
+        &quot;conformance_states&quot;: [
+          &quot;valid&quot;,
+          &quot;invalid&quot;
+        ],
+        &quot;evaluated_revision&quot;: &quot;git_head&quot;,
+        &quot;input_provenance&quot;: &quot;canonical_repository_state&quot;,
+        &quot;location&quot;: &quot;scripts/verify.ps1::repository-governance-validate&quot;,
+        &quot;type&quot;: &quot;verification_result&quot;
+      },
+      &quot;execution_point&quot;: &quot;scripts/verify.ps1&quot;,
+      &quot;expected_result&quot;: &quot;valid&quot;,
+      &quot;failure_code&quot;: &quot;REPOSITORY_SLOT_ARTEFACT_PROHIBITED&quot;,
+      &quot;implementation&quot;: [
+        {
+          &quot;artifact&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;,
+          &quot;control&quot;: &quot;RepositoryGovernanceRepository.validate&quot;
+        }
+      ],
+      &quot;method&quot;: &quot;deterministic&quot;,
+      &quot;negative_fixture&quot;: &quot;test_rejects_explicitly_prohibited_artefact_type&quot;,
+      &quot;residual_review&quot;: null,
+      &quot;rule_id&quot;: &quot;KIS-REPO-GOV-020&quot;,
+      &quot;validator&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;
+    },
+    {
+      &quot;authoritative_owner&quot;: &quot;governance:repository&quot;,
+      &quot;entry_point&quot;: &quot;kis-doc repository-governance-validate&quot;,
+      &quot;evidence&quot;: {
+        &quot;conformance_states&quot;: [
+          &quot;valid&quot;,
+          &quot;invalid&quot;
+        ],
+        &quot;evaluated_revision&quot;: &quot;git_head&quot;,
+        &quot;input_provenance&quot;: &quot;canonical_repository_state&quot;,
+        &quot;location&quot;: &quot;scripts/verify.ps1::repository-governance-validate&quot;,
+        &quot;type&quot;: &quot;verification_result&quot;
+      },
+      &quot;execution_point&quot;: &quot;scripts/verify.ps1&quot;,
+      &quot;expected_result&quot;: &quot;valid&quot;,
+      &quot;failure_code&quot;: &quot;REPOSITORY_SLOT_CONTRACT_INVALID&quot;,
+      &quot;implementation&quot;: [
+        {
+          &quot;artifact&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;,
+          &quot;control&quot;: &quot;RepositoryGovernanceRepository.validate&quot;
+        }
+      ],
+      &quot;method&quot;: &quot;deterministic&quot;,
+      &quot;negative_fixture&quot;: &quot;test_rejects_incomplete_slot_contract&quot;,
+      &quot;residual_review&quot;: null,
+      &quot;rule_id&quot;: &quot;KIS-REPO-GOV-021&quot;,
+      &quot;validator&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;
+    },
+    {
+      &quot;authoritative_owner&quot;: &quot;governance:repository&quot;,
+      &quot;entry_point&quot;: &quot;kis-doc repository-governance-validate&quot;,
+      &quot;evidence&quot;: {
+        &quot;conformance_states&quot;: [
+          &quot;valid&quot;,
+          &quot;invalid&quot;
+        ],
+        &quot;evaluated_revision&quot;: &quot;git_head&quot;,
+        &quot;input_provenance&quot;: &quot;canonical_repository_state&quot;,
+        &quot;location&quot;: &quot;scripts/verify.ps1::repository-governance-validate&quot;,
+        &quot;type&quot;: &quot;verification_result&quot;
+      },
+      &quot;execution_point&quot;: &quot;scripts/verify.ps1&quot;,
+      &quot;expected_result&quot;: &quot;valid&quot;,
+      &quot;failure_code&quot;: &quot;REPOSITORY_RULE_SCHEMA_INVALID&quot;,
+      &quot;implementation&quot;: [
+        {
+          &quot;artifact&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;,
+          &quot;control&quot;: &quot;RepositoryGovernanceRepository.validate&quot;
+        }
+      ],
+      &quot;method&quot;: &quot;deterministic&quot;,
+      &quot;negative_fixture&quot;: &quot;test_rejects_rule_without_scope_or_rationale&quot;,
+      &quot;residual_review&quot;: null,
+      &quot;rule_id&quot;: &quot;KIS-REPO-GOV-022&quot;,
+      &quot;validator&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;
+    },
+    {
+      &quot;authoritative_owner&quot;: &quot;governance:repository&quot;,
+      &quot;entry_point&quot;: &quot;kis-doc repository-governance-validate&quot;,
+      &quot;evidence&quot;: {
+        &quot;conformance_states&quot;: [
+          &quot;valid&quot;,
+          &quot;invalid&quot;
+        ],
+        &quot;evaluated_revision&quot;: &quot;git_head&quot;,
+        &quot;input_provenance&quot;: &quot;canonical_repository_state&quot;,
+        &quot;location&quot;: &quot;scripts/verify.ps1::repository-governance-validate&quot;,
+        &quot;type&quot;: &quot;verification_result&quot;
+      },
+      &quot;execution_point&quot;: &quot;scripts/verify.ps1&quot;,
+      &quot;expected_result&quot;: &quot;valid&quot;,
+      &quot;failure_code&quot;: &quot;REPOSITORY_REVIEW_POLICY_INVALID&quot;,
+      &quot;implementation&quot;: [
+        {
+          &quot;artifact&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;,
+          &quot;control&quot;: &quot;RepositoryGovernanceRepository.validate&quot;
+        }
+      ],
+      &quot;method&quot;: &quot;deterministic&quot;,
+      &quot;negative_fixture&quot;: &quot;test_rejects_unbounded_residual_review&quot;,
+      &quot;residual_review&quot;: null,
+      &quot;rule_id&quot;: &quot;KIS-REPO-GOV-023&quot;,
+      &quot;validator&quot;: &quot;src/kis_mcp_doc/repository_governance.py&quot;
+    }
+  ],
+  &quot;generated_from&quot;: &quot;prescriptives/governance/01-repository-governance.json&quot;,
+  &quot;projection&quot;: &quot;repository_governance_enforcement_register&quot;,
+  &quot;schema_version&quot;: 1
+}
+</pre></main></body></html>

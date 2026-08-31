@@ -1,0 +1,670 @@
+{
+  "authority": "derived_non_authoritative",
+  "entries": [
+    {
+      "authoritative_owner": "governance:repository",
+      "entry_point": "kis-doc repository-governance-validate",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "execution_point": "scripts/verify.ps1",
+      "expected_result": "valid",
+      "failure_code": "REPOSITORY_ROLE_RESOLUTION_INVALID",
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "method": "deterministic",
+      "negative_fixture": "test_rejects_ambiguous_semantic_role",
+      "residual_review": null,
+      "rule_id": "KIS-REPO-GOV-001",
+      "validator": "src/kis_mcp_doc/repository_governance.py"
+    },
+    {
+      "authoritative_owner": "governance:repository",
+      "entry_point": "kis-doc repository-governance-validate",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "execution_point": "scripts/verify.ps1",
+      "expected_result": "valid",
+      "failure_code": "PRESCRIPTIVE_FACT_OWNER_DUPLICATE",
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "method": "deterministic",
+      "negative_fixture": "test_rejects_duplicate_fact_owner",
+      "residual_review": null,
+      "rule_id": "KIS-REPO-GOV-002",
+      "validator": "src/kis_mcp_doc/repository_governance.py"
+    },
+    {
+      "authoritative_owner": "governance:repository",
+      "entry_point": "kis-doc repository-governance-validate",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "execution_point": "scripts/verify.ps1",
+      "expected_result": "valid",
+      "failure_code": "REPOSITORY_SLOT_RESOLUTION_INVALID",
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "method": "deterministic",
+      "negative_fixture": "test_rejects_ambiguous_or_missing_slot",
+      "residual_review": null,
+      "rule_id": "KIS-REPO-GOV-003",
+      "validator": "src/kis_mcp_doc/repository_governance.py"
+    },
+    {
+      "authoritative_owner": "governance:repository",
+      "entry_point": "kis-doc repository-governance-validate",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "execution_point": "scripts/verify.ps1",
+      "expected_result": "valid",
+      "failure_code": "REPOSITORY_DIRECTORY_UNKNOWN",
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "method": "deterministic",
+      "negative_fixture": "test_rejects_unknown_top_level_directory",
+      "residual_review": null,
+      "rule_id": "KIS-REPO-GOV-004",
+      "validator": "src/kis_mcp_doc/repository_governance.py"
+    },
+    {
+      "authoritative_owner": "governance:repository",
+      "entry_point": "kis-doc repository-governance-validate",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "execution_point": "scripts/verify.ps1",
+      "expected_result": "valid",
+      "failure_code": "GENERATED_AUTHORITY_PROHIBITED",
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "method": "deterministic",
+      "negative_fixture": "test_generated_role_is_non_authoritative",
+      "residual_review": null,
+      "rule_id": "KIS-REPO-GOV-005",
+      "validator": "src/kis_mcp_doc/repository_governance.py"
+    },
+    {
+      "authoritative_owner": "governance:repository",
+      "entry_point": "kis-doc repository-governance-validate",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "execution_point": "scripts/verify.ps1",
+      "expected_result": "valid",
+      "failure_code": "REPOSITORY_NEGATIVE_FIXTURE_MISSING",
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "method": "deterministic",
+      "negative_fixture": "test_rejects_missing_or_reused_negative_fixture",
+      "residual_review": null,
+      "rule_id": "KIS-REPO-GOV-006",
+      "validator": "src/kis_mcp_doc/repository_governance.py"
+    },
+    {
+      "authoritative_owner": "governance:repository",
+      "entry_point": "kis-doc repository-governance-validate",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "execution_point": "scripts/verify.ps1",
+      "expected_result": "valid",
+      "failure_code": "REPOSITORY_SLOT_ORIGIN_MISSING",
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "method": "deterministic_plus_residual_review",
+      "negative_fixture": "test_rejects_slot_without_demonstrated_need",
+      "residual_review": {
+        "bounded_question": "Does the cited issue/change demonstrate a current persistent structural need rather than speculative hierarchy?",
+        "evidence_location": "change review evidence",
+        "justification": "Mechanical validation can prove the source exists and is typed, but only bounded governance review can judge whether the cited need is substantively justified.",
+        "result_contract": [
+          "accepted",
+          "rejected"
+        ],
+        "reviewer_capability": "repository-governance-architecture"
+      },
+      "rule_id": "KIS-REPO-GOV-007",
+      "validator": "src/kis_mcp_doc/repository_governance.py"
+    },
+    {
+      "authoritative_owner": "governance:repository",
+      "entry_point": "kis-doc repository-governance-validate",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "execution_point": "scripts/verify.ps1",
+      "expected_result": "valid",
+      "failure_code": "REPOSITORY_WORKSPACE_POLICY_INVALID",
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "method": "deterministic",
+      "negative_fixture": "test_rejects_authoritative_work_workspace",
+      "residual_review": null,
+      "rule_id": "KIS-REPO-GOV-008",
+      "validator": "src/kis_mcp_doc/repository_governance.py"
+    },
+    {
+      "authoritative_owner": "governance:repository",
+      "entry_point": "kis-doc repository-governance-validate",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "execution_point": "scripts/verify.ps1",
+      "expected_result": "valid",
+      "failure_code": "REPOSITORY_REVIEW_POLICY_INVALID",
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "method": "deterministic",
+      "negative_fixture": "test_rejects_unjustified_human_review",
+      "residual_review": null,
+      "rule_id": "KIS-REPO-GOV-009",
+      "validator": "src/kis_mcp_doc/repository_governance.py"
+    },
+    {
+      "authoritative_owner": "governance:repository",
+      "entry_point": "kis-doc repository-governance-validate",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "execution_point": "scripts/verify.ps1",
+      "expected_result": "valid",
+      "failure_code": "REPOSITORY_GOVERNANCE_BOUNDARY_INVALID",
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "method": "deterministic",
+      "negative_fixture": "test_rejects_governance_mrd_specification_overlap",
+      "residual_review": null,
+      "rule_id": "KIS-REPO-GOV-010",
+      "validator": "src/kis_mcp_doc/repository_governance.py"
+    },
+    {
+      "authoritative_owner": "governance:repository",
+      "entry_point": "kis-doc repository-governance-validate",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "execution_point": "scripts/verify.ps1",
+      "expected_result": "valid",
+      "failure_code": "REPOSITORY_EVIDENCE_PRECEDENCE_INVALID",
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "method": "deterministic",
+      "negative_fixture": "test_rejects_invalid_evidence_precedence",
+      "residual_review": null,
+      "rule_id": "KIS-REPO-GOV-011",
+      "validator": "src/kis_mcp_doc/repository_governance.py"
+    },
+    {
+      "authoritative_owner": "governance:repository",
+      "entry_point": "kis-doc repository-governance-validate",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "execution_point": "scripts/verify.ps1",
+      "expected_result": "valid",
+      "failure_code": "REPOSITORY_ENFORCEMENT_PROJECTION_INVALID",
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "method": "deterministic",
+      "negative_fixture": "test_rejects_authored_enforcement_register",
+      "residual_review": null,
+      "rule_id": "KIS-REPO-GOV-012",
+      "validator": "src/kis_mcp_doc/repository_governance.py"
+    },
+    {
+      "authoritative_owner": "governance:repository",
+      "entry_point": "kis-doc repository-governance-validate",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "execution_point": "scripts/verify.ps1",
+      "expected_result": "valid",
+      "failure_code": "PRESCRIPTIVE_HUMAN_PROJECTION_MISSING",
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "method": "deterministic",
+      "negative_fixture": "test_rejects_prescriptive_without_projection_disposition",
+      "residual_review": null,
+      "rule_id": "KIS-REPO-GOV-013",
+      "validator": "src/kis_mcp_doc/repository_governance.py"
+    },
+    {
+      "authoritative_owner": "governance:repository",
+      "entry_point": "kis-doc repository-governance-validate",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "execution_point": "scripts/verify.ps1",
+      "expected_result": "valid",
+      "failure_code": "MRD_IDENTITY_METADATA_INVALID",
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "method": "deterministic",
+      "negative_fixture": "test_rejects_semantically_encoded_mrd_identity",
+      "residual_review": null,
+      "rule_id": "KIS-REPO-GOV-014",
+      "validator": "src/kis_mcp_doc/repository_governance.py"
+    },
+    {
+      "authoritative_owner": "governance:repository",
+      "entry_point": "kis-doc repository-governance-validate",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "execution_point": "scripts/verify.ps1",
+      "expected_result": "valid",
+      "failure_code": "REPOSITORY_RULE_ASSURANCE_REFERENCE_INVALID",
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "method": "deterministic",
+      "negative_fixture": "test_rejects_unresolved_rule_assurance_reference",
+      "residual_review": null,
+      "rule_id": "KIS-REPO-GOV-015",
+      "validator": "src/kis_mcp_doc/repository_governance.py"
+    },
+    {
+      "authoritative_owner": "governance:repository",
+      "entry_point": "kis-doc repository-governance-validate",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "execution_point": "scripts/verify.ps1",
+      "expected_result": "valid",
+      "failure_code": "REPOSITORY_RELATIONSHIP_INVALID",
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "method": "deterministic",
+      "negative_fixture": "test_rejects_illegal_relationship_direction",
+      "residual_review": null,
+      "rule_id": "KIS-REPO-GOV-016",
+      "validator": "src/kis_mcp_doc/repository_governance.py"
+    },
+    {
+      "authoritative_owner": "governance:repository",
+      "entry_point": "kis-doc repository-governance-validate",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "execution_point": "scripts/verify.ps1",
+      "expected_result": "valid",
+      "failure_code": "REPOSITORY_NORMATIVE_RESTATEMENT_PROHIBITED",
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "method": "deterministic_plus_residual_review",
+      "negative_fixture": "test_rejects_normative_rule_restatement",
+      "residual_review": {
+        "bounded_question": "Does a changed non-owning prescriptive artefact create a second normative statement materially equivalent to a canonical Repository Governance rule?",
+        "evidence_location": "change review evidence",
+        "justification": "Mechanical validation detects rule-ID reuse and normalized exact restatement; bounded semantic review is required only for materially equivalent paraphrases that cannot be decided reliably by deterministic text matching.",
+        "result_contract": [
+          "no_duplicate_authority",
+          "duplicate_authority_found"
+        ],
+        "reviewer_capability": "repository-governance-architecture"
+      },
+      "rule_id": "KIS-REPO-GOV-017",
+      "validator": "src/kis_mcp_doc/repository_governance.py"
+    },
+    {
+      "authoritative_owner": "governance:repository",
+      "entry_point": "kis-doc repository-governance-validate",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "execution_point": "scripts/verify.ps1",
+      "expected_result": "valid",
+      "failure_code": "REPOSITORY_GOVERNANCE_VOCABULARY_INVALID",
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "method": "deterministic",
+      "negative_fixture": "test_rejects_invalid_governance_lifecycle",
+      "residual_review": null,
+      "rule_id": "KIS-REPO-GOV-018",
+      "validator": "src/kis_mcp_doc/repository_governance.py"
+    },
+    {
+      "authoritative_owner": "governance:repository",
+      "entry_point": "kis-doc repository-governance-validate",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "execution_point": "scripts/verify.ps1",
+      "expected_result": "valid",
+      "failure_code": "REPOSITORY_RULE_SCHEMA_INVALID",
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "method": "deterministic",
+      "negative_fixture": "test_rejects_incomplete_rule_contract",
+      "residual_review": null,
+      "rule_id": "KIS-REPO-GOV-019",
+      "validator": "src/kis_mcp_doc/repository_governance.py"
+    },
+    {
+      "authoritative_owner": "governance:repository",
+      "entry_point": "kis-doc repository-governance-validate",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "execution_point": "scripts/verify.ps1",
+      "expected_result": "valid",
+      "failure_code": "REPOSITORY_SLOT_ARTEFACT_PROHIBITED",
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "method": "deterministic",
+      "negative_fixture": "test_rejects_explicitly_prohibited_artefact_type",
+      "residual_review": null,
+      "rule_id": "KIS-REPO-GOV-020",
+      "validator": "src/kis_mcp_doc/repository_governance.py"
+    },
+    {
+      "authoritative_owner": "governance:repository",
+      "entry_point": "kis-doc repository-governance-validate",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "execution_point": "scripts/verify.ps1",
+      "expected_result": "valid",
+      "failure_code": "REPOSITORY_SLOT_CONTRACT_INVALID",
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "method": "deterministic",
+      "negative_fixture": "test_rejects_incomplete_slot_contract",
+      "residual_review": null,
+      "rule_id": "KIS-REPO-GOV-021",
+      "validator": "src/kis_mcp_doc/repository_governance.py"
+    },
+    {
+      "authoritative_owner": "governance:repository",
+      "entry_point": "kis-doc repository-governance-validate",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "execution_point": "scripts/verify.ps1",
+      "expected_result": "valid",
+      "failure_code": "REPOSITORY_RULE_SCHEMA_INVALID",
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "method": "deterministic",
+      "negative_fixture": "test_rejects_rule_without_scope_or_rationale",
+      "residual_review": null,
+      "rule_id": "KIS-REPO-GOV-022",
+      "validator": "src/kis_mcp_doc/repository_governance.py"
+    },
+    {
+      "authoritative_owner": "governance:repository",
+      "entry_point": "kis-doc repository-governance-validate",
+      "evidence": {
+        "conformance_states": [
+          "valid",
+          "invalid"
+        ],
+        "evaluated_revision": "git_head",
+        "input_provenance": "canonical_repository_state",
+        "location": "scripts/verify.ps1::repository-governance-validate",
+        "type": "verification_result"
+      },
+      "execution_point": "scripts/verify.ps1",
+      "expected_result": "valid",
+      "failure_code": "REPOSITORY_REVIEW_POLICY_INVALID",
+      "implementation": [
+        {
+          "artifact": "src/kis_mcp_doc/repository_governance.py",
+          "control": "RepositoryGovernanceRepository.validate"
+        }
+      ],
+      "method": "deterministic",
+      "negative_fixture": "test_rejects_unbounded_residual_review",
+      "residual_review": null,
+      "rule_id": "KIS-REPO-GOV-023",
+      "validator": "src/kis_mcp_doc/repository_governance.py"
+    }
+  ],
+  "generated_from": "prescriptives/governance/01-repository-governance.json",
+  "projection": "repository_governance_enforcement_register",
+  "schema_version": 1
+}

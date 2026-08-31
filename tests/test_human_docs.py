@@ -24,34 +24,29 @@ def _family(family_id: str) -> dict:
 def test_human_documentation_families_are_registered_separately_from_specs() -> None:
     registry = PublicationFamilyRegistry(ROOT)
     assert registry.validate() == {"status": "valid", "diagnostics": []}
-    governance = registry.family("governance-docs")
+    governance = registry.family("mrd-specification-docs")
     work = registry.family("work-management-docs")
     assert governance["output_classes"] == ["human_documentation"]
     assert work["output_classes"] == ["human_documentation"]
 
 
 def test_governance_docs_are_deterministic_and_source_derived(tmp_path: Path) -> None:
-    family = _family("governance-docs")
+    family = _family("mrd-specification-docs")
     first = tmp_path / "first"
     second = tmp_path / "second"
-    a = build_human_docs_family(ROOT, family, "governance", output=first)
-    b = build_human_docs_family(ROOT, family, "governance", output=second)
+    a = build_human_docs_family(ROOT, family, "mrd-specification", output=first)
+    b = build_human_docs_family(ROOT, family, "mrd-specification", output=second)
     assert a == b
     assert {p.relative_to(first).as_posix(): p.read_bytes() for p in first.rglob("*") if p.is_file()} == {
         p.relative_to(second).as_posix(): p.read_bytes() for p in second.rglob("*") if p.is_file()
     }
-    docs = GovernanceRepository(ROOT, ROOT / "prescriptives/governance").load()
-    workflow = docs["KIS-KNOW-WRK-WFL-001"]["content"]
-    page = (first / "003-apply-governance.md").read_text(encoding="utf-8")
-    for phase in workflow["phases"]:
-        label = phase["name"].replace("_", " ")
-        label = label[:1].upper() + label[1:]
-        assert f"## {label}" in page
-        for action in phase["required_actions"]:
-            assert action in page
-    assert not re.search(r"^## \\d+\\.", page, flags=re.MULTILINE)
-    assert "Mrd" not in page
-    assert "Governance Specification" in page
+    docs = GovernanceRepository(ROOT, ROOT / "prescriptives/mrd-specification").load()
+    classification = next(doc for doc in docs.values() if doc["content"]["concern"] == "classification")
+    page = (first / "002-classify-and-select.md").read_text(encoding="utf-8")
+    assert str(classification["content"]["catalog_policy"]["expected_type_count"]) in page
+    assert "stable opaque MRD identity" not in page
+    assert not re.search(r"^## \d+\.", page, flags=re.MULTILINE)
+    assert "MRD Specification" in page
 
 
 def test_work_docs_are_deterministic_and_preserve_state_authority(tmp_path: Path) -> None:
@@ -64,7 +59,7 @@ def test_work_docs_are_deterministic_and_preserve_state_authority(tmp_path: Path
         p.relative_to(second).as_posix(): p.read_bytes() for p in second.rglob("*") if p.is_file()
     }
     docs = WorkManagementRepository(ROOT).load()
-    lifecycle = docs["KIS-WORK-WRK-STM-001"]["content"]
+    lifecycle = docs["urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"]["content"]
     page = (first / "002-work-lifecycle.md").read_text(encoding="utf-8")
     assert "Work Status and Delivery Stage are separate dimensions" in page
     for state in lifecycle["states"]:
@@ -76,7 +71,7 @@ def test_work_docs_are_deterministic_and_preserve_state_authority(tmp_path: Path
 
 
 def test_human_docs_traceability_points_only_to_canonical_mrds(tmp_path: Path) -> None:
-    for family_id, kind in (("governance-docs", "governance"), ("work-management-docs", "work-management")):
+    for family_id, kind in (("mrd-specification-docs", "mrd-specification"), ("work-management-docs", "work-management")):
         family = _family(family_id)
         output = tmp_path / family_id
         build_human_docs_family(ROOT, family, kind, output=output)
@@ -91,7 +86,7 @@ def _family_source_ids(family: dict) -> list[str]:
 
 
 def test_human_docs_links_resolve_against_repository(tmp_path: Path) -> None:
-    for family_id, kind in (("governance-docs", "governance"), ("work-management-docs", "work-management")):
+    for family_id, kind in (("mrd-specification-docs", "mrd-specification"), ("work-management-docs", "work-management")):
         family = _family(family_id)
         output = tmp_path / family_id
         build_human_docs_family(ROOT, family, kind, output=output)
@@ -110,12 +105,12 @@ def test_human_docs_links_resolve_against_repository(tmp_path: Path) -> None:
 def test_human_docs_verifier_detects_tampering(tmp_path: Path) -> None:
     root = tmp_path / "repo"
     shutil.copytree(ROOT, root, ignore=shutil.ignore_patterns(".git", ".venv", ".work"))
-    family = PublicationFamilyRegistry(root).family("governance-docs")
+    family = PublicationFamilyRegistry(root).family("mrd-specification-docs")
     output = root / family["output"]
     shutil.rmtree(output)
-    build_human_docs_family(root, family, "governance")
-    assert verify_human_docs_family(root, family, "governance")["status"] == "valid"
+    build_human_docs_family(root, family, "mrd-specification")
+    assert verify_human_docs_family(root, family, "mrd-specification")["status"] == "valid"
     (output / "000-index.md").write_text("tampered\n", encoding="utf-8")
-    result = verify_human_docs_family(root, family, "governance")
+    result = verify_human_docs_family(root, family, "mrd-specification")
     assert result["status"] == "invalid"
     assert any(item["code"] == "HUMAN_DOCUMENTATION_GENERATED_FILE_CONTENT_MISMATCH" for item in result["diagnostics"])

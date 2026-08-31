@@ -36,7 +36,7 @@ Generated Markdown is allowed only as an explicitly derived output. It must be r
 
 Temporary analysis belongs in KIS-approved temporary/change state, not as new durable repository documentation.
 
-Repository-wide semantic roles, prescriptive ownership, structural placement law, and enforcement mappings are governed by `prescriptives/repository-governance/`. Every persistent governed artefact must resolve to one primary role: prescriptive, implementation, derived/generated, verification, or evidence. Every prescriptive artefact and governed fact must resolve to one canonical owner.
+Repository-wide semantic roles, prescriptive ownership, structural placement law, and enforcement mappings are governed by `prescriptives/mrd-specification/`. Every persistent governed artefact must resolve to one primary role: prescriptive, implementation, derived/generated, verification, or evidence. Every prescriptive artefact and governed fact must resolve to one canonical owner.
 
 The Directory Grammar is closed by default. Do not create arbitrary persistent top-level directories or new prescriptive domains. Amend the grammar first when a demonstrated need justifies a new structural class. `.work/` is the reserved KIS work/change namespace; it is disposable/non-authoritative and cannot be used to route around canonical placement rules. Generated outputs remain one-way projections and never become write-back authority.
 

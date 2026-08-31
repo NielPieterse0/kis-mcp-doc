@@ -69,8 +69,8 @@ class DocumentationReferenceRepository:
     def validate_documents(self, documents: dict[str, dict[str, Any]]) -> dict[str, Any]:
         diagnostics: list[dict[str, str]] = []
         checks = {key: "pass" for key in ("schema", "authority", "harvest_binding", "pinning", "lifecycle", "provenance")}
-        policy = documents.get("KIS-DOC-CON-POL-001")
-        registry = documents.get("KIS-DOC-SEM-REG-001")
+        policy = documents.get("urn:uuid:ae7e7dc1-2b8b-5988-845d-24df49dcfe0a")
+        registry = documents.get("urn:uuid:d6110859-d683-5aab-86ff-ceecd899e38d")
         if policy is None or registry is None:
             return _result([_diag("REFERENCE_MRD_SET_INVALID", "documentation reference policy and registry MRDs are required")], checks)
 
@@ -253,8 +253,8 @@ def verify_documentation_reference_standard(
 
 
 def _build_files(documents: dict[str, dict[str, Any]], config: dict[str, Any]) -> dict[str, bytes]:
-    policy = documents["KIS-DOC-CON-POL-001"]["content"]
-    registry = documents["KIS-DOC-SEM-REG-001"]["content"]
+    policy = documents["urn:uuid:ae7e7dc1-2b8b-5988-845d-24df49dcfe0a"]["content"]
+    registry = documents["urn:uuid:d6110859-d683-5aab-86ff-ceecd899e38d"]["content"]
     return {
         "000-index.md": _render_index(config).encode("utf-8"),
         "001-specification.md": _render_specification(config, policy, registry).encode("utf-8"),
@@ -345,7 +345,7 @@ def _render_specification(config: dict[str, Any], policy: dict[str, Any], regist
     lines.extend(["", "## Requirements", ""])
     for rule in policy["requirements"]:
         lines.extend([f"### {rule['rule_id']}", "", rule["statement"], ""])
-    lines.extend(["## Source and authority", "", "This page is generated from `KIS-DOC-CON-POL-001` and `KIS-DOC-SEM-REG-001`. It has no write-back authority.", ""])
+    lines.extend(["## Source and authority", "", "This page is generated from `urn:uuid:ae7e7dc1-2b8b-5988-845d-24df49dcfe0a` and `urn:uuid:d6110859-d683-5aab-86ff-ceecd899e38d`. It has no write-back authority.", ""])
     return "\n".join(lines)
 
 

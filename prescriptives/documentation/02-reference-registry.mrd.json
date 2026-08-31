@@ -1,7 +1,7 @@
 {
   "_mrd": {
     "schema_version": 1,
-    "id": "KIS-DOC-SEM-REG-001",
+    "id": "urn:uuid:d6110859-d683-5aab-86ff-ceecd899e38d",
     "title": "Documentation Reference Registry",
     "module": "documentation",
     "class": "SEM",
@@ -11,46 +11,372 @@
     "status": "active",
     "version": "1.0.0",
     "dependencies": [
-      {"mrd_id": "KIS-DOC-CON-POL-001", "relationship": "depends_on"},
-      {"source": "repo:publication/harvest-sources.json", "relationship": "references"}
+      {
+        "mrd_id": "urn:uuid:ae7e7dc1-2b8b-5988-845d-24df49dcfe0a",
+        "relationship": "depends_on"
+      },
+      {
+        "source": "repo:publication/harvest-sources.json",
+        "relationship": "references"
+      }
     ],
     "provenance": {
       "sources": [
-        {"source_id": "KIS-EXTERNAL-MCP-DOC-RESEARCH-2026-08-26", "kind": "research_evidence", "role": "reference_selection_basis", "locator": "conversation:2026-08-26", "revision": "comparative-mcp-documentation-research", "sha256": null}
+        {
+          "source_id": "KIS-EXTERNAL-MCP-DOC-RESEARCH-2026-08-26",
+          "kind": "research_evidence",
+          "role": "reference_selection_basis",
+          "locator": "conversation:2026-08-26",
+          "revision": "comparative-mcp-documentation-research",
+          "sha256": null
+        }
       ],
       "source_fingerprint": "sha256:02eed97bc1cb864bcdec59eefd5bb0fd4fe70a7b3c7991f87e2ea47e8b0587e2",
       "fact_quality": "direct"
     },
     "supersedes": [],
-    "superseded_by": null
+    "superseded_by": null,
+    "legacy_ids": [
+      "KIS-DOC-SEM-REG-001"
+    ],
+    "repository": "NielPieterse0/kis-mcp-doc",
+    "canonical_path": "prescriptives/documentation/02-reference-registry.mrd.json",
+    "revision_binding": {
+      "mode": "external_git_provider_evidence",
+      "repository": "NielPieterse0/kis-mcp-doc",
+      "git_revision": null,
+      "change_identity_source": "github_issue_and_pull_request",
+      "reason": "Tracked content cannot embed its own containing commit without circular identity."
+    }
   },
   "content": {
     "registry_version": "1.0.0",
     "refresh_policy": "Refresh references only through a governed registry change. Deterministic builds use the pinned registry state and never fetch live sources.",
     "licensing_policy": "Metadata and bounded pattern summaries are permitted. Harvesting reusable source content requires source-specific license and attribution review first.",
     "evidence_records": [
-      {"id":"change-008-preparation@2785a3b","kind":"governed_research_record","source_path":".work/changes/008-documentation-reference-standard/change.mrd.json","git_commit":"2785a3b7a6f42b22ef48e8b151473717a7af5a1e","sha256":"007662c0d3527c5d22b7963901d495c68db89483d8087ec03fbb628546399a07"}
+      {
+        "id": "change-008-preparation@2785a3b",
+        "kind": "governed_research_record",
+        "source_path": ".work/changes/008-documentation-reference-standard/change.mrd.json",
+        "git_commit": "2785a3b7a6f42b22ef48e8b151473717a7af5a1e",
+        "sha256": "007662c0d3527c5d22b7963901d495c68db89483d8087ec03fbb628546399a07"
+      }
     ],
-    "references": [      {
-        "id": "mcp-2026", "name": "Model Context Protocol 2026-07-28", "role": "normative_external", "locator": "https://modelcontextprotocol.io/specification/2026-07-28/", "harvest_source_id": "mcp-spec-2026-07-28",
-        "permitted_uses": ["protocol_conformance", "specification_structure", "normative_presentation", "schema_reference"], "may_define_kis_facts": false,
-        "pin": {"kind": "content_sha256", "value": "8d5af577abff93b6c3a62419f146345f3387550e22255cf81004080e87a761e2", "revision": "2026-07-28"},
-        "freshness": {"strategy": "governed_version_refresh", "checked_on": "2026-08-26"}, "lifecycle": {"state": "active", "supersedes": [], "superseded_by": null},
-        "license": {"reuse_boundary": "normative_reference_and_bounded_excerpt_only", "status": "source_terms_apply"}
+    "references": [
+      {
+        "id": "mcp-2026",
+        "name": "Model Context Protocol 2026-07-28",
+        "role": "normative_external",
+        "locator": "https://modelcontextprotocol.io/specification/2026-07-28/",
+        "harvest_source_id": "mcp-spec-2026-07-28",
+        "permitted_uses": [
+          "protocol_conformance",
+          "specification_structure",
+          "normative_presentation",
+          "schema_reference"
+        ],
+        "may_define_kis_facts": false,
+        "pin": {
+          "kind": "content_sha256",
+          "value": "8d5af577abff93b6c3a62419f146345f3387550e22255cf81004080e87a761e2",
+          "revision": "2026-07-28"
+        },
+        "freshness": {
+          "strategy": "governed_version_refresh",
+          "checked_on": "2026-08-26"
+        },
+        "lifecycle": {
+          "state": "active",
+          "supersedes": [],
+          "superseded_by": null
+        },
+        "license": {
+          "reuse_boundary": "normative_reference_and_bounded_excerpt_only",
+          "status": "source_terms_apply"
+        }
       },
       {
-        "id": "google-developer-style", "name": "Google Developer Documentation Style Guide", "role": "prescriptive_external", "locator": "https://developers.google.com/style", "harvest_source_id": null,
-        "permitted_uses": ["human_prose", "task_documentation", "headings", "lists", "tables", "cross_references"], "may_define_kis_facts": false,
-        "pin": {"kind": "captured_corpus_sha256", "value": "d9081dff4aad18561f3c4d492a2623b181f7a5f347436eb2519d6ca4c3fdc7c9", "revision": "captured-corpus-2026-08-26"},
-        "freshness": {"strategy": "governed_corpus_refresh", "checked_on": "2026-08-26"}, "lifecycle": {"state": "active", "supersedes": [], "superseded_by": null},
-        "license": {"reuse_boundary": "prescriptive_guidance_and_bounded_excerpt_only", "status": "source_terms_apply"}
-      },      {"id":"sentry-mcp","name":"Sentry MCP","role":"implementation_reference","locator":"https://github.com/getsentry/sentry-mcp","harvest_source_id":null,"permitted_uses":["documentation_architecture","engineering_documentation","operations","security"],"may_define_kis_facts":false,"pin":{"kind":"research_evidence_sha256","value":"007662c0d3527c5d22b7963901d495c68db89483d8087ec03fbb628546399a07","revision":"change-008-preparation@2785a3b"},"freshness":{"strategy":"governed_research_refresh","checked_on":"2026-08-26"},"lifecycle":{"state":"active","supersedes":[],"superseded_by":null},"license":{"reuse_boundary":"metadata_and_bounded_pattern_summary_only","status":"content_not_harvested"}},
-      {"id":"github-mcp","name":"GitHub MCP Server","role":"implementation_reference","locator":"https://github.com/github/github-mcp-server","harvest_source_id":null,"permitted_uses":["tool_reference","configuration_reference","generated_documentation","stale_detection"],"may_define_kis_facts":false,"pin":{"kind":"research_evidence_sha256","value":"007662c0d3527c5d22b7963901d495c68db89483d8087ec03fbb628546399a07","revision":"change-008-preparation@2785a3b"},"freshness":{"strategy":"governed_research_refresh","checked_on":"2026-08-26"},"lifecycle":{"state":"active","supersedes":[],"superseded_by":null},"license":{"reuse_boundary":"metadata_and_bounded_pattern_summary_only","status":"content_not_harvested"}},
-      {"id":"azure-mcp","name":"Azure MCP Server","role":"implementation_reference","locator":"https://github.com/microsoft/mcp","harvest_source_id":null,"permitted_uses":["large_scale_reference","generated_reference","drift_control"],"may_define_kis_facts":false,"pin":{"kind":"research_evidence_sha256","value":"007662c0d3527c5d22b7963901d495c68db89483d8087ec03fbb628546399a07","revision":"change-008-preparation@2785a3b"},"freshness":{"strategy":"governed_research_refresh","checked_on":"2026-08-26"},"lifecycle":{"state":"active","supersedes":[],"superseded_by":null},"license":{"reuse_boundary":"metadata_and_bounded_pattern_summary_only","status":"content_not_harvested"}},
-      {"id":"playwright-mcp","name":"Playwright MCP","role":"implementation_reference","locator":"https://github.com/microsoft/playwright-mcp","harvest_source_id":null,"permitted_uses":["task_oriented_documentation","getting_started","generated_tool_reference"],"may_define_kis_facts":false,"pin":{"kind":"research_evidence_sha256","value":"007662c0d3527c5d22b7963901d495c68db89483d8087ec03fbb628546399a07","revision":"change-008-preparation@2785a3b"},"freshness":{"strategy":"governed_research_refresh","checked_on":"2026-08-26"},"lifecycle":{"state":"active","supersedes":[],"superseded_by":null},"license":{"reuse_boundary":"metadata_and_bounded_pattern_summary_only","status":"content_not_harvested"}},      {"id":"atlassian-rovo-mcp","name":"Atlassian Rovo MCP","role":"implementation_reference","locator":"https://developer.atlassian.com/cloud/rovo-mcp/guides/supported-tools/","harvest_source_id":null,"permitted_uses":["permissions_presentation","capability_catalogue","discover_execute_patterns"],"may_define_kis_facts":false,"pin":{"kind":"research_evidence_sha256","value":"007662c0d3527c5d22b7963901d495c68db89483d8087ec03fbb628546399a07","revision":"change-008-preparation@2785a3b"},"freshness":{"strategy":"governed_research_refresh","checked_on":"2026-08-26"},"lifecycle":{"state":"active","supersedes":[],"superseded_by":null},"license":{"reuse_boundary":"metadata_and_bounded_pattern_summary_only","status":"content_not_harvested"}},
-      {"id":"figma-mcp","name":"Figma MCP","role":"implementation_reference","locator":"https://developers.figma.com/docs/figma-mcp-server/","harvest_source_id":null,"permitted_uses":["workflow_oriented_documentation","task_grouping"],"may_define_kis_facts":false,"pin":{"kind":"research_evidence_sha256","value":"007662c0d3527c5d22b7963901d495c68db89483d8087ec03fbb628546399a07","revision":"change-008-preparation@2785a3b"},"freshness":{"strategy":"governed_research_refresh","checked_on":"2026-08-26"},"lifecycle":{"state":"active","supersedes":[],"superseded_by":null},"license":{"reuse_boundary":"metadata_and_bounded_pattern_summary_only","status":"content_not_harvested"}},
-      {"id":"aws-labs-mcp","name":"AWS Labs MCP","role":"implementation_reference","locator":"https://github.com/awslabs/mcp","harvest_source_id":null,"permitted_uses":["multi_module_consistency","repeatable_server_documentation"],"may_define_kis_facts":false,"pin":{"kind":"research_evidence_sha256","value":"007662c0d3527c5d22b7963901d495c68db89483d8087ec03fbb628546399a07","revision":"change-008-preparation@2785a3b"},"freshness":{"strategy":"governed_research_refresh","checked_on":"2026-08-26"},"lifecycle":{"state":"active","supersedes":[],"superseded_by":null},"license":{"reuse_boundary":"metadata_and_bounded_pattern_summary_only","status":"content_not_harvested"}},
-      {"id":"cloudflare-mcp","name":"Cloudflare MCP","role":"implementation_reference","locator":"https://github.com/cloudflare/mcp","harvest_source_id":null,"permitted_uses":["tool_surface_scaling","context_budget","dynamic_discovery"],"may_define_kis_facts":false,"pin":{"kind":"research_evidence_sha256","value":"007662c0d3527c5d22b7963901d495c68db89483d8087ec03fbb628546399a07","revision":"change-008-preparation@2785a3b"},"freshness":{"strategy":"governed_research_refresh","checked_on":"2026-08-26"},"lifecycle":{"state":"active","supersedes":[],"superseded_by":null},"license":{"reuse_boundary":"metadata_and_bounded_pattern_summary_only","status":"content_not_harvested"}}
+        "id": "google-developer-style",
+        "name": "Google Developer Documentation Style Guide",
+        "role": "prescriptive_external",
+        "locator": "https://developers.google.com/style",
+        "harvest_source_id": null,
+        "permitted_uses": [
+          "human_prose",
+          "task_documentation",
+          "headings",
+          "lists",
+          "tables",
+          "cross_references"
+        ],
+        "may_define_kis_facts": false,
+        "pin": {
+          "kind": "captured_corpus_sha256",
+          "value": "d9081dff4aad18561f3c4d492a2623b181f7a5f347436eb2519d6ca4c3fdc7c9",
+          "revision": "captured-corpus-2026-08-26"
+        },
+        "freshness": {
+          "strategy": "governed_corpus_refresh",
+          "checked_on": "2026-08-26"
+        },
+        "lifecycle": {
+          "state": "active",
+          "supersedes": [],
+          "superseded_by": null
+        },
+        "license": {
+          "reuse_boundary": "prescriptive_guidance_and_bounded_excerpt_only",
+          "status": "source_terms_apply"
+        }
+      },
+      {
+        "id": "sentry-mcp",
+        "name": "Sentry MCP",
+        "role": "implementation_reference",
+        "locator": "https://github.com/getsentry/sentry-mcp",
+        "harvest_source_id": null,
+        "permitted_uses": [
+          "documentation_architecture",
+          "engineering_documentation",
+          "operations",
+          "security"
+        ],
+        "may_define_kis_facts": false,
+        "pin": {
+          "kind": "research_evidence_sha256",
+          "value": "007662c0d3527c5d22b7963901d495c68db89483d8087ec03fbb628546399a07",
+          "revision": "change-008-preparation@2785a3b"
+        },
+        "freshness": {
+          "strategy": "governed_research_refresh",
+          "checked_on": "2026-08-26"
+        },
+        "lifecycle": {
+          "state": "active",
+          "supersedes": [],
+          "superseded_by": null
+        },
+        "license": {
+          "reuse_boundary": "metadata_and_bounded_pattern_summary_only",
+          "status": "content_not_harvested"
+        }
+      },
+      {
+        "id": "github-mcp",
+        "name": "GitHub MCP Server",
+        "role": "implementation_reference",
+        "locator": "https://github.com/github/github-mcp-server",
+        "harvest_source_id": null,
+        "permitted_uses": [
+          "tool_reference",
+          "configuration_reference",
+          "generated_documentation",
+          "stale_detection"
+        ],
+        "may_define_kis_facts": false,
+        "pin": {
+          "kind": "research_evidence_sha256",
+          "value": "007662c0d3527c5d22b7963901d495c68db89483d8087ec03fbb628546399a07",
+          "revision": "change-008-preparation@2785a3b"
+        },
+        "freshness": {
+          "strategy": "governed_research_refresh",
+          "checked_on": "2026-08-26"
+        },
+        "lifecycle": {
+          "state": "active",
+          "supersedes": [],
+          "superseded_by": null
+        },
+        "license": {
+          "reuse_boundary": "metadata_and_bounded_pattern_summary_only",
+          "status": "content_not_harvested"
+        }
+      },
+      {
+        "id": "azure-mcp",
+        "name": "Azure MCP Server",
+        "role": "implementation_reference",
+        "locator": "https://github.com/microsoft/mcp",
+        "harvest_source_id": null,
+        "permitted_uses": [
+          "large_scale_reference",
+          "generated_reference",
+          "drift_control"
+        ],
+        "may_define_kis_facts": false,
+        "pin": {
+          "kind": "research_evidence_sha256",
+          "value": "007662c0d3527c5d22b7963901d495c68db89483d8087ec03fbb628546399a07",
+          "revision": "change-008-preparation@2785a3b"
+        },
+        "freshness": {
+          "strategy": "governed_research_refresh",
+          "checked_on": "2026-08-26"
+        },
+        "lifecycle": {
+          "state": "active",
+          "supersedes": [],
+          "superseded_by": null
+        },
+        "license": {
+          "reuse_boundary": "metadata_and_bounded_pattern_summary_only",
+          "status": "content_not_harvested"
+        }
+      },
+      {
+        "id": "playwright-mcp",
+        "name": "Playwright MCP",
+        "role": "implementation_reference",
+        "locator": "https://github.com/microsoft/playwright-mcp",
+        "harvest_source_id": null,
+        "permitted_uses": [
+          "task_oriented_documentation",
+          "getting_started",
+          "generated_tool_reference"
+        ],
+        "may_define_kis_facts": false,
+        "pin": {
+          "kind": "research_evidence_sha256",
+          "value": "007662c0d3527c5d22b7963901d495c68db89483d8087ec03fbb628546399a07",
+          "revision": "change-008-preparation@2785a3b"
+        },
+        "freshness": {
+          "strategy": "governed_research_refresh",
+          "checked_on": "2026-08-26"
+        },
+        "lifecycle": {
+          "state": "active",
+          "supersedes": [],
+          "superseded_by": null
+        },
+        "license": {
+          "reuse_boundary": "metadata_and_bounded_pattern_summary_only",
+          "status": "content_not_harvested"
+        }
+      },
+      {
+        "id": "atlassian-rovo-mcp",
+        "name": "Atlassian Rovo MCP",
+        "role": "implementation_reference",
+        "locator": "https://developer.atlassian.com/cloud/rovo-mcp/guides/supported-tools/",
+        "harvest_source_id": null,
+        "permitted_uses": [
+          "permissions_presentation",
+          "capability_catalogue",
+          "discover_execute_patterns"
+        ],
+        "may_define_kis_facts": false,
+        "pin": {
+          "kind": "research_evidence_sha256",
+          "value": "007662c0d3527c5d22b7963901d495c68db89483d8087ec03fbb628546399a07",
+          "revision": "change-008-preparation@2785a3b"
+        },
+        "freshness": {
+          "strategy": "governed_research_refresh",
+          "checked_on": "2026-08-26"
+        },
+        "lifecycle": {
+          "state": "active",
+          "supersedes": [],
+          "superseded_by": null
+        },
+        "license": {
+          "reuse_boundary": "metadata_and_bounded_pattern_summary_only",
+          "status": "content_not_harvested"
+        }
+      },
+      {
+        "id": "figma-mcp",
+        "name": "Figma MCP",
+        "role": "implementation_reference",
+        "locator": "https://developers.figma.com/docs/figma-mcp-server/",
+        "harvest_source_id": null,
+        "permitted_uses": [
+          "workflow_oriented_documentation",
+          "task_grouping"
+        ],
+        "may_define_kis_facts": false,
+        "pin": {
+          "kind": "research_evidence_sha256",
+          "value": "007662c0d3527c5d22b7963901d495c68db89483d8087ec03fbb628546399a07",
+          "revision": "change-008-preparation@2785a3b"
+        },
+        "freshness": {
+          "strategy": "governed_research_refresh",
+          "checked_on": "2026-08-26"
+        },
+        "lifecycle": {
+          "state": "active",
+          "supersedes": [],
+          "superseded_by": null
+        },
+        "license": {
+          "reuse_boundary": "metadata_and_bounded_pattern_summary_only",
+          "status": "content_not_harvested"
+        }
+      },
+      {
+        "id": "aws-labs-mcp",
+        "name": "AWS Labs MCP",
+        "role": "implementation_reference",
+        "locator": "https://github.com/awslabs/mcp",
+        "harvest_source_id": null,
+        "permitted_uses": [
+          "multi_module_consistency",
+          "repeatable_server_documentation"
+        ],
+        "may_define_kis_facts": false,
+        "pin": {
+          "kind": "research_evidence_sha256",
+          "value": "007662c0d3527c5d22b7963901d495c68db89483d8087ec03fbb628546399a07",
+          "revision": "change-008-preparation@2785a3b"
+        },
+        "freshness": {
+          "strategy": "governed_research_refresh",
+          "checked_on": "2026-08-26"
+        },
+        "lifecycle": {
+          "state": "active",
+          "supersedes": [],
+          "superseded_by": null
+        },
+        "license": {
+          "reuse_boundary": "metadata_and_bounded_pattern_summary_only",
+          "status": "content_not_harvested"
+        }
+      },
+      {
+        "id": "cloudflare-mcp",
+        "name": "Cloudflare MCP",
+        "role": "implementation_reference",
+        "locator": "https://github.com/cloudflare/mcp",
+        "harvest_source_id": null,
+        "permitted_uses": [
+          "tool_surface_scaling",
+          "context_budget",
+          "dynamic_discovery"
+        ],
+        "may_define_kis_facts": false,
+        "pin": {
+          "kind": "research_evidence_sha256",
+          "value": "007662c0d3527c5d22b7963901d495c68db89483d8087ec03fbb628546399a07",
+          "revision": "change-008-preparation@2785a3b"
+        },
+        "freshness": {
+          "strategy": "governed_research_refresh",
+          "checked_on": "2026-08-26"
+        },
+        "lifecycle": {
+          "state": "active",
+          "supersedes": [],
+          "superseded_by": null
+        },
+        "license": {
+          "reuse_boundary": "metadata_and_bounded_pattern_summary_only",
+          "status": "content_not_harvested"
+        }
+      }
     ]
   }
 }

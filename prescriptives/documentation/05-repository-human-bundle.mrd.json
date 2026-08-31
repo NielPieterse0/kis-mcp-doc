@@ -1,7 +1,7 @@
 {
   "_mrd": {
     "schema_version": 1,
-    "id": "KIS-DOC-CON-POL-003",
+    "id": "urn:uuid:0e84ae43-f74a-5065-a5e2-b21e105376b8",
     "title": "Current-State Repository Human Bundle",
     "module": "documentation",
     "class": "CON",
@@ -12,15 +12,15 @@
     "version": "1.1.0",
     "dependencies": [
       {
-        "mrd_id": "KIS-DOC-CON-POL-001",
+        "mrd_id": "urn:uuid:ae7e7dc1-2b8b-5988-845d-24df49dcfe0a",
         "relationship": "depends_on"
       },
       {
-        "mrd_id": "KIS-DOC-CON-POL-002",
+        "mrd_id": "urn:uuid:4a75d1ce-f376-510f-93bf-7f076841d7a4",
         "relationship": "depends_on"
       },
       {
-        "mrd_id": "KIS-DOC-SEM-REG-002",
+        "mrd_id": "urn:uuid:175c6e08-4ec3-5112-b34d-546b821fc252",
         "relationship": "governs"
       }
     ],
@@ -55,7 +55,19 @@
       "fact_quality": "direct"
     },
     "supersedes": [],
-    "superseded_by": null
+    "superseded_by": null,
+    "legacy_ids": [
+      "KIS-DOC-CON-POL-003"
+    ],
+    "repository": "NielPieterse0/kis-mcp-doc",
+    "canonical_path": "prescriptives/documentation/05-repository-human-bundle.mrd.json",
+    "revision_binding": {
+      "mode": "external_git_provider_evidence",
+      "repository": "NielPieterse0/kis-mcp-doc",
+      "git_revision": null,
+      "change_identity_source": "github_issue_and_pull_request",
+      "reason": "Tracked content cannot embed its own containing commit without circular identity."
+    }
   },
   "content": {
     "concern": "current_state_repository_human_bundle",

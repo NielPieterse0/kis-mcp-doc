@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kis.local/contracts/mrd-specification/v1/governance-mrd.schema.json",
+  "title": "KIS MRD Specification Profile",
+  "description": "Public composed contract for governance MRDs. The core envelope and governance content schemas remain separately reusable; this profile binds them for governance records.",
+  "allOf": [
+    {
+      "$ref": "https://kis.local/contracts/mrd/v1/mrd.schema.json"
+    },
+    {
+      "type": "object",
+      "required": ["content"],
+      "properties": {
+        "content": {
+          "$ref": "https://kis.local/contracts/mrd-specification/v1/content.schema.json"
+        }
+      }
+    }
+  ]
+}

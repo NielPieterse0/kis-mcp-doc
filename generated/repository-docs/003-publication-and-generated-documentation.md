@@ -7,10 +7,10 @@ The publication registry is the single family inventory for generated specificat
 
 | Family | Output | Classes | Published to Pages |
 |---|---|---|---|
-| `governance-spec` | `generated/governance-spec` | human_readable_specification, generated_reference | Yes |
+| `mrd-specification` | `generated/mrd-specification` | human_readable_specification, generated_reference | Yes |
 | `work-management-spec` | `generated/work-management-spec` | human_readable_specification, generated_reference | No — standalone family |
 | `documentation-reference-standard` | `generated/documentation-reference-standard` | human_readable_specification, generated_reference | Yes |
-| `governance-docs` | `generated/governance-docs` | human_documentation | Yes |
+| `mrd-specification-docs` | `generated/mrd-specification-docs` | human_documentation | Yes |
 | `work-management-docs` | `generated/work-management-docs` | human_documentation | No — standalone family |
 | `repository-docs` | `generated/repository-docs` | human_documentation | Yes |
 

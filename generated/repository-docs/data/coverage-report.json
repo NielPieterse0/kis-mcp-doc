@@ -1,12 +1,12 @@
 {
-  "artefacts": 102,
+  "artefacts": 101,
   "excluded_source_classes": [
     "historical_change_records",
     "runtime_state",
     "generated_outputs",
     "work_management_human_consolidation"
   ],
-  "relationships": 108,
+  "relationships": 232,
   "schema_version": 1,
-  "source_files": 96
+  "source_files": 95
 }

@@ -14,8 +14,8 @@ from kis_mcp_doc.render import build_governance_spec, verify_governance_spec
 
 
 ROOT = Path(__file__).resolve().parents[1]
-MRD_ROOT = ROOT / "prescriptives" / "governance"
-PUBLICATION = ROOT / "publication" / "governance-spec.json"
+MRD_ROOT = ROOT / "prescriptives" / "mrd-specification"
+PUBLICATION = ROOT / "publication" / "mrd-specification.json"
 
 
 def _repo() -> GovernanceRepository:
@@ -88,8 +88,7 @@ def test_governance_build_uses_mcp_spec_multi_page_profile(tmp_path: Path) -> No
         "006-dependency-rules.md",
         "007-provenance.md",
         "008-lifecycle.md",
-        "009-kis-op-governance-behavior.md",
-        "010-validation-and-enforcement.md",
+        "009-validation-and-enforcement.md",
         "020-applicability-catalog.md",
         "021-relationship-vocabulary.md",
         "022-validation-reason-codes.md",
@@ -181,7 +180,7 @@ def test_litho_structured_assertion_surfaces_canonical_contradiction(tmp_path: P
     assertion = {
         "id": "claim-type-count",
         "source_path": "2.Architecture.md",
-        "canonical_source": "repo:prescriptives/governance/01-classification.mrd.json",
+        "canonical_source": "repo:prescriptives/mrd-specification/01-classification.mrd.json",
         "json_pointer": "/content/catalog_policy/expected_type_count",
         "observed_value": 48,
     }
@@ -196,7 +195,7 @@ def test_litho_structured_assertion_surfaces_canonical_contradiction(tmp_path: P
         "code": "EXTERNAL_EVIDENCE_CONTRADICTS_CANONICAL",
         "assertion_id": "claim-type-count",
         "source_path": "2.Architecture.md",
-        "canonical_source": "repo:prescriptives/governance/01-classification.mrd.json",
+        "canonical_source": "repo:prescriptives/mrd-specification/01-classification.mrd.json",
         "json_pointer": "/content/catalog_policy/expected_type_count",
         "observed_value": 48,
         "canonical_value": 47,
@@ -207,7 +206,7 @@ def test_litho_contradiction_is_preserved_in_published_evidence(tmp_path: Path) 
     assertion = {
         "id": "claim-type-count",
         "source_path": "2.Architecture.md",
-        "canonical_source": "repo:prescriptives/governance/01-classification.mrd.json",
+        "canonical_source": "repo:prescriptives/mrd-specification/01-classification.mrd.json",
         "json_pointer": "/content/catalog_policy/expected_type_count",
         "observed_value": 48,
     }
@@ -223,5 +222,5 @@ def test_litho_contradiction_is_preserved_in_published_evidence(tmp_path: Path) 
     assert "EXTERNAL_EVIDENCE_CONTRADICTS_CANONICAL" in page
     assert evidence["diagnostics"][0]["canonical_value"] == 47
     canonical = manifest["inputs"]["external_evidence"][0]["canonical_sources"][0]
-    assert canonical["path"] == "prescriptives/governance/01-classification.mrd.json"
+    assert canonical["path"] == "prescriptives/mrd-specification/01-classification.mrd.json"
     assert len(canonical["sha256"]) == 64

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Validate MRD conformance</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/docs/">Docs</a> / MRD Specification Documentation</div><aside class="publication-meta"><strong>Version:</strong> 1.0.0. <strong>Status:</strong> draft. <strong>Authority:</strong> generated projection of <code>urn:uuid:9a543068-203b-5a7a-8cdb-805517ca3487</code>; canonical sources remain authoritative.</aside><h1 id="validate-mrd-conformance">Validate MRD conformance</h1>
+<p>Define MRD structural and semantic conformance checks, stable result semantics, and blocking failure codes.</p>
+<p>MRD conformance validation checks the MRD model and its declared relationships. Repository Governance separately governs when and how repository changes are admitted, reviewed, and evidenced.</p>
+<h2 id="conformance-checks">Conformance checks</h2>
+<ul>
+<li><code>classification</code></li>
+<li><code>applicability</code></li>
+<li><code>ownership</code></li>
+<li><code>layering</code></li>
+<li><code>dependencies</code></li>
+<li><code>provenance</code></li>
+<li><code>lifecycle</code></li>
+<li><code>schema</code></li>
+</ul>
+<h2 id="stable-failure-codes">Stable failure codes</h2>
+<ul>
+<li><code>MRD_SCHEMA_INVALID</code></li>
+<li><code>MRD_RULE_ID_DUPLICATE</code></li>
+<li><code>MRD_GOVERNANCE_CONCERN_MISSING</code></li>
+<li><code>MRD_GOVERNANCE_CONCERN_DUPLICATE</code></li>
+<li><code>MRD_IDENTITY_INVALID</code></li>
+<li><code>MRD_CLASS_UNKNOWN</code></li>
+<li><code>MRD_TYPE_INVALID</code></li>
+<li><code>MRD_CATALOG_COUNT_MISMATCH</code></li>
+<li><code>MRD_LAYER_INVALID</code></li>
+<li><code>MRD_DEPENDENCY_UNRESOLVED</code></li>
+<li><code>MRD_DEPENDENCY_LAYER_VIOLATION</code></li>
+<li><code>MRD_DEPENDENCY_CYCLE</code></li>
+<li><code>MRD_DEPENDENCY_DUPLICATE</code></li>
+<li><code>MRD_SOURCE_UNRESOLVED</code></li>
+<li><code>MRD_SOURCE_FINGERPRINT_MISMATCH</code></li>
+<li><code>MRD_SOURCE_HASH_MISMATCH</code></li>
+<li><code>MRD_NORMATIVE_INFERENCE_PROHIBITED</code></li>
+<li><code>MRD_RECORD_MODE_INVALID</code></li>
+<li><code>MRD_STATUS_INVALID</code></li>
+<li><code>MRD_EVD_RECORD_MODE_INVALID</code></li>
+<li><code>MRD_META_RECORD_MODE_INVALID</code></li>
+<li><code>MRD_SUPERSESSION_UNRESOLVED</code></li>
+<li><code>MRD_CLASS_CATALOG_MISMATCH</code></li>
+<li><code>MRD_LAYER_CATALOG_MISMATCH</code></li>
+<li><code>MRD_RECORD_MODE_CATALOG_MISMATCH</code></li>
+<li><code>MRD_META_FACT_QUALITY_INVALID</code></li>
+<li><code>MRD_VALIDATION_CONTRACT_MISMATCH</code></li>
+<li><code>MRD_APPLICABILITY_CATALOG_MISMATCH</code></li>
+<li><code>MRD_RELATIONSHIP_UNKNOWN</code></li>
+<li><code>MRD_ENFORCEMENT_BINDING_INVALID</code></li>
+</ul>
+<p>Use the <a href="/kis-mcp-doc/specification/mrd-specification/001-specification/">MRD Specification</a> for the exact result contract and enforcement bindings.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/docs/mrd-specification/004-provenance-and-lifecycle/">Previous</a> <a rel="next" href="/kis-mcp-doc/docs/mrd-specification/006-examples/">Next</a></nav></main></body></html>

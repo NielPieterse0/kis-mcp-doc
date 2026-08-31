@@ -1,0 +1,537 @@
+{
+  "authority": "derived_non_authoritative",
+  "entries": [
+    {
+      "authoritative_owner": "repository:codeowners",
+      "canonical_path": ".github/CODEOWNERS",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "repository:codeowners"
+    },
+    {
+      "authoritative_owner": "AGENTS.md",
+      "canonical_path": "AGENTS.md",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "repository:operating-authority"
+    },
+    {
+      "authoritative_owner": "repo:contracts/documentation/harvest/v1/registry.schema.json",
+      "canonical_path": "contracts/documentation/harvest/v1/registry.schema.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "repo:contracts/documentation/harvest/v1/registry.schema.json"
+    },
+    {
+      "authoritative_owner": "repo:contracts/documentation/litho/v1/package.schema.json",
+      "canonical_path": "contracts/documentation/litho/v1/package.schema.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "repo:contracts/documentation/litho/v1/package.schema.json"
+    },
+    {
+      "authoritative_owner": "repo:contracts/documentation/reference/v1/manifest.schema.json",
+      "canonical_path": "contracts/documentation/reference/v1/manifest.schema.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "repo:contracts/documentation/reference/v1/manifest.schema.json"
+    },
+    {
+      "authoritative_owner": "repo:contracts/documentation/reference/v1/publication.schema.json",
+      "canonical_path": "contracts/documentation/reference/v1/publication.schema.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "repo:contracts/documentation/reference/v1/publication.schema.json"
+    },
+    {
+      "authoritative_owner": "repo:contracts/documentation/reference/v1/registry.schema.json",
+      "canonical_path": "contracts/documentation/reference/v1/registry.schema.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "repo:contracts/documentation/reference/v1/registry.schema.json"
+    },
+    {
+      "authoritative_owner": "repo:contracts/documentation/reference/v1/standard.schema.json",
+      "canonical_path": "contracts/documentation/reference/v1/standard.schema.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "repo:contracts/documentation/reference/v1/standard.schema.json"
+    },
+    {
+      "authoritative_owner": "governance:governed-rule-schema",
+      "canonical_path": "contracts/governance/v1/governed-rule.schema.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "governance:governed-rule-schema"
+    },
+    {
+      "authoritative_owner": "repo:contracts/mrd-specification/v1/content.schema.json",
+      "canonical_path": "contracts/mrd-specification/v1/content.schema.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "repo:contracts/mrd-specification/v1/content.schema.json"
+    },
+    {
+      "authoritative_owner": "repo:contracts/mrd-specification/v1/governance-mrd.schema.json",
+      "canonical_path": "contracts/mrd-specification/v1/governance-mrd.schema.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "repo:contracts/mrd-specification/v1/governance-mrd.schema.json"
+    },
+    {
+      "authoritative_owner": "repo:contracts/mrd/v1/mrd.schema.json",
+      "canonical_path": "contracts/mrd/v1/mrd.schema.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "repo:contracts/mrd/v1/mrd.schema.json"
+    },
+    {
+      "authoritative_owner": "repo:contracts/publication/family/v1/registry.schema.json",
+      "canonical_path": "contracts/publication/family/v1/registry.schema.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "repo:contracts/publication/family/v1/registry.schema.json"
+    },
+    {
+      "authoritative_owner": "repo:contracts/publication/v1/governance-spec.schema.json",
+      "canonical_path": "contracts/publication/v1/governance-spec.schema.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "repo:contracts/publication/v1/governance-spec.schema.json"
+    },
+    {
+      "authoritative_owner": "repo:contracts/publication/v1/manifest.schema.json",
+      "canonical_path": "contracts/publication/v1/manifest.schema.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "repo:contracts/publication/v1/manifest.schema.json"
+    },
+    {
+      "authoritative_owner": "repo:contracts/publication/v2/governance-spec.schema.json",
+      "canonical_path": "contracts/publication/v2/governance-spec.schema.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "repo:contracts/publication/v2/governance-spec.schema.json"
+    },
+    {
+      "authoritative_owner": "repo:contracts/publication/v2/manifest.schema.json",
+      "canonical_path": "contracts/publication/v2/manifest.schema.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "repo:contracts/publication/v2/manifest.schema.json"
+    },
+    {
+      "authoritative_owner": "repo:contracts/work-management/v1/content.schema.json",
+      "canonical_path": "contracts/work-management/v1/content.schema.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "repo:contracts/work-management/v1/content.schema.json"
+    },
+    {
+      "authoritative_owner": "repo:contracts/work-management/v1/work-management-mrd.schema.json",
+      "canonical_path": "contracts/work-management/v1/work-management-mrd.schema.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "repo:contracts/work-management/v1/work-management-mrd.schema.json"
+    },
+    {
+      "authoritative_owner": "urn:uuid:ae7e7dc1-2b8b-5988-845d-24df49dcfe0a",
+      "canonical_path": "prescriptives/documentation/01-reference-standard.mrd.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "urn:uuid:ae7e7dc1-2b8b-5988-845d-24df49dcfe0a"
+    },
+    {
+      "authoritative_owner": "urn:uuid:d6110859-d683-5aab-86ff-ceecd899e38d",
+      "canonical_path": "prescriptives/documentation/02-reference-registry.mrd.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "urn:uuid:d6110859-d683-5aab-86ff-ceecd899e38d"
+    },
+    {
+      "authoritative_owner": "urn:uuid:4a75d1ce-f376-510f-93bf-7f076841d7a4",
+      "canonical_path": "prescriptives/documentation/03-publication-architecture.mrd.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "urn:uuid:4a75d1ce-f376-510f-93bf-7f076841d7a4"
+    },
+    {
+      "authoritative_owner": "urn:uuid:175c6e08-4ec3-5112-b34d-546b821fc252",
+      "canonical_path": "prescriptives/documentation/04-publication-family-registry.mrd.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "urn:uuid:175c6e08-4ec3-5112-b34d-546b821fc252"
+    },
+    {
+      "authoritative_owner": "urn:uuid:0e84ae43-f74a-5065-a5e2-b21e105376b8",
+      "canonical_path": "prescriptives/documentation/05-repository-human-bundle.mrd.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "urn:uuid:0e84ae43-f74a-5065-a5e2-b21e105376b8"
+    },
+    {
+      "authoritative_owner": "governance:repository",
+      "canonical_path": "prescriptives/governance/01-repository-governance.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "governance:repository"
+    },
+    {
+      "authoritative_owner": "governance:prescriptive-registry",
+      "canonical_path": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "governance:prescriptive-registry"
+    },
+    {
+      "authoritative_owner": "governance:directory-grammar",
+      "canonical_path": "prescriptives/governance/03-directory-grammar.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "governance:directory-grammar"
+    },
+    {
+      "authoritative_owner": "urn:uuid:8cf956d6-521a-5515-8ce1-d48ab5855617",
+      "canonical_path": "prescriptives/mrd-specification/01-classification.mrd.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "urn:uuid:8cf956d6-521a-5515-8ce1-d48ab5855617"
+    },
+    {
+      "authoritative_owner": "urn:uuid:8a9346a9-0c83-5fa4-a91d-2de6ca3d57a9",
+      "canonical_path": "prescriptives/mrd-specification/02-layering.mrd.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "urn:uuid:8a9346a9-0c83-5fa4-a91d-2de6ca3d57a9"
+    },
+    {
+      "authoritative_owner": "urn:uuid:7eab1930-3cdf-58ee-8a6e-9d9519a17fba",
+      "canonical_path": "prescriptives/mrd-specification/03-dependencies.mrd.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "urn:uuid:7eab1930-3cdf-58ee-8a6e-9d9519a17fba"
+    },
+    {
+      "authoritative_owner": "urn:uuid:a1d99a79-5c7c-56b4-9fda-6c56f54e7ee8",
+      "canonical_path": "prescriptives/mrd-specification/04-provenance.mrd.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "urn:uuid:a1d99a79-5c7c-56b4-9fda-6c56f54e7ee8"
+    },
+    {
+      "authoritative_owner": "urn:uuid:ddc10bf4-e6ea-5b3a-958e-464af2fa9fd1",
+      "canonical_path": "prescriptives/mrd-specification/05-lifecycle.mrd.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "urn:uuid:ddc10bf4-e6ea-5b3a-958e-464af2fa9fd1"
+    },
+    {
+      "authoritative_owner": "urn:uuid:361b074c-ddf6-5dcf-9031-dbb4ed306abf",
+      "canonical_path": "prescriptives/mrd-specification/06-validation.mrd.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "urn:uuid:361b074c-ddf6-5dcf-9031-dbb4ed306abf"
+    },
+    {
+      "authoritative_owner": "urn:uuid:6673613f-70e0-5004-aba9-103da53e5040",
+      "canonical_path": "prescriptives/mrd-specification/07-applicability.mrd.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "urn:uuid:6673613f-70e0-5004-aba9-103da53e5040"
+    },
+    {
+      "authoritative_owner": "urn:uuid:9a543068-203b-5a7a-8cdb-805517ca3487",
+      "canonical_path": "prescriptives/mrd-specification/08-ownership.mrd.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "urn:uuid:9a543068-203b-5a7a-8cdb-805517ca3487"
+    },
+    {
+      "authoritative_owner": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5",
+      "canonical_path": "prescriptives/work-management/01-reg.mrd.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5"
+    },
+    {
+      "authoritative_owner": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3",
+      "canonical_path": "prescriptives/work-management/02-stm.mrd.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "urn:uuid:7f58b5b4-9808-5c06-bbed-75a8526685f3"
+    },
+    {
+      "authoritative_owner": "urn:uuid:3bab4e5b-4c6d-5c21-811c-a7f6cb02ac93",
+      "canonical_path": "prescriptives/work-management/03-wfl.mrd.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "urn:uuid:3bab4e5b-4c6d-5c21-811c-a7f6cb02ac93"
+    },
+    {
+      "authoritative_owner": "urn:uuid:0c96b519-06db-5616-95be-888c29f2da5c",
+      "canonical_path": "prescriptives/work-management/04-scr.mrd.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "urn:uuid:0c96b519-06db-5616-95be-888c29f2da5c"
+    },
+    {
+      "authoritative_owner": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0",
+      "canonical_path": "prescriptives/work-management/05-pol.mrd.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "urn:uuid:c589700c-9c38-5e30-be4c-659084060fa0"
+    },
+    {
+      "authoritative_owner": "urn:uuid:2f2b1233-37fe-580c-bc75-26a38e9aa7fe",
+      "canonical_path": "prescriptives/work-management/06-svc.mrd.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "urn:uuid:2f2b1233-37fe-580c-bc75-26a38e9aa7fe"
+    },
+    {
+      "authoritative_owner": "urn:uuid:68adde2d-be01-5184-8193-9ebb62f8d434",
+      "canonical_path": "prescriptives/work-management/07-tst.mrd.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "urn:uuid:68adde2d-be01-5184-8193-9ebb62f8d434"
+    },
+    {
+      "authoritative_owner": "repo:publication/documentation-reference-standard.json",
+      "canonical_path": "publication/documentation-reference-standard.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "repo:publication/documentation-reference-standard.json"
+    },
+    {
+      "authoritative_owner": "repo:publication/documentation-release.json",
+      "canonical_path": "publication/documentation-release.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "repo:publication/documentation-release.json"
+    },
+    {
+      "authoritative_owner": "repo:publication/documentation-search.json",
+      "canonical_path": "publication/documentation-search.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "repo:publication/documentation-search.json"
+    },
+    {
+      "authoritative_owner": "repo:publication/documentation-site.json",
+      "canonical_path": "publication/documentation-site.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "repo:publication/documentation-site.json"
+    },
+    {
+      "authoritative_owner": "repo:publication/harvest-sources.json",
+      "canonical_path": "publication/harvest-sources.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "repo:publication/harvest-sources.json"
+    },
+    {
+      "authoritative_owner": "repo:publication/mrd-specification-docs.json",
+      "canonical_path": "publication/mrd-specification-docs.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "repo:publication/mrd-specification-docs.json"
+    },
+    {
+      "authoritative_owner": "repo:publication/mrd-specification.json",
+      "canonical_path": "publication/mrd-specification.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "repo:publication/mrd-specification.json"
+    },
+    {
+      "authoritative_owner": "repo:publication/public-repository.json",
+      "canonical_path": "publication/public-repository.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "repo:publication/public-repository.json"
+    },
+    {
+      "authoritative_owner": "repo:publication/repository-docs.json",
+      "canonical_path": "publication/repository-docs.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "repo:publication/repository-docs.json"
+    },
+    {
+      "authoritative_owner": "repo:publication/work-management-docs.json",
+      "canonical_path": "publication/work-management-docs.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "repo:publication/work-management-docs.json"
+    },
+    {
+      "authoritative_owner": "repo:publication/work-management-spec.json",
+      "canonical_path": "publication/work-management-spec.json",
+      "human_projection": {
+        "disposition": "projected",
+        "family": "repository-docs",
+        "location": "generated/repository-docs/data/prescriptive-coverage.json"
+      },
+      "identity": "repo:publication/work-management-spec.json"
+    }
+  ],
+  "generated_from": "prescriptives/governance/02-prescriptive-artefact-registry.json",
+  "schema_version": 1
+}

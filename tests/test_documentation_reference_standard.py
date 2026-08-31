@@ -36,7 +36,7 @@ def test_reference_standard_validates_official_baseline() -> None:
 
 def test_reference_registry_has_ten_bounded_sources() -> None:
     documents = _repo().load()
-    registry = documents["KIS-DOC-SEM-REG-001"]["content"]
+    registry = documents["urn:uuid:d6110859-d683-5aab-86ff-ceecd899e38d"]["content"]
     sources = {item["id"]: item for item in registry["references"]}
 
     assert len(sources) == 10
@@ -52,7 +52,7 @@ def test_reference_registry_has_ten_bounded_sources() -> None:
 
 
 def test_reference_registry_resolves_mcp_harvest_identity() -> None:
-    registry = _repo().load()["KIS-DOC-SEM-REG-001"]["content"]
+    registry = _repo().load()["urn:uuid:d6110859-d683-5aab-86ff-ceecd899e38d"]["content"]
     mcp = next(item for item in registry["references"] if item["id"] == "mcp-2026")
 
     assert mcp["harvest_source_id"] == "mcp-spec-2026-07-28"
@@ -63,7 +63,7 @@ def test_reference_registry_resolves_mcp_harvest_identity() -> None:
 def test_non_normative_source_cannot_claim_canonical_authority(tmp_path: Path) -> None:
     repo = _repo()
     documents = repo.load()
-    registry = documents["KIS-DOC-SEM-REG-001"]
+    registry = documents["urn:uuid:d6110859-d683-5aab-86ff-ceecd899e38d"]
     github = next(item for item in registry["content"]["references"] if item["id"] == "github-mcp")
     github["may_define_kis_facts"] = True
 
@@ -76,7 +76,7 @@ def test_non_normative_source_cannot_claim_canonical_authority(tmp_path: Path) -
 def test_unpinned_active_reference_fails_closed() -> None:
     repo = _repo()
     documents = repo.load()
-    registry = documents["KIS-DOC-SEM-REG-001"]
+    registry = documents["urn:uuid:d6110859-d683-5aab-86ff-ceecd899e38d"]
     sentry = next(item for item in registry["content"]["references"] if item["id"] == "sentry-mcp")
     sentry["pin"] = None
 
@@ -144,7 +144,7 @@ def test_registry_projection_is_machine_readable(tmp_path: Path) -> None:
 def test_research_reference_pin_must_bind_registered_evidence() -> None:
     repo = _repo()
     documents = repo.load()
-    registry = documents["KIS-DOC-SEM-REG-001"]
+    registry = documents["urn:uuid:d6110859-d683-5aab-86ff-ceecd899e38d"]
     source = next(item for item in registry["content"]["references"] if item["id"] == "sentry-mcp")
     source["pin"]["value"] = "0" * 64
 
@@ -157,7 +157,7 @@ def test_research_reference_pin_must_bind_registered_evidence() -> None:
 def test_mrd_provenance_fingerprint_mismatch_fails() -> None:
     repo = _repo()
     documents = repo.load()
-    documents["KIS-DOC-CON-POL-001"]["_mrd"]["provenance"]["source_fingerprint"] = "sha256:" + ("0" * 64)
+    documents["urn:uuid:ae7e7dc1-2b8b-5988-845d-24df49dcfe0a"]["_mrd"]["provenance"]["source_fingerprint"] = "sha256:" + ("0" * 64)
 
     result = repo.validate_documents(documents)
 

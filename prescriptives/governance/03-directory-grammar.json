@@ -1,0 +1,835 @@
+{
+  "schema_version": 2,
+  "id": "governance:directory-grammar",
+  "title": "Repository Directory Grammar",
+  "status": "active",
+  "record_mode": "prescriptive",
+  "version": "2.0.0",
+  "slots": [
+    {
+      "slot_id": "root-authority",
+      "patterns": [
+        "AGENTS.md"
+      ],
+      "purpose": "Repository operating authority",
+      "permitted_artefact_types": [
+        "repository_authority"
+      ],
+      "prohibited_artefact_types": [],
+      "allowed_semantic_roles": [
+        "prescriptive"
+      ],
+      "authority_constraints": {
+        "canonical_owner_required": true,
+        "generated_may_own": false
+      },
+      "allowed_relationships": [
+        "references",
+        "implements",
+        "verifies",
+        "evidences",
+        "projects"
+      ],
+      "editability": "source_editable",
+      "generation_status": "source",
+      "lifecycle": "persistent",
+      "retention": "repository_history",
+      "verification": {
+        "validator": "src/kis_mcp_doc/repository_governance.py",
+        "entry_point": "kis-doc repository-governance-validate"
+      },
+      "origin": {
+        "kind": "github_issue",
+        "id": "#73",
+        "locator": "github:NielPieterse0/kis-mcp-doc#73"
+      }
+    },
+    {
+      "slot_id": "governance",
+      "patterns": [
+        "prescriptives/governance/**"
+      ],
+      "purpose": "Repository-wide Governance authority",
+      "permitted_artefact_types": [
+        "governance_prescriptive"
+      ],
+      "prohibited_artefact_types": [],
+      "allowed_semantic_roles": [
+        "prescriptive"
+      ],
+      "authority_constraints": {
+        "canonical_owner_required": true,
+        "domain": "governance"
+      },
+      "allowed_relationships": [
+        "references",
+        "implements",
+        "verifies",
+        "evidences",
+        "projects"
+      ],
+      "editability": "source_editable",
+      "generation_status": "source",
+      "lifecycle": "persistent",
+      "retention": "repository_history",
+      "verification": {
+        "validator": "src/kis_mcp_doc/repository_governance.py",
+        "entry_point": "kis-doc repository-governance-validate"
+      },
+      "origin": {
+        "kind": "github_issue",
+        "id": "#71",
+        "locator": "github:NielPieterse0/kis-mcp-doc#71"
+      }
+    },
+    {
+      "slot_id": "mrd-specification",
+      "patterns": [
+        "prescriptives/mrd-specification/**"
+      ],
+      "purpose": "MRD conformance specification records",
+      "permitted_artefact_types": [
+        "mrd"
+      ],
+      "prohibited_artefact_types": [],
+      "allowed_semantic_roles": [
+        "prescriptive"
+      ],
+      "authority_constraints": {
+        "canonical_owner_required": true,
+        "domain": "mrd_specification",
+        "repository_governance_forbidden": true
+      },
+      "allowed_relationships": [
+        "references",
+        "implements",
+        "verifies",
+        "evidences",
+        "projects"
+      ],
+      "editability": "source_editable",
+      "generation_status": "source",
+      "lifecycle": "persistent",
+      "retention": "repository_history",
+      "verification": {
+        "validator": "src/kis_mcp_doc/repository_governance.py",
+        "entry_point": "kis-doc repository-governance-validate"
+      },
+      "origin": {
+        "kind": "github_issue",
+        "id": "#79",
+        "locator": "github:NielPieterse0/kis-mcp-doc#79"
+      }
+    },
+    {
+      "slot_id": "documentation-prescriptives",
+      "patterns": [
+        "prescriptives/documentation/**"
+      ],
+      "purpose": "Documentation-domain prescriptions",
+      "permitted_artefact_types": [
+        "mrd"
+      ],
+      "prohibited_artefact_types": [],
+      "allowed_semantic_roles": [
+        "prescriptive"
+      ],
+      "authority_constraints": {
+        "canonical_owner_required": true,
+        "domain": "documentation"
+      },
+      "allowed_relationships": [
+        "references",
+        "implements",
+        "verifies",
+        "evidences",
+        "projects"
+      ],
+      "editability": "source_editable",
+      "generation_status": "source",
+      "lifecycle": "persistent",
+      "retention": "repository_history",
+      "verification": {
+        "validator": "src/kis_mcp_doc/repository_governance.py",
+        "entry_point": "kis-doc repository-governance-validate"
+      },
+      "origin": {
+        "kind": "github_issue",
+        "id": "#73",
+        "locator": "github:NielPieterse0/kis-mcp-doc#73"
+      }
+    },
+    {
+      "slot_id": "work-management-prescriptives",
+      "patterns": [
+        "prescriptives/work-management/**"
+      ],
+      "purpose": "Work Management domain prescriptions",
+      "permitted_artefact_types": [
+        "mrd"
+      ],
+      "prohibited_artefact_types": [],
+      "allowed_semantic_roles": [
+        "prescriptive"
+      ],
+      "authority_constraints": {
+        "canonical_owner_required": true,
+        "domain": "work_management"
+      },
+      "allowed_relationships": [
+        "references",
+        "implements",
+        "verifies",
+        "evidences",
+        "projects"
+      ],
+      "editability": "source_editable",
+      "generation_status": "source",
+      "lifecycle": "persistent",
+      "retention": "repository_history",
+      "verification": {
+        "validator": "src/kis_mcp_doc/repository_governance.py",
+        "entry_point": "kis-doc repository-governance-validate"
+      },
+      "origin": {
+        "kind": "github_issue",
+        "id": "#73",
+        "locator": "github:NielPieterse0/kis-mcp-doc#73"
+      }
+    },
+    {
+      "slot_id": "contracts",
+      "patterns": [
+        "contracts/**"
+      ],
+      "purpose": "Machine-readable schemas and contracts",
+      "permitted_artefact_types": [
+        "contract"
+      ],
+      "prohibited_artefact_types": [],
+      "allowed_semantic_roles": [
+        "prescriptive"
+      ],
+      "authority_constraints": {
+        "canonical_owner_required": true
+      },
+      "allowed_relationships": [
+        "references",
+        "implements",
+        "verifies",
+        "evidences",
+        "projects"
+      ],
+      "editability": "source_editable",
+      "generation_status": "source",
+      "lifecycle": "persistent",
+      "retention": "repository_history",
+      "verification": {
+        "validator": "src/kis_mcp_doc/repository_governance.py",
+        "entry_point": "kis-doc repository-governance-validate"
+      },
+      "origin": {
+        "kind": "github_issue",
+        "id": "#73",
+        "locator": "github:NielPieterse0/kis-mcp-doc#73"
+      }
+    },
+    {
+      "slot_id": "publication",
+      "patterns": [
+        "publication/**"
+      ],
+      "purpose": "Publication intent and family configuration",
+      "permitted_artefact_types": [
+        "publication_configuration"
+      ],
+      "prohibited_artefact_types": [],
+      "allowed_semantic_roles": [
+        "prescriptive"
+      ],
+      "authority_constraints": {
+        "canonical_owner_required": true
+      },
+      "allowed_relationships": [
+        "references",
+        "implements",
+        "verifies",
+        "evidences",
+        "projects"
+      ],
+      "editability": "source_editable",
+      "generation_status": "source",
+      "lifecycle": "persistent",
+      "retention": "repository_history",
+      "verification": {
+        "validator": "src/kis_mcp_doc/repository_governance.py",
+        "entry_point": "kis-doc repository-governance-validate"
+      },
+      "origin": {
+        "kind": "github_issue",
+        "id": "#73",
+        "locator": "github:NielPieterse0/kis-mcp-doc#73"
+      }
+    },
+    {
+      "slot_id": "implementation",
+      "patterns": [
+        "src/**"
+      ],
+      "purpose": "Executable product implementation",
+      "permitted_artefact_types": [
+        "implementation"
+      ],
+      "prohibited_artefact_types": [
+        "governance_prescriptive",
+        "mrd",
+        "contract",
+        "repository_authority"
+      ],
+      "allowed_semantic_roles": [
+        "implementation"
+      ],
+      "authority_constraints": {
+        "canonical_owner_required": false,
+        "may_override_prescriptive": false
+      },
+      "allowed_relationships": [
+        "implements",
+        "references",
+        "projects",
+        "evidences",
+        "verifies"
+      ],
+      "editability": "source_editable",
+      "generation_status": "source",
+      "lifecycle": "persistent",
+      "retention": "repository_history",
+      "verification": {
+        "validator": "src/kis_mcp_doc/repository_governance.py",
+        "entry_point": "kis-doc repository-governance-validate"
+      },
+      "origin": {
+        "kind": "github_issue",
+        "id": "#73",
+        "locator": "github:NielPieterse0/kis-mcp-doc#73"
+      }
+    },
+    {
+      "slot_id": "scripts",
+      "patterns": [
+        "scripts/**"
+      ],
+      "purpose": "Executable local automation and verification",
+      "permitted_artefact_types": [
+        "script"
+      ],
+      "prohibited_artefact_types": [],
+      "allowed_semantic_roles": [
+        "implementation",
+        "verification"
+      ],
+      "authority_constraints": {
+        "canonical_owner_required": false,
+        "may_override_prescriptive": false
+      },
+      "allowed_relationships": [
+        "implements",
+        "verifies",
+        "references",
+        "projects",
+        "evidences"
+      ],
+      "editability": "source_editable",
+      "generation_status": "source",
+      "lifecycle": "persistent",
+      "retention": "repository_history",
+      "verification": {
+        "validator": "src/kis_mcp_doc/repository_governance.py",
+        "entry_point": "kis-doc repository-governance-validate"
+      },
+      "origin": {
+        "kind": "github_issue",
+        "id": "#73",
+        "locator": "github:NielPieterse0/kis-mcp-doc#73"
+      }
+    },
+    {
+      "slot_id": "tests",
+      "patterns": [
+        "tests/**"
+      ],
+      "purpose": "Executable verification source",
+      "permitted_artefact_types": [
+        "test"
+      ],
+      "prohibited_artefact_types": [
+        "governance_prescriptive",
+        "mrd",
+        "contract",
+        "repository_authority"
+      ],
+      "allowed_semantic_roles": [
+        "verification"
+      ],
+      "authority_constraints": {
+        "canonical_owner_required": false,
+        "may_override_prescriptive": false
+      },
+      "allowed_relationships": [
+        "verifies",
+        "references",
+        "evidences"
+      ],
+      "editability": "source_editable",
+      "generation_status": "source",
+      "lifecycle": "persistent",
+      "retention": "repository_history",
+      "verification": {
+        "validator": "src/kis_mcp_doc/repository_governance.py",
+        "entry_point": "kis-doc repository-governance-validate"
+      },
+      "origin": {
+        "kind": "github_issue",
+        "id": "#73",
+        "locator": "github:NielPieterse0/kis-mcp-doc#73"
+      }
+    },
+    {
+      "slot_id": "evidence",
+      "patterns": [
+        "evidence/**"
+      ],
+      "purpose": "Retained bounded evidence",
+      "permitted_artefact_types": [
+        "evidence"
+      ],
+      "prohibited_artefact_types": [
+        "governance_prescriptive",
+        "mrd",
+        "contract",
+        "repository_authority"
+      ],
+      "allowed_semantic_roles": [
+        "evidence"
+      ],
+      "authority_constraints": {
+        "canonical_owner_required": false,
+        "may_override_prescriptive": false
+      },
+      "allowed_relationships": [
+        "evidences",
+        "references"
+      ],
+      "editability": "source_editable",
+      "generation_status": "source",
+      "lifecycle": "retained_evidence",
+      "retention": "repository_history",
+      "verification": {
+        "validator": "src/kis_mcp_doc/repository_governance.py",
+        "entry_point": "kis-doc repository-governance-validate"
+      },
+      "origin": {
+        "kind": "github_issue",
+        "id": "#73",
+        "locator": "github:NielPieterse0/kis-mcp-doc#73"
+      }
+    },
+    {
+      "slot_id": "generated",
+      "patterns": [
+        "generated/**"
+      ],
+      "purpose": "Deterministic generated projections",
+      "permitted_artefact_types": [
+        "generated_projection"
+      ],
+      "prohibited_artefact_types": [
+        "governance_prescriptive",
+        "mrd",
+        "contract",
+        "repository_authority",
+        "platform_prescriptive",
+        "publication_configuration"
+      ],
+      "allowed_semantic_roles": [
+        "derived_generated"
+      ],
+      "authority_constraints": {
+        "canonical_owner_required": false,
+        "may_override_prescriptive": false,
+        "write_back": false
+      },
+      "allowed_relationships": [
+        "projects",
+        "references"
+      ],
+      "editability": "generated_only",
+      "generation_status": "generated",
+      "lifecycle": "reproducible",
+      "retention": "repository_history",
+      "verification": {
+        "validator": "src/kis_mcp_doc/repository_governance.py",
+        "entry_point": "kis-doc repository-governance-validate"
+      },
+      "origin": {
+        "kind": "github_issue",
+        "id": "#77",
+        "locator": "github:NielPieterse0/kis-mcp-doc#77"
+      }
+    },
+    {
+      "slot_id": "tooling",
+      "patterns": [
+        "tooling/**"
+      ],
+      "purpose": "Repository implementation tooling",
+      "permitted_artefact_types": [
+        "tooling"
+      ],
+      "prohibited_artefact_types": [],
+      "allowed_semantic_roles": [
+        "implementation"
+      ],
+      "authority_constraints": {
+        "canonical_owner_required": false
+      },
+      "allowed_relationships": [
+        "implements",
+        "references",
+        "projects",
+        "evidences",
+        "verifies"
+      ],
+      "editability": "source_editable",
+      "generation_status": "source",
+      "lifecycle": "persistent",
+      "retention": "repository_history",
+      "verification": {
+        "validator": "src/kis_mcp_doc/repository_governance.py",
+        "entry_point": "kis-doc repository-governance-validate"
+      },
+      "origin": {
+        "kind": "github_issue",
+        "id": "#73",
+        "locator": "github:NielPieterse0/kis-mcp-doc#73"
+      }
+    },
+    {
+      "slot_id": "github-codeowners",
+      "patterns": [
+        ".github/CODEOWNERS"
+      ],
+      "purpose": "Provider-required ownership routing",
+      "permitted_artefact_types": [
+        "platform_prescriptive"
+      ],
+      "prohibited_artefact_types": [],
+      "allowed_semantic_roles": [
+        "prescriptive"
+      ],
+      "authority_constraints": {
+        "canonical_owner_required": true
+      },
+      "allowed_relationships": [
+        "references",
+        "implements",
+        "verifies",
+        "evidences",
+        "projects"
+      ],
+      "editability": "source_editable",
+      "generation_status": "source",
+      "lifecycle": "persistent",
+      "retention": "repository_history",
+      "verification": {
+        "validator": "src/kis_mcp_doc/repository_governance.py",
+        "entry_point": "kis-doc repository-governance-validate"
+      },
+      "origin": {
+        "kind": "github_issue",
+        "id": "#73",
+        "locator": "github:NielPieterse0/kis-mcp-doc#73"
+      }
+    },
+    {
+      "slot_id": "github-workflows",
+      "patterns": [
+        ".github/workflows/**"
+      ],
+      "purpose": "Provider CI controls",
+      "permitted_artefact_types": [
+        "platform_verification"
+      ],
+      "prohibited_artefact_types": [],
+      "allowed_semantic_roles": [
+        "verification"
+      ],
+      "authority_constraints": {
+        "canonical_owner_required": false
+      },
+      "allowed_relationships": [
+        "verifies",
+        "references",
+        "evidences"
+      ],
+      "editability": "source_editable",
+      "generation_status": "source",
+      "lifecycle": "persistent",
+      "retention": "repository_history",
+      "verification": {
+        "validator": "src/kis_mcp_doc/repository_governance.py",
+        "entry_point": "kis-doc repository-governance-validate"
+      },
+      "origin": {
+        "kind": "github_issue",
+        "id": "#73",
+        "locator": "github:NielPieterse0/kis-mcp-doc#73"
+      }
+    },
+    {
+      "slot_id": "github-pr-template",
+      "patterns": [
+        ".github/pull_request_template.md"
+      ],
+      "purpose": "Generated contributor projection",
+      "permitted_artefact_types": [
+        "generated_human_surface"
+      ],
+      "prohibited_artefact_types": [],
+      "allowed_semantic_roles": [
+        "derived_generated"
+      ],
+      "authority_constraints": {
+        "canonical_owner_required": false,
+        "write_back": false
+      },
+      "allowed_relationships": [
+        "projects",
+        "references"
+      ],
+      "editability": "generated_only",
+      "generation_status": "generated",
+      "lifecycle": "reproducible",
+      "retention": "repository_history",
+      "verification": {
+        "validator": "src/kis_mcp_doc/repository_governance.py",
+        "entry_point": "kis-doc repository-governance-validate"
+      },
+      "origin": {
+        "kind": "github_issue",
+        "id": "#73",
+        "locator": "github:NielPieterse0/kis-mcp-doc#73"
+      }
+    },
+    {
+      "slot_id": "work-change-records",
+      "patterns": [
+        ".work/changes/**"
+      ],
+      "purpose": "Governed change intent and historical evidence",
+      "permitted_artefact_types": [
+        "change_record"
+      ],
+      "prohibited_artefact_types": [
+        "governance_prescriptive",
+        "mrd",
+        "contract",
+        "repository_authority"
+      ],
+      "allowed_semantic_roles": [
+        "evidence"
+      ],
+      "authority_constraints": {
+        "canonical_owner_required": false,
+        "product_authority": false
+      },
+      "allowed_relationships": [
+        "evidences",
+        "references"
+      ],
+      "editability": "source_editable",
+      "generation_status": "source",
+      "lifecycle": "historical_evidence",
+      "retention": "repository_history",
+      "verification": {
+        "validator": "src/kis_mcp_doc/repository_governance.py",
+        "entry_point": "kis-doc repository-governance-validate"
+      },
+      "origin": {
+        "kind": "github_issue",
+        "id": "#72",
+        "locator": "github:NielPieterse0/kis-mcp-doc#72"
+      }
+    },
+    {
+      "slot_id": "root-human-surfaces",
+      "patterns": [
+        "README.md",
+        "CONTRIBUTING.md",
+        "SECURITY.md"
+      ],
+      "purpose": "Generated public repository orientation",
+      "permitted_artefact_types": [
+        "generated_human_surface"
+      ],
+      "prohibited_artefact_types": [],
+      "allowed_semantic_roles": [
+        "derived_generated"
+      ],
+      "authority_constraints": {
+        "canonical_owner_required": false,
+        "write_back": false
+      },
+      "allowed_relationships": [
+        "projects",
+        "references"
+      ],
+      "editability": "generated_only",
+      "generation_status": "generated",
+      "lifecycle": "reproducible",
+      "retention": "repository_history",
+      "verification": {
+        "validator": "src/kis_mcp_doc/repository_governance.py",
+        "entry_point": "kis-doc repository-governance-validate"
+      },
+      "origin": {
+        "kind": "github_issue",
+        "id": "#73",
+        "locator": "github:NielPieterse0/kis-mcp-doc#73"
+      }
+    },
+    {
+      "slot_id": "root-config",
+      "patterns": [
+        "pyproject.toml",
+        "uv.lock",
+        ".editorconfig",
+        ".gitattributes",
+        ".gitignore"
+      ],
+      "purpose": "Repository build and source-control configuration",
+      "permitted_artefact_types": [
+        "repository_configuration"
+      ],
+      "prohibited_artefact_types": [],
+      "allowed_semantic_roles": [
+        "implementation"
+      ],
+      "authority_constraints": {
+        "canonical_owner_required": false
+      },
+      "allowed_relationships": [
+        "implements",
+        "references",
+        "projects",
+        "evidences",
+        "verifies"
+      ],
+      "editability": "source_editable",
+      "generation_status": "source",
+      "lifecycle": "persistent",
+      "retention": "repository_history",
+      "verification": {
+        "validator": "src/kis_mcp_doc/repository_governance.py",
+        "entry_point": "kis-doc repository-governance-validate"
+      },
+      "origin": {
+        "kind": "github_issue",
+        "id": "#73",
+        "locator": "github:NielPieterse0/kis-mcp-doc#73"
+      }
+    },
+    {
+      "slot_id": "github-provider-config",
+      "patterns": [
+        ".github/dependabot.yml"
+      ],
+      "purpose": "Provider dependency automation configuration",
+      "permitted_artefact_types": [
+        "repository_configuration"
+      ],
+      "prohibited_artefact_types": [],
+      "allowed_semantic_roles": [
+        "implementation"
+      ],
+      "authority_constraints": {
+        "canonical_owner_required": false
+      },
+      "allowed_relationships": [
+        "implements",
+        "references",
+        "projects",
+        "evidences",
+        "verifies"
+      ],
+      "editability": "source_editable",
+      "generation_status": "source",
+      "lifecycle": "persistent",
+      "retention": "repository_history",
+      "verification": {
+        "validator": "src/kis_mcp_doc/repository_governance.py",
+        "entry_point": "kis-doc repository-governance-validate"
+      },
+      "origin": {
+        "kind": "github_issue",
+        "id": "#73",
+        "locator": "github:NielPieterse0/kis-mcp-doc#73"
+      }
+    }
+  ],
+  "reserved_workspace": {
+    "path": ".work",
+    "canonical_authority": false,
+    "published": false,
+    "required_as_product_input": false,
+    "promotion_requires_grammar_amendment": true
+  },
+  "transient_non_governed": [
+    ".git",
+    ".venv",
+    ".pytest_cache",
+    ".ruff_cache",
+    "__pycache__",
+    "build",
+    "*.egg-info",
+    ".temp"
+  ],
+  "placement_law": "Every persistent governed artefact resolves to exactly one legal slot. Unknown, ambiguous, or prohibited placement is invalid by default; amend the grammar before adding a new structural class.",
+  "relationship_contracts": [
+    {
+      "registry_key": "verified_by",
+      "semantic_relationship": "verifies",
+      "direction": "target_to_source",
+      "source_roles": [
+        "prescriptive"
+      ],
+      "target_roles": [
+        "verification",
+        "implementation"
+      ]
+    },
+    {
+      "registry_key": "projected_by",
+      "semantic_relationship": "projects",
+      "direction": "target_to_source",
+      "source_roles": [
+        "prescriptive"
+      ],
+      "target_roles": [
+        "implementation"
+      ]
+    },
+    {
+      "registry_key": "evidence_emitted_by",
+      "semantic_relationship": "evidences",
+      "direction": "target_to_source",
+      "source_roles": [
+        "prescriptive"
+      ],
+      "target_roles": [
+        "verification",
+        "implementation"
+      ]
+    }
+  ]
+}

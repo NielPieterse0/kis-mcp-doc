@@ -1,0 +1,111 @@
+{
+  "_mrd_projection": {
+    "class": "META",
+    "record_mode": "meta",
+    "type": "DEP"
+  },
+  "edges": [
+    {
+      "from": "urn:uuid:361b074c-ddf6-5dcf-9031-dbb4ed306abf",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "urn:uuid:6673613f-70e0-5004-aba9-103da53e5040"
+    },
+    {
+      "from": "urn:uuid:361b074c-ddf6-5dcf-9031-dbb4ed306abf",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "urn:uuid:7eab1930-3cdf-58ee-8a6e-9d9519a17fba"
+    },
+    {
+      "from": "urn:uuid:361b074c-ddf6-5dcf-9031-dbb4ed306abf",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "urn:uuid:8a9346a9-0c83-5fa4-a91d-2de6ca3d57a9"
+    },
+    {
+      "from": "urn:uuid:361b074c-ddf6-5dcf-9031-dbb4ed306abf",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "urn:uuid:8cf956d6-521a-5515-8ce1-d48ab5855617"
+    },
+    {
+      "from": "urn:uuid:361b074c-ddf6-5dcf-9031-dbb4ed306abf",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "urn:uuid:9a543068-203b-5a7a-8cdb-805517ca3487"
+    },
+    {
+      "from": "urn:uuid:361b074c-ddf6-5dcf-9031-dbb4ed306abf",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "urn:uuid:a1d99a79-5c7c-56b4-9fda-6c56f54e7ee8"
+    },
+    {
+      "from": "urn:uuid:361b074c-ddf6-5dcf-9031-dbb4ed306abf",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "urn:uuid:ddc10bf4-e6ea-5b3a-958e-464af2fa9fd1"
+    },
+    {
+      "from": "urn:uuid:361b074c-ddf6-5dcf-9031-dbb4ed306abf",
+      "relationship": "validated_by",
+      "target_kind": "source",
+      "to": "repo:contracts/mrd-specification/v1/content.schema.json"
+    },
+    {
+      "from": "urn:uuid:361b074c-ddf6-5dcf-9031-dbb4ed306abf",
+      "relationship": "validated_by",
+      "target_kind": "source",
+      "to": "repo:contracts/mrd-specification/v1/governance-mrd.schema.json"
+    },
+    {
+      "from": "urn:uuid:361b074c-ddf6-5dcf-9031-dbb4ed306abf",
+      "relationship": "validated_by",
+      "target_kind": "source",
+      "to": "repo:contracts/mrd/v1/mrd.schema.json"
+    },
+    {
+      "from": "urn:uuid:6673613f-70e0-5004-aba9-103da53e5040",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "urn:uuid:8cf956d6-521a-5515-8ce1-d48ab5855617"
+    },
+    {
+      "from": "urn:uuid:7eab1930-3cdf-58ee-8a6e-9d9519a17fba",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "urn:uuid:8a9346a9-0c83-5fa4-a91d-2de6ca3d57a9"
+    },
+    {
+      "from": "urn:uuid:7eab1930-3cdf-58ee-8a6e-9d9519a17fba",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "urn:uuid:8cf956d6-521a-5515-8ce1-d48ab5855617"
+    },
+    {
+      "from": "urn:uuid:8a9346a9-0c83-5fa4-a91d-2de6ca3d57a9",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "urn:uuid:8cf956d6-521a-5515-8ce1-d48ab5855617"
+    },
+    {
+      "from": "urn:uuid:9a543068-203b-5a7a-8cdb-805517ca3487",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "urn:uuid:8cf956d6-521a-5515-8ce1-d48ab5855617"
+    },
+    {
+      "from": "urn:uuid:a1d99a79-5c7c-56b4-9fda-6c56f54e7ee8",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "urn:uuid:8cf956d6-521a-5515-8ce1-d48ab5855617"
+    },
+    {
+      "from": "urn:uuid:ddc10bf4-e6ea-5b3a-958e-464af2fa9fd1",
+      "relationship": "depends_on",
+      "target_kind": "mrd",
+      "to": "urn:uuid:a1d99a79-5c7c-56b4-9fda-6c56f54e7ee8"
+    }
+  ]
+}

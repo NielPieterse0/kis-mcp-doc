@@ -1,0 +1,125 @@
+{
+  "_mrd": {
+    "schema_version": 1,
+    "id": "urn:uuid:8a9346a9-0c83-5fa4-a91d-2de6ca3d57a9",
+    "title": "MRD Authority Layers",
+    "module": "governance",
+    "class": "SEM",
+    "type": "ENUM",
+    "layer": "L0",
+    "record_mode": "prescriptive",
+    "status": "active",
+    "version": "1.0.0",
+    "dependencies": [
+      {
+        "mrd_id": "urn:uuid:8cf956d6-521a-5515-8ce1-d48ab5855617",
+        "relationship": "depends_on"
+      }
+    ],
+    "provenance": {
+      "sources": [
+        {
+          "source_id": "KIS-OPERATOR-DIRECTION-2026-08-21",
+          "kind": "operator_direction",
+          "role": "normative_adoption_basis",
+          "locator": "conversation:2026-08-21",
+          "revision": "final-refinement",
+          "sha256": null
+        }
+      ],
+      "source_fingerprint": "sha256:b248f91fed0826406bd86e06b64af7c136cfe50e5928620ab8d6417867ec4972",
+      "fact_quality": "direct"
+    },
+    "supersedes": [],
+    "superseded_by": null,
+    "legacy_ids": [
+      "KIS-KNOW-SEM-ENUM-001"
+    ],
+    "repository": "NielPieterse0/kis-mcp-doc",
+    "canonical_path": "prescriptives/mrd-specification/02-layering.mrd.json",
+    "revision_binding": {
+      "mode": "external_git_provider_evidence",
+      "repository": "NielPieterse0/kis-mcp-doc",
+      "git_revision": null,
+      "change_identity_source": "github_issue_and_pull_request",
+      "reason": "Tracked content cannot embed its own containing commit without circular identity."
+    }
+  },
+  "content": {
+    "concern": "layering",
+    "section_order": 4,
+    "heading": "Layering",
+    "purpose": "Define authority ordering for MRD dependencies.",
+    "layers": [
+      {
+        "code": "L0",
+        "name": "Foundational semantics",
+        "interpretation": "Defines meaning."
+      },
+      {
+        "code": "L1",
+        "name": "Constraints and governance",
+        "interpretation": "Restricts permitted meaning or behavior."
+      },
+      {
+        "code": "L2",
+        "name": "Decisions and workflows",
+        "interpretation": "Determines behavior."
+      },
+      {
+        "code": "L3",
+        "name": "Configuration and mappings",
+        "interpretation": "Selects or configures allowed behavior."
+      },
+      {
+        "code": "L4",
+        "name": "Evaluation and agent behavior",
+        "interpretation": "Measures or evaluates behavior."
+      },
+      {
+        "code": "L5",
+        "name": "Evidence and observations",
+        "interpretation": "Records what happened."
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "KIS-MRD-LAYER-001",
+        "statement": "An MRD MAY depend only on an MRD in the same layer or a higher-authority layer with a lower layer number.",
+        "enforcement": "validator"
+      },
+      {
+        "rule_id": "KIS-MRD-LAYER-002",
+        "statement": "An MRD MUST NOT depend on an MRD in a lower-authority layer with a higher layer number.",
+        "enforcement": "validator"
+      },
+      {
+        "rule_id": "KIS-MRD-LAYER-003",
+        "statement": "Layer assignment expresses authority ordering, not storage location or implementation order.",
+        "enforcement": "review"
+      }
+    ],
+    "examples": [
+      {
+        "source": "L3",
+        "target": "L2",
+        "valid": true
+      },
+      {
+        "source": "L3",
+        "target": "L0",
+        "valid": true
+      },
+      {
+        "source": "L1",
+        "target": "L3",
+        "valid": false
+      },
+      {
+        "source": "L0",
+        "target": "L2",
+        "valid": false
+      }
+    ]
+  }
+}

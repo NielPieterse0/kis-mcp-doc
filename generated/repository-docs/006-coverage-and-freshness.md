@@ -3,7 +3,7 @@
 
 A repository bundle is complete only when its declared source set and generated output agree.
 
-The current source inventory contains **102** source or declared generated-family artefacts.
+The current source inventory contains **101** source or declared generated-family artefacts.
 
 ## Freshness model
 

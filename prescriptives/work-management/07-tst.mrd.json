@@ -3,11 +3,11 @@
     "class": "EVL",
     "dependencies": [
       {
-        "mrd_id": "KIS-WORK-CTR-SVC-001",
+        "mrd_id": "urn:uuid:2f2b1233-37fe-580c-bc75-26a38e9aa7fe",
         "relationship": "validated_by"
       },
       {
-        "mrd_id": "KIS-WORK-DEC-SCR-001",
+        "mrd_id": "urn:uuid:0c96b519-06db-5616-95be-888c29f2da5c",
         "relationship": "validated_by"
       },
       {
@@ -15,7 +15,7 @@
         "source": "repo:evidence/work-management/canonical-snapshot.json"
       }
     ],
-    "id": "KIS-WORK-EVL-TST-001",
+    "id": "urn:uuid:68adde2d-be01-5184-8193-9ebb62f8d434",
     "layer": "L4",
     "module": "work-management",
     "provenance": {
@@ -39,7 +39,19 @@
     "supersedes": [],
     "title": "Work Management conformance",
     "type": "TST",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "legacy_ids": [
+      "KIS-WORK-EVL-TST-001"
+    ],
+    "repository": "NielPieterse0/kis-mcp-doc",
+    "canonical_path": "prescriptives/work-management/07-tst.mrd.json",
+    "revision_binding": {
+      "mode": "external_git_provider_evidence",
+      "repository": "NielPieterse0/kis-mcp-doc",
+      "git_revision": null,
+      "change_identity_source": "github_issue_and_pull_request",
+      "reason": "Tracked content cannot embed its own containing commit without circular identity."
+    }
   },
   "content": {
     "checks": [

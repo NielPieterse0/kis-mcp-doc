@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Model authority and relationships</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/docs/">Docs</a> / MRD Specification Documentation</div><aside class="publication-meta"><strong>Version:</strong> 1.0.0. <strong>Status:</strong> draft. <strong>Authority:</strong> generated projection of <code>urn:uuid:9a543068-203b-5a7a-8cdb-805517ca3487</code>; canonical sources remain authoritative.</aside><h1 id="model-authority-and-relationships">Model authority and relationships</h1>
+<p>Ensure every governed fact has one canonical owner and every non-owning artifact preserves authority through explicit typed relationships instead of restating truth.</p>
+<p>MRDs represent ownership and typed relationships without making repository-wide Governance part of the MRD format itself.</p>
+<ul>
+<li>Canonical owner count represented by the MRD model: <strong>1</strong>.</li>
+<li>Non-owner posture: <code>reference_not_restate</code>.</li>
+<li>Derived posture: <code>projection_only</code>.</li>
+</ul>
+<h2 id="relationship-vocabulary">Relationship vocabulary</h2>
+<ul>
+<li><code>depends_on</code> ? The source requires the target authority to be valid or interpretable.</li>
+<li><code>validated_by</code> ? The source is structurally or semantically checked by the target contract or validator.</li>
+<li><code>governs</code> ? The source prescribes requirements for the target.</li>
+<li><code>constrains</code> ? The source restricts permitted values or behavior of the target.</li>
+<li><code>selects</code> ? The source chooses among behaviors already permitted by the target authority.</li>
+<li><code>maps_to</code> ? The source translates deterministically to the target representation.</li>
+<li><code>implements</code> ? The source is an implementation of target authority.</li>
+<li><code>evidences</code> ? The source records evidence about the target without becoming its authority.</li>
+<li><code>projects</code> ? The source is a generated view of the target and has no write-back authority.</li>
+<li><code>references</code> ? The source points to the target owner without restating the governed fact as new authority.</li>
+<li><code>supersedes</code> ? The source replaces the target while preserving lineage.</li>
+</ul>
+<p>Use the <a href="/kis-mcp-doc/specification/mrd-specification/001-specification/">MRD Specification</a> for exact dependency and layering constraints.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/docs/mrd-specification/002-classify-and-select/">Previous</a> <a rel="next" href="/kis-mcp-doc/docs/mrd-specification/004-provenance-and-lifecycle/">Next</a></nav></main></body></html>

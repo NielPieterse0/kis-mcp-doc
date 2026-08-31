@@ -3,8 +3,8 @@
   "schema_version": 1,
   "documentation_reference": {
     "output_class": "human_readable_specification",
-    "policy_mrd": "KIS-DOC-CON-POL-001",
-    "registry_mrd": "KIS-DOC-SEM-REG-001"
+    "policy_mrd": "urn:uuid:ae7e7dc1-2b8b-5988-845d-24df49dcfe0a",
+    "registry_mrd": "urn:uuid:d6110859-d683-5aab-86ff-ceecd899e38d"
   },
   "source_glob": "prescriptives/work-management/*.mrd.json",
   "status": "draft",

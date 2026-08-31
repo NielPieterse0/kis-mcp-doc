@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "title": "MRD Specification Documentation",
+  "subtitle": "Human documentation for the canonical MRD specification model",
+  "version": "1.0.0",
+  "status": "draft",
+  "source_glob": "prescriptives/mrd-specification/*.mrd.json",
+  "specification": "generated/mrd-specification/001-specification.md",
+  "documentation_reference": {
+    "output_class": "human_documentation",
+    "policy_mrd": "urn:uuid:ae7e7dc1-2b8b-5988-845d-24df49dcfe0a"
+  }
+}

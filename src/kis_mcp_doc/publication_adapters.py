@@ -120,16 +120,16 @@ def verify_documentation_reference(root: Path, family: dict[str, Any]) -> dict[s
 
 def validate_governance_docs(root: Path, family: dict[str, Any]) -> dict[str, Any]:
     semantic = GovernanceRepository(root, root / family["mrd_root"]).validate()
-    docs = validate_human_docs_family(root, family, "governance")
+    docs = validate_human_docs_family(root, family, "mrd-specification")
     return _combined_validation(semantic, docs)
 
 
 def build_governance_docs(root: Path, family: dict[str, Any], *, output: Path | None = None, replace: bool = False) -> dict[str, Any]:
-    return build_human_docs_family(root, family, "governance", output=output, replace=replace)
+    return build_human_docs_family(root, family, "mrd-specification", output=output, replace=replace)
 
 
 def verify_governance_docs(root: Path, family: dict[str, Any]) -> dict[str, Any]:
-    return verify_human_docs_family(root, family, "governance")
+    return verify_human_docs_family(root, family, "mrd-specification")
 
 
 def validate_work_management_docs(root: Path, family: dict[str, Any]) -> dict[str, Any]:

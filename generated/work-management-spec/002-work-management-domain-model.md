@@ -5,7 +5,7 @@
 
 [Previous: Specification](001-specification.md) | [Next: Work lifecycle](003-work-lifecycle.md) | [Index](000-index.md)
 
-<span id="mrd-kis-work-sem-reg-001"></span>
+<span id="mrd-urn-uuid-a0e914e6-64b0-561f-ad39-393287ce71c5"></span>
 
 Work Management describes each work record through a single field model with explicit authority direction. The important distinction is not where a field is displayed, but which system may change it and whether the value is commanded, observed, or handed off to another authority.
 
@@ -28,4 +28,4 @@ The complete managed-field catalog and every controlled-vocabulary value are exa
 
 ## Source and authority
 
-This page projects `KIS-WORK-SEM-REG-001` version `1.0.0`. The MRD remains authoritative; this generated page has no write-back authority.
+This page projects `urn:uuid:a0e914e6-64b0-561f-ad39-393287ce71c5` version `1.0.0`. The MRD remains authoritative; this generated page has no write-back authority.

@@ -181,7 +181,7 @@
           ],
           "properties": {
             "path": {
-              "const": "publication/governance-spec.json"
+              "const": "publication/mrd-specification.json"
             },
             "sha256": {
               "type": "string",
@@ -216,7 +216,6 @@
             "dependencies",
             "provenance",
             "lifecycle",
-            "operator_behavior",
             "schema"
           ],
           "properties": {
@@ -262,12 +261,6 @@
                 "fail"
               ]
             },
-            "operator_behavior": {
-              "enum": [
-                "pass",
-                "fail"
-              ]
-            },
             "schema": {
               "enum": [
                 "pass",
@@ -298,14 +291,13 @@
                   "dependencies",
                   "provenance",
                   "lifecycle",
-                  "operator_behavior",
                   "schema"
                 ]
               },
               "code": {
                 "type": "string",
                 "pattern": "^[A-Z][A-Z0-9_]+$",
-                "description": "Allowed reason-code vocabulary is owned by KIS-KNOW-EVL-TST-001 and enforced by deterministic validation-result equality."
+                "description": "Allowed reason-code vocabulary is owned by urn:uuid:361b074c-ddf6-5dcf-9031-dbb4ed306abf and enforced by deterministic validation-result equality."
               },
               "message": {
                 "type": "string",
@@ -418,16 +410,6 @@
                     },
                     "required": [
                       "lifecycle"
-                    ]
-                  },
-                  {
-                    "properties": {
-                      "operator_behavior": {
-                        "const": "fail"
-                      }
-                    },
-                    "required": [
-                      "operator_behavior"
                     ]
                   },
                   {

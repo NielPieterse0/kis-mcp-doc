@@ -1,5 +1,5 @@
 {
-  "bundle_sha256": "17d4707223b83eb9ec5ef3d2efdb0eeb4afa9aeb7e057f6e545ca572f86218d1",
+  "bundle_sha256": "866653748d3604918344e0d8cc29d92712ff9e3862ff6905a58741e89c80e5f1",
   "contract": {
     "name": "kis-human-documentation-build",
     "version": 1
@@ -37,9 +37,9 @@
       "sha256": "6c691f0e5432a253e8e91281f94922cfe7706e2049c7c10ad6796cc2507194ea"
     },
     {
-      "bytes": 723,
+      "bytes": 923,
       "path": "data/source-traceability.json",
-      "sha256": "b728a374828476383dfdeff4fe9711a2624f8907a978f15d78072ce91b98a9bb"
+      "sha256": "629af486c8fe3c41b8bde98e12747a0054ee216426f8be21125ccc61d2a7e83e"
     }
   ],
   "generator": {
@@ -49,64 +49,64 @@
   "inputs": {
     "source_files": [
       {
-        "bytes": 5712,
+        "bytes": 7101,
         "path": "prescriptives/documentation/01-reference-standard.mrd.json",
-        "sha256": "da30a9f44828194a6b0b1e382c39936ae3d07705521dd6c07af60286b5133dc1"
+        "sha256": "57942a97a33bf6bc3a81b29471610d6d0cdc5dd446f8dbc067e42d369d938172"
       },
       {
-        "bytes": 8352,
+        "bytes": 9133,
         "path": "prescriptives/documentation/04-publication-family-registry.mrd.json",
-        "sha256": "a776f01949729f07e1ed3581467c01d7fc84c34e232df7bf1cfee5d458a62836"
+        "sha256": "6b6dc4f9ed3744a2974abe14d3afcac2ece6ec5850978c73f1c48fcd0a42ae5f"
       },
       {
-        "bytes": 454,
+        "bytes": 480,
         "path": "publication/work-management-docs.json",
-        "sha256": "6223fbe39aea0d3c22d645b3c84bc08a7d6859e8b1004c16277aae8392bee9b0"
+        "sha256": "626ca88bba5c006915270afdf40c0b477adf43d6359a6f5d367f329718a6bba3"
       },
       {
-        "bytes": 18082,
+        "bytes": 18709,
         "path": "src/kis_mcp_doc/human_docs.py",
-        "sha256": "fdb2c9e3999ab8948dd97622fa8bfc779a55d5eb9760ac9d00c36b45434c6d7e"
+        "sha256": "8c49ef948b3e4c776e8f159675a2835ccdbd2d742a4fae1a3287b475b0059a60"
       },
       {
-        "bytes": 6755,
+        "bytes": 6776,
         "path": "src/kis_mcp_doc/publication_adapters.py",
-        "sha256": "fffd0959e5e095a166a175928759ec3d40e4b97e832a1a54b3f13cf3404f9729"
+        "sha256": "4c34573db04d5d301cc4d70950840825f58c810336e2ded6839558965a709cc8"
       },
       {
-        "bytes": 33211,
+        "bytes": 33733,
         "path": "prescriptives/work-management/01-reg.mrd.json",
-        "sha256": "54f93adedfa74ccd8411a4c38bde91851ba1eddb1869ecf9301263f935336603"
+        "sha256": "1cb147d86fb58983da5ef71e00c43245e9a8c431a2ab1604879cde0a28505072"
       },
       {
-        "bytes": 9690,
+        "bytes": 10237,
         "path": "prescriptives/work-management/02-stm.mrd.json",
-        "sha256": "60b2622666654ea2b0332c4720fe0bc70a902cab7ded3ba955737727f8b8d9a1"
+        "sha256": "75daad9bb3663e7209c46acdcbb8764061086e100b3338561985e3416850076e"
       },
       {
-        "bytes": 5482,
+        "bytes": 6029,
         "path": "prescriptives/work-management/03-wfl.mrd.json",
-        "sha256": "ad5cbeb8e675aa1edbcd670db83ebe4b59f3d6e09407a5ec62b81285156c9367"
+        "sha256": "5be5bb3b5ccde0d014c8353e4585d56c0d908bb61348c26a742f98528c6d80df"
       },
       {
-        "bytes": 5443,
+        "bytes": 5990,
         "path": "prescriptives/work-management/04-scr.mrd.json",
-        "sha256": "934dc44aa1c173b09cb0e9185678a53703b4740dc7d6a5163b2853caf83b6b4e"
+        "sha256": "dd5f0ca0d074b344ddae6b02c8a3792250fb9c5fc5e249a037455a1bb4be2e86"
       },
       {
-        "bytes": 20109,
+        "bytes": 20656,
         "path": "prescriptives/work-management/05-pol.mrd.json",
-        "sha256": "d83e7341af76952a3ca66c75bca0ec5407156d24237601677d8e71346b98d85f"
+        "sha256": "91edf6866a78283bb9709689cf67a25d914c88e504c90290b8c3e2fbb9566f24"
       },
       {
-        "bytes": 9077,
+        "bytes": 9649,
         "path": "prescriptives/work-management/06-svc.mrd.json",
-        "sha256": "948f9370ec4c751085131bda230d469c23c2ec379a8004cfbfb92b01d4a1d1d5"
+        "sha256": "b5b26a2f953f3eb432dfb95456ae2f7a850a9d894de78572d502cc1944ce6d94"
       },
       {
-        "bytes": 1922,
+        "bytes": 2494,
         "path": "prescriptives/work-management/07-tst.mrd.json",
-        "sha256": "db8f93cd8aa889d29ed95a97375e78aa38a4a277ae3cd8e3f1bb1feb7302d894"
+        "sha256": "f19f18f69eed7c88edbade5edb9fdf0867bd7b9cbc01b172bb858501194fc8db"
       }
     ]
   },

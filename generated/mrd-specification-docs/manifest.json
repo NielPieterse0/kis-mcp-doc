@@ -1,0 +1,120 @@
+{
+  "bundle_sha256": "f6acb3ca81f98fa6ffb04a44ea6eac3bf4577b34b25ac6b4561c0da44f8be249",
+  "contract": {
+    "name": "kis-human-documentation-build",
+    "version": 1
+  },
+  "family_id": "mrd-specification-docs",
+  "files": [
+    {
+      "bytes": 728,
+      "path": "000-index.md",
+      "sha256": "103ffdf25aa3990529c9f5f29f2b7c7d9c1118eb4b77d37e179225d9831a6a24"
+    },
+    {
+      "bytes": 1006,
+      "path": "002-classify-and-select.md",
+      "sha256": "a9d45093d44d425269c29345733253b8860752494539904feb5725d40526edbc"
+    },
+    {
+      "bytes": 1612,
+      "path": "003-authority-and-relationships.md",
+      "sha256": "d7243050c692fd1a18072685cd0e2f9fbbc5afeaedacb8289c5a80fadca3a462"
+    },
+    {
+      "bytes": 926,
+      "path": "004-provenance-and-lifecycle.md",
+      "sha256": "28f49818ba71bfc8e6d03631adbcb435cfbdda86383d308fda7537e698128be1"
+    },
+    {
+      "bytes": 1576,
+      "path": "005-conformance.md",
+      "sha256": "735086a454a156e66f18f9cfeddf6505d3eb65ed978c09c1d5b2bfca6e51a96c"
+    },
+    {
+      "bytes": 666,
+      "path": "006-examples.md",
+      "sha256": "9bef0a58e32c016ba9f31dd1fc5dc61f77feb5c977b760a2f9c4f2d0a079f7e5"
+    },
+    {
+      "bytes": 1118,
+      "path": "data/source-traceability.json",
+      "sha256": "e8352d805dc86ce1ac9daa17eeb5b18b788a2847e0c78f7899479fc7eca8b61b"
+    }
+  ],
+  "generator": {
+    "algorithm": "human-docs-v1",
+    "name": "kis-mcp-doc"
+  },
+  "inputs": {
+    "source_files": [
+      {
+        "bytes": 7101,
+        "path": "prescriptives/documentation/01-reference-standard.mrd.json",
+        "sha256": "57942a97a33bf6bc3a81b29471610d6d0cdc5dd446f8dbc067e42d369d938172"
+      },
+      {
+        "bytes": 9133,
+        "path": "prescriptives/documentation/04-publication-family-registry.mrd.json",
+        "sha256": "6b6dc4f9ed3744a2974abe14d3afcac2ece6ec5850978c73f1c48fcd0a42ae5f"
+      },
+      {
+        "bytes": 473,
+        "path": "publication/mrd-specification-docs.json",
+        "sha256": "1c6cf552cd6a8d90b048a1b938bdb9dcfa7d831f0c7ae790336562ac9033ee3b"
+      },
+      {
+        "bytes": 18709,
+        "path": "src/kis_mcp_doc/human_docs.py",
+        "sha256": "8c49ef948b3e4c776e8f159675a2835ccdbd2d742a4fae1a3287b475b0059a60"
+      },
+      {
+        "bytes": 6776,
+        "path": "src/kis_mcp_doc/publication_adapters.py",
+        "sha256": "4c34573db04d5d301cc4d70950840825f58c810336e2ded6839558965a709cc8"
+      },
+      {
+        "bytes": 13006,
+        "path": "prescriptives/mrd-specification/01-classification.mrd.json",
+        "sha256": "89b8c68739fea9e28fbd221fceef6cca05b18e3d180b70f5d80558e6fcd5f06c"
+      },
+      {
+        "bytes": 3542,
+        "path": "prescriptives/mrd-specification/02-layering.mrd.json",
+        "sha256": "12d60810dc02408b16568aa412fb3bd37314144abad1b8bea47f77ec1c5abda9"
+      },
+      {
+        "bytes": 3222,
+        "path": "prescriptives/mrd-specification/03-dependencies.mrd.json",
+        "sha256": "95f726547b3085fd546a401065821dd5c1f43ad426d08f6035cfd9469aae0603"
+      },
+      {
+        "bytes": 4994,
+        "path": "prescriptives/mrd-specification/04-provenance.mrd.json",
+        "sha256": "076b602c2cdffd178548b2b1b7e217a3057babf617ffa8c0eebdb98278b9eb6c"
+      },
+      {
+        "bytes": 3799,
+        "path": "prescriptives/mrd-specification/05-lifecycle.mrd.json",
+        "sha256": "3abdeb79e9d2e3c4ef0af1a66b333325769c676af0615bfd9723711c77cf8074"
+      },
+      {
+        "bytes": 8247,
+        "path": "prescriptives/mrd-specification/06-validation.mrd.json",
+        "sha256": "fc1c329337d002402292762179a693ba0146d79a06f15196411853827427e327"
+      },
+      {
+        "bytes": 15721,
+        "path": "prescriptives/mrd-specification/07-applicability.mrd.json",
+        "sha256": "103a9eea15e5fc1a2d01c60e62ea8f7c755b052c79d3eff05b4787ba5c9303bd"
+      },
+      {
+        "bytes": 5784,
+        "path": "prescriptives/mrd-specification/08-ownership.mrd.json",
+        "sha256": "14724b1703435fbc5ead2d74417b0a6d57c7713b4ad3d10cef805828c999a5cc"
+      }
+    ]
+  },
+  "output_class": "human_documentation",
+  "traceability_topics": 5
+}
