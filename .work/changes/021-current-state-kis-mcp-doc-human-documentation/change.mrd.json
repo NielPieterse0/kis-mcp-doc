@@ -9,7 +9,7 @@
     "layer": "L3",
     "record_mode": "descriptive",
     "status": "active",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "dependencies": [
       {
         "source": "repo:.work/changes/020-public-repository-readiness/change.mrd.json",
@@ -49,9 +49,25 @@
           "locator": "github:NielPieterse0/kis-mcp-doc#59",
           "revision": "2026-08-29",
           "sha256": null
+        },
+        {
+          "source_id": "GH-ISSUE-53",
+          "kind": "operator_approved_work_item",
+          "role": "reopened_bundle_completion_contract",
+          "locator": "github:NielPieterse0/kis-mcp-doc#53",
+          "revision": "2026-08-30-reopened-closure-audit",
+          "sha256": null
+        },
+        {
+          "source_id": "GH-ISSUE-56",
+          "kind": "operator_approved_work_item",
+          "role": "reopened_coverage_closeout_contract",
+          "locator": "github:NielPieterse0/kis-mcp-doc#56",
+          "revision": "2026-08-30-reopened-closure-audit",
+          "sha256": null
         }
       ],
-      "source_fingerprint": "sha256:b50ce82db0de7f0254be5add94ad6e794b7e33931d612fa28a401656bba2a5ea",
+      "source_fingerprint": "sha256:bbfcc982a5d95dc50fd6dd679b0720cb9b7a83b4d29c8933e61e81fcdf499f9d",
       "fact_quality": "direct"
     },
     "supersedes": [],
@@ -61,9 +77,9 @@
     "change_id": "021-current-state-kis-mcp-doc-human-documentation",
     "work_item": {
       "repository": "NielPieterse0/kis-mcp-doc",
-      "issue": 59,
+      "issue": 51,
       "project": "kis-mcp-doc",
-      "record_id": "TASK-59",
+      "record_id": "PROGRAMME-51",
       "project_capture": "active_claimed"
     },
     "outcome": "Implement a complete, current, deterministic human projection of kis-mcp-doc machine/executable truth plus an extensible artefact metadata and relationship graph for agents, drift detection, and future impact assessment.",
@@ -177,7 +193,7 @@
       },
       {
         "id": "T2",
-        "status": "done",
+        "status": "implemented",
         "issue": 53,
         "record_id": "SLICE-022",
         "text": "Complete current-state kis-mcp-doc human specification bundle."
@@ -198,14 +214,14 @@
       },
       {
         "id": "T5",
-        "status": "done",
+        "status": "implemented",
         "issue": 56,
         "record_id": "SLICE-025",
         "text": "Repository coverage audit and human-verifiability closeout."
       },
       {
         "id": "T6",
-        "status": "implemented",
+        "status": "done",
         "issue": 59,
         "record_id": "TASK-59",
         "text": "Closeout drift correction, explicit Pages publication boundary, and CI-enforced documentation drift invariant."
@@ -222,7 +238,7 @@
       "Introducing bidirectional HRD-MRD authority binding."
     ],
     "closeout": {
-      "state": "pre_merge_complete",
+      "state": "implementation_verified_locally",
       "verification": [
         "Focused repository-documentation and publication-kernel verification passed 30/30 after the CI-only transient packaging metadata defect was corrected.",
         "Full scripts/verify.ps1 passed locally with exit code 0 on the exact source tree committed as 85a1c2e3eb47587be9d9b4ecbb8fa359d7475c9e.",
@@ -237,35 +253,47 @@
         "Direct generated-artifact inspection found 42 public routes, 42 public search documents, and zero Work Management entries in routes, search, or the 52-file Pages archive while standalone Work Management specification and documentation bundles remained present.",
         "Canonical scripts/verify.ps1 passed after the final architecture, registry, CI-locking, tests, and regenerated-output updates; all tests plus governance, all six standalone publication families, generated-output, search, site, release, public-repository, and whitespace gates were valid.",
         "The required pull-request verify workflow is regression-locked to scripts/verify.ps1, and that script is regression-locked to registered-publication, search, site, and release generated-output checks.",
-        "Requirement audit re-read live parent issue #51 and corrective issue #59 and found R1-R8/V1-V4 locally satisfied; V5 remains intentionally open for exact-head CI, merge, live Pages deployment, and post-merge documentation reconciliation."
+        "Requirement audit re-read live parent issue #51 and corrective issue #59 and found R1-R8/V1-V4 locally satisfied; V5 remains intentionally open for exact-head CI, merge, live Pages deployment, and post-merge documentation reconciliation.",
+        "Reopened Change 021 correction focused repository-documentation tests passed 7/7, including negative fixtures for missing required source coverage and missing required generated projection routes.",
+        "Repository human coverage report schema v2 reports 10 required human-relevant domains and 10 covered required domains with exact matched source paths.",
+        "The reconciled public documentation surfaces contain 54 site routes and 54 search documents; the Pages release archive was rebuilt from those exact generated manifests.",
+        "Final canonical pwsh -NoProfile -File scripts/verify.ps1 completed with exit code 0 after all correction and hardening changes; the complete pytest suite and all governance, reference, publication, generated-output, site, search, release, public-repository, runtime, and whitespace gates passed."
       ],
       "reviews": [
         "The bounded code-quality review returned no findings after the CI fix.",
         "Correction specialist code-quality and documentation review agents returned EvidenceError and were not counted as passes.",
-        "Manual bounded diff review found missing MRD provenance/version updates and stale child-issue wording; both were corrected, fingerprints were recomputed, outputs regenerated, and canonical verification rerun successfully."
+        "Manual bounded diff review found missing MRD provenance/version updates and stale child-issue wording; both were corrected, fingerprints were recomputed, outputs regenerated, and canonical verification rerun successfully.",
+        "Independent documentation review could not run because the configured upstream reviewer returned HTTP 502; this infrastructure failure was not counted as a pass.",
+        "Independent code-quality review did not invoke a backend because generated artefacts exceeded its evidence projector; it returned AGENT_EVIDENCE_FILES_OMITTED / AGENT_EVIDENCE_INCOMPLETE and required exact-diff manual fallback.",
+        "Exact-diff manual fallback reviewed the active change record, scope, repository-human-bundle policy, repository_docs generator, tests, and generated-diff boundaries. It found one hardening gap: an empty coverage contract could vacuously pass. The validator now requires a non-empty contract with at least one required domain, unique domain IDs, source patterns, and projection routes; focused tests and canonical verification were rerun successfully after the correction."
       ],
       "publication": {
-        "status": "merged",
+        "status": "pending_pr",
         "issue": 51,
-        "pull_request": 57
+        "pull_request": null
       },
       "merge": {
-        "status": "merged",
-        "head": "85a1c2e3eb47587be9d9b4ecbb8fa359d7475c9e",
-        "main": "bae8a96ff1ced95efd867ab4b806c723e31e0b67"
+        "status": "pending",
+        "head": null,
+        "main": "18f3367ada2948783ca04b45635bc2f3e9e3d9c0"
       },
       "unresolved": [
-        "Await exact-head pull-request CI for the corrective commit.",
-        "Await merge, exact-main GitHub Pages deployment, live Pages verification, and post-merge Change 021 documentation reconciliation."
+        "Commit and publish the exact implementation head through a pull request.",
+        "Require exact-head CI, merge-commit delivery, default-branch reconciliation, and landed exact-head evidence before closing #53, #56, or #51."
       ],
       "remediation": {
-        "issue": 59,
-        "branch": "maintenance/change-021-pages-drift-closeout",
-        "reason": "reader-facing Pages composition violated the intended Work Management boundary and the prior closeout did not test that semantic invariant",
-        "local_state": "pre_merge_complete",
-        "public_routes": 42,
-        "public_search_documents": 42,
-        "work_management_public_entries": 0,
+        "issues": [
+          51,
+          53,
+          56
+        ],
+        "branch": "change/021-human-docs-closeout",
+        "reason": "Closure audit found the current-state human bundle and human-verifiability coverage contract incomplete despite earlier Change 021 delivery.",
+        "local_state": "implementation_verified_locally",
+        "required_human_domains": 10,
+        "covered_required_human_domains": 10,
+        "public_routes": 54,
+        "public_search_documents": 54,
         "standalone_work_management_generated": true
       }
     }

@@ -288,6 +288,41 @@
   },
   {
     "family": "repository-docs",
+    "route": "/docs/repository/011-documentation-reference-standard/",
+    "source": "generated/repository-docs/011-documentation-reference-standard.md",
+    "surface": "docs",
+    "title": "Documentation Reference Standard"
+  },
+  {
+    "family": "repository-docs",
+    "route": "/docs/repository/012-mrd-specification/",
+    "source": "generated/repository-docs/012-mrd-specification.md",
+    "surface": "docs",
+    "title": "MRD Specification"
+  },
+  {
+    "family": "repository-docs",
+    "route": "/docs/repository/013-site-search-rendering-and-release/",
+    "source": "generated/repository-docs/013-site-search-rendering-and-release.md",
+    "surface": "docs",
+    "title": "Site, search, rendering, and release"
+  },
+  {
+    "family": "repository-docs",
+    "route": "/docs/repository/014-runtime-dependencies-and-public-repository/",
+    "source": "generated/repository-docs/014-runtime-dependencies-and-public-repository.md",
+    "surface": "docs",
+    "title": "Runtime, dependencies, and public repository"
+  },
+  {
+    "family": "repository-docs",
+    "route": "/docs/repository/015-human-coverage-audit/",
+    "source": "generated/repository-docs/015-human-coverage-audit.md",
+    "surface": "docs",
+    "title": "Human coverage audit"
+  },
+  {
+    "family": "repository-docs",
     "route": "/reference/repository-docs/data/artefact-inventory/",
     "source": "generated/repository-docs/data/artefact-inventory.json",
     "surface": "reference",

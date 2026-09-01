@@ -1,28 +1,249 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Manifest</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/reference/">Reference</a> / repository-docs</div><aside class="publication-meta"><strong>Version:</strong> 1.0.0. <strong>Status:</strong> active. <strong>Authority:</strong> generated projection of <code>urn:uuid:0e84ae43-f74a-5065-a5e2-b21e105376b8</code>; canonical sources remain authoritative.</aside><h1>Manifest</h1><pre>{
-  &quot;bundle_sha256&quot;: &quot;f3d9b1c5487c8d12671f088990a2b94d4e1e3808880a40300233e3a2a008c9d1&quot;,
+  &quot;bundle_sha256&quot;: &quot;a27c33f4c27ea9c6b440df82808b6ba0b1104e6db677a944c6ac86787643e3a7&quot;,
   &quot;contract&quot;: {
     &quot;name&quot;: &quot;kis-repository-human-documentation&quot;,
     &quot;version&quot;: 1
   },
   &quot;coverage&quot;: {
     &quot;artefacts&quot;: 101,
+    &quot;covered_required_human_domains&quot;: 10,
     &quot;excluded_source_classes&quot;: [
       &quot;historical_change_records&quot;,
       &quot;runtime_state&quot;,
       &quot;generated_outputs&quot;,
       &quot;work_management_human_consolidation&quot;
     ],
+    &quot;human_domains&quot;: [
+      {
+        &quot;id&quot;: &quot;repository_purpose_authority&quot;,
+        &quot;matched_sources&quot;: [
+          &quot;AGENTS.md&quot;
+        ],
+        &quot;projection_route&quot;: &quot;001-architecture-and-authority.md&quot;,
+        &quot;required&quot;: true,
+        &quot;source_covered&quot;: true,
+        &quot;source_patterns&quot;: [
+          &quot;AGENTS.md&quot;
+        ],
+        &quot;title&quot;: &quot;Repository purpose and authority&quot;
+      },
+      {
+        &quot;id&quot;: &quot;repository_governance&quot;,
+        &quot;matched_sources&quot;: [
+          &quot;prescriptives/governance/01-repository-governance.json&quot;,
+          &quot;prescriptives/governance/02-prescriptive-artefact-registry.json&quot;,
+          &quot;prescriptives/governance/03-directory-grammar.json&quot;,
+          &quot;src/kis_mcp_doc/repository_governance.py&quot;,
+          &quot;tests/test_repository_governance.py&quot;
+        ],
+        &quot;projection_route&quot;: &quot;007-repository-governance.md&quot;,
+        &quot;required&quot;: true,
+        &quot;source_covered&quot;: true,
+        &quot;source_patterns&quot;: [
+          &quot;prescriptives/governance/*.json&quot;,
+          &quot;src/kis_mcp_doc/repository_governance.py&quot;,
+          &quot;tests/test_repository_governance.py&quot;
+        ],
+        &quot;title&quot;: &quot;Repository Governance and Directory Grammar&quot;
+      },
+      {
+        &quot;id&quot;: &quot;documentation_reference&quot;,
+        &quot;matched_sources&quot;: [
+          &quot;prescriptives/documentation/01-reference-standard.mrd.json&quot;,
+          &quot;prescriptives/documentation/02-reference-registry.mrd.json&quot;,
+          &quot;publication/harvest-sources.json&quot;
+        ],
+        &quot;projection_route&quot;: &quot;011-documentation-reference-standard.md&quot;,
+        &quot;required&quot;: true,
+        &quot;source_covered&quot;: true,
+        &quot;source_patterns&quot;: [
+          &quot;prescriptives/documentation/01-reference-standard.mrd.json&quot;,
+          &quot;prescriptives/documentation/02-reference-registry.mrd.json&quot;,
+          &quot;publication/harvest-sources.json&quot;
+        ],
+        &quot;title&quot;: &quot;Documentation Reference Standard and source policy&quot;
+      },
+      {
+        &quot;id&quot;: &quot;mrd_specification&quot;,
+        &quot;matched_sources&quot;: [
+          &quot;contracts/mrd-specification/v1/content.schema.json&quot;,
+          &quot;contracts/mrd-specification/v1/governance-mrd.schema.json&quot;,
+          &quot;contracts/mrd/v1/mrd.schema.json&quot;,
+          &quot;prescriptives/mrd-specification/01-classification.mrd.json&quot;,
+          &quot;prescriptives/mrd-specification/02-layering.mrd.json&quot;,
+          &quot;prescriptives/mrd-specification/03-dependencies.mrd.json&quot;,
+          &quot;prescriptives/mrd-specification/04-provenance.mrd.json&quot;,
+          &quot;prescriptives/mrd-specification/05-lifecycle.mrd.json&quot;,
+          &quot;prescriptives/mrd-specification/06-validation.mrd.json&quot;,
+          &quot;prescriptives/mrd-specification/07-applicability.mrd.json&quot;,
+          &quot;prescriptives/mrd-specification/08-ownership.mrd.json&quot;
+        ],
+        &quot;projection_route&quot;: &quot;012-mrd-specification.md&quot;,
+        &quot;required&quot;: true,
+        &quot;source_covered&quot;: true,
+        &quot;source_patterns&quot;: [
+          &quot;prescriptives/mrd-specification/*.json&quot;,
+          &quot;contracts/mrd/**/*.json&quot;,
+          &quot;contracts/mrd-specification/**/*.json&quot;
+        ],
+        &quot;title&quot;: &quot;MRD Specification architecture&quot;
+      },
+      {
+        &quot;id&quot;: &quot;publication&quot;,
+        &quot;matched_sources&quot;: [
+          &quot;prescriptives/documentation/03-publication-architecture.mrd.json&quot;,
+          &quot;prescriptives/documentation/04-publication-family-registry.mrd.json&quot;,
+          &quot;publication/documentation-reference-standard.json&quot;,
+          &quot;publication/documentation-release.json&quot;,
+          &quot;publication/documentation-search.json&quot;,
+          &quot;publication/documentation-site.json&quot;,
+          &quot;publication/harvest-sources.json&quot;,
+          &quot;publication/mrd-specification-docs.json&quot;,
+          &quot;publication/mrd-specification.json&quot;,
+          &quot;publication/public-repository.json&quot;,
+          &quot;publication/repository-docs.json&quot;,
+          &quot;publication/work-management-docs.json&quot;,
+          &quot;publication/work-management-spec.json&quot;,
+          &quot;src/kis_mcp_doc/publication_kernel.py&quot;
+        ],
+        &quot;projection_route&quot;: &quot;003-publication-and-generated-documentation.md&quot;,
+        &quot;required&quot;: true,
+        &quot;source_covered&quot;: true,
+        &quot;source_patterns&quot;: [
+          &quot;prescriptives/documentation/03-publication-architecture.mrd.json&quot;,
+          &quot;prescriptives/documentation/04-publication-family-registry.mrd.json&quot;,
+          &quot;src/kis_mcp_doc/publication_kernel.py&quot;,
+          &quot;publication/*.json&quot;
+        ],
+        &quot;title&quot;: &quot;Publication kernel and family architecture&quot;
+      },
+      {
+        &quot;id&quot;: &quot;site_search_render_release&quot;,
+        &quot;matched_sources&quot;: [
+          &quot;publication/documentation-release.json&quot;,
+          &quot;publication/documentation-search.json&quot;,
+          &quot;publication/documentation-site.json&quot;,
+          &quot;src/kis_mcp_doc/documentation_release.py&quot;,
+          &quot;src/kis_mcp_doc/documentation_search.py&quot;,
+          &quot;src/kis_mcp_doc/documentation_site.py&quot;,
+          &quot;src/kis_mcp_doc/render.py&quot;
+        ],
+        &quot;projection_route&quot;: &quot;013-site-search-rendering-and-release.md&quot;,
+        &quot;required&quot;: true,
+        &quot;source_covered&quot;: true,
+        &quot;source_patterns&quot;: [
+          &quot;src/kis_mcp_doc/documentation_site.py&quot;,
+          &quot;src/kis_mcp_doc/documentation_search.py&quot;,
+          &quot;src/kis_mcp_doc/documentation_release.py&quot;,
+          &quot;src/kis_mcp_doc/render.py&quot;,
+          &quot;publication/documentation-site.json&quot;,
+          &quot;publication/documentation-search.json&quot;,
+          &quot;publication/documentation-release.json&quot;
+        ],
+        &quot;title&quot;: &quot;Site, navigation, search, rendering, and release&quot;
+      },
+      {
+        &quot;id&quot;: &quot;verification_ci&quot;,
+        &quot;matched_sources&quot;: [
+          &quot;.github/workflows/documentation-pages.yml&quot;,
+          &quot;.github/workflows/documentation-release.yml&quot;,
+          &quot;.github/workflows/work-management.yml&quot;,
+          &quot;scripts/verify.ps1&quot;,
+          &quot;tests/test_docs_backend.py&quot;,
+          &quot;tests/test_documentation_reference_standard.py&quot;,
+          &quot;tests/test_documentation_release.py&quot;,
+          &quot;tests/test_documentation_search.py&quot;,
+          &quot;tests/test_documentation_site.py&quot;,
+          &quot;tests/test_governance_renderer.py&quot;,
+          &quot;tests/test_governance_validator.py&quot;,
+          &quot;tests/test_human_docs.py&quot;,
+          &quot;tests/test_public_repository.py&quot;,
+          &quot;tests/test_publication_hardening.py&quot;,
+          &quot;tests/test_publication_kernel.py&quot;,
+          &quot;tests/test_repository_docs.py&quot;,
+          &quot;tests/test_repository_governance.py&quot;,
+          &quot;tests/test_windows_runtime_policy.py&quot;,
+          &quot;tests/test_work_management_spec.py&quot;
+        ],
+        &quot;projection_route&quot;: &quot;004-verification-and-operations.md&quot;,
+        &quot;required&quot;: true,
+        &quot;source_covered&quot;: true,
+        &quot;source_patterns&quot;: [
+          &quot;scripts/verify.ps1&quot;,
+          &quot;.github/workflows/*.yml&quot;,
+          &quot;tests/*.py&quot;
+        ],
+        &quot;title&quot;: &quot;Verification, tests, hooks, and CI&quot;
+      },
+      {
+        &quot;id&quot;: &quot;runtime_dependencies&quot;,
+        &quot;matched_sources&quot;: [
+          &quot;pyproject.toml&quot;,
+          &quot;scripts/runtime-preflight.ps1&quot;,
+          &quot;tooling/windows-runtime.json&quot;,
+          &quot;uv.lock&quot;
+        ],
+        &quot;projection_route&quot;: &quot;014-runtime-dependencies-and-public-repository.md&quot;,
+        &quot;required&quot;: true,
+        &quot;source_covered&quot;: true,
+        &quot;source_patterns&quot;: [
+          &quot;pyproject.toml&quot;,
+          &quot;uv.lock&quot;,
+          &quot;tooling/windows-runtime.json&quot;,
+          &quot;scripts/runtime-preflight.ps1&quot;
+        ],
+        &quot;title&quot;: &quot;Runtime and dependency controls&quot;
+      },
+      {
+        &quot;id&quot;: &quot;public_repository&quot;,
+        &quot;matched_sources&quot;: [
+          &quot;.github/CODEOWNERS&quot;,
+          &quot;.github/dependabot.yml&quot;,
+          &quot;publication/public-repository.json&quot;,
+          &quot;src/kis_mcp_doc/public_repository.py&quot;
+        ],
+        &quot;projection_route&quot;: &quot;014-runtime-dependencies-and-public-repository.md&quot;,
+        &quot;required&quot;: true,
+        &quot;source_covered&quot;: true,
+        &quot;source_patterns&quot;: [
+          &quot;publication/public-repository.json&quot;,
+          &quot;src/kis_mcp_doc/public_repository.py&quot;,
+          &quot;.github/CODEOWNERS&quot;,
+          &quot;.github/dependabot.yml&quot;
+        ],
+        &quot;title&quot;: &quot;Public repository and provider posture&quot;
+      },
+      {
+        &quot;id&quot;: &quot;artefact_lineage&quot;,
+        &quot;matched_sources&quot;: [
+          &quot;prescriptives/documentation/05-repository-human-bundle.mrd.json&quot;,
+          &quot;src/kis_mcp_doc/repository_docs.py&quot;,
+          &quot;tests/test_repository_docs.py&quot;
+        ],
+        &quot;projection_route&quot;: &quot;005-artefact-metadata-and-relationships.md&quot;,
+        &quot;required&quot;: true,
+        &quot;source_covered&quot;: true,
+        &quot;source_patterns&quot;: [
+          &quot;prescriptives/documentation/05-repository-human-bundle.mrd.json&quot;,
+          &quot;src/kis_mcp_doc/repository_docs.py&quot;,
+          &quot;tests/test_repository_docs.py&quot;
+        ],
+        &quot;title&quot;: &quot;Artefact metadata, relationships, coverage, and freshness&quot;
+      }
+    ],
     &quot;relationships&quot;: 232,
-    &quot;schema_version&quot;: 1,
-    &quot;source_files&quot;: 95
+    &quot;required_human_domains&quot;: 10,
+    &quot;schema_version&quot;: 2,
+    &quot;source_files&quot;: 95,
+    &quot;status&quot;: &quot;complete&quot;
   },
   &quot;family_id&quot;: &quot;repository-docs&quot;,
   &quot;files&quot;: [
     {
-      &quot;bytes&quot;: 986,
+      &quot;bytes&quot;: 1349,
       &quot;path&quot;: &quot;000-index.md&quot;,
-      &quot;sha256&quot;: &quot;a030fee17aee5bec4c7b813f77be6c8967a20d6f2390c44283796481f3b80acb&quot;
+      &quot;sha256&quot;: &quot;3bd2662c07c9095bf246049a2b12a70e17329e9e2c6334a08d53a46689f963d9&quot;
     },
     {
       &quot;bytes&quot;: 907,
@@ -75,14 +296,39 @@
       &quot;sha256&quot;: &quot;ac33ca63cddcd1b651c771613fa42f3ee998a626250e6a770d2d2ab967b98d69&quot;
     },
     {
-      &quot;bytes&quot;: 218433,
-      &quot;path&quot;: &quot;data/artefact-inventory.json&quot;,
-      &quot;sha256&quot;: &quot;3a80ca5d9fda2d989ea050e2ccb1c20cb347d96f63c04476b63dbd6bd55d42e3&quot;
+      &quot;bytes&quot;: 2254,
+      &quot;path&quot;: &quot;011-documentation-reference-standard.md&quot;,
+      &quot;sha256&quot;: &quot;0f88e7439a10d3603abdb3101dc6cb9c19d3a0d2ea93b04957a781ba8fa687a1&quot;
     },
     {
-      &quot;bytes&quot;: 249,
+      &quot;bytes&quot;: 2527,
+      &quot;path&quot;: &quot;012-mrd-specification.md&quot;,
+      &quot;sha256&quot;: &quot;365b596ea7e10917cd02dc5a4c257b6c70e63b1654066bef750893783fdddb83&quot;
+    },
+    {
+      &quot;bytes&quot;: 1266,
+      &quot;path&quot;: &quot;013-site-search-rendering-and-release.md&quot;,
+      &quot;sha256&quot;: &quot;dfa6301f6e1a37cb5fdf2ec5af885b1ff3b45233a16900c7f9162450a8832fd6&quot;
+    },
+    {
+      &quot;bytes&quot;: 1559,
+      &quot;path&quot;: &quot;014-runtime-dependencies-and-public-repository.md&quot;,
+      &quot;sha256&quot;: &quot;7b946e326e2c6dd07d3ed76d3c813b8f66715f3ec5882b8f153b058e26b0cf64&quot;
+    },
+    {
+      &quot;bytes&quot;: 1422,
+      &quot;path&quot;: &quot;015-human-coverage-audit.md&quot;,
+      &quot;sha256&quot;: &quot;6ce1b521f51b45d85b61a79e225488aa7b86754ecd6c872ca397be75650dc346&quot;
+    },
+    {
+      &quot;bytes&quot;: 218433,
+      &quot;path&quot;: &quot;data/artefact-inventory.json&quot;,
+      &quot;sha256&quot;: &quot;26837f1cf9b497020f3f0ab03514499d9da1b6eb9ff168d511e61f1b983ba0e7&quot;
+    },
+    {
+      &quot;bytes&quot;: 8545,
       &quot;path&quot;: &quot;data/coverage-report.json&quot;,
-      &quot;sha256&quot;: &quot;87d075c33f6ca630ffc4cad72b1450db69a250e2df6e55934957e340100276f9&quot;
+      &quot;sha256&quot;: &quot;906e9fdbd43daba368d45d02408e58dccc36678f168469891b71cc7bc679602b&quot;
     },
     {
       &quot;bytes&quot;: 21711,
@@ -277,9 +523,9 @@
         &quot;sha256&quot;: &quot;6b6dc4f9ed3744a2974abe14d3afcac2ece6ec5850978c73f1c48fcd0a42ae5f&quot;
       },
       {
-        &quot;bytes&quot;: 5993,
+        &quot;bytes&quot;: 9806,
         &quot;path&quot;: &quot;prescriptives/documentation/05-repository-human-bundle.mrd.json&quot;,
-        &quot;sha256&quot;: &quot;e830bcbffae17df662d01b57a0dafb591d8c9b7ecf2b690cd1d1cc3cedad4572&quot;
+        &quot;sha256&quot;: &quot;5723548492ba7ffa3722dea1ff36afa7bc8ad5adaed74b4c18f16c54fe8c9363&quot;
       },
       {
         &quot;bytes&quot;: 54847,
@@ -492,9 +738,9 @@
         &quot;sha256&quot;: &quot;4992f2da85994a137fa2a05e864aafd72653fb10e7452224eda5f4c46e2288a2&quot;
       },
       {
-        &quot;bytes&quot;: 35113,
+        &quot;bytes&quot;: 46967,
         &quot;path&quot;: &quot;src/kis_mcp_doc/repository_docs.py&quot;,
-        &quot;sha256&quot;: &quot;a1388c1e61755d83c9b2863d0e4652571f18fd4b166cc5289b44fa9b4fb06b02&quot;
+        &quot;sha256&quot;: &quot;704af151823a771ceb63ceb153b0821b9f8de6bf34008beecd339fbba704cebd&quot;
       },
       {
         &quot;bytes&quot;: 26646,
@@ -562,9 +808,9 @@
         &quot;sha256&quot;: &quot;6596f7759d3eafda86995ed55fd625dbb0235850c1c4ca8f9c03edf79e2638ed&quot;
       },
       {
-        &quot;bytes&quot;: 4710,
+        &quot;bytes&quot;: 6833,
         &quot;path&quot;: &quot;tests/test_repository_docs.py&quot;,
-        &quot;sha256&quot;: &quot;dcdd9d8b0d78f57a8822e02909a6b5b7fd7587d6752fb93e0488cf9f2ef7b3f1&quot;
+        &quot;sha256&quot;: &quot;757ea74335a163f4b8a99a189e58e3e172b3d36460b9397bb15213eea3b999ef&quot;
       },
       {
         &quot;bytes&quot;: 9236,
@@ -594,6 +840,6 @@
     ]
   },
   &quot;output_class&quot;: &quot;human_documentation&quot;,
-  &quot;source_fingerprint&quot;: &quot;sha256:4eaa1b1dbbbcdc16643efc3ac17cc0fef0e872dbfcfb8cf3f3ea374364158abd&quot;
+  &quot;source_fingerprint&quot;: &quot;sha256:ad3ef9c19209858332ecf95628217a9a73f3151b917fc29c6ec2c32090579930&quot;
 }
 </pre></main></body></html>

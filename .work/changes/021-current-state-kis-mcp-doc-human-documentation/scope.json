@@ -2,22 +2,17 @@
   "schema_version": 4,
   "change_id": "021-current-state-kis-mcp-doc-human-documentation",
   "status": "active",
-  "branch": "maintenance/change-021-pages-drift-closeout",
-  "worktree": "C:/Projects/kis-mcp-doc/.work/worktrees/021f-closeout-drift-correction",
+  "branch": "change/021-human-docs-closeout",
+  "worktree": "C:/Projects/kis-mcp-doc/.work/worktrees/021-human-docs-closeout",
   "base": "main",
   "outcome": "Implement the complete current-state kis-mcp-doc human documentation programme and deterministic artefact metadata/relationship graph.",
   "owned_paths": [
     ".work/changes/021-current-state-kis-mcp-doc-human-documentation/**",
-    "mrd/documentation/**",
-    "contracts/documentation/**",
-    "contracts/publication/**",
+    "prescriptives/documentation/**",
     "publication/**",
     "src/kis_mcp_doc/**",
     "tests/**",
-    "generated/**",
-    ".editorconfig",
-    "scripts/configure-repository.ps1",
-    "scripts/verify.ps1"
+    "generated/**"
   ],
   "shared_paths": [],
   "excluded_paths": [
@@ -37,21 +32,21 @@
     "ci"
   ],
   "base_evidence": {
-    "local_sha": "164765b4d2de113173033efae54b36d8716c8e8f",
-    "local_tree": "39f0672f01421de1a8d4bbd5931f1805e9968c04",
-    "upstream_sha": "164765b4d2de113173033efae54b36d8716c8e8f",
-    "upstream_tree": "39f0672f01421de1a8d4bbd5931f1805e9968c04",
+    "local_sha": "18f3367ada2948783ca04b45635bc2f3e9e3d9c0",
+    "local_tree": "0acc1368464e1ccb62d7504459a0aec077206ebd",
+    "upstream_sha": "18f3367ada2948783ca04b45635bc2f3e9e3d9c0",
+    "upstream_tree": "0acc1368464e1ccb62d7504459a0aec077206ebd",
     "upstream_ref": "github:main",
-    "evidence_source": "verified_local_tracking_equal",
+    "evidence_source": "kis_github_refresh_registered_default_branch",
     "relation": "equal"
   },
   "work_management": {
     "project_id": "kis-mcp-doc",
-    "record_id": "TASK-59",
+    "record_id": "PROGRAMME-51",
     "source_repository": "NielPieterse0/kis-mcp-doc",
-    "source_number": 59,
+    "source_number": 51,
     "source_kind": "issue",
-    "documentation_impact": "pre_merge_complete",
+    "documentation_impact": "active",
     "capture_status": "active_claimed"
   }
 }

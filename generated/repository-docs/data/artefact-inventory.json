@@ -2487,7 +2487,7 @@
       "baseline_release_identity": null,
       "canonical_path": "prescriptives/documentation/05-repository-human-bundle.mrd.json",
       "change_classification": null,
-      "content_hash": "sha256:e830bcbffae17df662d01b57a0dafb591d8c9b7ecf2b690cd1d1cc3cedad4572",
+      "content_hash": "sha256:5723548492ba7ffa3722dea1ff36afa7bc8ad5adaed74b4c18f16c54fe8c9363",
       "dependencies": [
         {
           "intent": "declared_mrd_dependency",
@@ -2521,7 +2521,7 @@
         "json",
         "machine_readable_record"
       ],
-      "logical_version": "1.1.0",
+      "logical_version": "1.2.0",
       "migration_trace": [],
       "owner": "prescriptives/documentation/05-repository-human-bundle.mrd.json",
       "provenance": {
@@ -5454,7 +5454,7 @@
       "baseline_release_identity": null,
       "canonical_path": "src/kis_mcp_doc/repository_docs.py",
       "change_classification": null,
-      "content_hash": "sha256:a1388c1e61755d83c9b2863d0e4652571f18fd4b166cc5289b44fa9b4fb06b02",
+      "content_hash": "sha256:704af151823a771ceb63ceb153b0821b9f8de6bf34008beecd339fbba704cebd",
       "dependencies": [],
       "editability": "source_editable",
       "exact_git_revision": null,
@@ -6238,7 +6238,7 @@
       "baseline_release_identity": null,
       "canonical_path": "tests/test_repository_docs.py",
       "change_classification": null,
-      "content_hash": "sha256:dcdd9d8b0d78f57a8822e02909a6b5b7fd7587d6752fb93e0488cf9f2ef7b3f1",
+      "content_hash": "sha256:757ea74335a163f4b8a99a189e58e3e172b3d36460b9397bb15213eea3b999ef",
       "dependencies": [],
       "editability": "source_editable",
       "exact_git_revision": null,

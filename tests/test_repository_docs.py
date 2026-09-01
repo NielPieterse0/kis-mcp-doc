@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import kis_mcp_doc.repository_docs as repository_docs_module
 from kis_mcp_doc.publication_kernel import PublicationFamilyRegistry
 from kis_mcp_doc.repository_docs import (
     _is_repository_source,
@@ -72,6 +73,15 @@ def test_repository_docs_build_is_deterministic_and_complete(tmp_path: Path) -> 
     assert "semantics and bytes" in verification_page
     assert "generated-output checks reconstruct publication, search, site, and release artefacts" in verification_page
     assert (first / "006-coverage-and-freshness.md").is_file()
+    assert (first / "011-documentation-reference-standard.md").is_file()
+    assert (first / "012-mrd-specification.md").is_file()
+    assert (first / "013-site-search-rendering-and-release.md").is_file()
+    assert (first / "014-runtime-dependencies-and-public-repository.md").is_file()
+    assert (first / "015-human-coverage-audit.md").is_file()
+    assert coverage["status"] == "complete"
+    assert coverage["required_human_domains"] == coverage["covered_required_human_domains"]
+    assert coverage["required_human_domains"] >= 10
+    assert all(item["matched_sources"] for item in coverage["human_domains"] if item["required"])
 
 
 def test_repository_docs_rejects_wrong_output_class() -> None:
@@ -80,6 +90,44 @@ def test_repository_docs_rejects_wrong_output_class() -> None:
     result = validate_repository_docs(ROOT, family)
     assert result["status"] == "invalid"
     assert result["diagnostics"][0]["code"] == "REPOSITORY_DOCUMENTATION_INVALID"
+
+
+def test_repository_docs_rejects_missing_required_human_coverage(monkeypatch) -> None:
+    monkeypatch.setattr(
+        repository_docs_module,
+        "_human_coverage",
+        lambda _root: [{
+            "id": "required-domain",
+            "title": "Required domain",
+            "required": True,
+            "source_patterns": ["missing/**"],
+            "matched_sources": [],
+            "projection_route": "001-architecture-and-authority.md",
+            "source_covered": False,
+        }],
+    )
+    result = validate_repository_docs(ROOT, _family())
+    assert result["status"] == "invalid"
+    assert "required human coverage domain has no current source match" in result["diagnostics"][0]["message"]
+
+
+def test_repository_docs_rejects_missing_required_projection_route(monkeypatch) -> None:
+    monkeypatch.setattr(
+        repository_docs_module,
+        "_human_coverage",
+        lambda _root: [{
+            "id": "required-domain",
+            "title": "Required domain",
+            "required": True,
+            "source_patterns": ["AGENTS.md"],
+            "matched_sources": ["AGENTS.md"],
+            "projection_route": "999-missing.md",
+            "source_covered": True,
+        }],
+    )
+    result = validate_repository_docs(ROOT, _family())
+    assert result["status"] == "invalid"
+    assert "required human coverage projection route is not generated" in result["diagnostics"][0]["message"]
 
 
 def test_repository_docs_detects_tampered_generated_output(tmp_path: Path) -> None:

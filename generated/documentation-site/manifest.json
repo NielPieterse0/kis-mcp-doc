@@ -1,5 +1,5 @@
 {
-  "bundle_sha256": "d9cb9eacd239a2af4241c8ece9eb03e7edefd6371b660a278b4972b15ba49e86",
+  "bundle_sha256": "152ae0a06c78f06fdaa533c5d6531fa5dec389b7ab7c57da7dd56b6e32e61e98",
   "contract": {
     "name": "kis-documentation-site",
     "version": 1
@@ -96,14 +96,39 @@
       "sha256": "7067bb0a9937cef83c09fa6e1fe5fb22cd69548dea58aeafa23fd063f338020f"
     },
     {
-      "bytes": 18703,
+      "bytes": 18799,
       "path": "docs/repository/010-prescriptive-coverage/index.html",
-      "sha256": "61af3b5b4dba392877956f357cf09546389020d67a9b3485bae1384494db767c"
+      "sha256": "831be5746e065918d857a0634f1da887d713a4a31ffa6961a0cd04c7100d927a"
     },
     {
-      "bytes": 2545,
+      "bytes": 4118,
+      "path": "docs/repository/011-documentation-reference-standard/index.html",
+      "sha256": "da4672058c1a2649827a0940ad47a7e19e9e4908e6eb2aa2e9b0cf9d2c654046"
+    },
+    {
+      "bytes": 4358,
+      "path": "docs/repository/012-mrd-specification/index.html",
+      "sha256": "97564d55656bf5c3275915a867d6028087bd3ae7ef48944a5eb9481288871535"
+    },
+    {
+      "bytes": 2818,
+      "path": "docs/repository/013-site-search-rendering-and-release/index.html",
+      "sha256": "cec1be6a3dc29235a0c611bf775df56eb1547089a7fa6ef899b6b822469c22ec"
+    },
+    {
+      "bytes": 3427,
+      "path": "docs/repository/014-runtime-dependencies-and-public-repository/index.html",
+      "sha256": "09340053f8d327ad5c7f99942ec85201a3bf5df9d473ac0e303122d581921b26"
+    },
+    {
+      "bytes": 3402,
+      "path": "docs/repository/015-human-coverage-audit/index.html",
+      "sha256": "7bdafa823d5b40ec585e68139af0f4cdaba3b902223d5f582aca383d1a2db5a8"
+    },
+    {
+      "bytes": 3133,
       "path": "docs/repository/index.html",
-      "sha256": "54aa3fdf2f55a327e49d2cd38b18e2985f24e98e5988a2b2b1abf67d213fbb46"
+      "sha256": "9b6a966fc3613692847827ae8861e6368e222d3bd222d464e9518ba424213c24"
     },
     {
       "bytes": 938,
@@ -158,12 +183,12 @@
     {
       "bytes": 299085,
       "path": "reference/repository-docs/data/artefact-inventory/index.html",
-      "sha256": "5e2d5b9ad1f967dd864563e1ed24a2785e24ab9617ca8892c98fab9a77065714"
+      "sha256": "d769107780f75382bedf0e6a3fcfee35cea0abd2e132f6d7aba9ffe76ef807bd"
     },
     {
-      "bytes": 1275,
+      "bytes": 11681,
       "path": "reference/repository-docs/data/coverage-report/index.html",
-      "sha256": "98b236e14ffdb67b197baa6a46aa1662f0f2c1b7d5f2d73d1c735fe39156ccb1"
+      "sha256": "e3479cb04f0e7ae1437fc30574a2c39fdc26c98b706a03d3d5278dc14c624fd5"
     },
     {
       "bytes": 30821,
@@ -191,19 +216,19 @@
       "sha256": "d610c4b1570aae508964ce5f27aa5371ab2f57b0716faa51565e12ac9b113425"
     },
     {
-      "bytes": 28001,
+      "bytes": 39955,
       "path": "reference/repository-docs/manifest/index.html",
-      "sha256": "0f41c9f18440e766673bfeae2518154232386d4748b5a25c0e39100ca428ff66"
+      "sha256": "0c5bff1c515a3f38d7362ec8ca20f96de4c5fad942cfe1d2ddc2f6624b68030a"
     },
     {
-      "bytes": 12339,
+      "bytes": 13631,
       "path": "routes.json",
-      "sha256": "81a2561484e3610f8a3b0cf33bd627a71fbedc4bead814bc5d03c91af3d0f1fb"
+      "sha256": "7c1e350b3eaf23a3a46b333d74c40c95b9ecb2117e7d99e56e6edeb87558a62d"
     },
     {
-      "bytes": 249871,
+      "bytes": 275292,
       "path": "search-index.json",
-      "sha256": "b8403e267551f446ac0c1e4b030614774d37ae82ca65b4705692c894b3908316"
+      "sha256": "fc3dd539cbd8893b9cd293668e4b679f7b9fa24a5247382b22b2d839051f1a0d"
     },
     {
       "bytes": 794,
@@ -327,9 +352,9 @@
       "sha256": "b3c4dbf9b3fd57546968a773b8aee8ceb66675d3180a7de012e9d1e76c81a0fe"
     },
     {
-      "bytes": 249871,
+      "bytes": 275292,
       "path": "generated/documentation-search/search-index.json",
-      "sha256": "b8403e267551f446ac0c1e4b030614774d37ae82ca65b4705692c894b3908316"
+      "sha256": "fc3dd539cbd8893b9cd293668e4b679f7b9fa24a5247382b22b2d839051f1a0d"
     },
     {
       "bytes": 728,
@@ -457,9 +482,9 @@
       "sha256": "ab7bf178afe469cd73d0f9325cce6065d2f134e016c3917727aa6ef3f189a3fb"
     },
     {
-      "bytes": 986,
+      "bytes": 1349,
       "path": "generated/repository-docs/000-index.md",
-      "sha256": "a030fee17aee5bec4c7b813f77be6c8967a20d6f2390c44283796481f3b80acb"
+      "sha256": "3bd2662c07c9095bf246049a2b12a70e17329e9e2c6334a08d53a46689f963d9"
     },
     {
       "bytes": 907,
@@ -512,14 +537,39 @@
       "sha256": "ac33ca63cddcd1b651c771613fa42f3ee998a626250e6a770d2d2ab967b98d69"
     },
     {
-      "bytes": 218433,
-      "path": "generated/repository-docs/data/artefact-inventory.json",
-      "sha256": "3a80ca5d9fda2d989ea050e2ccb1c20cb347d96f63c04476b63dbd6bd55d42e3"
+      "bytes": 2254,
+      "path": "generated/repository-docs/011-documentation-reference-standard.md",
+      "sha256": "0f88e7439a10d3603abdb3101dc6cb9c19d3a0d2ea93b04957a781ba8fa687a1"
     },
     {
-      "bytes": 249,
+      "bytes": 2527,
+      "path": "generated/repository-docs/012-mrd-specification.md",
+      "sha256": "365b596ea7e10917cd02dc5a4c257b6c70e63b1654066bef750893783fdddb83"
+    },
+    {
+      "bytes": 1266,
+      "path": "generated/repository-docs/013-site-search-rendering-and-release.md",
+      "sha256": "dfa6301f6e1a37cb5fdf2ec5af885b1ff3b45233a16900c7f9162450a8832fd6"
+    },
+    {
+      "bytes": 1559,
+      "path": "generated/repository-docs/014-runtime-dependencies-and-public-repository.md",
+      "sha256": "7b946e326e2c6dd07d3ed76d3c813b8f66715f3ec5882b8f153b058e26b0cf64"
+    },
+    {
+      "bytes": 1422,
+      "path": "generated/repository-docs/015-human-coverage-audit.md",
+      "sha256": "6ce1b521f51b45d85b61a79e225488aa7b86754ecd6c872ca397be75650dc346"
+    },
+    {
+      "bytes": 218433,
+      "path": "generated/repository-docs/data/artefact-inventory.json",
+      "sha256": "26837f1cf9b497020f3f0ab03514499d9da1b6eb9ff168d511e61f1b983ba0e7"
+    },
+    {
+      "bytes": 8545,
       "path": "generated/repository-docs/data/coverage-report.json",
-      "sha256": "87d075c33f6ca630ffc4cad72b1450db69a250e2df6e55934957e340100276f9"
+      "sha256": "906e9fdbd43daba368d45d02408e58dccc36678f168469891b71cc7bc679602b"
     },
     {
       "bytes": 21711,
@@ -547,9 +597,9 @@
       "sha256": "a290da064962d3463afef0872f5b6bc28191b057376c88f4c1c6b3f239bbdb66"
     },
     {
-      "bytes": 21129,
+      "bytes": 30723,
       "path": "generated/repository-docs/manifest.json",
-      "sha256": "58219ba491d1ba3dd8bc922f2ba8238b2169cb4b8fefb1b25aa59a0b02fd16b8"
+      "sha256": "2a8f058ebd8d770d4439c01feacbc820b650ece04629e0cd412b40d2545794ff"
     },
     {
       "bytes": 9133,
@@ -568,5 +618,5 @@
     }
   ],
   "registry_sha256": "f3c0dbf71b954dc1a60bc358364fec85a4a02d5e39f2eb8a68f05c5fecf34df1",
-  "routes": 49
+  "routes": 54
 }

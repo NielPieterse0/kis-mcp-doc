@@ -9,7 +9,7 @@
     "layer": "L1",
     "record_mode": "prescriptive",
     "status": "active",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "dependencies": [
       {
         "mrd_id": "urn:uuid:ae7e7dc1-2b8b-5988-845d-24df49dcfe0a",
@@ -121,6 +121,21 @@
       "observed_and_derived_distinguished": true,
       "unsupported_inference_forbidden": true
     },
+    "human_coverage_contract": {
+      "completeness_rule": "Every required human-relevant domain MUST resolve at least one current source artefact and one generated human projection route.",
+      "domains": [
+        {"id": "repository_purpose_authority", "title": "Repository purpose and authority", "required": true, "source_patterns": ["AGENTS.md"], "projection_route": "001-architecture-and-authority.md"},
+        {"id": "repository_governance", "title": "Repository Governance and Directory Grammar", "required": true, "source_patterns": ["prescriptives/governance/*.json", "src/kis_mcp_doc/repository_governance.py", "tests/test_repository_governance.py"], "projection_route": "007-repository-governance.md"},
+        {"id": "documentation_reference", "title": "Documentation Reference Standard and source policy", "required": true, "source_patterns": ["prescriptives/documentation/01-reference-standard.mrd.json", "prescriptives/documentation/02-reference-registry.mrd.json", "publication/harvest-sources.json"], "projection_route": "011-documentation-reference-standard.md"},
+        {"id": "mrd_specification", "title": "MRD Specification architecture", "required": true, "source_patterns": ["prescriptives/mrd-specification/*.json", "contracts/mrd/**/*.json", "contracts/mrd-specification/**/*.json"], "projection_route": "012-mrd-specification.md"},
+        {"id": "publication", "title": "Publication kernel and family architecture", "required": true, "source_patterns": ["prescriptives/documentation/03-publication-architecture.mrd.json", "prescriptives/documentation/04-publication-family-registry.mrd.json", "src/kis_mcp_doc/publication_kernel.py", "publication/*.json"], "projection_route": "003-publication-and-generated-documentation.md"},
+        {"id": "site_search_render_release", "title": "Site, navigation, search, rendering, and release", "required": true, "source_patterns": ["src/kis_mcp_doc/documentation_site.py", "src/kis_mcp_doc/documentation_search.py", "src/kis_mcp_doc/documentation_release.py", "src/kis_mcp_doc/render.py", "publication/documentation-site.json", "publication/documentation-search.json", "publication/documentation-release.json"], "projection_route": "013-site-search-rendering-and-release.md"},
+        {"id": "verification_ci", "title": "Verification, tests, hooks, and CI", "required": true, "source_patterns": ["scripts/verify.ps1", ".github/workflows/*.yml", "tests/*.py"], "projection_route": "004-verification-and-operations.md"},
+        {"id": "runtime_dependencies", "title": "Runtime and dependency controls", "required": true, "source_patterns": ["pyproject.toml", "uv.lock", "tooling/windows-runtime.json", "scripts/runtime-preflight.ps1"], "projection_route": "014-runtime-dependencies-and-public-repository.md"},
+        {"id": "public_repository", "title": "Public repository and provider posture", "required": true, "source_patterns": ["publication/public-repository.json", "src/kis_mcp_doc/public_repository.py", ".github/CODEOWNERS", ".github/dependabot.yml"], "projection_route": "014-runtime-dependencies-and-public-repository.md"},
+        {"id": "artefact_lineage", "title": "Artefact metadata, relationships, coverage, and freshness", "required": true, "source_patterns": ["prescriptives/documentation/05-repository-human-bundle.mrd.json", "src/kis_mcp_doc/repository_docs.py", "tests/test_repository_docs.py"], "projection_route": "005-artefact-metadata-and-relationships.md"}
+      ]
+    },
     "requirements": [
       {
         "rule_id": "KIS-DOC-REP-001",
@@ -156,6 +171,11 @@
         "rule_id": "KIS-DOC-REP-007",
         "statement": "Verification MUST detect source, inventory, relationship, generated-file, site, search, and release drift before completion.",
         "enforcement": "generator"
+      },
+      {
+        "rule_id": "KIS-DOC-REP-008",
+        "statement": "Every required human-relevant repository domain MUST resolve current source artefacts and a generated human projection route; missing source coverage or a missing projection route MUST block repository-documentation validation.",
+        "enforcement": "validator"
       }
     ]
   }

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MRD Specification</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/docs/">Docs</a> / kis-mcp-doc Repository Documentation</div><aside class="publication-meta"><strong>Version:</strong> 1.0.0. <strong>Status:</strong> active. <strong>Authority:</strong> generated projection of <code>urn:uuid:0e84ae43-f74a-5065-a5e2-b21e105376b8</code>; canonical sources remain authoritative.</aside><h1 id="mrd-specification">MRD Specification</h1>
+<p>The MRD Specification is a distinct prescriptive domain: it defines conforming MRDs, not repository-wide governance.</p>
+<p>The catalog contains <strong>47</strong> MRD types across <strong>12</strong> functional classes. Repositories select the minimum sufficient set; they do not instantiate the catalog by default.</p>
+<h2 id="specification-sections">Specification sections</h2>
+<table><caption>Specification sections</caption><thead><tr><th scope="col">Concern</th><th scope="col">Purpose</th><th scope="col">Rules</th></tr></thead><tbody>
+<tr><td><code>classification</code></td><td>Define the stable functional vocabulary used to classify KIS MRDs without coupling classification to repository layout.</td><td>5</td></tr>
+<tr><td><code>applicability</code></td><td>Select the minimum sufficient governed MRD set for the actual repository need rather than instantiating the full catalog by default.</td><td>6</td></tr>
+<tr><td><code>ownership</code></td><td>Ensure every governed fact has one canonical owner and every non-owning artifact preserves authority through explicit typed relationships instead of restating truth.</td><td>6</td></tr>
+<tr><td><code>layering</code></td><td>Define authority ordering for MRD dependencies.</td><td>3</td></tr>
+<tr><td><code>dependencies</code></td><td>Make all authority dependencies explicit, stable, resolvable, and acyclic.</td><td>6</td></tr>
+<tr><td><code>provenance</code></td><td>Preserve authority direction and distinguish authored prescription from derived implementation views and captured evidence.</td><td>8</td></tr>
+<tr><td><code>lifecycle</code></td><td>Define minimal lifecycle and mutability rules for each record mode.</td><td>6</td></tr>
+<tr><td><code>validation</code></td><td>Define MRD structural and semantic conformance checks, stable result semantics, and blocking failure codes.</td><td>5</td></tr>
+</tbody></table>
+<h2 id="core-contracts">Core contracts</h2>
+<ul>
+<li>Selection: not_applicable by default; select only the minimum sufficient governed artefacts.</li>
+<li>Ownership: exactly 1 current canonical owner per governed fact; non-owners reference rather than redefine.</li>
+<li>Dependencies must resolve, obey authority-layer direction, contain no duplicate edges, and remain acyclic.</li>
+<li>Provenance distinguishes prescriptive, descriptive, and meta records and preserves direct, derived, and inferred fact quality.</li>
+<li>Generated human documentation and META projections remain downstream and non-authoritative.</li>
+</ul>
+<h2 id="validation-modes">Validation modes</h2>
+<ul>
+<li><code>schema</code>: JSON Schema rejects structurally invalid authority before semantic checks.</li>
+<li><code>validator</code>: Deterministic semantic validation emits stable machine-readable reason codes.</li>
+<li><code>workflow</code>: KIS/kis-op governed workflow prevents prohibited state transitions or unadmitted mutation.</li>
+<li><code>generator</code>: Deterministic generation and stale-output verification enforce one-way source-to-view behavior.</li>
+<li><code>review</code>: Human or agent review is required where semantic adequacy cannot be proven deterministically.</li>
+</ul><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/docs/repository/011-documentation-reference-standard/">Previous</a> <a rel="next" href="/kis-mcp-doc/docs/repository/013-site-search-rendering-and-release/">Next</a></nav></main></body></html>
