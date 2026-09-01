@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import tomllib
 from pathlib import Path
 from typing import Any
 
@@ -328,6 +329,41 @@ def _header(title: str, subtitle: str) -> list[str]:
     return ["<!-- GENERATED — DO NOT EDIT -->", f"# {title}", "", subtitle, ""]
 
 
+def _human_coverage(root: Path) -> list[dict[str, Any]]:
+    policy = _load_json(root / _POLICY)
+    contract = policy.get("content", {}).get("human_coverage_contract", {})
+    domains = contract.get("domains", [])
+    if not domains:
+        raise ValueError("repository human bundle must declare a non-empty human coverage contract")
+    if not any(bool(domain.get("required", False)) for domain in domains):
+        raise ValueError("human coverage contract must declare at least one required domain")
+    sources = [path.relative_to(root).as_posix() for path in _repository_sources(root)]
+    coverage: list[dict[str, Any]] = []
+    seen_ids: set[str] = set()
+    for domain in domains:
+        domain_id = domain["id"]
+        if domain_id in seen_ids:
+            raise ValueError(f"duplicate human coverage domain id: {domain_id}")
+        seen_ids.add(domain_id)
+        if domain.get("required", False) and not domain.get("source_patterns"):
+            raise ValueError(f"required human coverage domain has no source patterns: {domain_id}")
+        if domain.get("required", False) and not domain.get("projection_route"):
+            raise ValueError(f"required human coverage domain has no projection route: {domain_id}")
+
+        patterns = domain.get("source_patterns", [])
+        matched = sorted({source for source in sources if any(Path(source).match(pattern) for pattern in patterns)})
+        coverage.append({
+            "id": domain["id"],
+            "title": domain["title"],
+            "required": bool(domain.get("required", False)),
+            "source_patterns": patterns,
+            "matched_sources": matched,
+            "projection_route": domain["projection_route"],
+            "source_covered": bool(matched),
+        })
+    return coverage
+
+
 def _pages(root: Path, config: dict[str, Any], model: dict[str, Any]) -> dict[str, bytes]:
     counts: dict[str, int] = {}
     for artefact in model["artefacts"]:
@@ -348,6 +384,11 @@ def _pages(root: Path, config: dict[str, Any], model: dict[str, Any]) -> dict[st
         "- [Directory Grammar](008-directory-grammar.md)",
         "- [Rule assurance and enforcement](009-rule-assurance-and-enforcement.md)",
         "- [Prescriptive coverage](010-prescriptive-coverage.md)",
+        "- [Documentation Reference Standard](011-documentation-reference-standard.md)",
+        "- [MRD Specification](012-mrd-specification.md)",
+        "- [Site, search, rendering, and release](013-site-search-rendering-and-release.md)",
+        "- [Runtime, dependencies, and public repository](014-runtime-dependencies-and-public-repository.md)",
+        "- [Human coverage audit](015-human-coverage-audit.md)",
     ]
     authority = _header("Architecture and authority", "Understand where repository truth lives and how generated documentation relates to it.")
     authority += [
@@ -488,6 +529,59 @@ def _pages(root: Path, config: dict[str, Any], model: dict[str, Any]) -> dict[st
         coverage_page.append(f"| `{entry['identity']}` | `{entry['canonical_path']}` | `{entry['authoritative_owner']}` | `{projection['disposition']}` | `{route}` |")
     coverage_page.append("")
 
+    reference_standard = _load_json(root / "prescriptives/documentation/01-reference-standard.mrd.json")
+    reference_content = reference_standard["content"]
+    reference_page = _header("Documentation Reference Standard", "Understand which sources may define facts, which sources may guide presentation, and how conflicts are handled.")
+    reference_page += [reference_content["purpose"], "", "## Authority roles", "", "| Role | Domain | May define KIS facts |", "|---|---|---|"]
+    for role in reference_content["authority_model"]:
+        reference_page.append(f"| `{role['role']}` | {role['domain']} | {'Yes' if role['may_define_kis_facts'] else 'No'} |")
+    reference_page += ["", "## Output classes", "", "| Class | Purpose | Source rule |", "|---|---|---|"]
+    for output_class in reference_content["output_classes"]:
+        reference_page.append(f"| `{output_class['class']}` | {output_class['purpose']} | {output_class['source_rule']} |")
+    reference_page += ["", "## Conflict and reproducibility rules", "", f"- Canonical conflict: `{reference_content['conflict_behavior']['canonical_conflict']}`.", f"- Unsupported promotion: `{reference_content['conflict_behavior']['unsupported_promotion']}`.", f"- Stale or unpinned references: `{reference_content['conflict_behavior']['stale_or_unpinned_reference']}`.", "", "MCP protocol material is normative only inside its applicable MCP conformance domain. Google Developer Documentation guidance is presentation guidance only; neither source becomes KIS repository authority.", ""]
+
+    mrd_documents = [_load_json(path) for path in sorted((root / "prescriptives/mrd-specification").glob("*.json"))]
+    classification = next(doc for doc in mrd_documents if doc["content"]["concern"] == "classification")
+    applicability = next(doc for doc in mrd_documents if doc["content"]["concern"] == "applicability")
+    ownership = next(doc for doc in mrd_documents if doc["content"]["concern"] == "ownership")
+    validation = next(doc for doc in mrd_documents if doc["content"]["concern"] == "validation")
+    mrd_page = _header("MRD Specification", "The MRD Specification is a distinct prescriptive domain: it defines conforming MRDs, not repository-wide governance.")
+    mrd_page += [f"The catalog contains **{classification['content']['catalog_policy']['expected_type_count']}** MRD types across **{classification['content']['catalog_policy']['expected_class_count']}** functional classes. Repositories select the minimum sufficient set; they do not instantiate the catalog by default.", "", "## Specification sections", "", "| Concern | Purpose | Rules |", "|---|---|---:|"]
+    for document in sorted(mrd_documents, key=lambda item: item["content"]["section_order"]):
+        content = document["content"]
+        mrd_page.append(f"| `{content['concern']}` | {content['purpose']} | {len(content.get('rules', []))} |")
+    mrd_page += ["", "## Core contracts", "", f"- Selection: {applicability['content']['selection_contract']['default_disposition']} by default; select only the minimum sufficient governed artefacts.", f"- Ownership: exactly {ownership['content']['ownership_contract']['canonical_owner_count']} current canonical owner per governed fact; non-owners reference rather than redefine.", "- Dependencies must resolve, obey authority-layer direction, contain no duplicate edges, and remain acyclic.", "- Provenance distinguishes prescriptive, descriptive, and meta records and preserves direct, derived, and inferred fact quality.", "- Generated human documentation and META projections remain downstream and non-authoritative.", "", "## Validation modes", ""]
+    for mode in validation["content"]["enforcement_modes"]:
+        mrd_page.append(f"- `{mode['mode']}`: {mode['meaning']}")
+    mrd_page.append("")
+
+    site_config = _load_json(root / "publication/documentation-site.json")
+    search_config = _load_json(root / "publication/documentation-search.json")
+    release_config = _load_json(root / "publication/documentation-release.json")
+    site_page = _header("Site, search, rendering, and release", "Follow the repository bundle from registered publication family to reader-facing GitHub Pages output.")
+    site_page += ["The publication-family registry selects reader-facing families with `publish_to_site`. Site, public search, and the Pages release use that same selection; registration alone never implies public exposure.", "", "## Delivery surfaces", "", "| Surface | Current configuration |", "|---|---|", f"| Site | `{site_config['title']}` at base path `{site_config['base_path']}`; search index `{site_config['search_index']}` |", f"| Search | default result limit `{search_config['default_limit']}`; minimum token length `{search_config['minimum_token_length']}` |", f"| Release | hosting `{release_config['hosting']}`; site output `{release_config['site_output']}` |", "", "## Deterministic flow", "", "1. A family adapter validates and builds its own semantic bundle.", "2. The shared publication kernel verifies exact file inventory, bytes, and family manifests.", "3. The documentation site composes only `publish_to_site=true` families into routes and navigation.", "4. Search indexes the same public family set.", "5. The release builder packages the generated site and release metadata for GitHub Pages.", "", "Rendering is downstream presentation. It does not interpret new canonical facts or write changes back to source authority.", ""]
+
+    runtime = _load_json(root / "tooling/windows-runtime.json")
+    project_config = tomllib.loads((root / "pyproject.toml").read_text(encoding="utf-8"))
+    project = project_config["project"]
+    dependency_groups = project_config.get("dependency-groups", {})
+    runtime_dependencies = ", ".join(f"`{item}`" for item in project.get("dependencies", [])) or "None declared"
+    development_dependencies = ", ".join(f"`{item}`" for item in dependency_groups.get("dev", [])) or "None declared"
+    public_repository = _load_json(root / "publication/public-repository.json")
+    public_page = _header("Runtime, dependencies, and public repository", "Understand the executable environment, dependency baseline, and public-repository controls that affect operation and contribution.")
+    public_page += ["## Runtime and dependencies", "", f"- Governed Windows Python minimum: `{runtime['python']['minimum_version']}`; package requirement: `{project['requires-python']}`.", f"- Preferred Windows launcher: `{runtime['python']['preferred_launcher']} {runtime['python']['preferred_selector']}` with Authenticode trust required.", "- `uv` managed Python and Python downloads are disabled for canonical verification; offline canonical verification is enabled.", f"- Runtime dependencies: {runtime_dependencies}.", f"- Development dependencies: {development_dependencies}.", "- Defender exclusions, Smart App Control bypasses, and execution-policy weakening are prohibited by the runtime policy.", "", "## Public repository posture", "", f"- Status: {public_repository['status']}.", f"- Verification command: `{public_repository['verification_command']}`.", f"- License posture: {public_repository['license_notice']}", f"- Security reporting: {public_repository['security_reporting']}", "", "## Repository controls", "", "| Control | Value |", "|---|---|"]
+    for key, value in public_repository["repository_controls"].items():
+        public_page.append(f"| `{key}` | `{str(value).lower() if isinstance(value, bool) else value}` |")
+    public_page.append("")
+
+    human_coverage = _human_coverage(root)
+    human_coverage_page = _header("Human coverage audit", "This matrix proves that each required human-relevant repository domain has current source evidence and a generated projection route.")
+    human_coverage_page += ["| Domain | Required | Matched sources | Projection route | Status |", "|---|---|---:|---|---|"]
+    for domain in human_coverage:
+        status = "covered" if domain["source_covered"] else "missing"
+        human_coverage_page.append(f"| `{domain['id']}` | {'Yes' if domain['required'] else 'No'} | {len(domain['matched_sources'])} | `{domain['projection_route']}` | `{status}` |")
+    human_coverage_page += ["", "The machine-readable [coverage report](data/coverage-report.json) contains the exact matched source paths for every domain. A required domain with no source match or no generated projection route blocks validation.", ""]
+
     return {
         "000-index.md": ("\n".join(index) + "\n").encode("utf-8"),
         "001-architecture-and-authority.md": ("\n".join(authority) + "\n").encode("utf-8"),
@@ -500,6 +594,11 @@ def _pages(root: Path, config: dict[str, Any], model: dict[str, Any]) -> dict[st
         "008-directory-grammar.md": ("\n".join(grammar_page) + "\n").encode("utf-8"),
         "009-rule-assurance-and-enforcement.md": ("\n".join(assurance_page) + "\n").encode("utf-8"),
         "010-prescriptive-coverage.md": ("\n".join(coverage_page) + "\n").encode("utf-8"),
+        "011-documentation-reference-standard.md": ("\n".join(reference_page) + "\n").encode("utf-8"),
+        "012-mrd-specification.md": ("\n".join(mrd_page) + "\n").encode("utf-8"),
+        "013-site-search-rendering-and-release.md": ("\n".join(site_page) + "\n").encode("utf-8"),
+        "014-runtime-dependencies-and-public-repository.md": ("\n".join(public_page) + "\n").encode("utf-8"),
+        "015-human-coverage-audit.md": ("\n".join(human_coverage_page) + "\n").encode("utf-8"),
     }
 
 
@@ -512,6 +611,12 @@ def _expected_bundle(root: Path, family: dict[str, Any]) -> tuple[dict[str, byte
         raise ValueError("repository documentation family must register only human_documentation")
     model = repository_model(root)
     files = _pages(root, config, model)
+    human_coverage = _human_coverage(root)
+    for domain in human_coverage:
+        if domain["required"] and not domain["source_covered"]:
+            raise ValueError(f"required human coverage domain has no current source match: {domain['id']}")
+        if domain["required"] and domain["projection_route"] not in files:
+            raise ValueError(f"required human coverage projection route is not generated: {domain['id']} -> {domain['projection_route']}")
     files["data/artefact-inventory.json"] = _json_bytes({
         "schema_version": model["schema_version"],
         "repository": model["repository"],
@@ -529,10 +634,14 @@ def _expected_bundle(root: Path, family: dict[str, Any]) -> tuple[dict[str, byte
         payload = path.read_bytes()
         source_files.append({"path": relative, "sha256": hashlib.sha256(payload).hexdigest(), "bytes": len(payload)})
     coverage = {
-        "schema_version": 1,
+        "schema_version": 2,
+        "status": "complete",
         "source_files": len(source_files),
         "artefacts": len(model["artefacts"]),
         "relationships": len(model["relationships"]),
+        "human_domains": human_coverage,
+        "required_human_domains": sum(1 for item in human_coverage if item["required"]),
+        "covered_required_human_domains": sum(1 for item in human_coverage if item["required"] and item["source_covered"]),
         "excluded_source_classes": ["historical_change_records", "runtime_state", "generated_outputs", "work_management_human_consolidation"],
     }
     files["data/coverage-report.json"] = _json_bytes(coverage)

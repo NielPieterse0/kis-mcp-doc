@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Runtime, dependencies, and public repository</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/docs/">Docs</a> / kis-mcp-doc Repository Documentation</div><aside class="publication-meta"><strong>Version:</strong> 1.0.0. <strong>Status:</strong> active. <strong>Authority:</strong> generated projection of <code>urn:uuid:0e84ae43-f74a-5065-a5e2-b21e105376b8</code>; canonical sources remain authoritative.</aside><h1 id="runtime-dependencies-and-public-repository">Runtime, dependencies, and public repository</h1>
+<p>Understand the executable environment, dependency baseline, and public-repository controls that affect operation and contribution.</p>
+<h2 id="runtime-and-dependencies">Runtime and dependencies</h2>
+<ul>
+<li>Governed Windows Python minimum: <code>3.11</code>; package requirement: <code>&gt;=3.11</code>.</li>
+<li>Preferred Windows launcher: <code>py.exe -3.11</code> with Authenticode trust required.</li>
+<li><code>uv</code> managed Python and Python downloads are disabled for canonical verification; offline canonical verification is enabled.</li>
+<li>Runtime dependencies: <code>jsonschema&gt;=4.23</code>.</li>
+<li>Development dependencies: <code>pytest&gt;=8.3</code>.</li>
+<li>Defender exclusions, Smart App Control bypasses, and execution-policy weakening are prohibited by the runtime policy.</li>
+</ul>
+<h2 id="public-repository-posture">Public repository posture</h2>
+<ul>
+<li>Status: public documentation engineering and proving ground.</li>
+<li>Verification command: <code>pwsh -NoProfile -File scripts/verify.ps1</code>.</li>
+<li>License posture: No project-wide open-source license has been granted. Public visibility does not grant reuse, modification, or redistribution rights.</li>
+<li>Security reporting: Use GitHub private vulnerability reporting when available. Do not disclose vulnerabilities, credentials, tokens, private data, or exploit details in public issues or pull requests.</li>
+</ul>
+<h2 id="repository-controls">Repository controls</h2>
+<table><caption>Repository controls</caption><thead><tr><th scope="col">Control</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><td><code>default_branch</code></td><td><code>main</code></td></tr>
+<tr><td><code>main_protected</code></td><td><code>true</code></td></tr>
+<tr><td><code>required_check</code></td><td><code>verify</code></td></tr>
+<tr><td><code>merge_strategy</code></td><td><code>merge_commit_only</code></td></tr>
+<tr><td><code>delete_branch_on_merge</code></td><td><code>false</code></td></tr>
+<tr><td><code>actions_default_permission</code></td><td><code>read</code></td></tr>
+<tr><td><code>pages_source</code></td><td><code>github_actions</code></td></tr>
+</tbody></table><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/docs/repository/013-site-search-rendering-and-release/">Previous</a> <a rel="next" href="/kis-mcp-doc/docs/repository/015-human-coverage-audit/">Next</a></nav></main></body></html>

@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Site, search, rendering, and release</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/docs/">Docs</a> / kis-mcp-doc Repository Documentation</div><aside class="publication-meta"><strong>Version:</strong> 1.0.0. <strong>Status:</strong> active. <strong>Authority:</strong> generated projection of <code>urn:uuid:0e84ae43-f74a-5065-a5e2-b21e105376b8</code>; canonical sources remain authoritative.</aside><h1 id="site-search-rendering-and-release">Site, search, rendering, and release</h1>
+<p>Follow the repository bundle from registered publication family to reader-facing GitHub Pages output.</p>
+<p>The publication-family registry selects reader-facing families with <code>publish_to_site</code>. Site, public search, and the Pages release use that same selection; registration alone never implies public exposure.</p>
+<h2 id="delivery-surfaces">Delivery surfaces</h2>
+<table><caption>Delivery surfaces</caption><thead><tr><th scope="col">Surface</th><th scope="col">Current configuration</th></tr></thead><tbody>
+<tr><td>Site</td><td><code>KIS Documentation</code> at base path <code>/kis-mcp-doc</code>; search index <code>generated/documentation-search/search-index.json</code></td></tr>
+<tr><td>Search</td><td>default result limit <code>10</code>; minimum token length <code>2</code></td></tr>
+<tr><td>Release</td><td>hosting <code>github-pages</code>; site output <code>generated/documentation-site</code></td></tr>
+</tbody></table>
+<h2 id="deterministic-flow">Deterministic flow</h2>
+<ol>
+<li>A family adapter validates and builds its own semantic bundle.</li>
+<li>The shared publication kernel verifies exact file inventory, bytes, and family manifests.</li>
+<li>The documentation site composes only <code>publish_to_site=true</code> families into routes and navigation.</li>
+<li>Search indexes the same public family set.</li>
+<li>The release builder packages the generated site and release metadata for GitHub Pages.</li>
+</ol>
+<p>Rendering is downstream presentation. It does not interpret new canonical facts or write changes back to source authority.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/docs/repository/012-mrd-specification/">Previous</a> <a rel="next" href="/kis-mcp-doc/docs/repository/014-runtime-dependencies-and-public-repository/">Next</a></nav></main></body></html>

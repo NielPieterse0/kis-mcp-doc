@@ -1,12 +1,233 @@
 {
   "artefacts": 101,
+  "covered_required_human_domains": 10,
   "excluded_source_classes": [
     "historical_change_records",
     "runtime_state",
     "generated_outputs",
     "work_management_human_consolidation"
   ],
+  "human_domains": [
+    {
+      "id": "repository_purpose_authority",
+      "matched_sources": [
+        "AGENTS.md"
+      ],
+      "projection_route": "001-architecture-and-authority.md",
+      "required": true,
+      "source_covered": true,
+      "source_patterns": [
+        "AGENTS.md"
+      ],
+      "title": "Repository purpose and authority"
+    },
+    {
+      "id": "repository_governance",
+      "matched_sources": [
+        "prescriptives/governance/01-repository-governance.json",
+        "prescriptives/governance/02-prescriptive-artefact-registry.json",
+        "prescriptives/governance/03-directory-grammar.json",
+        "src/kis_mcp_doc/repository_governance.py",
+        "tests/test_repository_governance.py"
+      ],
+      "projection_route": "007-repository-governance.md",
+      "required": true,
+      "source_covered": true,
+      "source_patterns": [
+        "prescriptives/governance/*.json",
+        "src/kis_mcp_doc/repository_governance.py",
+        "tests/test_repository_governance.py"
+      ],
+      "title": "Repository Governance and Directory Grammar"
+    },
+    {
+      "id": "documentation_reference",
+      "matched_sources": [
+        "prescriptives/documentation/01-reference-standard.mrd.json",
+        "prescriptives/documentation/02-reference-registry.mrd.json",
+        "publication/harvest-sources.json"
+      ],
+      "projection_route": "011-documentation-reference-standard.md",
+      "required": true,
+      "source_covered": true,
+      "source_patterns": [
+        "prescriptives/documentation/01-reference-standard.mrd.json",
+        "prescriptives/documentation/02-reference-registry.mrd.json",
+        "publication/harvest-sources.json"
+      ],
+      "title": "Documentation Reference Standard and source policy"
+    },
+    {
+      "id": "mrd_specification",
+      "matched_sources": [
+        "contracts/mrd-specification/v1/content.schema.json",
+        "contracts/mrd-specification/v1/governance-mrd.schema.json",
+        "contracts/mrd/v1/mrd.schema.json",
+        "prescriptives/mrd-specification/01-classification.mrd.json",
+        "prescriptives/mrd-specification/02-layering.mrd.json",
+        "prescriptives/mrd-specification/03-dependencies.mrd.json",
+        "prescriptives/mrd-specification/04-provenance.mrd.json",
+        "prescriptives/mrd-specification/05-lifecycle.mrd.json",
+        "prescriptives/mrd-specification/06-validation.mrd.json",
+        "prescriptives/mrd-specification/07-applicability.mrd.json",
+        "prescriptives/mrd-specification/08-ownership.mrd.json"
+      ],
+      "projection_route": "012-mrd-specification.md",
+      "required": true,
+      "source_covered": true,
+      "source_patterns": [
+        "prescriptives/mrd-specification/*.json",
+        "contracts/mrd/**/*.json",
+        "contracts/mrd-specification/**/*.json"
+      ],
+      "title": "MRD Specification architecture"
+    },
+    {
+      "id": "publication",
+      "matched_sources": [
+        "prescriptives/documentation/03-publication-architecture.mrd.json",
+        "prescriptives/documentation/04-publication-family-registry.mrd.json",
+        "publication/documentation-reference-standard.json",
+        "publication/documentation-release.json",
+        "publication/documentation-search.json",
+        "publication/documentation-site.json",
+        "publication/harvest-sources.json",
+        "publication/mrd-specification-docs.json",
+        "publication/mrd-specification.json",
+        "publication/public-repository.json",
+        "publication/repository-docs.json",
+        "publication/work-management-docs.json",
+        "publication/work-management-spec.json",
+        "src/kis_mcp_doc/publication_kernel.py"
+      ],
+      "projection_route": "003-publication-and-generated-documentation.md",
+      "required": true,
+      "source_covered": true,
+      "source_patterns": [
+        "prescriptives/documentation/03-publication-architecture.mrd.json",
+        "prescriptives/documentation/04-publication-family-registry.mrd.json",
+        "src/kis_mcp_doc/publication_kernel.py",
+        "publication/*.json"
+      ],
+      "title": "Publication kernel and family architecture"
+    },
+    {
+      "id": "site_search_render_release",
+      "matched_sources": [
+        "publication/documentation-release.json",
+        "publication/documentation-search.json",
+        "publication/documentation-site.json",
+        "src/kis_mcp_doc/documentation_release.py",
+        "src/kis_mcp_doc/documentation_search.py",
+        "src/kis_mcp_doc/documentation_site.py",
+        "src/kis_mcp_doc/render.py"
+      ],
+      "projection_route": "013-site-search-rendering-and-release.md",
+      "required": true,
+      "source_covered": true,
+      "source_patterns": [
+        "src/kis_mcp_doc/documentation_site.py",
+        "src/kis_mcp_doc/documentation_search.py",
+        "src/kis_mcp_doc/documentation_release.py",
+        "src/kis_mcp_doc/render.py",
+        "publication/documentation-site.json",
+        "publication/documentation-search.json",
+        "publication/documentation-release.json"
+      ],
+      "title": "Site, navigation, search, rendering, and release"
+    },
+    {
+      "id": "verification_ci",
+      "matched_sources": [
+        ".github/workflows/documentation-pages.yml",
+        ".github/workflows/documentation-release.yml",
+        ".github/workflows/work-management.yml",
+        "scripts/verify.ps1",
+        "tests/test_docs_backend.py",
+        "tests/test_documentation_reference_standard.py",
+        "tests/test_documentation_release.py",
+        "tests/test_documentation_search.py",
+        "tests/test_documentation_site.py",
+        "tests/test_governance_renderer.py",
+        "tests/test_governance_validator.py",
+        "tests/test_human_docs.py",
+        "tests/test_public_repository.py",
+        "tests/test_publication_hardening.py",
+        "tests/test_publication_kernel.py",
+        "tests/test_repository_docs.py",
+        "tests/test_repository_governance.py",
+        "tests/test_windows_runtime_policy.py",
+        "tests/test_work_management_spec.py"
+      ],
+      "projection_route": "004-verification-and-operations.md",
+      "required": true,
+      "source_covered": true,
+      "source_patterns": [
+        "scripts/verify.ps1",
+        ".github/workflows/*.yml",
+        "tests/*.py"
+      ],
+      "title": "Verification, tests, hooks, and CI"
+    },
+    {
+      "id": "runtime_dependencies",
+      "matched_sources": [
+        "pyproject.toml",
+        "scripts/runtime-preflight.ps1",
+        "tooling/windows-runtime.json",
+        "uv.lock"
+      ],
+      "projection_route": "014-runtime-dependencies-and-public-repository.md",
+      "required": true,
+      "source_covered": true,
+      "source_patterns": [
+        "pyproject.toml",
+        "uv.lock",
+        "tooling/windows-runtime.json",
+        "scripts/runtime-preflight.ps1"
+      ],
+      "title": "Runtime and dependency controls"
+    },
+    {
+      "id": "public_repository",
+      "matched_sources": [
+        ".github/CODEOWNERS",
+        ".github/dependabot.yml",
+        "publication/public-repository.json",
+        "src/kis_mcp_doc/public_repository.py"
+      ],
+      "projection_route": "014-runtime-dependencies-and-public-repository.md",
+      "required": true,
+      "source_covered": true,
+      "source_patterns": [
+        "publication/public-repository.json",
+        "src/kis_mcp_doc/public_repository.py",
+        ".github/CODEOWNERS",
+        ".github/dependabot.yml"
+      ],
+      "title": "Public repository and provider posture"
+    },
+    {
+      "id": "artefact_lineage",
+      "matched_sources": [
+        "prescriptives/documentation/05-repository-human-bundle.mrd.json",
+        "src/kis_mcp_doc/repository_docs.py",
+        "tests/test_repository_docs.py"
+      ],
+      "projection_route": "005-artefact-metadata-and-relationships.md",
+      "required": true,
+      "source_covered": true,
+      "source_patterns": [
+        "prescriptives/documentation/05-repository-human-bundle.mrd.json",
+        "src/kis_mcp_doc/repository_docs.py",
+        "tests/test_repository_docs.py"
+      ],
+      "title": "Artefact metadata, relationships, coverage, and freshness"
+    }
+  ],
   "relationships": 232,
-  "schema_version": 1,
-  "source_files": 95
+  "required_human_domains": 10,
+  "schema_version": 2,
+  "source_files": 95,
+  "status": "complete"
 }

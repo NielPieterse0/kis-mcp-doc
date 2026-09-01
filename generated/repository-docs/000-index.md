@@ -17,3 +17,8 @@ This bundle explains the current kis-mcp-doc repository from its governed machin
 - [Directory Grammar](008-directory-grammar.md)
 - [Rule assurance and enforcement](009-rule-assurance-and-enforcement.md)
 - [Prescriptive coverage](010-prescriptive-coverage.md)
+- [Documentation Reference Standard](011-documentation-reference-standard.md)
+- [MRD Specification](012-mrd-specification.md)
+- [Site, search, rendering, and release](013-site-search-rendering-and-release.md)
+- [Runtime, dependencies, and public repository](014-runtime-dependencies-and-public-repository.md)
+- [Human coverage audit](015-human-coverage-audit.md)

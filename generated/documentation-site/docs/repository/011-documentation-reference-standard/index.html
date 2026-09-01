@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Documentation Reference Standard</title><link rel="stylesheet" href="/kis-mcp-doc/assets/site.css"></head><body><header><a href="/kis-mcp-doc/">KIS Documentation</a><nav><a href="/kis-mcp-doc/docs/">Docs</a> <a href="/kis-mcp-doc/specification/">Specification</a> <a href="/kis-mcp-doc/reference/">Reference</a> <a href="/kis-mcp-doc/search/">Search</a></nav></header><main><div class="breadcrumbs"><a href="/kis-mcp-doc/">Home</a> / <a href="/kis-mcp-doc/docs/">Docs</a> / kis-mcp-doc Repository Documentation</div><aside class="publication-meta"><strong>Version:</strong> 1.0.0. <strong>Status:</strong> active. <strong>Authority:</strong> generated projection of <code>urn:uuid:0e84ae43-f74a-5065-a5e2-b21e105376b8</code>; canonical sources remain authoritative.</aside><h1 id="documentation-reference-standard">Documentation Reference Standard</h1>
+<p>Understand which sources may define facts, which sources may guide presentation, and how conflicts are handled.</p>
+<p>Govern how KIS documentation uses canonical KIS authority, normative protocol sources, prescriptive writing guidance, implementation references, and inferred evidence without creating duplicate fact ownership.</p>
+<h2 id="authority-roles">Authority roles</h2>
+<table><caption>Authority roles</caption><thead><tr><th scope="col">Role</th><th scope="col">Domain</th><th scope="col">May define KIS facts</th></tr></thead><tbody>
+<tr><td><code>canonical_kis</code></td><td>KIS-specific facts, behavior, policy, configuration, lifecycle, and adopted requirements</td><td>Yes</td></tr>
+<tr><td><code>normative_external</code></td><td>The bounded conformance domain owned by the external standard</td><td>No</td></tr>
+<tr><td><code>prescriptive_external</code></td><td>Presentation or practice guidance where KIS authority is silent</td><td>No</td></tr>
+<tr><td><code>implementation_reference</code></td><td>Bounded reusable documentation or engineering patterns</td><td>No</td></tr>
+<tr><td><code>inferred_evidence</code></td><td>Derived evidence requiring verification against an owning source</td><td>No</td></tr>
+</tbody></table>
+<h2 id="output-classes">Output classes</h2>
+<table><caption>Output classes</caption><thead><tr><th scope="col">Class</th><th scope="col">Purpose</th><th scope="col">Source rule</th></tr></thead><tbody>
+<tr><td><code>human_documentation</code></td><td>Teach concepts, tasks, workflows, examples, architecture, and operations in reader-oriented prose.</td><td>Canonical KIS facts supply factual content; approved references may inform organization and presentation only.</td></tr>
+<tr><td><code>human_readable_specification</code></td><td>Explain adopted normative behavior while preserving requirement strength, identifiers, ownership, and traceability.</td><td>Adopted KIS MRDs and applicable normative external standards supply requirements; generated prose remains non-authoritative.</td></tr>
+<tr><td><code>generated_reference</code></td><td>Expose exact tools, schemas, settings, policies, states, relationships, capabilities, permissions, and provenance.</td><td>Only canonical KIS facts or explicitly applicable normative protocol facts may populate factual reference data.</td></tr>
+</tbody></table>
+<h2 id="conflict-and-reproducibility-rules">Conflict and reproducibility rules</h2>
+<ul>
+<li>Canonical conflict: <code>surface_diagnostic_and_keep_canonical_owner</code>.</li>
+<li>Unsupported promotion: <code>block</code>.</li>
+<li>Stale or unpinned references: <code>block_when_active_or_used_by_deterministic_generation</code>.</li>
+</ul>
+<p>MCP protocol material is normative only inside its applicable MCP conformance domain. Google Developer Documentation guidance is presentation guidance only; neither source becomes KIS repository authority.</p><nav class="prev-next"><a rel="prev" href="/kis-mcp-doc/docs/repository/010-prescriptive-coverage/">Previous</a> <a rel="next" href="/kis-mcp-doc/docs/repository/012-mrd-specification/">Next</a></nav></main></body></html>
